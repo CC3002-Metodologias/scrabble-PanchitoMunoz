@@ -21,7 +21,7 @@ public class TypeBinary extends AbstractNumber {
      * @return TypeFloat with a value equivalent to the current type.
      */
     @Override
-    TypeFloat toTypeFloat() {
+    public TypeFloat toTypeFloat() {
         return null;
     }
 
@@ -30,8 +30,7 @@ public class TypeBinary extends AbstractNumber {
      *
      * @return TypeInt with a value equivalent to the current type.
      */
-    @Override
-    TypeInt toTypeInt() {
+    public TypeInt toTypeInt() {
         return null;
     }
 
@@ -40,8 +39,7 @@ public class TypeBinary extends AbstractNumber {
      *
      * @return TypeBinary with a value equivalent to the current type.
      */
-    @Override
-    TypeBinary toTypeBinary() {
+    public TypeBinary toTypeBinary() {
         return null;
     }
 }
