@@ -38,8 +38,8 @@ class TypeFloatTest {
     @Test
     void testToString() {
         // Test that if the string representation of a number are the correct
-        assertEquals("TypeString{value=" + aNumber1 + "}", typeFloat1.toString(), "The string representation are not the correct.");
-        assertNotEquals("TypeString{value=" + aNumber2 + "}", typeFloat1.toString(), "The string representation are not the correct.");
+        assertEquals("TypeFloat{value=" + aNumber1 + "}", typeFloat1.toString(), "The string representation are not the correct.");
+        assertNotEquals("TypeFloat{value=" + aNumber2 + "}", typeFloat1.toString(), "The string representation are not the correct.");
     }
 
     @Test

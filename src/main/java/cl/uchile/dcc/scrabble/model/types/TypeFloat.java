@@ -32,7 +32,7 @@ public class TypeFloat extends AbstractNumber {
 
     @Override
     public String toString() {
-        return "TypeString{"
+        return "TypeFloat{"
                 + "value=" + this.value
                 + "}";
     }
