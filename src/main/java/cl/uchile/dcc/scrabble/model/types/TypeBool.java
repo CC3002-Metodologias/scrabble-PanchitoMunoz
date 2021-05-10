@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Francisco Muñoz Guajardo
  */
 public class TypeBool extends AbstractType {
-    private boolean value;
+    private final boolean value;
 
     /**
      * Constructor for the BoolType.

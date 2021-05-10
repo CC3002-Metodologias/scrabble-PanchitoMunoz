@@ -1,10 +1,13 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import java.util.Objects;
-import java.util.Random;
 
+/**
+ * A class for the string type.
+ * @author Francisco Muñoz Guajardo
+ */
 public class TypeString extends AbstractType {
-    private String value;
+    private final String value;
 
     /**
      * Constructor for the TypeString.

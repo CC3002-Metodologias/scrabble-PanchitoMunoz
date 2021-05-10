@@ -1,5 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import java.util.Objects;
+
+/**
+ * A class for the float type.
+ * @author Francisco Muñoz Guajardo
+ */
 public class TypeFloat extends AbstractNumber {
     /**
      * Transforms the current type to a TypeString.

@@ -1,5 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+/**
+ * A class for the integer type.
+ * @author Francisco Muñoz Guajardo
+ */
 public class TypeInt extends AbstractNumber {
     /**
      * Transforms the current type to a TypeString.
