@@ -19,13 +19,14 @@ class TypeFloatTest {
         int seed = new Random().nextInt();
         Random rng = new Random(seed);
         // Initialize the length of the interval
-        int maxExponent = rng.nextInt(32); // Choose an exponent
+        int maxExponent = rng.nextInt(33); // Choose an exponent
         int maxSize = rng.nextInt((int) Math.pow(2, maxExponent)); // Choose the length of the interval
+        int sgn = (int) Math.pow(-1, rng.nextInt(2));
         // Initialize two random double between -maxSize and maxSize
-        aNumber1 = rng.nextDouble() * maxSize - rng.nextDouble() * maxSize;
+        aNumber1 = sgn * rng.nextDouble() * maxSize;
         do {
             if (maxSize == 0) maxSize = 1;
-            aNumber2 = rng.nextDouble() * maxSize - rng.nextDouble() * maxSize;
+            aNumber2 = sgn * rng.nextDouble() * maxSize;
         } while (aNumber2 == aNumber1);
         typeFloat1 = new TypeFloat(aNumber1);
         typeFloat2 = new TypeFloat(aNumber2);

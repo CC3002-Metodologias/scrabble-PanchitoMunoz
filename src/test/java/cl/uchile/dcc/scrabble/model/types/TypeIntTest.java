@@ -1,7 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,20 +15,29 @@ class TypeIntTest {
 
     @BeforeEach
     void setUp() {
-        aNumber1 = 42;
-        aNumber2 = 73;
+        // Initialize a random seed and a random rng
+        int seed = new Random().nextInt();
+        Random rng = new Random(seed);
+        // Initialize the length of the number
+        int maxExponent = rng.nextInt(33);
+        int sgn = (int) Math.pow(-1, rng.nextInt(2));
+        aNumber1 = sgn * rng.nextInt((int) Math.pow(2, maxExponent));
+        do {
+            if (maxExponent == 0) maxExponent = 1;
+            aNumber2 = sgn * rng.nextInt((int) Math.pow(2, maxExponent));
+        } while (aNumber2 == aNumber1);
         typeInt1 = new TypeInt(aNumber1);
         typeInt2 = new TypeInt(aNumber2);
     }
 
-    @Test
+    @RepeatedTest(20)
     void testEquals() {
         TypeInt otherTypeInt1 = new TypeInt(aNumber1);
         assertEquals(otherTypeInt1, typeInt1, "Two TypeInts with the same value are different.");
         assertNotEquals(typeInt2, typeInt1, "Two TypeInts with different values are equals.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void testHashCode() {
         TypeInt otherTypeInt1 = new TypeInt(aNumber1);
         assertEquals(otherTypeInt1.hashCode(), typeInt1.hashCode(),
@@ -35,7 +46,7 @@ class TypeIntTest {
                 "Two TypeInts with different values have equals hash code.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToString() {
         assertEquals("TypeInt{value=" + aNumber1 + "}", typeInt1.toString(),
                 "Method toString does not works.");
@@ -43,26 +54,29 @@ class TypeIntTest {
                 "Method toString does not works.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void toTypeString() {
         TypeString typeIntAsTypeString = new TypeString(Integer.toString(aNumber1));
-        assertEquals(typeIntAsTypeString, typeInt1.toTypeString(), "Method toTypeString does not works.");
-        assertNotEquals(typeIntAsTypeString, typeInt2.toTypeString(), "Method toTypeString does not works.");
+        assertEquals(typeIntAsTypeString, typeInt1.toTypeString(),
+                "Method toTypeString does not works.");
+        assertNotEquals(typeIntAsTypeString, typeInt2.toTypeString(),
+                "Method toTypeString does not works.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void toTypeFloat() {
         TypeFloat typeIntAsTypeFloat = new TypeFloat(aNumber1);
-        assertEquals(typeIntAsTypeFloat, typeInt1.toTypeFloat(), "Method toTypeFloat does not works.");
+        assertEquals(typeIntAsTypeFloat, typeInt1.toTypeFloat(),
+                "Method toTypeFloat does not works.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void toTypeInt() {
         TypeInt otherTypeInt1 = new TypeInt(aNumber1);
         assertEquals(otherTypeInt1, typeInt1.toTypeInt(), "Method toTypeInt does not works.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void toTypeBinary() {
         typeInt1.toTypeBinary();
     }
