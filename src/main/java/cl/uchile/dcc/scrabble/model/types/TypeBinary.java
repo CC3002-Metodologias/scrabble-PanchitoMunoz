@@ -1,10 +1,47 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import java.util.Objects;
+
 /**
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
 public class TypeBinary extends AbstractNumber {
+    private final String value;
+
+    /**
+     * Constructor for the TypeBinary.
+     * @param value A String as a value.
+     */
+    public TypeBinary(String value) {
+        this.value = value;
+    }
+
+    /**
+     * Method that determines if the object 'o' is equals to the current instance.
+     * @param o Another object that is compared to the current instance.
+     * @return A boolean that determines whether the current instance are equals with 'o'.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TypeBinary)) return false;
+        TypeBinary that = (TypeBinary) o;
+        return Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return "TypeBinary{" +
+                "value='" + value + '\'' +
+                '}';
+    }
+
     /**
      * Transforms the current type to a TypeString.
      *
@@ -12,7 +49,7 @@ public class TypeBinary extends AbstractNumber {
      */
     @Override
     public TypeString toTypeString() {
-        return null;
+        return new TypeString(this.value);
     }
 
     /**
@@ -22,6 +59,7 @@ public class TypeBinary extends AbstractNumber {
      */
     @Override
     public TypeFloat toTypeFloat() {
+        System.out.println("Estoy haciendo la representacion de un binario como un float :)");
         return null;
     }
 
@@ -31,6 +69,7 @@ public class TypeBinary extends AbstractNumber {
      * @return TypeInt with a value equivalent to the current type.
      */
     public TypeInt toTypeInt() {
+        System.out.println("Estoy haciendo la representacion de un binario como un int :)");
         return null;
     }
 
@@ -40,6 +79,6 @@ public class TypeBinary extends AbstractNumber {
      * @return TypeBinary with a value equivalent to the current type.
      */
     public TypeBinary toTypeBinary() {
-        return null;
+        return new TypeBinary(this.value);
     }
 }
