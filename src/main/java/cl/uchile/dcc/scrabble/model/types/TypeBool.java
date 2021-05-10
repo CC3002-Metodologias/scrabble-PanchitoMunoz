@@ -32,7 +32,9 @@ public class TypeBool extends AbstractType {
 
     @Override
     public String toString() {
-        return Boolean.toString(this.value);
+        return "TypeBool{"
+                + "value=" + value
+                + "}";
     }
 
     /**
@@ -42,7 +44,7 @@ public class TypeBool extends AbstractType {
      */
     @Override
     public TypeString toTypeString() {
-        return new TypeString(this.toString());
+        return new TypeString(Boolean.toString(this.value));
     }
 
     /**

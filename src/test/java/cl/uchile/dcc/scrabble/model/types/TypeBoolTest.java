@@ -36,14 +36,20 @@ class TypeBoolTest {
 
     @Test
     void testToString() {
-        assertEquals("true", trueTypeBool.toString(), "toString method does not work with true.");
-        assertEquals("false", falseTypeBool.toString(), "toString method does not work with false.");
+        assertEquals("TypeBool{value=true}", trueTypeBool.toString(), "toString method does not work with true.");
+        assertEquals("TypeBool{value=false}", falseTypeBool.toString(), "toString method does not work with false.");
     }
 
     @Test
     void toTypeString() {
-        TypeString typeString = new TypeString(trueTypeBool.toString());
-        assertEquals(typeString, trueTypeBool.toTypeString(), "The method toTypeString does not works.");
+        TypeString trueTypeString = new TypeString(Boolean.toString(trueBoolean));
+        TypeString falseTypeString = new TypeString(Boolean.toString(falseBoolean));
+        // Case equals
+        assertEquals(trueTypeString, trueTypeBool.toTypeString(), "The method toTypeString does not works.");
+        assertEquals(falseTypeString, falseTypeBool.toTypeString(), "The method toTypeString does not works.");
+        // Case not equals
+        assertNotEquals(falseTypeString, trueTypeBool.toTypeString(), "The method toTypeString does not works.");
+        assertNotEquals(trueTypeString, falseTypeBool.toTypeString(), "The method toTypeString does not works.");
     }
 
     @Test

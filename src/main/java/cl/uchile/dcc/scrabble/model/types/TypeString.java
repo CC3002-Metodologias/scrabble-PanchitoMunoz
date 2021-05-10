@@ -29,7 +29,9 @@ public class TypeString extends AbstractType {
 
     @Override
     public String toString() {
-        return value;
+        return "TypeString{"
+                + "value=" + value
+                + "}";
     }
 
 

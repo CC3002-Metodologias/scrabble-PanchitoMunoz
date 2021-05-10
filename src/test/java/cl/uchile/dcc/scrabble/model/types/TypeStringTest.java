@@ -2,7 +2,6 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
 import java.util.Random;
@@ -10,7 +9,6 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TypeStringTest {
-    private int seed;
     private TypeString typeString;
     private TypeString otherTypeString;
     private String aString;
@@ -19,7 +17,7 @@ class TypeStringTest {
     @BeforeEach
     void setUp() {
         // Initialize a random seed and a random rng
-        seed = new Random().nextInt(1000);
+        int seed = new Random().nextInt(1000);
         Random rng = new Random(seed);
         // Initialize a random string size
         int strSize = rng.nextInt(20);
@@ -50,11 +48,11 @@ class TypeStringTest {
 
     @RepeatedTest(20)
     void testToString() {
-        assertEquals(aString, typeString.toString(), "Method toString does not works.");
-        assertNotEquals(otherString, typeString.toString(), "Method toString does not works.");
+        assertEquals("TypeString{value=" + aString + "}", typeString.toString(), "Method toString does not works.");
+        assertNotEquals("TypeString{value=" + otherString + "}", typeString.toString(), "Method toString does not works.");
     }
 
-    @RepeatedTest(value = 20)
+    @RepeatedTest(20)
     void toTypeString() {
         TypeString similarTypeString = new TypeString(aString);
         assertEquals(similarTypeString, typeString.toTypeString(), "Method toTypeString does not work.");
