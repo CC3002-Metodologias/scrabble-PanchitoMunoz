@@ -53,7 +53,7 @@ class TypeStringTest {
     }
 
     @RepeatedTest(20)
-    void toTypeString() {
+    void testToTypeString() {
         TypeString similarTypeString = new TypeString(aString);
         assertEquals(similarTypeString, typeString.toTypeString(), "Method toTypeString does not work.");
     }

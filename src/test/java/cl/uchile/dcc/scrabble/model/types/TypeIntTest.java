@@ -33,8 +33,10 @@ class TypeIntTest {
     @RepeatedTest(20)
     void testEquals() {
         TypeInt otherTypeInt1 = new TypeInt(aNumber1);
-        assertEquals(otherTypeInt1, typeInt1, "Two TypeInts with the same value are different.");
-        assertNotEquals(typeInt2, typeInt1, "Two TypeInts with different values are equals.");
+        assertEquals(otherTypeInt1, typeInt1,
+                "Two TypeInts with the same value are different.");
+        assertNotEquals(typeInt2, typeInt1,
+                "Two TypeInts with different values are equals.");
     }
 
     @RepeatedTest(20)
