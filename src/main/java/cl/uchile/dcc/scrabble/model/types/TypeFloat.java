@@ -7,6 +7,36 @@ import java.util.Objects;
  * @author Francisco Muñoz Guajardo
  */
 public class TypeFloat extends AbstractNumber {
+    private final double value;
+
+    /**
+     * Constructor for the TypeFloat.
+     * @param value A double number as a value.
+     */
+    public TypeFloat(double value) {
+        this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TypeFloat)) return false;
+        TypeFloat typeFloat = (TypeFloat) o;
+        return Double.compare(typeFloat.value, value) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return "TypeString{"
+                + "value=" + this.value
+                + "}";
+    }
+
     /**
      * Transforms the current type to a TypeString.
      *
@@ -14,7 +44,7 @@ public class TypeFloat extends AbstractNumber {
      */
     @Override
     public TypeString toTypeString() {
-        return null;
+        return new TypeString(Double.toString(this.value));
     }
 
     /**
@@ -23,27 +53,7 @@ public class TypeFloat extends AbstractNumber {
      * @return TypeFloat with a value equivalent to the current type.
      */
     @Override
-    TypeFloat toTypeFloat() {
-        return null;
-    }
-
-    /**
-     * Transforms the current type to a TypeInt.
-     *
-     * @return TypeInt with a value equivalent to the current type.
-     */
-    @Override
-    TypeInt toTypeInt() {
-        return null;
-    }
-
-    /**
-     * Transforms the current type to a TypeBinary.
-     *
-     * @return TypeBinary with a value equivalent to the current type.
-     */
-    @Override
-    TypeBinary toTypeBinary() {
-        return null;
+    public TypeFloat toTypeFloat() {
+        return new TypeFloat(this.value);
     }
 }
