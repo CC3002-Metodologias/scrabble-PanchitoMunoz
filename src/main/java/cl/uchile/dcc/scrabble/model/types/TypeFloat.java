@@ -17,6 +17,11 @@ public class TypeFloat extends AbstractNumber {
         this.value = value;
     }
 
+    /**
+     * Method that determines if the object 'o' is equals to the current instance.
+     * @param o Another object that is compared to the current instance.
+     * @return A boolean that determines whether the current instance are equals with 'o'.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -25,11 +30,19 @@ public class TypeFloat extends AbstractNumber {
         return Double.compare(typeFloat.value, value) == 0;
     }
 
+    /**
+     * Method that returns the hash code of the current instance.
+     * @return The hash code of the current instance.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(value);
     }
 
+    /**
+     * Method that provides a representation of the current instance as a String.
+     * @return The representation as a String.
+     */
     @Override
     public String toString() {
         return "TypeFloat{"

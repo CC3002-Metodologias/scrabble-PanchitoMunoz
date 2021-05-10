@@ -30,11 +30,19 @@ public class TypeBinary extends AbstractNumber {
         return Objects.equals(value, that.value);
     }
 
+    /**
+     * Method that returns the hash code of the current instance.
+     * @return The hash code of the current instance.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(value);
     }
 
+    /**
+     * Method that provides a representation of the current instance as a String.
+     * @return The representation as a String.
+     */
     @Override
     public String toString() {
         return "TypeBinary{" +
