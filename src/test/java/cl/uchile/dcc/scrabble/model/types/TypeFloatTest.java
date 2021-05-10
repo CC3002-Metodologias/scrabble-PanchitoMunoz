@@ -1,23 +1,37 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TypeFloatTest {
     private TypeFloat typeFloat1;
     private TypeFloat typeFloat2;
-    private double aNumber1 = 3.1416;
-    private double aNumber2 = 2.7183;
+    private double aNumber1;
+    private double aNumber2;
 
     @BeforeEach
     void setUp() {
+        // Initialize a random seed and a random rng
+        int seed = new Random().nextInt();
+        Random rng = new Random(seed);
+        // Initialize the length of the interval
+        int maxExponent = rng.nextInt(32); // Choose an exponent
+        int maxSize = rng.nextInt((int) Math.pow(2, maxExponent)); // Choose the length of the interval
+        // Initialize two random double between -maxSize and maxSize
+        aNumber1 = rng.nextDouble() * maxSize - rng.nextDouble() * maxSize;
+        do {
+            if (maxSize == 0) maxSize = 1;
+            aNumber2 = rng.nextDouble() * maxSize - rng.nextDouble() * maxSize;
+        } while (aNumber2 == aNumber1);
         typeFloat1 = new TypeFloat(aNumber1);
         typeFloat2 = new TypeFloat(aNumber2);
     }
 
-    @Test
+    @RepeatedTest(20)
     void testEquals() {
         // Test that if two numbers with the same value are equals
         TypeFloat otherTypeFloat1 = new TypeFloat(aNumber1);
@@ -26,7 +40,7 @@ class TypeFloatTest {
         assertNotEquals(typeFloat1, typeFloat2, "Two TypeFloats with a different value are equals.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void testHashCode() {
         // Test that if two numbers with the same value have equals hash code
         TypeFloat otherTypeFloat1 = new TypeFloat(aNumber1);
@@ -35,14 +49,14 @@ class TypeFloatTest {
         assertNotEquals(typeFloat2.hashCode(), typeFloat1.hashCode(), "Two TypeFloats with different values have equals hash code.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToString() {
         // Test that if the string representation of a number are the correct
         assertEquals("TypeFloat{value=" + aNumber1 + "}", typeFloat1.toString(), "The string representation are not the correct.");
         assertNotEquals("TypeFloat{value=" + aNumber2 + "}", typeFloat1.toString(), "The string representation are not the correct.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void toTypeString() {
         TypeString floatAsTypeString = new TypeString(Double.toString(aNumber1));
         TypeString otherFloatAsTypeString = new TypeString(Double.toString(aNumber2));
@@ -50,7 +64,7 @@ class TypeFloatTest {
         assertNotEquals(otherFloatAsTypeString, typeFloat1.toTypeString(), "Method toTypeString does not works.");
     }
 
-    @Test
+    @RepeatedTest(20)
     void toTypeFloat() {
         TypeFloat typeFloat = new TypeFloat(aNumber1);
         TypeFloat otherTypeFloat = new TypeFloat(aNumber2);

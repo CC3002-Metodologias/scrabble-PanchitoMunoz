@@ -17,14 +17,14 @@ class TypeStringTest {
     @BeforeEach
     void setUp() {
         // Initialize a random seed and a random rng
-        int seed = new Random().nextInt(1000);
+        int seed = new Random().nextInt();
         Random rng = new Random(seed);
         // Initialize a random string size
         int strSize = rng.nextInt(20);
         // Initialize random strings
         aString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT, true, true, null, rng);
         do {
-            if (strSize == 0) { strSize = 1; }
+            if (strSize == 0) strSize = 1;
             otherString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT, true, true, null, rng);
         } while (otherString.equals(aString));
         // Makes instances of TypeString
