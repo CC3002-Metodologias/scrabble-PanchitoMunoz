@@ -1,12 +1,14 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.operations.IOpp;
+
 import java.util.Objects;
 
 /**
  * A class for the boolean type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBool extends AbstractType {
+public class TypeBool extends AbstractType implements IOpp {
     private final boolean value;
 
     /**
@@ -67,5 +69,15 @@ public class TypeBool extends AbstractType {
      */
     public TypeBool toTypeBool() {
         return new TypeBool(this.value);
+    }
+
+    /**
+     * Returns the opposite of the current instance. In booleans, it is changing true for false and viceversa.
+     *
+     * @return The opposite of the current instance.
+     */
+    @Override
+    public IOpp opposite() {
+        return new TypeBool(!(this.value));
     }
 }

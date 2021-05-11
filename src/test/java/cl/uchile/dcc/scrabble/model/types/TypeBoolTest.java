@@ -75,4 +75,12 @@ class TypeBoolTest {
         assertNotEquals(otherTrueTypeBool, falseTypeBool.toTypeBool(),
                 "The method toTypeBool does not works with different values.");
     }
+
+    @Test
+    void opposite() {
+        assertEquals(falseTypeBool, trueTypeBool.opposite(),
+                "Method opposite does not works with true.");
+        assertEquals(trueTypeBool, falseTypeBool.opposite(),
+                "Method opposite does not works with false.");
+    }
 }

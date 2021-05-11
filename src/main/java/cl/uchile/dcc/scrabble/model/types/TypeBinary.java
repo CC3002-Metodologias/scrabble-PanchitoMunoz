@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.operations.IOpp;
+
 import java.util.Objects;
 
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
@@ -8,7 +10,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractNumber {
+public class TypeBinary extends AbstractNumber implements IOpp {
     private final String value;
 
     /**
@@ -90,4 +92,13 @@ public class TypeBinary extends AbstractNumber {
         return new TypeBinary(this.value);
     }
 
+    /**
+     * Returns the opposite of the current instance. In binary, it is changing each 0 for 1 and each 1 for 0.
+     *
+     * @return The opposite of the current instance.
+     */
+    @Override
+    public IOpp opposite() {
+        return new TypeBinary(oneComplement(this.value));
+    }
 }

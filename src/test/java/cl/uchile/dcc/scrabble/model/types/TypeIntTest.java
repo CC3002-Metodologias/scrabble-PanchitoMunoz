@@ -88,4 +88,12 @@ class TypeIntTest {
         assertEquals(anIntAsBinary, typeInt1.toTypeBinary(),
                 "Method toTypeBinary does not works.");
     }
+
+    @RepeatedTest(20)
+    void opposite() {
+        int aNumberNegative1 = -aNumber1;
+        TypeInt typeIntNegative1 = new TypeInt(aNumberNegative1);
+        assertEquals(typeIntNegative1, typeInt1.opposite(),
+                "Method opposite does not works.");
+    }
 }

@@ -21,8 +21,6 @@ class TypeBinaryTest {
         int seed = -986571975;
         Random rng = new Random(seed);
         int nBits = rng.nextInt(64) + 1; // Max 64 bits
-        System.out.println(seed);
-        System.out.println(nBits);
         char[] characters = {'0', '1'};
         aBinary1 = RandomStringUtils.random(nBits, 0, 2, false,
                 true, characters, rng);
@@ -96,5 +94,14 @@ class TypeBinaryTest {
                 "Method toTypeBinary does not works.");
         assertNotEquals(otherTypeBinary1, typeBinary2.toTypeBinary(),
                 "Method toTypeBinary does not works.");
+    }
+
+    @RepeatedTest(20)
+    void opposite() {
+        // Changing each 1 for 0 and each 0 for 1 is equivalent to applying one complement.
+        String aBinaryNegative1 = oneComplement(aBinary1);
+        TypeBinary typeBinaryNegative1 = new TypeBinary(aBinaryNegative1);
+        assertEquals(typeBinaryNegative1, typeBinary1.opposite(),
+                "Method opposite does not works.");
     }
 }

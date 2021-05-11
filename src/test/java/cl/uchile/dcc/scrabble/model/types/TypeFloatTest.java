@@ -73,4 +73,12 @@ class TypeFloatTest {
         assertEquals(typeFloat, typeFloat1.toTypeFloat(), "Method toTypeFloat does not works.");
         assertNotEquals(otherTypeFloat, typeFloat1.toTypeFloat(), "Method toTypeFloat does not works.");
     }
+
+    @RepeatedTest(20)
+    void opposite() {
+        double aNumberNegative1 = - aNumber1;
+        TypeFloat typeFloatNegative1 = new TypeFloat(aNumberNegative1);
+        assertEquals(typeFloatNegative1, typeFloat1.opposite(),
+                "Method opposite does not works.");
+    }
 }

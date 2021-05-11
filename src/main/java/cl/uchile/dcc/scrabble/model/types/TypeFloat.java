@@ -1,12 +1,14 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.operations.IOpp;
+
 import java.util.Objects;
 
 /**
  * A class for the float type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeFloat extends AbstractNumber {
+public class TypeFloat extends AbstractNumber implements IOpp {
     private final double value;
 
     /**
@@ -68,5 +70,15 @@ public class TypeFloat extends AbstractNumber {
     @Override
     public TypeFloat toTypeFloat() {
         return new TypeFloat(this.value);
+    }
+
+    /**
+     * Returns the negative of the current instance.
+     *
+     * @return The opposite of the current instance.
+     */
+    @Override
+    public IOpp opposite() {
+        return new TypeFloat(-this.value);
     }
 }

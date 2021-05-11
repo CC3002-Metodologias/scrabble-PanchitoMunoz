@@ -51,7 +51,7 @@ public final class BinaryUtilities {
      * @param binary A binary number.
      * @return The one complement of 'binary'.
      */
-    private static String oneComplement(String binary) {
+    public static String oneComplement(String binary) {
         StringBuilder oppositeBinary = new StringBuilder();
         for (int i = 0; i < binary.length(); i++) {
             oppositeBinary.append(binary.charAt(i) == '0' ? '1' : '0');
@@ -75,9 +75,7 @@ public final class BinaryUtilities {
      * @return The binary representation of 'num'.
      */
     private static String positiveIntToBinary(int num) {
-        if (num == 0) {
-            return "0";
-        }
+        if (num == 0) return "0";
         int nBits = (int) (Math.floor(Math.log(num) / Math.log(2)) + 1);
         int[] binary = new int[nBits];
         int id = 0;
@@ -114,7 +112,7 @@ public final class BinaryUtilities {
         if (result.length() > Math.max(a.length(), b.length())) {
             result.deleteCharAt(0);
         }
-        // Case where two positives overload the binary representation and it is represented by a negative
+        // Case where two positives overload the binary representation and it is represented as a negative
         if (binaryToInt(a) + binaryToInt(b) > 0 && result.charAt(0) == '1') {
             result.insert(0, '0');
         }

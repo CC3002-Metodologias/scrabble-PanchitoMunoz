@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.operations.IOpp;
+
 import java.util.Objects;
 
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
@@ -8,7 +10,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
  * A class for the integer type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeInt extends AbstractNumber {
+public class TypeInt extends AbstractNumber implements IOpp {
     private final int value;
 
     /**
@@ -88,5 +90,15 @@ public class TypeInt extends AbstractNumber {
      */
     public TypeBinary toTypeBinary() {
         return new TypeBinary(intToBinary(this.value));
+    }
+
+    /**
+     * Returns the negative of the current instance.
+     *
+     * @return The opposite of the current instance.
+     */
+    @Override
+    public IOpp opposite() {
+        return new TypeInt(-this.value);
     }
 }
