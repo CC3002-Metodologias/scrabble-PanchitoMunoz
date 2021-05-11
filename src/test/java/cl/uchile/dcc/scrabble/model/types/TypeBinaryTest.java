@@ -17,8 +17,7 @@ class TypeBinaryTest {
 
     @BeforeEach
     void setUp() {
-        // int seed = new Random().nextInt();
-        int seed = -986571975;
+        int seed = new Random().nextInt();
         Random rng = new Random(seed);
         int nBits = rng.nextInt(64) + 1; // Max 64 bits
         char[] characters = {'0', '1'};

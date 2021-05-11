@@ -17,9 +17,8 @@ class TypeIntTest {
     @BeforeEach
     void setUp() {
         // Initialize a random seed and a random rng
-        int seed = 527083367; // new Random().nextInt();
+        int seed = new Random().nextInt();
         Random rng = new Random(seed);
-        System.out.println(seed);
         // Initialize the length of the number
         int maxExponent = rng.nextInt(33);
         int sgn = (int) Math.pow(-1, rng.nextInt(2));

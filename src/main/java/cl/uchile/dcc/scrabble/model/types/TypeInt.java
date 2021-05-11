@@ -10,7 +10,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
  * A class for the integer type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeInt extends AbstractNumber implements IOpp {
+public class TypeInt extends AbstractInteger implements IOpp {
     private final int value;
 
     /**
@@ -79,6 +79,7 @@ public class TypeInt extends AbstractNumber implements IOpp {
      *
      * @return TypeInt with a value equivalent to the current type.
      */
+    @Override
     public TypeInt toTypeInt() {
         return new TypeInt(this.value);
     }
@@ -88,6 +89,7 @@ public class TypeInt extends AbstractNumber implements IOpp {
      *
      * @return TypeBinary with a value equivalent to the current type.
      */
+    @Override
     public TypeBinary toTypeBinary() {
         return new TypeBinary(intToBinary(this.value));
     }
