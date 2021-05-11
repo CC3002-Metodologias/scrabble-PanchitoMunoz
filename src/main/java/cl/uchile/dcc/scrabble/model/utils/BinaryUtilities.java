@@ -75,6 +75,9 @@ public final class BinaryUtilities {
      * @return The binary representation of 'num'.
      */
     private static String positiveIntToBinary(int num) {
+        if (num == 0) {
+            return "0";
+        }
         int nBits = (int) (Math.floor(Math.log(num) / Math.log(2)) + 1);
         int[] binary = new int[nBits];
         int id = 0;
@@ -124,7 +127,6 @@ public final class BinaryUtilities {
      * @return The representation of the number as a binary.
      */
     public static String intToBinary(int num) {
-        System.out.println(num);
         int absNum = Math.abs(num);
         String  binaryNum = positiveIntToBinary(absNum);
         if (num < 0) {

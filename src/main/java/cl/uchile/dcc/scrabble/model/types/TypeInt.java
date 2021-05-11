@@ -2,6 +2,8 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import java.util.Objects;
 
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
+
 /**
  * A class for the integer type.
  * @author Francisco Muñoz Guajardo
@@ -85,7 +87,6 @@ public class TypeInt extends AbstractNumber {
      * @return TypeBinary with a value equivalent to the current type.
      */
     public TypeBinary toTypeBinary() {
-        System.out.println("Estoy haciendo la representacion de un int como binario :)");
-        return null;
+        return new TypeBinary(intToBinary(this.value));
     }
 }

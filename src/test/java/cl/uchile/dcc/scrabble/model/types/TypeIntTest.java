@@ -5,6 +5,7 @@ import org.junit.jupiter.api.RepeatedTest;
 
 import java.util.Random;
 
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TypeIntTest {
@@ -16,8 +17,9 @@ class TypeIntTest {
     @BeforeEach
     void setUp() {
         // Initialize a random seed and a random rng
-        int seed = new Random().nextInt();
+        int seed = 527083367; // new Random().nextInt();
         Random rng = new Random(seed);
+        System.out.println(seed);
         // Initialize the length of the number
         int maxExponent = rng.nextInt(33);
         int sgn = (int) Math.pow(-1, rng.nextInt(2));
@@ -81,6 +83,9 @@ class TypeIntTest {
 
     @RepeatedTest(20)
     void toTypeBinary() {
-        typeInt1.toTypeBinary();
+        String aBinary1 = intToBinary(aNumber1);
+        TypeBinary anIntAsBinary = new TypeBinary(aBinary1);
+        assertEquals(anIntAsBinary, typeInt1.toTypeBinary(),
+                "Method toTypeBinary does not works.");
     }
 }
