@@ -29,10 +29,10 @@ public interface IMult {
     /**
      * Returns the multiplication between the current type and an Int Type.
      *
-     * @param intType An Int type who will be multiplied to the current type.
+     * @param typeInt An Int type who will be multiplied to the current type.
      * @return The multiplication between the Int type and the other type.
      */
-    IMult multWithInt(TypeInt intType);
+    IMult multWithInt(TypeInt typeInt);
 
     /**
      * Returns the multiplication between the current type and a Binary Type.

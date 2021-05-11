@@ -39,10 +39,10 @@ public interface IAdd {
 
     /**
      * Returns the add between the current type and an Int Type.
-     * @param intType An Int type who will be added to the current type.
+     * @param typeInt An Int type who will be added to the current type.
      * @return The sum between the Int type and the other type.
      */
-    IAdd addWithInt(TypeInt intType);
+    IAdd addWithInt(TypeInt typeInt);
 
     /**
      * Returns the add between the current type and a Binary Type.

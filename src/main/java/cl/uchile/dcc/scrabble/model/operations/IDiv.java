@@ -29,10 +29,10 @@ public interface IDiv {
     /**
      * Returns the division between the current type and an Int Type.
      *
-     * @param intType An Int type who will be divided to the current type.
+     * @param typeInt An Int type who will be divided to the current type.
      * @return The division between the Int type and the other type.
      */
-    IDiv divWithInt(TypeInt intType);
+    IDiv divWithInt(TypeInt typeInt);
 
     /**
      * Returns the division between the current type and a Binary Type.
