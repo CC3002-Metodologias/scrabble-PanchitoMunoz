@@ -75,7 +75,6 @@ public final class BinaryUtilities {
      * @return The binary representation of 'num'.
      */
     private static String positiveIntToBinary(int num) {
-        // TODO: Agregar un error si le ponen un numero negativo.
         int nBits = (int) (Math.floor(Math.log(num) / Math.log(2)) + 1);
         int[] binary = new int[nBits];
         int id = 0;

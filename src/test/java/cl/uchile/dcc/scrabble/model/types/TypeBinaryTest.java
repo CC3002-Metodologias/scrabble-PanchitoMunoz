@@ -3,11 +3,11 @@ package cl.uchile.dcc.scrabble.model.types;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
 
 class TypeBinaryTest {
     private TypeBinary typeBinary1;
@@ -17,14 +17,16 @@ class TypeBinaryTest {
 
     @BeforeEach
     void setUp() {
-        int seed = new Random().nextInt();
+        // int seed = new Random().nextInt();
+        int seed = -986571975;
         Random rng = new Random(seed);
-        int nBits = rng.nextInt(65); // Max 64 bits
+        int nBits = rng.nextInt(64) + 1; // Max 64 bits
+        System.out.println(seed);
+        System.out.println(nBits);
         char[] characters = {'0', '1'};
         aBinary1 = RandomStringUtils.random(nBits, 0, 2, false,
                 true, characters, rng);
         do {
-            if (nBits == 0) nBits = 1;
             aBinary2 = RandomStringUtils.random(nBits, 0, 2, false,
                     true, characters, rng);
         } while (aBinary2.equals(aBinary1));
@@ -71,12 +73,20 @@ class TypeBinaryTest {
 
     @RepeatedTest(20)
     void toTypeFloat() {
-        typeBinary1.toTypeFloat();
+        // Convert aBinary1 as an int
+        int aNumber1 = binaryToInt(aBinary1);
+        TypeFloat binaryAsTypeFloat = new TypeFloat(aNumber1);
+        assertEquals(binaryAsTypeFloat, typeBinary1.toTypeFloat(),
+                "Method toTypeFloat does not works.");
     }
 
     @RepeatedTest(20)
     void toTypeInt() {
-        typeBinary1.toTypeInt();
+        // Convert aBinary1 as an int
+        int aNumber1 = binaryToInt(aBinary1);
+        TypeInt binaryAsTypeInt = new TypeInt(aNumber1);
+        assertEquals(binaryAsTypeInt, typeBinary1.toTypeInt(),
+                "Method toTypeInt does not works.");
     }
 
     @RepeatedTest(20)
@@ -86,30 +96,5 @@ class TypeBinaryTest {
                 "Method toTypeBinary does not works.");
         assertNotEquals(otherTypeBinary1, typeBinary2.toTypeBinary(),
                 "Method toTypeBinary does not works.");
-    }
-
-    // TODO: QUITAR ESTOS DOS O REFACTORIZAR
-    @Test
-    void twosComplement() {
-        aBinary1 = "0100";
-        aBinary2 = "1100";
-        TypeBinary typeBinary = new TypeBinary(aBinary1);
-        assertEquals(aBinary2, typeBinary.twosComplement(aBinary1));
-    }
-
-    @Test
-    void oneComplement() {
-        aBinary1 = "0100";
-        aBinary2 = "1011";
-        TypeBinary typeBinary = new TypeBinary(aBinary1);
-        assertEquals(aBinary2, typeBinary.oneComplement(aBinary1));
-    }
-
-    @Test
-    void positiveIntToBinary() {
-        aBinary1 = "0100111";
-        int aNumber = 39;
-        TypeBinary typeBinary = new TypeBinary(aBinary1);
-        assertEquals(aBinary1, typeBinary.positiveIntToBinary(aNumber));
     }
 }

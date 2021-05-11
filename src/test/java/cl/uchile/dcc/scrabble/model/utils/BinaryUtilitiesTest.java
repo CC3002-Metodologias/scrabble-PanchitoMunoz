@@ -11,10 +11,12 @@ class BinaryUtilitiesTest {
     int anIntM6 = -6;
     int anIntP4 = 4;
     int anIntM4 = -4;
+    int anInt0 = 0;
     String aBinaryP6 = "0110";
     String aBinaryM6 = "1010";
     String aBinaryP4 = "0100";
     String aBinaryM4 = "1100";
+    String aBinary0 = "0";
 
     @BeforeEach
     void setUp() {
@@ -29,6 +31,10 @@ class BinaryUtilitiesTest {
         assertEquals("0010", addTwoBinaries(aBinaryP6, aBinaryM4));
         // 4 - 6 = -2
         assertEquals("1110", addTwoBinaries(aBinaryP4, aBinaryM6));
+        // 0 + 4 = 4
+        assertEquals(aBinaryP4, addTwoBinaries(aBinary0, aBinaryP4));
+        // 0 - 4 = -4
+        assertEquals(aBinaryM4, addTwoBinaries(aBinary0, aBinaryM4));
     }
 
     @Test
