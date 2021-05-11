@@ -24,6 +24,7 @@ class TypeIntTest {
         aNumber1 = sgn * rng.nextInt((int) Math.pow(2, maxExponent));
         do {
             if (maxExponent == 0) maxExponent = 1;
+            sgn = (int) Math.pow(-1, rng.nextInt(2));
             aNumber2 = sgn * rng.nextInt((int) Math.pow(2, maxExponent));
         } while (aNumber2 == aNumber1);
         typeInt1 = new TypeInt(aNumber1);

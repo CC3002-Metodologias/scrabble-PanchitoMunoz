@@ -26,6 +26,7 @@ class TypeFloatTest {
         aNumber1 = sgn * rng.nextDouble() * maxSize;
         do {
             if (maxSize == 0) maxSize = 1;
+            sgn = (int) Math.pow(-1, rng.nextInt(2));
             aNumber2 = sgn * rng.nextDouble() * maxSize;
         } while (aNumber2 == aNumber1);
         typeFloat1 = new TypeFloat(aNumber1);
