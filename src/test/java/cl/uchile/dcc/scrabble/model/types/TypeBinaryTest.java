@@ -34,12 +34,23 @@ class TypeBinaryTest {
     }
 
     @RepeatedTest(20)
+    void getValue() {
+        assertEquals(aBinary1, typeBinary1.getValue(),
+                "Method getValue does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
     void testEquals() {
         TypeBinary otherTypeBinary1 = new TypeBinary(aBinary1);
         assertEquals(otherTypeBinary1, typeBinary1,
                 "Two instances that have the same values are not equals." + messageSeed);
         assertNotEquals(typeBinary2, typeBinary1,
                 "Two instances that have different values are equals." + messageSeed);
+        // Case where a binary has redundant leading zeros.
+        TypeBinary typeBinary = new TypeBinary("0" + aBinary1);
+        TypeBinary aBinaryWithRedundantZeros = new TypeBinary("00000" + aBinary1);
+        assertEquals(aBinaryWithRedundantZeros, typeBinary,
+                "Method equals does not works when the binary has redundant leading zeros." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -49,6 +60,11 @@ class TypeBinaryTest {
                 "Two instances that have the same values have different hash code." + messageSeed);
         assertNotEquals(typeBinary2.hashCode(), typeBinary1.hashCode(),
                 "Two instances that have different values have equals hash code." + messageSeed);
+        // Case where a binary has redundant leading zeros.
+        TypeBinary typeBinary = new TypeBinary("0" + aBinary1);
+        TypeBinary aBinaryWithRedundantZeros = new TypeBinary("00000" + aBinary1);
+        assertEquals(aBinaryWithRedundantZeros.hashCode(), typeBinary.hashCode(),
+                "Method hashCode does not works when the binary has redundant leading zeros." + messageSeed);
     }
 
     @RepeatedTest(20)

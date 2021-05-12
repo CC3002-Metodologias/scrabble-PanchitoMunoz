@@ -21,6 +21,10 @@ public class TypeBinary extends AbstractInteger implements IOpp {
         this.value = value;
     }
 
+    protected String getValue() {
+        return this.value;
+    }
+
     /**
      * Method that determines if the object 'o' is equals to the current instance.
      * @param o Another object that is compared to the current instance.
@@ -31,7 +35,7 @@ public class TypeBinary extends AbstractInteger implements IOpp {
         if (this == o) return true;
         if (!(o instanceof TypeBinary)) return false;
         TypeBinary that = (TypeBinary) o;
-        return Objects.equals(value, that.value);
+        return Objects.equals(binaryToInt(value), binaryToInt(that.value));
     }
 
     /**
@@ -40,7 +44,7 @@ public class TypeBinary extends AbstractInteger implements IOpp {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(binaryToInt(value));
     }
 
     /**
