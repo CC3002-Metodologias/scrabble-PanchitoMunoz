@@ -137,6 +137,15 @@ class TypeBinaryTest {
         var aTypeInt = new TypeInt(anInt);
         var expected = new TypeInt(anInt + binaryToInt(aBinary1));
         assertEquals(expected, typeBinary1.addWithInt(aTypeInt),
-                "Method addWithString does not works." + messageSeed);
+                "Method addWithInt does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void addWithFloat() {
+        var aFloat = 3.141592;
+        var aTypeFloat = new TypeFloat(aFloat);
+        var expected = new TypeFloat(aFloat + binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.addWithFloat(aTypeFloat),
+                "Method addWithFloat does not works." + messageSeed);
     }
 }

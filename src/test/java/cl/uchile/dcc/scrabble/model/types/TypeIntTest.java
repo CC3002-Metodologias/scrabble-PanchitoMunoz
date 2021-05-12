@@ -35,6 +35,12 @@ class TypeIntTest {
     }
 
     @RepeatedTest(20)
+    void getValue() {
+        assertEquals(aNumber1, typeInt1.getValue(),
+                "Method getValue does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
     void testEquals() {
         TypeInt otherTypeInt1 = new TypeInt(aNumber1);
         assertEquals(otherTypeInt1, typeInt1,
@@ -135,5 +141,14 @@ class TypeIntTest {
         var expectedTypeInt = new TypeInt(aNumber1 + aNumber2);
         assertEquals(expectedTypeInt, typeInt2.addWithInt(typeInt1),
                 "Method addWithInt does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void addWithFloat() {
+        var aFloat = 3.141592;
+        var aTypeFloat = new TypeFloat(aFloat);
+        var expected = new TypeFloat(aFloat + aNumber1);
+        assertEquals(expected, typeInt1.addWithFloat(aTypeFloat),
+                "Method addWithFloat does not works." + messageSeed);
     }
 }

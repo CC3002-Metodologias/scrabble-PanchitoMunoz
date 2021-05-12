@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
+import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
 
 import java.util.Objects;
 
@@ -17,6 +18,10 @@ public class TypeFloat extends AbstractNumber implements IOpp {
      */
     public TypeFloat(double value) {
         this.value = value;
+    }
+
+    protected double getValue() {
+        return this.value;
     }
 
     /**
@@ -83,6 +88,16 @@ public class TypeFloat extends AbstractNumber implements IOpp {
     }
 
     /**
+     * Method that returns the sum between a TypeFloat and another type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * @param otherType Another type that will be added to the current type.
+     * @return The sum between the two types, returning the dominant type.
+     */
+    public IType add(IAddWithFloat otherType) {
+        return otherType.addWithFloat(this);
+    }
+
+    /**
      * Returns the add between the current type and a String Type.
      *
      * @param typeString A string type who will be added to the current type.
@@ -102,5 +117,16 @@ public class TypeFloat extends AbstractNumber implements IOpp {
     @Override
     public IType addWithInt(TypeInt typeInt) {
         return new TypeFloat(typeInt.getValue() + this.value);
+    }
+
+    /**
+     * Returns the add between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be added to the current type.
+     * @return The sum between the Float type and the other type.
+     */
+    @Override
+    public IType addWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.value + this.value);
     }
 }

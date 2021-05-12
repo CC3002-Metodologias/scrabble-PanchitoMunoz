@@ -36,6 +36,12 @@ class TypeFloatTest {
         typeFloat2 = new TypeFloat(aNumber2);
     }
 
+    @Test
+    void getValue() {
+        assertEquals(aNumber1, typeFloat1.getValue(),
+                "Method getValue does not works." + messageSeed);
+    }
+
     @RepeatedTest(20)
     void testEquals() {
         // Test that if two numbers with the same value are equals
@@ -110,6 +116,35 @@ class TypeFloatTest {
         var aTypeInt = new TypeInt(anInt);
         var expected = new TypeFloat(anInt + aNumber1);
         assertEquals(expected, typeFloat1.addWithInt(aTypeInt),
-                "Method addWithString does not works." + messageSeed);
+                "Method addWithInt does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void addWithFloat() {
+        var expected = new TypeFloat(aNumber1 + aNumber2);
+        assertEquals(expected, typeFloat2.addWithFloat(typeFloat1),
+                "Method addWithFloat does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void add() {
+        // Test add with binary
+        var value1 = "01010"; // = 10
+        var typeBinary = new TypeBinary(value1);
+        var expectedTypeFloat = new TypeFloat(aNumber1 + 10);
+        assertEquals(expectedTypeFloat, typeFloat1.add(typeBinary),
+                "Method add does not works with typeBinary." + messageSeed);
+        // Test add with float
+        var value2 = 3.141592;
+        var typeFloat = new TypeFloat(value2);
+        expectedTypeFloat = new TypeFloat(aNumber1 + value2);
+        assertEquals(expectedTypeFloat, typeFloat1.add(typeFloat),
+                "Method add does not works with typeFloat." + messageSeed);
+        // Test add with int
+        var value3 = 42;
+        var typeInt = new TypeInt(value3);
+        expectedTypeFloat = new TypeFloat(aNumber1 + value3);
+        assertEquals(expectedTypeFloat, typeFloat1.add(typeInt),
+                "Method add does not works with typeInt." + messageSeed);
     }
 }

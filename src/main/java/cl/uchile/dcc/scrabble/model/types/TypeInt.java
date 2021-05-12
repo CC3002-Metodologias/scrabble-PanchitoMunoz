@@ -140,4 +140,15 @@ public class TypeInt extends AbstractInteger implements IOpp {
     public IType addWithInt(TypeInt typeInt) {
         return new TypeInt(typeInt.value + this.value);
     }
+
+    /**
+     * Returns the add between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be added to the current type.
+     * @return The sum between the Float type and the other type.
+     */
+    @Override
+    public IType addWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.getValue() + this.value);
+    }
 }
