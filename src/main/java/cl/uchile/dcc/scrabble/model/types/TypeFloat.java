@@ -9,7 +9,7 @@ import java.util.Objects;
  * A class for the float type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeFloat extends AbstractNumber implements IOpp {
+public class TypeFloat extends AbstractNumber {
     private final double value;
 
     /**

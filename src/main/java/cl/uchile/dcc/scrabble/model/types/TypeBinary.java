@@ -10,7 +10,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractInteger implements IOpp {
+public class TypeBinary extends AbstractInteger {
     private final String value;
 
     /**

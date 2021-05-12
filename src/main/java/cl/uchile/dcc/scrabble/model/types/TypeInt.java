@@ -11,7 +11,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
  * A class for the integer type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeInt extends AbstractInteger implements IOpp {
+public class TypeInt extends AbstractInteger {
     private final int value;
 
     /**
