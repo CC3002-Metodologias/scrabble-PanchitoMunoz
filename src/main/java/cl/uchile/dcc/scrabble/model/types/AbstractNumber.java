@@ -1,10 +1,12 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.operations.add.IAddWithInt;
+
 /**
  * An abstract class for the general numbers used.
  * @author Francisco Muñoz Guajardo
  */
-public abstract class AbstractNumber extends AbstractType {
+public abstract class AbstractNumber extends AbstractType implements IAddWithInt {
     /**
      * Transforms the current type to a TypeFloat.
      *

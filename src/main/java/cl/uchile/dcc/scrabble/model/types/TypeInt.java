@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
+import cl.uchile.dcc.scrabble.model.operations.add.IAddWithInt;
 
 import java.util.Objects;
 
@@ -19,6 +20,10 @@ public class TypeInt extends AbstractInteger implements IOpp {
      */
     public TypeInt(int value) {
         this.value = value;
+    }
+
+    protected int getValue() {
+        return this.value;
     }
 
     /**
@@ -102,5 +107,37 @@ public class TypeInt extends AbstractInteger implements IOpp {
     @Override
     public IOpp opposite() {
         return new TypeInt(-this.value);
+    }
+
+    /**
+     * Method that returns the sum between a TypeInt and another type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * @param otherType Another type that will be added to the current type.
+     * @return The sum between the two types, returning the dominant type.
+     */
+    public IType add(IAddWithInt otherType) {
+        return otherType.addWithInt(this);
+    }
+
+    /**
+     * Returns the add between the current type and a String Type.
+     *
+     * @param typeString A string type who will be added to the current type.
+     * @return The sum between the String type and the other type.
+     */
+    @Override
+    public TypeString addWithString(TypeString typeString) {
+        return new TypeString(typeString.getValue() + this.value);
+    }
+
+    /**
+     * Returns the add between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be added to the current type.
+     * @return The sum between the Int type and the other type.
+     */
+    @Override
+    public IType addWithInt(TypeInt typeInt) {
+        return new TypeInt(typeInt.value + this.value);
     }
 }

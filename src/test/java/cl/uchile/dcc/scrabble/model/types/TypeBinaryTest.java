@@ -14,10 +14,12 @@ class TypeBinaryTest {
     private TypeBinary typeBinary2;
     private String aBinary1;
     private String aBinary2;
+    private String messageSeed;
 
     @BeforeEach
     void setUp() {
         int seed = new Random().nextInt();
+        messageSeed = " Seed: " + seed;
         Random rng = new Random(seed);
         int nBits = rng.nextInt(64) + 1; // Max 64 bits
         char[] characters = {'0', '1'};
@@ -35,37 +37,37 @@ class TypeBinaryTest {
     void testEquals() {
         TypeBinary otherTypeBinary1 = new TypeBinary(aBinary1);
         assertEquals(otherTypeBinary1, typeBinary1,
-                "Two instances that have the same values are not equals.");
+                "Two instances that have the same values are not equals." + messageSeed);
         assertNotEquals(typeBinary2, typeBinary1,
-                "Two instances that have different values are equals.");
+                "Two instances that have different values are equals." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testHashCode() {
         TypeBinary otherTypeBinary1 = new TypeBinary(aBinary1);
         assertEquals(otherTypeBinary1.hashCode(), typeBinary1.hashCode(),
-                "Two instances that have the same values have different hash code.");
+                "Two instances that have the same values have different hash code." + messageSeed);
         assertNotEquals(typeBinary2.hashCode(), typeBinary1.hashCode(),
-                "Two instances that have different values have equals hash code.");
+                "Two instances that have different values have equals hash code." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToString() {
         assertEquals("TypeBinary{value='" + aBinary1 + "'}", typeBinary1.toString(),
-                "Method toString does not works.");
+                "Method toString does not works." + messageSeed);
         assertEquals("TypeBinary{value='" + aBinary2 + "'}", typeBinary2.toString(),
-                "Method toString does not works.");
+                "Method toString does not works." + messageSeed);
         assertNotEquals("TypeBinary{value='" + aBinary2 + "'}", typeBinary1.toString(),
-                "Method toString does not works.");
+                "Method toString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void toTypeString() {
         TypeString binaryAsTypeString = new TypeString(aBinary1);
         assertEquals(binaryAsTypeString, typeBinary1.toTypeString(),
-                "Method toTypeString does not works.");
+                "Method toTypeString does not works." + messageSeed);
         assertNotEquals(binaryAsTypeString, typeBinary2.toTypeString(),
-                "Method toTypeString does not works.");
+                "Method toTypeString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -74,7 +76,7 @@ class TypeBinaryTest {
         int aNumber1 = binaryToInt(aBinary1);
         TypeFloat binaryAsTypeFloat = new TypeFloat(aNumber1);
         assertEquals(binaryAsTypeFloat, typeBinary1.toTypeFloat(),
-                "Method toTypeFloat does not works.");
+                "Method toTypeFloat does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -83,16 +85,16 @@ class TypeBinaryTest {
         int aNumber1 = binaryToInt(aBinary1);
         TypeInt binaryAsTypeInt = new TypeInt(aNumber1);
         assertEquals(binaryAsTypeInt, typeBinary1.toTypeInt(),
-                "Method toTypeInt does not works.");
+                "Method toTypeInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void toTypeBinary() {
         TypeBinary otherTypeBinary1 = new TypeBinary(aBinary1);
         assertEquals(otherTypeBinary1, typeBinary1.toTypeBinary(),
-                "Method toTypeBinary does not works.");
+                "Method toTypeBinary does not works." + messageSeed);
         assertNotEquals(otherTypeBinary1, typeBinary2.toTypeBinary(),
-                "Method toTypeBinary does not works.");
+                "Method toTypeBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -101,6 +103,24 @@ class TypeBinaryTest {
         String aBinaryNegative1 = oneComplement(aBinary1);
         TypeBinary typeBinaryNegative1 = new TypeBinary(aBinaryNegative1);
         assertEquals(typeBinaryNegative1, typeBinary1.opposite(),
-                "Method opposite does not works.");
+                "Method opposite does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void addWithString() {
+        var aString = "Hola mundo!";
+        var aTypeString = new TypeString(aString);
+        var expectedTypeString = new TypeString(aString + aBinary1);
+        assertEquals(expectedTypeString, typeBinary1.addWithString(aTypeString),
+                "Method addWithString does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void addWithInt() {
+        var anInt = 42;
+        var aTypeInt = new TypeInt(anInt);
+        var expected = new TypeInt(anInt + binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.addWithInt(aTypeInt),
+                "Method addWithString does not works." + messageSeed);
     }
 }

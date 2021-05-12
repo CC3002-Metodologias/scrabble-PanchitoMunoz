@@ -83,4 +83,16 @@ class TypeBoolTest {
         assertEquals(trueTypeBool, falseTypeBool.opposite(),
                 "Method opposite does not works with false.");
     }
+
+    @Test
+    void addWithString() {
+        var aString = "Hola mundo!";
+        var aTypeString = new TypeString(aString);
+        var expectedTypeString = new TypeString(aString + trueBoolean);
+        assertEquals(expectedTypeString, trueTypeBool.addWithString(aTypeString),
+                "Method addWithString does not works.");
+        expectedTypeString = new TypeString(aString + falseBoolean);
+        assertEquals(expectedTypeString, falseTypeBool.addWithString(aTypeString),
+                "Method addWithString does not works.");
+    }
 }

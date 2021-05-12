@@ -103,4 +103,26 @@ public class TypeBinary extends AbstractInteger implements IOpp {
     public IOpp opposite() {
         return new TypeBinary(oneComplement(this.value));
     }
+
+    /**
+     * Returns the add between the current type and a String Type.
+     *
+     * @param typeString A string type who will be added to the current type.
+     * @return The sum between the String type and the other type.
+     */
+    @Override
+    public TypeString addWithString(TypeString typeString) {
+        return new TypeString(typeString.getValue() + this.value);
+    }
+
+    /**
+     * Returns the add between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be added to the current type.
+     * @return The sum between the Int type and the other type.
+     */
+    @Override
+    public IType addWithInt(TypeInt typeInt) {
+        return new TypeInt(typeInt.getValue() + binaryToInt(this.value));
+    }
 }
