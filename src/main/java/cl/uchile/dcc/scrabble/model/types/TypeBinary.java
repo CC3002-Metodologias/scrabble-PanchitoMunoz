@@ -2,6 +2,8 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
 
 import java.util.Objects;
 
@@ -161,6 +163,16 @@ public class TypeBinary extends AbstractInteger {
     @Override
     public IType addWithBinary(TypeBinary typeBinary) {
         return new TypeBinary(addTwoBinaries(typeBinary.value, this.value));
+    }
+
+    /**
+     * Method that returns the subtraction between a TypeBinary and another type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * @param otherType Another type that will be added to the current type.
+     * @return The subtraction between the two types, returning the dominant type.
+     */
+    public IType sub(ISubWithBinary otherType) {
+        return null;
     }
 
     /**
