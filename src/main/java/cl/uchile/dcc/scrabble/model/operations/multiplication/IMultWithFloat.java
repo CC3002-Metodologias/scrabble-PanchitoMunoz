@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.operations.multiplication;
 
-import cl.uchile.dcc.scrabble.model.types.IType;
+import cl.uchile.dcc.scrabble.model.types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.SType;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 
 /**
@@ -15,5 +16,5 @@ public interface IMultWithFloat {
      * @param typeFloat A Float type who will be multiplied to the current type.
      * @return The multiplication between the Float type and the other type.
      */
-    IType multWithFloat(TypeFloat typeFloat);
+    SNumber multWithFloat(TypeFloat typeFloat);
 }

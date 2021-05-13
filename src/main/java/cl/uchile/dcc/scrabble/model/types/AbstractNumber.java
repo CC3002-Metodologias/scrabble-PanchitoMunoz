@@ -12,7 +12,7 @@ import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
  * @author Francisco Muñoz Guajardo
  */
 public abstract class AbstractNumber extends AbstractType
-        implements IMultWithFloat,  ISubWithInt, ISubWithFloat, IAddWithInt, IAddWithFloat, IOpp {
+        implements SNumber, IOpp, IAddWithFloat, IAddWithInt, ISubWithFloat,  ISubWithInt, IMultWithFloat {
     /**
      * Transforms the current type to a TypeFloat.
      *

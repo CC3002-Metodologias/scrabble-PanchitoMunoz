@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.operations.multiplication;
 
-import cl.uchile.dcc.scrabble.model.types.IType;
+import cl.uchile.dcc.scrabble.model.types.SInteger;
+import cl.uchile.dcc.scrabble.model.types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.SType;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 
 /**
@@ -15,5 +17,5 @@ public interface IMultWithInt {
      * @param typeInt An Int type who will be multiplied to the current type.
      * @return The multiplication between the Int type and the other type.
      */
-    IType multWithInt(TypeInt typeInt);
+    SNumber multWithInt(TypeInt typeInt);
 }

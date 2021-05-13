@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.operations.add;
 
-import cl.uchile.dcc.scrabble.model.types.IType;
+import cl.uchile.dcc.scrabble.model.types.SInteger;
+import cl.uchile.dcc.scrabble.model.types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.SType;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 
 /**
@@ -14,5 +16,5 @@ public interface IAddWithInt {
      * @param typeInt An Int type who will be added to the current type.
      * @return The sum between the Int type and the other type.
      */
-    IType addWithInt(TypeInt typeInt);
+    SNumber addWithInt(TypeInt typeInt);
 }

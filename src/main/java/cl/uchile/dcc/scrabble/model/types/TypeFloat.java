@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithFloat;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithFloat;
@@ -85,7 +84,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The opposite of the current instance.
      */
     @Override
-    public IOpp opposite() {
+    public SType opposite() {
         return new TypeFloat(-this.value);
     }
 
@@ -95,7 +94,7 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public IType add(IAddWithFloat otherType) {
+    public SNumber add(IAddWithFloat otherType) {
         return otherType.addWithFloat(this);
     }
 
@@ -117,7 +116,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The sum between the Int type and the other type.
      */
     @Override
-    public IType addWithInt(TypeInt typeInt) {
+    public SNumber addWithInt(TypeInt typeInt) {
         return new TypeFloat(typeInt.getValue() + this.value);
     }
 
@@ -128,7 +127,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The sum between the Float type and the other type.
      */
     @Override
-    public IType addWithFloat(TypeFloat typeFloat) {
+    public SNumber addWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.value + this.value);
     }
 
@@ -138,7 +137,7 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
-    public IType sub(ISubWithFloat otherType) {
+    public SNumber sub(ISubWithFloat otherType) {
         return otherType.subWithFloat(this);
     }
 
@@ -149,7 +148,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The subtraction between the Float type and the other type.
      */
     @Override
-    public IType subWithFloat(TypeFloat typeFloat) {
+    public SNumber subWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.value - this.value);
     }
 
@@ -160,7 +159,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The subtraction between the Int type and the other type.
      */
     @Override
-    public IType subWithInt(TypeInt typeInt) {
+    public SNumber subWithInt(TypeInt typeInt) {
         return new TypeFloat(typeInt.getValue() - this.value);
     }
 
@@ -171,7 +170,7 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be multiplied to the current type.
      * @return The multiplication between the two types, returning the dominant type.
      */
-    IType mult(IMultWithFloat otherType) {
+    public SNumber mult(IMultWithFloat otherType) {
         return otherType.multWithFloat(this);
     }
 
@@ -182,7 +181,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The multiplication between the Float type and the other type.
      */
     @Override
-    public IType multWithFloat(TypeFloat typeFloat) {
+    public SNumber multWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.value * this.value);
     }
 }

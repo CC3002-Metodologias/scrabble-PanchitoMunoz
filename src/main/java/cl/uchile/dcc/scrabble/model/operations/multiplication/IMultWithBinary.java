@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.operations.multiplication;
 
-import cl.uchile.dcc.scrabble.model.types.IType;
+import cl.uchile.dcc.scrabble.model.types.SInteger;
+import cl.uchile.dcc.scrabble.model.types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.SType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 
 /**
@@ -14,5 +16,5 @@ public interface IMultWithBinary {
      * @param typeBinary A Binary type who will be multiplied to the current type.
      * @return The multiplication between the Binary type and the other type.
      */
-    IType multWithBinary(TypeBinary typeBinary);
+    SNumber multWithBinary(TypeBinary typeBinary);
 }
