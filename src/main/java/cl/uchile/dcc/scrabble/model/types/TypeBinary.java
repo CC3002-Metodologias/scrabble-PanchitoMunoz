@@ -28,6 +28,10 @@ public class TypeBinary extends AbstractInteger {
         return this.value;
     }
 
+    protected int getValueAsInt() {
+        return binaryToInt(this.value);
+    }
+
     /**
      * Method that determines if the object 'o' is equals to the current instance.
      * @param o Another object that is compared to the current instance.
@@ -78,7 +82,7 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public TypeFloat toTypeFloat() {
-        return new TypeFloat(binaryToInt(this.value));
+        return new TypeFloat(this.getValueAsInt());
     }
 
     /**
@@ -88,7 +92,7 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public TypeInt toTypeInt() {
-        return new TypeInt(binaryToInt(this.value));
+        return new TypeInt(this.getValueAsInt());
     }
 
     /**
@@ -140,7 +144,7 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public IType addWithInt(TypeInt typeInt) {
-        return new TypeInt(typeInt.getValue() + binaryToInt(this.value));
+        return new TypeInt(typeInt.getValue() + this.getValueAsInt());
     }
 
     /**
@@ -151,7 +155,7 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public IType addWithFloat(TypeFloat typeFloat) {
-        return new TypeFloat(typeFloat.getValue() + binaryToInt(this.value));
+        return new TypeFloat(typeFloat.getValue() + this.getValueAsInt());
     }
 
     /**
@@ -183,6 +187,17 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public IType subWithFloat(TypeFloat typeFloat) {
-        return new TypeFloat(typeFloat.getValue() - binaryToInt(this.value));
+        return new TypeFloat(typeFloat.getValue() - this.getValueAsInt());
+    }
+
+    /**
+     * Returns the subtraction between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be subtracted to the current type.
+     * @return The subtraction between the Int type and the other type.
+     */
+    @Override
+    public IType subWithInt(TypeInt typeInt) {
+        return new TypeInt(typeInt.getValue() - this.getValueAsInt());
     }
 }

@@ -151,4 +151,15 @@ public class TypeFloat extends AbstractNumber {
     public IType subWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.value - this.value);
     }
+
+    /**
+     * Returns the subtraction between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be subtracted to the current type.
+     * @return The subtraction between the Int type and the other type.
+     */
+    @Override
+    public IType subWithInt(TypeInt typeInt) {
+        return new TypeFloat(typeInt.getValue() - this.value);
+    }
 }
