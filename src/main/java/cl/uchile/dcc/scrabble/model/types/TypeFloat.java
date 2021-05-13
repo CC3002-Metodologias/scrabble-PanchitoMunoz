@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
-import cl.uchile.dcc.scrabble.model.operations.subtract.ISubWithFloat;
+import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithFloat;
 
 import java.util.Objects;
 

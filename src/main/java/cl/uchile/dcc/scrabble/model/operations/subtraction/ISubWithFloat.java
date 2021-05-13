@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.operations.subtract;
+package cl.uchile.dcc.scrabble.model.operations.subtraction;
 
 import cl.uchile.dcc.scrabble.model.types.IType;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
