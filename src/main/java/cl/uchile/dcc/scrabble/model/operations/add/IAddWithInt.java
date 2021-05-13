@@ -1,8 +1,6 @@
 package cl.uchile.dcc.scrabble.model.operations.add;
 
-import cl.uchile.dcc.scrabble.model.types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.SNumber;
-import cl.uchile.dcc.scrabble.model.types.SType;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 
 /**
