@@ -163,4 +163,15 @@ public class TypeInt extends AbstractInteger {
     public IType addWithBinary(TypeBinary typeBinary) {
         return new TypeBinary(addTwoBinaries(typeBinary.getValue(), intToBinary(this.value)));
     }
+
+    /**
+     * Returns the subtraction between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be subtracted to the current type.
+     * @return The subtraction between the Float type and the other type.
+     */
+    @Override
+    public IType subWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.getValue() - this.value);
+    }
 }

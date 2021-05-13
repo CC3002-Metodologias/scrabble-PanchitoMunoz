@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
@@ -14,6 +15,9 @@ class TypeIntTest {
     private int aNumber1;
     private int aNumber2;
     private String messageSeed;
+    private final String aBinary = "01010";
+    private final double aFloat = 3.141592;
+    private final String aString = "Hola mundo!";
 
     @BeforeEach
     void setUp() {
@@ -108,28 +112,24 @@ class TypeIntTest {
     @RepeatedTest(20)
     void add() {
         // Test add with binary
-        var value1 = "01010"; // = 10
-        var typeBinary = new TypeBinary(value1);
-        var expectedTypeInt = new TypeInt(aNumber1 + 10);
+        var typeBinary = new TypeBinary(aBinary);
+        var expectedTypeInt = new TypeInt(aNumber1 + binaryToInt(aBinary));
         assertEquals(expectedTypeInt, typeInt1.add(typeBinary),
                 "Method add does not works with typeBinary." + messageSeed);
         // Test add with float
-        var value2 = 3.141592;
-        var typeFloat = new TypeFloat(value2);
-        var expectedTypeFloat = new TypeFloat(aNumber1 + value2);
+        var typeFloat = new TypeFloat(aFloat);
+        var expectedTypeFloat = new TypeFloat(aNumber1 + aFloat);
         assertEquals(expectedTypeFloat, typeInt1.add(typeFloat),
                 "Method add does not works with typeFloat." + messageSeed);
         // Test add with int
-        var value3 = 42;
-        var typeInt = new TypeInt(value3);
-        expectedTypeInt = new TypeInt(aNumber1 + value3);
+        var typeInt = new TypeInt(aNumber2);
+        expectedTypeInt = new TypeInt(aNumber1 + aNumber2);
         assertEquals(expectedTypeInt, typeInt1.add(typeInt),
                 "Method add does not works with typeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
     void addWithString() {
-        var aString = "Hola mundo!";
         var aTypeString = new TypeString(aString);
         var expectedTypeString = new TypeString(aString + aNumber1);
         assertEquals(expectedTypeString, typeInt1.addWithString(aTypeString),
@@ -145,7 +145,6 @@ class TypeIntTest {
 
     @RepeatedTest(20)
     void addWithFloat() {
-        var aFloat = 3.141592;
         var aTypeFloat = new TypeFloat(aFloat);
         var expected = new TypeFloat(aFloat + aNumber1);
         assertEquals(expected, typeInt1.addWithFloat(aTypeFloat),
@@ -154,10 +153,17 @@ class TypeIntTest {
 
     @RepeatedTest(20)
     void addWithBinary() {
-        var aBinary = "01010";
         var typeBinary = new TypeBinary(aBinary);
         var expected = new TypeBinary(intToBinary(aNumber1 + 10));
         assertEquals(expected, typeInt1.addWithBinary(typeBinary),
                 "Method addWithBinary does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void subWithFloat() {
+        var typeFloat = new TypeFloat(aFloat);
+        var expected = new TypeFloat(aFloat - aNumber1);
+        assertEquals(expected, typeInt1.subWithFloat(typeFloat),
+                "Method subWithFloat does not Works." + messageSeed);
     }
 }

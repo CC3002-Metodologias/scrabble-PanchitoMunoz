@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
+import cl.uchile.dcc.scrabble.model.operations.subtract.ISubWithFloat;
 
 import java.util.Objects;
 
@@ -128,5 +129,26 @@ public class TypeFloat extends AbstractNumber {
     @Override
     public IType addWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.value + this.value);
+    }
+
+    /**
+     * Method that returns the subtraction between a TypeFloat and another type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * @param otherType Another type that will be added to the current type.
+     * @return The subtraction between the two types, returning the dominant type.
+     */
+    public IType sub(ISubWithFloat otherType) {
+        return otherType.subWithFloat(this);
+    }
+
+    /**
+     * Returns the subtraction between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be subtracted to the current type.
+     * @return The subtraction between the Float type and the other type.
+     */
+    @Override
+    public IType subWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.value - this.value);
     }
 }
