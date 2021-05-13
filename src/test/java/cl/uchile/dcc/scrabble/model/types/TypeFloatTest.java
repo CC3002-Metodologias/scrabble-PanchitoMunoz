@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -15,12 +16,12 @@ class TypeFloatTest {
     private double aNumber1;
     private double aNumber2;
     private String messageSeed;
-    private final String aBinary = "01010"; // = 10
-    private final TypeBinary aTypeBinary = new TypeBinary(aBinary);
-    private final int anInt = 42;
-    private final TypeInt aTypeInt = new TypeInt(anInt);
-    private final String aString = "Hola mundo!";
-    private final TypeString aTypeString = new TypeString(aString);
+    private String aBinary;
+    private TypeBinary aTypeBinary;
+    private int anInt;
+    private TypeInt aTypeInt;
+    private String aString;
+    private TypeString aTypeString;
 
     @BeforeEach
     void setUp() {
@@ -28,6 +29,7 @@ class TypeFloatTest {
         int seed = new Random().nextInt();
         messageSeed = " Seed. " + seed;
         Random rng = new Random(seed);
+        // Generate two floats random
         // Initialize the length of the interval
         int maxExponent = rng.nextInt(33); // Choose an exponent
         int maxSize = rng.nextInt((int) Math.pow(2, maxExponent)); // Choose the length of the interval
@@ -41,6 +43,22 @@ class TypeFloatTest {
         } while (aNumber2 == aNumber1);
         typeFloat1 = new TypeFloat(aNumber1);
         typeFloat2 = new TypeFloat(aNumber2);
+        // Generate a binary random
+        int nBits = rng.nextInt(64) + 1; // Max 64 bits
+        char[] characters = {'0', '1'};
+        aBinary = RandomStringUtils.random(nBits, 0, 2, false,
+                true, characters, rng);
+        aTypeBinary = new TypeBinary(aBinary);
+        // Generate an Int random
+        maxSize = rng.nextInt(100) + 1;
+        sgn = (int) Math.pow(-1, rng.nextInt(2));
+        anInt = sgn * rng.nextInt(maxSize);
+        aTypeInt = new TypeInt(anInt);
+        // Generate a String Random
+        int strSize = rng.nextInt(20);
+        aString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
+                true, true, null, rng);
+        aTypeString = new TypeString(aString);
     }
 
     @Test

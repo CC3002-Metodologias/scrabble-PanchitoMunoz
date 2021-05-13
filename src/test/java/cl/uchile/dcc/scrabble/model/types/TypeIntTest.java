@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -15,12 +16,12 @@ class TypeIntTest {
     private int aNumber1;
     private int aNumber2;
     private String messageSeed;
-    private final String aBinary = "01010";
-    private final TypeBinary aTypeBinary = new TypeBinary(aBinary);
-    private final double aFloat = 3.141592;
-    private final TypeFloat aTypeFloat = new TypeFloat(aFloat);
-    private final String aString = "Hola mundo!";
-    private final TypeString aTypeString = new TypeString(aString);
+    private String aBinary;
+    private TypeBinary aTypeBinary;
+    private double aFloat;
+    private TypeFloat aTypeFloat;
+    private String aString;
+    private TypeString aTypeString;
 
     @BeforeEach
     void setUp() {
@@ -28,6 +29,7 @@ class TypeIntTest {
         int seed = new Random().nextInt();
         messageSeed = " Seed: " + seed;
         Random rng = new Random(seed);
+        // Generate two Ints random
         // Initialize the length of the number
         int maxExponent = rng.nextInt(33);
         int sgn = (int) Math.pow(-1, rng.nextInt(2));
@@ -39,6 +41,23 @@ class TypeIntTest {
         } while (aNumber2 == aNumber1);
         typeInt1 = new TypeInt(aNumber1);
         typeInt2 = new TypeInt(aNumber2);
+        // Generate a binary random
+        int nBits = rng.nextInt(64) + 1; // Max 64 bits
+        char[] characters = {'0', '1'};
+        aBinary = RandomStringUtils.random(nBits, 0, 2, false,
+                true, characters, rng);
+        aTypeBinary = new TypeBinary(aBinary);
+        // Generate a float random
+        maxExponent = rng.nextInt(33);
+        int maxSize = rng.nextInt((int) Math.pow(2, maxExponent));
+        sgn = (int) Math.pow(-1, rng.nextInt(2));
+        aFloat = sgn * rng.nextDouble() * maxSize;
+        aTypeFloat = new TypeFloat(aFloat);
+        // Generate a String Random
+        int strSize = rng.nextInt(20);
+        aString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
+                true, true, null, rng);
+        aTypeString = new TypeString(aString);
     }
 
     @RepeatedTest(20)
@@ -151,7 +170,7 @@ class TypeIntTest {
 
     @RepeatedTest(20)
     void addWithBinary() {
-        var expected = new TypeBinary(intToBinary(aNumber1 + 10));
+        var expected = new TypeBinary(intToBinary(aNumber1 + binaryToInt(aBinary)));
         assertEquals(expected, typeInt1.addWithBinary(aTypeBinary),
                 "Method addWithBinary does not works." + messageSeed);
     }
