@@ -151,4 +151,13 @@ class TypeIntTest {
         assertEquals(expected, typeInt1.addWithFloat(aTypeFloat),
                 "Method addWithFloat does not works." + messageSeed);
     }
+
+    @RepeatedTest(20)
+    void addWithBinary() {
+        var aBinary = "01010";
+        var typeBinary = new TypeBinary(aBinary);
+        var expected = new TypeBinary(intToBinary(aNumber1 + 10));
+        assertEquals(expected, typeInt1.addWithBinary(typeBinary),
+                "Method addWithBinary does not works." + messageSeed);
+    }
 }

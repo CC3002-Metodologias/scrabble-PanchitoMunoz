@@ -123,6 +123,22 @@ class TypeBinaryTest {
     }
 
     @RepeatedTest(20)
+    void add() {
+        // Test add with binary
+        var value1 = "01010"; // = 10
+        var typeBinary = new TypeBinary(value1);
+        var expected = new TypeBinary(addTwoBinaries(aBinary1, value1));
+        assertEquals(expected, typeBinary1.add(typeBinary),
+                "Method add does not works with typeBinary." + messageSeed);
+        // Test add with int
+        var value2 = 42;
+        var typeInt = new TypeInt(value2);
+        expected = new TypeBinary(addTwoBinaries(aBinary1, intToBinary(value2)));
+        assertEquals(expected, typeBinary1.add(typeInt),
+                "Method add does not works with typeInt." + messageSeed);
+    }
+
+    @RepeatedTest(20)
     void addWithString() {
         var aString = "Hola mundo!";
         var aTypeString = new TypeString(aString);
@@ -147,5 +163,12 @@ class TypeBinaryTest {
         var expected = new TypeFloat(aFloat + binaryToInt(aBinary1));
         assertEquals(expected, typeBinary1.addWithFloat(aTypeFloat),
                 "Method addWithFloat does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void addWithBinary() {
+        var expected = new TypeBinary(addTwoBinaries(aBinary1, aBinary2));
+        assertEquals(expected, typeBinary2.addWithBinary(typeBinary1),
+                "Method addWithBinary does not works." + messageSeed);
     }
 }

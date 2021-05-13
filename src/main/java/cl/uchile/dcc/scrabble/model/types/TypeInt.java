@@ -5,6 +5,7 @@ import cl.uchile.dcc.scrabble.model.operations.add.IAddWithInt;
 
 import java.util.Objects;
 
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
 /**
@@ -150,5 +151,16 @@ public class TypeInt extends AbstractInteger {
     @Override
     public IType addWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.getValue() + this.value);
+    }
+
+    /**
+     * Returns the sum between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be added to the current type.
+     * @return The sum between the Binary type and the other type.
+     */
+    @Override
+    public IType addWithBinary(TypeBinary typeBinary) {
+        return new TypeBinary(addTwoBinaries(typeBinary.getValue(), intToBinary(this.value)));
     }
 }
