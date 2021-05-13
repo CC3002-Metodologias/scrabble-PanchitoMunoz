@@ -16,8 +16,11 @@ class TypeIntTest {
     private int aNumber2;
     private String messageSeed;
     private final String aBinary = "01010";
+    private final TypeBinary aTypeBinary = new TypeBinary(aBinary);
     private final double aFloat = 3.141592;
+    private final TypeFloat aTypeFloat = new TypeFloat(aFloat);
     private final String aString = "Hola mundo!";
+    private final TypeString aTypeString = new TypeString(aString);
 
     @BeforeEach
     void setUp() {
@@ -112,25 +115,21 @@ class TypeIntTest {
     @RepeatedTest(20)
     void add() {
         // Test add with binary
-        var typeBinary = new TypeBinary(aBinary);
         var expectedTypeInt = new TypeInt(aNumber1 + binaryToInt(aBinary));
-        assertEquals(expectedTypeInt, typeInt1.add(typeBinary),
-                "Method add does not works with typeBinary." + messageSeed);
+        assertEquals(expectedTypeInt, typeInt1.add(aTypeBinary),
+                "Method add does not works with TypeBinary." + messageSeed);
         // Test add with float
-        var typeFloat = new TypeFloat(aFloat);
         var expectedTypeFloat = new TypeFloat(aNumber1 + aFloat);
-        assertEquals(expectedTypeFloat, typeInt1.add(typeFloat),
-                "Method add does not works with typeFloat." + messageSeed);
+        assertEquals(expectedTypeFloat, typeInt1.add(aTypeFloat),
+                "Method add does not works with TypeFloat." + messageSeed);
         // Test add with int
-        var typeInt = new TypeInt(aNumber2);
         expectedTypeInt = new TypeInt(aNumber1 + aNumber2);
-        assertEquals(expectedTypeInt, typeInt1.add(typeInt),
-                "Method add does not works with typeInt." + messageSeed);
+        assertEquals(expectedTypeInt, typeInt1.add(typeInt2),
+                "Method add does not works with TypeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
     void addWithString() {
-        var aTypeString = new TypeString(aString);
         var expectedTypeString = new TypeString(aString + aNumber1);
         assertEquals(expectedTypeString, typeInt1.addWithString(aTypeString),
                 "Method addWithString does not works." + messageSeed);
@@ -145,7 +144,6 @@ class TypeIntTest {
 
     @RepeatedTest(20)
     void addWithFloat() {
-        var aTypeFloat = new TypeFloat(aFloat);
         var expected = new TypeFloat(aFloat + aNumber1);
         assertEquals(expected, typeInt1.addWithFloat(aTypeFloat),
                 "Method addWithFloat does not works." + messageSeed);
@@ -153,17 +151,38 @@ class TypeIntTest {
 
     @RepeatedTest(20)
     void addWithBinary() {
-        var typeBinary = new TypeBinary(aBinary);
         var expected = new TypeBinary(intToBinary(aNumber1 + 10));
-        assertEquals(expected, typeInt1.addWithBinary(typeBinary),
+        assertEquals(expected, typeInt1.addWithBinary(aTypeBinary),
                 "Method addWithBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
+    void sub() {
+        // Test subtraction with binary
+        var expectedTypeInt = new TypeInt(aNumber1 - binaryToInt(aBinary));
+        assertEquals(expectedTypeInt, typeInt1.sub(aTypeBinary),
+                "Method sub does not works with TypeBinary." + messageSeed);
+        // Test subtraction with float
+        var expectedTypeFloat = new TypeFloat(aNumber1 - aFloat);
+        assertEquals(expectedTypeFloat, typeInt1.sub(aTypeFloat),
+                "Method sub does not works with TypeFloat." + messageSeed);
+        // Test subtraction with int
+        expectedTypeInt = new TypeInt(aNumber1 - aNumber2);
+        assertEquals(expectedTypeInt, typeInt1.sub(typeInt2),
+                "Method sub does not works with TypeInt." + messageSeed);
+    }
+
+    @RepeatedTest(20)
     void subWithFloat() {
-        var typeFloat = new TypeFloat(aFloat);
         var expected = new TypeFloat(aFloat - aNumber1);
-        assertEquals(expected, typeInt1.subWithFloat(typeFloat),
+        assertEquals(expected, typeInt1.subWithFloat(aTypeFloat),
                 "Method subWithFloat does not Works." + messageSeed);
+    }
+
+    @Test
+    void subWithInt() {
+        var expected = new TypeInt(aNumber2 - aNumber1);
+        assertEquals(expected, typeInt1.subWithInt(typeInt2),
+                "Method subWithInt does not Works." + messageSeed);
     }
 }
