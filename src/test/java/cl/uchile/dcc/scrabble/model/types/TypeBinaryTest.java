@@ -47,6 +47,12 @@ class TypeBinaryTest {
     }
 
     @RepeatedTest(20)
+    void getValueAsInt() {
+        assertEquals(binaryToInt(aBinary1), typeBinary1.getValueAsInt(),
+                "Method getValueAsInt does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
     void testEquals() {
         TypeBinary otherTypeBinary1 = new TypeBinary(aBinary1);
         assertEquals(otherTypeBinary1, typeBinary1,
@@ -169,8 +175,16 @@ class TypeBinaryTest {
                 "Method addWithBinary does not works." + messageSeed);
     }
 
-    @Test
+    @RepeatedTest(20)
     void sub() {
+        // Test subtraction with binary
+        var expected = new TypeBinary(intToBinary(binaryToInt(aBinary1) - binaryToInt(aBinary2)));
+        assertEquals(expected, typeBinary1.sub(typeBinary2),
+                "Method sub does not works with TypeBinary." + messageSeed);
+        // Test subtraction with int
+        expected = new TypeBinary(intToBinary(binaryToInt(aBinary1) - anInt));
+        assertEquals(expected, typeBinary1.sub(aTypeInt),
+                "Method sub does not works with TypeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -185,5 +199,13 @@ class TypeBinaryTest {
         var expected = new TypeInt(anInt - typeBinary1.getValueAsInt());
         assertEquals(expected, typeBinary1.subWithInt(aTypeInt),
                 "Method subWithInt does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void subWithBinary() {
+        String binary1SubtractedWithBinary2 = intToBinary(binaryToInt(aBinary1) - binaryToInt(aBinary2));
+        var expected = new TypeBinary(binary1SubtractedWithBinary2);
+        assertEquals(expected, typeBinary2.subWithBinary(typeBinary1),
+                "Method subWithBinary does not Works." + messageSeed);
     }
 }

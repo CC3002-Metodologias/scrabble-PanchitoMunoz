@@ -176,7 +176,7 @@ public class TypeBinary extends AbstractInteger {
      * @return The subtraction between the two types, returning the dominant type.
      */
     public IType sub(ISubWithBinary otherType) {
-        return null;
+        return otherType.subWithBinary(this);
     }
 
     /**
@@ -199,5 +199,17 @@ public class TypeBinary extends AbstractInteger {
     @Override
     public IType subWithInt(TypeInt typeInt) {
         return new TypeInt(typeInt.getValue() - this.getValueAsInt());
+    }
+
+    /**
+     * Returns the subtraction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be subtracted to the current type.
+     * @return The subtraction between the Binary type and the other type.
+     */
+    @Override
+    public IType subWithBinary(TypeBinary typeBinary) {
+        String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValueAsInt());
+        return new TypeBinary(subtraction);
     }
 }

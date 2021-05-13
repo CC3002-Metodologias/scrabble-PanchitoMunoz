@@ -179,10 +179,18 @@ class TypeIntTest {
                 "Method subWithFloat does not Works." + messageSeed);
     }
 
-    @Test
+    @RepeatedTest(20)
     void subWithInt() {
         var expected = new TypeInt(aNumber2 - aNumber1);
         assertEquals(expected, typeInt1.subWithInt(typeInt2),
                 "Method subWithInt does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void subWithBinary() {
+        var binary1SubtractedWithInt = intToBinary(binaryToInt(aBinary) - aNumber1);
+        var expected = new TypeBinary(binary1SubtractedWithInt);
+        assertEquals(expected, typeInt1.subWithBinary(aTypeBinary),
+                "Method subWithBinary does not Works." + messageSeed);
     }
 }

@@ -197,4 +197,16 @@ public class TypeInt extends AbstractInteger {
     public IType subWithInt(TypeInt typeInt) {
         return new TypeInt(typeInt.value - this.value);
     }
+
+    /**
+     * Returns the subtraction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be subtracted to the current type.
+     * @return The subtraction between the Binary type and the other type.
+     */
+    @Override
+    public IType subWithBinary(TypeBinary typeBinary) {
+        String subtraction = intToBinary(typeBinary.getValueAsInt() - this.value);
+        return new TypeBinary(subtraction);
+    }
 }
