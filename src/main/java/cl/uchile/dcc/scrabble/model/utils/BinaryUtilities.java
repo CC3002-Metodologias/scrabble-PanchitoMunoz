@@ -66,7 +66,19 @@ public final class BinaryUtilities {
      */
     private static String twosComplement(String binary) {
         String oppositeBinary = oneComplement(binary);
-        return addTwoBinaries(oppositeBinary, "01");
+        // The following code adds 1 in binary to the oppositeBinary
+        StringBuilder copyOppositeBinary = new StringBuilder(oppositeBinary);
+        int i = oppositeBinary.length() - 1;
+        while (i >= 0) {
+            if (oppositeBinary.charAt(i) == '1') {
+                copyOppositeBinary.setCharAt(i, '0');
+                i--;
+            } else {
+                copyOppositeBinary.setCharAt(i, '1');
+                i = -1;
+            }
+        }
+        return copyOppositeBinary.toString();
     }
 
     /**
@@ -98,25 +110,9 @@ public final class BinaryUtilities {
      * @return The sum between 'a' and 'b'.
      */
     public static String addTwoBinaries(String a, String b) {
-        StringBuilder result = new StringBuilder();
-        int s = 0;
-        int i = a.length() - 1, j = b.length() - 1;
-        while (i >= 0 || j >= 0 || s == 1){
-            s += ((i >= 0)? a.charAt(i) - '0': 0);
-            s += ((j >= 0)? b.charAt(j) - '0': 0);
-            result.insert(0, (char) (s % 2 + '0'));
-            s /= 2;
-            i--; j--;
-        }
-        // Case where a negative is added to a positive
-        if (result.length() > Math.max(a.length(), b.length())) {
-            result.deleteCharAt(0);
-        }
-        // Case where two positives overload the binary representation and it is represented as a negative
-        if (binaryToInt(a) + binaryToInt(b) > 0 && result.charAt(0) == '1') {
-            result.insert(0, '0');
-        }
-        return result.toString();
+        int aAsNumber = binaryToInt(a);
+        int bAsNumber = binaryToInt(b);
+        return intToBinary(aAsNumber + bAsNumber);
     }
 
     /**
@@ -139,10 +135,17 @@ public final class BinaryUtilities {
      * @return The representation of the binary number as an integer.
      */
     public static int binaryToInt(String binary) {
+        if (binary.equals("0")) return 0;
         if (bitToInt(binary.charAt(0)) == 0) {
             return positiveBinaryToInt(binary);
         } else {
             return negativeBinaryToInt(binary);
         }
+    }
+
+    public static boolean binaryEqual(String a, String b) {
+        Integer aAsInt = binaryToInt(a);
+        Integer bAsInt = binaryToInt(b);
+        return aAsInt.equals(bAsInt);
     }
 }
