@@ -2,8 +2,8 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
 
 import java.util.Objects;
 
@@ -211,5 +211,16 @@ public class TypeBinary extends AbstractInteger {
     public IType subWithBinary(TypeBinary typeBinary) {
         String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValueAsInt());
         return new TypeBinary(subtraction);
+    }
+
+    /**
+     * Method that returns the multiplication between the current type and the other type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     *
+     * @param otherType Another type that will be multiplied to the current type.
+     * @return The multiplication between the two types, returning the dominant type.
+     */
+    IType mult(IMultWithBinary otherType) {
+        return null;
     }
 }

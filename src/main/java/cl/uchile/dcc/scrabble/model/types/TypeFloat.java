@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
+import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithFloat;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithFloat;
 
 import java.util.Objects;
@@ -161,5 +162,16 @@ public class TypeFloat extends AbstractNumber {
     @Override
     public IType subWithInt(TypeInt typeInt) {
         return new TypeFloat(typeInt.getValue() - this.value);
+    }
+
+    /**
+     * Method that returns the multiplication between the current type and the other type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     *
+     * @param otherType Another type that will be multiplied to the current type.
+     * @return The multiplication between the two types, returning the dominant type.
+     */
+    IType mult(IMultWithFloat otherType) {
+        return null;
     }
 }
