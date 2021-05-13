@@ -18,12 +18,27 @@ class TypeBoolTest {
     }
 
     @Test
+    void getValue() {
+        assertEquals(trueBoolean, trueTypeBool.getValue(),
+                "Method getValue does not works.");
+        assertEquals(falseBoolean, falseTypeBool.getValue(),
+                "Method getValue does not works.");
+        assertNotEquals(trueBoolean, falseTypeBool.getValue(),
+                "Method getValue does not works.");
+        assertNotEquals(falseBoolean, trueTypeBool.getValue(),
+                "Method getValue does not works.");
+    }
+
+    @Test
     void testEquals() {
         TypeBool otherTrueTypeBool = new TypeBool(trueBoolean);
         TypeBool otherFalseTypeBool = new TypeBool(falseBoolean);
-        assertEquals(otherTrueTypeBool, trueTypeBool, "Same instances are not equals.");
-        assertEquals(otherFalseTypeBool, falseTypeBool, "Same instances are not equals.");
-        assertNotEquals(trueTypeBool, falseTypeBool, "Different instances are equals");
+        assertEquals(otherTrueTypeBool, trueTypeBool,
+                "Same instances are not equals.");
+        assertEquals(otherFalseTypeBool, falseTypeBool,
+                "Same instances are not equals.");
+        assertNotEquals(trueTypeBool, falseTypeBool,
+                "Different instances are equals");
     }
 
     @Test

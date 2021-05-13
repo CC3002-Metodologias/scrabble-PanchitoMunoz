@@ -19,6 +19,10 @@ public class TypeBool extends AbstractType implements IOpp {
         this.value = value;
     }
 
+    protected boolean getValue() {
+        return this.value;
+    }
+
     /**
      * Method that determines if the object 'o' is equals to the current instance.
      * @param o Another object that is compared to the current instance.

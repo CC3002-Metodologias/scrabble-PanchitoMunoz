@@ -2,6 +2,8 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
 
 import java.util.Objects;
 
@@ -26,6 +28,10 @@ public class TypeBinary extends AbstractInteger {
         return this.value;
     }
 
+    protected int getValueAsInt() {
+        return binaryToInt(this.value);
+    }
+
     /**
      * Method that determines if the object 'o' is equals to the current instance.
      * @param o Another object that is compared to the current instance.
@@ -36,7 +42,7 @@ public class TypeBinary extends AbstractInteger {
         if (this == o) return true;
         if (!(o instanceof TypeBinary)) return false;
         TypeBinary that = (TypeBinary) o;
-        return Objects.equals(binaryToInt(value), binaryToInt(that.value));
+        return binaryEqual(value, that.value);
     }
 
     /**
@@ -76,7 +82,7 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public TypeFloat toTypeFloat() {
-        return new TypeFloat(binaryToInt(this.value));
+        return new TypeFloat(this.getValueAsInt());
     }
 
     /**
@@ -86,7 +92,7 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public TypeInt toTypeInt() {
-        return new TypeInt(binaryToInt(this.value));
+        return new TypeInt(this.getValueAsInt());
     }
 
     /**
@@ -138,7 +144,7 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public IType addWithInt(TypeInt typeInt) {
-        return new TypeInt(typeInt.getValue() + binaryToInt(this.value));
+        return new TypeInt(typeInt.getValue() + this.getValueAsInt());
     }
 
     /**
@@ -149,7 +155,7 @@ public class TypeBinary extends AbstractInteger {
      */
     @Override
     public IType addWithFloat(TypeFloat typeFloat) {
-        return new TypeFloat(typeFloat.getValue() + binaryToInt(this.value));
+        return new TypeFloat(typeFloat.getValue() + this.getValueAsInt());
     }
 
     /**
@@ -161,5 +167,49 @@ public class TypeBinary extends AbstractInteger {
     @Override
     public IType addWithBinary(TypeBinary typeBinary) {
         return new TypeBinary(addTwoBinaries(typeBinary.value, this.value));
+    }
+
+    /**
+     * Method that returns the subtraction between a TypeBinary and another type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * @param otherType Another type that will be added to the current type.
+     * @return The subtraction between the two types, returning the dominant type.
+     */
+    public IType sub(ISubWithBinary otherType) {
+        return otherType.subWithBinary(this);
+    }
+
+    /**
+     * Returns the subtraction between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be subtracted to the current type.
+     * @return The subtraction between the Float type and the other type.
+     */
+    @Override
+    public IType subWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.getValue() - this.getValueAsInt());
+    }
+
+    /**
+     * Returns the subtraction between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be subtracted to the current type.
+     * @return The subtraction between the Int type and the other type.
+     */
+    @Override
+    public IType subWithInt(TypeInt typeInt) {
+        return new TypeInt(typeInt.getValue() - this.getValueAsInt());
+    }
+
+    /**
+     * Returns the subtraction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be subtracted to the current type.
+     * @return The subtraction between the Binary type and the other type.
+     */
+    @Override
+    public IType subWithBinary(TypeBinary typeBinary) {
+        String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValueAsInt());
+        return new TypeBinary(subtraction);
     }
 }

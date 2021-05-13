@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TypeFloatTest {
@@ -14,6 +15,12 @@ class TypeFloatTest {
     private double aNumber1;
     private double aNumber2;
     private String messageSeed;
+    private final String aBinary = "01010"; // = 10
+    private final TypeBinary aTypeBinary = new TypeBinary(aBinary);
+    private final int anInt = 42;
+    private final TypeInt aTypeInt = new TypeInt(anInt);
+    private final String aString = "Hola mundo!";
+    private final TypeString aTypeString = new TypeString(aString);
 
     @BeforeEach
     void setUp() {
@@ -102,9 +109,23 @@ class TypeFloatTest {
     }
 
     @RepeatedTest(20)
+    void add() {
+        // Test add with binary
+        var expectedTypeFloat = new TypeFloat(aNumber1 + binaryToInt(aBinary));
+        assertEquals(expectedTypeFloat, typeFloat1.add(aTypeBinary),
+                "Method add does not works with typeBinary." + messageSeed);
+        // Test add with float
+        expectedTypeFloat = new TypeFloat(aNumber1 + aNumber2);
+        assertEquals(expectedTypeFloat, typeFloat1.add(typeFloat2),
+                "Method add does not works with typeFloat." + messageSeed);
+        // Test add with int
+        expectedTypeFloat = new TypeFloat(aNumber1 + anInt);
+        assertEquals(expectedTypeFloat, typeFloat1.add(aTypeInt),
+                "Method add does not works with typeInt." + messageSeed);
+    }
+
+    @RepeatedTest(20)
     void addWithString() {
-        var aString = "Hola mundo!";
-        var aTypeString = new TypeString(aString);
         var expectedTypeString = new TypeString(aString + aNumber1);
         assertEquals(expectedTypeString, typeFloat1.addWithString(aTypeString),
                 "Method addWithString does not works." + messageSeed);
@@ -112,8 +133,6 @@ class TypeFloatTest {
 
     @Test
     void addWithInt() {
-        var anInt = 42;
-        var aTypeInt = new TypeInt(anInt);
         var expected = new TypeFloat(anInt + aNumber1);
         assertEquals(expected, typeFloat1.addWithInt(aTypeInt),
                 "Method addWithInt does not works." + messageSeed);
@@ -126,25 +145,33 @@ class TypeFloatTest {
                 "Method addWithFloat does not works." + messageSeed);
     }
 
+    @Test
+    void sub() {
+        // Test subtraction with binary
+        var expectedTypeFloat = new TypeFloat(aNumber1 - binaryToInt(aBinary));
+        assertEquals(expectedTypeFloat, typeFloat1.sub(aTypeBinary),
+                "Method sub does not works with TypeBinary." + messageSeed);
+        // Test subtraction with float
+        expectedTypeFloat = new TypeFloat(aNumber1 - aNumber2);
+        assertEquals(expectedTypeFloat, typeFloat1.sub(typeFloat2),
+                "Method sub does not works with TypeFloat." + messageSeed);
+        // Test subtraction with int
+        expectedTypeFloat = new TypeFloat(aNumber1 - anInt);
+        assertEquals(expectedTypeFloat, typeFloat1.sub(aTypeInt),
+                "Method sub does not works with TypeInt." + messageSeed);
+    }
+
     @RepeatedTest(20)
-    void add() {
-        // Test add with binary
-        var value1 = "01010"; // = 10
-        var typeBinary = new TypeBinary(value1);
-        var expectedTypeFloat = new TypeFloat(aNumber1 + 10);
-        assertEquals(expectedTypeFloat, typeFloat1.add(typeBinary),
-                "Method add does not works with typeBinary." + messageSeed);
-        // Test add with float
-        var value2 = 3.141592;
-        var typeFloat = new TypeFloat(value2);
-        expectedTypeFloat = new TypeFloat(aNumber1 + value2);
-        assertEquals(expectedTypeFloat, typeFloat1.add(typeFloat),
-                "Method add does not works with typeFloat." + messageSeed);
-        // Test add with int
-        var value3 = 42;
-        var typeInt = new TypeInt(value3);
-        expectedTypeFloat = new TypeFloat(aNumber1 + value3);
-        assertEquals(expectedTypeFloat, typeFloat1.add(typeInt),
-                "Method add does not works with typeInt." + messageSeed);
+    void subWithFloat() {
+        var expected = new TypeFloat(aNumber2 - aNumber1);
+        assertEquals(expected, typeFloat1.subWithFloat(typeFloat2),
+                "Method subWithFloat does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void subWithInt() {
+        var expected = new TypeFloat(anInt - aNumber1);
+        assertEquals(expected, typeFloat1.subWithInt(aTypeInt),
+                "Method subWithInt does not works." + messageSeed);
     }
 }

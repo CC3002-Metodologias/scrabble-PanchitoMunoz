@@ -82,18 +82,18 @@ public final class BinaryUtilities {
     }
 
     /**
-     * Returns the binary representation of the number 'num'
-     * @param num An integer as a number.
-     * @return The binary representation of 'num'.
+     * Returns the binary representation of the number 'intNumber'
+     * @param intNumber An integer as a number.
+     * @return The binary representation of 'intNumber'.
      */
-    private static String positiveIntToBinary(int num) {
-        if (num == 0) return "0";
-        int nBits = (int) (Math.floor(Math.log(num) / Math.log(2)) + 1);
+    private static String positiveIntToBinary(int intNumber) {
+        if (intNumber == 0) return "0";
+        int nBits = (int) (Math.floor(Math.log(intNumber) / Math.log(2)) + 1);
         int[] binary = new int[nBits];
         int id = 0;
-        while (num > 0) {
-            binary[id] = num % 2;
-            num = num / 2;
+        while (intNumber > 0) {
+            binary[id] = intNumber % 2;
+            intNumber = intNumber / 2;
             id++;
         }
         StringBuilder binaryString = new StringBuilder();
@@ -104,26 +104,26 @@ public final class BinaryUtilities {
     }
 
     /**
-     * Returns the sum of the binary number 'a' and the binary number 'b' as another binary number.
-     * @param a A binary number.
-     * @param b Another binary number.
-     * @return The sum between 'a' and 'b'.
+     * Returns the sum of the binary number 'binary1' and the binary number 'binary2' as another binary number.
+     * @param binary1 A binary number.
+     * @param binary2 Another binary number.
+     * @return The sum between 'binary1' and 'binary2'.
      */
-    public static String addTwoBinaries(String a, String b) {
-        int aAsNumber = binaryToInt(a);
-        int bAsNumber = binaryToInt(b);
-        return intToBinary(aAsNumber + bAsNumber);
+    public static String addTwoBinaries(String binary1, String binary2) {
+        int binary1AsNumber = binaryToInt(binary1);
+        int binary2AsNumber = binaryToInt(binary2);
+        return intToBinary(binary1AsNumber + binary2AsNumber);
     }
 
     /**
-     * Returns the binary representation of any integer 'num'.
-     * @param num An integer number.
+     * Returns the binary representation of any integer 'intNumber'.
+     * @param intNumber An integer number.
      * @return The representation of the number as a binary.
      */
-    public static String intToBinary(int num) {
-        int absNum = Math.abs(num);
-        String  binaryNum = positiveIntToBinary(absNum);
-        if (num < 0) {
+    public static String intToBinary(int intNumber) {
+        int absNumber = Math.abs(intNumber);
+        String  binaryNum = positiveIntToBinary(absNumber);
+        if (intNumber < 0) {
             binaryNum = twosComplement(binaryNum);
         }
         return binaryNum;
@@ -143,9 +143,9 @@ public final class BinaryUtilities {
         }
     }
 
-    public static boolean binaryEqual(String a, String b) {
-        Integer aAsInt = binaryToInt(a);
-        Integer bAsInt = binaryToInt(b);
-        return aAsInt.equals(bAsInt);
+    public static boolean binaryEqual(String binary1, String binary2) {
+        Integer binary1AsInt = binaryToInt(binary1);
+        Integer binary2AsInt = binaryToInt(binary2);
+        return binary1AsInt.equals(binary2AsInt);
     }
 }
