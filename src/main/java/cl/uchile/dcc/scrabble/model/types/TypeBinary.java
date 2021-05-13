@@ -36,7 +36,7 @@ public class TypeBinary extends AbstractInteger {
         if (this == o) return true;
         if (!(o instanceof TypeBinary)) return false;
         TypeBinary that = (TypeBinary) o;
-        return Objects.equals(binaryToInt(value), binaryToInt(that.value));
+        return binaryEqual(value, that.value);
     }
 
     /**
