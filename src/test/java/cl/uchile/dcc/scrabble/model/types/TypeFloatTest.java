@@ -192,4 +192,27 @@ class TypeFloatTest {
         assertEquals(expected, typeFloat1.subWithInt(aTypeInt),
                 "Method subWithInt does not works." + messageSeed);
     }
+
+    @RepeatedTest(20)
+    void mult() {
+        // Test multiplication with binary
+        var expectedTypeFloat = new TypeFloat(aNumber1 * binaryToInt(aBinary));
+        assertEquals(expectedTypeFloat, typeFloat1.mult(aTypeBinary),
+                "Method mult does not works with TypeBinary." + messageSeed);
+        // Test multiplication with float
+        expectedTypeFloat = new TypeFloat(aNumber1 * aNumber2);
+        assertEquals(expectedTypeFloat, typeFloat1.mult(typeFloat2),
+                "Method mult does not works with TypeFloat." + messageSeed);
+        // Test multiplication with int
+        expectedTypeFloat = new TypeFloat(aNumber1 * anInt);
+        assertEquals(expectedTypeFloat, typeFloat1.mult(aTypeInt),
+                "Method mult does not works with TypeInt." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void multWithFloat() {
+        var expected = new TypeFloat(aNumber1 * aNumber2);
+        assertEquals(expected, typeFloat2.multWithFloat(typeFloat1),
+                "Method multWithFloat does not Works." + messageSeed);
+    }
 }

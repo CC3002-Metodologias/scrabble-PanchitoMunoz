@@ -212,4 +212,15 @@ class TypeIntTest {
         assertEquals(expected, typeInt1.subWithBinary(aTypeBinary),
                 "Method subWithBinary does not Works." + messageSeed);
     }
+
+    @RepeatedTest(20)
+    void mult() {
+    }
+
+    @RepeatedTest(20)
+    void multWithFloat() {
+        var expected = new TypeFloat(aFloat * aNumber1);
+        assertEquals(expected, typeInt1.multWithFloat(aTypeFloat),
+                "Method multWithFloat does not Works." + messageSeed);
+    }
 }

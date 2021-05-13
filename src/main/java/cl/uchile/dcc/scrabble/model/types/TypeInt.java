@@ -220,4 +220,15 @@ public class TypeInt extends AbstractInteger {
     IType mult(IMultWithInt otherType) {
         return null;
     }
+
+    /**
+     * Returns the multiplication between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be multiplied to the current type.
+     * @return The multiplication between the Float type and the other type.
+     */
+    @Override
+    public IType multWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.getValue() * this.value);
+    }
 }
