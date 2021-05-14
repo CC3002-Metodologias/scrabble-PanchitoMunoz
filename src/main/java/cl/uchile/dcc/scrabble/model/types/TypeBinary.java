@@ -1,10 +1,15 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
 import cl.uchile.dcc.scrabble.model.operations.division.IDivWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
@@ -16,7 +21,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractInteger {
+public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBool, IOrWithBool {
     private final String value;
 
     /**
@@ -120,7 +125,7 @@ public class TypeBinary extends AbstractInteger {
 
     /**
      * Method that returns the sum between a TypeBinary and another type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
@@ -174,7 +179,7 @@ public class TypeBinary extends AbstractInteger {
 
     /**
      * Method that returns the subtraction between a TypeBinary and another type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
@@ -218,7 +223,7 @@ public class TypeBinary extends AbstractInteger {
 
     /**
      * Method that returns the multiplication between the current type and the other type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      *
      * @param otherType Another type that will be multiplied to the current type.
      * @return The multiplication between the two types, returning the dominant type.
@@ -262,7 +267,7 @@ public class TypeBinary extends AbstractInteger {
 
     /**
      * Method that returns the division between the current type and the other type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      *
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
@@ -306,5 +311,47 @@ public class TypeBinary extends AbstractInteger {
     public SNumber divWithInt(TypeInt typeInt) {
         int intResult = (int) Math.round((double) typeInt.getValue() / this.getValueAsInt());
         return new TypeInt(intResult);
+    }
+
+    /**
+     * Method that returns the disjunction between the current type and the other type.
+     * Returns the dominant type if possible.
+     * @param otherType Another type that will be disjunct to the current type.
+     * @return The disjunction between the two types, returning the dominant type.
+     */
+    public SLogical and(IAndWithBinary otherType) {
+        return otherType.andWithBinary(this);
+    }
+
+    /**
+     * Method that returns the conjunction between the current type and the other type.
+     * Returns the dominant type if possible.
+     * @param otherType Another type that will be conjunct to the current type.
+     * @return The conjunction between the two types, returning the dominant type.
+     */
+    public SLogical or(IOrWithBinary otherType) {
+        return otherType.orWithBinary(this);
+    }
+
+    /**
+     * Returns the disjunction between the current type and a Bool Type.
+     *
+     * @param typeBool A Bool type who will be disjunct to the current type.
+     * @return The disjunction between the Bool type and the other type.
+     */
+    @Override
+    public SLogical andWithBool(TypeBool typeBool) {
+        return new TypeBinary(boolAndBinary(typeBool.getValue(), this.value));
+    }
+
+    /**
+     * Returns the conjunction between the current type and a Bool Type.
+     *
+     * @param typeBool A Bool type who will be conjunct to the current type.
+     * @return The conjunction between the Bool type and the other type.
+     */
+    @Override
+    public SLogical orWithBool(TypeBool typeBool) {
+        return new TypeBinary(boolOrBinary(typeBool.getValue(), this.value));
     }
 }
