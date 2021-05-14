@@ -25,6 +25,10 @@ public class TypeFloat extends AbstractNumber {
         this.value = value;
     }
 
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
     protected double getValue() {
         return this.value;
     }

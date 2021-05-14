@@ -28,6 +28,10 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
         this.value = value;
     }
 
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
     protected boolean getValue() {
         return this.value;
     }
@@ -85,9 +89,8 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
     }
 
     /**
-     * Returns the opposite of the current instance. In booleans, it is changing true for false and viceversa.
-     *
-     * @return The opposite of the current instance.
+     * Returns the negation of the current instance.
+     * @return The negation of the current instance.
      */
     @Override
     public SType opposite() {

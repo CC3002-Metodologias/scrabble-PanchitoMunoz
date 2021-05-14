@@ -28,6 +28,10 @@ public class TypeInt extends AbstractInteger {
         this.value = value;
     }
 
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
     protected int getValue() {
         return this.value;
     }

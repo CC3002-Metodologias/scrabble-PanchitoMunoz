@@ -32,10 +32,18 @@ public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBoo
         this.value = value;
     }
 
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
     protected String getValue() {
         return this.value;
     }
 
+    /**
+     * Returns the current value of the instance as an Int.
+     * @return The value in the instance
+     */
     protected int getValueAsInt() {
         return binaryToInt(this.value);
     }
@@ -114,9 +122,8 @@ public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBoo
     }
 
     /**
-     * Returns the opposite of the current instance. In binary, it is changing each 0 for 1 and each 1 for 0.
-     *
-     * @return The opposite of the current instance.
+     * Returns the negation of the current instance.
+     * @return The negation of the current instance.
      */
     @Override
     public SType opposite() {

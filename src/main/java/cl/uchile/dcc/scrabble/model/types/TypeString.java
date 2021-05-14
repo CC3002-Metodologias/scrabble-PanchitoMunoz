@@ -20,6 +20,10 @@ public class TypeString extends AbstractType {
         this.value = value;
     }
 
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
     protected String getValue() {
         return this.value;
     }
