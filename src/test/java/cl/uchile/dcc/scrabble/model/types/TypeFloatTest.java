@@ -222,4 +222,34 @@ class TypeFloatTest {
         assertEquals(expected, typeFloat1.multWithInt(aTypeInt),
                 "Method multWithInt does not Works." + messageSeed);
     }
+
+    @RepeatedTest(20)
+    void div() {
+        // Test division with binary
+        var expectedTypeFloat = new TypeFloat(aNumber1 / binaryToInt(aBinary));
+        assertEquals(expectedTypeFloat, typeFloat1.div(aTypeBinary),
+                "Method div does not works with TypeBinary." + messageSeed);
+        // Test division with float
+        expectedTypeFloat = new TypeFloat(aNumber1 / aNumber2);
+        assertEquals(expectedTypeFloat, typeFloat1.div(typeFloat2),
+                "Method div does not works with TypeFloat." + messageSeed);
+        // Test division with int
+        expectedTypeFloat = new TypeFloat(aNumber1 / anInt);
+        assertEquals(expectedTypeFloat, typeFloat1.div(aTypeInt),
+                "Method div does not works with TypeInt." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void divWithFloat() {
+        var expected = new TypeFloat(aNumber1 / aNumber2);
+        assertEquals(expected, typeFloat2.divWithFloat(typeFloat1),
+                "Method divWithFloat does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void divWithInt() {
+        var expected = new TypeFloat(anInt / aNumber1);
+        assertEquals(expected, typeFloat1.divWithInt(aTypeInt),
+                "Method divWithInt does not Works." + messageSeed);
+    }
 }
