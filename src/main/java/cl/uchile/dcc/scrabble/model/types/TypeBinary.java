@@ -1,12 +1,15 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
 import cl.uchile.dcc.scrabble.model.operations.division.IDivWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
@@ -18,7 +21,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractInteger implements IAndWithBool, IOrWithBool {
+public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBool, IOrWithBool {
     private final String value;
 
     /**
@@ -316,7 +319,7 @@ public class TypeBinary extends AbstractInteger implements IAndWithBool, IOrWith
      * @param otherType Another type that will be disjunct to the current type.
      * @return The disjunction between the two types, returning the dominant type.
      */
-    TypeBinary and(TypeBool otherType) {
+    public SLogical and(IAndWithBinary otherType) {
         return null;
     }
 
@@ -326,7 +329,7 @@ public class TypeBinary extends AbstractInteger implements IAndWithBool, IOrWith
      * @param otherType Another type that will be conjunct to the current type.
      * @return The conjunction between the two types, returning the dominant type.
      */
-    TypeBinary or(TypeBool otherType) {
+    public SLogical or(IOrWithBinary otherType) {
         return null;
     }
 
@@ -337,7 +340,7 @@ public class TypeBinary extends AbstractInteger implements IAndWithBool, IOrWith
      * @return The disjunction between the Bool type and the other type.
      */
     @Override
-    public IAndWithBool andWithBool(TypeBool typeBool) {
+    public SLogical andWithBool(TypeBool typeBool) {
         return null;
     }
 
@@ -348,7 +351,7 @@ public class TypeBinary extends AbstractInteger implements IAndWithBool, IOrWith
      * @return The conjunction between the Bool type and the other type.
      */
     @Override
-    public IOrWithBool orWithBool(TypeBool typeBool) {
+    public SLogical orWithBool(TypeBool typeBool) {
         return null;
     }
 }

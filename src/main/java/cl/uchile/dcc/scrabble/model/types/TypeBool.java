@@ -1,9 +1,12 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
+import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
+import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
@@ -12,7 +15,7 @@ import java.util.Objects;
  * A class for the boolean type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBool extends AbstractType implements IOpp, IAndWithBool, IOrWithBool {
+public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBool, IOrWithBool, IAndWithBinary, IOrWithBinary {
     private final boolean value;
 
     /**
@@ -106,7 +109,7 @@ public class TypeBool extends AbstractType implements IOpp, IAndWithBool, IOrWit
      * @param otherType Another type that will be disjunct to the current type.
      * @return The disjunction between the two types, returning the dominant type.
      */
-    IAndWithBool and(IAndWithBool otherType) {
+    SLogical and(IAndWithBool otherType) {
         return null;
     }
 
@@ -116,7 +119,7 @@ public class TypeBool extends AbstractType implements IOpp, IAndWithBool, IOrWit
      * @param otherType Another type that will be conjunct to the current type.
      * @return The conjunction between the two types, returning the dominant type.
      */
-    IOrWithBool or(IOrWithBool otherType) {
+    SLogical or(IOrWithBool otherType) {
         return null;
     }
 
@@ -127,7 +130,7 @@ public class TypeBool extends AbstractType implements IOpp, IAndWithBool, IOrWit
      * @return The disjunction between the Bool type and the other type.
      */
     @Override
-    public IAndWithBool andWithBool(TypeBool typeBool) {
+    public SLogical andWithBool(TypeBool typeBool) {
         return null;
     }
 
@@ -138,7 +141,29 @@ public class TypeBool extends AbstractType implements IOpp, IAndWithBool, IOrWit
      * @return The conjunction between the Bool type and the other type.
      */
     @Override
-    public IOrWithBool orWithBool(TypeBool typeBool) {
+    public SLogical orWithBool(TypeBool typeBool) {
+        return null;
+    }
+
+    /**
+     * Returns the disjunction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be disjunct to the current type.
+     * @return The disjunction between the Binary type and the other type.
+     */
+    @Override
+    public SLogical andWithBinary(TypeBinary typeBinary) {
+        return null;
+    }
+
+    /**
+     * Returns the conjunction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be conjunct to the current type.
+     * @return The conjunction between the Binary type and the other type.
+     */
+    @Override
+    public SLogical orWithBinary(TypeBinary typeBinary) {
         return null;
     }
 }

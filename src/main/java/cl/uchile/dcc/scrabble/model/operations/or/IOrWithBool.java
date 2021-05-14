@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.operations.or;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 
 /**
  * Interface for the logic 'or' operation. It is in case a Bool is operated with any type.
@@ -13,5 +14,5 @@ public interface IOrWithBool {
      * @param typeBool A Bool type who will be conjunct to the current type.
      * @return The conjunction between the Bool type and the other type.
      */
-    IOrWithBool orWithBool(TypeBool typeBool);
+    SLogical orWithBool(TypeBool typeBool);
 }

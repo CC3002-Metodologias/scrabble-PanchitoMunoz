@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.operations.and;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 
 /**
  * Interface for the logic 'and' operation. It is in case a Bool is operated with any type.
@@ -13,5 +14,5 @@ public interface IAndWithBool {
      * @param typeBool A Bool type who will be disjunct to the current type.
      * @return The disjunction between the Bool type and the other type.
      */
-    IAndWithBool andWithBool(TypeBool typeBool);
+    SLogical andWithBool(TypeBool typeBool);
 }
