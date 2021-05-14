@@ -94,7 +94,7 @@ public class TypeFloat extends AbstractNumber {
 
     /**
      * Method that returns the sum between a TypeFloat and another type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
@@ -137,7 +137,7 @@ public class TypeFloat extends AbstractNumber {
 
     /**
      * Method that returns the subtraction between a TypeFloat and another type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
@@ -169,7 +169,7 @@ public class TypeFloat extends AbstractNumber {
 
     /**
      * Method that returns the multiplication between the current type and the other type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      *
      * @param otherType Another type that will be multiplied to the current type.
      * @return The multiplication between the two types, returning the dominant type.
@@ -202,7 +202,7 @@ public class TypeFloat extends AbstractNumber {
 
     /**
      * Method that returns the division between the current type and the other type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      *
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
