@@ -83,7 +83,7 @@ class TypeStringTest {
     void add() {
         // Test add with binary
         // Generate a binary random
-        int nBits = rng.nextInt(64) + 1; // Max 64 bits
+        int nBits = rng.nextInt(30) + 3; // Max 32 bits, at least 3 bits to avoid pathologic cases
         char[] characters = {'0', '1'};
         var aBinary = RandomStringUtils.random(nBits, 0, 2, false,
                 true, characters, rng);

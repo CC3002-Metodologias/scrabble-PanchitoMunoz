@@ -34,7 +34,7 @@ class TypeBinaryTest {
         messageSeed = " Seed: " + seed;
         Random rng = new Random(seed);
         // Generate 2 binaries random
-        int nBits = rng.nextInt(64) + 1; // Max 64 bits
+        int nBits = rng.nextInt(30) + 3; // Max 32 bits, at least 3 bits to avoid pathologic cases
         char[] characters = {'0', '1'};
         aBinary1 = RandomStringUtils.random(nBits, 0, 2, false,
                 true, characters, rng);

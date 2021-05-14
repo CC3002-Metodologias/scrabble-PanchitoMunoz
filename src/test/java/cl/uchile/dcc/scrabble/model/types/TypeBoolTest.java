@@ -28,7 +28,7 @@ class TypeBoolTest {
         messageSeed = " Seed: " + seed;
         Random rng = new Random(seed);
         // Generate a binary random
-        int nBits = rng.nextInt(64) + 1; // Max 64 bits
+        int nBits = rng.nextInt(30) + 3; // Max 32 bits, at least 3 bits to avoid pathologic cases
         char[] characters = {'0', '1'};
         aBinary = RandomStringUtils.random(nBits, 0, 2, false,
                 true, characters, rng);
