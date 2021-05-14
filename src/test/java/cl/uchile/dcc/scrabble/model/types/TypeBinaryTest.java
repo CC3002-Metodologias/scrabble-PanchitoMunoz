@@ -153,7 +153,7 @@ class TypeBinaryTest {
         // Changing each 1 for 0 and each 0 for 1 is equivalent to applying one complement.
         String aBinaryNegative1 = oneComplement(aBinary1);
         TypeBinary typeBinaryNegative1 = new TypeBinary(aBinaryNegative1);
-        assertEquals(typeBinaryNegative1, typeBinary1.opposite(),
+        assertEquals(typeBinaryNegative1, typeBinary1.negation(),
                 "Method opposite does not works." + messageSeed);
     }
 

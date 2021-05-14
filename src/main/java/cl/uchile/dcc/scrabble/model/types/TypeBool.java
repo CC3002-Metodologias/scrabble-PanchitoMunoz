@@ -1,13 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
 import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
@@ -17,7 +15,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the boolean type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBool, IOrWithBool, IAndWithBinary, IOrWithBinary {
+public class TypeBool extends AbstractType implements SLogical, IAndWithBinary, IOrWithBinary {
     private final boolean value;
 
     /**
@@ -93,7 +91,7 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      * @return The negation of the current instance.
      */
     @Override
-    public SType opposite() {
+    public SLogical negation() {
         return new TypeBool(!(this.value));
     }
 
@@ -114,7 +112,7 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      * @param otherType Another type that will be disjunct to the current type.
      * @return The disjunction between the two types, returning the dominant type.
      */
-    SLogical and(IAndWithBool otherType) {
+    public SLogical and(IAndWithBool otherType) {
         return otherType.andWithBool(this);
     }
 
@@ -124,7 +122,7 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      * @param otherType Another type that will be conjunct to the current type.
      * @return The conjunction between the two types, returning the dominant type.
      */
-    SLogical or(IOrWithBool otherType) {
+    public SLogical or(IOrWithBool otherType) {
         return otherType.orWithBool(this);
     }
 

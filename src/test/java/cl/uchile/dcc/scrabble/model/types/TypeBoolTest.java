@@ -111,9 +111,9 @@ class TypeBoolTest {
 
     @Test
     void opposite() {
-        assertEquals(falseTypeBool, trueTypeBool.opposite(),
+        assertEquals(falseTypeBool, trueTypeBool.negation(),
                 "Method opposite does not works with true.");
-        assertEquals(trueTypeBool, falseTypeBool.opposite(),
+        assertEquals(trueTypeBool, falseTypeBool.negation(),
                 "Method opposite does not works with false.");
     }
 

@@ -119,14 +119,6 @@ class TypeFloatTest {
     }
 
     @RepeatedTest(20)
-    void opposite() {
-        double aNumberNegative1 = - aNumber1;
-        TypeFloat typeFloatNegative1 = new TypeFloat(aNumberNegative1);
-        assertEquals(typeFloatNegative1, typeFloat1.opposite(),
-                "Method opposite does not works." + messageSeed);
-    }
-
-    @RepeatedTest(20)
     void add() {
         // Test add with binary
         var expectedTypeFloat = new TypeFloat(aNumber1 + binaryToInt(aBinary));
