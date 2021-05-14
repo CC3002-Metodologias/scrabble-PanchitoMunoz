@@ -223,7 +223,7 @@ public class TypeBinary extends AbstractInteger {
      * @return The multiplication between the two types, returning the dominant type.
      */
     public SNumber mult(IMultWithBinary otherType) {
-        return null;
+        return otherType.multWithBinary(this);
     }
 
     /**
@@ -246,5 +246,16 @@ public class TypeBinary extends AbstractInteger {
     @Override
     public SNumber multWithInt(TypeInt typeInt) {
         return new TypeInt(typeInt.getValue() * this.getValueAsInt());
+    }
+
+    /**
+     * Returns the multiplication between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be multiplied to the current type.
+     * @return The multiplication between the Binary type and the other type.
+     */
+    @Override
+    public SNumber multWithBinary(TypeBinary typeBinary) {
+        return new TypeBinary(intToBinary(typeBinary.getValueAsInt() * this.getValueAsInt()));
     }
 }

@@ -242,4 +242,12 @@ class TypeIntTest {
         assertEquals(expected, typeInt1.multWithInt(typeInt2),
                 "Method multWithInt does not Works." + messageSeed);
     }
+
+    @RepeatedTest(20)
+    void multWithBinary() {
+        var binaryMultWithInt = intToBinary(binaryToInt(aBinary) * aNumber1);
+        var expected = new TypeBinary(binaryMultWithInt);
+        assertEquals(expected, typeInt1.multWithBinary(aTypeBinary),
+                "Method multWithBinary does not Works." + messageSeed);
+    }
 }

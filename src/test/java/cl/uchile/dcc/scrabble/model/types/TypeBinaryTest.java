@@ -229,6 +229,14 @@ class TypeBinaryTest {
 
     @RepeatedTest(20)
     void mult() {
+        // Test multiplication with binary
+        var expectedTypeBinary = new TypeBinary(intToBinary(binaryToInt(aBinary1) * binaryToInt(aBinary2)));
+        assertEquals(expectedTypeBinary, typeBinary1.mult(typeBinary2),
+                "Method mult does not works with TypeBinary." + messageSeed);
+        // Test multiplication with int
+        expectedTypeBinary = new TypeBinary(intToBinary(binaryToInt(aBinary1) * anInt));
+        assertEquals(expectedTypeBinary, typeBinary1.mult(aTypeInt),
+                "Method mult does not works with TypeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -243,5 +251,13 @@ class TypeBinaryTest {
         var expected = new TypeInt(anInt * binaryToInt(aBinary1));
         assertEquals(expected, typeBinary1.multWithInt(aTypeInt),
                 "Method multWithInt does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void multWithBinary() {
+        var binary2MultWithBinary1 = intToBinary(binaryToInt(aBinary2) * binaryToInt(aBinary1));
+        var expected = new TypeBinary(binary2MultWithBinary1);
+        assertEquals(expected, typeBinary1.multWithBinary(typeBinary2),
+                "Method multWithBinary does not Works." + messageSeed);
     }
 }

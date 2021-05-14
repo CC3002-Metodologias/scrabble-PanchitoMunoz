@@ -244,4 +244,16 @@ public class TypeInt extends AbstractInteger {
     public SNumber multWithInt(TypeInt typeInt) {
         return new TypeInt(typeInt.value * this.value);
     }
+
+    /**
+     * Returns the multiplication between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be multiplied to the current type.
+     * @return The multiplication between the Binary type and the other type.
+     */
+    @Override
+    public SNumber multWithBinary(TypeBinary typeBinary) {
+        String binaryMultiplied = intToBinary(typeBinary.getValueAsInt() * this.value);
+        return new TypeBinary(binaryMultiplied);
+    }
 }
