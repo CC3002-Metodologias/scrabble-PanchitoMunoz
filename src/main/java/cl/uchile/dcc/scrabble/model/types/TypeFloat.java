@@ -208,7 +208,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The division between the two types, returning the dominant type.
      */
     public SNumber div(IDivWithFloat otherType){
-        return null;
+        return otherType.divWithFloat(this);
     }
 
     /**
@@ -219,7 +219,7 @@ public class TypeFloat extends AbstractNumber {
      */
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
-        return null;
+        return new TypeFloat(typeFloat.value / this.value);
     }
 
     /**
@@ -230,6 +230,6 @@ public class TypeFloat extends AbstractNumber {
      */
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
-        return null;
+        return new TypeFloat(typeInt.getValue() / this.value);
     }
 }

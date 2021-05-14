@@ -266,7 +266,7 @@ public class TypeInt extends AbstractInteger {
      * @return The division between the two types, returning the dominant type.
      */
     public SNumber div(IDivWithInt otherType){
-        return null;
+        return otherType.divWithInt(this);
     }
 
     /**
@@ -277,7 +277,8 @@ public class TypeInt extends AbstractInteger {
      */
     @Override
     public SNumber divWithBinary(TypeBinary typeBinary) {
-        return null;
+        String binaryResult = intToBinary((int) Math.round((double) typeBinary.getValueAsInt() / this.value));
+        return new TypeBinary(binaryResult);
     }
 
     /**
@@ -288,7 +289,7 @@ public class TypeInt extends AbstractInteger {
      */
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
-        return null;
+        return new TypeFloat(typeFloat.getValue() / this.value);
     }
 
     /**
@@ -299,6 +300,6 @@ public class TypeInt extends AbstractInteger {
      */
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
-        return null;
+        return new TypeInt((int) Math.round((double) typeInt.value / this.value));
     }
 }
