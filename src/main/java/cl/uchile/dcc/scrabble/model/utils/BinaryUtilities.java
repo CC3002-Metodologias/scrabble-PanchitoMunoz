@@ -148,4 +148,20 @@ public final class BinaryUtilities {
         Integer binary2AsInt = binaryToInt(binary2);
         return binary1AsInt.equals(binary2AsInt);
     }
+
+    public static String boolAndBinary(boolean bool, String binary) {
+        StringBuilder binaryToReturn = new StringBuilder(binary);
+        for (int i = 0; i < binary.length(); i++) {
+            binaryToReturn.setCharAt(i, binary.charAt(i) == '1' && bool ? '1' : '0');
+        }
+        return binaryToReturn.toString();
+    }
+
+    public static String boolOrBinary(boolean bool, String binary) {
+        StringBuilder binaryToReturn = new StringBuilder(binary);
+        for (int i = 0; i < binary.length(); i++) {
+            binaryToReturn.setCharAt(i, binary.charAt(i) == '1' || bool ? '1' : '0');
+        }
+        return binaryToReturn.toString();
+    }
 }
