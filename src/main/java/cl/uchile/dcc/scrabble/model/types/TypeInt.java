@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithInt;
+import cl.uchile.dcc.scrabble.model.operations.division.IDivWithInt;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithInt;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
@@ -255,5 +256,16 @@ public class TypeInt extends AbstractInteger {
     public SNumber multWithBinary(TypeBinary typeBinary) {
         String binaryMultiplied = intToBinary(typeBinary.getValueAsInt() * this.value);
         return new TypeBinary(binaryMultiplied);
+    }
+
+    /**
+     * Method that returns the division between the current type and the other type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     *
+     * @param otherType Another type that will be divided to the current type.
+     * @return The division between the two types, returning the dominant type.
+     */
+    public SNumber div(IDivWithInt otherType){
+        return null;
     }
 }
