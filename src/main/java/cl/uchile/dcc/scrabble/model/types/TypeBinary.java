@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.division.IDivWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
@@ -257,5 +258,53 @@ public class TypeBinary extends AbstractInteger {
     @Override
     public SNumber multWithBinary(TypeBinary typeBinary) {
         return new TypeBinary(intToBinary(typeBinary.getValueAsInt() * this.getValueAsInt()));
+    }
+
+    /**
+     * Method that returns the division between the current type and the other type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     *
+     * @param otherType Another type that will be divided to the current type.
+     * @return The division between the two types, returning the dominant type.
+     */
+    public SNumber div(IDivWithBinary otherType){
+        return otherType.divWithBinary(this);
+    }
+
+    /**
+     * Returns the division between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be divided to the current type.
+     * @return The division between the Binary type and the other type.
+     */
+    @Override
+    public SNumber divWithBinary(TypeBinary typeBinary) {
+        String binaryDivision = intToBinary(
+                (int) Math.round((double) typeBinary.getValueAsInt() / this.getValueAsInt())
+        );
+        return new TypeBinary(binaryDivision);
+    }
+
+    /**
+     * Returns the division between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be divided to the current type.
+     * @return The division between the Float type and the other type.
+     */
+    @Override
+    public SNumber divWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.getValue() / this.getValueAsInt());
+    }
+
+    /**
+     * Returns the division between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be divided to the current type.
+     * @return The division between the Int type and the other type.
+     */
+    @Override
+    public SNumber divWithInt(TypeInt typeInt) {
+        int intResult = (int) Math.round((double) typeInt.getValue() / this.getValueAsInt());
+        return new TypeInt(intResult);
     }
 }
