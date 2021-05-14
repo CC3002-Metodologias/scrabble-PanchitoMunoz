@@ -3,6 +3,9 @@ package cl.uchile.dcc.scrabble.model.types;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
+import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 

@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithStr;
+import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 
 import java.util.Objects;
 

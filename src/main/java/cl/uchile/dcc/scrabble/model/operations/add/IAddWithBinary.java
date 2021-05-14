@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.operations.add;
 
-import cl.uchile.dcc.scrabble.model.types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 
 /**

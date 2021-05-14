@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.types;
+package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
@@ -7,6 +7,8 @@ import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithFloat;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithInt;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithFloat;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 
 /**
  * An abstract class for the general numbers used.

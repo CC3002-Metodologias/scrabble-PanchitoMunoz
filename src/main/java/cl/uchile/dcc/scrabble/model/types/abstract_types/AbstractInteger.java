@@ -1,7 +1,10 @@
-package cl.uchile.dcc.scrabble.model.types;
+package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
+import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.types.TypeInt;
 
 /**
  * An abstract class for numbers that are like integers (e.g.: TypeInt and TypeBinary).

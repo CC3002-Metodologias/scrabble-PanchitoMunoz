@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.operations.multiplication;
 
-import cl.uchile.dcc.scrabble.model.types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 
 /**
