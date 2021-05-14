@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
+import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
+import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
@@ -10,7 +12,7 @@ import java.util.Objects;
  * A class for the boolean type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBool extends AbstractType implements IOpp {
+public class TypeBool extends AbstractType implements IOpp, IAndWithBool, IOrWithBool {
     private final boolean value;
 
     /**
@@ -96,5 +98,47 @@ public class TypeBool extends AbstractType implements IOpp {
     @Override
     public TypeString addWithString(TypeString typeString) {
         return new TypeString(typeString.getValue() + this.value);
+    }
+
+    /**
+     * Method that returns the disjunction between the current type and the other type.
+     * Returns the dominant type if possible.
+     * @param otherType Another type that will be disjunct to the current type.
+     * @return The disjunction between the two types, returning the dominant type.
+     */
+    IAndWithBool and(IAndWithBool otherType) {
+        return null;
+    }
+
+    /**
+     * Method that returns the conjunction between the current type and the other type.
+     * Returns the dominant type if possible.
+     * @param otherType Another type that will be conjunct to the current type.
+     * @return The conjunction between the two types, returning the dominant type.
+     */
+    IOrWithBool or(IOrWithBool otherType) {
+        return null;
+    }
+
+    /**
+     * Returns the disjunction between the current type and a Bool Type.
+     *
+     * @param typeBool A Bool type who will be disjunct to the current type.
+     * @return The disjunction between the Bool type and the other type.
+     */
+    @Override
+    public IAndWithBool andWithBool(TypeBool typeBool) {
+        return null;
+    }
+
+    /**
+     * Returns the conjunction between the current type and a Bool Type.
+     *
+     * @param typeBool A Bool type who will be conjunct to the current type.
+     * @return The conjunction between the Bool type and the other type.
+     */
+    @Override
+    public IOrWithBool orWithBool(TypeBool typeBool) {
+        return null;
     }
 }

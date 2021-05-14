@@ -1,8 +1,10 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
 import cl.uchile.dcc.scrabble.model.operations.division.IDivWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -16,7 +18,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractInteger {
+public class TypeBinary extends AbstractInteger implements IAndWithBool, IOrWithBool {
     private final String value;
 
     /**
@@ -306,5 +308,47 @@ public class TypeBinary extends AbstractInteger {
     public SNumber divWithInt(TypeInt typeInt) {
         int intResult = (int) Math.round((double) typeInt.getValue() / this.getValueAsInt());
         return new TypeInt(intResult);
+    }
+
+    /**
+     * Method that returns the disjunction between the current type and the other type.
+     * Returns the dominant type if possible.
+     * @param otherType Another type that will be disjunct to the current type.
+     * @return The disjunction between the two types, returning the dominant type.
+     */
+    TypeBinary and(TypeBool otherType) {
+        return null;
+    }
+
+    /**
+     * Method that returns the conjunction between the current type and the other type.
+     * Returns the dominant type if possible.
+     * @param otherType Another type that will be conjunct to the current type.
+     * @return The conjunction between the two types, returning the dominant type.
+     */
+    TypeBinary or(TypeBool otherType) {
+        return null;
+    }
+
+    /**
+     * Returns the disjunction between the current type and a Bool Type.
+     *
+     * @param typeBool A Bool type who will be disjunct to the current type.
+     * @return The disjunction between the Bool type and the other type.
+     */
+    @Override
+    public IAndWithBool andWithBool(TypeBool typeBool) {
+        return null;
+    }
+
+    /**
+     * Returns the conjunction between the current type and a Bool Type.
+     *
+     * @param typeBool A Bool type who will be conjunct to the current type.
+     * @return The conjunction between the Bool type and the other type.
+     */
+    @Override
+    public IOrWithBool orWithBool(TypeBool typeBool) {
+        return null;
     }
 }
