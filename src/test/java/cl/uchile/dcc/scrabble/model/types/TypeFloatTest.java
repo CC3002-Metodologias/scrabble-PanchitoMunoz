@@ -215,4 +215,11 @@ class TypeFloatTest {
         assertEquals(expected, typeFloat2.multWithFloat(typeFloat1),
                 "Method multWithFloat does not Works." + messageSeed);
     }
+
+    @RepeatedTest(20)
+    void multWithInt() {
+        var expected = new TypeFloat(anInt * aNumber1);
+        assertEquals(expected, typeFloat1.multWithInt(aTypeInt),
+                "Method multWithInt does not Works." + messageSeed);
+    }
 }

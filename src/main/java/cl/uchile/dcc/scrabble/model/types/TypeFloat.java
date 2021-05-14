@@ -184,4 +184,15 @@ public class TypeFloat extends AbstractNumber {
     public SNumber multWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.value * this.value);
     }
+
+    /**
+     * Returns the multiplication between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be multiplied to the current type.
+     * @return The multiplication between the Int type and the other type.
+     */
+    @Override
+    public SNumber multWithInt(TypeInt typeInt) {
+        return new TypeFloat(typeInt.getValue() * this.value);
+    }
 }

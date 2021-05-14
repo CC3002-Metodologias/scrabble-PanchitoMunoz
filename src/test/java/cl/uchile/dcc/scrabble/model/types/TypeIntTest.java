@@ -215,6 +215,18 @@ class TypeIntTest {
 
     @RepeatedTest(20)
     void mult() {
+        // Test multiplication with binary
+        var expectedTypeInt = new TypeInt(aNumber1 * binaryToInt(aBinary));
+        assertEquals(expectedTypeInt, typeInt1.mult(aTypeBinary),
+                "Method mult does not works with TypeBinary." + messageSeed);
+        // Test multiplication with float
+        var expectedTypeFloat = new TypeFloat(aNumber1 * aFloat);
+        assertEquals(expectedTypeFloat, typeInt1.mult(aTypeFloat),
+                "Method mult does not works with TypeFloat." + messageSeed);
+        // Test multiplication with int
+        expectedTypeInt = new TypeInt(aNumber1 * aNumber2);
+        assertEquals(expectedTypeInt, typeInt1.mult(typeInt2),
+                "Method mult does not works with TypeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -222,5 +234,12 @@ class TypeIntTest {
         var expected = new TypeFloat(aFloat * aNumber1);
         assertEquals(expected, typeInt1.multWithFloat(aTypeFloat),
                 "Method multWithFloat does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void multWithInt() {
+        var expected = new TypeInt(aNumber2 * aNumber1);
+        assertEquals(expected, typeInt1.multWithInt(typeInt2),
+                "Method multWithInt does not Works." + messageSeed);
     }
 }
