@@ -1,8 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
+import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithFloat;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithFloat;
+import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
@@ -84,7 +87,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The opposite of the current instance.
      */
     @Override
-    public IOpp opposite() {
+    public SType opposite() {
         return new TypeFloat(-this.value);
     }
 
@@ -94,7 +97,7 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public IType add(IAddWithFloat otherType) {
+    public SNumber add(IAddWithFloat otherType) {
         return otherType.addWithFloat(this);
     }
 
@@ -116,7 +119,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The sum between the Int type and the other type.
      */
     @Override
-    public IType addWithInt(TypeInt typeInt) {
+    public SNumber addWithInt(TypeInt typeInt) {
         return new TypeFloat(typeInt.getValue() + this.value);
     }
 
@@ -127,7 +130,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The sum between the Float type and the other type.
      */
     @Override
-    public IType addWithFloat(TypeFloat typeFloat) {
+    public SNumber addWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.value + this.value);
     }
 
@@ -137,7 +140,7 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
-    public IType sub(ISubWithFloat otherType) {
+    public SNumber sub(ISubWithFloat otherType) {
         return otherType.subWithFloat(this);
     }
 
@@ -148,7 +151,7 @@ public class TypeFloat extends AbstractNumber {
      * @return The subtraction between the Float type and the other type.
      */
     @Override
-    public IType subWithFloat(TypeFloat typeFloat) {
+    public SNumber subWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.value - this.value);
     }
 
@@ -159,7 +162,40 @@ public class TypeFloat extends AbstractNumber {
      * @return The subtraction between the Int type and the other type.
      */
     @Override
-    public IType subWithInt(TypeInt typeInt) {
+    public SNumber subWithInt(TypeInt typeInt) {
         return new TypeFloat(typeInt.getValue() - this.value);
+    }
+
+    /**
+     * Method that returns the multiplication between the current type and the other type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     *
+     * @param otherType Another type that will be multiplied to the current type.
+     * @return The multiplication between the two types, returning the dominant type.
+     */
+    public SNumber mult(IMultWithFloat otherType) {
+        return otherType.multWithFloat(this);
+    }
+
+    /**
+     * Returns the multiplication between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be multiplied to the current type.
+     * @return The multiplication between the Float type and the other type.
+     */
+    @Override
+    public SNumber multWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.value * this.value);
+    }
+
+    /**
+     * Returns the multiplication between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be multiplied to the current type.
+     * @return The multiplication between the Int type and the other type.
+     */
+    @Override
+    public SNumber multWithInt(TypeInt typeInt) {
+        return new TypeFloat(typeInt.getValue() * this.value);
     }
 }

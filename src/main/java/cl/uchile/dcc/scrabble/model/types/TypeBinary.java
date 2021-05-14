@@ -1,9 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
+import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
@@ -111,7 +113,7 @@ public class TypeBinary extends AbstractInteger {
      * @return The opposite of the current instance.
      */
     @Override
-    public IOpp opposite() {
+    public SType opposite() {
         return new TypeBinary(oneComplement(this.value));
     }
 
@@ -121,7 +123,7 @@ public class TypeBinary extends AbstractInteger {
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public IType add(IAddWithBinary otherType) {
+    public SNumber add(IAddWithBinary otherType) {
         return otherType.addWithBinary(this);
     }
 
@@ -143,7 +145,7 @@ public class TypeBinary extends AbstractInteger {
      * @return The sum between the Int type and the other type.
      */
     @Override
-    public IType addWithInt(TypeInt typeInt) {
+    public SNumber addWithInt(TypeInt typeInt) {
         return new TypeInt(typeInt.getValue() + this.getValueAsInt());
     }
 
@@ -154,7 +156,7 @@ public class TypeBinary extends AbstractInteger {
      * @return The sum between the Float type and the other type.
      */
     @Override
-    public IType addWithFloat(TypeFloat typeFloat) {
+    public SNumber addWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.getValue() + this.getValueAsInt());
     }
 
@@ -165,7 +167,7 @@ public class TypeBinary extends AbstractInteger {
      * @return The sum between the Binary type and the other type.
      */
     @Override
-    public IType addWithBinary(TypeBinary typeBinary) {
+    public SNumber addWithBinary(TypeBinary typeBinary) {
         return new TypeBinary(addTwoBinaries(typeBinary.value, this.value));
     }
 
@@ -175,7 +177,7 @@ public class TypeBinary extends AbstractInteger {
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
-    public IType sub(ISubWithBinary otherType) {
+    public SNumber sub(ISubWithBinary otherType) {
         return otherType.subWithBinary(this);
     }
 
@@ -186,7 +188,7 @@ public class TypeBinary extends AbstractInteger {
      * @return The subtraction between the Float type and the other type.
      */
     @Override
-    public IType subWithFloat(TypeFloat typeFloat) {
+    public SNumber subWithFloat(TypeFloat typeFloat) {
         return new TypeFloat(typeFloat.getValue() - this.getValueAsInt());
     }
 
@@ -197,7 +199,7 @@ public class TypeBinary extends AbstractInteger {
      * @return The subtraction between the Int type and the other type.
      */
     @Override
-    public IType subWithInt(TypeInt typeInt) {
+    public SNumber subWithInt(TypeInt typeInt) {
         return new TypeInt(typeInt.getValue() - this.getValueAsInt());
     }
 
@@ -208,8 +210,52 @@ public class TypeBinary extends AbstractInteger {
      * @return The subtraction between the Binary type and the other type.
      */
     @Override
-    public IType subWithBinary(TypeBinary typeBinary) {
+    public SNumber subWithBinary(TypeBinary typeBinary) {
         String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValueAsInt());
         return new TypeBinary(subtraction);
+    }
+
+    /**
+     * Method that returns the multiplication between the current type and the other type.
+     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     *
+     * @param otherType Another type that will be multiplied to the current type.
+     * @return The multiplication between the two types, returning the dominant type.
+     */
+    public SNumber mult(IMultWithBinary otherType) {
+        return otherType.multWithBinary(this);
+    }
+
+    /**
+     * Returns the multiplication between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be multiplied to the current type.
+     * @return The multiplication between the Float type and the other type.
+     */
+    @Override
+    public SNumber multWithFloat(TypeFloat typeFloat) {
+        return new TypeFloat(typeFloat.getValue() * this.getValueAsInt());
+    }
+
+    /**
+     * Returns the multiplication between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be multiplied to the current type.
+     * @return The multiplication between the Int type and the other type.
+     */
+    @Override
+    public SNumber multWithInt(TypeInt typeInt) {
+        return new TypeInt(typeInt.getValue() * this.getValueAsInt());
+    }
+
+    /**
+     * Returns the multiplication between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be multiplied to the current type.
+     * @return The multiplication between the Binary type and the other type.
+     */
+    @Override
+    public SNumber multWithBinary(TypeBinary typeBinary) {
+        return new TypeBinary(intToBinary(typeBinary.getValueAsInt() * this.getValueAsInt()));
     }
 }

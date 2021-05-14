@@ -15,13 +15,15 @@ class TypeStringTest {
     private String aString;
     private String otherString;
     private String messageSeed;
+    private Random rng;
 
     @BeforeEach
     void setUp() {
         // Initialize a random seed and a random rng
         int seed = new Random().nextInt();
         messageSeed = " Seed: " + seed;
-        Random rng = new Random(seed);
+        rng = new Random(seed);
+        // Generate two strings random
         // Initialize a random string size
         int strSize = rng.nextInt(20);
         // Initialize random strings
@@ -80,32 +82,43 @@ class TypeStringTest {
     @RepeatedTest(20)
     void add() {
         // Test add with binary
-        var value1 = "0110";
-        var typeBinary = new TypeBinary(value1);
-        expectedTypeString = new TypeString(aString + value1);
-        assertEquals(expectedTypeString, typeString.add(typeBinary),
-                "Method add does not works with typeBinary." + messageSeed);
+        // Generate a binary random
+        int nBits = rng.nextInt(64) + 1; // Max 64 bits
+        char[] characters = {'0', '1'};
+        var aBinary = RandomStringUtils.random(nBits, 0, 2, false,
+                true, characters, rng);
+        var aTypeBinary = new TypeBinary(aBinary);
+        expectedTypeString = new TypeString(aString + aBinary);
+        assertEquals(expectedTypeString, typeString.add(aTypeBinary),
+                "Method add does not works with TypeBinary." + messageSeed);
         // Test add with bool
-        var value2 = true;
-        var typeBool = new TypeBool(value2);
-        expectedTypeString = new TypeString(aString + value2);
-        assertEquals(expectedTypeString, typeString.add(typeBool),
-                "Method add does not works with typeBool." + messageSeed);
+        var aBoolean = true;
+        var aTypeBool = new TypeBool(aBoolean);
+        expectedTypeString = new TypeString(aString + aBoolean);
+        assertEquals(expectedTypeString, typeString.add(aTypeBool),
+                "Method add does not works with TypeBool." + messageSeed);
         // Test add with float
-        var value3 = 3.141592;
-        var typeFloat = new TypeFloat(value3);
-        expectedTypeString = new TypeString(aString + value3);
-        assertEquals(expectedTypeString, typeString.add(typeFloat),
-                "Method add does not works with typeFloat." + messageSeed);
+        // Generate a float random
+        int maxExponent = rng.nextInt(33);
+        int maxSize = rng.nextInt((int) Math.pow(2, maxExponent));
+        int sgn = (int) Math.pow(-1, rng.nextInt(2));
+        var aFloat = sgn * rng.nextDouble() * maxSize;
+        var aTypeFloat = new TypeFloat(aFloat);
+        expectedTypeString = new TypeString(aString + aFloat);
+        assertEquals(expectedTypeString, typeString.add(aTypeFloat),
+                "Method add does not works with TypeFloat." + messageSeed);
         // Test add with int
-        var value4 = 3;
-        var typeInt = new TypeInt(value4);
-        expectedTypeString = new TypeString(aString + value4);
-        assertEquals(expectedTypeString, typeString.add(typeInt),
-                "Method add does not works with typeInt." + messageSeed);
+        // Generate an Int random
+        maxSize = rng.nextInt(100) + 1;
+        sgn = (int) Math.pow(-1, rng.nextInt(2));
+        var anInt = sgn * rng.nextInt(maxSize);
+        var aTypeInt = new TypeInt(anInt);
+        expectedTypeString = new TypeString(aString + anInt);
+        assertEquals(expectedTypeString, typeString.add(aTypeInt),
+                "Method add does not works with TypeInt." + messageSeed);
         // Test add with string
         expectedTypeString = new TypeString(aString + otherString);
         assertEquals(expectedTypeString, typeString.add(otherTypeString),
-                "Method add does not works with typeString." + messageSeed);
+                "Method add does not works with TypeString." + messageSeed);
     }
 }

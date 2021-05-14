@@ -16,18 +16,20 @@ class TypeBinaryTest {
     private String aBinary1;
     private String aBinary2;
     private String messageSeed;
-    private final int anInt = 42;
-    private final TypeInt aTypeInt = new TypeInt(anInt);
-    private final double aFloat = 3.141592;
-    private final TypeFloat aTypeFloat = new TypeFloat(aFloat);
-    private final String aString = "Hola mundo!";
-    private final TypeString aTypeString = new TypeString(aString);
+    private int anInt;
+    private TypeInt aTypeInt;
+    private double aFloat;
+    private TypeFloat aTypeFloat;
+    private String aString;
+    private TypeString aTypeString;
 
     @BeforeEach
     void setUp() {
+        // Initialize a random seed and a random rng
         int seed = new Random().nextInt();
         messageSeed = " Seed: " + seed;
         Random rng = new Random(seed);
+        // Generate 2 binaries random
         int nBits = rng.nextInt(64) + 1; // Max 64 bits
         char[] characters = {'0', '1'};
         aBinary1 = RandomStringUtils.random(nBits, 0, 2, false,
@@ -38,6 +40,22 @@ class TypeBinaryTest {
         } while (aBinary2.equals(aBinary1));
         typeBinary1 = new TypeBinary(aBinary1);
         typeBinary2 = new TypeBinary(aBinary2);
+        // Generate an Int random
+        int maxSize = rng.nextInt(100) + 1;
+        int sgn = (int) Math.pow(-1, rng.nextInt(2));
+        anInt = sgn * rng.nextInt(maxSize);
+        aTypeInt = new TypeInt(anInt);
+        // Generate a float random
+        int maxExponent = rng.nextInt(33);
+        maxSize = rng.nextInt((int) Math.pow(2, maxExponent));
+        sgn = (int) Math.pow(-1, rng.nextInt(2));
+        aFloat = sgn * rng.nextDouble() * maxSize;
+        aTypeFloat = new TypeFloat(aFloat);
+        // Generate a String Random
+        int strSize = rng.nextInt(20);
+        aString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
+                true, true, null, rng);
+        aTypeString = new TypeString(aString);
     }
 
     @RepeatedTest(20)
@@ -207,5 +225,39 @@ class TypeBinaryTest {
         var expected = new TypeBinary(binary1SubtractedWithBinary2);
         assertEquals(expected, typeBinary2.subWithBinary(typeBinary1),
                 "Method subWithBinary does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void mult() {
+        // Test multiplication with binary
+        var expectedTypeBinary = new TypeBinary(intToBinary(binaryToInt(aBinary1) * binaryToInt(aBinary2)));
+        assertEquals(expectedTypeBinary, typeBinary1.mult(typeBinary2),
+                "Method mult does not works with TypeBinary." + messageSeed);
+        // Test multiplication with int
+        expectedTypeBinary = new TypeBinary(intToBinary(binaryToInt(aBinary1) * anInt));
+        assertEquals(expectedTypeBinary, typeBinary1.mult(aTypeInt),
+                "Method mult does not works with TypeInt." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void multWithFloat() {
+        var expected = new TypeFloat(aFloat * binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.multWithFloat(aTypeFloat),
+                "Method multWithFloat does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void multWithInt() {
+        var expected = new TypeInt(anInt * binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.multWithInt(aTypeInt),
+                "Method multWithInt does not Works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void multWithBinary() {
+        var binary2MultWithBinary1 = intToBinary(binaryToInt(aBinary2) * binaryToInt(aBinary1));
+        var expected = new TypeBinary(binary2MultWithBinary1);
+        assertEquals(expected, typeBinary1.multWithBinary(typeBinary2),
+                "Method multWithBinary does not Works." + messageSeed);
     }
 }

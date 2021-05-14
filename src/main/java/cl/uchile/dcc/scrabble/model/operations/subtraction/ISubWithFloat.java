@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.operations.subtraction;
 
-import cl.uchile.dcc.scrabble.model.types.IType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 
 /**
@@ -14,5 +14,5 @@ public interface ISubWithFloat {
      * @param typeFloat A Float type who will be subtracted to the current type.
      * @return The subtraction between the Float type and the other type.
      */
-    IType subWithFloat(TypeFloat typeFloat);
+    SNumber subWithFloat(TypeFloat typeFloat);
 }

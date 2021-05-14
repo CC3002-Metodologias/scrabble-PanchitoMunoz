@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.IOpp;
+import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
@@ -81,7 +83,7 @@ public class TypeBool extends AbstractType implements IOpp {
      * @return The opposite of the current instance.
      */
     @Override
-    public IOpp opposite() {
+    public SType opposite() {
         return new TypeBool(!(this.value));
     }
 

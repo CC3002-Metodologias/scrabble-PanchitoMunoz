@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.operations.add;
 
-import cl.uchile.dcc.scrabble.model.types.IType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 
 /**
@@ -14,5 +14,5 @@ public interface IAddWithBinary {
      * @param typeBinary A Binary type who will be added to the current type.
      * @return The sum between the Binary type and the other type.
      */
-    IType addWithBinary(TypeBinary typeBinary);
+    SNumber addWithBinary(TypeBinary typeBinary);
 }
