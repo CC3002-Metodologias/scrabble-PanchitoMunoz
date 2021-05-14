@@ -268,4 +268,37 @@ public class TypeInt extends AbstractInteger {
     public SNumber div(IDivWithInt otherType){
         return null;
     }
+
+    /**
+     * Returns the division between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be divided to the current type.
+     * @return The division between the Binary type and the other type.
+     */
+    @Override
+    public SNumber divWithBinary(TypeBinary typeBinary) {
+        return null;
+    }
+
+    /**
+     * Returns the division between the current type and a Float Type.
+     *
+     * @param typeFloat A Float type who will be divided to the current type.
+     * @return The division between the Float type and the other type.
+     */
+    @Override
+    public SNumber divWithFloat(TypeFloat typeFloat) {
+        return null;
+    }
+
+    /**
+     * Returns the division between the current type and an Int Type.
+     *
+     * @param typeInt An Int type who will be divided to the current type.
+     * @return The division between the Int type and the other type.
+     */
+    @Override
+    public SNumber divWithInt(TypeInt typeInt) {
+        return null;
+    }
 }
