@@ -156,9 +156,9 @@ class TypeBoolTest {
         // Or with booleans
         assertEquals(trueTypeBool, trueTypeBool.or(trueTypeBool),
                 "Method or does not works with true and true booleans.");
-        assertEquals(falseTypeBool, trueTypeBool.or(falseTypeBool),
+        assertEquals(trueTypeBool, trueTypeBool.or(falseTypeBool),
                 "Method or does not works with true and false booleans.");
-        assertEquals(falseTypeBool, falseTypeBool.or(trueTypeBool),
+        assertEquals(trueTypeBool, falseTypeBool.or(trueTypeBool),
                 "Method or does not works with false and true booleans.");
         assertEquals(falseTypeBool, falseTypeBool.or(falseTypeBool),
                 "Method or does not works with false and false booleans.");
@@ -189,9 +189,9 @@ class TypeBoolTest {
     void orWithBool() {
         assertEquals(trueTypeBool, trueTypeBool.orWithBool(trueTypeBool),
                 "Method orWithBool does not works with true and true booleans.");
-        assertEquals(falseTypeBool, trueTypeBool.orWithBool(falseTypeBool),
+        assertEquals(trueTypeBool, trueTypeBool.orWithBool(falseTypeBool),
                 "Method orWithBool does not works with true and false booleans.");
-        assertEquals(falseTypeBool, falseTypeBool.orWithBool(trueTypeBool),
+        assertEquals(trueTypeBool, falseTypeBool.orWithBool(trueTypeBool),
                 "Method orWithBool does not works with false and true booleans.");
         assertEquals(falseTypeBool, falseTypeBool.orWithBool(falseTypeBool),
                 "Method orWithBool does not works with false and false booleans.");
