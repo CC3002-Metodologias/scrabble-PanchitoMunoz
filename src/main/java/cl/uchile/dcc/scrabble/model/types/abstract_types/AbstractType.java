@@ -14,4 +14,10 @@ public abstract class AbstractType implements SType, IAddWithStr {
      * @return TypeString with a value equivalent to the current type.
      */
     abstract public TypeString toTypeString();
+
+    abstract public boolean equals(Object obj);
+
+    abstract public int hashCode();
+
+    abstract public String toString();
 }
