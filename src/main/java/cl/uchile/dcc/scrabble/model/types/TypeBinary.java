@@ -320,7 +320,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBoo
      * @return The disjunction between the two types, returning the dominant type.
      */
     public SLogical and(IAndWithBinary otherType) {
-        return null;
+        return otherType.andWithBinary(this);
     }
 
     /**
@@ -330,7 +330,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBoo
      * @return The conjunction between the two types, returning the dominant type.
      */
     public SLogical or(IOrWithBinary otherType) {
-        return null;
+        return otherType.orWithBinary(this);
     }
 
     /**
@@ -341,7 +341,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBoo
      */
     @Override
     public SLogical andWithBool(TypeBool typeBool) {
-        return null;
+        return new TypeBinary(boolAndBinary(typeBool.getValue(), this.value));
     }
 
     /**
@@ -352,6 +352,6 @@ public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBoo
      */
     @Override
     public SLogical orWithBool(TypeBool typeBool) {
-        return null;
+        return new TypeBinary(boolOrBinary(typeBool.getValue(), this.value));
     }
 }

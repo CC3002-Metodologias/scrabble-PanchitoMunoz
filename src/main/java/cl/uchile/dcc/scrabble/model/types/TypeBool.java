@@ -11,6 +11,8 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
+
 /**
  * A class for the boolean type.
  * @author Francisco Muñoz Guajardo
@@ -110,7 +112,7 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      * @return The disjunction between the two types, returning the dominant type.
      */
     SLogical and(IAndWithBool otherType) {
-        return null;
+        return otherType.andWithBool(this);
     }
 
     /**
@@ -120,7 +122,7 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      * @return The conjunction between the two types, returning the dominant type.
      */
     SLogical or(IOrWithBool otherType) {
-        return null;
+        return otherType.orWithBool(this);
     }
 
     /**
@@ -131,7 +133,7 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      */
     @Override
     public SLogical andWithBool(TypeBool typeBool) {
-        return null;
+        return new TypeBool(typeBool.value && this.value);
     }
 
     /**
@@ -142,7 +144,7 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      */
     @Override
     public SLogical orWithBool(TypeBool typeBool) {
-        return null;
+        return new TypeBool(typeBool.value || this.value);
     }
 
     /**
@@ -153,7 +155,7 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      */
     @Override
     public SLogical andWithBinary(TypeBinary typeBinary) {
-        return null;
+        return new TypeBinary(boolAndBinary(this.value, typeBinary.getValue()));
     }
 
     /**
@@ -164,6 +166,6 @@ public class TypeBool extends AbstractType implements SLogical, IOpp, IAndWithBo
      */
     @Override
     public SLogical orWithBinary(TypeBinary typeBinary) {
-        return null;
+        return new TypeBinary(boolOrBinary(this.value, typeBinary.getValue()));
     }
 }
