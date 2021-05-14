@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.utils;
 
 /**
- * Class that provides the utilities for the transformation between int and binary.
+ * Class that provides functionalities for binaries.
  * @author Francisco Muñoz Guajardo.
  */
 public final class BinaryUtilities {
@@ -143,12 +143,24 @@ public final class BinaryUtilities {
         }
     }
 
+    /**
+     * Returns true if the value of 'binary1' is equals to 'binary2'. Otherwise, false.
+     * @param binary1 First binary to compare.
+     * @param binary2 Second binary to compare.
+     * @return true if the binaries are equals, otherwise false.
+     */
     public static boolean binaryEqual(String binary1, String binary2) {
         Integer binary1AsInt = binaryToInt(binary1);
         Integer binary2AsInt = binaryToInt(binary2);
         return binary1AsInt.equals(binary2AsInt);
     }
 
+    /**
+     * Operate the boolean 'bool' element by element in the binary 'binary' using the 'and' operator.
+     * @param bool A boolean to operate with 'binary'.
+     * @param binary A binary that will be operated by 'bool'.
+     * @return The binary operated by 'bool'.
+     */
     public static String boolAndBinary(boolean bool, String binary) {
         StringBuilder binaryToReturn = new StringBuilder(binary);
         for (int i = 0; i < binary.length(); i++) {
@@ -157,6 +169,12 @@ public final class BinaryUtilities {
         return binaryToReturn.toString();
     }
 
+    /**
+     * Operate the boolean 'bool' element by element in the binary 'binary' using the 'or' operator.
+     * @param bool A boolean to operate with 'binary'.
+     * @param binary A binary that will be operated by 'bool'.
+     * @return The binary operated by 'bool'.
+     */
     public static String boolOrBinary(boolean bool, String binary) {
         StringBuilder binaryToReturn = new StringBuilder(binary);
         for (int i = 0; i < binary.length(); i++) {
