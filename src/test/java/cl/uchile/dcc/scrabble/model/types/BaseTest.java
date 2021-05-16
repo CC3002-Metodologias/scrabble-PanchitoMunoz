@@ -2,7 +2,6 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
@@ -14,57 +13,57 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  */
 public class BaseTest {
     // Randoms
-    private int seed;
-    private Random rng;
-    private String messageSeed;
+    protected int seed;
+    protected Random rng;
+    protected String messageSeed;
     // Binaries
-    private String aBinary1;
-    private TypeBinary typeBinary1;
-    private String aBinary2;
-    private TypeBinary typeBinary2;
+    protected String aBinary1;
+    protected TypeBinary typeBinary1;
+    protected String aBinary2;
+    protected TypeBinary typeBinary2;
     // Booleans
-    private final boolean trueBoolean = true;
-    private final TypeBool trueTypeBool = new TypeBool(trueBoolean);
-    private final boolean falseBoolean = false;
-    private final TypeBool falseTypeBool = new TypeBool(falseBoolean);
+    protected final boolean trueBoolean = true;
+    protected final TypeBool trueTypeBool = new TypeBool(trueBoolean);
+    protected final boolean falseBoolean = false;
+    protected final TypeBool falseTypeBool = new TypeBool(falseBoolean);
     // Floats
-    private double aFloat1;
-    private TypeFloat typeFloat1;
-    private double aFloat2;
-    private TypeFloat typeFloat2;
+    protected double aFloat1;
+    protected TypeFloat typeFloat1;
+    protected double aFloat2;
+    protected TypeFloat typeFloat2;
     // Ints
-    private int anInt1;
-    private TypeInt typeInt1;
-    private int anInt2;
-    private TypeInt typeInt2;
+    protected int anInt1;
+    protected TypeInt typeInt1;
+    protected int anInt2;
+    protected TypeInt typeInt2;
     // Strings
-    private String aString1;
-    private TypeString typeString1;
-    private String aString2;
-    private TypeString typeString2;
+    protected String aString1;
+    protected TypeString typeString1;
+    protected String aString2;
+    protected TypeString typeString2;
 
-    private static String generateABinaryRandom(Random rng, int minBits, int maxBits) {
+    protected static String generateABinaryRandom(Random rng, int minBits, int maxBits) {
         int nBits = rng.nextInt(maxBits - minBits + 1) + minBits;
         char[] characters = {'0', '1'};
         return RandomStringUtils.random(nBits, 0, 2,
                 false, true, characters, rng);
     }
 
-    private static double generateAFloatRandom(Random rng, int maxExponent) {
+    protected static double generateAFloatRandom(Random rng, int maxExponent) {
         int randomExponent = rng.nextInt(maxExponent);
         int maxSize = rng.nextInt((int) Math.pow(10, randomExponent));
         int sgn = (int) Math.pow(-1, rng.nextInt(2));
         return sgn * rng.nextDouble() * maxSize;
     }
 
-    private static int generateAnIntRandom(Random rng, int maxExponent) {
+    protected static int generateAnIntRandom(Random rng, int maxExponent) {
         int randomExponent = rng.nextInt(maxExponent);
-        int maxSize = rng.nextInt((int) Math.pow(10, randomExponent));
+        int maxSize = rng.nextInt((int) Math.pow(10, randomExponent)) + 1;
         int sgn = (int) Math.pow(-1, rng.nextInt(2));
         return sgn * rng.nextInt(maxSize);
     }
 
-    private static String generateAStringRandom(Random rng, int maxLength) {
+    protected static String generateAStringRandom(Random rng, int maxLength) {
         int strSize = rng.nextInt(maxLength);
         return RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
                 true, true, null, rng);
@@ -104,25 +103,5 @@ public class BaseTest {
         } while (aString2.equals(aString1));
         typeString1 = new TypeString(aString1);
         typeString2 = new TypeString(aString2);
-    }
-
-    @Test
-    void aTest() {
-        System.out.println(aBinary1);
-        System.out.println(aBinary2);
-        System.out.println(typeBinary1);
-        System.out.println(typeBinary2);
-        System.out.println(aFloat1);
-        System.out.println(aFloat2);
-        System.out.println(typeFloat1);
-        System.out.println(typeFloat2);
-        System.out.println(anInt1);
-        System.out.println(anInt2);
-        System.out.println(typeInt1);
-        System.out.println(typeInt2);
-        System.out.println(aString1);
-        System.out.println(aString2);
-        System.out.println(typeString1);
-        System.out.println(typeString2);
     }
 }
