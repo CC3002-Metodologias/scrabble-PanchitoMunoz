@@ -1,5 +1,8 @@
 package cl.uchile.dcc.scrabble.model.utils;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
  * Class that provides functionalities for binaries.
  * @author Francisco Muñoz Guajardo.
@@ -9,6 +12,36 @@ public final class BinaryUtilities {
      * Private constructor to avoid instance of this class.
      */
     private BinaryUtilities() {}
+
+    private static String addOne(String binary) {
+        StringBuilder copyBinary = new StringBuilder(binary);
+        int i = binary.length() - 1;
+        while (i >= 0) {
+            if (binary.charAt(i) == '1') {
+                copyBinary.setCharAt(i, '0');
+                i--;
+            } else {
+                copyBinary.setCharAt(i, '1');
+                i = -1;
+            }
+        }
+        return copyBinary.toString();
+    }
+
+    private static String subOne(String binary) {
+        StringBuilder copyBinary = new StringBuilder(binary);
+        int i = binary.length() - 1;
+        while (i >= 0) {
+            if (binary.charAt(i) == '0') {
+                copyBinary.setCharAt(i, '1');
+                i--;
+            } else {
+                copyBinary.setCharAt(i, '0');
+                i = -1;
+            }
+        }
+        return copyBinary.toString();
+    }
 
     /**
      * Transform a bit to an int.
@@ -38,20 +71,9 @@ public final class BinaryUtilities {
      * @return The representation of the binary number as an integer.
      */
     private static int negativeBinaryToInt(String binary) {
-        // subtract one to binary
-        StringBuilder binaryMinusOne = new StringBuilder(binary);
-        int i = binary.length() - 1;
-        while (i >= 0) {
-            if (bitToInt(binary.charAt(i)) == 0) {
-                binaryMinusOne.setCharAt(i, '1');
-                i--;
-            } else {
-                binaryMinusOne.setCharAt(i, '0');
-                i = -1;
-            }
-        }
-        String binaryMinusOneOneComplement = oneComplement(binaryMinusOne.toString());
-        return -positiveBinaryToInt(binaryMinusOneOneComplement);
+        String binaryToReturn = subOne(binary);
+        binaryToReturn = oneComplement(binaryToReturn);
+        return -positiveBinaryToInt(binaryToReturn);
     }
 
     /**
@@ -73,20 +95,9 @@ public final class BinaryUtilities {
      * @return The two complements of 'binary'.
      */
     private static String twosComplement(String binary) {
-        String oppositeBinary = oneComplement(binary);
-        // The following code adds 1 in binary to the oppositeBinary
-        StringBuilder copyOppositeBinary = new StringBuilder(oppositeBinary);
-        int i = oppositeBinary.length() - 1;
-        while (i >= 0) {
-            if (oppositeBinary.charAt(i) == '1') {
-                copyOppositeBinary.setCharAt(i, '0');
-                i--;
-            } else {
-                copyOppositeBinary.setCharAt(i, '1');
-                i = -1;
-            }
-        }
-        return copyOppositeBinary.toString();
+        String binaryToReturn  = oneComplement(binary);
+        binaryToReturn = addOne(binaryToReturn);
+        return binaryToReturn;
     }
 
     /**
@@ -107,18 +118,14 @@ public final class BinaryUtilities {
         } while (nBitsAtLeast > (int) Math.pow(2, j - 1));
         // Generate an array with the numbers of bits necessary
         int[] binary = new int[nBits];
-        int id = 0;
+        int id = nBits - 1;
         while (intNumber > 0) {
             binary[id] = intNumber % 2;
             intNumber = intNumber / 2;
-            id++;
+            id--;
         }
         // Make the binary as a string
-        StringBuilder binaryString = new StringBuilder();
-        for (int i = binary.length - 1; i >= 0; i--) {
-            binaryString.append(binary[i]);
-        }
-        return binaryString.toString();
+        return IntStream.range(0, nBits).mapToObj(i -> String.valueOf(binary[i])).collect(Collectors.joining());
     }
 
     /**
@@ -154,8 +161,17 @@ public final class BinaryUtilities {
      */
     public static int binaryToInt(String binary) {
         // Pathologic cases
-        if (binary.length() == 1) return bitToInt(binary.charAt(0));
-        if (binary.length() == 2) return (binary.equals("00") || binary.equals("11")) ? 0 : 1;
+        switch (binary) {
+            case "1":
+            case "01":
+            case "10":
+                return 1;
+            case "00":
+            case "11":
+                return 0;
+            default:
+                break;
+        }
         if (bitToInt(binary.charAt(0)) == 0) {
             return positiveBinaryToInt(binary);
         } else {
