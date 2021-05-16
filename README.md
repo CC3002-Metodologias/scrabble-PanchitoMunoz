@@ -48,7 +48,7 @@ los siguientes tipos de datos:
   , un número real, como por ejemplo 1.3333 o 3.1416.
 * _TypeInt_: Utilizado para representar un número entero, como por ejemplo -3 o 42.
 * _TypeBinary_: Utilizado para representar un número entero como un número binario.
-  Es necesario mencionar que para representar un negativo en binario se utiliza su 
+  Cabe mencionar que para representar un negativo en binario se utiliza su 
   [complemento dos](https://en.wikipedia.org/wiki/Two%27s_complement) para este propósito.
   Por ejemplo, `0110` representa al número 6 y `1010` representa al número -6.
 
@@ -63,8 +63,9 @@ dependiendo de su comportamiento. Más precisamente:
   En esta categoría entran _TypeInt_ y _TypeBinary_.
 * _SLogical_: Corresponden a todos aquellos que tienen una representación lógica 
   (con 0 o 1), o bien, se pueden operar con operadores lógicos (como `and` o `or`,
-  para más detalles revise la sección ???). En esta categoría se encuentran 
-  _TypeBool_ y _TypeBinary_. 
+  para más detalles revise la sección 
+  [Operaciones entre tipos de datos](#operaciones-entre-tipos-de-datos)). En esta 
+  categoría se encuentran _TypeBool_ y _TypeBinary_. 
   
 ## Trasformaciones entre tipos de datos
 Existe la posibilidad que se desee transformar un tipo de dato en otro. Esto se puede 
