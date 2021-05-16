@@ -69,8 +69,8 @@ dependiendo de su comportamiento. Más precisamente:
   
 ## Trasformaciones entre tipos de datos
 Existe la posibilidad que se desee transformar un tipo de dato en otro. Esto se puede 
-hacer por medio de la instrucción `aType.toType<otherType>()` donde `<otherType>` puede
-ser un _String_, _Bool_, _Float_, _Int_ y _Binary_. 
+hacer mediante instrucción `aType.toType<otherType>()` donde `<otherType>` puede
+ser un _String_, _Bool_, _Float_, _Int_ o _Binary_. 
 Las distintas transformaciones entre tipos de datos se resumen en la siguiente tabla:
 
 Tipos | TypeString | TypeBool | TypeFloat | TypeInt | TypeBinary
@@ -90,8 +90,7 @@ Donde el único caso distinto es _TypeBool_ que adicionalmente posee la
 transformación a _TypeBool_.
 
 ## Operaciones entre tipos de datos
-Se provee además de distintas operaciones entre los tipos. Las distintas operaciones
-disponibles son:
+Se provee además de distintas operaciones entre los tipos. Estas son:
 * `add`: Corresponde a la suma de dos tipos.
 * `sub`: Corresponde a la resta de dos tipos.
 * `mult`: Corresponde a la multiplicación de dos tipos.

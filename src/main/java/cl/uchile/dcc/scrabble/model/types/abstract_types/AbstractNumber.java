@@ -1,13 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
-import cl.uchile.dcc.scrabble.model.operations.add.IAddWithInt;
-import cl.uchile.dcc.scrabble.model.operations.division.IDivWithFloat;
-import cl.uchile.dcc.scrabble.model.operations.division.IDivWithInt;
-import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithFloat;
-import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithInt;
-import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithFloat;
-import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
+import cl.uchile.dcc.scrabble.model.operations.add.*;
+import cl.uchile.dcc.scrabble.model.operations.division.*;
+import cl.uchile.dcc.scrabble.model.operations.multiplication.*;
+import cl.uchile.dcc.scrabble.model.operations.subtraction.*;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 

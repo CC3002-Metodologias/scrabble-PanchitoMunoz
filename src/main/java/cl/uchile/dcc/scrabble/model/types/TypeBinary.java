@@ -123,7 +123,7 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      * @return The negation of the current instance.
      */
     @Override
-    public SLogical negation() {
+    public SLogical neg() {
         return new TypeBinary(oneComplement(this.value));
     }
 

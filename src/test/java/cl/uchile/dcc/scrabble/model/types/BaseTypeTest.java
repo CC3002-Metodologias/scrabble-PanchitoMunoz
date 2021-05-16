@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Random;
 
@@ -50,56 +49,63 @@ public class BaseTypeTest {
     }
 
     protected static double generateAFloatRandom(Random rng, int maxExponent) {
-        int randomExponent = rng.nextInt(maxExponent);
+        int randomExponent = rng.nextInt(maxExponent + 1);
         int maxSize = rng.nextInt((int) Math.pow(10, randomExponent));
         int sgn = (int) Math.pow(-1, rng.nextInt(2));
         return sgn * rng.nextDouble() * maxSize;
     }
 
     protected static int generateAnIntRandom(Random rng, int maxExponent) {
-        int randomExponent = rng.nextInt(maxExponent);
+        int randomExponent = rng.nextInt(maxExponent + 1);
         int maxSize = rng.nextInt((int) Math.pow(10, randomExponent)) + 1;
         int sgn = (int) Math.pow(-1, rng.nextInt(2));
         return sgn * rng.nextInt(maxSize);
     }
 
     protected static String generateAStringRandom(Random rng, int maxLength) {
-        int strSize = rng.nextInt(maxLength);
+        int strSize = rng.nextInt(maxLength + 1);
         return RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
                 true, true, null, rng);
     }
 
-    @BeforeEach
+    /**
+     * To change the seed in case it is needed.
+     * @param aSeed A seed as an int.
+     */
+    void setSeed(int aSeed) {
+        this.seed = aSeed;
+    }
+
     void setUp() {
         // Initialize a random seed and a random rng
-        seed = new Random().nextInt();
+        setSeed(new Random().nextInt());
         messageSeed = " Seed: " + seed;
         rng = new Random(seed);
         // Generate 2 binaries random
-        aBinary1 = generateABinaryRandom(rng, 3, 32);
+        aBinary1 = generateABinaryRandom(rng, 4, 32);
         do {
-            aBinary2 = generateABinaryRandom(rng, 3, 32);
+            aBinary2 = generateABinaryRandom(rng, 3, 31);
         } while (binaryEqual(aBinary1, aBinary2));
         typeBinary1 = new TypeBinary(aBinary1);
         typeBinary2 = new TypeBinary(aBinary2);
         // Generate 2 floats random
         aFloat1 = generateAFloatRandom(rng, 10);
         do {
-            aFloat2 = generateAFloatRandom(rng, 10);
+            aFloat2 = generateAFloatRandom(rng, 9);
         } while (aFloat2 == aFloat1);
         typeFloat1 = new TypeFloat(aFloat1);
         typeFloat2 = new TypeFloat(aFloat2);
         // Generate 2 ints random
         anInt1 = generateAnIntRandom(rng, 10);
         do {
-            anInt2 = generateAnIntRandom(rng, 10);
+            anInt2 = generateAnIntRandom(rng, 9);
         } while (anInt2 == anInt1);
         typeInt1 = new TypeInt(anInt1);
         typeInt2 = new TypeInt(anInt2);
         // Generate 2 strings random
         aString1 = generateAStringRandom(rng, 20);
         do {
-            aString2 = generateAStringRandom(rng, 20);
+            aString2 = generateAStringRandom(rng, 19);
         } while (aString2.equals(aString1));
         typeString1 = new TypeString(aString1);
         typeString2 = new TypeString(aString2);

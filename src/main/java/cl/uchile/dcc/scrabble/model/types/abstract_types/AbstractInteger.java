@@ -5,8 +5,7 @@ import cl.uchile.dcc.scrabble.model.operations.division.IDivWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.types.*;
 
 /**
  * An abstract class for numbers that are like integers (e.g.: TypeInt and TypeBinary).

@@ -89,11 +89,11 @@ class TypeBoolTest extends BaseTypeTest {
     }
 
     @Test
-    void negation() {
-        assertEquals(falseTypeBool, trueTypeBool.negation(),
-                "Method negation does not works with true.");
-        assertEquals(trueTypeBool, falseTypeBool.negation(),
-                "Method negation does not works with false.");
+    void neg() {
+        assertEquals(falseTypeBool, trueTypeBool.neg(),
+                "Method neg does not works with true.");
+        assertEquals(trueTypeBool, falseTypeBool.neg(),
+                "Method neg does not works with false.");
     }
 
     @Test

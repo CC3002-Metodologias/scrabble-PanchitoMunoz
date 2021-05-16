@@ -100,12 +100,12 @@ class TypeBinaryTest extends BaseTypeTest {
     }
 
     @RepeatedTest(20)
-    void negation() {
+    void neg() {
         // Changing each 1 for 0 and each 0 for 1 is equivalent to applying one complement.
         String aBinaryNegative1 = oneComplement(aBinary1);
         TypeBinary typeBinaryNegative1 = new TypeBinary(aBinaryNegative1);
-        assertEquals(typeBinaryNegative1, typeBinary1.negation(),
-                "Method negation does not works." + messageSeed);
+        assertEquals(typeBinaryNegative1, typeBinary1.neg(),
+                "Method neg does not works." + messageSeed);
     }
 
     @RepeatedTest(20)

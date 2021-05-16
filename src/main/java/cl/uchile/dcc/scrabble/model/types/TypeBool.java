@@ -1,9 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
-import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
+import cl.uchile.dcc.scrabble.model.operations.and.*;
+import cl.uchile.dcc.scrabble.model.operations.or.*;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 
@@ -91,7 +89,7 @@ public class TypeBool extends AbstractType implements SLogical, IAndWithBinary, 
      * @return The negation of the current instance.
      */
     @Override
-    public SLogical negation() {
+    public SLogical neg() {
         return new TypeBool(!(this.value));
     }
 
