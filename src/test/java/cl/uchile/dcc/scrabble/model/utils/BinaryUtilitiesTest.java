@@ -18,6 +18,10 @@ class BinaryUtilitiesTest {
     String aBinaryM4 = "1100";
     String aBinaryP10 = "01010";
     String aBinary0 = "0";
+    int aStrangerInt1 = -1310239983;
+    int aStrangerInt2 = -83937223;
+    String aStrangeBinary1 = "10110001111001110101001100010001";
+    String aStrangeBinary2 = "11111010111111110011100000111001";
 
     @BeforeEach
     void setUp() {
@@ -48,10 +52,8 @@ class BinaryUtilitiesTest {
         assertTrue(BinaryUtilities.binaryEqual(aBinaryP4, BinaryUtilities.addTwoBinaries(aBinaryP10, aBinaryM6)));
         // An edge case thrown in TypeIntTest
         var expectedBinary = "10101100111001101000101101001010";
-        var binary1 = BinaryUtilities.intToBinary(-1310239983);
-        System.out.println(binary1);
-        var binary2 = BinaryUtilities.intToBinary(-83937223);
-        System.out.println(binary2);
+        var binary1 = BinaryUtilities.intToBinary(aStrangerInt1);
+        var binary2 = BinaryUtilities.intToBinary(aStrangerInt2);
         var resultBinary = BinaryUtilities.addTwoBinaries(binary1, binary2);
         assertTrue(BinaryUtilities.binaryEqual(expectedBinary, resultBinary),
                 "expected: " + expectedBinary + "\nresult: " + resultBinary);
@@ -65,10 +67,10 @@ class BinaryUtilitiesTest {
         assertTrue(BinaryUtilities.binaryEqual(expectedBinary1, binary1),
                 "Expected: " + expectedBinary1 + "\nResult: " + binary1);
         // An edge case thrown in TypeIntTest
-        binary1 = BinaryUtilities.intToBinary(-1310239983);
-        var binary2 = BinaryUtilities.intToBinary(-83937223);
-        expectedBinary1 = "10110001111001110101001100010001";
-        var expectedBinary2 = "11111010111111110011100000111001";
+        binary1 = BinaryUtilities.intToBinary(aStrangerInt1);
+        var binary2 = BinaryUtilities.intToBinary(aStrangerInt2);
+        expectedBinary1 = aStrangeBinary1;
+        var expectedBinary2 = aStrangeBinary2;
         assertTrue(BinaryUtilities.binaryEqual(expectedBinary1, binary1),
                 "Expected: " + expectedBinary1 + "\nResult: " + binary1);
         assertTrue(BinaryUtilities.binaryEqual(expectedBinary2, binary2),
@@ -102,8 +104,8 @@ class BinaryUtilitiesTest {
     @Test
     void binaryToInt() {
         // An edge case thrown in TypeIntTest
-        assertEquals(-1310239983, BinaryUtilities.binaryToInt("10110001111001110101001100010001"));
-        assertEquals(-83937223, BinaryUtilities.binaryToInt("11111010111111110011100000111001"));
+        assertEquals(aStrangerInt1, BinaryUtilities.binaryToInt(aStrangeBinary1));
+        assertEquals(aStrangerInt2, BinaryUtilities.binaryToInt(aStrangeBinary2));
         // Tests by default
         assertEquals(anIntM4, BinaryUtilities.binaryToInt(aBinaryM4));
         assertEquals(anIntP4, BinaryUtilities.binaryToInt(aBinaryP4));
