@@ -8,10 +8,10 @@ import java.util.Random;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
 
 /**
- * A base test that contains the standard set up of every test
+ * A base class that contains the standard settings for each test class in types.
  * @author Francisco Muñoz Guajardo
  */
-public class BaseTest {
+public class BaseTypeTest {
     // Randoms
     protected int seed;
     protected Random rng;
