@@ -38,12 +38,20 @@ public final class BinaryUtilities {
      * @return The representation of the binary number as an integer.
      */
     private static int negativeBinaryToInt(String binary) {
-        int n = binary.length() - 1 ;
-        int w = -bitToInt(binary.charAt(0)) * (int) Math.pow(2, n);
-        for (int i = n, j = 0; i > 0; i--, j++) {
-            w += (int) Math.pow(2, j) * (binary.charAt(i) == '1' ? 1 : 0);
+        // subtract one to binary
+        StringBuilder binaryMinusOne = new StringBuilder(binary);
+        int i = binary.length() - 1;
+        while (i >= 0) {
+            if (bitToInt(binary.charAt(i)) == 0) {
+                binaryMinusOne.setCharAt(i, '1');
+                i--;
+            } else {
+                binaryMinusOne.setCharAt(i, '0');
+                i = -1;
+            }
         }
-        return w;
+        String binaryMinusOneOneComplement = oneComplement(binaryMinusOne.toString());
+        return -positiveBinaryToInt(binaryMinusOneOneComplement);
     }
 
     /**
@@ -87,8 +95,17 @@ public final class BinaryUtilities {
      * @return The binary representation of 'intNumber'.
      */
     private static String positiveIntToBinary(int intNumber) {
-        if (intNumber == 0) return "0";
-        int nBits = (int) (Math.floor(Math.log(intNumber) / Math.log(2)) + 1);
+        // If the number is 0, return "0"
+        if (intNumber == 0) return "0000000000000000";
+        // Calculate the number of bits necessary
+        int nBitsAtLeast = Math.max((int) Math.floor(Math.log(intNumber) / Math.log(2)) + 1, 8);
+        int j = 0;
+        int nBits;
+        do {
+            j++;
+            nBits = (int) Math.pow(2, j);
+        } while (nBitsAtLeast > (int) Math.pow(2, j - 1));
+        // Generate an array with the numbers of bits necessary
         int[] binary = new int[nBits];
         int id = 0;
         while (intNumber > 0) {
@@ -96,11 +113,12 @@ public final class BinaryUtilities {
             intNumber = intNumber / 2;
             id++;
         }
+        // Make the binary as a string
         StringBuilder binaryString = new StringBuilder();
         for (int i = binary.length - 1; i >= 0; i--) {
             binaryString.append(binary[i]);
         }
-        return "0" + binaryString;
+        return binaryString.toString();
     }
 
     /**
@@ -135,7 +153,9 @@ public final class BinaryUtilities {
      * @return The representation of the binary number as an integer.
      */
     public static int binaryToInt(String binary) {
-        if (binary.equals("0")) return 0;
+        // Pathologic cases
+        if (binary.length() == 1) return bitToInt(binary.charAt(0));
+        if (binary.length() == 2) return (binary.equals("00") || binary.equals("11")) ? 0 : 1;
         if (bitToInt(binary.charAt(0)) == 0) {
             return positiveBinaryToInt(binary);
         } else {

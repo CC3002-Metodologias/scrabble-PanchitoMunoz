@@ -6,7 +6,6 @@ import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithFloat;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithFloat;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
@@ -25,6 +24,10 @@ public class TypeFloat extends AbstractNumber {
         this.value = value;
     }
 
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
     protected double getValue() {
         return this.value;
     }
@@ -80,16 +83,6 @@ public class TypeFloat extends AbstractNumber {
     @Override
     public TypeFloat toTypeFloat() {
         return new TypeFloat(this.value);
-    }
-
-    /**
-     * Returns the negative of the current instance.
-     *
-     * @return The opposite of the current instance.
-     */
-    @Override
-    public SType opposite() {
-        return new TypeFloat(-this.value);
     }
 
     /**

@@ -2,16 +2,13 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
 import cl.uchile.dcc.scrabble.model.operations.division.IDivWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
@@ -21,7 +18,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBool, IOrWithBool {
+public class TypeBinary extends AbstractInteger implements SLogical {
     private final String value;
 
     /**
@@ -32,10 +29,18 @@ public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBoo
         this.value = value;
     }
 
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
     protected String getValue() {
         return this.value;
     }
 
+    /**
+     * Returns the current value of the instance as an Int.
+     * @return The value in the instance
+     */
     protected int getValueAsInt() {
         return binaryToInt(this.value);
     }
@@ -114,12 +119,11 @@ public class TypeBinary extends AbstractInteger implements SLogical, IAndWithBoo
     }
 
     /**
-     * Returns the opposite of the current instance. In binary, it is changing each 0 for 1 and each 1 for 0.
-     *
-     * @return The opposite of the current instance.
+     * Returns the negation of the current instance.
+     * @return The negation of the current instance.
      */
     @Override
-    public SType opposite() {
+    public SLogical negation() {
         return new TypeBinary(oneComplement(this.value));
     }
 

@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.operations.IOpp;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithInt;
 import cl.uchile.dcc.scrabble.model.operations.division.IDivWithFloat;
@@ -17,7 +16,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeFloat;
  * @author Francisco Muñoz Guajardo
  */
 public abstract class AbstractNumber extends AbstractType
-        implements SNumber, IOpp, IAddWithFloat, IAddWithInt, ISubWithFloat,  ISubWithInt,
+        implements SNumber, IAddWithFloat, IAddWithInt, ISubWithFloat,  ISubWithInt,
         IMultWithFloat, IMultWithInt, IDivWithFloat, IDivWithInt {
     /**
      * Transforms the current type to a TypeFloat.

@@ -1,65 +1,16 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
 
-class TypeBinaryTest {
-    private TypeBinary typeBinary1;
-    private TypeBinary typeBinary2;
-    private String aBinary1;
-    private String aBinary2;
-    private String messageSeed;
-    private int anInt;
-    private TypeInt aTypeInt;
-    private double aFloat;
-    private TypeFloat aTypeFloat;
-    private String aString;
-    private TypeString aTypeString;
-    private final boolean trueBoolean = true;
-    private final TypeBool trueTypeBool = new TypeBool(trueBoolean);
-    private final boolean falseBoolean = false;
-    private final TypeBool falseTypeBool = new TypeBool(falseBoolean);
+class TypeBinaryTest extends BaseTypeTest {
 
     @BeforeEach
     void setUp() {
-        // Initialize a random seed and a random rng
-        int seed = new Random().nextInt();
-        messageSeed = " Seed: " + seed;
-        Random rng = new Random(seed);
-        // Generate 2 binaries random
-        int nBits = rng.nextInt(64) + 1; // Max 64 bits
-        char[] characters = {'0', '1'};
-        aBinary1 = RandomStringUtils.random(nBits, 0, 2, false,
-                true, characters, rng);
-        do {
-            aBinary2 = RandomStringUtils.random(nBits, 0, 2, false,
-                    true, characters, rng);
-        } while (aBinary2.equals(aBinary1));
-        typeBinary1 = new TypeBinary(aBinary1);
-        typeBinary2 = new TypeBinary(aBinary2);
-        // Generate an Int random
-        int maxSize = rng.nextInt(100) + 1;
-        int sgn = (int) Math.pow(-1, rng.nextInt(2));
-        anInt = sgn * rng.nextInt(maxSize);
-        aTypeInt = new TypeInt(anInt);
-        // Generate a float random
-        int maxExponent = rng.nextInt(33);
-        maxSize = rng.nextInt((int) Math.pow(2, maxExponent));
-        sgn = (int) Math.pow(-1, rng.nextInt(2));
-        aFloat = sgn * rng.nextDouble() * maxSize;
-        aTypeFloat = new TypeFloat(aFloat);
-        // Generate a String Random
-        int strSize = rng.nextInt(20);
-        aString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT,
-                true, true, null, rng);
-        aTypeString = new TypeString(aString);
+        super.setUp();
     }
 
     @RepeatedTest(20)
@@ -149,12 +100,12 @@ class TypeBinaryTest {
     }
 
     @RepeatedTest(20)
-    void opposite() {
+    void negation() {
         // Changing each 1 for 0 and each 0 for 1 is equivalent to applying one complement.
         String aBinaryNegative1 = oneComplement(aBinary1);
         TypeBinary typeBinaryNegative1 = new TypeBinary(aBinaryNegative1);
-        assertEquals(typeBinaryNegative1, typeBinary1.opposite(),
-                "Method opposite does not works." + messageSeed);
+        assertEquals(typeBinaryNegative1, typeBinary1.negation(),
+                "Method negation does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -164,29 +115,29 @@ class TypeBinaryTest {
         assertEquals(expected, typeBinary1.add(typeBinary2),
                 "Method add does not works with TypeBinary." + messageSeed);
         // Test add with int
-        expected = new TypeBinary(addTwoBinaries(aBinary1, intToBinary(anInt)));
-        assertEquals(expected, typeBinary1.add(aTypeInt),
+        expected = new TypeBinary(addTwoBinaries(aBinary1, intToBinary(anInt1)));
+        assertEquals(expected, typeBinary1.add(typeInt1),
                 "Method add does not works with TypeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
     void addWithString() {
-        var expectedTypeString = new TypeString(aString + aBinary1);
-        assertEquals(expectedTypeString, typeBinary1.addWithString(aTypeString),
+        var expectedTypeString = new TypeString(aString1 + aBinary1);
+        assertEquals(expectedTypeString, typeBinary1.addWithString(typeString1),
                 "Method addWithString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void addWithInt() {
-        var expected = new TypeInt(anInt + binaryToInt(aBinary1));
-        assertEquals(expected, typeBinary1.addWithInt(aTypeInt),
+        var expected = new TypeInt(anInt1 + binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.addWithInt(typeInt1),
                 "Method addWithInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void addWithFloat() {
-        var expected = new TypeFloat(aFloat + binaryToInt(aBinary1));
-        assertEquals(expected, typeBinary1.addWithFloat(aTypeFloat),
+        var expected = new TypeFloat(aFloat1 + binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.addWithFloat(typeFloat1),
                 "Method addWithFloat does not works." + messageSeed);
     }
 
@@ -204,22 +155,22 @@ class TypeBinaryTest {
         assertEquals(expected, typeBinary1.sub(typeBinary2),
                 "Method sub does not works with TypeBinary." + messageSeed);
         // Test subtraction with int
-        expected = new TypeBinary(intToBinary(binaryToInt(aBinary1) - anInt));
-        assertEquals(expected, typeBinary1.sub(aTypeInt),
+        expected = new TypeBinary(intToBinary(binaryToInt(aBinary1) - anInt1));
+        assertEquals(expected, typeBinary1.sub(typeInt1),
                 "Method sub does not works with TypeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
     void subWithFloat() {
-        var expected = new TypeFloat(aFloat - binaryToInt(aBinary1));
-        assertEquals(expected, typeBinary1.subWithFloat(aTypeFloat),
+        var expected = new TypeFloat(aFloat1 - binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.subWithFloat(typeFloat1),
                 "Method subWithFloat does not Works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void subWithInt() {
-        var expected = new TypeInt(anInt - typeBinary1.getValueAsInt());
-        assertEquals(expected, typeBinary1.subWithInt(aTypeInt),
+        var expected = new TypeInt(anInt1 - typeBinary1.getValueAsInt());
+        assertEquals(expected, typeBinary1.subWithInt(typeInt1),
                 "Method subWithInt does not Works." + messageSeed);
     }
 
@@ -238,22 +189,22 @@ class TypeBinaryTest {
         assertEquals(expectedTypeBinary, typeBinary1.mult(typeBinary2),
                 "Method mult does not works with TypeBinary." + messageSeed);
         // Test multiplication with int
-        expectedTypeBinary = new TypeBinary(intToBinary(binaryToInt(aBinary1) * anInt));
-        assertEquals(expectedTypeBinary, typeBinary1.mult(aTypeInt),
+        expectedTypeBinary = new TypeBinary(intToBinary(binaryToInt(aBinary1) * anInt1));
+        assertEquals(expectedTypeBinary, typeBinary1.mult(typeInt1),
                 "Method mult does not works with TypeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
     void multWithFloat() {
-        var expected = new TypeFloat(aFloat * binaryToInt(aBinary1));
-        assertEquals(expected, typeBinary1.multWithFloat(aTypeFloat),
+        var expected = new TypeFloat(aFloat1 * binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.multWithFloat(typeFloat1),
                 "Method multWithFloat does not Works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void multWithInt() {
-        var expected = new TypeInt(anInt * binaryToInt(aBinary1));
-        assertEquals(expected, typeBinary1.multWithInt(aTypeInt),
+        var expected = new TypeInt(anInt1 * binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.multWithInt(typeInt1),
                 "Method multWithInt does not Works." + messageSeed);
     }
 
@@ -274,15 +225,16 @@ class TypeBinaryTest {
         assertEquals(expectedTypeBinary, typeBinary1.div(typeBinary2),
                 "Method div does not works with TypeBinary." + messageSeed);
         // Test division with int
-        expectedTypeBinary = new TypeBinary(intToBinary((int) Math.round((double) binaryToInt(aBinary1) / anInt)));
-        assertEquals(expectedTypeBinary, typeBinary1.div(aTypeInt),
+        expectedTypeBinary = new TypeBinary(intToBinary((int) Math.round((double) binaryToInt(aBinary1) / anInt1)));
+        assertEquals(expectedTypeBinary, typeBinary1.div(typeInt1),
                 "Method div does not works with TypeInt." + messageSeed);
     }
 
     @RepeatedTest(20)
     void divWithBinary() {
         var binary2DivWithBinary1 = intToBinary(
-                (int) Math.round((double) binaryToInt(aBinary2) / binaryToInt(aBinary1)));
+                (int) Math.round((double) binaryToInt(aBinary2) / binaryToInt(aBinary1))
+        );
         var expected = new TypeBinary(binary2DivWithBinary1);
         assertEquals(expected, typeBinary1.divWithBinary(typeBinary2),
                 "Method divWithBinary does not Works." + messageSeed);
@@ -290,16 +242,16 @@ class TypeBinaryTest {
 
     @RepeatedTest(20)
     void divWithFloat() {
-        var expected = new TypeFloat(aFloat / binaryToInt(aBinary1));
-        assertEquals(expected, typeBinary1.divWithFloat(aTypeFloat),
+        var expected = new TypeFloat(aFloat1 / binaryToInt(aBinary1));
+        assertEquals(expected, typeBinary1.divWithFloat(typeFloat1),
                 "Method divWithFloat does not Works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void divWithInt() {
-        var intDivWithBinary1 = (int) Math.round((double) anInt / binaryToInt(aBinary1));
+        var intDivWithBinary1 = (int) Math.round((double) anInt1 / binaryToInt(aBinary1));
         var expected = new TypeInt(intDivWithBinary1);
-        assertEquals(expected, typeBinary1.divWithInt(aTypeInt),
+        assertEquals(expected, typeBinary1.divWithInt(typeInt1),
                 "Method divWithInt does not Works." + messageSeed);
     }
 

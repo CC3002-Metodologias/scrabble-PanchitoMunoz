@@ -6,7 +6,6 @@ import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithInt;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
@@ -28,6 +27,10 @@ public class TypeInt extends AbstractInteger {
         this.value = value;
     }
 
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
     protected int getValue() {
         return this.value;
     }
@@ -103,16 +106,6 @@ public class TypeInt extends AbstractInteger {
     @Override
     public TypeBinary toTypeBinary() {
         return new TypeBinary(intToBinary(this.value));
-    }
-
-    /**
-     * Returns the negative of the current instance.
-     *
-     * @return The opposite of the current instance.
-     */
-    @Override
-    public SType opposite() {
-        return new TypeInt(-this.value);
     }
 
     /**
