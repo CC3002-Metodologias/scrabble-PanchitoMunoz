@@ -5,6 +5,7 @@ import cl.uchile.dcc.scrabble.model.operations.division.IDivWithInt;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithInt;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
 import java.util.Objects;
@@ -158,7 +159,7 @@ public class TypeInt extends AbstractInteger {
      * @return The sum between the Binary type and the other type.
      */
     @Override
-    public SNumber addWithBinary(TypeBinary typeBinary) {
+    public SInteger addWithBinary(TypeBinary typeBinary) {
         return new TypeBinary(addTwoBinaries(typeBinary.getValue(), intToBinary(this.value)));
     }
 
@@ -201,7 +202,7 @@ public class TypeInt extends AbstractInteger {
      * @return The subtraction between the Binary type and the other type.
      */
     @Override
-    public SNumber subWithBinary(TypeBinary typeBinary) {
+    public SInteger subWithBinary(TypeBinary typeBinary) {
         String subtraction = intToBinary(typeBinary.getValueAsInt() - this.value);
         return new TypeBinary(subtraction);
     }
@@ -246,7 +247,7 @@ public class TypeInt extends AbstractInteger {
      * @return The multiplication between the Binary type and the other type.
      */
     @Override
-    public SNumber multWithBinary(TypeBinary typeBinary) {
+    public SInteger multWithBinary(TypeBinary typeBinary) {
         String binaryMultiplied = intToBinary(typeBinary.getValueAsInt() * this.value);
         return new TypeBinary(binaryMultiplied);
     }
@@ -269,7 +270,7 @@ public class TypeInt extends AbstractInteger {
      * @return The division between the Binary type and the other type.
      */
     @Override
-    public SNumber divWithBinary(TypeBinary typeBinary) {
+    public SInteger divWithBinary(TypeBinary typeBinary) {
         String binaryResult = intToBinary((int) Math.round((double) typeBinary.getValueAsInt() / this.value));
         return new TypeBinary(binaryResult);
     }

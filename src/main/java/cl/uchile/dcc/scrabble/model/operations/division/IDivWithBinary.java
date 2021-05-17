@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.operations.division;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 
 /**
  * Interface for the division operation. It is in case a Binary is divided by any type.
@@ -15,5 +15,5 @@ public interface IDivWithBinary {
      * @param typeBinary A Binary type who will be divided to the current type.
      * @return The division between the Binary type and the other type.
      */
-    SNumber divWithBinary(TypeBinary typeBinary);
+    SInteger divWithBinary(TypeBinary typeBinary);
 }

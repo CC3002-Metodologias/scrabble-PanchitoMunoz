@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.operations.subtraction;
 
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 
 /**
@@ -14,5 +14,5 @@ public interface ISubWithBinary {
      * @param typeBinary A Binary type who will be subtracted to the current type.
      * @return The subtraction between the Binary type and the other type.
      */
-    SNumber subWithBinary(TypeBinary typeBinary);
+    SInteger subWithBinary(TypeBinary typeBinary);
 }
