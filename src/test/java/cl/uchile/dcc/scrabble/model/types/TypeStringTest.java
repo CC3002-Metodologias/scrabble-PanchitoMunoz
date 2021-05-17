@@ -33,9 +33,9 @@ class TypeStringTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testToString() {
-        assertEquals("TypeString{value=" + aString1 + "}", typeString1.toString(),
+        assertEquals("TypeString{value='" + aString1 + "'}", typeString1.toString(),
                 "Method toString does not works." + messageSeed);
-        assertNotEquals("TypeString{value=" + aString2 + "}", typeString1.toString(),
+        assertNotEquals("TypeString{value='" + aString2 + "'}", typeString1.toString(),
                 "Method toString does not works." + messageSeed);
     }
 

@@ -57,7 +57,7 @@ public class TypeString extends AbstractType {
     @Override
     public String toString() {
         return "TypeString{"
-                + "value=" + value
+                + "value='" + value + "'"
                 + "}";
     }
 
