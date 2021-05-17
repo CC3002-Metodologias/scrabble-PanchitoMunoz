@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.operations.INeg;
 import cl.uchile.dcc.scrabble.model.operations.and.*;
 import cl.uchile.dcc.scrabble.model.operations.or.*;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
@@ -13,7 +14,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the boolean type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBool extends AbstractType implements SLogical, IAndWithBinary, IOrWithBinary {
+public class TypeBool extends AbstractType implements SLogical, INeg, IAndWithBool, IOrWithBool, IAndWithBinary, IOrWithBinary {
     private final boolean value;
 
     /**
