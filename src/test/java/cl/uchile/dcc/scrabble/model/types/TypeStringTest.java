@@ -1,60 +1,79 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class TypeStringTest {
-    private TypeString typeString;
-    private TypeString otherTypeString;
-    private String aString;
-    private String otherString;
+class TypeStringTest extends BaseTypeTest {
+    private TypeString expectedTypeString;
 
     @BeforeEach
     void setUp() {
-        // Initialize a random seed and a random rng
-        int seed = new Random().nextInt();
-        Random rng = new Random(seed);
-        // Initialize a random string size
-        int strSize = rng.nextInt(20);
-        // Initialize random strings
-        aString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT, true, true, null, rng);
-        do {
-            if (strSize == 0) strSize = 1;
-            otherString = RandomStringUtils.random(strSize, 0, Character.MAX_CODE_POINT, true, true, null, rng);
-        } while (otherString.equals(aString));
-        // Makes instances of TypeString
-        typeString = new TypeString(aString);
-        otherTypeString = new TypeString(otherString);
+        super.setUp();
     }
 
     @RepeatedTest(20)
-    void testEquals() {
-        TypeString similarTypeString = new TypeString(aString);
-        assertNotEquals(otherTypeString, typeString, "Two different instances are equals when it is not.");
-        assertEquals(similarTypeString, typeString, "Two different instances are not equals when it is.");
+    void equals() {
+        TypeString similarTypeString = new TypeString(aString1);
+        assertNotEquals(typeString2, typeString1,
+                "Two different instances are equals when it is not." + messageSeed);
+        assertEquals(similarTypeString, typeString1,
+                "Two different instances are not equals when it is." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testHashCode() {
-        TypeString similarTypeString = new TypeString(aString);
-        assertNotEquals(otherTypeString.hashCode(), typeString.hashCode(), "Hash Code does not work.");
-        assertEquals(similarTypeString.hashCode(), typeString.hashCode(), "Hash Code does not work.");
+    void TestHashCode() {
+        TypeString similarTypeString = new TypeString(aString1);
+        assertNotEquals(typeString2.hashCode(), typeString1.hashCode(),
+                "Hash Code does not work." + messageSeed);
+        assertEquals(similarTypeString.hashCode(), typeString1.hashCode(),
+                "Hash Code does not work." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToString() {
-        assertEquals("TypeString{value=" + aString + "}", typeString.toString(), "Method toString does not works.");
-        assertNotEquals("TypeString{value=" + otherString + "}", typeString.toString(), "Method toString does not works.");
+        assertEquals("TypeString{value='" + aString1 + "'}", typeString1.toString(),
+                "Method toString does not works." + messageSeed);
+        assertNotEquals("TypeString{value='" + aString2 + "'}", typeString1.toString(),
+                "Method toString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToTypeString() {
-        TypeString similarTypeString = new TypeString(aString);
-        assertEquals(similarTypeString, typeString.toTypeString(), "Method toTypeString does not work.");
+    void toTypeString() {
+        TypeString similarTypeString = new TypeString(aString1);
+        assertEquals(similarTypeString, typeString1.toTypeString(),
+                "Method toTypeString does not work." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void addWithString() {
+        expectedTypeString = new TypeString(aString1 + aString2);
+        assertEquals(expectedTypeString, typeString2.addWithString(typeString1),
+                "Method addWithString does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void add() {
+        // Test add with binary
+        expectedTypeString = new TypeString(aString1 + aBinary1);
+        assertEquals(expectedTypeString, typeString1.add(typeBinary1),
+                "Method add does not works with TypeBinary." + messageSeed);
+        // Test add with boolean
+        expectedTypeString = new TypeString(aString1 + trueBoolean);
+        assertEquals(expectedTypeString, typeString1.add(trueTypeBool),
+                "Method add does not works with TypeBool." + messageSeed);
+        // Test add with float
+        expectedTypeString = new TypeString(aString1 + aFloat1);
+        assertEquals(expectedTypeString, typeString1.add(typeFloat1),
+                "Method add does not works with TypeFloat." + messageSeed);
+        // Test add with int
+        expectedTypeString = new TypeString(aString1 + anInt1);
+        assertEquals(expectedTypeString, typeString1.add(typeInt1),
+                "Method add does not works with TypeInt." + messageSeed);
+        // Test add with string
+        expectedTypeString = new TypeString(aString1 + aString2);
+        assertEquals(expectedTypeString, typeString1.add(typeString2),
+                "Method add does not works with TypeString." + messageSeed);
     }
 }

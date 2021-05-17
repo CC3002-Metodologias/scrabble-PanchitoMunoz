@@ -1,12 +1,20 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.operations.INeg;
+import cl.uchile.dcc.scrabble.model.operations.and.*;
+import cl.uchile.dcc.scrabble.model.operations.or.*;
+import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
+
 import java.util.Objects;
+
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
 
 /**
  * A class for the boolean type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBool extends AbstractType {
+public class TypeBool extends AbstractType implements SLogical, INeg, IAndWithBool, IOrWithBool, IAndWithBinary, IOrWithBinary {
     private final boolean value;
 
     /**
@@ -15,6 +23,14 @@ public class TypeBool extends AbstractType {
      */
     public TypeBool(boolean value) {
         this.value = value;
+    }
+
+    /**
+     * Returns the current value of the instance.
+     * @return The value in the instance
+     */
+    protected boolean getValue() {
+        return this.value;
     }
 
     /**
@@ -67,5 +83,89 @@ public class TypeBool extends AbstractType {
      */
     public TypeBool toTypeBool() {
         return new TypeBool(this.value);
+    }
+
+    /**
+     * Returns the negation of the current instance.
+     * @return The negation of the current instance.
+     */
+    @Override
+    public SLogical neg() {
+        return new TypeBool(!(this.value));
+    }
+
+    /**
+     * Returns the add between the current type and a String Type.
+     *
+     * @param typeString A string type who will be added to the current type.
+     * @return The sum between the String type and the other type.
+     */
+    @Override
+    public TypeString addWithString(TypeString typeString) {
+        return new TypeString(typeString.getValue() + this.value);
+    }
+
+    /**
+     * Method that returns the disjunction between the current type and the other type.
+     * Returns the dominant type if possible.
+     * @param otherType Another type that will be disjunct to the current type.
+     * @return The disjunction between the two types, returning the dominant type.
+     */
+    public SLogical and(IAndWithBool otherType) {
+        return otherType.andWithBool(this);
+    }
+
+    /**
+     * Method that returns the conjunction between the current type and the other type.
+     * Returns the dominant type if possible.
+     * @param otherType Another type that will be conjunct to the current type.
+     * @return The conjunction between the two types, returning the dominant type.
+     */
+    public SLogical or(IOrWithBool otherType) {
+        return otherType.orWithBool(this);
+    }
+
+    /**
+     * Returns the disjunction between the current type and a Bool Type.
+     *
+     * @param typeBool A Bool type who will be disjunct to the current type.
+     * @return The disjunction between the Bool type and the other type.
+     */
+    @Override
+    public SLogical andWithBool(TypeBool typeBool) {
+        return new TypeBool(typeBool.value && this.value);
+    }
+
+    /**
+     * Returns the conjunction between the current type and a Bool Type.
+     *
+     * @param typeBool A Bool type who will be conjunct to the current type.
+     * @return The conjunction between the Bool type and the other type.
+     */
+    @Override
+    public SLogical orWithBool(TypeBool typeBool) {
+        return new TypeBool(typeBool.value || this.value);
+    }
+
+    /**
+     * Returns the disjunction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be disjunct to the current type.
+     * @return The disjunction between the Binary type and the other type.
+     */
+    @Override
+    public SLogical andWithBinary(TypeBinary typeBinary) {
+        return new TypeBinary(boolAndBinary(this.value, typeBinary.getValue()));
+    }
+
+    /**
+     * Returns the conjunction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be conjunct to the current type.
+     * @return The conjunction between the Binary type and the other type.
+     */
+    @Override
+    public SLogical orWithBinary(TypeBinary typeBinary) {
+        return new TypeBinary(boolOrBinary(this.value, typeBinary.getValue()));
     }
 }
