@@ -13,6 +13,11 @@ public final class BinaryUtilities {
      */
     private BinaryUtilities() {}
 
+    /**
+     * Add one to the current binary.
+     * @param binary A binary as String
+     * @return Binary plus one
+     */
     private static String addOne(String binary) {
         StringBuilder copyBinary = new StringBuilder(binary);
         int i = binary.length() - 1;
@@ -28,6 +33,11 @@ public final class BinaryUtilities {
         return copyBinary.toString();
     }
 
+    /**
+     * Subtract one to the current binary.
+     * @param binary A binary as String
+     * @return Binary minus one
+     */
     private static String subOne(String binary) {
         StringBuilder copyBinary = new StringBuilder(binary);
         int i = binary.length() - 1;
