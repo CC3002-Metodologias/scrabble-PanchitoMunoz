@@ -212,6 +212,8 @@ public class TypeFloat extends AbstractNumber {
      */
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
+        // Case divide by zero
+        if (this.value == 0.) return new TypeFloat(0.0);
         return new TypeFloat(typeFloat.value / this.value);
     }
 
@@ -223,6 +225,8 @@ public class TypeFloat extends AbstractNumber {
      */
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
+        // Case divide by zero
+        if (this.value == 0.) return new TypeFloat(0.0);
         return new TypeFloat(typeInt.getValue() / this.value);
     }
 }
