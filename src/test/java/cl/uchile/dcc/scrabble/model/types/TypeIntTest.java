@@ -198,39 +198,60 @@ class TypeIntTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void div() {
-        // Test division with binary
-        var expectedTypeInt = new TypeInt((int) Math.round((double) anInt1 / binaryToInt(aBinary1)));
-        assertEquals(expectedTypeInt, typeInt1.div(typeBinary1),
-                "Method div does not works with TypeBinary." + messageSeed);
-        // Test division with float
-        var expectedTypeFloat = new TypeFloat(anInt1 / aFloat1);
-        assertEquals(expectedTypeFloat, typeInt1.div(typeFloat1),
-                "Method div does not works with TypeFloat." + messageSeed);
-        // Test division with int
-        expectedTypeInt = new TypeInt((int) Math.round((double) anInt1 / anInt2));
-        assertEquals(expectedTypeInt, typeInt1.div(typeInt2),
-                "Method div does not works with TypeInt." + messageSeed);
+        if (typeBinary1.getValueAsInt() != 0) {
+            // Test division with binary
+            var expectedTypeInt = new TypeInt((int) Math.round((double) anInt1 / binaryToInt(aBinary1)));
+            assertEquals(expectedTypeInt, typeInt1.div(typeBinary1),
+                    "Method div does not works with TypeBinary." + messageSeed);
+        }
+        if (aFloat1 != 0.0) {
+            // Test division with float
+            var expectedTypeFloat = new TypeFloat(anInt1 / aFloat1);
+            assertEquals(expectedTypeFloat, typeInt1.div(typeFloat1),
+                    "Method div does not works with TypeFloat." + messageSeed);
+        }
+        if (anInt2 != 0) {
+            // Test division with int
+            var expectedTypeInt = new TypeInt((int) Math.round((double) anInt1 / anInt2));
+            assertEquals(expectedTypeInt, typeInt1.div(typeInt2),
+                    "Method div does not works with TypeInt." + messageSeed);
+        }
     }
 
     @RepeatedTest(20)
     void divWithBinary() {
-        var binaryDivWithInt = intToBinary((int) Math.round((double) binaryToInt(aBinary1) / anInt1));
-        var expected = new TypeBinary(binaryDivWithInt);
-        assertEquals(expected, typeInt1.divWithBinary(typeBinary1),
-                "Method divWithBinary does not Works." + messageSeed);
+        if (typeInt1.getValue() != 0) {
+            var binaryDivWithInt = intToBinary((int) Math.round((double) binaryToInt(aBinary1) / anInt1));
+            var expected = new TypeBinary(binaryDivWithInt);
+            assertEquals(expected, typeInt1.divWithBinary(typeBinary1),
+                    "Method divWithBinary does not Works." + messageSeed);
+        }
+        // Case divide by zero
+        assertEquals(typeBinaryZero, typeIntZero.divWithBinary(typeBinary1),
+                "Method divWithBinary does not works if the binary is divide by zero." + messageSeed);
     }
 
     @RepeatedTest(20)
     void divWithFloat() {
-        var expected = new TypeFloat( aFloat1 / anInt1);
-        assertEquals(expected, typeInt1.divWithFloat(typeFloat1),
-                "Method divWithFloat does not Works." + messageSeed);
+        if (typeInt1.getValue() != 0) {
+            var expected = new TypeFloat(aFloat1 / anInt1);
+            assertEquals(expected, typeInt1.divWithFloat(typeFloat1),
+                    "Method divWithFloat does not Works." + messageSeed);
+        }
+        // Case divide by zero
+        assertEquals(typeFloatZero, typeIntZero.divWithFloat(typeFloat1),
+                "Method divWithFloat does not works if the float is divide by zero." + messageSeed);
     }
 
     @RepeatedTest(20)
     void divWithInt() {
-        var expected = new TypeInt((int) Math.round((double) anInt2 / anInt1));
-        assertEquals(expected, typeInt1.divWithInt(typeInt2),
-                "Method divWithInt does not Works." + messageSeed);
+        if (typeInt1.getValue() != 0) {
+            var expected = new TypeInt((int) Math.round((double) anInt2 / anInt1));
+            assertEquals(expected, typeInt1.divWithInt(typeInt2),
+                    "Method divWithInt does not Works." + messageSeed);
+        }
+        // Case divide by zero
+        assertEquals(typeIntZero, typeIntZero.divWithInt(typeInt1),
+                "Method divWithInt does not works if the int is divide by zero." + messageSeed);
     }
 }

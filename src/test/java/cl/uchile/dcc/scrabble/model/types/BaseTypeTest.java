@@ -20,6 +20,8 @@ public class BaseTypeTest {
     protected TypeBinary typeBinary1;
     protected String aBinary2;
     protected TypeBinary typeBinary2;
+    protected final String aBinaryZero = "0000";
+    protected final TypeBinary typeBinaryZero = new TypeBinary(aBinaryZero);
     // Booleans
     protected final boolean trueBoolean = true;
     protected final TypeBool trueTypeBool = new TypeBool(trueBoolean);
@@ -30,11 +32,15 @@ public class BaseTypeTest {
     protected TypeFloat typeFloat1;
     protected double aFloat2;
     protected TypeFloat typeFloat2;
+    protected final double aFloatZero = 0.0;
+    protected final TypeFloat typeFloatZero = new TypeFloat(aFloatZero);
     // Ints
     protected int anInt1;
     protected TypeInt typeInt1;
     protected int anInt2;
     protected TypeInt typeInt2;
+    protected final int anIntZero = 0;
+    protected final TypeInt typeIntZero = new TypeInt(anIntZero);
     // Strings
     protected String aString1;
     protected TypeString typeString1;
@@ -82,9 +88,9 @@ public class BaseTypeTest {
         messageSeed = " Seed: " + seed;
         rng = new Random(seed);
         // Generate 2 binaries random
-        aBinary1 = generateABinaryRandom(rng, 4, 32);
+        aBinary1 = generateABinaryRandom(rng, 1, 32);
         do {
-            aBinary2 = generateABinaryRandom(rng, 3, 31);
+            aBinary2 = generateABinaryRandom(rng, 2, 31);
         } while (binaryEqual(aBinary1, aBinary2));
         typeBinary1 = new TypeBinary(aBinary1);
         typeBinary2 = new TypeBinary(aBinary2);

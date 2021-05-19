@@ -271,6 +271,8 @@ public class TypeInt extends AbstractInteger {
      */
     @Override
     public SInteger divWithBinary(TypeBinary typeBinary) {
+        // Case divide by zero
+        if (this.value == 0) return new TypeBinary("0000");
         String binaryResult = intToBinary((int) Math.round((double) typeBinary.getValueAsInt() / this.value));
         return new TypeBinary(binaryResult);
     }
@@ -283,6 +285,8 @@ public class TypeInt extends AbstractInteger {
      */
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
+        // Case divide by zero
+        if (this.value == 0) return new TypeFloat(0.0);
         return new TypeFloat(typeFloat.getValue() / this.value);
     }
 
@@ -294,6 +298,8 @@ public class TypeInt extends AbstractInteger {
      */
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
+        // Case divide by zero
+        if (this.value == 0) return new TypeInt(0);
         return new TypeInt((int) Math.round((double) typeInt.value / this.value));
     }
 }

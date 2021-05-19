@@ -292,6 +292,8 @@ public class TypeBinary extends AbstractInteger implements SLogical, INeg, IAndW
      */
     @Override
     public SInteger divWithBinary(TypeBinary typeBinary) {
+        // Case divide by zero
+        if (this.getValueAsInt() == 0) return new TypeBinary("0000");
         String binaryDivision = intToBinary(
                 (int) Math.round((double) typeBinary.getValueAsInt() / this.getValueAsInt())
         );
@@ -306,6 +308,8 @@ public class TypeBinary extends AbstractInteger implements SLogical, INeg, IAndW
      */
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
+        // Case divide by zero
+        if (this.getValueAsInt() == 0) return new TypeFloat(0.0);
         return new TypeFloat(typeFloat.getValue() / this.getValueAsInt());
     }
 
@@ -317,6 +321,8 @@ public class TypeBinary extends AbstractInteger implements SLogical, INeg, IAndW
      */
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
+        // Case divide by zero
+        if (this.getValueAsInt() == 0) return new TypeInt(0);
         int intResult = (int) Math.round((double) typeInt.getValue() / this.getValueAsInt());
         return new TypeInt(intResult);
     }

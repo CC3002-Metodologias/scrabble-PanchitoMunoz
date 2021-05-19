@@ -13,6 +13,11 @@ public final class BinaryUtilities {
      */
     private BinaryUtilities() {}
 
+    /**
+     * Add one to the current binary.
+     * @param binary A binary as String
+     * @return Binary plus one
+     */
     private static String addOne(String binary) {
         StringBuilder copyBinary = new StringBuilder(binary);
         int i = binary.length() - 1;
@@ -28,6 +33,11 @@ public final class BinaryUtilities {
         return copyBinary.toString();
     }
 
+    /**
+     * Subtract one to the current binary.
+     * @param binary A binary as String
+     * @return Binary minus one
+     */
     private static String subOne(String binary) {
         StringBuilder copyBinary = new StringBuilder(binary);
         int i = binary.length() - 1;
@@ -59,7 +69,7 @@ public final class BinaryUtilities {
      */
     private static int positiveBinaryToInt(String binary) {
         int w =  0;
-        for (int i = binary.length() - 1, j = 0; i > 0; i--, j++) {
+        for (int i = binary.length() - 1, j = 0; i >= 0; i--, j++) {
             w += (int) Math.pow(2, j) * bitToInt(binary.charAt(i));
         }
         return w;
@@ -161,17 +171,7 @@ public final class BinaryUtilities {
      */
     public static int binaryToInt(String binary) {
         // Pathologic cases
-        switch (binary) {
-            case "1":
-            case "01":
-            case "10":
-                return 1;
-            case "00":
-            case "11":
-                return 0;
-            default:
-                break;
-        }
+        if ("1".equals(binary)) return 1;
         if (bitToInt(binary.charAt(0)) == 0) {
             return positiveBinaryToInt(binary);
         } else {

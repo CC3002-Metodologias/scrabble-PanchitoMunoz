@@ -170,31 +170,47 @@ class TypeFloatTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void div() {
-        // Test division with binary
-        var expectedTypeFloat = new TypeFloat(aFloat1 / binaryToInt(aBinary1));
-        assertEquals(expectedTypeFloat, typeFloat1.div(typeBinary1),
-                "Method div does not works with TypeBinary." + messageSeed);
-        // Test division with float
-        expectedTypeFloat = new TypeFloat(aFloat1 / aFloat2);
-        assertEquals(expectedTypeFloat, typeFloat1.div(typeFloat2),
-                "Method div does not works with TypeFloat." + messageSeed);
-        // Test division with int
-        expectedTypeFloat = new TypeFloat(aFloat1 / anInt1);
-        assertEquals(expectedTypeFloat, typeFloat1.div(typeInt1),
-                "Method div does not works with TypeInt." + messageSeed);
+        if (typeBinary1.getValueAsInt() != 0) {
+            // Test division with binary
+            var expectedTypeFloat = new TypeFloat(aFloat1 / binaryToInt(aBinary1));
+            assertEquals(expectedTypeFloat, typeFloat1.div(typeBinary1),
+                    "Method div does not works with TypeBinary." + messageSeed);
+        }
+        if (aFloat2 != 0.0) {
+            // Test division with float
+            var expectedTypeFloat = new TypeFloat(aFloat1 / aFloat2);
+            assertEquals(expectedTypeFloat, typeFloat1.div(typeFloat2),
+                    "Method div does not works with TypeFloat." + messageSeed);
+        }
+        if (anInt1 != 0) {
+            // Test division with int
+            var expectedTypeFloat = new TypeFloat(aFloat1 / anInt1);
+            assertEquals(expectedTypeFloat, typeFloat1.div(typeInt1),
+                    "Method div does not works with TypeInt." + messageSeed);
+        }
     }
 
     @RepeatedTest(20)
     void divWithFloat() {
-        var expected = new TypeFloat(aFloat1 / aFloat2);
-        assertEquals(expected, typeFloat2.divWithFloat(typeFloat1),
-                "Method divWithFloat does not Works." + messageSeed);
+        if (typeFloat2.getValue() != 0.0) {
+            var expected = new TypeFloat(aFloat1 / aFloat2);
+            assertEquals(expected, typeFloat2.divWithFloat(typeFloat1),
+                    "Method divWithFloat does not Works." + messageSeed);
+        }
+        // Case divide by zero
+        assertEquals(typeFloatZero, typeFloatZero.divWithFloat(typeFloat1),
+                "Method divWithFloat does not works if the float is divide by zero." + messageSeed);
     }
 
     @RepeatedTest(20)
     void divWithInt() {
-        var expected = new TypeFloat(anInt1 / aFloat1);
-        assertEquals(expected, typeFloat1.divWithInt(typeInt1),
-                "Method divWithInt does not Works." + messageSeed);
+        if (typeFloat1.getValue() != 0) {
+            var expected = new TypeFloat(anInt1 / aFloat1);
+            assertEquals(expected, typeFloat1.divWithInt(typeInt1),
+                    "Method divWithInt does not Works." + messageSeed);
+        }
+        // Case divide by zero
+        assertEquals(typeFloatZero, typeFloatZero.divWithInt(typeInt1),
+                "Method divWithInt does not works if the int is divide by zero." + messageSeed);
     }
 }
