@@ -13,26 +13,25 @@ _University of Chile_.
 
 ---
 
-
-
-# Context
-
-The goal of this project is to create a simplified clone of Scratch. For this purpose,
-a block programming environment will be created in which anyone can create a simple
-program without the need for programming knowledge.
-
-# Description
-
-## Type of data
-
-
---------------------------------------------------------------------------------------
-
 # Contexto
 
 El objetivo de este proyecto es el de crear un clon simplificado de Scratch. Para ello,
 se creará un entorno de programación por bloques en el que cualquier persona podrá crear
 un programa sencillo sin la necesidad de que tenga conocimientos de programación.
+
+# Cómo instalar el programa
+
+Se recomienda:
+* Java 16 o similar.
+* JUnit 5.0 o similar.
+* IntelliJ IDE
+* Versión 14 de Gradle JVM o similar.
+
+Para instalarlo en el ordenador, se recomienda clonar el repositorio a través del comando
+`git clone` de Git. Una vez clonado, se debe de armar el Gradle a través de la instrucción
+`gradle build`: esto se puede hacer fácilmente desde IntelliJ apretando la opción "Gradle"
+y ejecutando `Gradle build`. Paso seguido, se puede ejecutar los tests que posee el 
+proyecto para verificar que todo esté en orden.  
 
 # Descripción
 
@@ -41,16 +40,19 @@ Una de las partes más importantes para representar la realidad en un programa s
 tipos de datos que puedan crearse, almacenarse y operarse. Este proyecto provee algunos 
 tipos de datos elementales para crear un programa simple, en particular, se provee de 
 los siguientes tipos de datos:
-* _TypeStrings_: Utilizados para representar un texto simple.
+* _TypeStrings_: Utilizados para representar un texto simple. Es representado por un 
+  `String` nativo de _Java_.
 * _TypeBool_: Utilizados para representar un tipo booleano, esto es, un valor `true` 
-  o un valor `false`.
-* _TypeFloat_:  Utilizado para representar un número flotante, o en términos matemáticos
-  , un número real, como por ejemplo 1.3333 o 3.1416.
+  o un valor `false`. Es representado por un `boolean` nativo de _Java_.
+* _TypeFloat_:  Utilizado para representar un número flotante, o en términos matemáticos,
+  un número real, como por ejemplo 1.3333 o 3.1416. Es representado por un `double` nativo de _Java_.
 * _TypeInt_: Utilizado para representar un número entero, como por ejemplo -3 o 42.
+  Es representado por un `int` nativo de _Java_.
 * _TypeBinary_: Utilizado para representar un número entero como un número binario.
   Cabe mencionar que para representar un negativo en binario se utiliza su 
   [complemento dos](https://en.wikipedia.org/wiki/Two%27s_complement) para este propósito.
   Por ejemplo, `0110` representa al número 6 y `1010` representa al número -6.
+  Es representado por un `String` nativo de _Java_, conteniendo únicamente ceros y unos.
 
 ## Clasificación de los tipos de datos
 Dados los distintos tipos de datos, estos se pueden clasificar en distintas categorías 
@@ -119,7 +121,31 @@ O bien, se puede resumir utilizando la clasificación mencionada:
 * _TypeInt_:  Puede ser operado con cualquier _SNumber_ y devuelve un _SNumber_.
   Siendo más precisos, devuelve un _TypeFloat_ si se opera con un _TypeFloat_ y devuelve
   un _TypeInt_ en el resto de los casos. En el caso de la división, retorna la división
-  redondeada.
+  redondeada si es operado con un _SInteger_.
 * _TypeBinary_: En el caso de los operadores aritméticos, puede ser operado con cualquier
   _SInteger_ y devuelve un _SInteger_. En la mayoría de los casos, devuelve un 
-  _TypeBinary_. En el caso de la división, retorna la división redondeada.  
+  _TypeBinary_. En el caso de la división, retorna la división redondeada si es operado 
+  con un _SInteger_.
+
+Cabe destacar que si un número cualquiera es dividido entre cero, entonces el resultado 
+de la operación es cero. En futuras versiones se manejarán mejor estos casos.
+
+
+--------------------------------------------------------------------------------------
+
+# Context
+
+The goal of this project is to create a simplified clone of Scratch. For this purpose,
+a block programming environment will be created in which anyone can create a simple
+program without the need for programming knowledge.
+
+# How to install
+(in construction...)
+
+# Description
+(in construction...)
+
+## Type of data
+(in construction...)
+
+
