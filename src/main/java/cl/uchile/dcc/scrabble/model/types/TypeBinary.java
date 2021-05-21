@@ -1,11 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.division.IDivWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
+import cl.uchile.dcc.scrabble.model.operations.arithmetic_operations.ArithmeticOperationsWithIntegers;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
@@ -19,7 +14,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractInteger implements SLogical {
+public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticOperationsWithIntegers {
     private final String value;
 
     /**
@@ -134,7 +129,8 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public SInteger add(IAddWithBinary otherType) {
+    @Override
+    public SInteger add(SInteger otherType) {
         return otherType.addWithBinary(this);
     }
 
@@ -188,7 +184,8 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
-    public SInteger sub(ISubWithBinary otherType) {
+    @Override
+    public SInteger sub(SInteger otherType) {
         return otherType.subWithBinary(this);
     }
 
@@ -233,7 +230,8 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      * @param otherType Another type that will be multiplied to the current type.
      * @return The multiplication between the two types, returning the dominant type.
      */
-    public SInteger mult(IMultWithBinary otherType) {
+    @Override
+    public SInteger mult(SInteger otherType) {
         return otherType.multWithBinary(this);
     }
 
@@ -277,7 +275,8 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
      */
-    public SInteger div(IDivWithBinary otherType){
+    @Override
+    public SInteger div(SInteger otherType){
         return otherType.divWithBinary(this);
     }
 
@@ -330,7 +329,8 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      * @param otherType Another type that will be disjunct to the current type.
      * @return The disjunction between the two types, returning the dominant type.
      */
-    public SLogical and(IAndWithBinary otherType) {
+    @Override
+    public SLogical and(SLogical otherType) {
         return otherType.andWithBinary(this);
     }
 
@@ -340,7 +340,8 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      * @param otherType Another type that will be conjunct to the current type.
      * @return The conjunction between the two types, returning the dominant type.
      */
-    public SLogical or(IOrWithBinary otherType) {
+    @Override
+    public SLogical or(SLogical otherType) {
         return otherType.orWithBinary(this);
     }
 

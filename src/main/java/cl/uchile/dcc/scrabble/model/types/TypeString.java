@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.add.IAddWithStr;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 import java.util.Objects;
 
@@ -73,11 +73,11 @@ public class TypeString extends AbstractType {
 
     /**
      * Method that returns the sum between a TypeString and another type.
-     * Returns the dominant type if possible, or throws an error if the operation is undefined.
+     * Returns the dominant type if possible.
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public TypeString add(IAddWithStr otherType) {
+    public TypeString add(SType otherType) {
         return otherType.addWithString(this);
     }
 
