@@ -1,9 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.add.IAddWithInt;
-import cl.uchile.dcc.scrabble.model.operations.division.IDivWithInt;
-import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithInt;
-import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithInt;
+import cl.uchile.dcc.scrabble.model.operations.arithmetic_operations.ArithmeticOperationsWithNumbers;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -17,7 +14,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
  * A class for the integer type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeInt extends AbstractInteger {
+public class TypeInt extends AbstractInteger implements ArithmeticOperationsWithNumbers {
     private final int value;
 
     /**
@@ -115,7 +112,8 @@ public class TypeInt extends AbstractInteger {
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public SNumber add(IAddWithInt otherType) {
+    @Override
+    public SNumber add(SNumber otherType) {
         return otherType.addWithInt(this);
     }
 
@@ -169,7 +167,8 @@ public class TypeInt extends AbstractInteger {
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
-    public SNumber sub(ISubWithInt otherType) {
+    @Override
+    public SNumber sub(SNumber otherType) {
         return otherType.subWithInt(this);
     }
 
@@ -214,7 +213,8 @@ public class TypeInt extends AbstractInteger {
      * @param otherType Another type that will be multiplied to the current type.
      * @return The multiplication between the two types, returning the dominant type.
      */
-    public SNumber mult(IMultWithInt otherType) {
+    @Override
+    public SNumber mult(SNumber otherType) {
         return otherType.multWithInt(this);
     }
 
@@ -259,7 +259,8 @@ public class TypeInt extends AbstractInteger {
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
      */
-    public SNumber div(IDivWithInt otherType){
+    @Override
+    public SNumber div(SNumber otherType){
         return otherType.divWithInt(this);
     }
 

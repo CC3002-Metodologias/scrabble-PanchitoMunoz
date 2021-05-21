@@ -1,13 +1,12 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.and.*;
-import cl.uchile.dcc.scrabble.model.operations.or.*;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 
 import java.util.Objects;
 
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
 /**
  * A class for the boolean type.
@@ -110,7 +109,8 @@ public class TypeBool extends AbstractType implements SLogical {
      * @param otherType Another type that will be disjunct to the current type.
      * @return The disjunction between the two types, returning the dominant type.
      */
-    public SLogical and(IAndWithBool otherType) {
+    @Override
+    public SLogical and(SLogical otherType) {
         return otherType.andWithBool(this);
     }
 
@@ -120,7 +120,8 @@ public class TypeBool extends AbstractType implements SLogical {
      * @param otherType Another type that will be conjunct to the current type.
      * @return The conjunction between the two types, returning the dominant type.
      */
-    public SLogical or(IOrWithBool otherType) {
+    @Override
+    public SLogical or(SLogical otherType) {
         return otherType.orWithBool(this);
     }
 

@@ -1,9 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.add.IAddWithFloat;
-import cl.uchile.dcc.scrabble.model.operations.division.IDivWithFloat;
-import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithFloat;
-import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithFloat;
+import cl.uchile.dcc.scrabble.model.operations.arithmetic_operations.ArithmeticOperationsWithNumbers;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
@@ -13,7 +10,7 @@ import java.util.Objects;
  * A class for the float type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeFloat extends AbstractNumber {
+public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWithNumbers {
     private final double value;
 
     /**
@@ -91,7 +88,8 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public SNumber add(IAddWithFloat otherType) {
+    @Override
+    public SNumber add(SNumber otherType) {
         return otherType.addWithFloat(this);
     }
 
@@ -134,7 +132,8 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
-    public SNumber sub(ISubWithFloat otherType) {
+    @Override
+    public SNumber sub(SNumber otherType) {
         return otherType.subWithFloat(this);
     }
 
@@ -167,7 +166,8 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be multiplied to the current type.
      * @return The multiplication between the two types, returning the dominant type.
      */
-    public SNumber mult(IMultWithFloat otherType) {
+    @Override
+    public SNumber mult(SNumber otherType) {
         return otherType.multWithFloat(this);
     }
 
@@ -200,7 +200,8 @@ public class TypeFloat extends AbstractNumber {
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
      */
-    public SNumber div(IDivWithFloat otherType){
+    @Override
+    public SNumber div(SNumber otherType) {
         return otherType.divWithFloat(this);
     }
 
