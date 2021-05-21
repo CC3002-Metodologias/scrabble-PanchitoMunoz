@@ -1,13 +1,10 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.INeg;
 import cl.uchile.dcc.scrabble.model.operations.add.IAddWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
 import cl.uchile.dcc.scrabble.model.operations.division.IDivWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.multiplication.IMultWithBinary;
 import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
 import cl.uchile.dcc.scrabble.model.operations.subtraction.ISubWithBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
@@ -22,7 +19,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractInteger implements SLogical, INeg, IAndWithBool, IOrWithBool {
+public class TypeBinary extends AbstractInteger implements SLogical {
     private final String value;
 
     /**
@@ -367,5 +364,27 @@ public class TypeBinary extends AbstractInteger implements SLogical, INeg, IAndW
     @Override
     public SLogical orWithBool(TypeBool typeBool) {
         return new TypeBinary(boolOrBinary(typeBool.getValue(), this.value));
+    }
+
+    /**
+     * Returns the disjunction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be disjunct to the current type.
+     * @return The disjunction between the Binary type and the other type.
+     */
+    @Override
+    public SLogical andWithBinary(TypeBinary typeBinary) {
+        return new TypeBinary(binaryAndBinary(typeBinary.value, this.value));
+    }
+
+    /**
+     * Returns the conjunction between the current type and a Binary Type.
+     *
+     * @param typeBinary A Binary type who will be conjunct to the current type.
+     * @return The conjunction between the Binary type and the other type.
+     */
+    @Override
+    public SLogical orWithBinary(TypeBinary typeBinary) {
+        return new TypeBinary(binaryOrBinary(typeBinary.value, this.value));
     }
 }

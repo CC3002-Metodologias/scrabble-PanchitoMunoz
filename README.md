@@ -109,7 +109,7 @@ TypeString | `add`      | `add`       | `add`                       | `add`     
 TypeBool   |            | `and`, `or` |                             |                             | `and`, `or`
 TypeFloat  |            |             | `add`, `sub`, `mult`, `div` | `add`, `sub`, `mult`, `div` | `add`, `sub`, `mult`, `div`
 TypeInt    |            |             | `add`, `sub`, `mult`, `div` | `add`, `sub`, `mult`, `div` | `add`, `sub`, `mult`, `div`
-TypeBinary |            | `and`, `or` |                             | `add`, `sub`, `mult`, `div` | `add`, `sub`, `mult`, `div`
+TypeBinary |            | `and`, `or` |                             | `add`, `sub`, `mult`, `div` | `add`, `sub`, `mult`, `div`, `and`, `or`
 
 O bien, se puede resumir utilizando la clasificación mencionada:
 * _TypeString_: Puede ser sumado con cualquier _SType_ y devuelve un _TypeString_.
@@ -125,7 +125,9 @@ O bien, se puede resumir utilizando la clasificación mencionada:
 * _TypeBinary_: En el caso de los operadores aritméticos, puede ser operado con cualquier
   _SInteger_ y devuelve un _SInteger_. En la mayoría de los casos, devuelve un 
   _TypeBinary_. En el caso de la división, retorna la división redondeada si es operado 
-  con un _SInteger_.
+  con un _SInteger_. Por otro lado, en el caso de los operadores lógicos, si es que se 
+  opera con otro binario, entonces la operación se hace carácter por carácter, 
+  extendiendo al número binario más pequeño manteniendo su valor numérico original. 
 
 Cabe destacar que si un número cualquiera es dividido entre cero, entonces el resultado 
 de la operación es cero. En futuras versiones se manejarán mejor estos casos.

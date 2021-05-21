@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
@@ -284,6 +285,10 @@ class TypeBinaryTest extends BaseTypeTest {
         expected = new TypeBinary(binaryAndFalse);
         assertEquals(expected, typeBinary1.and(falseTypeBool),
                 "Method and does not works with false boolean." + messageSeed);
+        var binary1AndBinary2 = binaryAndBinary(aBinary1, aBinary2);
+        expected = new TypeBinary(binary1AndBinary2);
+        assertEquals(expected, typeBinary1.and(typeBinary2),
+                "Method and does not works with another binary." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -296,6 +301,10 @@ class TypeBinaryTest extends BaseTypeTest {
         expected = new TypeBinary(binaryOrFalse);
         assertEquals(expected, typeBinary1.or(falseTypeBool),
                 "Method or does not works with false boolean." + messageSeed);
+        var binary1OrBinary2 = binaryOrBinary(aBinary1, aBinary2);
+        expected = new TypeBinary(binary1OrBinary2);
+        assertEquals(expected, typeBinary1.or(typeBinary2),
+                "Method or does not works with another binary." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -320,5 +329,21 @@ class TypeBinaryTest extends BaseTypeTest {
         expected = new TypeBinary(binaryOrFalse);
         assertEquals(expected, typeBinary1.orWithBool(falseTypeBool),
                 "Method orWithBool does not works with false boolean." + messageSeed);
+    }
+
+    @Test
+    void testAndWithBinary() {
+        var binary1AndBinary2 = binaryAndBinary(aBinary1, aBinary2);
+        var expected = new TypeBinary(binary1AndBinary2);
+        assertEquals(expected, typeBinary2.andWithBinary(typeBinary1),
+                "Method andWithBinary does not works." + messageSeed);
+    }
+
+    @Test
+    void testOrWithBinary() {
+        var binary1OrBinary2 = binaryOrBinary(aBinary1, aBinary2);
+        var expected = new TypeBinary(binary1OrBinary2);
+        assertEquals(expected, typeBinary2.orWithBinary(typeBinary1),
+                "Method orWithBinary does not works." + messageSeed);
     }
 }
