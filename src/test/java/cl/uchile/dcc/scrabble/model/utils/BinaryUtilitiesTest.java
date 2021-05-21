@@ -23,6 +23,10 @@ class BinaryUtilitiesTest {
     int aStrangerInt2 = -83937223;
     String aStrangeBinary1 = "10110001111001110101001100010001";
     String aStrangeBinary2 = "11111010111111110011100000111001";
+    String resultM6AndM4 = "1000";
+    String resultM6OrM4 = "1110";
+    String resultP10AndM4 = "01000";
+    String resultP10OrM4 = "01110";
 
     @BeforeEach
     void setUp() {
@@ -141,7 +145,35 @@ class BinaryUtilitiesTest {
             }
             assertEquals(expectedTrue.toString(), boolOrBinary(true, currentBinary));
             // the binary result will be constructed to operate with false
-            assertEquals(currentBinary, BinaryUtilities.boolOrBinary(false, currentBinary)); // p or false == p
+            assertEquals(currentBinary, boolOrBinary(false, currentBinary)); // p or false == p
         }
+    }
+
+    @Test
+    void testOneComplement() {
+        String expected = "1";
+        assertEquals(expected, oneComplement(aBinary0), "Method oneComplement does not works");
+        expected = "1001";
+        assertEquals(expected, oneComplement(aBinaryP6), "Method oneComplement does not works");
+    }
+
+    @Test
+    void testBinaryAndBinary() {
+        String resultBOB = binaryAndBinary(aBinaryM6, aBinaryM4);
+        assertEquals(resultM6AndM4, resultBOB,
+                "Method binaryAndBinary does not works.");
+        resultBOB = binaryAndBinary(aBinaryP10, aBinaryM4);
+        assertEquals(resultP10AndM4, resultBOB,
+                "Method binaryAndBinary does not works.");
+    }
+
+    @Test
+    void testBinaryOrBinary() {
+        String resultBOB = binaryOrBinary(aBinaryM6, aBinaryM4);
+        assertEquals(resultM6OrM4, resultBOB,
+                "Method binaryOrBinary does not works.");
+        resultBOB = binaryOrBinary(aBinaryP10, aBinaryM4);
+        assertEquals(resultP10OrM4, resultBOB,
+                "Method binaryOrBinary does not works.");
     }
 }
