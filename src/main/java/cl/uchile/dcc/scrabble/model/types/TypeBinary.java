@@ -374,7 +374,7 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      */
     @Override
     public SLogical andWithBinary(TypeBinary typeBinary) {
-        return null;
+        return new TypeBinary(binaryAndBinary(typeBinary.value, this.value));
     }
 
     /**
@@ -385,6 +385,6 @@ public class TypeBinary extends AbstractInteger implements SLogical {
      */
     @Override
     public SLogical orWithBinary(TypeBinary typeBinary) {
-        return null;
+        return new TypeBinary(binaryOrBinary(typeBinary.value, this.value));
     }
 }
