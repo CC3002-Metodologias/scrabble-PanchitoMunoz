@@ -218,4 +218,38 @@ public final class BinaryUtilities {
         }
         return binaryToReturn.toString();
     }
+
+    private static String fillWithZeros(int maxSize, String binary) {
+        StringBuilder binaryToReturn = new StringBuilder(binary);
+        while (maxSize > binaryToReturn.length()) {
+            binaryToReturn.insert(0, "0");
+        }
+        return binaryToReturn.toString();
+    }
+
+    public static String binaryAndBinary(String binary1, String binary2) {
+        if (binary1.length() > binary2.length()) {
+            binary2 = fillWithZeros(binary1.length(), binary2);
+        } else {
+            binary1 = fillWithZeros(binary2.length(), binary1);
+        }
+        StringBuilder binaryToReturn = new StringBuilder(binary1);
+        for (int i = 0; i < binary1.length(); i++) {
+            binaryToReturn.setCharAt(i, binary1.charAt(i) == '1' && binary2.charAt(i) == '1' ? '1' : '0');
+        }
+        return binaryToReturn.toString();
+    }
+
+    public static String binaryOrBinary(String binary1, String binary2) {
+        if (binary1.length() > binary2.length()) {
+            binary2 = fillWithZeros(binary1.length(), binary2);
+        } else {
+            binary1 = fillWithZeros(binary2.length(), binary1);
+        }
+        StringBuilder binaryToReturn = new StringBuilder(binary1);
+        for (int i = 0; i < binary1.length(); i++) {
+            binaryToReturn.setCharAt(i, binary1.charAt(i) == '1' || binary2.charAt(i) == '1' ? '1' : '0');
+        }
+        return binaryToReturn.toString();
+    }
 }
