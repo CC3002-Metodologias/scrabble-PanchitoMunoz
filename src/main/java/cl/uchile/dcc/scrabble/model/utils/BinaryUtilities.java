@@ -219,19 +219,32 @@ public final class BinaryUtilities {
         return binaryToReturn.toString();
     }
 
-    private static String fillWithZeros(int maxSize, String binary) {
+    /**
+     * Fill the current binary with ones or zeros in order to keep the original value.
+     * @param maxBits Maximum number of bits.
+     * @param binary A binary to fill.
+     * @return A binary with an equivalent but larger value.
+     */
+    private static String fillMaxBits(int maxBits, String binary) {
         StringBuilder binaryToReturn = new StringBuilder(binary);
-        while (maxSize > binaryToReturn.length()) {
-            binaryToReturn.insert(0, "0");
+        while (maxBits > binaryToReturn.length()) {
+            binaryToReturn.insert(0, binary.charAt(0));
         }
         return binaryToReturn.toString();
     }
 
+    /**
+     * Makes the comparison between two binaries with the operator 'and'. If one binary is smaller than another,
+     * fill it with zeros and ones to get an equivalent value.
+     * @param binary1 First binary.
+     * @param binary2 Second binary.
+     * @return A binary result to operate with 'and'
+     */
     public static String binaryAndBinary(String binary1, String binary2) {
         if (binary1.length() > binary2.length()) {
-            binary2 = fillWithZeros(binary1.length(), binary2);
+            binary2 = fillMaxBits(binary1.length(), binary2);
         } else {
-            binary1 = fillWithZeros(binary2.length(), binary1);
+            binary1 = fillMaxBits(binary2.length(), binary1);
         }
         StringBuilder binaryToReturn = new StringBuilder(binary1);
         for (int i = 0; i < binary1.length(); i++) {
@@ -240,11 +253,18 @@ public final class BinaryUtilities {
         return binaryToReturn.toString();
     }
 
+    /**
+     * Makes the comparison between two binaries with the operator 'or'. If one binary is smaller than another,
+     * fill it with zeros and ones to get an equivalent value.
+     * @param binary1 First binary.
+     * @param binary2 Second binary.
+     * @return A binary result to operate with 'or'
+     */
     public static String binaryOrBinary(String binary1, String binary2) {
         if (binary1.length() > binary2.length()) {
-            binary2 = fillWithZeros(binary1.length(), binary2);
+            binary2 = fillMaxBits(binary1.length(), binary2);
         } else {
-            binary1 = fillWithZeros(binary2.length(), binary1);
+            binary1 = fillMaxBits(binary2.length(), binary1);
         }
         StringBuilder binaryToReturn = new StringBuilder(binary1);
         for (int i = 0; i < binary1.length(); i++) {

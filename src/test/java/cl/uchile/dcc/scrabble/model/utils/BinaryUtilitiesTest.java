@@ -26,7 +26,9 @@ class BinaryUtilitiesTest {
     String resultM6AndM4 = "1000";
     String resultM6OrM4 = "1110";
     String resultP10AndM4 = "01000";
-    String resultP10OrM4 = "01110";
+    String resultP10OrM4 = "11110";
+    String resultP10AndM6 = "01010";
+    String resultP10OrM6 = "11010";
 
     @BeforeEach
     void setUp() {
@@ -165,6 +167,9 @@ class BinaryUtilitiesTest {
         resultBOB = binaryAndBinary(aBinaryP10, aBinaryM4);
         assertEquals(resultP10AndM4, resultBOB,
                 "Method binaryAndBinary does not works.");
+        resultBOB = binaryAndBinary(aBinaryP10, aBinaryM6);
+        assertEquals(resultP10AndM6, resultBOB,
+                "Method binaryAndBinary does not works.");
     }
 
     @Test
@@ -174,6 +179,9 @@ class BinaryUtilitiesTest {
                 "Method binaryOrBinary does not works.");
         resultBOB = binaryOrBinary(aBinaryP10, aBinaryM4);
         assertEquals(resultP10OrM4, resultBOB,
+                "Method binaryOrBinary does not works.");
+        resultBOB = binaryOrBinary(aBinaryP10, aBinaryM6);
+        assertEquals(resultP10OrM6, resultBOB,
                 "Method binaryOrBinary does not works.");
     }
 }
