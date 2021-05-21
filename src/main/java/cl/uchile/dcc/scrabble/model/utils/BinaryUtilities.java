@@ -116,7 +116,7 @@ public final class BinaryUtilities {
      * @return The binary representation of 'intNumber'.
      */
     private static String positiveIntToBinary(int intNumber) {
-        // If the number is 0, return "0"
+        // If the number is 0, return 0 in binary
         if (intNumber == 0) return "0000000000000000";
         // Calculate the number of bits necessary
         int nBitsAtLeast = Math.max((int) Math.floor(Math.log(intNumber) / Math.log(2)) + 1, 8);
@@ -134,7 +134,7 @@ public final class BinaryUtilities {
             intNumber = intNumber / 2;
             id--;
         }
-        // Make the binary as a string
+        // Make the binary array as a string
         return IntStream.range(0, nBits).mapToObj(i -> String.valueOf(binary[i])).collect(Collectors.joining());
     }
 
