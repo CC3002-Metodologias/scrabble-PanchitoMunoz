@@ -157,7 +157,7 @@ public final class BinaryUtilities {
      */
     public static String intToBinary(int intNumber) {
         int absNumber = Math.abs(intNumber);
-        String  binaryNum = positiveIntToBinary(absNumber);
+        String binaryNum = positiveIntToBinary(absNumber);
         if (intNumber < 0) {
             binaryNum = twosComplement(binaryNum);
         }
