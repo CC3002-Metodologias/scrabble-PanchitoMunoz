@@ -1,14 +1,13 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.arithmetic_operations.ArithmeticOperationsWithNumbers;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
+
+import cl.uchile.dcc.scrabble.model.operations.ArithmeticOperationsWithNumbers;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-
 import java.util.Objects;
-
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
 /**
  * A class for the integer type.
@@ -31,19 +30,6 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     protected int getValue() {
         return this.value;
-    }
-
-    /**
-     * Method that determines if the object 'o' is equals to the current instance.
-     * @param o Another object that is compared to the current instance.
-     * @return A boolean that determines whether the current instance are equals with 'o'.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TypeInt)) return false;
-        TypeInt typeInt = (TypeInt) o;
-        return value == typeInt.value;
     }
 
     /**

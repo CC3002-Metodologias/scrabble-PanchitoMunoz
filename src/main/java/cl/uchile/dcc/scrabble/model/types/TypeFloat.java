@@ -1,9 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types;
+// TODO: HACER QUE DOS NUMEROS CUALESQUIERA SE PUEDAN COMPARAR ENTRE SI, PASANDOLOS A FLOAT
 
-import cl.uchile.dcc.scrabble.model.operations.arithmetic_operations.ArithmeticOperationsWithNumbers;
+import cl.uchile.dcc.scrabble.model.operations.ArithmeticOperationsWithNumbers;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-
 import java.util.Objects;
 
 /**
@@ -23,23 +23,11 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
 
     /**
      * Returns the current value of the instance.
+     *
      * @return The value in the instance
      */
-    protected double getValue() {
+    public double getValue() {
         return this.value;
-    }
-
-    /**
-     * Method that determines if the object 'o' is equals to the current instance.
-     * @param o Another object that is compared to the current instance.
-     * @return A boolean that determines whether the current instance are equals with 'o'.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TypeFloat)) return false;
-        TypeFloat typeFloat = (TypeFloat) o;
-        return Double.compare(typeFloat.value, value) == 0;
     }
 
     /**

@@ -1,14 +1,20 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.arithmetic_operations.ArithmeticOperationsWithIntegers;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryAndBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryOrBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
+
+import cl.uchile.dcc.scrabble.model.operations.ArithmeticOperationsWithIntegers;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-
 import java.util.Objects;
-
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
 
 /**
  * A class for the binary type.
@@ -39,19 +45,6 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     protected int getValueAsInt() {
         return binaryToInt(this.value);
-    }
-
-    /**
-     * Method that determines if the object 'o' is equals to the current instance.
-     * @param o Another object that is compared to the current instance.
-     * @return A boolean that determines whether the current instance are equals with 'o'.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TypeBinary)) return false;
-        TypeBinary that = (TypeBinary) o;
-        return binaryEqual(value, that.value);
     }
 
     /**
