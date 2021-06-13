@@ -17,4 +17,12 @@ public interface AST {
      * @return SType result of operations.
      */
     SType calculate();
+
+    /**
+     * Returns the {@code String} representation of the current {@code AST}.
+     *
+     * @param space number of spaces to ident
+     * @return the current {@code AST} as {@code String}
+     */
+    String asString(int space);
 }
