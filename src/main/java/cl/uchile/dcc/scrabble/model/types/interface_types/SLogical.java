@@ -1,11 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.operations.INeg;
-import cl.uchile.dcc.scrabble.model.operations.LogicalOperations;
-import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.and.IAndWithBool;
-import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBinary;
-import cl.uchile.dcc.scrabble.model.operations.or.IOrWithBool;
+import cl.uchile.dcc.scrabble.model.types.operations.INeg;
+import cl.uchile.dcc.scrabble.model.types.operations.LogicalOperations;
+import cl.uchile.dcc.scrabble.model.types.operations.and.IAndWithBinary;
+import cl.uchile.dcc.scrabble.model.types.operations.and.IAndWithBool;
+import cl.uchile.dcc.scrabble.model.types.operations.or.IOrWithBinary;
+import cl.uchile.dcc.scrabble.model.types.operations.or.IOrWithBool;
 
 /**
  * An interface for the sole purpose of representing a logical (e.g.: TypeBinary and TypeBool).

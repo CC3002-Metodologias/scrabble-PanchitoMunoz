@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.operations.add;
+package cl.uchile.dcc.scrabble.model.types.operations.add;
 
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 

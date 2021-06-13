@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.operations.division;
+package cl.uchile.dcc.scrabble.model.types.operations.division;
 
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;

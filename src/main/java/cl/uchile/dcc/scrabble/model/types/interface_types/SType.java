@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.operations.add.IAddWithStr;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
+import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithStr;
 
 /**
  * An interface for the sole purpose of representing any type.

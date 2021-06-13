@@ -1,7 +1,7 @@
-package cl.uchile.dcc.scrabble.model.operations.subtraction;
+package cl.uchile.dcc.scrabble.model.types.operations.subtraction;
 
-import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 
 /**
  * Interface for the subtraction operation. It is in case a Binary is subtracted with any type.

@@ -1,5 +1,5 @@
 
-package cl.uchile.dcc.scrabble.model.operations;
+package cl.uchile.dcc.scrabble.model.types.operations;
 
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 

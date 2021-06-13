@@ -1,7 +1,7 @@
-package cl.uchile.dcc.scrabble.model.operations.multiplication;
+package cl.uchile.dcc.scrabble.model.types.operations.multiplication;
 
-import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 
 /**
  * Interface for the multiplication operation. It is in case a Binary is multiplied by any type.

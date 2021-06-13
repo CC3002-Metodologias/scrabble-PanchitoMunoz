@@ -1,7 +1,7 @@
-package cl.uchile.dcc.scrabble.model.operations.subtraction;
+package cl.uchile.dcc.scrabble.model.types.operations.subtraction;
 
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
 /**
  * Interface for the subtraction operation. It is in case an Int is subtracted with any type.

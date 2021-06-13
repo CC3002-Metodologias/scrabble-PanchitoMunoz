@@ -1,7 +1,7 @@
-package cl.uchile.dcc.scrabble.model.operations.add;
+package cl.uchile.dcc.scrabble.model.types.operations.add;
 
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
 /**
  * Interface for the addition operation. It is in case a Float is sum with any type.

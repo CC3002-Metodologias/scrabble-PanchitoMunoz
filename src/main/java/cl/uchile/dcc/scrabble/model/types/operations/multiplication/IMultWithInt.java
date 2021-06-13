@@ -1,7 +1,7 @@
-package cl.uchile.dcc.scrabble.model.operations.multiplication;
+package cl.uchile.dcc.scrabble.model.types.operations.multiplication;
 
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
 /**
  * Interface for the multiplication operation. It is in case an Int is multiplied by any type.

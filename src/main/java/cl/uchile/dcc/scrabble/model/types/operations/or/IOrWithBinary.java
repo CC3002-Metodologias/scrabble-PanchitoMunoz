@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.operations.or;
+package cl.uchile.dcc.scrabble.model.types.operations.or;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
