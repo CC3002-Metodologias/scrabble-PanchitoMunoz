@@ -1,15 +1,17 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TypeIntTest extends BaseTypeTest {
 
     @BeforeEach
-    void setUp() {
+    protected void setUp() {
         super.setUp();
     }
 
