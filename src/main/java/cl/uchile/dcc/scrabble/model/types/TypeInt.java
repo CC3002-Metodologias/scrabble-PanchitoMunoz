@@ -26,9 +26,10 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
 
     /**
      * Returns the current value of the instance.
+     *
      * @return The value in the instance
      */
-    protected int getValue() {
+    public int getValue() {
         return this.value;
     }
 

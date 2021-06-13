@@ -2,7 +2,6 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
-
 import java.util.Objects;
 
 /**
@@ -22,9 +21,10 @@ public class TypeString extends AbstractType {
 
     /**
      * Returns the current value of the instance.
+     *
      * @return The value in the instance
      */
-    protected String getValue() {
+    public String getValue() {
         return this.value;
     }
 

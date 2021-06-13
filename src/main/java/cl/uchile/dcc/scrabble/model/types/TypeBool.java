@@ -1,12 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
-
-import java.util.Objects;
-
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
+
+import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
+import java.util.Objects;
 
 /**
  * A class for the boolean type.
@@ -25,9 +24,10 @@ public class TypeBool extends AbstractType implements SLogical {
 
     /**
      * Returns the current value of the instance.
+     *
      * @return The value in the instance
      */
-    protected boolean getValue() {
+    public boolean getValue() {
         return this.value;
     }
 

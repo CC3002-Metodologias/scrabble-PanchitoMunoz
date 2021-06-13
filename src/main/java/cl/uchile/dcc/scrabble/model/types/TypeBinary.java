@@ -33,9 +33,10 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
 
     /**
      * Returns the current value of the instance.
+     *
      * @return The value in the instance
      */
-    protected String getValue() {
+    public String getValue() {
         return this.value;
     }
 
