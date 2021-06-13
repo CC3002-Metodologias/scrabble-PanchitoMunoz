@@ -1,5 +1,4 @@
 package cl.uchile.dcc.scrabble.model.types;
-// TODO: HACER QUE DOS NUMEROS CUALESQUIERA SE PUEDAN COMPARAR ENTRE SI, PASANDOLOS A FLOAT
 
 import cl.uchile.dcc.scrabble.model.operations.ArithmeticOperationsWithNumbers;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
