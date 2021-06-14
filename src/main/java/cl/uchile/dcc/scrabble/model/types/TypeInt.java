@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.types;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
-import cl.uchile.dcc.scrabble.model.WrapTransformation;
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
@@ -302,7 +302,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return a transformation
      */
     @Override
-    public WrapTransformation toWrapType() {
+    public AST toWrapType() {
         return new WrappedInt(this);
     }
 }

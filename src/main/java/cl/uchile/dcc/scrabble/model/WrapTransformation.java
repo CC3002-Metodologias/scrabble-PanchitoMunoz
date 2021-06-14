@@ -22,5 +22,5 @@ public interface WrapTransformation {
      *
      * @return a transformation
      */
-    WrapTransformation toWrapType();
+    AST toWrapType();
 }

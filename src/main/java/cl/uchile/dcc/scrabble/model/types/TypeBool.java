@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.types;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
-import cl.uchile.dcc.scrabble.model.WrapTransformation;
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
@@ -178,7 +178,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return a transformation
      */
     @Override
-    public WrapTransformation toWrapType() {
+    public AST toWrapType() {
         return new WrappedBool(this);
     }
 }

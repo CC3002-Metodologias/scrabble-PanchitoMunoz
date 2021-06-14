@@ -9,7 +9,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 
-import cl.uchile.dcc.scrabble.model.WrapTransformation;
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
@@ -408,7 +408,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      * @return a transformation
      */
     @Override
-    public WrapTransformation toWrapType() {
+    public AST toWrapType() {
         return new WrappedBinary(this);
     }
 }

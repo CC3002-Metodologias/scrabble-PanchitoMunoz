@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.WrapTransformation;
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
@@ -72,7 +72,7 @@ public abstract class AbstractWrappedType implements WType {
      * @return a transformation
      */
     @Override
-    public WrapTransformation toWrapType() {
+    public AST toWrapType() {
         return this;
     }
 

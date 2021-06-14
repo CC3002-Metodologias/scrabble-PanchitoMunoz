@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.WrapTransformation;
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
@@ -101,7 +101,7 @@ public class TypeString extends AbstractType {
      * @return a transformation
      */
     @Override
-    public WrapTransformation toWrapType() {
+    public AST toWrapType() {
         return new WrappedString(this);
     }
 }
