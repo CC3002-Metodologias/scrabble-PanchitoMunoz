@@ -3,6 +3,8 @@ package cl.uchile.dcc.scrabble.model.types;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
+import cl.uchile.dcc.scrabble.model.WrapTransformation;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -287,7 +289,20 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
         // Case divide by zero
-        if (this.value == 0) return new TypeInt(0);
+        if (this.value == 0) {
+            return new TypeInt(0);
+        }
         return new TypeInt((int) Math.round((double) typeInt.value / this.value));
+    }
+
+    /**
+     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
+     * WType} or an {@code AST}, it does nothing.
+     *
+     * @return a transformation
+     */
+    @Override
+    public WrapTransformation toWrapType() {
+        return new WrappedInt(this);
     }
 }

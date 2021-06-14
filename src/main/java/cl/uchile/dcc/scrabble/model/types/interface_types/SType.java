@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
+import cl.uchile.dcc.scrabble.model.WrapTransformation;
+import cl.uchile.dcc.scrabble.model.ast.ast_types.TypeAST;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithStr;
 
@@ -8,7 +10,7 @@ import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithStr;
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SType extends IAddWithStr {
+public interface SType extends WrapTransformation, TypeAST, IAddWithStr {
 
     /**
      * Transforms the current type to a TypeString.

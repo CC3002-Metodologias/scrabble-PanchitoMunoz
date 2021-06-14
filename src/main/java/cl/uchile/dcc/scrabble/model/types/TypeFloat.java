@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.WrapTransformation;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
@@ -214,7 +216,20 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
         // Case divide by zero
-        if (this.value == 0.) return new TypeFloat(0.0);
+        if (this.value == 0.) {
+            return new TypeFloat(0.0);
+        }
         return new TypeFloat(typeInt.getValue() / this.value);
+    }
+
+    /**
+     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
+     * WType} or an {@code AST}, it does nothing.
+     *
+     * @return a transformation
+     */
+    @Override
+    public WrapTransformation toWrapType() {
+        return new WrappedFloat(this);
     }
 }
