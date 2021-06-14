@@ -12,4 +12,22 @@ import cl.uchile.dcc.scrabble.model.ast.AST;
  */
 public interface Operation extends AST {
 
+    /**
+     * Add a component to the list of components.
+     *
+     * @param component a component
+     */
+    void add(AST component);
+
+    /**
+     * Add multiples components to the list of components.
+     *
+     * @param components multiples components
+     */
+    void add(AST... components);
+
+    /**
+     * Clears the list of components
+     */
+    void clear();
 }
