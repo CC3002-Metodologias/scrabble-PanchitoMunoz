@@ -1,8 +1,11 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WLogical;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 
 /**
  * Interface to implements the conjunction in wrapped classes.
@@ -15,18 +18,33 @@ public interface WOr {
     /**
      * Returns the conjunction between logicals
      *
-     * @param wLogical another logical
+     * @param wType another logical
      * @return the conjunction
      */
-    WLogical or(WLogical wLogical);
+    WType or(WType wType);
 
     /**
      * To use double dispatch in {@code or}
      */
-    WLogical orWithBool(WrappedBool wBool);
+    WType orWithString(WrappedString wrappedString);
 
     /**
      * To use double dispatch in {@code or}
      */
-    WLogical orWithBinary(WrappedBinary wBinary);
+    WType orWithBool(WrappedBool wBool);
+
+    /**
+     * To use double dispatch in {@code or}
+     */
+    WType orWithBinary(WrappedBinary wBinary);
+
+    /**
+     * To use double dispatch in {@code or}
+     */
+    WType orWithFloat(WrappedFloat wrappedFloat);
+
+    /**
+     * To use double dispatch in {@code or}
+     */
+    WType orWithInt(WrappedInt wrappedInt);
 }

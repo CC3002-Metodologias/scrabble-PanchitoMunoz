@@ -24,6 +24,7 @@ public class Main {
         WrappedString wString = new WrappedString("Hola!");
         System.out.println(wFloat.add(wString));
         System.out.println(typeBinary.toWrapType());
+        System.out.println(wString.sub(wBinary));
     }
 
 }

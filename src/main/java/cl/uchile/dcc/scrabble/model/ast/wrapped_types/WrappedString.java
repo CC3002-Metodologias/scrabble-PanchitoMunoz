@@ -63,4 +63,59 @@ public class WrappedString extends AbstractWrappedType {
     public WType add(WType wType) {
         return wType.addWithString(this);
     }
+
+    /**
+     * Returns the disjunction between logicals
+     *
+     * @param wType another logical
+     * @return the disjunction
+     */
+    @Override
+    public WType and(WType wType) {
+        return wType.andWithString(this);
+    }
+
+    /**
+     * Returns the division between numbers
+     *
+     * @param wType another number
+     * @return the division
+     */
+    @Override
+    public WType div(WType wType) {
+        return wType.divWithString(this);
+    }
+
+    /**
+     * Returns the multiplication between numbers
+     *
+     * @param wType another number
+     * @return the multiplication
+     */
+    @Override
+    public WType mult(WType wType) {
+        return wType.multWithString(this);
+    }
+
+    /**
+     * Returns the conjunction between logicals
+     *
+     * @param wType another logical
+     * @return the conjunction
+     */
+    @Override
+    public WType or(WType wType) {
+        return wType.orWithString(this);
+    }
+
+    /**
+     * Returns the subtraction between numbers
+     *
+     * @param wType another number
+     * @return the subtraction
+     */
+    @Override
+    public WType sub(WType wType) {
+        return wType.subWithString(this);
+    }
 }

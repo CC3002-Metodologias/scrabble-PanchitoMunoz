@@ -1,9 +1,11 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 
 /**
  * Interface to implements the division in wrapped classes.
@@ -16,23 +18,33 @@ public interface WDiv {
     /**
      * Returns the division between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the division
      */
-    WNumber div(WNumber wNumber);
+    WType div(WType wType);
 
     /**
      * To use double dispatch in {@code div}
      */
-    WNumber divWithBinary(WrappedBinary wBinary);
+    WType divWithString(WrappedString wrappedString);
 
     /**
      * To use double dispatch in {@code div}
      */
-    WNumber divWithFloat(WrappedFloat wFloat);
+    WType divWithBool(WrappedBool wrappedBool);
 
     /**
      * To use double dispatch in {@code div}
      */
-    WNumber divWithInt(WrappedInt wInt);
+    WType divWithBinary(WrappedBinary wBinary);
+
+    /**
+     * To use double dispatch in {@code div}
+     */
+    WType divWithFloat(WrappedFloat wFloat);
+
+    /**
+     * To use double dispatch in {@code div}
+     */
+    WType divWithInt(WrappedInt wInt);
 }

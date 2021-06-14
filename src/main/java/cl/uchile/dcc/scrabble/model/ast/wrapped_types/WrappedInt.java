@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedNumber;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -14,7 +13,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/13 0:02
  * @see TypeInt
  */
-public class WrappedInt extends AbstractWrappedNumber {
+public class WrappedInt extends AbstractWrappedType {
 
     private final TypeInt typeInt;
 
@@ -70,34 +69,56 @@ public class WrappedInt extends AbstractWrappedNumber {
     /**
      * Returns the division between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the division
      */
     @Override
-    public WNumber div(WNumber wNumber) {
-        return wNumber.divWithInt(this);
+    public WType div(WType wType) {
+        return wType.divWithInt(this);
     }
 
     /**
      * Returns the multiplication between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the multiplication
      */
     @Override
-    public WNumber mult(WNumber wNumber) {
-        return wNumber.multWithInt(this);
+    public WType mult(WType wType) {
+        return wType.multWithInt(this);
     }
 
     /**
      * Returns the subtraction between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the subtraction
      */
     @Override
-    public WNumber sub(WNumber wNumber) {
-        return wNumber.subWithInt(this);
+    public WType sub(WType wType) {
+        return wType.subWithInt(this);
+    }
+
+    /**
+     * Returns the disjunction between logicals
+     *
+     * @param wType another logical
+     * @return the disjunction
+     */
+    @Override
+    public WType and(WType wType) {
+        return wType.andWithInt(this);
+    }
+
+    /**
+     * Returns the conjunction between logicals
+     *
+     * @param wType another logical
+     * @return the conjunction
+     */
+    @Override
+    public WType or(WType wType) {
+        return wType.orWithInt(this);
     }
 
     /**
@@ -134,7 +155,7 @@ public class WrappedInt extends AbstractWrappedNumber {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithBinary(WrappedBinary wBinary) {
+    public WType subWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeInt) this.getAdaptee())
             .subWithBinary((TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
@@ -142,9 +163,11 @@ public class WrappedInt extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code sub}
+     *
+     *
      */
     @Override
-    public WNumber subWithFloat(WrappedFloat wFloat) {
+    public WType subWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((TypeInt) this.getAdaptee())
             .subWithFloat((TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
@@ -152,9 +175,11 @@ public class WrappedInt extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code sub}
+     *
+     *
      */
     @Override
-    public WNumber subWithInt(WrappedInt wInt) {
+    public WType subWithInt(WrappedInt wInt) {
         TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
             .subWithInt((TypeInt) wInt.getAdaptee());
         return new WrappedInt(computed);
@@ -162,9 +187,11 @@ public class WrappedInt extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code mult}
+     *
+     *
      */
     @Override
-    public WNumber multWithBinary(WrappedBinary wBinary) {
+    public WType multWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeInt) this.getAdaptee())
             .multWithBinary((TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
@@ -172,9 +199,11 @@ public class WrappedInt extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code mult}
+     *
+     *
      */
     @Override
-    public WNumber multWithFloat(WrappedFloat wFloat) {
+    public WType multWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((TypeInt) this.getAdaptee())
             .multWithFloat((TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
@@ -182,9 +211,11 @@ public class WrappedInt extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code mult}
+     *
+     *
      */
     @Override
-    public WNumber multWithInt(WrappedInt wInt) {
+    public WType multWithInt(WrappedInt wInt) {
         TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
             .multWithInt((TypeInt) wInt.getAdaptee());
         return new WrappedInt(computed);
@@ -192,9 +223,11 @@ public class WrappedInt extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code div}
+     *
+     *
      */
     @Override
-    public WNumber divWithBinary(WrappedBinary wBinary) {
+    public WType divWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeInt) this.getAdaptee())
             .divWithBinary((TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
@@ -202,9 +235,11 @@ public class WrappedInt extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code div}
+     *
+     *
      */
     @Override
-    public WNumber divWithFloat(WrappedFloat wFloat) {
+    public WType divWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((TypeInt) this.getAdaptee())
             .divWithFloat((TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
@@ -212,9 +247,11 @@ public class WrappedInt extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code div}
+     *
+     *
      */
     @Override
-    public WNumber divWithInt(WrappedInt wInt) {
+    public WType divWithInt(WrappedInt wInt) {
         TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
             .divWithInt((TypeInt) wInt.getAdaptee());
         return new WrappedInt(computed);

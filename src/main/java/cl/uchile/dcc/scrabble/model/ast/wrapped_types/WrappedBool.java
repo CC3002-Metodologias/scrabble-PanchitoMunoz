@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WLogical;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
@@ -14,7 +13,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/13 0:00
  * @see TypeBool
  */
-public class WrappedBool extends AbstractWrappedType implements WLogical {
+public class WrappedBool extends AbstractWrappedType {
 
     private final TypeBool typeBool;
 
@@ -70,23 +69,56 @@ public class WrappedBool extends AbstractWrappedType implements WLogical {
     /**
      * Returns the disjunction between logicals
      *
-     * @param wLogical another logical
+     * @param wType another logical
      * @return the disjunction
      */
     @Override
-    public WLogical and(WLogical wLogical) {
-        return wLogical.andWithBool(this);
+    public WType and(WType wType) {
+        return wType.andWithBool(this);
     }
 
     /**
      * Returns the conjunction between logicals
      *
-     * @param wLogical another logical
+     * @param wType another logical
      * @return the conjunction
      */
     @Override
-    public WLogical or(WLogical wLogical) {
-        return wLogical.orWithBool(this);
+    public WType or(WType wType) {
+        return wType.orWithBool(this);
+    }
+
+    /**
+     * Returns the division between numbers
+     *
+     * @param wType another number
+     * @return the division
+     */
+    @Override
+    public WType div(WType wType) {
+        return wType.divWithBool(this);
+    }
+
+    /**
+     * Returns the multiplication between numbers
+     *
+     * @param wType another number
+     * @return the multiplication
+     */
+    @Override
+    public WType mult(WType wType) {
+        return wType.multWithBool(this);
+    }
+
+    /**
+     * Returns the subtraction between numbers
+     *
+     * @param wType another number
+     * @return the subtraction
+     */
+    @Override
+    public WType sub(WType wType) {
+        return wType.subWithBool(this);
     }
 
     /**
@@ -134,7 +166,7 @@ public class WrappedBool extends AbstractWrappedType implements WLogical {
      * To use double dispatch in {@code and}
      */
     @Override
-    public WLogical andWithBool(WrappedBool wBool) {
+    public WType andWithBool(WrappedBool wBool) {
         TypeBool computed = (TypeBool) ((TypeBool) this.getAdaptee()).andWithBool(
             (TypeBool) wBool.getAdaptee());
         return new WrappedBool(computed);
@@ -142,9 +174,11 @@ public class WrappedBool extends AbstractWrappedType implements WLogical {
 
     /**
      * To use double dispatch in {@code and}
+     *
+     *
      */
     @Override
-    public WLogical andWithBinary(WrappedBinary wBinary) {
+    public WType andWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeBool) this.getAdaptee()).andWithBinary(
             (TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
@@ -152,9 +186,11 @@ public class WrappedBool extends AbstractWrappedType implements WLogical {
 
     /**
      * To use double dispatch in {@code or}
+     *
+     *
      */
     @Override
-    public WLogical orWithBool(WrappedBool wBool) {
+    public WType orWithBool(WrappedBool wBool) {
         TypeBool computed = (TypeBool) ((TypeBool) this.getAdaptee()).orWithBool(
             (TypeBool) wBool.getAdaptee());
         return new WrappedBool(computed);
@@ -162,9 +198,11 @@ public class WrappedBool extends AbstractWrappedType implements WLogical {
 
     /**
      * To use double dispatch in {@code or}
+     *
+     *
      */
     @Override
-    public WLogical orWithBinary(WrappedBinary wBinary) {
+    public WType orWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeBool) this.getAdaptee()).orWithBinary(
             (TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);

@@ -1,9 +1,11 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 
 /**
  * Interface to implements the subtraction in wrapped classes.
@@ -16,23 +18,33 @@ public interface WSub {
     /**
      * Returns the subtraction between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the subtraction
      */
-    WNumber sub(WNumber wNumber);
+    WType sub(WType wType);
 
     /**
      * To use double dispatch in {@code sub}
      */
-    WNumber subWithBinary(WrappedBinary wBinary);
+    WType subWithString(WrappedString wrappedString);
 
     /**
      * To use double dispatch in {@code sub}
      */
-    WNumber subWithFloat(WrappedFloat wFloat);
+    WType subWithBool(WrappedBool wrappedBool);
 
     /**
      * To use double dispatch in {@code sub}
      */
-    WNumber subWithInt(WrappedInt wInt);
+    WType subWithBinary(WrappedBinary wBinary);
+
+    /**
+     * To use double dispatch in {@code sub}
+     */
+    WType subWithFloat(WrappedFloat wFloat);
+
+    /**
+     * To use double dispatch in {@code sub}
+     */
+    WType subWithInt(WrappedInt wInt);
 }

@@ -7,7 +7,6 @@ import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -81,12 +80,12 @@ public abstract class AbstractWrappedType implements WType {
      */
     @Override
     public WType addWithString(WrappedString wString) {
-        TypeString computed = this.getAdaptee().addWithString((TypeString) wString.getAdaptee());
-        return new WrappedString(computed);
+        return null;
     }
 
     /**
      * To use double dispatch in {@code add}
+     *
      */
     @Override
     public WType addWithBool(WrappedBool wBool) {
@@ -95,6 +94,7 @@ public abstract class AbstractWrappedType implements WType {
 
     /**
      * To use double dispatch in {@code add}
+     *
      */
     @Override
     public WType addWithBinary(WrappedBinary wBinary) {
@@ -103,6 +103,7 @@ public abstract class AbstractWrappedType implements WType {
 
     /**
      * To use double dispatch in {@code add}
+     *
      */
     @Override
     public WType addWithFloat(WrappedFloat wFloat) {
@@ -114,6 +115,206 @@ public abstract class AbstractWrappedType implements WType {
      */
     @Override
     public WType addWithInt(WrappedInt wInt) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code and}
+     */
+    @Override
+    public WType andWithString(WrappedString wrappedString) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code and}
+     */
+    @Override
+    public WType andWithBool(WrappedBool wBool) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code and}
+     */
+    @Override
+    public WType andWithBinary(WrappedBinary wBinary) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code and}
+     */
+    @Override
+    public WType andWithFloat(WrappedFloat wrappedFloat) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code and}
+     */
+    @Override
+    public WType andWithInt(WrappedInt wrappedInt) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code div}
+     */
+    @Override
+    public WType divWithString(WrappedString wrappedString) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code div}
+     */
+    @Override
+    public WType divWithBool(WrappedBool wrappedBool) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code div}
+     */
+    @Override
+    public WType divWithBinary(WrappedBinary wBinary) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code div}
+     */
+    @Override
+    public WType divWithFloat(WrappedFloat wFloat) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code div}
+     */
+    @Override
+    public WType divWithInt(WrappedInt wInt) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code mult}
+     */
+    @Override
+    public WType multWithString(WrappedString wrappedString) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code mult}
+     */
+    @Override
+    public WType multWithBool(WrappedBool wrappedBool) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code mult}
+     */
+    @Override
+    public WType multWithBinary(WrappedBinary wBinary) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code mult}
+     */
+    @Override
+    public WType multWithFloat(WrappedFloat wFloat) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code mult}
+     */
+    @Override
+    public WType multWithInt(WrappedInt wInt) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code or}
+     */
+    @Override
+    public WType orWithString(WrappedString wrappedString) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code or}
+     */
+    @Override
+    public WType orWithBool(WrappedBool wBool) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code or}
+     */
+    @Override
+    public WType orWithBinary(WrappedBinary wBinary) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code or}
+     */
+    @Override
+    public WType orWithFloat(WrappedFloat wrappedFloat) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code or}
+     */
+    @Override
+    public WType orWithInt(WrappedInt wrappedInt) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code sub}
+     */
+    @Override
+    public WType subWithString(WrappedString wrappedString) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code sub}
+     */
+    @Override
+    public WType subWithBool(WrappedBool wrappedBool) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code sub}
+     */
+    @Override
+    public WType subWithBinary(WrappedBinary wBinary) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code sub}
+     */
+    @Override
+    public WType subWithFloat(WrappedFloat wFloat) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code sub}
+     */
+    @Override
+    public WType subWithInt(WrappedInt wInt) {
         return null;
     }
 }

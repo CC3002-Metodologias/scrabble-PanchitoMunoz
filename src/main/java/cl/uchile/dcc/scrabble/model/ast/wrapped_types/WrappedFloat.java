@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedNumber;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -14,7 +13,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/13 0:02
  * @see TypeFloat
  */
-public class WrappedFloat extends AbstractWrappedNumber {
+public class WrappedFloat extends AbstractWrappedType {
 
     private final TypeFloat typeFloat;
 
@@ -70,34 +69,56 @@ public class WrappedFloat extends AbstractWrappedNumber {
     /**
      * Returns the division between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the division
      */
     @Override
-    public WNumber div(WNumber wNumber) {
-        return wNumber.divWithFloat(this);
+    public WType div(WType wType) {
+        return wType.divWithFloat(this);
     }
 
     /**
      * Returns the multiplication between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the multiplication
      */
     @Override
-    public WNumber mult(WNumber wNumber) {
-        return wNumber.multWithFloat(this);
+    public WType mult(WType wType) {
+        return wType.multWithFloat(this);
     }
 
     /**
      * Returns the subtraction between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the subtraction
      */
     @Override
-    public WNumber sub(WNumber wNumber) {
-        return wNumber.subWithFloat(this);
+    public WType sub(WType wType) {
+        return wType.subWithFloat(this);
+    }
+
+    /**
+     * Returns the disjunction between logicals
+     *
+     * @param wType another logical
+     * @return the disjunction
+     */
+    @Override
+    public WType and(WType wType) {
+        return wType.andWithFloat(this);
+    }
+
+    /**
+     * Returns the conjunction between logicals
+     *
+     * @param wType another logical
+     * @return the conjunction
+     */
+    @Override
+    public WType or(WType wType) {
+        return wType.orWithFloat(this);
     }
 
     /**
@@ -124,7 +145,7 @@ public class WrappedFloat extends AbstractWrappedNumber {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithFloat(WrappedFloat wFloat) {
+    public WType subWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).subWithFloat(
             (TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
@@ -132,9 +153,11 @@ public class WrappedFloat extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code sub}
+     *
+     *
      */
     @Override
-    public WNumber subWithInt(WrappedInt wInt) {
+    public WType subWithInt(WrappedInt wInt) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).subWithInt(
             (TypeInt) wInt.getAdaptee());
         return new WrappedFloat(computed);
@@ -142,9 +165,11 @@ public class WrappedFloat extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code mult}
+     *
+     *
      */
     @Override
-    public WNumber multWithFloat(WrappedFloat wFloat) {
+    public WType multWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).multWithFloat(
             (TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
@@ -152,9 +177,11 @@ public class WrappedFloat extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code mult}
+     *
+     *
      */
     @Override
-    public WNumber multWithInt(WrappedInt wInt) {
+    public WType multWithInt(WrappedInt wInt) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).multWithInt(
             (TypeInt) wInt.getAdaptee());
         return new WrappedFloat(computed);
@@ -162,9 +189,11 @@ public class WrappedFloat extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code div}
+     *
+     *
      */
     @Override
-    public WNumber divWithFloat(WrappedFloat wFloat) {
+    public WType divWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).divWithFloat(
             (TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
@@ -172,9 +201,11 @@ public class WrappedFloat extends AbstractWrappedNumber {
 
     /**
      * To use double dispatch in {@code div}
+     *
+     *
      */
     @Override
-    public WNumber divWithInt(WrappedInt wInt) {
+    public WType divWithInt(WrappedInt wInt) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).divWithInt(
             (TypeInt) wInt.getAdaptee());
         return new WrappedFloat(computed);

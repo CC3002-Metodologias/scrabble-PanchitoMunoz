@@ -1,9 +1,11 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 
 /**
  * Interface to implements the multiplication in wrapped classes.
@@ -16,23 +18,33 @@ public interface WMult {
     /**
      * Returns the multiplication between numbers
      *
-     * @param wNumber another number
+     * @param wType another number
      * @return the multiplication
      */
-    WNumber mult(WNumber wNumber);
+    WType mult(WType wType);
 
     /**
      * To use double dispatch in {@code mult}
      */
-    WNumber multWithBinary(WrappedBinary wBinary);
+    WType multWithString(WrappedString wrappedString);
 
     /**
      * To use double dispatch in {@code mult}
      */
-    WNumber multWithFloat(WrappedFloat wFloat);
+    WType multWithBool(WrappedBool wrappedBool);
 
     /**
      * To use double dispatch in {@code mult}
      */
-    WNumber multWithInt(WrappedInt wInt);
+    WType multWithBinary(WrappedBinary wBinary);
+
+    /**
+     * To use double dispatch in {@code mult}
+     */
+    WType multWithFloat(WrappedFloat wFloat);
+
+    /**
+     * To use double dispatch in {@code mult}
+     */
+    WType multWithInt(WrappedInt wInt);
 }
