@@ -46,16 +46,6 @@ public class WrappedInt extends AbstractWrappedType {
     }
 
     /**
-     * To use template pattern in {@code asString}.
-     *
-     * @return the current {@code AST} as {@code String} without spaces.
-     */
-    @Override
-    protected String asString() {
-        return String.valueOf(this.typeInt.getValue());
-    }
-
-    /**
      * Returns the sum
      *
      * @param wType other type to sum

@@ -47,16 +47,6 @@ public class WrappedBinary extends AbstractWrappedType {
     }
 
     /**
-     * To use template pattern in {@code asString}.
-     *
-     * @return the current {@code AST} as {@code String} without spaces.
-     */
-    @Override
-    protected String asString() {
-        return this.typeBinary.getValue();
-    }
-
-    /**
      * Returns the sum
      *
      * @param wType other type to sum

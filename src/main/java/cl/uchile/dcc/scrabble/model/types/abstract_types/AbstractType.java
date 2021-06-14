@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -46,9 +45,7 @@ public abstract class AbstractType implements SType {
      */
     @Override
     public String asString(int space) {
-        // TODO: Quizas para desacoplar este metodo de WType se podria implementar asString aqui y
-        //  dejar que el Adapter lo adapte en su respectiva clase
-        WType thisAsWType = (WType) this.toWrapType();
-        return thisAsWType.asString(space);
+        String tab = " ".repeat(space);
+        return tab + this;
     }
 }

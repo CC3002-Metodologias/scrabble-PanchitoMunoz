@@ -62,7 +62,9 @@ public abstract class AbstractWrappedType implements WType {
      *
      * @return the current {@code AST} as {@code String} without spaces.
      */
-    abstract protected String asString();
+    protected String asString() {
+        return this.getAdaptee().asString(0);
+    }
 
     /**
      * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
