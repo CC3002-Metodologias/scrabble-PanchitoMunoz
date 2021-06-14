@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.ast_types.TypeAST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
+import cl.uchile.dcc.scrabble.model.ast.operations.ast_types.TypeAST;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WAdd;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
