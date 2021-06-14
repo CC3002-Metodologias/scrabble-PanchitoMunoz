@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_classes.AbstractWNumber;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.type_interfaces.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -14,7 +14,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/13 0:02
  * @see TypeInt
  */
-public class WInt extends AbstractWNumber {
+public class WrappedInt extends AbstractWrappedNumber {
 
     private final TypeInt typeInt;
 
@@ -23,8 +23,17 @@ public class WInt extends AbstractWNumber {
      *
      * @param typeInt a type int
      */
-    public WInt(TypeInt typeInt) {
+    public WrappedInt(TypeInt typeInt) {
         this.typeInt = typeInt;
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param value an int
+     */
+    public WrappedInt(int value) {
+        this.typeInt = new TypeInt(value);
     }
 
     /**
@@ -95,119 +104,119 @@ public class WInt extends AbstractWNumber {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithBinary(WBinary wBinary) {
+    public WType addWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeInt) this.getAdaptee())
             .addWithBinary((TypeBinary) wBinary.getAdaptee());
-        return new WBinary(computed);
+        return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithFloat(WFloat wFloat) {
+    public WType addWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((TypeInt) this.getAdaptee())
             .addWithFloat((TypeFloat) wFloat.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithInt(WInt wInt) {
+    public WType addWithInt(WrappedInt wInt) {
         TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
             .addWithInt((TypeInt) wInt.getAdaptee());
-        return new WInt(computed);
+        return new WrappedInt(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithBinary(WBinary wBinary) {
+    public WNumber subWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeInt) this.getAdaptee())
             .subWithBinary((TypeBinary) wBinary.getAdaptee());
-        return new WBinary(computed);
+        return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithFloat(WFloat wFloat) {
+    public WNumber subWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((TypeInt) this.getAdaptee())
             .subWithFloat((TypeFloat) wFloat.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithInt(WInt wInt) {
+    public WNumber subWithInt(WrappedInt wInt) {
         TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
             .subWithInt((TypeInt) wInt.getAdaptee());
-        return new WInt(computed);
+        return new WrappedInt(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WNumber multWithBinary(WBinary wBinary) {
+    public WNumber multWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeInt) this.getAdaptee())
             .multWithBinary((TypeBinary) wBinary.getAdaptee());
-        return new WBinary(computed);
+        return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WNumber multWithFloat(WFloat wFloat) {
+    public WNumber multWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((TypeInt) this.getAdaptee())
             .multWithFloat((TypeFloat) wFloat.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WNumber multWithInt(WInt wInt) {
+    public WNumber multWithInt(WrappedInt wInt) {
         TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
             .multWithInt((TypeInt) wInt.getAdaptee());
-        return new WInt(computed);
+        return new WrappedInt(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
      */
     @Override
-    public WNumber divWithBinary(WBinary wBinary) {
+    public WNumber divWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeInt) this.getAdaptee())
             .divWithBinary((TypeBinary) wBinary.getAdaptee());
-        return new WBinary(computed);
+        return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
      */
     @Override
-    public WNumber divWithFloat(WFloat wFloat) {
+    public WNumber divWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((TypeInt) this.getAdaptee())
             .divWithFloat((TypeFloat) wFloat.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
      */
     @Override
-    public WNumber divWithInt(WInt wInt) {
+    public WNumber divWithInt(WrappedInt wInt) {
         TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
             .divWithInt((TypeInt) wInt.getAdaptee());
-        return new WInt(computed);
+        return new WrappedInt(computed);
     }
 }

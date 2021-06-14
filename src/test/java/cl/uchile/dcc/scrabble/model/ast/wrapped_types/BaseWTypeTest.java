@@ -10,39 +10,39 @@ import cl.uchile.dcc.scrabble.model.types.BaseTypeTest;
  */
 public abstract class BaseWTypeTest extends BaseTypeTest {
 
-    protected final WBinary wBinaryZero = new WBinary(typeBinaryZero);
+    protected final WrappedBinary wBinaryZero = new WrappedBinary(typeBinaryZero);
     // Booleans
-    protected final WBool trueWBool = new WBool(trueTypeBool);
-    protected final WBool falseWBool = new WBool(falseTypeBool);
-    protected final WFloat wFloatZero = new WFloat(typeFloatZero);
-    protected final WInt wIntZero = new WInt(typeIntZero);
+    protected final WrappedBool trueWBool = new WrappedBool(trueTypeBool);
+    protected final WrappedBool falseWBool = new WrappedBool(falseTypeBool);
+    protected final WrappedFloat wFloatZero = new WrappedFloat(typeFloatZero);
+    protected final WrappedInt wIntZero = new WrappedInt(typeIntZero);
     // Binaries
-    protected WBinary wBinary1;
-    protected WBinary wBinary2;
+    protected WrappedBinary wBinary1;
+    protected WrappedBinary wBinary2;
     // Floats
-    protected WFloat wFloat1;
-    protected WFloat wFloat2;
+    protected WrappedFloat wFloat1;
+    protected WrappedFloat wFloat2;
     // Ints
-    protected WInt wInt1;
-    protected WInt wInt2;
+    protected WrappedInt wInt1;
+    protected WrappedInt wInt2;
     // Strings
-    protected WString wString1;
-    protected WString wString2;
+    protected WrappedString wString1;
+    protected WrappedString wString2;
 
     protected void setUp() {
         // Setting random values
         super.setUp();
         // Generate 2 binaries random
-        wBinary1 = new WBinary(typeBinary1);
-        wBinary2 = new WBinary(typeBinary2);
+        wBinary1 = new WrappedBinary(typeBinary1);
+        wBinary2 = new WrappedBinary(typeBinary2);
         // Generate 2 floats random
-        wFloat1 = new WFloat(typeFloat1);
-        wFloat2 = new WFloat(typeFloat2);
+        wFloat1 = new WrappedFloat(typeFloat1);
+        wFloat2 = new WrappedFloat(typeFloat2);
         // Generate 2 ints random
-        wInt1 = new WInt(typeInt1);
-        wInt2 = new WInt(typeInt2);
+        wInt1 = new WrappedInt(typeInt1);
+        wInt2 = new WrappedInt(typeInt2);
         // Generate 2 strings random
-        wString1 = new WString(typeString1);
-        wString2 = new WString(typeString2);
+        wString1 = new WrappedString(typeString1);
+        wString2 = new WrappedString(typeString2);
     }
 }

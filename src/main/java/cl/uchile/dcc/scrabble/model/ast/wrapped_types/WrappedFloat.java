@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_classes.AbstractWNumber;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.type_interfaces.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -14,7 +14,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/13 0:02
  * @see TypeFloat
  */
-public class WFloat extends AbstractWNumber {
+public class WrappedFloat extends AbstractWrappedNumber {
 
     private final TypeFloat typeFloat;
 
@@ -23,8 +23,17 @@ public class WFloat extends AbstractWNumber {
      *
      * @param typeFloat a type float
      */
-    public WFloat(TypeFloat typeFloat) {
+    public WrappedFloat(TypeFloat typeFloat) {
         this.typeFloat = typeFloat;
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param value a double
+     */
+    public WrappedFloat(double value) {
+        this.typeFloat = new TypeFloat(value);
     }
 
     /**
@@ -95,79 +104,79 @@ public class WFloat extends AbstractWNumber {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithFloat(WFloat wFloat) {
+    public WType addWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).addWithFloat(
             (TypeFloat) wFloat.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithInt(WInt wInt) {
+    public WType addWithInt(WrappedInt wInt) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).addWithInt(
             (TypeInt) wInt.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithFloat(WFloat wFloat) {
+    public WNumber subWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).subWithFloat(
             (TypeFloat) wFloat.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithInt(WInt wInt) {
+    public WNumber subWithInt(WrappedInt wInt) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).subWithInt(
             (TypeInt) wInt.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WNumber multWithFloat(WFloat wFloat) {
+    public WNumber multWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).multWithFloat(
             (TypeFloat) wFloat.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WNumber multWithInt(WInt wInt) {
+    public WNumber multWithInt(WrappedInt wInt) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).multWithInt(
             (TypeInt) wInt.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
      */
     @Override
-    public WNumber divWithFloat(WFloat wFloat) {
+    public WNumber divWithFloat(WrappedFloat wFloat) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).divWithFloat(
             (TypeFloat) wFloat.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
      */
     @Override
-    public WNumber divWithInt(WInt wInt) {
+    public WNumber divWithInt(WrappedInt wInt) {
         TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).divWithInt(
             (TypeInt) wInt.getAdaptee());
-        return new WFloat(computed);
+        return new WrappedFloat(computed);
     }
 }

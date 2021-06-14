@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WBinary;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WBool;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.type_interfaces.WLogical;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WLogical;
 
 /**
  * Interface to implements the disjunction in wrapped classes.
@@ -23,10 +23,10 @@ public interface WAnd {
     /**
      * To use double dispatch in {@code and}
      */
-    WLogical andWithBool(WBool wBool);
+    WLogical andWithBool(WrappedBool wBool);
 
     /**
      * To use double dispatch in {@code and}
      */
-    WLogical andWithBinary(WBinary wBinary);
+    WLogical andWithBinary(WrappedBinary wBinary);
 }

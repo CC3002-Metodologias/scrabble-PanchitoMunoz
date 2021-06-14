@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_classes.AbstractWType;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.type_interfaces.WLogical;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WLogical;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
@@ -14,7 +14,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/13 0:00
  * @see TypeBool
  */
-public class WBool extends AbstractWType implements WLogical {
+public class WrappedBool extends AbstractWrappedType implements WLogical {
 
     private final TypeBool typeBool;
 
@@ -23,8 +23,17 @@ public class WBool extends AbstractWType implements WLogical {
      *
      * @param typeBool a type bool
      */
-    public WBool(TypeBool typeBool) {
+    public WrappedBool(TypeBool typeBool) {
         this.typeBool = typeBool;
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param value a boolean
+     */
+    public WrappedBool(boolean value) {
+        this.typeBool = new TypeBool(value);
     }
 
     /**
@@ -84,16 +93,16 @@ public class WBool extends AbstractWType implements WLogical {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithString(WString wString) {
+    public WType addWithString(WrappedString wString) {
         TypeString computed = this.getAdaptee().addWithString((TypeString) wString.getAdaptee());
-        return new WString(computed);
+        return new WrappedString(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithBool(WBool wBool) {
+    public WType addWithBool(WrappedBool wBool) {
         return null;
     }
 
@@ -101,7 +110,7 @@ public class WBool extends AbstractWType implements WLogical {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithBinary(WBinary wBinary) {
+    public WType addWithBinary(WrappedBinary wBinary) {
         return null;
     }
 
@@ -109,7 +118,7 @@ public class WBool extends AbstractWType implements WLogical {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithFloat(WFloat wFloat) {
+    public WType addWithFloat(WrappedFloat wFloat) {
         return null;
     }
 
@@ -117,7 +126,7 @@ public class WBool extends AbstractWType implements WLogical {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithInt(WInt wInt) {
+    public WType addWithInt(WrappedInt wInt) {
         return null;
     }
 
@@ -125,39 +134,39 @@ public class WBool extends AbstractWType implements WLogical {
      * To use double dispatch in {@code and}
      */
     @Override
-    public WLogical andWithBool(WBool wBool) {
+    public WLogical andWithBool(WrappedBool wBool) {
         TypeBool computed = (TypeBool) ((TypeBool) this.getAdaptee()).andWithBool(
             (TypeBool) wBool.getAdaptee());
-        return new WBool(computed);
+        return new WrappedBool(computed);
     }
 
     /**
      * To use double dispatch in {@code and}
      */
     @Override
-    public WLogical andWithBinary(WBinary wBinary) {
+    public WLogical andWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeBool) this.getAdaptee()).andWithBinary(
             (TypeBinary) wBinary.getAdaptee());
-        return new WBinary(computed);
+        return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code or}
      */
     @Override
-    public WLogical orWithBool(WBool wBool) {
+    public WLogical orWithBool(WrappedBool wBool) {
         TypeBool computed = (TypeBool) ((TypeBool) this.getAdaptee()).orWithBool(
             (TypeBool) wBool.getAdaptee());
-        return new WBool(computed);
+        return new WrappedBool(computed);
     }
 
     /**
      * To use double dispatch in {@code or}
      */
     @Override
-    public WLogical orWithBinary(WBinary wBinary) {
+    public WLogical orWithBinary(WrappedBinary wBinary) {
         TypeBinary computed = (TypeBinary) ((TypeBool) this.getAdaptee()).orWithBinary(
             (TypeBinary) wBinary.getAdaptee());
-        return new WBinary(computed);
+        return new WrappedBinary(computed);
     }
 }

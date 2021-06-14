@@ -1,11 +1,12 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_classes;
+package cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WBinary;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WBool;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WFloat;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WString;
+import cl.uchile.dcc.scrabble.model.WrapTransformation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
@@ -16,7 +17,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/12 23:54
  * @see SType
  */
-public abstract class AbstractWType implements WType {
+public abstract class AbstractWrappedType implements WType {
 
     /**
      * Calculate the {@code SType} result of performing all operations
@@ -65,19 +66,30 @@ public abstract class AbstractWType implements WType {
     abstract protected String asString();
 
     /**
+     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
+     * WType} or an {@code AST}, it does nothing.
+     *
+     * @return a transformation
+     */
+    @Override
+    public WrapTransformation toWrapType() {
+        return this;
+    }
+
+    /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithString(WString wString) {
+    public WType addWithString(WrappedString wString) {
         TypeString computed = this.getAdaptee().addWithString((TypeString) wString.getAdaptee());
-        return new WString(computed);
+        return new WrappedString(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithBool(WBool wBool) {
+    public WType addWithBool(WrappedBool wBool) {
         return null;
     }
 
@@ -85,7 +97,7 @@ public abstract class AbstractWType implements WType {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithBinary(WBinary wBinary) {
+    public WType addWithBinary(WrappedBinary wBinary) {
         return null;
     }
 
@@ -93,7 +105,7 @@ public abstract class AbstractWType implements WType {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithFloat(WFloat wFloat) {
+    public WType addWithFloat(WrappedFloat wFloat) {
         return null;
     }
 
@@ -101,7 +113,7 @@ public abstract class AbstractWType implements WType {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithInt(WInt wInt) {
+    public WType addWithInt(WrappedInt wInt) {
         return null;
     }
 }

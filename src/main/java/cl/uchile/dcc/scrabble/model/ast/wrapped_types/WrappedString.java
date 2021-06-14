@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_classes.AbstractWType;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
@@ -11,7 +11,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/12 23:57
  * @see TypeString
  */
-public class WString extends AbstractWType {
+public class WrappedString extends AbstractWrappedType {
 
     private final TypeString typeString;
 
@@ -20,8 +20,17 @@ public class WString extends AbstractWType {
      *
      * @param typeString a type string.
      */
-    public WString(TypeString typeString) {
+    public WrappedString(TypeString typeString) {
         this.typeString = typeString;
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param value a string
+     */
+    public WrappedString(String value) {
+        this.typeString = new TypeString(value);
     }
 
     /**

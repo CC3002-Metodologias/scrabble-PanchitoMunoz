@@ -1,11 +1,11 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WBinary;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WBool;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WFloat;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WString;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 
 /**
  * Interface to implements the addition in wrapped classes.
@@ -26,25 +26,25 @@ public interface WAdd {
     /**
      * To use double dispatch in {@code add}
      */
-    WType addWithString(WString wString);
+    WType addWithString(WrappedString wString);
 
     /**
      * To use double dispatch in {@code add}
      */
-    WType addWithBool(WBool wBool);
+    WType addWithBool(WrappedBool wBool);
 
     /**
      * To use double dispatch in {@code add}
      */
-    WType addWithBinary(WBinary wBinary);
+    WType addWithBinary(WrappedBinary wBinary);
 
     /**
      * To use double dispatch in {@code add}
      */
-    WType addWithFloat(WFloat wFloat);
+    WType addWithFloat(WrappedFloat wFloat);
 
     /**
      * To use double dispatch in {@code add}
      */
-    WType addWithInt(WInt wInt);
+    WType addWithInt(WrappedInt wInt);
 }

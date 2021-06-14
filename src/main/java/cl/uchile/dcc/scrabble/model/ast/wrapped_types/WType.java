@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ast_types.TypeAST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WAdd;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
@@ -23,6 +24,6 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @see AST
  * @see Operation
  */
-public interface WType extends AST, WAdd {
+public interface WType extends AST, TypeAST, WAdd {
 
 }

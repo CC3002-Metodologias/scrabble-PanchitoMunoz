@@ -1,9 +1,9 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_classes;
+package cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WBinary;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WFloat;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.type_interfaces.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
 /**
@@ -13,21 +13,13 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
  * @create 2021/06/13 0:05
  * @see SNumber
  */
-public abstract class AbstractWNumber extends AbstractWType implements WNumber {
+public abstract class AbstractWrappedNumber extends AbstractWrappedType implements WNumber {
 
     /**
      * To use double dispatch in {@code div}
      */
     @Override
-    public WNumber divWithBinary(WBinary wBinary) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     */
-    @Override
-    public WNumber divWithFloat(WFloat wFloat) {
+    public WNumber divWithBinary(WrappedBinary wBinary) {
         return null;
     }
 
@@ -35,7 +27,15 @@ public abstract class AbstractWNumber extends AbstractWType implements WNumber {
      * To use double dispatch in {@code div}
      */
     @Override
-    public WNumber divWithInt(WInt wInt) {
+    public WNumber divWithFloat(WrappedFloat wFloat) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code div}
+     */
+    @Override
+    public WNumber divWithInt(WrappedInt wInt) {
         return null;
     }
 
@@ -43,7 +43,7 @@ public abstract class AbstractWNumber extends AbstractWType implements WNumber {
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WNumber multWithBinary(WBinary wBinary) {
+    public WNumber multWithBinary(WrappedBinary wBinary) {
         return null;
     }
 
@@ -51,7 +51,7 @@ public abstract class AbstractWNumber extends AbstractWType implements WNumber {
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WNumber multWithFloat(WFloat wFloat) {
+    public WNumber multWithFloat(WrappedFloat wFloat) {
         return null;
     }
 
@@ -59,7 +59,7 @@ public abstract class AbstractWNumber extends AbstractWType implements WNumber {
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WNumber multWithInt(WInt wInt) {
+    public WNumber multWithInt(WrappedInt wInt) {
         return null;
     }
 
@@ -67,7 +67,7 @@ public abstract class AbstractWNumber extends AbstractWType implements WNumber {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithBinary(WBinary wBinary) {
+    public WNumber subWithBinary(WrappedBinary wBinary) {
         return null;
     }
 
@@ -75,7 +75,7 @@ public abstract class AbstractWNumber extends AbstractWType implements WNumber {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithFloat(WFloat wFloat) {
+    public WNumber subWithFloat(WrappedFloat wFloat) {
         return null;
     }
 
@@ -83,7 +83,7 @@ public abstract class AbstractWNumber extends AbstractWType implements WNumber {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WNumber subWithInt(WInt wInt) {
+    public WNumber subWithInt(WrappedInt wInt) {
         return null;
     }
 }

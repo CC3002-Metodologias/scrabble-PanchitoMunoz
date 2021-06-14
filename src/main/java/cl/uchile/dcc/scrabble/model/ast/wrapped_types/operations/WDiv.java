@@ -1,9 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WBinary;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WFloat;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.type_interfaces.WNumber;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types.WNumber;
 
 /**
  * Interface to implements the division in wrapped classes.
@@ -24,15 +24,15 @@ public interface WDiv {
     /**
      * To use double dispatch in {@code div}
      */
-    WNumber divWithBinary(WBinary wBinary);
+    WNumber divWithBinary(WrappedBinary wBinary);
 
     /**
      * To use double dispatch in {@code div}
      */
-    WNumber divWithFloat(WFloat wFloat);
+    WNumber divWithFloat(WrappedFloat wFloat);
 
     /**
      * To use double dispatch in {@code div}
      */
-    WNumber divWithInt(WInt wInt);
+    WNumber divWithInt(WrappedInt wInt);
 }

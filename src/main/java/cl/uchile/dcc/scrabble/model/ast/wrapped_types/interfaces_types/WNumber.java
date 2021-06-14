@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types.type_interfaces;
+package cl.uchile.dcc.scrabble.model.ast.wrapped_types.interfaces_types;
 
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WDiv;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WMult;
