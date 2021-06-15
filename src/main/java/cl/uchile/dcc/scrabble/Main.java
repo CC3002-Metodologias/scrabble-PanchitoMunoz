@@ -37,12 +37,9 @@ public class Main {
             new Or(
                 new TypeBinary("1000"),
                 new Sub(
-                    new TypeBinary("0000"),
-                    new Sub(
-                        new TypeBinary("0101"),
-                        new TypeInt(25)
-                    )
-                )
+                    new TypeInt(25),
+                    new TypeBinary("0101")
+                ).toTypeBinary()
             )
         );
         System.out.println("Representación: " + addAST);

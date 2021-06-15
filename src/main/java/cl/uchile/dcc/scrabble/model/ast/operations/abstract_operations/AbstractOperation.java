@@ -3,6 +3,11 @@ package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.types.TypeBool;
+import cl.uchile.dcc.scrabble.model.types.TypeFloat;
+import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -150,5 +155,65 @@ public abstract class AbstractOperation implements Operation {
     @Override
     public String toString() {
         return asString(0);
+    }
+
+    /**
+     * Computes the final value as {@code WType}.
+     *
+     * @return the calculated value as {@code WType}
+     */
+    private WType calculateAsWrapped() {
+        SType computedValue = this.calculate();
+        return (WType) computedValue.toWrapType();
+    }
+
+    /**
+     * Transform the current instance into a {@code TypeBinary}.
+     *
+     * @return a {@code TypeBinary}
+     */
+    @Override
+    public TypeBinary toTypeBinary() {
+        return (TypeBinary) calculateAsWrapped().toWrappedBinary().getAdaptee();
+    }
+
+    /**
+     * Transform the current instance into a {@code TypeBool}.
+     *
+     * @return a {@code TypeBool}
+     */
+    @Override
+    public TypeBool toTypeBool() {
+        return (TypeBool) calculateAsWrapped().toWrappedBool().getAdaptee();
+    }
+
+    /**
+     * Transform the current instance into a {@code TypeFloat}.
+     *
+     * @return a {@code TypeFloat}
+     */
+    @Override
+    public TypeFloat toTypeFloat() {
+        return (TypeFloat) calculateAsWrapped().toWrappedFloat().getAdaptee();
+    }
+
+    /**
+     * Transform the current instance into a {@code TypeInt}.
+     *
+     * @return a {@code TypeInt}
+     */
+    @Override
+    public TypeInt toTypeInt() {
+        return (TypeInt) calculateAsWrapped().toWrappedInt().getAdaptee();
+    }
+
+    /**
+     * Transform the current instance into a {@code TypeString}.
+     *
+     * @return a {@code TypeString}
+     */
+    @Override
+    public TypeString toTypeString() {
+        return (TypeString) calculateAsWrapped().toWrappedString().getAdaptee();
     }
 }
