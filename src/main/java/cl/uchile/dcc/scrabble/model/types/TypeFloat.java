@@ -1,9 +1,10 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.arithmetic_operations.ArithmeticOperationsWithNumbers;
+import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-
+import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
 import java.util.Objects;
 
 /**
@@ -23,23 +24,11 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
 
     /**
      * Returns the current value of the instance.
+     *
      * @return The value in the instance
      */
-    protected double getValue() {
+    public double getValue() {
         return this.value;
-    }
-
-    /**
-     * Method that determines if the object 'o' is equals to the current instance.
-     * @param o Another object that is compared to the current instance.
-     * @return A boolean that determines whether the current instance are equals with 'o'.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TypeFloat)) return false;
-        TypeFloat typeFloat = (TypeFloat) o;
-        return Double.compare(typeFloat.value, value) == 0;
     }
 
     /**
@@ -227,7 +216,20 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
         // Case divide by zero
-        if (this.value == 0.) return new TypeFloat(0.0);
+        if (this.value == 0.) {
+            return new TypeFloat(0.0);
+        }
         return new TypeFloat(typeInt.getValue() / this.value);
+    }
+
+    /**
+     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
+     * WType} or an {@code AST}, it does nothing.
+     *
+     * @return a transformation
+     */
+    @Override
+    public AST toWrapType() {
+        return new WrappedFloat(this);
     }
 }

@@ -1,24 +1,34 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.operations.arithmetic_operations.ArithmeticOperationsWithIntegers;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryAndBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryOrBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
+
+import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-
+import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithIntegers;
 import java.util.Objects;
-
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
 
 /**
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
 public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticOperationsWithIntegers {
+
     private final String value;
 
     /**
      * Constructor for the TypeBinary.
+     *
      * @param value A String as a value.
      */
     public TypeBinary(String value) {
@@ -27,14 +37,16 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
 
     /**
      * Returns the current value of the instance.
+     *
      * @return The value in the instance
      */
-    protected String getValue() {
+    public String getValue() {
         return this.value;
     }
 
     /**
      * Returns the current value of the instance as an Int.
+     *
      * @return The value in the instance
      */
     protected int getValueAsInt() {
@@ -42,20 +54,8 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     }
 
     /**
-     * Method that determines if the object 'o' is equals to the current instance.
-     * @param o Another object that is compared to the current instance.
-     * @return A boolean that determines whether the current instance are equals with 'o'.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TypeBinary)) return false;
-        TypeBinary that = (TypeBinary) o;
-        return binaryEqual(value, that.value);
-    }
-
-    /**
      * Method that returns the hash code of the current instance.
+     *
      * @return The hash code of the current instance.
      */
     @Override
@@ -65,13 +65,14 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
 
     /**
      * Method that provides a representation of the current instance as a String.
+     *
      * @return The representation as a String.
      */
     @Override
     public String toString() {
         return "TypeBinary{" +
-                "value='" + value + '\'' +
-                '}';
+            "value='" + value + '\'' +
+            '}';
     }
 
     /**
@@ -116,6 +117,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
 
     /**
      * Returns the negation of the current instance.
+     *
      * @return The negation of the current instance.
      */
     @Override
@@ -124,8 +126,9 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     }
 
     /**
-     * Method that returns the sum between a TypeBinary and another type.
-     * Returns the dominant type if possible.
+     * Method that returns the sum between a TypeBinary and another type. Returns the dominant type
+     * if possible.
+     *
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
@@ -179,8 +182,9 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     }
 
     /**
-     * Method that returns the subtraction between a TypeBinary and another type.
-     * Returns the dominant type if possible.
+     * Method that returns the subtraction between a TypeBinary and another type. Returns the
+     * dominant type if possible.
+     *
      * @param otherType Another type that will be added to the current type.
      * @return The subtraction between the two types, returning the dominant type.
      */
@@ -224,8 +228,8 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     }
 
     /**
-     * Method that returns the multiplication between the current type and the other type.
-     * Returns the dominant type if possible.
+     * Method that returns the multiplication between the current type and the other type. Returns
+     * the dominant type if possible.
      *
      * @param otherType Another type that will be multiplied to the current type.
      * @return The multiplication between the two types, returning the dominant type.
@@ -269,14 +273,14 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     }
 
     /**
-     * Method that returns the division between the current type and the other type.
-     * Returns the dominant type if possible.
+     * Method that returns the division between the current type and the other type. Returns the
+     * dominant type if possible.
      *
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public SInteger div(SInteger otherType){
+    public SInteger div(SInteger otherType) {
         return otherType.divWithBinary(this);
     }
 
@@ -289,9 +293,11 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     @Override
     public SInteger divWithBinary(TypeBinary typeBinary) {
         // Case divide by zero
-        if (this.getValueAsInt() == 0) return new TypeBinary("0000");
+        if (this.getValueAsInt() == 0) {
+            return new TypeBinary("0000");
+        }
         String binaryDivision = intToBinary(
-                (int) Math.round((double) typeBinary.getValueAsInt() / this.getValueAsInt())
+            (int) Math.round((double) typeBinary.getValueAsInt() / this.getValueAsInt())
         );
         return new TypeBinary(binaryDivision);
     }
@@ -305,7 +311,9 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
         // Case divide by zero
-        if (this.getValueAsInt() == 0) return new TypeFloat(0.0);
+        if (this.getValueAsInt() == 0) {
+            return new TypeFloat(0.0);
+        }
         return new TypeFloat(typeFloat.getValue() / this.getValueAsInt());
     }
 
@@ -318,14 +326,17 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     @Override
     public SNumber divWithInt(TypeInt typeInt) {
         // Case divide by zero
-        if (this.getValueAsInt() == 0) return new TypeInt(0);
+        if (this.getValueAsInt() == 0) {
+            return new TypeInt(0);
+        }
         int intResult = (int) Math.round((double) typeInt.getValue() / this.getValueAsInt());
         return new TypeInt(intResult);
     }
 
     /**
-     * Method that returns the disjunction between the current type and the other type.
-     * Returns the dominant type if possible.
+     * Method that returns the disjunction between the current type and the other type. Returns the
+     * dominant type if possible.
+     *
      * @param otherType Another type that will be disjunct to the current type.
      * @return The disjunction between the two types, returning the dominant type.
      */
@@ -335,8 +346,9 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     }
 
     /**
-     * Method that returns the conjunction between the current type and the other type.
-     * Returns the dominant type if possible.
+     * Method that returns the conjunction between the current type and the other type. Returns the
+     * dominant type if possible.
+     *
      * @param otherType Another type that will be conjunct to the current type.
      * @return The conjunction between the two types, returning the dominant type.
      */
@@ -387,5 +399,16 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     @Override
     public SLogical orWithBinary(TypeBinary typeBinary) {
         return new TypeBinary(binaryOrBinary(typeBinary.value, this.value));
+    }
+
+    /**
+     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
+     * WType} or an {@code AST}, it does nothing.
+     *
+     * @return a transformation
+     */
+    @Override
+    public AST toWrapType() {
+        return new WrappedBinary(this);
     }
 }

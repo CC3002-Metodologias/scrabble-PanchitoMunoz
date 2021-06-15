@@ -1,16 +1,24 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryAndBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryOrBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
-
 class TypeBinaryTest extends BaseTypeTest {
 
     @BeforeEach
-    void setUp() {
+    protected void setUp() {
         super.setUp();
     }
 

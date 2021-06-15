@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
  * An abstract class for the general types used.
@@ -23,13 +22,30 @@ public abstract class AbstractType implements SType {
 
     /**
      * Method that provides a representation of the current instance as a String.
+     *
      * @return The representation as a String.
      */
     abstract public String toString();
 
     /**
-     * Transforms the current type to a TypeString.
-     * @return TypeString with a value equivalent to the current type.
+     * Calculate the {@code SType} result of performing all operations
+     *
+     * @return SType result of operations.
      */
-    abstract public TypeString toTypeString();
+    @Override
+    public SType calculate() {
+        return this;
+    }
+
+    /**
+     * Returns the {@code String} representation of the current {@code AST}.
+     *
+     * @param space number of spaces to ident
+     * @return the current {@code AST} as {@code String}
+     */
+    @Override
+    public String asString(int space) {
+        String tab = " ".repeat(space);
+        return tab + this;
+    }
 }

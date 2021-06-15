@@ -1,15 +1,16 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TypeStringTest extends BaseTypeTest {
     private TypeString expectedTypeString;
 
     @BeforeEach
-    void setUp() {
+    protected void setUp() {
         super.setUp();
     }
 

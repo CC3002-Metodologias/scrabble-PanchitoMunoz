@@ -117,9 +117,11 @@ public final class BinaryUtilities {
      */
     private static String positiveIntToBinary(int intNumber) {
         // If the number is 0, return 0 in binary
-        if (intNumber == 0) return "0000000000000000";
+        if (intNumber == 0) {
+            return "0000";
+        }
         // Calculate the number of bits necessary
-        int nBitsAtLeast = Math.max((int) Math.floor(Math.log(intNumber) / Math.log(2)) + 1, 8);
+        int nBitsAtLeast = Math.max((int) Math.floor(Math.log(intNumber) / Math.log(2)) + 1, 4);
         int j = 0;
         int nBits;
         do {

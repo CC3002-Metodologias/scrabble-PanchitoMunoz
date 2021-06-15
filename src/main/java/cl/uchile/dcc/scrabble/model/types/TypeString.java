@@ -1,8 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
-
 import java.util.Objects;
 
 /**
@@ -22,9 +23,10 @@ public class TypeString extends AbstractType {
 
     /**
      * Returns the current value of the instance.
+     *
      * @return The value in the instance
      */
-    protected String getValue() {
+    public String getValue() {
         return this.value;
     }
 
@@ -90,5 +92,16 @@ public class TypeString extends AbstractType {
     @Override
     public TypeString addWithString(TypeString typeString) {
         return new TypeString(typeString.value + this.value);
+    }
+
+    /**
+     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
+     * WType} or an {@code AST}, it does nothing.
+     *
+     * @return a transformation
+     */
+    @Override
+    public AST toWrapType() {
+        return new WrappedString(this);
     }
 }
