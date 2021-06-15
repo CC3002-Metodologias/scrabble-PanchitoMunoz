@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -49,6 +50,28 @@ public class WrappedFloat extends AbstractWrappedType {
         return "WrappedFloat{" +
             "value=" + typeFloat.getValue() +
             '}';
+    }
+
+    /**
+     * Transform the current instance to a {@code WrappedFloat}.
+     *
+     * @return a {@code WrappedFloat} equivalent
+     */
+    @Override
+    public WrappedFloat toWrappedFloat() {
+        TypeFloat computed = this.typeFloat.toTypeFloat();
+        return new WrappedFloat(computed);
+    }
+
+    /**
+     * Transform the current instance to a {@code WrappedString}.
+     *
+     * @return a {@code WrappedString} equivalent
+     */
+    @Override
+    public WrappedString toWrappedString() {
+        TypeString computed = this.typeFloat.toTypeString();
+        return new WrappedString(computed);
     }
 
     /**

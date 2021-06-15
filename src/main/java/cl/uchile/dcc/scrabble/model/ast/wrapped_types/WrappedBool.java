@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
+import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -49,6 +50,28 @@ public class WrappedBool extends AbstractWrappedType {
         return "WrappedBool{" +
             "value=" + typeBool.getValue() +
             '}';
+    }
+
+    /**
+     * Transform the current instance to a {@code WrappedBool}.
+     *
+     * @return a {@code WrappedBool} equivalent
+     */
+    @Override
+    public WrappedBool toWrappedBool() {
+        TypeBool computed = this.typeBool.toTypeBool();
+        return new WrappedBool(computed);
+    }
+
+    /**
+     * Transform the current instance to a {@code WrappedString}.
+     *
+     * @return a {@code WrappedString} equivalent
+     */
+    @Override
+    public WrappedString toWrappedString() {
+        TypeString computed = this.typeBool.toTypeString();
+        return new WrappedString(computed);
     }
 
     /**

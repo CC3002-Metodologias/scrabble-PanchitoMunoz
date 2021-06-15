@@ -5,6 +5,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -51,6 +52,50 @@ public class WrappedBinary extends AbstractWrappedType {
         return "WrappedBinary{" +
             "value=" + typeBinary.getValue() +
             '}';
+    }
+
+    /**
+     * Transform the current instance to a {@code WrappedBinary}.
+     *
+     * @return a {@code WrappedBinary} equivalent
+     */
+    @Override
+    public WrappedBinary toWrappedBinary() {
+        TypeBinary computed = this.typeBinary.toTypeBinary();
+        return new WrappedBinary(computed);
+    }
+
+    /**
+     * Transform the current instance to a {@code WrappedFloat}.
+     *
+     * @return a {@code WrappedFloat} equivalent
+     */
+    @Override
+    public WrappedFloat toWrappedFloat() {
+        TypeFloat computed = this.typeBinary.toTypeFloat();
+        return new WrappedFloat(computed);
+    }
+
+    /**
+     * Transform the current instance to a {@code WrappedInt}.
+     *
+     * @return a {@code WrappedInt} equivalent
+     */
+    @Override
+    public WrappedInt toWrappedInt() {
+        TypeInt computed = this.typeBinary.toTypeInt();
+        return new WrappedInt(computed);
+    }
+
+    /**
+     * Transform the current instance to a {@code WrappedString}.
+     *
+     * @return a {@code WrappedString} equivalent
+     */
+    @Override
+    public WrappedString toWrappedString() {
+        TypeString computed = this.typeBinary.toTypeString();
+        return new WrappedString(computed);
     }
 
     /**

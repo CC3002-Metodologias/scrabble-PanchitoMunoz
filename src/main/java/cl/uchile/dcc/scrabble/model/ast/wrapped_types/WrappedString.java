@@ -51,6 +51,17 @@ public class WrappedString extends AbstractWrappedType {
     }
 
     /**
+     * Transform the current instance to a {@code WrappedString}.
+     *
+     * @return a {@code WrappedString} equivalent
+     */
+    @Override
+    public WrappedString toWrappedString() {
+        TypeString computed = this.typeString.toTypeString();
+        return new WrappedString(computed);
+    }
+
+    /**
      * Returns the sum
      *
      * @param wType other type to sum

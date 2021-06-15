@@ -37,4 +37,39 @@ public interface WType extends AST, WAdd, WSub, WMult, WDiv, WAnd, WOr {
      * @return the instance in the wrapper
      */
     SType getAdaptee();
+
+    /**
+     * Transform the current instance to a {@code WrappedBinary}.
+     *
+     * @return a {@code WrappedBinary} equivalent
+     */
+    WrappedBinary toWrappedBinary();
+
+    /**
+     * Transform the current instance to a {@code WrappedBool}.
+     *
+     * @return a {@code WrappedBool} equivalent
+     */
+    WrappedBool toWrappedBool();
+
+    /**
+     * Transform the current instance to a {@code WrappedFloat}.
+     *
+     * @return a {@code WrappedFloat} equivalent
+     */
+    WrappedFloat toWrappedFloat();
+
+    /**
+     * Transform the current instance to a {@code WrappedInt}.
+     *
+     * @return a {@code WrappedInt} equivalent
+     */
+    WrappedInt toWrappedInt();
+
+    /**
+     * Transform the current instance to a {@code WrappedString}.
+     *
+     * @return a {@code WrappedString} equivalent
+     */
+    WrappedString toWrappedString();
 }
