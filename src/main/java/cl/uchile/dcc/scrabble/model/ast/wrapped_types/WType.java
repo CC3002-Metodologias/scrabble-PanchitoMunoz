@@ -30,4 +30,11 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  */
 public interface WType extends AST, WAdd, WSub, WMult, WDiv, WAnd, WOr {
 
+
+    /**
+     * Gets the current instance in the wrapper
+     *
+     * @return the instance in the wrapper
+     */
+    SType getAdaptee();
 }

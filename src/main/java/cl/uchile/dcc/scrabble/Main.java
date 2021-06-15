@@ -7,7 +7,6 @@ import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
  * A main to experiment implementations
@@ -28,10 +27,20 @@ public class Main {
         System.out.println(wFloat.add(wString));
         System.out.println(typeBinary.toWrapType());
         System.out.println(wString.sub(wBinary));
-        Add addAST = new Add(new TypeInt(43), new TypeBinary("1001"));
-        Add addAST2 = new Add(new TypeInt(43), new TypeBinary("1001"), addAST);
-        Add addAST1 = new Add(new TypeString("42"), addAST2);
-        System.out.println(addAST1);
+//        Add addAST = new Add(new TypeInt(43), new TypeBinary("1001"));
+//        Add addAST2 = new Add(new TypeInt(43), new TypeBinary("1001"), addAST);
+//        Add addAST1 = new Add(new TypeString("42"), addAST2);
+        Add addAST = new Add(
+            new TypeInt(6),
+            new Add(
+                new TypeBinary("0110"),
+                new TypeInt(42)
+            ),
+            new TypeInt(42),
+            new TypeFloat(3.14)
+        );
+        System.out.println("Representación: " + addAST);
+        System.out.println("Resultado: " + addAST.calculate());
     }
 
 }

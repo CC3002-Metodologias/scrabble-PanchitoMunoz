@@ -3,7 +3,6 @@ package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -41,8 +40,15 @@ public class WrappedFloat extends AbstractWrappedType {
      * @return the instance in the wrapper
      */
     @Override
-    protected SType getAdaptee() {
+    public SType getAdaptee() {
         return this.typeFloat;
+    }
+
+    @Override
+    public String toString() {
+        return "WrappedFloat{" +
+            "value=" + typeFloat.getValue() +
+            '}';
     }
 
     /**
@@ -116,7 +122,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType addWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).addWithFloat(
+        TypeFloat computed = (TypeFloat) this.typeFloat.addWithFloat(
             (TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
     }
@@ -126,7 +132,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType addWithInt(WrappedInt wInt) {
-        TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).addWithInt(
+        TypeFloat computed = (TypeFloat) this.typeFloat.addWithInt(
             (TypeInt) wInt.getAdaptee());
         return new WrappedFloat(computed);
     }
@@ -136,7 +142,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType subWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).subWithFloat(
+        TypeFloat computed = (TypeFloat) this.typeFloat.subWithFloat(
             (TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
     }
@@ -148,7 +154,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType subWithInt(WrappedInt wInt) {
-        TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).subWithInt(
+        TypeFloat computed = (TypeFloat) this.typeFloat.subWithInt(
             (TypeInt) wInt.getAdaptee());
         return new WrappedFloat(computed);
     }
@@ -160,7 +166,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType multWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).multWithFloat(
+        TypeFloat computed = (TypeFloat) this.typeFloat.multWithFloat(
             (TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
     }
@@ -172,7 +178,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType multWithInt(WrappedInt wInt) {
-        TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).multWithInt(
+        TypeFloat computed = (TypeFloat) this.typeFloat.multWithInt(
             (TypeInt) wInt.getAdaptee());
         return new WrappedFloat(computed);
     }
@@ -184,7 +190,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType divWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).divWithFloat(
+        TypeFloat computed = (TypeFloat) this.typeFloat.divWithFloat(
             (TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
     }
@@ -196,7 +202,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType divWithInt(WrappedInt wInt) {
-        TypeFloat computed = (TypeFloat) ((SNumber) this.getAdaptee()).divWithInt(
+        TypeFloat computed = (TypeFloat) this.typeFloat.divWithInt(
             (TypeInt) wInt.getAdaptee());
         return new WrappedFloat(computed);
     }

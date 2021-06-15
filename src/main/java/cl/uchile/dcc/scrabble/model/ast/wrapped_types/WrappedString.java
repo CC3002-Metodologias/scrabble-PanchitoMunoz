@@ -43,6 +43,13 @@ public class WrappedString extends AbstractWrappedType {
         return this.typeString;
     }
 
+    @Override
+    public String toString() {
+        return "WrappedString{" +
+            "value='" + typeString.getValue() + '\'' +
+            '}';
+    }
+
     /**
      * Returns the sum
      *

@@ -42,8 +42,15 @@ public class WrappedBinary extends AbstractWrappedType {
      * @return the instance in the wrapper
      */
     @Override
-    protected SType getAdaptee() {
+    public SType getAdaptee() {
         return this.typeBinary;
+    }
+
+    @Override
+    public String toString() {
+        return "WrappedBinary{" +
+            "value=" + typeBinary.getValue() +
+            '}';
     }
 
     /**
@@ -117,7 +124,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType addWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) ((TypeBinary) this.getAdaptee())
+        TypeBinary computed = (TypeBinary) this.typeBinary
             .addWithBinary((TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
@@ -127,7 +134,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType addWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) ((TypeBinary) this.getAdaptee())
+        TypeFloat computed = (TypeFloat) this.typeBinary
             .addWithFloat((TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
     }
@@ -137,7 +144,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType addWithInt(WrappedInt wInt) {
-        TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
+        TypeInt computed = (TypeInt) this.typeBinary
             .addWithInt((TypeInt) wInt.getAdaptee());
         return new WrappedInt(computed);
     }
@@ -147,151 +154,127 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType subWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) ((TypeBinary) this.getAdaptee())
+        TypeBinary computed = (TypeBinary) this.typeBinary
             .subWithBinary((TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
-     *
-     *
      */
     @Override
     public WType subWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) ((TypeBinary) this.getAdaptee())
+        TypeFloat computed = (TypeFloat) this.typeBinary
             .subWithFloat((TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
-     *
-     *
      */
     @Override
     public WType subWithInt(WrappedInt wInt) {
-        TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
+        TypeInt computed = (TypeInt) this.typeBinary
             .subWithInt((TypeInt) wInt.getAdaptee());
         return new WrappedInt(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
-     *
-     *
      */
     @Override
     public WType multWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) ((TypeBinary) this.getAdaptee())
+        TypeBinary computed = (TypeBinary) this.typeBinary
             .multWithBinary((TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
-     *
-     *
      */
     @Override
     public WType multWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) ((TypeBinary) this.getAdaptee())
+        TypeFloat computed = (TypeFloat) this.typeBinary
             .multWithFloat((TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
-     *
-     *
      */
     @Override
     public WType multWithInt(WrappedInt wInt) {
-        TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee())
+        TypeInt computed = (TypeInt) this.typeBinary
             .multWithInt((TypeInt) wInt.getAdaptee());
         return new WrappedInt(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
-     *
-     *
      */
     @Override
     public WType divWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) ((TypeBinary) this.getAdaptee())
+        TypeBinary computed = (TypeBinary) this.typeBinary
             .divWithBinary((TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
-     *
-     *
      */
     @Override
     public WType divWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) ((TypeBinary) this.getAdaptee())
+        TypeFloat computed = (TypeFloat) this.typeBinary
             .divWithFloat((TypeFloat) wFloat.getAdaptee());
         return new WrappedFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
-     *
-     *
      */
     @Override
     public WType divWithInt(WrappedInt wInt) {
-        TypeInt computed = (TypeInt) ((TypeInt) this.getAdaptee()).divWithInt(
+        TypeInt computed = (TypeInt) this.typeBinary.divWithInt(
             (TypeInt) wInt.getAdaptee());
         return new WrappedInt(computed);
     }
 
     /**
      * To use double dispatch in {@code and}
-     *
-     *
      */
     @Override
     public WType andWithBool(WrappedBool wBool) {
-        TypeBinary computed = (TypeBinary) ((TypeBinary) this.getAdaptee()).andWithBool(
+        TypeBinary computed = (TypeBinary) this.typeBinary.andWithBool(
             (TypeBool) wBool.getAdaptee());
         return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code and}
-     *
-     *
      */
     @Override
     public WType andWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) ((TypeBinary) this.getAdaptee()).andWithBinary(
+        TypeBinary computed = (TypeBinary) this.typeBinary.andWithBinary(
             (TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code or}
-     *
-     *
      */
     @Override
     public WType orWithBool(WrappedBool wBool) {
-        TypeBinary computed = (TypeBinary) ((TypeBinary) this.getAdaptee()).orWithBool(
+        TypeBinary computed = (TypeBinary) this.typeBinary.orWithBool(
             (TypeBool) wBool.getAdaptee());
         return new WrappedBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code or}
-     *
-     *
      */
     @Override
     public WType orWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) ((TypeBinary) this.getAdaptee()).orWithBinary(
+        TypeBinary computed = (TypeBinary) this.typeBinary.orWithBinary(
             (TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }

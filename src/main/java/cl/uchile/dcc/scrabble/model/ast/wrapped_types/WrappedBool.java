@@ -3,7 +3,6 @@ package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -41,8 +40,15 @@ public class WrappedBool extends AbstractWrappedType {
      * @return the instance in the wrapper
      */
     @Override
-    protected SType getAdaptee() {
+    public SType getAdaptee() {
         return this.typeBool;
+    }
+
+    @Override
+    public String toString() {
+        return "WrappedBool{" +
+            "value=" + typeBool.getValue() +
+            '}';
     }
 
     /**
@@ -112,52 +118,11 @@ public class WrappedBool extends AbstractWrappedType {
     }
 
     /**
-     * To use double dispatch in {@code add}
-     */
-    @Override
-    public WType addWithString(WrappedString wString) {
-        TypeString computed = this.getAdaptee().addWithString((TypeString) wString.getAdaptee());
-        return new WrappedString(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     */
-    @Override
-    public WType addWithBool(WrappedBool wBool) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     */
-    @Override
-    public WType addWithBinary(WrappedBinary wBinary) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     */
-    @Override
-    public WType addWithFloat(WrappedFloat wFloat) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     */
-    @Override
-    public WType addWithInt(WrappedInt wInt) {
-        return null;
-    }
-
-    /**
      * To use double dispatch in {@code and}
      */
     @Override
     public WType andWithBool(WrappedBool wBool) {
-        TypeBool computed = (TypeBool) ((TypeBool) this.getAdaptee()).andWithBool(
+        TypeBool computed = (TypeBool) this.typeBool.andWithBool(
             (TypeBool) wBool.getAdaptee());
         return new WrappedBool(computed);
     }
@@ -169,7 +134,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType andWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) ((TypeBool) this.getAdaptee()).andWithBinary(
+        TypeBinary computed = (TypeBinary) this.typeBool.andWithBinary(
             (TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
@@ -181,7 +146,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType orWithBool(WrappedBool wBool) {
-        TypeBool computed = (TypeBool) ((TypeBool) this.getAdaptee()).orWithBool(
+        TypeBool computed = (TypeBool) this.typeBool.orWithBool(
             (TypeBool) wBool.getAdaptee());
         return new WrappedBool(computed);
     }
@@ -193,7 +158,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType orWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) ((TypeBool) this.getAdaptee()).orWithBinary(
+        TypeBinary computed = (TypeBinary) this.typeBool.orWithBinary(
             (TypeBinary) wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
