@@ -26,10 +26,6 @@ public abstract class AbstractOperation implements Operation {
         this.add(components);
     }
 
-    public List<AST> getChildren() {
-        return children;
-    }
-
     /**
      * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
      * WType} or an {@code AST}, it does nothing.
@@ -86,7 +82,14 @@ public abstract class AbstractOperation implements Operation {
         return unwrappedResult.calculate();
     }
 
-    public WType unwrapOperations(List<AST> listToUnwrap) {
+    /**
+     * Unwrap the components in the list with the current operation. Use the template pattern over
+     * {@code mainOperation}.
+     *
+     * @param listToUnwrap list to unwrap
+     * @return every component calculated and unwrapped
+     */
+    protected WType unwrapOperations(List<AST> listToUnwrap) {
         // Gets the size
         int sizeList = listToUnwrap.size();
         // To ensure that we can get an element
@@ -99,17 +102,53 @@ public abstract class AbstractOperation implements Operation {
         }
         // Otherwise, apply a recurrence
         AST computedUnwrap = unwrapOperations(listToUnwrap.subList(0, sizeList - 1));
+        // Calculate the components and transform
+        WType WValue1 = (WType) computedUnwrap.calculate().toWrapType();
+        WType WValue2 = (WType) currentElem.calculate().toWrapType();
         // Gets the a result
-        return mainOperation(computedUnwrap, currentElem);
+        return mainOperation(WValue1, WValue2);
     }
 
     /**
-     * Compute the operation between 2 {@code AST} and returns its operation. Note that internally
-     * it must occupy the method {@code calculate}.
+     * Compute the operation between 2 {@code WType} and returns its operation.
      *
      * @param value1 the value at the left
      * @param value2 the value at the right
      * @return the value computed
      */
-    protected abstract WType mainOperation(AST value1, AST value2);
+    protected abstract WType mainOperation(WType value1, WType value2);
+
+    /**
+     * Generalize the {@code asString} method, in order to only modify the operator symbol and the
+     * class name.
+     *
+     * @param space          number of spaces to ident
+     * @param operatorSymbol an operator symbol. E.g.: "+", "-"...
+     * @param name           the name of the class. E.g.: "Add", "Sub"
+     * @return the string representation.
+     */
+    protected String asString(int space, String operatorSymbol, String name) {
+        String tab = " ".repeat(space);
+        StringBuilder childrenAsString = new StringBuilder();
+        for (int i = 0; i < children.size(); i++) {
+            AST leaf = children.get(i);
+            if (i == children.size() - 1) {
+                childrenAsString.append(leaf.asString(space + 2)).append("\n").append(tab);
+            } else {
+                childrenAsString.append(leaf.asString(space + 2)).append(" ").append(
+                    operatorSymbol).append("\n");
+            }
+        }
+        return tab + name + "(\n" + childrenAsString + ")";
+    }
+
+    /**
+     * A String representation of the current instance.
+     *
+     * @return a string representation
+     */
+    @Override
+    public String toString() {
+        return asString(0);
+    }
 }

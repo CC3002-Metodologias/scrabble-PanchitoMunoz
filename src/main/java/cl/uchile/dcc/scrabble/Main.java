@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble;
 
 import cl.uchile.dcc.scrabble.model.ast.operations.Add;
+import cl.uchile.dcc.scrabble.model.ast.operations.Or;
+import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
@@ -31,13 +33,17 @@ public class Main {
 //        Add addAST2 = new Add(new TypeInt(43), new TypeBinary("1001"), addAST);
 //        Add addAST1 = new Add(new TypeString("42"), addAST2);
         Add addAST = new Add(
-            new TypeInt(6),
-            new Add(
-                new TypeBinary("0110"),
-                new TypeInt(42)
-            ),
-            new TypeInt(42),
-            new TypeFloat(3.14)
+            new TypeFloat(6.9),
+            new Or(
+                new TypeBinary("1000"),
+                new Sub(
+                    new TypeBinary("0000"),
+                    new Sub(
+                        new TypeBinary("0101"),
+                        new TypeInt(25)
+                    )
+                )
+            )
         );
         System.out.println("Representación: " + addAST);
         System.out.println("Resultado: " + addAST.calculate());

@@ -8,16 +8,16 @@ import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
  * TODO: Documentar
  *
  * @author Francisco Muñoz Guajardo
- * @create 2021/06/14 9:54
+ * @create 2021/06/15 11:45
  */
-public class Add extends AbstractOperation {
+public class Mult extends AbstractOperation {
 
     /**
      * Constructor.
      *
      * @param components multiple components
      */
-    public Add(AST... components) {
+    public Mult(AST... components) {
         super(components);
     }
 
@@ -29,7 +29,7 @@ public class Add extends AbstractOperation {
      */
     @Override
     public String asString(int space) {
-        return asString(space, "+", "Add");
+        return asString(space, "*", "Mult");
     }
 
     /**
@@ -41,6 +41,6 @@ public class Add extends AbstractOperation {
      */
     @Override
     protected WType mainOperation(WType value1, WType value2) {
-        return value1.add(value2);
+        return value1.mult(value2);
     }
 }
