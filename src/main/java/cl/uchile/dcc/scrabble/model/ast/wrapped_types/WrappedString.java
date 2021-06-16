@@ -34,13 +34,22 @@ public class WrappedString extends AbstractWrappedType {
     }
 
     /**
+     * Returns the adaptee, specifying the current type inside.
+     *
+     * @return a new instance of {@code TypeString}
+     */
+    protected TypeString getRawAdaptee() {
+        return new TypeString(this.typeString.getValue());
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper
      */
     @Override
     public SType getAdaptee() {
-        return this.typeString;
+        return this.getRawAdaptee();
     }
 
     @Override

@@ -2,7 +2,6 @@ package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
@@ -38,13 +37,22 @@ public class WrappedBinary extends AbstractWrappedType {
     }
 
     /**
+     * Returns the adaptee, specifying the current type inside.
+     *
+     * @return a new instance of {@code TypeBinary}
+     */
+    protected TypeBinary getRawAdaptee() {
+        return new TypeBinary(this.typeBinary.getValue());
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper
      */
     @Override
     public SType getAdaptee() {
-        return this.typeBinary;
+        return this.getRawAdaptee();
     }
 
     @Override
@@ -169,8 +177,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType addWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary
-            .addWithBinary((TypeBinary) wBinary.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBinary.addWithBinary(wBinary.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -179,8 +186,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType addWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeBinary
-            .addWithFloat((TypeFloat) wFloat.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeBinary.addWithFloat(wFloat.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -189,8 +195,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType addWithInt(WrappedInt wInt) {
-        TypeInt computed = (TypeInt) this.typeBinary
-            .addWithInt((TypeInt) wInt.getAdaptee());
+        TypeInt computed = (TypeInt) this.typeBinary.addWithInt(wInt.getRawAdaptee());
         return new WrappedInt(computed);
     }
 
@@ -199,8 +204,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType subWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary
-            .subWithBinary((TypeBinary) wBinary.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBinary.subWithBinary(wBinary.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -209,8 +213,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType subWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeBinary
-            .subWithFloat((TypeFloat) wFloat.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeBinary.subWithFloat(wFloat.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -219,8 +222,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType subWithInt(WrappedInt wInt) {
-        TypeInt computed = (TypeInt) this.typeBinary
-            .subWithInt((TypeInt) wInt.getAdaptee());
+        TypeInt computed = (TypeInt) this.typeBinary.subWithInt(wInt.getRawAdaptee());
         return new WrappedInt(computed);
     }
 
@@ -229,8 +231,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType multWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary
-            .multWithBinary((TypeBinary) wBinary.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBinary.multWithBinary(wBinary.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -239,8 +240,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType multWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeBinary
-            .multWithFloat((TypeFloat) wFloat.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeBinary.multWithFloat(wFloat.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -249,8 +249,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType multWithInt(WrappedInt wInt) {
-        TypeInt computed = (TypeInt) this.typeBinary
-            .multWithInt((TypeInt) wInt.getAdaptee());
+        TypeInt computed = (TypeInt) this.typeBinary.multWithInt(wInt.getRawAdaptee());
         return new WrappedInt(computed);
     }
 
@@ -259,8 +258,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType divWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary
-            .divWithBinary((TypeBinary) wBinary.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBinary.divWithBinary(wBinary.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -269,8 +267,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType divWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeBinary
-            .divWithFloat((TypeFloat) wFloat.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeBinary.divWithFloat(wFloat.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -279,8 +276,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType divWithInt(WrappedInt wInt) {
-        TypeInt computed = (TypeInt) this.typeBinary.divWithInt(
-            (TypeInt) wInt.getAdaptee());
+        TypeInt computed = (TypeInt) this.typeBinary.divWithInt(wInt.getRawAdaptee());
         return new WrappedInt(computed);
     }
 
@@ -289,8 +285,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType andWithBool(WrappedBool wBool) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.andWithBool(
-            (TypeBool) wBool.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBinary.andWithBool(wBool.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -299,8 +294,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType andWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.andWithBinary(
-            (TypeBinary) wBinary.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBinary.andWithBinary(wBinary.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -309,8 +303,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType orWithBool(WrappedBool wBool) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.orWithBool(
-            (TypeBool) wBool.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBinary.orWithBool(wBool.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -319,8 +312,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType orWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.orWithBinary(
-            (TypeBinary) wBinary.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBinary.orWithBinary(wBinary.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 }

@@ -2,7 +2,6 @@ package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
@@ -36,13 +35,22 @@ public class WrappedFloat extends AbstractWrappedType {
     }
 
     /**
+     * Returns the adaptee, specifying the current type inside.
+     *
+     * @return a new instance of {@code TypeFloat}
+     */
+    protected TypeFloat getRawAdaptee() {
+        return new TypeFloat(this.typeFloat.getValue());
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper
      */
     @Override
     public SType getAdaptee() {
-        return this.typeFloat;
+        return this.getRawAdaptee();
     }
 
     @Override
@@ -145,8 +153,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType addWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.addWithFloat(
-            (TypeFloat) wFloat.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeFloat.addWithFloat(wFloat.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -155,8 +162,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType addWithInt(WrappedInt wInt) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.addWithInt(
-            (TypeInt) wInt.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeFloat.addWithInt(wInt.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -165,8 +171,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType subWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.subWithFloat(
-            (TypeFloat) wFloat.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeFloat.subWithFloat(wFloat.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -177,8 +182,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType subWithInt(WrappedInt wInt) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.subWithInt(
-            (TypeInt) wInt.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeFloat.subWithInt(wInt.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -189,8 +193,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType multWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.multWithFloat(
-            (TypeFloat) wFloat.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeFloat.multWithFloat(wFloat.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -201,8 +204,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType multWithInt(WrappedInt wInt) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.multWithInt(
-            (TypeInt) wInt.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeFloat.multWithInt(wInt.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -213,8 +215,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType divWithFloat(WrappedFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.divWithFloat(
-            (TypeFloat) wFloat.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeFloat.divWithFloat(wFloat.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 
@@ -225,8 +226,7 @@ public class WrappedFloat extends AbstractWrappedType {
      */
     @Override
     public WType divWithInt(WrappedInt wInt) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.divWithInt(
-            (TypeInt) wInt.getAdaptee());
+        TypeFloat computed = (TypeFloat) this.typeFloat.divWithInt(wInt.getRawAdaptee());
         return new WrappedFloat(computed);
     }
 }

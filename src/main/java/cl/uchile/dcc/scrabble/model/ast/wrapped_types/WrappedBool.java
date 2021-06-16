@@ -36,13 +36,22 @@ public class WrappedBool extends AbstractWrappedType {
     }
 
     /**
+     * Returns the adaptee, specifying the current type inside.
+     *
+     * @return a new instance of {@code TypeBool}
+     */
+    protected TypeBool getRawAdaptee() {
+        return new TypeBool(this.typeBool.getValue());
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper
      */
     @Override
     public SType getAdaptee() {
-        return this.typeBool;
+        return this.getRawAdaptee();
     }
 
     @Override
@@ -145,8 +154,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType andWithBool(WrappedBool wBool) {
-        TypeBool computed = (TypeBool) this.typeBool.andWithBool(
-            (TypeBool) wBool.getAdaptee());
+        TypeBool computed = (TypeBool) this.typeBool.andWithBool(wBool.getRawAdaptee());
         return new WrappedBool(computed);
     }
 
@@ -157,8 +165,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType andWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBool.andWithBinary(
-            (TypeBinary) wBinary.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBool.andWithBinary(wBinary.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -169,8 +176,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType orWithBool(WrappedBool wBool) {
-        TypeBool computed = (TypeBool) this.typeBool.orWithBool(
-            (TypeBool) wBool.getAdaptee());
+        TypeBool computed = (TypeBool) this.typeBool.orWithBool(wBool.getRawAdaptee());
         return new WrappedBool(computed);
     }
 
@@ -181,8 +187,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType orWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBool.orWithBinary(
-            (TypeBinary) wBinary.getAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBool.orWithBinary(wBinary.getRawAdaptee());
         return new WrappedBinary(computed);
     }
 }
