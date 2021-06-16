@@ -137,11 +137,40 @@ public final class BinaryUtilities {
             id--;
         }
         // Make the binary array as a string
-        return IntStream.range(0, nBits).mapToObj(i -> String.valueOf(binary[i])).collect(Collectors.joining());
+        String stringToReturn = IntStream.range(0, nBits).mapToObj(i -> String.valueOf(binary[i]))
+            .collect(Collectors.joining());
+        // Cleans the binary
+        stringToReturn = cleanBinary(stringToReturn);
+        return stringToReturn;
     }
 
     /**
-     * Returns the sum of the binary number 'binary1' and the binary number 'binary2' as another binary number.
+     * Cleans the redundant symbols in the binary. E.g.: "00010110" clears to "010110".
+     *
+     * @param aBinary a binary to clean
+     * @return the binary cleaned
+     */
+    private static String cleanBinary(String aBinary) {
+        if (aBinary.length() <= 4) {
+            return aBinary;
+        }
+        StringBuilder newBinary = new StringBuilder(aBinary);
+        char principalChar = newBinary.charAt(0);
+        for (int i = 1; i < aBinary.length() - 4; i++) {
+            char secondaryChar = newBinary.charAt(1);
+            if (principalChar == secondaryChar) {
+                newBinary.deleteCharAt(0);
+            } else {
+                break;
+            }
+        }
+        return newBinary.toString();
+    }
+
+    /**
+     * Returns the sum of the binary number 'binary1' and the binary number 'binary2' as another
+     * binary number.
+     *
      * @param binary1 A binary number.
      * @param binary2 Another binary number.
      * @return The sum between 'binary1' and 'binary2'.
