@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
@@ -49,17 +48,6 @@ public abstract class AbstractWrappedType implements WType {
      */
     protected String asString() {
         return this.getAdaptee().asString(0);
-    }
-
-    /**
-     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
-     * WType} or an {@code AST}, it does nothing.
-     *
-     * @return a transformation
-     */
-    @Override
-    public AST toWrapType() {
-        return this;
     }
 
     /**

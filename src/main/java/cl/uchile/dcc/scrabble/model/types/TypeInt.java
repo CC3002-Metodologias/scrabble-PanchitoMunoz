@@ -302,7 +302,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return a transformation
      */
     @Override
-    public AST toWrapType() {
+    public AST toAST() {
         return new WrappedInt(this);
     }
 }

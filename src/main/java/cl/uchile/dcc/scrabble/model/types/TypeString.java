@@ -101,7 +101,7 @@ public class TypeString extends AbstractType {
      * @return a transformation
      */
     @Override
-    public AST toWrapType() {
+    public AST toAST() {
         return new WrappedString(this);
     }
 }

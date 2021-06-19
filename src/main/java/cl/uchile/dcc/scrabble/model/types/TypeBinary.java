@@ -408,7 +408,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      * @return a transformation
      */
     @Override
-    public AST toWrapType() {
+    public AST toAST() {
         return new WrappedBinary(this);
     }
 }

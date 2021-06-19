@@ -14,7 +14,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @see WType
  * @see AST
  */
-public interface WrapTransformation {
+public interface ASTTransformation {
 
     /**
      * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
@@ -22,5 +22,5 @@ public interface WrapTransformation {
      *
      * @return a transformation
      */
-    AST toWrapType();
+    AST toAST();
 }

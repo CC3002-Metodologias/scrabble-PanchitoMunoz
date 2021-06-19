@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.ast;
 
-import cl.uchile.dcc.scrabble.model.WrapTransformation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -10,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 22:51
  */
-public interface AST extends WrapTransformation {
+public interface AST {
 
     /**
      * Calculate the {@code SType} result of performing all operations

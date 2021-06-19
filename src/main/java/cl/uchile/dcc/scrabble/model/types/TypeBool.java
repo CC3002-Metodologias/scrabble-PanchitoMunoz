@@ -178,7 +178,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return a transformation
      */
     @Override
-    public AST toWrapType() {
+    public AST toAST() {
         return new WrappedBool(this);
     }
 }
