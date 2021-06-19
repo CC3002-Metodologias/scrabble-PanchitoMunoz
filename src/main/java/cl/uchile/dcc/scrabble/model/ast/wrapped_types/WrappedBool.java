@@ -32,7 +32,7 @@ public class WrappedBool extends AbstractWrappedType {
      * @param value a boolean
      */
     public WrappedBool(boolean value) {
-        this.typeBool = new TypeBool(value);
+        this(new TypeBool(value));
     }
 
     /**

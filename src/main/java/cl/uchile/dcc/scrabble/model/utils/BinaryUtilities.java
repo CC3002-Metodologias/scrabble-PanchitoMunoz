@@ -151,9 +151,6 @@ public final class BinaryUtilities {
      * @return the binary cleaned
      */
     private static String cleanBinary(String aBinary) {
-        if (aBinary.length() <= 4) {
-            return aBinary;
-        }
         StringBuilder newBinary = new StringBuilder(aBinary);
         char principalChar = newBinary.charAt(0);
         for (int i = 1; i < aBinary.length() - 4; i++) {
@@ -279,7 +276,8 @@ public final class BinaryUtilities {
         }
         StringBuilder binaryToReturn = new StringBuilder(binary1);
         for (int i = 0; i < binary1.length(); i++) {
-            binaryToReturn.setCharAt(i, binary1.charAt(i) == '1' && binary2.charAt(i) == '1' ? '1' : '0');
+            binaryToReturn.setCharAt(i,
+                binary1.charAt(i) == '1' && binary2.charAt(i) == '1' ? '1' : '0');
         }
         return binaryToReturn.toString();
     }
@@ -299,7 +297,8 @@ public final class BinaryUtilities {
         }
         StringBuilder binaryToReturn = new StringBuilder(binary1);
         for (int i = 0; i < binary1.length(); i++) {
-            binaryToReturn.setCharAt(i, binary1.charAt(i) == '1' || binary2.charAt(i) == '1' ? '1' : '0');
+            binaryToReturn.setCharAt(i,
+                binary1.charAt(i) == '1' || binary2.charAt(i) == '1' ? '1' : '0');
         }
         return binaryToReturn.toString();
     }

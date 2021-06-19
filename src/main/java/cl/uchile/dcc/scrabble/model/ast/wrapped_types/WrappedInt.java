@@ -33,7 +33,7 @@ public class WrappedInt extends AbstractWrappedType {
      * @param value an int
      */
     public WrappedInt(int value) {
-        this.typeInt = new TypeInt(value);
+        this(new TypeInt(value));
     }
 
     /**

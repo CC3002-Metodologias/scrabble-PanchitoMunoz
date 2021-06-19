@@ -135,16 +135,6 @@ public abstract class AbstractWrappedType implements WType {
     }
 
     /**
-     * Transform the current instance to a {@code WrappedString}.
-     *
-     * @return a {@code WrappedString} equivalent
-     */
-    @Override
-    public WrappedString toWrappedString() {
-        return null;
-    }
-
-    /**
      * To use double dispatch in {@code add}
      */
     @Override

@@ -33,7 +33,7 @@ public class WrappedBinary extends AbstractWrappedType {
      * @param value a string binary
      */
     public WrappedBinary(String value) {
-        this.typeBinary = new TypeBinary(value);
+        this(new TypeBinary(value));
     }
 
     /**

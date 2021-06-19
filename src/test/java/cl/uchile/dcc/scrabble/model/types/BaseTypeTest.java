@@ -7,7 +7,7 @@ import cl.uchile.dcc.scrabble.model.AbstractRandomValues;
  *
  * @author Francisco Muñoz Guajardo
  */
-public class BaseTypeTest extends AbstractRandomValues {
+public abstract class BaseTypeTest extends AbstractRandomValues {
 
     // Binaries
     protected TypeBinary typeBinary1;

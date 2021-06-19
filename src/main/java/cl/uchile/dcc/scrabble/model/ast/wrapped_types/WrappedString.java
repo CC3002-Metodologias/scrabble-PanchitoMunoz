@@ -30,7 +30,7 @@ public class WrappedString extends AbstractWrappedType {
      * @param value a string
      */
     public WrappedString(String value) {
-        this.typeString = new TypeString(value);
+        this(new TypeString(value));
     }
 
     /**

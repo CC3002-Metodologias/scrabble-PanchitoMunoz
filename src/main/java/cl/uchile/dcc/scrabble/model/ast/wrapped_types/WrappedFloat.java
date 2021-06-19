@@ -31,7 +31,7 @@ public class WrappedFloat extends AbstractWrappedType {
      * @param value a double
      */
     public WrappedFloat(double value) {
-        this.typeFloat = new TypeFloat(value);
+        this(new TypeFloat(value));
     }
 
     /**
