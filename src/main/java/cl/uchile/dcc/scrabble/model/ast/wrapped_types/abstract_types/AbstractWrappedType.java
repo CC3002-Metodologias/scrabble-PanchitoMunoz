@@ -26,7 +26,7 @@ public abstract class AbstractWrappedType implements WType {
      */
     @Override
     public SType calculate() {
-        return this.getAdaptee();  // Using template pattern
+        return this.getAdaptee().calculate();  // Using template pattern
     }
 
     /**
@@ -38,16 +38,7 @@ public abstract class AbstractWrappedType implements WType {
     @Override
     public String asString(int space) {
         String tab = " ".repeat(space);
-        return tab + asString();
-    }
-
-    /**
-     * To use template pattern in {@code asString}.
-     *
-     * @return the current {@code HiddenAST} as {@code String} without spaces.
-     */
-    protected String asString() {
-        return this.getAdaptee().toString();
+        return tab + this.getAdaptee().toString();
     }
 
     /**
