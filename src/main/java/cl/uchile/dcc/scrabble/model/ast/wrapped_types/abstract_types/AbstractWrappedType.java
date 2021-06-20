@@ -30,10 +30,10 @@ public abstract class AbstractWrappedType implements WType {
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code AST}.
+     * Returns the {@code String} representation of the current {@code HiddenAST}.
      *
      * @param space number of spaces to ident
-     * @return the current {@code AST} as {@code String}
+     * @return the current {@code HiddenAST} as {@code String}
      */
     @Override
     public String asString(int space) {
@@ -44,7 +44,7 @@ public abstract class AbstractWrappedType implements WType {
     /**
      * To use template pattern in {@code asString}.
      *
-     * @return the current {@code AST} as {@code String} without spaces.
+     * @return the current {@code HiddenAST} as {@code String} without spaces.
      */
     protected String asString() {
         return this.getAdaptee().toString();

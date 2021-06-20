@@ -26,4 +26,14 @@ public abstract class AbstractType implements SType {
      * @return The representation as a String.
      */
     abstract public String toString();
+
+    /**
+     * Calculate the {@code SType} result of performing all operations
+     *
+     * @return SType result of operations.
+     */
+    @Override
+    public SType calculate() {
+        return this;
+    }
 }

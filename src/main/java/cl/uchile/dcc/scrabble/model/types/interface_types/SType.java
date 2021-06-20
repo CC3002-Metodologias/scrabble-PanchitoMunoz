@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.ast.interfaces.TypeAST;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithStr;
 
@@ -9,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithStr;
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SType extends TypeAST, IAddWithStr {
+public interface SType extends AST, IAddWithStr {
 
     /**
      * Transforms the current type to a TypeString.

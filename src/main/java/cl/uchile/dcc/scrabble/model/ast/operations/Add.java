@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.interfaces.TypeAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractTypeOperation;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
@@ -11,23 +11,23 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/14 9:54
  */
-public class Add extends AbstractTypeOperation {
+public class Add extends AbstractOperation {
 
     /**
      * Constructor. It can receive an {@code Operation} or a {@code SType}.
      *
      * @param leftValue  left value, it can be an {@code Operation} or a {@code SType}.
-     * @param rightValue rightValue right value, it can be an {@code Operation} or a {@code SType}.
+     * @param rightValue right value, it can be an {@code Operation} or a {@code SType}.
      */
-    public Add(TypeAST leftValue, TypeAST rightValue) {
+    public Add(AST leftValue, AST rightValue) {
         super(leftValue, rightValue);
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code AST}.
+     * Returns the {@code String} representation of the current {@code HiddenAST}.
      *
      * @param space number of spaces to ident
-     * @return the current {@code AST} as {@code String}
+     * @return the current {@code HiddenAST} as {@code String}
      */
     @Override
     public String asString(int space) {

@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ASTTransformation;
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
@@ -10,13 +10,13 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
  * This interface is to define the different types of operations that exists. This is the composite
- * part of {@code AST}, using the composite pattern
+ * part of {@code HiddenAST}, using the composite pattern
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 23:47
- * @see AST
+ * @see HiddenAST
  */
-public interface Operation extends AST, ASTTransformation {
+public interface Operation extends AST, HiddenAST {
 
     /**
      * Transform the current instance into a {@code TypeBinary}.

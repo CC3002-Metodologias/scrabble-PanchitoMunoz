@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
@@ -19,8 +20,8 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  */
 public abstract class AbstractOperation implements Operation {
 
-    private final AST leftChildren;
-    private final AST rightChildren;
+    private final HiddenAST leftChildren;
+    private final HiddenAST rightChildren;
 
     /**
      * Default constructor. It can receive an {@code Operation} or a {@code WType}.
@@ -28,19 +29,29 @@ public abstract class AbstractOperation implements Operation {
      * @param leftValue  left value, it can be an {@code Operation} or a {@code WType}.
      * @param rightValue right value, it can be an {@code Operation} or a {@code WType}.
      */
-    protected AbstractOperation(AST leftValue, AST rightValue) {
+    protected AbstractOperation(HiddenAST leftValue, HiddenAST rightValue) {
         leftChildren = leftValue;
         rightChildren = rightValue;
     }
 
     /**
+     * Constructor. It can receive an {@code Operation} or a {@code SType}.
+     *
+     * @param leftValue  left value, it can be an {@code Operation} or a {@code SType}.
+     * @param rightValue right value, it can be an {@code Operation} or a {@code SType}.
+     */
+    public AbstractOperation(AST leftValue, AST rightValue) {
+        this(leftValue.toHiddenAST(), rightValue.toHiddenAST());
+    }
+
+    /**
      * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
-     * WType} or an {@code AST}, it does nothing.
+     * WType} or an {@code HiddenAST}, it does nothing.
      *
      * @return a transformation
      */
     @Override
-    public AST toAST() {
+    public HiddenAST toHiddenAST() {
         return this;
     }
 
@@ -51,17 +62,17 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public SType calculate() {
-        WType leftCalculated = (WType) leftChildren.calculate().toAST();
-        WType rightCalculated = (WType) rightChildren.calculate().toAST();
+        WType leftCalculated = (WType) leftChildren.calculate().toHiddenAST();
+        WType rightCalculated = (WType) rightChildren.calculate().toHiddenAST();
 
         return mainOperation(leftCalculated, rightCalculated);
     }
 
-    protected AST getLeftChildren() {
+    protected HiddenAST getLeftChildren() {
         return leftChildren;
     }
 
-    protected AST getRightChildren() {
+    protected HiddenAST getRightChildren() {
         return rightChildren;
     }
 
@@ -85,11 +96,9 @@ public abstract class AbstractOperation implements Operation {
      */
     protected String asString(int space, String operatorSymbol, String name) {
         String tab = " ".repeat(space);
-        int nTab = 2;
         return tab + name + "(\n"
-            + leftChildren.asString(space + nTab) + '\n'
-//            + operatorSymbol + '\n'
-            + tab + " ".repeat(nTab) + operatorSymbol + rightChildren.asString(1) + '\n'
+            + leftChildren.asString(space + 2) + ' ' + operatorSymbol + '\n'
+            + rightChildren.asString(space + 2) + '\n'
             + tab + ')';
     }
 
@@ -110,7 +119,7 @@ public abstract class AbstractOperation implements Operation {
      */
     private WType calculateAsWrapped() {
         SType computedValue = this.calculate();
-        return (WType) computedValue.toAST();
+        return (WType) computedValue.toHiddenAST();
     }
 
     /**

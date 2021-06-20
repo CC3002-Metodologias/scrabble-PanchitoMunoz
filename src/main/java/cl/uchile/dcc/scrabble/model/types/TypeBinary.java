@@ -9,7 +9,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
@@ -403,12 +403,12 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
 
     /**
      * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
-     * WType} or an {@code AST}, it does nothing.
+     * WType} or an {@code HiddenAST}, it does nothing.
      *
      * @return a transformation
      */
     @Override
-    public AST toAST() {
+    public HiddenAST toHiddenAST() {
         return new WrappedBinary(this);
     }
 }

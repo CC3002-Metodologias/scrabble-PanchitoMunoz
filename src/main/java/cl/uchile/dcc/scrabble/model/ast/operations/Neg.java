@@ -1,8 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.interfaces.LogicalAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractLogicalOperation;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -11,23 +12,22 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/20 11:53
  */
-public class Neg extends AbstractLogicalOperation {
+public class Neg extends AbstractOperation {
 
     /**
-     * Default constructor for unary operations. It can receive an {@code Operation} or a {@code
-     * Logical AST}.
+     * Constructor. It can receive an {@code Operation} or a {@code SType}.
      *
-     * @param value a value, it can be an {@code Operation} or a {@code SLogical}.
+     * @param value a value, it can be an {@code Operation} or a {@code SType}.
      */
-    public Neg(LogicalAST value) {
-        super(value);
+    public Neg(AST value) {
+        super(value, new TypeBool(true));
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code AST}.
+     * Returns the {@code String} representation of the current {@code HiddenAST}.
      *
      * @param space number of spaces to ident
-     * @return the current {@code AST} as {@code String}
+     * @return the current {@code HiddenAST} as {@code String}
      */
     @Override
     public String asString(int space) {

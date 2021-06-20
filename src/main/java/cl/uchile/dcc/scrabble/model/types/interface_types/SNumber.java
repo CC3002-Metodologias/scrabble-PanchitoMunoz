@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.ast.interfaces.NumberAST;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithFloat;
 import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithInt;
@@ -17,7 +16,7 @@ import cl.uchile.dcc.scrabble.model.types.operations.subtraction.ISubWithInt;
  * @author Francisco Muñoz Guajardo
  */
 public interface SNumber
-    extends NumberAST, IAddWithFloat, IAddWithInt, ISubWithFloat, ISubWithInt,
+    extends IAddWithFloat, IAddWithInt, ISubWithFloat, ISubWithInt,
     IMultWithFloat, IMultWithInt, IDivWithFloat, IDivWithInt {
 
     /**
