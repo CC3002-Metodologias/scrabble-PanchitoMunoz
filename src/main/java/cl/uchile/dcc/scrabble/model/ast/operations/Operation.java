@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
+import cl.uchile.dcc.scrabble.model.ASTTransformation;
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
@@ -15,26 +16,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/12 23:47
  * @see AST
  */
-public interface Operation extends AST {
-
-    /**
-     * Add a component to the list of components.
-     *
-     * @param component a component
-     */
-    void add(AST component);
-
-    /**
-     * Add multiples components to the list of components.
-     *
-     * @param components multiples components
-     */
-    void add(AST... components);
-
-    /**
-     * Clears the list of components
-     */
-    void clear();
+public interface Operation extends AST, ASTTransformation {
 
     /**
      * Transform the current instance into a {@code TypeBinary}.

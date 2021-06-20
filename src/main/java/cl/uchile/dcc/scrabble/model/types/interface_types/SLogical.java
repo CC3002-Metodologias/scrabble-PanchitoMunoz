@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
+import cl.uchile.dcc.scrabble.model.ast.interfaces.LogicalAST;
 import cl.uchile.dcc.scrabble.model.types.operations.INeg;
 import cl.uchile.dcc.scrabble.model.types.operations.LogicalOperations;
 import cl.uchile.dcc.scrabble.model.types.operations.and.IAndWithBinary;
@@ -13,6 +14,7 @@ import cl.uchile.dcc.scrabble.model.types.operations.or.IOrWithBool;
  * @author Francisco Muñoz Guajardo
  */
 public interface SLogical
-    extends INeg, LogicalOperations, IAndWithBool, IOrWithBool, IAndWithBinary, IOrWithBinary {
+    extends LogicalAST, INeg, LogicalOperations, IAndWithBool, IOrWithBool, IAndWithBinary,
+    IOrWithBinary {
 
 }

@@ -9,9 +9,6 @@ import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Abstract class for a general {@code Operation}.
@@ -22,13 +19,18 @@ import java.util.List;
  */
 public abstract class AbstractOperation implements Operation {
 
-    protected final List<AST> children = new ArrayList<>();
+    private final AST leftChildren;
+    private final AST rightChildren;
 
     /**
-     * Constructs a new object.
+     * Default constructor. It can receive an {@code Operation} or a {@code WType}.
+     *
+     * @param leftValue  left value, it can be an {@code Operation} or a {@code WType}.
+     * @param rightValue right value, it can be an {@code Operation} or a {@code WType}.
      */
-    public AbstractOperation(AST... components) {
-        this.add(components);
+    protected AbstractOperation(AST leftValue, AST rightValue) {
+        leftChildren = leftValue;
+        rightChildren = rightValue;
     }
 
     /**
@@ -38,42 +40,8 @@ public abstract class AbstractOperation implements Operation {
      * @return a transformation
      */
     @Override
-    public AST toWrapType() {
+    public AST toAST() {
         return this;
-    }
-
-    /**
-     * Add a component to the list of components.
-     *
-     * @param component a component
-     */
-    @Override
-    public void add(AST component) {
-        // Convert to wrap type
-        AST componentToAdd = component.toWrapType();
-        // Add the wrapped component
-        children.add(componentToAdd);
-    }
-
-    /**
-     * Add multiples components to the list of components.
-     *
-     * @param components multiples components
-     */
-    @Override
-    public void add(AST... components) {
-        List<AST> componentsAsList = Arrays.asList(components);
-        for (int i = 0; i < components.length; i++) {
-            this.add(componentsAsList.get(i));
-        }
-    }
-
-    /**
-     * Clears the list of components
-     */
-    @Override
-    public void clear() {
-        children.clear();
     }
 
     /**
@@ -83,35 +51,18 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public SType calculate() {
-        WType unwrappedResult = unwrapOperations(children);
-        return unwrappedResult.calculate();
+        WType leftCalculated = (WType) leftChildren.calculate().toAST();
+        WType rightCalculated = (WType) rightChildren.calculate().toAST();
+
+        return mainOperation(leftCalculated, rightCalculated);
     }
 
-    /**
-     * Unwrap the components in the list with the current operation. Use the template pattern over
-     * {@code mainOperation}.
-     *
-     * @param listToUnwrap list to unwrap
-     * @return every component calculated and unwrapped
-     */
-    protected WType unwrapOperations(List<AST> listToUnwrap) {
-        // Gets the size
-        int sizeList = listToUnwrap.size();
-        // To ensure that we can get an element
-        assert sizeList > 0;
-        // Gets the last element
-        AST currentElem = listToUnwrap.get(sizeList - 1);
-        // If the list only have an element, returns that element
-        if (sizeList == 1) {
-            return (WType) currentElem.calculate().toWrapType();
-        }
-        // Otherwise, apply a recurrence
-        AST computedUnwrap = unwrapOperations(listToUnwrap.subList(0, sizeList - 1));
-        // Calculate the components and transform
-        WType WValue1 = (WType) computedUnwrap.calculate().toWrapType();
-        WType WValue2 = (WType) currentElem.calculate().toWrapType();
-        // Gets the a result
-        return mainOperation(WValue1, WValue2);
+    protected AST getLeftChildren() {
+        return leftChildren;
+    }
+
+    protected AST getRightChildren() {
+        return rightChildren;
     }
 
     /**
@@ -121,7 +72,7 @@ public abstract class AbstractOperation implements Operation {
      * @param value2 the value at the right
      * @return the value computed
      */
-    protected abstract WType mainOperation(WType value1, WType value2);
+    protected abstract SType mainOperation(WType value1, WType value2);
 
     /**
      * Generalize the {@code asString} method, in order to only modify the operator symbol and the
@@ -134,17 +85,12 @@ public abstract class AbstractOperation implements Operation {
      */
     protected String asString(int space, String operatorSymbol, String name) {
         String tab = " ".repeat(space);
-        StringBuilder childrenAsString = new StringBuilder();
-        for (int i = 0; i < children.size(); i++) {
-            AST leaf = children.get(i);
-            if (i == children.size() - 1) {
-                childrenAsString.append(leaf.asString(space + 2)).append("\n").append(tab);
-            } else {
-                childrenAsString.append(leaf.asString(space + 2)).append(" ").append(
-                    operatorSymbol).append("\n");
-            }
-        }
-        return tab + name + "(\n" + childrenAsString + ")";
+        int nTab = 2;
+        return tab + name + "(\n"
+            + leftChildren.asString(space + nTab) + '\n'
+//            + operatorSymbol + '\n'
+            + tab + " ".repeat(nTab) + operatorSymbol + rightChildren.asString(1) + '\n'
+            + tab + ')';
     }
 
     /**
@@ -164,7 +110,7 @@ public abstract class AbstractOperation implements Operation {
      */
     private WType calculateAsWrapped() {
         SType computedValue = this.calculate();
-        return (WType) computedValue.toWrapType();
+        return (WType) computedValue.toAST();
     }
 
     /**
@@ -174,7 +120,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public TypeBinary toTypeBinary() {
-        return (TypeBinary) calculateAsWrapped().toWrappedBinary().getAdaptee();
+        return (TypeBinary) this.calculateAsWrapped().toWrappedBinary().getAdaptee();
     }
 
     /**

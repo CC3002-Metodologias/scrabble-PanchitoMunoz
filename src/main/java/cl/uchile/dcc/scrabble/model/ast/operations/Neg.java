@@ -1,26 +1,26 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.interfaces.NumberAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractNumberOperation;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.LogicalAST;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractLogicalOperation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
- * TODO: Documentar
+ * TODO: DOCUMENTAR
  *
  * @author Francisco Muñoz Guajardo
- * @create 2021/06/15 11:45
+ * @create 2021/06/20 11:53
  */
-public class Mult extends AbstractNumberOperation {
+public class Neg extends AbstractLogicalOperation {
 
     /**
-     * Constructor. It can receive an {@code Operation} or a {@code SNumber}.
+     * Default constructor for unary operations. It can receive an {@code Operation} or a {@code
+     * Logical AST}.
      *
-     * @param leftValue  left value, it can be an {@code Operation} or a {@code SNumber}.
-     * @param rightValue right value, it can be an {@code Operation} or a {@code SNumber}.
+     * @param value a value, it can be an {@code Operation} or a {@code SLogical}.
      */
-    public Mult(NumberAST leftValue, NumberAST rightValue) {
-        super(leftValue, rightValue);
+    public Neg(LogicalAST value) {
+        super(value);
     }
 
     /**
@@ -31,7 +31,10 @@ public class Mult extends AbstractNumberOperation {
      */
     @Override
     public String asString(int space) {
-        return asString(space, "*", "Mult");
+        String tab = " ".repeat(space);
+        return tab + "Neg" + "(\n"
+            + this.getLeftChildren().asString(space + 2) + '\n'
+            + tab + ')';
     }
 
     /**
@@ -43,6 +46,6 @@ public class Mult extends AbstractNumberOperation {
      */
     @Override
     protected SType mainOperation(WType value1, WType value2) {
-        return value1.mult(value2).getAdaptee();
+        return value1.neg().getAdaptee();
     }
 }

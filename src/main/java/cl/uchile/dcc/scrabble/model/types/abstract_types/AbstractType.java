@@ -26,26 +26,4 @@ public abstract class AbstractType implements SType {
      * @return The representation as a String.
      */
     abstract public String toString();
-
-    /**
-     * Calculate the {@code SType} result of performing all operations
-     *
-     * @return SType result of operations.
-     */
-    @Override
-    public SType calculate() {
-        return this;
-    }
-
-    /**
-     * Returns the {@code String} representation of the current {@code AST}.
-     *
-     * @param space number of spaces to ident
-     * @return the current {@code AST} as {@code String}
-     */
-    @Override
-    public String asString(int space) {
-        String tab = " ".repeat(space);
-        return tab + this;
-    }
 }

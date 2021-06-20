@@ -150,6 +150,16 @@ public class WrappedBool extends AbstractWrappedType {
     }
 
     /**
+     * Returns the negation of the current instance
+     *
+     * @return the negation.
+     */
+    @Override
+    public WType neg() {
+        return new WrappedBool((TypeBool) this.typeBool.neg());
+    }
+
+    /**
      * To use double dispatch in {@code and}
      */
     @Override

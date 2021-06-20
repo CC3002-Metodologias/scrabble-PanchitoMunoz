@@ -47,7 +47,7 @@ public abstract class AbstractWrappedType implements WType {
      * @return the current {@code AST} as {@code String} without spaces.
      */
     protected String asString() {
-        return this.getAdaptee().asString(0);
+        return this.getAdaptee().toString();
     }
 
     /**
@@ -80,6 +80,16 @@ public abstract class AbstractWrappedType implements WType {
         }
         WType wType = (WType) obj;
         return this.getAdaptee().equals(wType.getAdaptee());
+    }
+
+    /**
+     * Returns the negation of the current instance
+     *
+     * @return the negation.
+     */
+    @Override
+    public WType neg() {
+        return null;
     }
 
     /**

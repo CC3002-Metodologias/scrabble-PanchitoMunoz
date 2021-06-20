@@ -173,6 +173,16 @@ public class WrappedBinary extends AbstractWrappedType {
     }
 
     /**
+     * Returns the negation of the current instance
+     *
+     * @return the negation.
+     */
+    @Override
+    public WType neg() {
+        return new WrappedBinary((TypeBinary) this.typeBinary.neg());
+    }
+
+    /**
      * To use double dispatch in {@code add}
      */
     @Override

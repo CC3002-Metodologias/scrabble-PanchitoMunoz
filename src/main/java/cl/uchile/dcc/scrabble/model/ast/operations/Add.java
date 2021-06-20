@@ -1,8 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.TypeAST;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractTypeOperation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * TODO: Documentar
@@ -10,15 +11,16 @@ import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/14 9:54
  */
-public class Add extends AbstractOperation {
+public class Add extends AbstractTypeOperation {
 
     /**
-     * Constructor.
+     * Constructor. It can receive an {@code Operation} or a {@code SType}.
      *
-     * @param components multiple components
+     * @param leftValue  left value, it can be an {@code Operation} or a {@code SType}.
+     * @param rightValue rightValue right value, it can be an {@code Operation} or a {@code SType}.
      */
-    public Add(AST... components) {
-        super(components);
+    public Add(TypeAST leftValue, TypeAST rightValue) {
+        super(leftValue, rightValue);
     }
 
     /**
@@ -40,7 +42,7 @@ public class Add extends AbstractOperation {
      * @return the value computed
      */
     @Override
-    protected WType mainOperation(WType value1, WType value2) {
-        return value1.add(value2);
+    protected SType mainOperation(WType value1, WType value2) {
+        return value1.add(value2).getAdaptee();
     }
 }

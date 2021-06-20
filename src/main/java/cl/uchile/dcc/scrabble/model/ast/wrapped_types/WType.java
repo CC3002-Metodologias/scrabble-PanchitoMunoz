@@ -6,6 +6,7 @@ import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WAdd;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WAnd;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WDiv;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WMult;
+import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WNeg;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WOr;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WSub;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
@@ -28,7 +29,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @see AST
  * @see Operation
  */
-public interface WType extends AST, WAdd, WSub, WMult, WDiv, WAnd, WOr {
+public interface WType extends AST, WAdd, WSub, WMult, WDiv, WAnd, WOr, WNeg {
 
 
     /**

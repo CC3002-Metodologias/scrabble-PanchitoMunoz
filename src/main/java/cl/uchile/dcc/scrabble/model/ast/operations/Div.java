@@ -1,8 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.NumberAST;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractNumberOperation;
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * TODO: Documentar
@@ -10,15 +11,16 @@ import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/15 11:47
  */
-public class Div extends AbstractOperation {
+public class Div extends AbstractNumberOperation {
 
     /**
-     * Constructor.
+     * Constructor. It can receive an {@code Operation} or a {@code SNumber}.
      *
-     * @param components multiple components
+     * @param leftValue  left value, it can be an {@code Operation} or a {@code SNumber}.
+     * @param rightValue right value, it can be an {@code Operation} or a {@code SNumber}.
      */
-    public Div(AST... components) {
-        super(components);
+    public Div(NumberAST leftValue, NumberAST rightValue) {
+        super(leftValue, rightValue);
     }
 
     /**
@@ -29,8 +31,8 @@ public class Div extends AbstractOperation {
      * @return the value computed
      */
     @Override
-    protected WType mainOperation(WType value1, WType value2) {
-        return value1.div(value2);
+    protected SType mainOperation(WType value1, WType value2) {
+        return value1.div(value2).getAdaptee();
     }
 
     /**
