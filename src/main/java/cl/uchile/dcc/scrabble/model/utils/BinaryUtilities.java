@@ -150,7 +150,7 @@ public final class BinaryUtilities {
      * @param aBinary a binary to clean
      * @return the binary cleaned
      */
-    private static String cleanBinary(String aBinary) {
+    public static String cleanBinary(String aBinary) {
         StringBuilder newBinary = new StringBuilder(aBinary);
         char principalChar = newBinary.charAt(0);
         for (int i = 1; i < aBinary.length() - 4; i++) {

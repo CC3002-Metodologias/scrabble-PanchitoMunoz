@@ -6,6 +6,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryOrBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 
@@ -32,7 +33,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      * @param value A String as a value.
      */
     public TypeBinary(String value) {
-        this.value = value;
+        this.value = cleanBinary(value);
     }
 
     /**
