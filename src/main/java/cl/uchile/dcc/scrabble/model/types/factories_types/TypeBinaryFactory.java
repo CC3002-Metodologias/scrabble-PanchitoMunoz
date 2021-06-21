@@ -5,7 +5,6 @@ import static java.util.Objects.hash;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Factory of {@code TypeBinary}. In order to save RAM memory, use this factory. Only exists an
@@ -17,10 +16,14 @@ import java.util.Map;
  */
 public class TypeBinaryFactory implements STypeFactory {
 
-    // To use singleton pattern
+    /**
+     * To use singleton pattern
+     */
     private static TypeBinaryFactory uniqueInstance;
-    // To use Flyweight pattern
-    private final Map<Integer, TypeBinary> createdBinaries = new HashMap<>();
+    /**
+     * To use Flyweight pattern
+     */
+    private final HashMap<Integer, TypeBinary> hashMapCache = new HashMap<>();
 
     /**
      * Private constructor, to use singleton pattern
@@ -48,9 +51,26 @@ public class TypeBinaryFactory implements STypeFactory {
      */
     public TypeBinary getTypeBinary(String value) {
         int hashValue = hash(binaryToInt(value));
-        if (!createdBinaries.containsKey(hashValue)) {
-            createdBinaries.put(hashValue, new TypeBinary(value));
+        if (!hashMapCache.containsKey(hashValue)) {
+            hashMapCache.put(hashValue, new TypeBinary(value));
         }
-        return createdBinaries.get(hashValue);
+        return hashMapCache.get(hashValue);
+    }
+
+    /**
+     * Only for test.
+     *
+     * @return a hash map
+     */
+    protected HashMap<Integer, TypeBinary> getHashMapCache() {
+        return hashMapCache;
+    }
+
+    /**
+     * Clear the current caché.
+     */
+    @Override
+    public void clear() {
+        hashMapCache.clear();
     }
 }

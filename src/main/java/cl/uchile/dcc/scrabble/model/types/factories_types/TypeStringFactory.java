@@ -4,7 +4,6 @@ import static java.util.Objects.hash;
 
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Factory of {@code TypeString}. In order to save RAM memory, use this factory. Only exists an
@@ -16,10 +15,14 @@ import java.util.Map;
  */
 public class TypeStringFactory implements STypeFactory {
 
-    // To use singleton pattern
+    /**
+     * To use singleton pattern
+     */
     private static TypeStringFactory uniqueInstance;
-    // To use Flyweight pattern
-    private final Map<Integer, TypeString> createdStrings = new HashMap<>();
+    /**
+     * To use Flyweight pattern
+     */
+    private final HashMap<Integer, TypeString> hashMapCache = new HashMap<>();
 
     /**
      * Private constructor, to use singleton pattern
@@ -47,10 +50,26 @@ public class TypeStringFactory implements STypeFactory {
      */
     public TypeString getTypeString(String value) {
         int hashValue = hash(value);
-        if (!createdStrings.containsKey(hashValue)) {
-            createdStrings.put(hashValue, new TypeString(value));
+        if (!hashMapCache.containsKey(hashValue)) {
+            hashMapCache.put(hashValue, new TypeString(value));
         }
-        return createdStrings.get(hashValue);
+        return hashMapCache.get(hashValue);
     }
 
+    /**
+     * Only for test.
+     *
+     * @return a hash map
+     */
+    protected HashMap<Integer, TypeString> getHashMapCache() {
+        return hashMapCache;
+    }
+
+    /**
+     * Clear the current caché.
+     */
+    @Override
+    public void clear() {
+        hashMapCache.clear();
+    }
 }

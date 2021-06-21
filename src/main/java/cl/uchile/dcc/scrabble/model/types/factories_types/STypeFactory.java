@@ -8,4 +8,8 @@ package cl.uchile.dcc.scrabble.model.types.factories_types;
  */
 public interface STypeFactory {
 
+    /**
+     * Clear the current caché.
+     */
+    void clear();
 }

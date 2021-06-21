@@ -4,7 +4,6 @@ import static java.util.Objects.hash;
 
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Factory of {@code TypeFloat}. In order to save RAM memory, use this factory. Only exists an
@@ -16,10 +15,14 @@ import java.util.Map;
  */
 public class TypeFloatFactory implements STypeFactory {
 
-    // To use singleton pattern
+    /**
+     * To use singleton pattern
+     */
     private static TypeFloatFactory uniqueInstance;
-    // To use Flyweight pattern
-    private final Map<Integer, TypeFloat> createdFloats = new HashMap<>();
+    /**
+     * To use Flyweight pattern
+     */
+    private final HashMap<Integer, TypeFloat> hashMapCache = new HashMap<>();
 
     /**
      * Private constructor, to use singleton pattern
@@ -47,10 +50,26 @@ public class TypeFloatFactory implements STypeFactory {
      */
     public TypeFloat getTypeFloat(double value) {
         int hashValue = hash(value);
-        if (!createdFloats.containsKey(hashValue)) {
-            createdFloats.put(hashValue, new TypeFloat(value));
+        if (!hashMapCache.containsKey(hashValue)) {
+            hashMapCache.put(hashValue, new TypeFloat(value));
         }
-        return createdFloats.get(hashValue);
+        return hashMapCache.get(hashValue);
     }
 
+    /**
+     * Only for test.
+     *
+     * @return a hash map
+     */
+    protected HashMap<Integer, TypeFloat> getHashMapCache() {
+        return hashMapCache;
+    }
+
+    /**
+     * Clear the current caché.
+     */
+    @Override
+    public void clear() {
+        hashMapCache.clear();
+    }
 }

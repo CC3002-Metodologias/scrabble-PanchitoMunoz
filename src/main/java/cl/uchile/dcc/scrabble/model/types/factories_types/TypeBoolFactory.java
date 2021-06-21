@@ -4,7 +4,6 @@ import static java.util.Objects.hash;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Factory of {@code TypeBool}. In order to save RAM memory, use this factory. Only exists an unique
@@ -16,10 +15,14 @@ import java.util.Map;
  */
 public class TypeBoolFactory implements STypeFactory {
 
-    // To use singleton pattern
+    /**
+     * To use singleton pattern
+     */
     private static TypeBoolFactory uniqueInstance;
-    // To use Flyweight pattern
-    private final Map<Integer, TypeBool> createdBooleans = new HashMap<>();
+    /**
+     * To use Flyweight pattern
+     */
+    private final HashMap<Integer, TypeBool> hashMapCache = new HashMap<>();
 
     /**
      * Private constructor, to use singleton pattern
@@ -47,9 +50,26 @@ public class TypeBoolFactory implements STypeFactory {
      */
     public TypeBool getTypeBool(boolean value) {
         int hashValue = hash(value);
-        if (!createdBooleans.containsKey(hashValue)) {
-            createdBooleans.put(hashValue, new TypeBool(value));
+        if (!hashMapCache.containsKey(hashValue)) {
+            hashMapCache.put(hashValue, new TypeBool(value));
         }
-        return createdBooleans.get(hashValue);
+        return hashMapCache.get(hashValue);
+    }
+
+    /**
+     * Only for test.
+     *
+     * @return a hash map
+     */
+    protected HashMap<Integer, TypeBool> getHashMapCache() {
+        return hashMapCache;
+    }
+
+    /**
+     * Clear the current caché.
+     */
+    @Override
+    public void clear() {
+        hashMapCache.clear();
     }
 }

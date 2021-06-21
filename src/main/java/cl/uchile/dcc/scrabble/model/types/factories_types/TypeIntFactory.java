@@ -4,7 +4,6 @@ import static java.util.Objects.hash;
 
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Factory of {@code TypeInt}. In order to save RAM memory, use this factory. Only exists an unique
@@ -16,10 +15,14 @@ import java.util.Map;
  */
 public class TypeIntFactory implements STypeFactory {
 
-    // To use singleton pattern
+    /**
+     * To use singleton pattern
+     */
     private static TypeIntFactory uniqueInstance;
-    // To use Flyweight pattern
-    private final Map<Integer, TypeInt> createdInts = new HashMap<>();
+    /**
+     * To use Flyweight pattern
+     */
+    private final HashMap<Integer, TypeInt> hashMapCache = new HashMap<>();
 
     /**
      * Private constructor, to use singleton pattern
@@ -47,10 +50,26 @@ public class TypeIntFactory implements STypeFactory {
      */
     public TypeInt getTypeInt(int value) {
         int hashValue = hash(value);
-        if (!createdInts.containsKey(hashValue)) {
-            createdInts.put(hashValue, new TypeInt(value));
+        if (!hashMapCache.containsKey(hashValue)) {
+            hashMapCache.put(hashValue, new TypeInt(value));
         }
-        return createdInts.get(hashValue);
+        return hashMapCache.get(hashValue);
     }
 
+    /**
+     * Only for test.
+     *
+     * @return a hash map
+     */
+    protected HashMap<Integer, TypeInt> getHashMapCache() {
+        return hashMapCache;
+    }
+
+    /**
+     * Clear the current caché.
+     */
+    @Override
+    public void clear() {
+        hashMapCache.clear();
+    }
 }
