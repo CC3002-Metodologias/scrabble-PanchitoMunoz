@@ -4,7 +4,6 @@ import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWra
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * A class to wrap a {@code TypeBool}. To use adapter pattern.
@@ -36,22 +35,13 @@ public class WrappedBool extends AbstractWrappedType {
     }
 
     /**
-     * Returns the adaptee, specifying the current type inside.
-     *
-     * @return a new instance of {@code TypeBool}
-     */
-    protected TypeBool getRawAdaptee() {
-        return new TypeBool(this.typeBool.getValue());
-    }
-
-    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper
      */
     @Override
-    public SType getAdaptee() {
-        return this.getRawAdaptee();
+    public TypeBool getAdaptee() {
+        return new TypeBool(this.typeBool.getValue());
     }
 
     @Override
@@ -164,7 +154,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType andWithBool(WrappedBool wBool) {
-        TypeBool computed = (TypeBool) this.typeBool.andWithBool(wBool.getRawAdaptee());
+        TypeBool computed = (TypeBool) this.typeBool.andWithBool(wBool.getAdaptee());
         return new WrappedBool(computed);
     }
 
@@ -175,7 +165,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType andWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBool.andWithBinary(wBinary.getRawAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBool.andWithBinary(wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
 
@@ -186,7 +176,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType orWithBool(WrappedBool wBool) {
-        TypeBool computed = (TypeBool) this.typeBool.orWithBool(wBool.getRawAdaptee());
+        TypeBool computed = (TypeBool) this.typeBool.orWithBool(wBool.getAdaptee());
         return new WrappedBool(computed);
     }
 
@@ -197,7 +187,7 @@ public class WrappedBool extends AbstractWrappedType {
      */
     @Override
     public WType orWithBinary(WrappedBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBool.orWithBinary(wBinary.getRawAdaptee());
+        TypeBinary computed = (TypeBinary) this.typeBool.orWithBinary(wBinary.getAdaptee());
         return new WrappedBinary(computed);
     }
 }

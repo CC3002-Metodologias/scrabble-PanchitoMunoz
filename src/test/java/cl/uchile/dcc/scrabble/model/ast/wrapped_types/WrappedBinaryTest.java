@@ -24,13 +24,6 @@ class WrappedBinaryTest extends BaseWTypeTest {
     }
 
     @RepeatedTest(20)
-    void testGetRawAdaptee() {
-        TypeBinary expected = wBinary1.getRawAdaptee();
-        assertEquals(expected, typeBinary1, "Method getRawAdaptee does not works."
-            + messageSeed);
-    }
-
-    @RepeatedTest(20)
     void testCalculate() {
         assertEquals(typeBinary1, wBinary1.calculate(),
             "Method calculate does not works" + messageSeed);
@@ -57,7 +50,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testToString() {
-        String expected = "WrappedBinary{value=" + wBinary1.getRawAdaptee().getValue() + "}";
+        String expected = "WrappedBinary{value=" + wBinary1.getAdaptee().getValue() + "}";
         assertEquals(expected, wBinary1.toString(), "Method toString does not works."
             + messageSeed);
     }

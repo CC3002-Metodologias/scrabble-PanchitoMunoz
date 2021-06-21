@@ -2,7 +2,6 @@ package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
 
 import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * A class to wrap a {@code TypeString}. To use adapter pattern.
@@ -34,22 +33,13 @@ public class WrappedString extends AbstractWrappedType {
     }
 
     /**
-     * Returns the adaptee, specifying the current type inside.
-     *
-     * @return a new instance of {@code TypeString}
-     */
-    protected TypeString getRawAdaptee() {
-        return new TypeString(this.typeString.getValue());
-    }
-
-    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper
      */
     @Override
-    public SType getAdaptee() {
-        return this.getRawAdaptee();
+    public TypeString getAdaptee() {
+        return new TypeString(this.typeString.getValue());
     }
 
     @Override
