@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -18,8 +18,8 @@ class WrappedBoolTest extends BaseWTypeTest {
 
     @Test
     void testCalculate() {
-        assertEquals(trueTypeBool, trueWBool.calculate(), "Method calculate does not works");
-        assertEquals(falseTypeBool, falseWBool.calculate(), "Method calculate does not works");
+        assertEquals(trueWBool, trueWBool.calculate(), "Method calculate does not works");
+        assertEquals(falseWBool, falseWBool.calculate(), "Method calculate does not works");
     }
 
     @Test

@@ -1,6 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -169,7 +169,7 @@ public class WrappedBinary extends AbstractWrappedType {
      */
     @Override
     public WType neg() {
-        return new WrappedBinary((TypeBinary) this.typeBinary.neg());
+        return new WrappedBinary(this.typeBinary.neg());
     }
 
     /**

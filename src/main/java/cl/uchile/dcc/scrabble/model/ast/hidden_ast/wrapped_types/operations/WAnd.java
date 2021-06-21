@@ -1,11 +1,11 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedString;
 
 /**
  * Interface to implements the disjunction in wrapped classes.

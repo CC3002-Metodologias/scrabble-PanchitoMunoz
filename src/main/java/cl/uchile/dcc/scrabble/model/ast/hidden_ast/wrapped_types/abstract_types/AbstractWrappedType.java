@@ -1,11 +1,11 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedInt;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedString;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
@@ -20,13 +20,13 @@ import java.util.HashMap;
 public abstract class AbstractWrappedType implements WType {
 
     /**
-     * Calculate the {@code SType} result of performing all operations
+     * Calculate the {@code WType} result of performing all operations
      *
-     * @return SType result of operations.
+     * @return WType result of operations.
      */
     @Override
-    public SType calculate() {
-        return this.getAdaptee().calculate();  // Using template pattern
+    public WType calculate() {
+        return this;
     }
 
     /**
@@ -129,7 +129,7 @@ public abstract class AbstractWrappedType implements WType {
     @Override
     public WType addWithString(WrappedString wString) {
         TypeString computed = this.getAdaptee().addWithString(
-            (TypeString) wString.getAdaptee());
+            wString.getAdaptee());
         return new WrappedString(computed);
     }
 

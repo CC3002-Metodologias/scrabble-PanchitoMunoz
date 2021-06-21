@@ -1,7 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.operations;
+package cl.uchile.dcc.scrabble.model.ast.interfaces;
 
-import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
-import cl.uchile.dcc.scrabble.model.ast.interfaces.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
@@ -16,7 +15,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/12 23:47
  * @see HiddenAST
  */
-public interface Operation extends AST, HiddenAST {
+public interface Operation extends AST {
 
     /**
      * Transform the current instance into a {@code TypeBinary}.

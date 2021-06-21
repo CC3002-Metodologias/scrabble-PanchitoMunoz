@@ -1,6 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
 
 /**
  * TODO: DOCUMENTAR

@@ -1,6 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.abstract_types.AbstractWrappedType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.abstract_types.AbstractWrappedType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**

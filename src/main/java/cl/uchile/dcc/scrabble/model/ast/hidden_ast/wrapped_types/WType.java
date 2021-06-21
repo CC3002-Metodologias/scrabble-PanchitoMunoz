@@ -1,14 +1,14 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
 
-import cl.uchile.dcc.scrabble.model.ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WAdd;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WAnd;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WDiv;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WMult;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WNeg;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WOr;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.operations.WSub;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations.WAdd;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations.WAnd;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations.WDiv;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations.WMult;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations.WNeg;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations.WOr;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.operations.WSub;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**

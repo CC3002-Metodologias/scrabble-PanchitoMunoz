@@ -1,9 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenSub;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * TODO: Documentar
@@ -14,36 +13,24 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 public class Sub extends AbstractOperation {
 
     /**
-     * Constructor. It can receive an {@code Operation} or a {@code SType}.
+     * Constructor.
      *
-     * @param leftValue  left value, it can be an {@code Operation} or a {@code SType}.
-     * @param rightValue right value, it can be an {@code Operation} or a {@code SType}.
+     * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
+     * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public Sub(AST leftValue,
-        AST rightValue) {
-        super(leftValue, rightValue);
+    public Sub(AST leftValue, AST rightValue) {
+        HiddenSub adapteeToSet = new HiddenSub(leftValue.toHiddenAST(), rightValue.toHiddenAST());
+        setAdaptee(adapteeToSet);
     }
 
     /**
-     * Compute the operation between 2 {@code WType} and returns its operation.
+     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
+     * WType} or an {@code HiddenAST}, it does nothing.
      *
-     * @param value1 the value at the left
-     * @param value2 the value at the right
-     * @return the value computed
+     * @return a transformation
      */
     @Override
-    protected SType mainOperation(WType value1, WType value2) {
-        return value1.sub(value2).getAdaptee();
-    }
-
-    /**
-     * Returns the {@code String} representation of the current {@code HiddenAST}.
-     *
-     * @param space number of spaces to ident
-     * @return the current {@code HiddenAST} as {@code String}
-     */
-    @Override
-    public String asString(int space) {
-        return asString(space, "-", "Sub");
+    public HiddenSub toHiddenAST() {
+        return new HiddenSub(getLeftChildren(), getRightChildren());
     }
 }

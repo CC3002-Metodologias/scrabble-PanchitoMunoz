@@ -10,8 +10,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 
-import cl.uchile.dcc.scrabble.model.ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
@@ -122,7 +121,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      * @return The negation of the current instance.
      */
     @Override
-    public SLogical neg() {
+    public TypeBinary neg() {
         return new TypeBinary(oneComplement(this.value));
     }
 
@@ -409,7 +408,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      * @return a transformation
      */
     @Override
-    public HiddenAST toHiddenAST() {
+    public WrappedBinary toHiddenAST() {
         return new WrappedBinary(this);
     }
 }
