@@ -1,7 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
-import static java.util.Objects.hash;
-
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import java.util.HashMap;
 
@@ -22,12 +20,28 @@ public class TypeStringFactory implements STypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Integer, TypeString> hashMapCache = new HashMap<>();
+    private final HashMap<String, TypeString> hashMapCache;
 
     /**
-     * Private constructor, to use singleton pattern
+     * Constructor only for tests.
+     *
+     * @param hashMapCache a hash map
      */
-    private TypeStringFactory() {
+    private TypeStringFactory(HashMap<String, TypeString> hashMapCache) {
+        this.hashMapCache = hashMapCache;
+    }
+
+    /**
+     * Only for tests.
+     *
+     * @param hashMapCache a hash map
+     * @return the instance of the factory.
+     */
+    private static TypeStringFactory getInstance(HashMap<String, TypeString> hashMapCache) {
+        if (uniqueInstance == null) {
+            uniqueInstance = new TypeStringFactory(hashMapCache);
+        }
+        return uniqueInstance;
     }
 
     /**
@@ -36,10 +50,7 @@ public class TypeStringFactory implements STypeFactory {
      * @return the instance of the factory
      */
     public static TypeStringFactory getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new TypeStringFactory();
-        }
-        return uniqueInstance;
+        return getInstance(new HashMap<>());
     }
 
     /**
@@ -49,20 +60,10 @@ public class TypeStringFactory implements STypeFactory {
      * @return a {@code TypeString}.
      */
     public TypeString create(String value) {
-        int hashValue = hash(value);
-        if (!hashMapCache.containsKey(hashValue)) {
-            hashMapCache.put(hashValue, new TypeString(value));
+        if (!hashMapCache.containsKey(value)) {
+            hashMapCache.put(value, new TypeString(value));
         }
-        return hashMapCache.get(hashValue);
-    }
-
-    /**
-     * Only for test.
-     *
-     * @return a hash map
-     */
-    protected HashMap<Integer, TypeString> getHashMapCache() {
-        return hashMapCache;
+        return hashMapCache.get(value);
     }
 
     /**
@@ -71,5 +72,15 @@ public class TypeStringFactory implements STypeFactory {
     @Override
     public void clear() {
         hashMapCache.clear();
+    }
+
+    /**
+     * Returns {@code true} if the caché is empty, {@code false} otherwise.
+     *
+     * @return a boolean
+     */
+    @Override
+    public boolean isEmpty() {
+        return hashMapCache.isEmpty();
     }
 }

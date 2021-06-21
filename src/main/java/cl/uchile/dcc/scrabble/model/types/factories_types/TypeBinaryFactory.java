@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
-import static java.util.Objects.hash;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import java.util.HashMap;
@@ -23,12 +22,28 @@ public class TypeBinaryFactory implements STypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Integer, TypeBinary> hashMapCache = new HashMap<>();
+    private final HashMap<Integer, TypeBinary> hashMapCache;
 
     /**
-     * Private constructor, to use singleton pattern
+     * Constructor only for tests.
+     *
+     * @param hashMapCache a hash map
      */
-    private TypeBinaryFactory() {
+    private TypeBinaryFactory(HashMap<Integer, TypeBinary> hashMapCache) {
+        this.hashMapCache = hashMapCache;
+    }
+
+    /**
+     * Only for tests.
+     *
+     * @param hashMapCache a hash map
+     * @return the instance of the factory.
+     */
+    private static TypeBinaryFactory getInstance(HashMap<Integer, TypeBinary> hashMapCache) {
+        if (uniqueInstance == null) {
+            uniqueInstance = new TypeBinaryFactory(hashMapCache);
+        }
+        return uniqueInstance;
     }
 
     /**
@@ -37,10 +52,7 @@ public class TypeBinaryFactory implements STypeFactory {
      * @return the instance of the factory
      */
     public static TypeBinaryFactory getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new TypeBinaryFactory();
-        }
-        return uniqueInstance;
+        return getInstance(new HashMap<>());
     }
 
     /**
@@ -50,20 +62,11 @@ public class TypeBinaryFactory implements STypeFactory {
      * @return a {@code TypeBinary}.
      */
     public TypeBinary create(String value) {
-        int hashValue = hash(binaryToInt(value));
-        if (!hashMapCache.containsKey(hashValue)) {
-            hashMapCache.put(hashValue, new TypeBinary(value));
+        int keyValue = binaryToInt(value);
+        if (!hashMapCache.containsKey(keyValue)) {
+            hashMapCache.put(keyValue, new TypeBinary(value));
         }
-        return hashMapCache.get(hashValue);
-    }
-
-    /**
-     * Only for test.
-     *
-     * @return a hash map
-     */
-    protected HashMap<Integer, TypeBinary> getHashMapCache() {
-        return hashMapCache;
+        return hashMapCache.get(keyValue);
     }
 
     /**
@@ -72,5 +75,15 @@ public class TypeBinaryFactory implements STypeFactory {
     @Override
     public void clear() {
         hashMapCache.clear();
+    }
+
+    /**
+     * Returns {@code true} if the caché is empty, {@code false} otherwise.
+     *
+     * @return a boolean
+     */
+    @Override
+    public boolean isEmpty() {
+        return hashMapCache.isEmpty();
     }
 }

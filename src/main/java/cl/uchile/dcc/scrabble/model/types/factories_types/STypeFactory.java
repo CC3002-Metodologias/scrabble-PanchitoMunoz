@@ -12,4 +12,11 @@ public interface STypeFactory {
      * Clear the current caché.
      */
     void clear();
+
+    /**
+     * Returns {@code true} if the caché is empty, {@code false} otherwise.
+     *
+     * @return a boolean
+     */
+    boolean isEmpty();
 }

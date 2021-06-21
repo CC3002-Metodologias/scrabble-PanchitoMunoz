@@ -12,12 +12,11 @@ import org.junit.jupiter.api.RepeatedTest;
 
 class TypeIntFactoryTest extends BaseTypeTest {
 
-    private TypeIntFactory factory;
+    private final TypeIntFactory factory = TypeIntFactory.getInstance();
 
     @BeforeEach
     public void setUp() {
         super.setUp();
-        factory = TypeIntFactory.getInstance();
     }
 
     @AfterEach
@@ -27,9 +26,9 @@ class TypeIntFactoryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testGetInstance() {
-        factory.create(anInt1);
         TypeIntFactory otherFactory = TypeIntFactory.getInstance();
-        assertEquals(otherFactory.getHashMapCache(), factory.getHashMapCache(),
+        otherFactory.create(anInt1);
+        assertFalse(factory.isEmpty(),
             "Singleton pattern does not works." + messageSeed);
     }
 
@@ -43,8 +42,8 @@ class TypeIntFactoryTest extends BaseTypeTest {
     @RepeatedTest(20)
     void testClear() {
         factory.create(anInt1);
-        assertFalse(factory.getHashMapCache().isEmpty());
+        assertFalse(factory.isEmpty());
         factory.clear();
-        assertTrue(factory.getHashMapCache().isEmpty());
+        assertTrue(factory.isEmpty());
     }
 }

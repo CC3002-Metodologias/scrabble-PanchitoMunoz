@@ -1,7 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
-import static java.util.Objects.hash;
-
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import java.util.HashMap;
 
@@ -22,12 +20,28 @@ public class TypeBoolFactory implements STypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Integer, TypeBool> hashMapCache = new HashMap<>();
+    private final HashMap<Boolean, TypeBool> hashMapCache;
 
     /**
-     * Private constructor, to use singleton pattern
+     * Constructor only for tests.
+     *
+     * @param hashMapCache a hash map
      */
-    private TypeBoolFactory() {
+    private TypeBoolFactory(HashMap<Boolean, TypeBool> hashMapCache) {
+        this.hashMapCache = hashMapCache;
+    }
+
+    /**
+     * Only for tests.
+     *
+     * @param hashMapCache a hash map
+     * @return the instance of the factory.
+     */
+    private static TypeBoolFactory getInstance(HashMap<Boolean, TypeBool> hashMapCache) {
+        if (uniqueInstance == null) {
+            uniqueInstance = new TypeBoolFactory(hashMapCache);
+        }
+        return uniqueInstance;
     }
 
     /**
@@ -36,10 +50,7 @@ public class TypeBoolFactory implements STypeFactory {
      * @return the instance of the factory
      */
     public static TypeBoolFactory getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new TypeBoolFactory();
-        }
-        return uniqueInstance;
+        return getInstance(new HashMap<>());
     }
 
     /**
@@ -49,20 +60,10 @@ public class TypeBoolFactory implements STypeFactory {
      * @return a {@code TypeBool}.
      */
     public TypeBool create(boolean value) {
-        int hashValue = hash(value);
-        if (!hashMapCache.containsKey(hashValue)) {
-            hashMapCache.put(hashValue, new TypeBool(value));
+        if (!hashMapCache.containsKey(value)) {
+            hashMapCache.put(value, new TypeBool(value));
         }
-        return hashMapCache.get(hashValue);
-    }
-
-    /**
-     * Only for test.
-     *
-     * @return a hash map
-     */
-    protected HashMap<Integer, TypeBool> getHashMapCache() {
-        return hashMapCache;
+        return hashMapCache.get(value);
     }
 
     /**
@@ -71,5 +72,15 @@ public class TypeBoolFactory implements STypeFactory {
     @Override
     public void clear() {
         hashMapCache.clear();
+    }
+
+    /**
+     * Returns {@code true} if the caché is empty, {@code false} otherwise.
+     *
+     * @return a boolean
+     */
+    @Override
+    public boolean isEmpty() {
+        return hashMapCache.isEmpty();
     }
 }

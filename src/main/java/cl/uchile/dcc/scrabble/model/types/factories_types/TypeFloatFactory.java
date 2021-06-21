@@ -1,7 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
-import static java.util.Objects.hash;
-
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import java.util.HashMap;
 
@@ -22,12 +20,28 @@ public class TypeFloatFactory implements STypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Integer, TypeFloat> hashMapCache = new HashMap<>();
+    private final HashMap<Double, TypeFloat> hashMapCache;
 
     /**
-     * Private constructor, to use singleton pattern
+     * Constructor only for tests.
+     *
+     * @param hashMapCache a hash map
      */
-    private TypeFloatFactory() {
+    private TypeFloatFactory(HashMap<Double, TypeFloat> hashMapCache) {
+        this.hashMapCache = hashMapCache;
+    }
+
+    /**
+     * Only for tests.
+     *
+     * @param hashMapCache a hash map
+     * @return the instance of the factory.
+     */
+    private static TypeFloatFactory getInstance(HashMap<Double, TypeFloat> hashMapCache) {
+        if (uniqueInstance == null) {
+            uniqueInstance = new TypeFloatFactory(hashMapCache);
+        }
+        return uniqueInstance;
     }
 
     /**
@@ -36,10 +50,7 @@ public class TypeFloatFactory implements STypeFactory {
      * @return the instance of the factory
      */
     public static TypeFloatFactory getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new TypeFloatFactory();
-        }
-        return uniqueInstance;
+        return getInstance(new HashMap<>());
     }
 
     /**
@@ -49,20 +60,10 @@ public class TypeFloatFactory implements STypeFactory {
      * @return a {@code TypeFloat}.
      */
     public TypeFloat create(double value) {
-        int hashValue = hash(value);
-        if (!hashMapCache.containsKey(hashValue)) {
-            hashMapCache.put(hashValue, new TypeFloat(value));
+        if (!hashMapCache.containsKey(value)) {
+            hashMapCache.put(value, new TypeFloat(value));
         }
-        return hashMapCache.get(hashValue);
-    }
-
-    /**
-     * Only for test.
-     *
-     * @return a hash map
-     */
-    protected HashMap<Integer, TypeFloat> getHashMapCache() {
-        return hashMapCache;
+        return hashMapCache.get(value);
     }
 
     /**
@@ -71,5 +72,15 @@ public class TypeFloatFactory implements STypeFactory {
     @Override
     public void clear() {
         hashMapCache.clear();
+    }
+
+    /**
+     * Returns {@code true} if the caché is empty, {@code false} otherwise.
+     *
+     * @return a boolean
+     */
+    @Override
+    public boolean isEmpty() {
+        return hashMapCache.isEmpty();
     }
 }
