@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -16,7 +16,7 @@ class WrappedStringTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testCalculate() {
-        assertEquals(typeString1, wString1.calculate(),
+        assertEquals(wString1, wString1.calculate(),
             "Method calculate does not works." + messageSeed);
     }
 
