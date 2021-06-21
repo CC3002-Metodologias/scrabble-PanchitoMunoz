@@ -27,22 +27,22 @@ class TypeBoolFactoryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testGetInstance() {
-        factory.getTypeBool(trueBoolean);
+        factory.create(trueBoolean);
         TypeBoolFactory otherFactory = TypeBoolFactory.getInstance();
         assertEquals(otherFactory.getHashMapCache(), factory.getHashMapCache(),
             "Singleton pattern does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testGetTypeBool() {
+    void testCreate() {
         var expected = new TypeBool(trueBoolean);
-        assertEquals(expected, factory.getTypeBool(trueBoolean),
+        assertEquals(expected, factory.create(trueBoolean),
             "Method getTypeBool does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testClear() {
-        factory.getTypeBool(trueBoolean);
+        factory.create(trueBoolean);
         assertFalse(factory.getHashMapCache().isEmpty());
         factory.clear();
         assertTrue(factory.getHashMapCache().isEmpty());

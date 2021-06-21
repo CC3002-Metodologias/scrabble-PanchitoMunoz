@@ -27,22 +27,22 @@ class TypeIntFactoryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testGetInstance() {
-        factory.getTypeInt(anInt1);
+        factory.create(anInt1);
         TypeIntFactory otherFactory = TypeIntFactory.getInstance();
         assertEquals(otherFactory.getHashMapCache(), factory.getHashMapCache(),
             "Singleton pattern does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testGetTypeInt() {
+    void testCreate() {
         var expected = new TypeInt(anInt1);
-        assertEquals(expected, factory.getTypeInt(anInt1),
+        assertEquals(expected, factory.create(anInt1),
             "Method getTypeInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testClear() {
-        factory.getTypeInt(anInt1);
+        factory.create(anInt1);
         assertFalse(factory.getHashMapCache().isEmpty());
         factory.clear();
         assertTrue(factory.getHashMapCache().isEmpty());

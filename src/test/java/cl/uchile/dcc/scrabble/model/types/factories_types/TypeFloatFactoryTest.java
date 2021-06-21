@@ -27,22 +27,22 @@ class TypeFloatFactoryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testGetInstance() {
-        factory.getTypeFloat(aFloat1);
+        factory.create(aFloat1);
         TypeFloatFactory otherFactory = TypeFloatFactory.getInstance();
         assertEquals(otherFactory.getHashMapCache(), factory.getHashMapCache(),
             "Singleton pattern does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testGetTypeFloat() {
+    void testCreate() {
         var expected = new TypeFloat(aFloat1);
-        assertEquals(expected, factory.getTypeFloat(aFloat1),
+        assertEquals(expected, factory.create(aFloat1),
             "Method getTypeFloat does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testClear() {
-        factory.getTypeFloat(aFloat1);
+        factory.create(aFloat1);
         assertFalse(factory.getHashMapCache().isEmpty());
         factory.clear();
         assertTrue(factory.getHashMapCache().isEmpty());

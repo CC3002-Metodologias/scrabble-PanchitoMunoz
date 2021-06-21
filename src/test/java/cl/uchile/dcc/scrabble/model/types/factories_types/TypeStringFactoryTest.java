@@ -27,22 +27,22 @@ class TypeStringFactoryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testGetInstance() {
-        factory.getTypeString(aString1);
+        factory.create(aString1);
         TypeStringFactory otherFactory = TypeStringFactory.getInstance();
         assertEquals(otherFactory.getHashMapCache(), factory.getHashMapCache(),
             "Singleton pattern does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testGetTypeString() {
+    void testCreate() {
         var expected = new TypeString(aString1);
-        assertEquals(expected, factory.getTypeString(aString1),
+        assertEquals(expected, factory.create(aString1),
             "Method getTypeString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testClear() {
-        factory.getTypeString(aString1);
+        factory.create(aString1);
         assertFalse(factory.getHashMapCache().isEmpty());
         factory.clear();
         assertTrue(factory.getHashMapCache().isEmpty());

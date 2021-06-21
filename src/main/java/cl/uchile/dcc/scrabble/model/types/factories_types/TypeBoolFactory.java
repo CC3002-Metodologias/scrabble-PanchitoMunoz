@@ -48,7 +48,7 @@ public class TypeBoolFactory implements STypeFactory {
      * @param value a value to make an instance.
      * @return a {@code TypeBool}.
      */
-    public TypeBool getTypeBool(boolean value) {
+    public TypeBool create(boolean value) {
         int hashValue = hash(value);
         if (!hashMapCache.containsKey(hashValue)) {
             hashMapCache.put(hashValue, new TypeBool(value));

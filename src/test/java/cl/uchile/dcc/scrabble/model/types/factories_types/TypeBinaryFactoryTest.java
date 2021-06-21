@@ -27,22 +27,22 @@ class TypeBinaryFactoryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testGetInstance() {
-        factory.getTypeBinary(aBinary1);
+        factory.create(aBinary1);
         TypeBinaryFactory otherFactory = TypeBinaryFactory.getInstance();
         assertEquals(otherFactory.getHashMapCache(), factory.getHashMapCache(),
             "Singleton pattern does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testGetTypeBinary() {
+    void testCreate() {
         var expected = new TypeBinary(aBinary1);
-        assertEquals(expected, factory.getTypeBinary(aBinary1),
+        assertEquals(expected, factory.create(aBinary1),
             "Method getTypeBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testClear() {
-        factory.getTypeBinary(aBinary1);
+        factory.create(aBinary1);
         assertFalse(factory.getHashMapCache().isEmpty());
         factory.clear();
         assertTrue(factory.getHashMapCache().isEmpty());

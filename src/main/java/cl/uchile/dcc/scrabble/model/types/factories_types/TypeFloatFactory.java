@@ -48,7 +48,7 @@ public class TypeFloatFactory implements STypeFactory {
      * @param value a value to make an instance.
      * @return a {@code TypeFloat}.
      */
-    public TypeFloat getTypeFloat(double value) {
+    public TypeFloat create(double value) {
         int hashValue = hash(value);
         if (!hashMapCache.containsKey(hashValue)) {
             hashMapCache.put(hashValue, new TypeFloat(value));

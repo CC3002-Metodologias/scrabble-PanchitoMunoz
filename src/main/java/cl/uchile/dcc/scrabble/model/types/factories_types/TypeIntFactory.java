@@ -48,7 +48,7 @@ public class TypeIntFactory implements STypeFactory {
      * @param value a value to make an instance.
      * @return a {@code TypeInt}.
      */
-    public TypeInt getTypeInt(int value) {
+    public TypeInt create(int value) {
         int hashValue = hash(value);
         if (!hashMapCache.containsKey(hashValue)) {
             hashMapCache.put(hashValue, new TypeInt(value));

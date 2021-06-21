@@ -48,7 +48,7 @@ public class TypeStringFactory implements STypeFactory {
      * @param value a value to make an instance.
      * @return a {@code TypeString}.
      */
-    public TypeString getTypeString(String value) {
+    public TypeString create(String value) {
         int hashValue = hash(value);
         if (!hashMapCache.containsKey(hashValue)) {
             hashMapCache.put(hashValue, new TypeString(value));

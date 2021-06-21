@@ -49,7 +49,7 @@ public class TypeBinaryFactory implements STypeFactory {
      * @param value a value to make an instance.
      * @return a {@code TypeBinary}.
      */
-    public TypeBinary getTypeBinary(String value) {
+    public TypeBinary create(String value) {
         int hashValue = hash(binaryToInt(value));
         if (!hashMapCache.containsKey(hashValue)) {
             hashMapCache.put(hashValue, new TypeBinary(value));
