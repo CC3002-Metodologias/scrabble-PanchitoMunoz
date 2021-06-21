@@ -1,6 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.abstract_types.AbstractWrappedType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
@@ -10,7 +10,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/12 23:57
  * @see TypeString
  */
-public class WrappedString extends AbstractWrappedType {
+public class HiddenString extends AbstractHiddenType {
 
     private final TypeString typeString;
 
@@ -19,7 +19,7 @@ public class WrappedString extends AbstractWrappedType {
      *
      * @param typeString a type string.
      */
-    public WrappedString(TypeString typeString) {
+    public HiddenString(TypeString typeString) {
         this.typeString = typeString;
     }
 
@@ -28,7 +28,7 @@ public class WrappedString extends AbstractWrappedType {
      *
      * @param value a string
      */
-    public WrappedString(String value) {
+    public HiddenString(String value) {
         this(new TypeString(value));
     }
 
@@ -44,85 +44,85 @@ public class WrappedString extends AbstractWrappedType {
 
     @Override
     public String toString() {
-        return "WrappedString{" +
+        return "HiddenString{" +
             "value='" + typeString.getValue() + '\'' +
             '}';
     }
 
     /**
-     * Transform the current instance to a {@code WrappedString}.
+     * Transform the current instance to a {@code HiddenString}.
      *
-     * @return a {@code WrappedString} equivalent
+     * @return a {@code HiddenString} equivalent
      */
     @Override
-    public WrappedString toWrappedString() {
+    public HiddenString toWrappedString() {
         TypeString computed = this.typeString.toTypeString();
-        return new WrappedString(computed);
+        return new HiddenString(computed);
     }
 
     /**
      * Returns the sum
      *
-     * @param wType other type to sum
+     * @param hType other type to sum
      * @return the sum
      */
     @Override
-    public WType add(WType wType) {
-        return wType.addWithString(this);
+    public HType add(HType hType) {
+        return hType.addWithString(this);
     }
 
     /**
      * Returns the disjunction between logicals
      *
-     * @param wType another logical
+     * @param hType another logical
      * @return the disjunction
      */
     @Override
-    public WType and(WType wType) {
-        return wType.andWithString(this);
+    public HType and(HType hType) {
+        return hType.andWithString(this);
     }
 
     /**
      * Returns the division between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the division
      */
     @Override
-    public WType div(WType wType) {
-        return wType.divWithString(this);
+    public HType div(HType hType) {
+        return hType.divWithString(this);
     }
 
     /**
      * Returns the multiplication between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the multiplication
      */
     @Override
-    public WType mult(WType wType) {
-        return wType.multWithString(this);
+    public HType mult(HType hType) {
+        return hType.multWithString(this);
     }
 
     /**
      * Returns the conjunction between logicals
      *
-     * @param wType another logical
+     * @param hType another logical
      * @return the conjunction
      */
     @Override
-    public WType or(WType wType) {
-        return wType.orWithString(this);
+    public HType or(HType hType) {
+        return hType.orWithString(this);
     }
 
     /**
      * Returns the subtraction between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the subtraction
      */
     @Override
-    public WType sub(WType wType) {
-        return wType.subWithString(this);
+    public HType sub(HType hType) {
+        return hType.subWithString(this);
     }
 }

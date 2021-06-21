@@ -1,13 +1,13 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBinary;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBool;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedFloat;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedInt;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 
 /**
  * todo: documentar
@@ -21,10 +21,10 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     private final HiddenAST rightChildren;
 
     /**
-     * Default constructor. It can receive an {@code HiddenOperation} or a {@code WType}.
+     * Default constructor. It can receive an {@code HiddenOperation} or a {@code HType}.
      *
-     * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code WType}.
-     * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code WType}.
+     * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
+     * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public AbstractHiddenOperation(HiddenAST leftValue, HiddenAST rightValue) {
         leftChildren = leftValue;
@@ -37,21 +37,21 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return SType result of operations.
      */
     @Override
-    public WType calculate() {
-        WType leftCalculated = leftChildren.calculate();
-        WType rightCalculated = rightChildren.calculate();
+    public HType calculate() {
+        HType leftCalculated = leftChildren.calculate();
+        HType rightCalculated = rightChildren.calculate();
         return mainOperation(leftCalculated, rightCalculated);
     }
 
     /**
-     * Compute the operation between 2 {@code WType} and returns its operation. To use template
+     * Compute the operation between 2 {@code HType} and returns its operation. To use template
      * pattern.
      *
      * @param value1 the value at the left
      * @param value2 the value at the right
      * @return the value computed
      */
-    protected abstract WType mainOperation(WType value1, WType value2);
+    protected abstract HType mainOperation(HType value1, HType value2);
 
     /**
      * Get the left children.
@@ -101,52 +101,52 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     }
 
     /**
-     * Transform the current instance into a {@code WrappedBinary}.
+     * Transform the current instance into a {@code HiddenBinary}.
      *
-     * @return a {@code WrappedBinary}
+     * @return a {@code HiddenBinary}
      */
     @Override
-    public WrappedBinary toWrappedBinary() {
+    public HiddenBinary toWrappedBinary() {
         return this.calculate().toWrappedBinary();
     }
 
     /**
-     * Transform the current instance into a {@code WrappedBool}.
+     * Transform the current instance into a {@code HiddenBool}.
      *
-     * @return a {@code WrappedBool}
+     * @return a {@code HiddenBool}
      */
     @Override
-    public WrappedBool toWrappedBool() {
+    public HiddenBool toWrappedBool() {
         return this.calculate().toWrappedBool();
     }
 
     /**
-     * Transform the current instance into a {@code WrappedFloat}.
+     * Transform the current instance into a {@code HiddenFloat}.
      *
-     * @return a {@code WrappedFloat}
+     * @return a {@code HiddenFloat}
      */
     @Override
-    public WrappedFloat toWrappedFloat() {
+    public HiddenFloat toWrappedFloat() {
         return this.calculate().toWrappedFloat();
     }
 
     /**
-     * Transform the current instance into a {@code WrappedInt}.
+     * Transform the current instance into a {@code HiddenInt}.
      *
-     * @return a {@code WrappedInt}
+     * @return a {@code HiddenInt}
      */
     @Override
-    public WrappedInt toWrappedInt() {
+    public HiddenInt toWrappedInt() {
         return this.calculate().toWrappedInt();
     }
 
     /**
-     * Transform the current instance into a {@code WrappedString}.
+     * Transform the current instance into a {@code HiddenString}.
      *
-     * @return a {@code WrappedString}
+     * @return a {@code HiddenString}
      */
     @Override
-    public WrappedString toWrappedString() {
+    public HiddenString toWrappedString() {
         return this.calculate().toWrappedString();
     }
 }

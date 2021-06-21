@@ -1,6 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.abstract_types.AbstractWrappedType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
@@ -11,7 +11,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/13 0:02
  * @see TypeFloat
  */
-public class WrappedFloat extends AbstractWrappedType {
+public class HiddenFloat extends AbstractHiddenType {
 
     private final TypeFloat typeFloat;
 
@@ -20,7 +20,7 @@ public class WrappedFloat extends AbstractWrappedType {
      *
      * @param typeFloat a type float
      */
-    public WrappedFloat(TypeFloat typeFloat) {
+    public HiddenFloat(TypeFloat typeFloat) {
         this.typeFloat = typeFloat;
     }
 
@@ -29,7 +29,7 @@ public class WrappedFloat extends AbstractWrappedType {
      *
      * @param value a double
      */
-    public WrappedFloat(double value) {
+    public HiddenFloat(double value) {
         this(new TypeFloat(value));
     }
 
@@ -45,124 +45,124 @@ public class WrappedFloat extends AbstractWrappedType {
 
     @Override
     public String toString() {
-        return "WrappedFloat{" +
+        return "HiddenFloat{" +
             "value=" + typeFloat.getValue() +
             '}';
     }
 
     /**
-     * Transform the current instance to a {@code WrappedFloat}.
+     * Transform the current instance to a {@code HiddenFloat}.
      *
-     * @return a {@code WrappedFloat} equivalent
+     * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public WrappedFloat toWrappedFloat() {
+    public HiddenFloat toWrappedFloat() {
         TypeFloat computed = this.typeFloat.toTypeFloat();
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
-     * Transform the current instance to a {@code WrappedString}.
+     * Transform the current instance to a {@code HiddenString}.
      *
-     * @return a {@code WrappedString} equivalent
+     * @return a {@code HiddenString} equivalent
      */
     @Override
-    public WrappedString toWrappedString() {
+    public HiddenString toWrappedString() {
         TypeString computed = this.typeFloat.toTypeString();
-        return new WrappedString(computed);
+        return new HiddenString(computed);
     }
 
     /**
      * Returns the sum
      *
-     * @param wType other type to sum
+     * @param hType other type to sum
      * @return the sum
      */
     @Override
-    public WType add(WType wType) {
-        return wType.addWithFloat(this);
+    public HType add(HType hType) {
+        return hType.addWithFloat(this);
     }
 
     /**
      * Returns the division between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the division
      */
     @Override
-    public WType div(WType wType) {
-        return wType.divWithFloat(this);
+    public HType div(HType hType) {
+        return hType.divWithFloat(this);
     }
 
     /**
      * Returns the multiplication between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the multiplication
      */
     @Override
-    public WType mult(WType wType) {
-        return wType.multWithFloat(this);
+    public HType mult(HType hType) {
+        return hType.multWithFloat(this);
     }
 
     /**
      * Returns the subtraction between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the subtraction
      */
     @Override
-    public WType sub(WType wType) {
-        return wType.subWithFloat(this);
+    public HType sub(HType hType) {
+        return hType.subWithFloat(this);
     }
 
     /**
      * Returns the disjunction between logicals
      *
-     * @param wType another logical
+     * @param hType another logical
      * @return the disjunction
      */
     @Override
-    public WType and(WType wType) {
-        return wType.andWithFloat(this);
+    public HType and(HType hType) {
+        return hType.andWithFloat(this);
     }
 
     /**
      * Returns the conjunction between logicals
      *
-     * @param wType another logical
+     * @param hType another logical
      * @return the conjunction
      */
     @Override
-    public WType or(WType wType) {
-        return wType.orWithFloat(this);
+    public HType or(HType hType) {
+        return hType.orWithFloat(this);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithFloat(WrappedFloat wFloat) {
+    public HType addWithFloat(HiddenFloat wFloat) {
         TypeFloat computed = (TypeFloat) this.typeFloat.addWithFloat(wFloat.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithInt(WrappedInt wInt) {
+    public HType addWithInt(HiddenInt wInt) {
         TypeFloat computed = (TypeFloat) this.typeFloat.addWithInt(wInt.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WType subWithFloat(WrappedFloat wFloat) {
+    public HType subWithFloat(HiddenFloat wFloat) {
         TypeFloat computed = (TypeFloat) this.typeFloat.subWithFloat(wFloat.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
@@ -171,9 +171,9 @@ public class WrappedFloat extends AbstractWrappedType {
      *
      */
     @Override
-    public WType subWithInt(WrappedInt wInt) {
+    public HType subWithInt(HiddenInt wInt) {
         TypeFloat computed = (TypeFloat) this.typeFloat.subWithInt(wInt.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
@@ -182,9 +182,9 @@ public class WrappedFloat extends AbstractWrappedType {
      *
      */
     @Override
-    public WType multWithFloat(WrappedFloat wFloat) {
+    public HType multWithFloat(HiddenFloat wFloat) {
         TypeFloat computed = (TypeFloat) this.typeFloat.multWithFloat(wFloat.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
@@ -193,9 +193,9 @@ public class WrappedFloat extends AbstractWrappedType {
      *
      */
     @Override
-    public WType multWithInt(WrappedInt wInt) {
+    public HType multWithInt(HiddenInt wInt) {
         TypeFloat computed = (TypeFloat) this.typeFloat.multWithInt(wInt.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
@@ -204,9 +204,9 @@ public class WrappedFloat extends AbstractWrappedType {
      *
      */
     @Override
-    public WType divWithFloat(WrappedFloat wFloat) {
+    public HType divWithFloat(HiddenFloat wFloat) {
         TypeFloat computed = (TypeFloat) this.typeFloat.divWithFloat(wFloat.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
@@ -215,8 +215,8 @@ public class WrappedFloat extends AbstractWrappedType {
      *
      */
     @Override
-    public WType divWithInt(WrappedInt wInt) {
+    public HType divWithInt(HiddenInt wInt) {
         TypeFloat computed = (TypeFloat) this.typeFloat.divWithInt(wInt.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 }

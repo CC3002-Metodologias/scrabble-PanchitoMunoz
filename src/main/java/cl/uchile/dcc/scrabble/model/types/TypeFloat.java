@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
@@ -223,13 +223,13 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     }
 
     /**
-     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
-     * WType} or an {@code HiddenAST}, it does nothing.
+     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
+     * HType} or an {@code HiddenAST}, it does nothing.
      *
      * @return a transformation
      */
     @Override
     public HiddenAST toHiddenAST() {
-        return new WrappedFloat(this);
+        return new HiddenFloat(this);
     }
 }

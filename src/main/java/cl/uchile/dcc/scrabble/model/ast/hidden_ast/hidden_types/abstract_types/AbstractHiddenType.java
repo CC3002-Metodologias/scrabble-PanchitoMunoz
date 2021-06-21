@@ -1,11 +1,11 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.abstract_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBinary;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBool;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedFloat;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedInt;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
@@ -17,15 +17,15 @@ import java.util.HashMap;
  * @create 2021/06/12 23:54
  * @see SType
  */
-public abstract class AbstractWrappedType implements WType {
+public abstract class AbstractHiddenType implements HType {
 
     /**
-     * Calculate the {@code WType} result of performing all operations
+     * Calculate the {@code HType} result of performing all operations
      *
-     * @return WType result of operations.
+     * @return HType result of operations.
      */
     @Override
-    public WType calculate() {
+    public HType calculate() {
         return this;
     }
 
@@ -66,11 +66,11 @@ public abstract class AbstractWrappedType implements WType {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WType)) {
+        if (!(obj instanceof HType)) {
             return false;
         }
-        WType wType = (WType) obj;
-        return this.getAdaptee().equals(wType.getAdaptee());
+        HType hType = (HType) obj;
+        return this.getAdaptee().equals(hType.getAdaptee());
     }
 
     /**
@@ -79,47 +79,47 @@ public abstract class AbstractWrappedType implements WType {
      * @return the negation.
      */
     @Override
-    public WType neg() {
+    public HType neg() {
         return null;
     }
 
     /**
-     * Transform the current instance to a {@code WrappedBinary}.
+     * Transform the current instance to a {@code HiddenBinary}.
      *
-     * @return a {@code WrappedBinary} equivalent
+     * @return a {@code HiddenBinary} equivalent
      */
     @Override
-    public WrappedBinary toWrappedBinary() {
+    public HiddenBinary toWrappedBinary() {
         return null;
     }
 
     /**
-     * Transform the current instance to a {@code WrappedBool}.
+     * Transform the current instance to a {@code HiddenBool}.
      *
-     * @return a {@code WrappedBool} equivalent
+     * @return a {@code HiddenBool} equivalent
      */
     @Override
-    public WrappedBool toWrappedBool() {
+    public HiddenBool toWrappedBool() {
         return null;
     }
 
     /**
-     * Transform the current instance to a {@code WrappedFloat}.
+     * Transform the current instance to a {@code HiddenFloat}.
      *
-     * @return a {@code WrappedFloat} equivalent
+     * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public WrappedFloat toWrappedFloat() {
+    public HiddenFloat toWrappedFloat() {
         return null;
     }
 
     /**
-     * Transform the current instance to a {@code WrappedInt}.
+     * Transform the current instance to a {@code HiddenInt}.
      *
-     * @return a {@code WrappedInt} equivalent
+     * @return a {@code HiddenInt} equivalent
      */
     @Override
-    public WrappedInt toWrappedInt() {
+    public HiddenInt toWrappedInt() {
         return null;
     }
 
@@ -127,10 +127,10 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithString(WrappedString wString) {
+    public HType addWithString(HiddenString wString) {
         TypeString computed = this.getAdaptee().addWithString(
             wString.getAdaptee());
-        return new WrappedString(computed);
+        return new HiddenString(computed);
     }
 
     /**
@@ -138,16 +138,7 @@ public abstract class AbstractWrappedType implements WType {
      *
      */
     @Override
-    public WType addWithBool(WrappedBool wBool) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     *
-     */
-    @Override
-    public WType addWithBinary(WrappedBinary wBinary) {
+    public HType addWithBool(HiddenBool wBool) {
         return null;
     }
 
@@ -156,7 +147,16 @@ public abstract class AbstractWrappedType implements WType {
      *
      */
     @Override
-    public WType addWithFloat(WrappedFloat wFloat) {
+    public HType addWithBinary(HiddenBinary wBinary) {
+        return null;
+    }
+
+    /**
+     * To use double dispatch in {@code add}
+     *
+     */
+    @Override
+    public HType addWithFloat(HiddenFloat wFloat) {
         return null;
     }
 
@@ -164,7 +164,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithInt(WrappedInt wInt) {
+    public HType addWithInt(HiddenInt wInt) {
         return null;
     }
 
@@ -172,7 +172,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code and}
      */
     @Override
-    public WType andWithString(WrappedString wrappedString) {
+    public HType andWithString(HiddenString wrappedString) {
         return null;
     }
 
@@ -180,7 +180,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code and}
      */
     @Override
-    public WType andWithBool(WrappedBool wBool) {
+    public HType andWithBool(HiddenBool wBool) {
         return null;
     }
 
@@ -188,7 +188,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code and}
      */
     @Override
-    public WType andWithBinary(WrappedBinary wBinary) {
+    public HType andWithBinary(HiddenBinary wBinary) {
         return null;
     }
 
@@ -196,7 +196,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code and}
      */
     @Override
-    public WType andWithFloat(WrappedFloat wrappedFloat) {
+    public HType andWithFloat(HiddenFloat wrappedFloat) {
         return null;
     }
 
@@ -204,7 +204,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code and}
      */
     @Override
-    public WType andWithInt(WrappedInt wrappedInt) {
+    public HType andWithInt(HiddenInt wrappedInt) {
         return null;
     }
 
@@ -212,7 +212,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code div}
      */
     @Override
-    public WType divWithString(WrappedString wrappedString) {
+    public HType divWithString(HiddenString wrappedString) {
         return null;
     }
 
@@ -220,7 +220,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code div}
      */
     @Override
-    public WType divWithBool(WrappedBool wrappedBool) {
+    public HType divWithBool(HiddenBool wrappedBool) {
         return null;
     }
 
@@ -228,7 +228,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code div}
      */
     @Override
-    public WType divWithBinary(WrappedBinary wBinary) {
+    public HType divWithBinary(HiddenBinary wBinary) {
         return null;
     }
 
@@ -236,7 +236,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code div}
      */
     @Override
-    public WType divWithFloat(WrappedFloat wFloat) {
+    public HType divWithFloat(HiddenFloat wFloat) {
         return null;
     }
 
@@ -244,7 +244,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code div}
      */
     @Override
-    public WType divWithInt(WrappedInt wInt) {
+    public HType divWithInt(HiddenInt wInt) {
         return null;
     }
 
@@ -252,7 +252,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WType multWithString(WrappedString wrappedString) {
+    public HType multWithString(HiddenString wrappedString) {
         return null;
     }
 
@@ -260,7 +260,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WType multWithBool(WrappedBool wrappedBool) {
+    public HType multWithBool(HiddenBool wrappedBool) {
         return null;
     }
 
@@ -268,7 +268,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WType multWithBinary(WrappedBinary wBinary) {
+    public HType multWithBinary(HiddenBinary wBinary) {
         return null;
     }
 
@@ -276,7 +276,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WType multWithFloat(WrappedFloat wFloat) {
+    public HType multWithFloat(HiddenFloat wFloat) {
         return null;
     }
 
@@ -284,7 +284,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code mult}
      */
     @Override
-    public WType multWithInt(WrappedInt wInt) {
+    public HType multWithInt(HiddenInt wInt) {
         return null;
     }
 
@@ -292,7 +292,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code or}
      */
     @Override
-    public WType orWithString(WrappedString wrappedString) {
+    public HType orWithString(HiddenString wrappedString) {
         return null;
     }
 
@@ -300,7 +300,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code or}
      */
     @Override
-    public WType orWithBool(WrappedBool wBool) {
+    public HType orWithBool(HiddenBool wBool) {
         return null;
     }
 
@@ -308,7 +308,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code or}
      */
     @Override
-    public WType orWithBinary(WrappedBinary wBinary) {
+    public HType orWithBinary(HiddenBinary wBinary) {
         return null;
     }
 
@@ -316,7 +316,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code or}
      */
     @Override
-    public WType orWithFloat(WrappedFloat wrappedFloat) {
+    public HType orWithFloat(HiddenFloat wrappedFloat) {
         return null;
     }
 
@@ -324,7 +324,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code or}
      */
     @Override
-    public WType orWithInt(WrappedInt wrappedInt) {
+    public HType orWithInt(HiddenInt wrappedInt) {
         return null;
     }
 
@@ -332,7 +332,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WType subWithString(WrappedString wrappedString) {
+    public HType subWithString(HiddenString wrappedString) {
         return null;
     }
 
@@ -340,7 +340,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WType subWithBool(WrappedBool wrappedBool) {
+    public HType subWithBool(HiddenBool wrappedBool) {
         return null;
     }
 
@@ -348,7 +348,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WType subWithBinary(WrappedBinary wBinary) {
+    public HType subWithBinary(HiddenBinary wBinary) {
         return null;
     }
 
@@ -356,7 +356,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WType subWithFloat(WrappedFloat wFloat) {
+    public HType subWithFloat(HiddenFloat wFloat) {
         return null;
     }
 
@@ -364,7 +364,7 @@ public abstract class AbstractWrappedType implements WType {
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WType subWithInt(WrappedInt wInt) {
+    public HType subWithInt(HiddenInt wInt) {
         return null;
     }
 }

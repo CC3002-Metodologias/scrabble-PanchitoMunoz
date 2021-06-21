@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBool;
 
 /**
  * TODO: DOCUMENTAR
@@ -13,16 +13,16 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBool;
 public class HiddenNeg extends AbstractHiddenOperation {
 
     /**
-     * Default constructor. It can receive an {@code HiddenOperation} or a {@code WType}.
+     * Default constructor. It can receive an {@code HiddenOperation} or a {@code HType}.
      *
-     * @param value left value, it can be an {@code HiddenOperation} or a {@code WType}.
+     * @param value left value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public HiddenNeg(HiddenAST value) {
-        super(value, new WrappedBool(true));
+        super(value, new HiddenBool(true));
     }
 
     /**
-     * Compute the operation between 2 {@code WType} and returns its operation. To use template
+     * Compute the operation between 2 {@code HType} and returns its operation. To use template
      * pattern.
      *
      * @param value1 the value at the left
@@ -30,7 +30,7 @@ public class HiddenNeg extends AbstractHiddenOperation {
      * @return the value computed
      */
     @Override
-    protected WType mainOperation(WType value1, WType value2) {
+    protected HType mainOperation(HType value1, HType value2) {
         return value1.neg();
     }
 

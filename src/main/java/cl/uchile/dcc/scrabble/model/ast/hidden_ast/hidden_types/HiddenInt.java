@@ -1,6 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.abstract_types.AbstractWrappedType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -13,7 +13,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/13 0:02
  * @see TypeInt
  */
-public class WrappedInt extends AbstractWrappedType {
+public class HiddenInt extends AbstractHiddenType {
 
     private final TypeInt typeInt;
 
@@ -22,7 +22,7 @@ public class WrappedInt extends AbstractWrappedType {
      *
      * @param typeInt a type int
      */
-    public WrappedInt(TypeInt typeInt) {
+    public HiddenInt(TypeInt typeInt) {
         this.typeInt = typeInt;
     }
 
@@ -31,7 +31,7 @@ public class WrappedInt extends AbstractWrappedType {
      *
      * @param value an int
      */
-    public WrappedInt(int value) {
+    public HiddenInt(int value) {
         this(new TypeInt(value));
     }
 
@@ -47,155 +47,155 @@ public class WrappedInt extends AbstractWrappedType {
 
     @Override
     public String toString() {
-        return "WrappedInt{" +
+        return "HiddenInt{" +
             "value=" + typeInt.getValue() +
             '}';
     }
 
     /**
-     * Transform the current instance to a {@code WrappedBinary}.
+     * Transform the current instance to a {@code HiddenBinary}.
      *
-     * @return a {@code WrappedBinary} equivalent
+     * @return a {@code HiddenBinary} equivalent
      */
     @Override
-    public WrappedBinary toWrappedBinary() {
+    public HiddenBinary toWrappedBinary() {
         TypeBinary computed = this.typeInt.toTypeBinary();
-        return new WrappedBinary(computed);
+        return new HiddenBinary(computed);
     }
 
     /**
-     * Transform the current instance to a {@code WrappedFloat}.
+     * Transform the current instance to a {@code HiddenFloat}.
      *
-     * @return a {@code WrappedFloat} equivalent
+     * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public WrappedFloat toWrappedFloat() {
+    public HiddenFloat toWrappedFloat() {
         TypeFloat computed = this.typeInt.toTypeFloat();
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
-     * Transform the current instance to a {@code WrappedInt}.
+     * Transform the current instance to a {@code HiddenInt}.
      *
-     * @return a {@code WrappedInt} equivalent
+     * @return a {@code HiddenInt} equivalent
      */
     @Override
-    public WrappedInt toWrappedInt() {
+    public HiddenInt toWrappedInt() {
         TypeInt computed = this.typeInt.toTypeInt();
-        return new WrappedInt(computed);
+        return new HiddenInt(computed);
     }
 
     /**
-     * Transform the current instance to a {@code WrappedString}.
+     * Transform the current instance to a {@code HiddenString}.
      *
-     * @return a {@code WrappedString} equivalent
+     * @return a {@code HiddenString} equivalent
      */
     @Override
-    public WrappedString toWrappedString() {
+    public HiddenString toWrappedString() {
         TypeString computed = this.typeInt.toTypeString();
-        return new WrappedString(computed);
+        return new HiddenString(computed);
     }
 
     /**
      * Returns the sum
      *
-     * @param wType other type to sum
+     * @param hType other type to sum
      * @return the sum
      */
     @Override
-    public WType add(WType wType) {
-        return wType.addWithInt(this);
+    public HType add(HType hType) {
+        return hType.addWithInt(this);
     }
 
     /**
      * Returns the division between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the division
      */
     @Override
-    public WType div(WType wType) {
-        return wType.divWithInt(this);
+    public HType div(HType hType) {
+        return hType.divWithInt(this);
     }
 
     /**
      * Returns the multiplication between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the multiplication
      */
     @Override
-    public WType mult(WType wType) {
-        return wType.multWithInt(this);
+    public HType mult(HType hType) {
+        return hType.multWithInt(this);
     }
 
     /**
      * Returns the subtraction between numbers
      *
-     * @param wType another number
+     * @param hType another number
      * @return the subtraction
      */
     @Override
-    public WType sub(WType wType) {
-        return wType.subWithInt(this);
+    public HType sub(HType hType) {
+        return hType.subWithInt(this);
     }
 
     /**
      * Returns the disjunction between logicals
      *
-     * @param wType another logical
+     * @param hType another logical
      * @return the disjunction
      */
     @Override
-    public WType and(WType wType) {
-        return wType.andWithInt(this);
+    public HType and(HType hType) {
+        return hType.andWithInt(this);
     }
 
     /**
      * Returns the conjunction between logicals
      *
-     * @param wType another logical
+     * @param hType another logical
      * @return the conjunction
      */
     @Override
-    public WType or(WType wType) {
-        return wType.orWithInt(this);
+    public HType or(HType hType) {
+        return hType.orWithInt(this);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithBinary(WrappedBinary wBinary) {
+    public HType addWithBinary(HiddenBinary wBinary) {
         TypeBinary computed = (TypeBinary) this.typeInt.addWithBinary(wBinary.getAdaptee());
-        return new WrappedBinary(computed);
+        return new HiddenBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithFloat(WrappedFloat wFloat) {
+    public HType addWithFloat(HiddenFloat wFloat) {
         TypeFloat computed = (TypeFloat) this.typeInt.addWithFloat(wFloat.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
      */
     @Override
-    public WType addWithInt(WrappedInt wInt) {
+    public HType addWithInt(HiddenInt wInt) {
         TypeInt computed = (TypeInt) this.typeInt.addWithInt(wInt.getAdaptee());
-        return new WrappedInt(computed);
+        return new HiddenInt(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
      */
     @Override
-    public WType subWithBinary(WrappedBinary wBinary) {
+    public HType subWithBinary(HiddenBinary wBinary) {
         TypeBinary computed = (TypeBinary) this.typeInt.subWithBinary(wBinary.getAdaptee());
-        return new WrappedBinary(computed);
+        return new HiddenBinary(computed);
     }
 
     /**
@@ -204,9 +204,9 @@ public class WrappedInt extends AbstractWrappedType {
      *
      */
     @Override
-    public WType subWithFloat(WrappedFloat wFloat) {
+    public HType subWithFloat(HiddenFloat wFloat) {
         TypeFloat computed = (TypeFloat) this.typeInt.subWithFloat(wFloat.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
@@ -215,9 +215,9 @@ public class WrappedInt extends AbstractWrappedType {
      *
      */
     @Override
-    public WType subWithInt(WrappedInt wInt) {
+    public HType subWithInt(HiddenInt wInt) {
         TypeInt computed = (TypeInt) this.typeInt.subWithInt(wInt.getAdaptee());
-        return new WrappedInt(computed);
+        return new HiddenInt(computed);
     }
 
     /**
@@ -226,9 +226,9 @@ public class WrappedInt extends AbstractWrappedType {
      *
      */
     @Override
-    public WType multWithBinary(WrappedBinary wBinary) {
+    public HType multWithBinary(HiddenBinary wBinary) {
         TypeBinary computed = (TypeBinary) this.typeInt.multWithBinary(wBinary.getAdaptee());
-        return new WrappedBinary(computed);
+        return new HiddenBinary(computed);
     }
 
     /**
@@ -237,9 +237,9 @@ public class WrappedInt extends AbstractWrappedType {
      *
      */
     @Override
-    public WType multWithFloat(WrappedFloat wFloat) {
+    public HType multWithFloat(HiddenFloat wFloat) {
         TypeFloat computed = (TypeFloat) this.typeInt.multWithFloat(wFloat.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
@@ -248,9 +248,9 @@ public class WrappedInt extends AbstractWrappedType {
      *
      */
     @Override
-    public WType multWithInt(WrappedInt wInt) {
+    public HType multWithInt(HiddenInt wInt) {
         TypeInt computed = (TypeInt) this.typeInt.multWithInt(wInt.getAdaptee());
-        return new WrappedInt(computed);
+        return new HiddenInt(computed);
     }
 
     /**
@@ -259,9 +259,9 @@ public class WrappedInt extends AbstractWrappedType {
      *
      */
     @Override
-    public WType divWithBinary(WrappedBinary wBinary) {
+    public HType divWithBinary(HiddenBinary wBinary) {
         TypeBinary computed = (TypeBinary) this.typeInt.divWithBinary(wBinary.getAdaptee());
-        return new WrappedBinary(computed);
+        return new HiddenBinary(computed);
     }
 
     /**
@@ -270,9 +270,9 @@ public class WrappedInt extends AbstractWrappedType {
      *
      */
     @Override
-    public WType divWithFloat(WrappedFloat wFloat) {
+    public HType divWithFloat(HiddenFloat wFloat) {
         TypeFloat computed = (TypeFloat) this.typeInt.divWithFloat(wFloat.getAdaptee());
-        return new WrappedFloat(computed);
+        return new HiddenFloat(computed);
     }
 
     /**
@@ -281,8 +281,8 @@ public class WrappedInt extends AbstractWrappedType {
      *
      */
     @Override
-    public WType divWithInt(WrappedInt wInt) {
+    public HType divWithInt(HiddenInt wInt) {
         TypeInt computed = (TypeInt) this.typeInt.divWithInt(wInt.getAdaptee());
-        return new WrappedInt(computed);
+        return new HiddenInt(computed);
     }
 }

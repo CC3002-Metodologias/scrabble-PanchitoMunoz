@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 
 /**
  * An interface that defines a "type" of Abstract Syntax Tree. This interface is for using the
@@ -12,11 +12,11 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
 public interface HiddenAST {
 
     /**
-     * Calculate the {@code WType} result of performing all operations.
+     * Calculate the {@code HType} result of performing all operations.
      *
-     * @return {@code WType} result of operations
+     * @return {@code HType} result of operations
      */
-    WType calculate();
+    HType calculate();
 
     /**
      * Returns the {@code String} representation of the current {@code HiddenAST}.

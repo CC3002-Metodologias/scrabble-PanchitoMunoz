@@ -1,15 +1,14 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class WrappedBinaryTest extends BaseWTypeTest {
+class HiddenBinaryTest extends BaseHTypeTest {
 
     @BeforeEach
     public void setUp() {
@@ -18,7 +17,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testGetAdaptee() {
-        SType expected = wBinary1.getAdaptee();
+        TypeBinary expected = wBinary1.getAdaptee();
         assertEquals(expected, typeBinary1, "Method getAdaptee does not works."
             + messageSeed);
     }
@@ -43,21 +42,21 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testTestEquals() {
-        WrappedBinary expected = new WrappedBinary(typeBinary1);
+        HiddenBinary expected = new HiddenBinary(typeBinary1);
         assertEquals(expected, wBinary1, "Method equals does not works." + messageSeed);
         assertNotEquals(wBinary2, wBinary1, "Method equals does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToString() {
-        String expected = "WrappedBinary{value=" + wBinary1.getAdaptee().getValue() + "}";
+        String expected = "HiddenBinary{value=" + wBinary1.getAdaptee().getValue() + "}";
         assertEquals(expected, wBinary1.toString(), "Method toString does not works."
             + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToWrappedBinary() {
-        WrappedBinary expected = new WrappedBinary(aBinary1);
+        HiddenBinary expected = new HiddenBinary(aBinary1);
         assertEquals(expected, wBinary1.toWrappedBinary(),
             "Method toWrappedBinary does not works." + messageSeed);
         assertNotEquals(expected, wBinary2.toWrappedBinary(),
@@ -72,7 +71,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testToWrappedFloat() {
-        WrappedFloat expected = new WrappedFloat(typeBinary1.toTypeFloat());
+        HiddenFloat expected = new HiddenFloat(typeBinary1.toTypeFloat());
         assertEquals(expected, wBinary1.toWrappedFloat(),
             "Method toWrappedFloat does not works." + messageSeed);
         assertNotEquals(expected, wBinary2.toWrappedFloat(),
@@ -81,7 +80,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testToWrappedInt() {
-        WrappedInt expected = new WrappedInt(typeBinary1.toTypeInt());
+        HiddenInt expected = new HiddenInt(typeBinary1.toTypeInt());
         assertEquals(expected, wBinary1.toWrappedInt(),
             "Method toWrappedInt does not works." + messageSeed);
         assertNotEquals(expected, wBinary2.toWrappedInt(),
@@ -90,7 +89,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testToWrappedString() {
-        WrappedString expected = new WrappedString(typeBinary1.toTypeString());
+        HiddenString expected = new HiddenString(typeBinary1.toTypeString());
         assertEquals(expected, wBinary1.toWrappedString(),
             "Method toWrappedString does not works." + messageSeed);
         assertNotEquals(expected, wBinary2.toWrappedString(),
@@ -99,7 +98,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testAdd() {
-        WrappedBinary expected1 = new WrappedBinary((TypeBinary) typeBinary1.add(typeBinary2));
+        HiddenBinary expected1 = new HiddenBinary((TypeBinary) typeBinary1.add(typeBinary2));
         assertEquals(expected1, wBinary1.add(wBinary2),
             "Method add does not works with binaries." + messageSeed);
 
@@ -110,7 +109,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
         assertNull(wBinary1.add(wFloat1), "Method add does not works with floats." + messageSeed);
 
-        WrappedBinary expected4 = new WrappedBinary((TypeBinary) typeBinary1.add(typeInt1));
+        HiddenBinary expected4 = new HiddenBinary((TypeBinary) typeBinary1.add(typeInt1));
         assertEquals(expected4, wBinary1.add(wInt1),
             "Method add does not works with int." + messageSeed);
 
@@ -119,14 +118,14 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testAnd() {
-        WrappedBinary expected1 = new WrappedBinary((TypeBinary) typeBinary1.and(typeBinary2));
+        HiddenBinary expected1 = new HiddenBinary((TypeBinary) typeBinary1.and(typeBinary2));
         assertEquals(expected1, wBinary1.and(wBinary2),
             "Method and does not works with binaries." + messageSeed);
 
-        WrappedBinary expected2 = new WrappedBinary((TypeBinary) typeBinary1.and(trueTypeBool));
+        HiddenBinary expected2 = new HiddenBinary((TypeBinary) typeBinary1.and(trueTypeBool));
         assertEquals(expected2, wBinary1.and(trueWBool),
             "Method and does not works with booleans." + messageSeed);
-        WrappedBinary expected21 = new WrappedBinary((TypeBinary) typeBinary1.and(falseTypeBool));
+        HiddenBinary expected21 = new HiddenBinary((TypeBinary) typeBinary1.and(falseTypeBool));
         assertEquals(expected21, wBinary1.and(falseWBool),
             "Method and does not works with booleans." + messageSeed);
 
@@ -139,7 +138,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testDiv() {
-        WrappedBinary expected1 = new WrappedBinary((TypeBinary) typeBinary1.div(typeBinary2));
+        HiddenBinary expected1 = new HiddenBinary((TypeBinary) typeBinary1.div(typeBinary2));
         assertEquals(expected1, wBinary1.div(wBinary2),
             "Method div does not works with binaries." + messageSeed);
 
@@ -150,7 +149,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
         assertNull(wBinary1.div(wFloat1), "Method div does not works with floats." + messageSeed);
 
-        WrappedBinary expected4 = new WrappedBinary((TypeBinary) typeBinary1.div(typeInt1));
+        HiddenBinary expected4 = new HiddenBinary((TypeBinary) typeBinary1.div(typeInt1));
         assertEquals(expected4, wBinary1.div(wInt1),
             "Method div does not works with int." + messageSeed);
 
@@ -159,7 +158,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testMult() {
-        WrappedBinary expected1 = new WrappedBinary((TypeBinary) typeBinary1.mult(typeBinary2));
+        HiddenBinary expected1 = new HiddenBinary((TypeBinary) typeBinary1.mult(typeBinary2));
         assertEquals(expected1, wBinary1.mult(wBinary2),
             "Method mult does not works with binaries." + messageSeed);
 
@@ -170,7 +169,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
         assertNull(wBinary1.mult(wFloat1), "Method mult does not works with floats." + messageSeed);
 
-        WrappedBinary expected4 = new WrappedBinary((TypeBinary) typeBinary1.mult(typeInt1));
+        HiddenBinary expected4 = new HiddenBinary((TypeBinary) typeBinary1.mult(typeInt1));
         assertEquals(expected4, wBinary1.mult(wInt1),
             "Method mult does not works with int." + messageSeed);
 
@@ -180,14 +179,14 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testOr() {
-        WrappedBinary expected1 = new WrappedBinary((TypeBinary) typeBinary1.or(typeBinary2));
+        HiddenBinary expected1 = new HiddenBinary((TypeBinary) typeBinary1.or(typeBinary2));
         assertEquals(expected1, wBinary1.or(wBinary2),
             "Method or does not works with binaries." + messageSeed);
 
-        WrappedBinary expected2 = new WrappedBinary((TypeBinary) typeBinary1.or(trueTypeBool));
+        HiddenBinary expected2 = new HiddenBinary((TypeBinary) typeBinary1.or(trueTypeBool));
         assertEquals(expected2, wBinary1.or(trueWBool),
             "Method or does not works with booleans." + messageSeed);
-        WrappedBinary expected21 = new WrappedBinary((TypeBinary) typeBinary1.or(falseTypeBool));
+        HiddenBinary expected21 = new HiddenBinary((TypeBinary) typeBinary1.or(falseTypeBool));
         assertEquals(expected21, wBinary1.or(falseWBool),
             "Method or does not works with booleans." + messageSeed);
 
@@ -200,7 +199,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testSub() {
-        WrappedBinary expected1 = new WrappedBinary((TypeBinary) typeBinary1.sub(typeBinary2));
+        HiddenBinary expected1 = new HiddenBinary((TypeBinary) typeBinary1.sub(typeBinary2));
         assertEquals(expected1, wBinary1.sub(wBinary2),
             "Method sub does not works with binaries." + messageSeed);
 
@@ -211,7 +210,7 @@ class WrappedBinaryTest extends BaseWTypeTest {
 
         assertNull(wBinary1.sub(wFloat1), "Method sub does not works with floats." + messageSeed);
 
-        WrappedBinary expected4 = new WrappedBinary((TypeBinary) typeBinary1.sub(typeInt1));
+        HiddenBinary expected4 = new HiddenBinary((TypeBinary) typeBinary1.sub(typeInt1));
         assertEquals(expected4, wBinary1.sub(wInt1),
             "Method sub does not works with int." + messageSeed);
 

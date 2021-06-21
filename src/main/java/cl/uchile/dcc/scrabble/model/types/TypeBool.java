@@ -4,7 +4,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import java.util.Objects;
@@ -172,13 +172,13 @@ public class TypeBool extends AbstractType implements SLogical {
     }
 
     /**
-     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
-     * WType} or an {@code HiddenAST}, it does nothing.
+     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
+     * HType} or an {@code HiddenAST}, it does nothing.
      *
      * @return a transformation
      */
     @Override
     public HiddenAST toHiddenAST() {
-        return new WrappedBool(this);
+        return new HiddenBool(this);
     }
 }

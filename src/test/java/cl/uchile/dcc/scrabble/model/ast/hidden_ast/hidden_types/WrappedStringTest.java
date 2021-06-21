@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class WrappedStringTest extends BaseWTypeTest {
+class WrappedStringTest extends BaseHTypeTest {
 
     @BeforeEach
     public void setUp() {
@@ -34,7 +34,7 @@ class WrappedStringTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testEquals() {
-        assertEquals(new WrappedString(typeString1), wString1,
+        assertEquals(new HiddenString(typeString1), wString1,
             "Method equals does not works." + messageSeed);
         assertNotEquals(wString1, wString2,
             "Method equals does not works." + messageSeed);
@@ -66,7 +66,7 @@ class WrappedStringTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testToWrappedString() {
-        assertEquals(new WrappedString(aString1), wString1.toWrappedString(),
+        assertEquals(new HiddenString(aString1), wString1.toWrappedString(),
             "Method toWrappedString does not works." + messageSeed);
     }
 
@@ -78,32 +78,32 @@ class WrappedStringTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testToString() {
-        assertEquals("WrappedString{value='" + aString1 + "'}", wString1.toString(),
+        assertEquals("HiddenString{value='" + aString1 + "'}", wString1.toString(),
             "Method toString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testAdd() {
-        WrappedString expected1 = new WrappedString(typeString1.add(typeBinary1));
+        HiddenString expected1 = new HiddenString(typeString1.add(typeBinary1));
         assertEquals(expected1, wString1.add(wBinary1),
             "Method add does not works with binaries." + messageSeed);
 
-        WrappedString expected21 = new WrappedString(typeString1.add(trueTypeBool));
+        HiddenString expected21 = new HiddenString(typeString1.add(trueTypeBool));
         assertEquals(expected21, wString1.add(trueWBool),
             "Method add does not works with booleans." + messageSeed);
-        WrappedString expected22 = new WrappedString(typeString1.add(falseTypeBool));
+        HiddenString expected22 = new HiddenString(typeString1.add(falseTypeBool));
         assertEquals(expected22, wString1.add(falseWBool),
             "Method add does not works with booleans." + messageSeed);
 
-        WrappedString expected3 = new WrappedString(typeString1.add(typeFloat1));
+        HiddenString expected3 = new HiddenString(typeString1.add(typeFloat1));
         assertEquals(expected3, wString1.add(wFloat1),
             "Method add does not works with floats." + messageSeed);
 
-        WrappedString expected4 = new WrappedString(typeString1.add(typeInt1));
+        HiddenString expected4 = new HiddenString(typeString1.add(typeInt1));
         assertEquals(expected4, wString1.add(wInt1),
             "Method add does not works with ints." + messageSeed);
 
-        WrappedString expected5 = new WrappedString(typeString1.add(typeString2));
+        HiddenString expected5 = new HiddenString(typeString1.add(typeString2));
         assertEquals(expected5, wString1.add(wString2),
             "Method add does not works with strings." + messageSeed);
     }

@@ -1,10 +1,10 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBinary;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBool;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedFloat;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedInt;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 
 /**
  * TODO: DOCUMENTAR
@@ -29,37 +29,37 @@ public interface HiddenOperation extends HiddenAST {
     HiddenAST getRightChildren();
 
     /**
-     * Transform the current instance into a {@code WrappedBinary}.
+     * Transform the current instance into a {@code HiddenBinary}.
      *
-     * @return a {@code WrappedBinary}
+     * @return a {@code HiddenBinary}
      */
-    WrappedBinary toWrappedBinary();
+    HiddenBinary toWrappedBinary();
 
     /**
-     * Transform the current instance into a {@code WrappedBool}.
+     * Transform the current instance into a {@code HiddenBool}.
      *
-     * @return a {@code WrappedBool}
+     * @return a {@code HiddenBool}
      */
-    WrappedBool toWrappedBool();
+    HiddenBool toWrappedBool();
 
     /**
-     * Transform the current instance into a {@code WrappedFloat}.
+     * Transform the current instance into a {@code HiddenFloat}.
      *
-     * @return a {@code WrappedFloat}
+     * @return a {@code HiddenFloat}
      */
-    WrappedFloat toWrappedFloat();
+    HiddenFloat toWrappedFloat();
 
     /**
-     * Transform the current instance into a {@code WrappedInt}.
+     * Transform the current instance into a {@code HiddenInt}.
      *
-     * @return a {@code WrappedInt}
+     * @return a {@code HiddenInt}
      */
-    WrappedInt toWrappedInt();
+    HiddenInt toWrappedInt();
 
     /**
-     * Transform the current instance into a {@code WrappedString}.
+     * Transform the current instance into a {@code HiddenString}.
      *
-     * @return a {@code WrappedString}
+     * @return a {@code HiddenString}
      */
-    WrappedString toWrappedString();
+    HiddenString toWrappedString();
 }

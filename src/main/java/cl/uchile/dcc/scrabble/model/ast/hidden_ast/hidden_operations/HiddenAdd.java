@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
 
 /**
  * TODO: DOCUMENTAR
@@ -12,17 +12,17 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WType;
 public class HiddenAdd extends AbstractHiddenOperation {
 
     /**
-     * Default constructor. It can receive an {@code HiddenOperation} or a {@code WType}.
+     * Default constructor. It can receive an {@code HiddenOperation} or a {@code HType}.
      *
-     * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code WType}.
-     * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code WType}.
+     * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
+     * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public HiddenAdd(HiddenAST leftValue, HiddenAST rightValue) {
         super(leftValue, rightValue);
     }
 
     /**
-     * Compute the operation between 2 {@code WType} and returns its operation. To use template
+     * Compute the operation between 2 {@code HType} and returns its operation. To use template
      * pattern.
      *
      * @param value1 the value at the left
@@ -30,7 +30,7 @@ public class HiddenAdd extends AbstractHiddenOperation {
      * @return the value computed
      */
     @Override
-    protected WType mainOperation(WType value1, WType value2) {
+    protected HType mainOperation(HType value1, HType value2) {
         return value1.add(value2);
     }
 

@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-class WrappedBoolTest extends BaseWTypeTest {
+class WrappedBoolTest extends BaseHTypeTest {
 
     @BeforeEach
     public void setUp() {
@@ -40,9 +40,9 @@ class WrappedBoolTest extends BaseWTypeTest {
 
     @Test
     void testTestEquals() {
-        assertEquals(new WrappedBool(true), trueWBool, "Method equals does not works.");
-        assertEquals(new WrappedBool(false), falseWBool, "Method equals does not works.");
-        assertNotEquals(new WrappedBool(false), trueWBool, "Method equals does not works.");
+        assertEquals(new HiddenBool(true), trueWBool, "Method equals does not works.");
+        assertEquals(new HiddenBool(false), falseWBool, "Method equals does not works.");
+        assertNotEquals(new HiddenBool(false), trueWBool, "Method equals does not works.");
     }
 
     @Test
@@ -52,9 +52,9 @@ class WrappedBoolTest extends BaseWTypeTest {
 
     @Test
     void testToWrappedBool() {
-        assertEquals(new WrappedBool(true), trueWBool.toWrappedBool(),
+        assertEquals(new HiddenBool(true), trueWBool.toWrappedBool(),
             "Method toWrappedBool does not works.");
-        assertEquals(new WrappedBool(false), falseWBool.toWrappedBool(),
+        assertEquals(new HiddenBool(false), falseWBool.toWrappedBool(),
             "Method toWrappedBool does not works.");
     }
 
@@ -70,10 +70,10 @@ class WrappedBoolTest extends BaseWTypeTest {
 
     @Test
     void testToWrappedString() {
-        WrappedString expected = new WrappedString(trueTypeBool.toTypeString());
+        HiddenString expected = new HiddenString(trueTypeBool.toTypeString());
         assertEquals(expected, trueWBool.toWrappedString(),
             "Method toWrappedString does not works.");
-        WrappedString expected2 = new WrappedString(falseTypeBool.toTypeString());
+        HiddenString expected2 = new HiddenString(falseTypeBool.toTypeString());
         assertEquals(expected2, falseWBool.toWrappedString(),
             "Method toWrappedString does not works.");
     }
@@ -86,9 +86,9 @@ class WrappedBoolTest extends BaseWTypeTest {
 
     @Test
     void testToString() {
-        assertEquals("WrappedBool{value=true}", trueWBool.toString(),
+        assertEquals("HiddenBool{value=true}", trueWBool.toString(),
             "Method toString does not works.");
-        assertEquals("WrappedBool{value=false}", falseWBool.toString(),
+        assertEquals("HiddenBool{value=false}", falseWBool.toString(),
             "Method toString does not works.");
     }
 
@@ -107,19 +107,19 @@ class WrappedBoolTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testAnd() {
-        WrappedBinary trueWithBinary = new WrappedBinary(
+        HiddenBinary trueWithBinary = new HiddenBinary(
             (TypeBinary) trueTypeBool.and(typeBinary1));
         assertEquals(trueWithBinary, trueWBool.and(wBinary1), "Method and does not works");
-        WrappedBinary falseWithBinary = new WrappedBinary(
+        HiddenBinary falseWithBinary = new HiddenBinary(
             (TypeBinary) falseTypeBool.and(typeBinary1));
         assertEquals(falseWithBinary, falseWBool.and(wBinary1), "Method and does not works");
 
-        assertEquals(new WrappedBool(true), trueWBool.and(trueWBool), "Method and does not works");
-        assertEquals(new WrappedBool(false), falseWBool.and(trueWBool),
+        assertEquals(new HiddenBool(true), trueWBool.and(trueWBool), "Method and does not works");
+        assertEquals(new HiddenBool(false), falseWBool.and(trueWBool),
             "Method and does not works");
-        assertEquals(new WrappedBool(false), trueWBool.and(falseWBool),
+        assertEquals(new HiddenBool(false), trueWBool.and(falseWBool),
             "Method and does not works");
-        assertEquals(new WrappedBool(false), falseWBool.and(falseWBool),
+        assertEquals(new HiddenBool(false), falseWBool.and(falseWBool),
             "Method and does not works");
 
         assertNull(trueWBool.and(wFloat1), "Method and does not works.");
@@ -131,16 +131,16 @@ class WrappedBoolTest extends BaseWTypeTest {
 
     @RepeatedTest(20)
     void testOr() {
-        WrappedBinary trueWithBinary = new WrappedBinary((TypeBinary) trueTypeBool.or(typeBinary1));
+        HiddenBinary trueWithBinary = new HiddenBinary((TypeBinary) trueTypeBool.or(typeBinary1));
         assertEquals(trueWithBinary, trueWBool.or(wBinary1), "Method or does not works");
-        WrappedBinary falseWithBinary = new WrappedBinary(
+        HiddenBinary falseWithBinary = new HiddenBinary(
             (TypeBinary) falseTypeBool.or(typeBinary1));
         assertEquals(falseWithBinary, falseWBool.or(wBinary1), "Method or does not works");
 
-        assertEquals(new WrappedBool(true), trueWBool.or(trueWBool), "Method or does not works");
-        assertEquals(new WrappedBool(true), falseWBool.or(trueWBool), "Method or does not works");
-        assertEquals(new WrappedBool(true), trueWBool.or(falseWBool), "Method or does not works");
-        assertEquals(new WrappedBool(false), falseWBool.or(falseWBool), "Method or does not works");
+        assertEquals(new HiddenBool(true), trueWBool.or(trueWBool), "Method or does not works");
+        assertEquals(new HiddenBool(true), falseWBool.or(trueWBool), "Method or does not works");
+        assertEquals(new HiddenBool(true), trueWBool.or(falseWBool), "Method or does not works");
+        assertEquals(new HiddenBool(false), falseWBool.or(falseWBool), "Method or does not works");
 
         assertNull(trueWBool.or(wFloat1), "Method or does not works.");
 

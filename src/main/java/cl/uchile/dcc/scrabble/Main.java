@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedBinary;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedFloat;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.wrapped_types.WrappedString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 import cl.uchile.dcc.scrabble.model.ast.operations.Or;
@@ -24,12 +24,12 @@ public class Main {
 
     public static void main(String[] args) {
         TypeBinary typeBinary = new TypeBinary("0110");
-        WrappedBinary wBinary = new WrappedBinary(typeBinary);
+        HiddenBinary wBinary = new HiddenBinary(typeBinary);
         TypeFloat typeFloat = new TypeFloat(3.1415);
-        WrappedFloat wFloat = new WrappedFloat(typeFloat);
+        HiddenFloat wFloat = new HiddenFloat(typeFloat);
         System.out.println(wFloat.add(wBinary));
         System.out.println(wFloat);
-        WrappedString wString = new WrappedString("Hola!");
+        HiddenString wString = new HiddenString("Hola!");
         System.out.println(wFloat.add(wString));
         System.out.println(typeBinary.toHiddenAST());
         System.out.println(wString.sub(wBinary));
