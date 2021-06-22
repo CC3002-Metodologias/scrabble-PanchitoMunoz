@@ -73,7 +73,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public TypeString toTypeString() {
-        return new TypeString(Boolean.toString(this.value));
+        return createString(Boolean.toString(this.value));
     }
 
     /**
@@ -82,7 +82,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return TypeBool with a value equivalent to the current type.
      */
     public TypeBool toTypeBool() {
-        return new TypeBool(this.value);
+        return createBool(this.value);
     }
 
     /**
@@ -91,7 +91,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical neg() {
-        return new TypeBool(!(this.value));
+        return createBool(!(this.value));
     }
 
     /**
@@ -102,7 +102,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return new TypeString(typeString.getValue() + this.value);
+        return createString(typeString.getValue() + this.value);
     }
 
     /**
@@ -135,7 +135,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical andWithBool(TypeBool typeBool) {
-        return new TypeBool(typeBool.value && this.value);
+        return createBool(typeBool.value && this.value);
     }
 
     /**
@@ -146,7 +146,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical orWithBool(TypeBool typeBool) {
-        return new TypeBool(typeBool.value || this.value);
+        return createBool(typeBool.value || this.value);
     }
 
     /**
@@ -157,7 +157,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical andWithBinary(TypeBinary typeBinary) {
-        return new TypeBinary(boolAndBinary(this.value, typeBinary.getValue()));
+        return createBinary(boolAndBinary(this.value, typeBinary.getValue()));
     }
 
     /**
@@ -168,7 +168,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical orWithBinary(TypeBinary typeBinary) {
-        return new TypeBinary(boolOrBinary(this.value, typeBinary.getValue()));
+        return createBinary(boolOrBinary(this.value, typeBinary.getValue()));
     }
 
     /**

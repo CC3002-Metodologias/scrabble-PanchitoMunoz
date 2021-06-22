@@ -70,7 +70,7 @@ public class TypeString extends AbstractType {
      */
     @Override
     public TypeString toTypeString() {
-        return new TypeString(this.value);
+        return createString(this.value);
     }
 
     /**
@@ -91,7 +91,7 @@ public class TypeString extends AbstractType {
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return new TypeString(typeString.value + this.value);
+        return createString(typeString.value + this.value);
     }
 
     /**
