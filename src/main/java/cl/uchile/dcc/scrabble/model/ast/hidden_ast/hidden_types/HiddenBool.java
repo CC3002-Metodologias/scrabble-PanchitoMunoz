@@ -57,7 +57,7 @@ public class HiddenBool extends AbstractHiddenType {
      * @return a {@code HiddenBool} equivalent
      */
     @Override
-    public HiddenBool toWrappedBool() {
+    public HiddenBool toHiddenBool() {
         TypeBool computed = this.typeBool.toTypeBool();
         return new HiddenBool(computed);
     }
@@ -68,7 +68,7 @@ public class HiddenBool extends AbstractHiddenType {
      * @return a {@code HiddenString} equivalent
      */
     @Override
-    public HiddenString toWrappedString() {
+    public HiddenString toHiddenString() {
         TypeString computed = this.typeBool.toTypeString();
         return new HiddenString(computed);
     }

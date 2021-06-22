@@ -44,33 +44,33 @@ public interface HType extends HiddenAST, HAdd, HSub, HMult, HDiv, HAnd, HOr, HN
      *
      * @return a {@code HiddenBinary} equivalent
      */
-    HiddenBinary toWrappedBinary();
+    HiddenBinary toHiddenBinary();
 
     /**
      * Transform the current instance to a {@code HiddenBool}.
      *
      * @return a {@code HiddenBool} equivalent
      */
-    HiddenBool toWrappedBool();
+    HiddenBool toHiddenBool();
 
     /**
      * Transform the current instance to a {@code HiddenFloat}.
      *
      * @return a {@code HiddenFloat} equivalent
      */
-    HiddenFloat toWrappedFloat();
+    HiddenFloat toHiddenFloat();
 
     /**
      * Transform the current instance to a {@code HiddenInt}.
      *
      * @return a {@code HiddenInt} equivalent
      */
-    HiddenInt toWrappedInt();
+    HiddenInt toHiddenInt();
 
     /**
      * Transform the current instance to a {@code HiddenString}.
      *
      * @return a {@code HiddenString} equivalent
      */
-    HiddenString toWrappedString();
+    HiddenString toHiddenString();
 }

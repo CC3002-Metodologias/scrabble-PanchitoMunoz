@@ -56,7 +56,7 @@ public class HiddenFloat extends AbstractHiddenType {
      * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public HiddenFloat toWrappedFloat() {
+    public HiddenFloat toHiddenFloat() {
         TypeFloat computed = this.typeFloat.toTypeFloat();
         return new HiddenFloat(computed);
     }
@@ -67,7 +67,7 @@ public class HiddenFloat extends AbstractHiddenType {
      * @return a {@code HiddenString} equivalent
      */
     @Override
-    public HiddenString toWrappedString() {
+    public HiddenString toHiddenString() {
         TypeString computed = this.typeFloat.toTypeString();
         return new HiddenString(computed);
     }

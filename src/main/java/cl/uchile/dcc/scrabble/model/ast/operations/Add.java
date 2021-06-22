@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
 
@@ -13,14 +14,22 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
 public class Add extends AbstractOperation {
 
     /**
+     * Constructor by default.
+     *
+     * @param adaptee a HiddenOperation to adapt
+     */
+    protected Add(HiddenOperation adaptee) {
+        super(adaptee);
+    }
+
+    /**
      * Constructor.
      *
      * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Add(AST leftValue, AST rightValue) {
-        HiddenAdd adapteeToSet = new HiddenAdd(leftValue.toHiddenAST(), rightValue.toHiddenAST());
-        setAdaptee(adapteeToSet);
+        this(new HiddenAdd(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
     }
 
     /**

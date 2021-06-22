@@ -89,7 +89,7 @@ public abstract class AbstractHiddenType implements HType {
      * @return a {@code HiddenBinary} equivalent
      */
     @Override
-    public HiddenBinary toWrappedBinary() {
+    public HiddenBinary toHiddenBinary() {
         return null;
     }
 
@@ -99,7 +99,7 @@ public abstract class AbstractHiddenType implements HType {
      * @return a {@code HiddenBool} equivalent
      */
     @Override
-    public HiddenBool toWrappedBool() {
+    public HiddenBool toHiddenBool() {
         return null;
     }
 
@@ -109,7 +109,7 @@ public abstract class AbstractHiddenType implements HType {
      * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public HiddenFloat toWrappedFloat() {
+    public HiddenFloat toHiddenFloat() {
         return null;
     }
 
@@ -119,7 +119,7 @@ public abstract class AbstractHiddenType implements HType {
      * @return a {@code HiddenInt} equivalent
      */
     @Override
-    public HiddenInt toWrappedInt() {
+    public HiddenInt toHiddenInt() {
         return null;
     }
 

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class WrappedStringTest extends BaseHTypeTest {
+class HiddenStringTest extends BaseHTypeTest {
 
     @BeforeEach
     public void setUp() {
@@ -41,33 +41,33 @@ class WrappedStringTest extends BaseHTypeTest {
     }
 
     @RepeatedTest(20)
-    void testToWrappedBinary() {
-        assertNull(wString1.toWrappedBinary(),
-            "Method toWrappedBinary does not works." + messageSeed);
+    void testToHiddenBinary() {
+        assertNull(wString1.toHiddenBinary(),
+            "Method toHiddenBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedBool() {
-        assertNull(wString1.toWrappedBool(),
-            "Method toWrappedBool does not works." + messageSeed);
+    void testToHiddenBool() {
+        assertNull(wString1.toHiddenBool(),
+            "Method toHiddenBool does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedFloat() {
-        assertNull(wString1.toWrappedFloat(),
-            "Method toWrappedFloat does not works." + messageSeed);
+    void testToHiddenFloat() {
+        assertNull(wString1.toHiddenFloat(),
+            "Method toHiddenFloat does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedInt() {
-        assertNull(wString1.toWrappedInt(),
-            "Method toWrappedInt does not works." + messageSeed);
+    void testToHiddenInt() {
+        assertNull(wString1.toHiddenInt(),
+            "Method toHiddenInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedString() {
-        assertEquals(new HiddenString(aString1), wString1.toWrappedString(),
-            "Method toWrappedString does not works." + messageSeed);
+    void testToHiddenString() {
+        assertEquals(new HiddenString(aString1), wString1.toHiddenString(),
+            "Method toHiddenString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)

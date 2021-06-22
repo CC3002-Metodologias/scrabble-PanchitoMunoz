@@ -55,7 +55,7 @@ public class HiddenString extends AbstractHiddenType {
      * @return a {@code HiddenString} equivalent
      */
     @Override
-    public HiddenString toWrappedString() {
+    public HiddenString toHiddenString() {
         TypeString computed = this.typeString.toTypeString();
         return new HiddenString(computed);
     }

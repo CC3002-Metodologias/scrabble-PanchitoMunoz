@@ -9,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class WrappedIntTest extends BaseHTypeTest {
+class HiddenIntTest extends BaseHTypeTest {
 
     @BeforeEach
     public void setUp() {
@@ -43,33 +43,33 @@ class WrappedIntTest extends BaseHTypeTest {
     }
 
     @RepeatedTest(20)
-    void testToWrappedBinary() {
-        assertEquals(new HiddenBinary(typeInt1.toTypeBinary()), wInt1.toWrappedBinary(),
-            "Method toWrappedBinary does not works." + messageSeed);
+    void testToHiddenBinary() {
+        assertEquals(new HiddenBinary(typeInt1.toTypeBinary()), wInt1.toHiddenBinary(),
+            "Method toHiddenBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedBool() {
-        assertNull(wInt1.toWrappedBool(),
-            "Method toWrappedBool does not works." + messageSeed);
+    void testToHiddenBool() {
+        assertNull(wInt1.toHiddenBool(),
+            "Method toHiddenBool does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedFloat() {
-        assertEquals(new HiddenFloat(typeInt1.toTypeFloat()), wInt1.toWrappedFloat(),
-            "Method toWrappedFloat does not works." + messageSeed);
+    void testToHiddenFloat() {
+        assertEquals(new HiddenFloat(typeInt1.toTypeFloat()), wInt1.toHiddenFloat(),
+            "Method toHiddenFloat does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedInt() {
-        assertEquals(wInt1, wInt1.toWrappedInt(),
-            "Method toWrappedInt does not works." + messageSeed);
+    void testToHiddenInt() {
+        assertEquals(wInt1, wInt1.toHiddenInt(),
+            "Method toHiddenInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedString() {
-        assertEquals(new HiddenString(typeInt1.toTypeString()), wInt1.toWrappedString(),
-            "Method toWrappedString does not works." + messageSeed);
+    void testToHiddenString() {
+        assertEquals(new HiddenString(typeInt1.toTypeString()), wInt1.toHiddenString(),
+            "Method toHiddenString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-class WrappedBoolTest extends BaseHTypeTest {
+class HiddenBoolTest extends BaseHTypeTest {
 
     @BeforeEach
     public void setUp() {
@@ -46,36 +46,36 @@ class WrappedBoolTest extends BaseHTypeTest {
     }
 
     @Test
-    void testToWrappedBinary() {
-        assertNull(trueWBool.toWrappedBinary(), "Method toWrappedBinary does not works.");
+    void testToHiddenBinary() {
+        assertNull(trueWBool.toHiddenBinary(), "Method toHiddenBinary does not works.");
     }
 
     @Test
-    void testToWrappedBool() {
-        assertEquals(new HiddenBool(true), trueWBool.toWrappedBool(),
-            "Method toWrappedBool does not works.");
-        assertEquals(new HiddenBool(false), falseWBool.toWrappedBool(),
-            "Method toWrappedBool does not works.");
+    void testToHiddenBool() {
+        assertEquals(new HiddenBool(true), trueWBool.toHiddenBool(),
+            "Method toHiddenBool does not works.");
+        assertEquals(new HiddenBool(false), falseWBool.toHiddenBool(),
+            "Method toHiddenBool does not works.");
     }
 
     @Test
-    void testToWrappedFloat() {
-        assertNull(trueWBool.toWrappedFloat(), "Method toWrappedFloat does not works.");
+    void testToHiddenFloat() {
+        assertNull(trueWBool.toHiddenFloat(), "Method toHiddenFloat does not works.");
     }
 
     @Test
-    void testToWrappedInt() {
-        assertNull(trueWBool.toWrappedInt(), "Method toWrappedInt does not works.");
+    void testToHiddenInt() {
+        assertNull(trueWBool.toHiddenInt(), "Method toHiddenInt does not works.");
     }
 
     @Test
-    void testToWrappedString() {
+    void testToHiddenString() {
         HiddenString expected = new HiddenString(trueTypeBool.toTypeString());
-        assertEquals(expected, trueWBool.toWrappedString(),
-            "Method toWrappedString does not works.");
+        assertEquals(expected, trueWBool.toHiddenString(),
+            "Method toHiddenString does not works.");
         HiddenString expected2 = new HiddenString(falseTypeBool.toTypeString());
-        assertEquals(expected2, falseWBool.toWrappedString(),
-            "Method toWrappedString does not works.");
+        assertEquals(expected2, falseWBool.toHiddenString(),
+            "Method toHiddenString does not works.");
     }
 
     @Test

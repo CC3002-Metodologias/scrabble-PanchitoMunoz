@@ -8,7 +8,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class WrappedFloatTest extends BaseHTypeTest {
+class HiddenFloatTest extends BaseHTypeTest {
 
     @BeforeEach
     public void setUp() {
@@ -42,33 +42,33 @@ class WrappedFloatTest extends BaseHTypeTest {
     }
 
     @RepeatedTest(20)
-    void testToWrappedBinary() {
-        assertNull(wFloat1.toWrappedBinary(),
-            "Method toWrappedBinary does not works." + messageSeed);
+    void testToHiddenBinary() {
+        assertNull(wFloat1.toHiddenBinary(),
+            "Method toHiddenBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedBool() {
-        assertNull(wFloat1.toWrappedBool(),
-            "Method toWrappedBool does not works." + messageSeed);
+    void testToHiddenBool() {
+        assertNull(wFloat1.toHiddenBool(),
+            "Method toHiddenBool does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedFloat() {
-        assertEquals(wFloat1, wFloat1.toWrappedFloat(),
-            "Method toWrappedFloat does not works." + messageSeed);
+    void testToHiddenFloat() {
+        assertEquals(wFloat1, wFloat1.toHiddenFloat(),
+            "Method toHiddenFloat does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedInt() {
-        assertNull(wFloat1.toWrappedInt(),
-            "Method toWrappedInt does not works." + messageSeed);
+    void testToHiddenInt() {
+        assertNull(wFloat1.toHiddenInt(),
+            "Method toHiddenInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedString() {
-        assertEquals(new HiddenString(typeFloat1.toTypeString()), wFloat1.toWrappedString(),
-            "Method toWrappedString does not works." + messageSeed);
+    void testToHiddenString() {
+        assertEquals(new HiddenString(typeFloat1.toTypeString()), wFloat1.toHiddenString(),
+            "Method toHiddenString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)

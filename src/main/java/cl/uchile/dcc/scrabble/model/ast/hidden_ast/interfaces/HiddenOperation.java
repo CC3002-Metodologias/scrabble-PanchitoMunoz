@@ -33,33 +33,33 @@ public interface HiddenOperation extends HiddenAST {
      *
      * @return a {@code HiddenBinary}
      */
-    HiddenBinary toWrappedBinary();
+    HiddenBinary toHiddenBinary();
 
     /**
      * Transform the current instance into a {@code HiddenBool}.
      *
      * @return a {@code HiddenBool}
      */
-    HiddenBool toWrappedBool();
+    HiddenBool toHiddenBool();
 
     /**
      * Transform the current instance into a {@code HiddenFloat}.
      *
      * @return a {@code HiddenFloat}
      */
-    HiddenFloat toWrappedFloat();
+    HiddenFloat toHiddenFloat();
 
     /**
      * Transform the current instance into a {@code HiddenInt}.
      *
      * @return a {@code HiddenInt}
      */
-    HiddenInt toWrappedInt();
+    HiddenInt toHiddenInt();
 
     /**
      * Transform the current instance into a {@code HiddenString}.
      *
      * @return a {@code HiddenString}
      */
-    HiddenString toWrappedString();
+    HiddenString toHiddenString();
 }

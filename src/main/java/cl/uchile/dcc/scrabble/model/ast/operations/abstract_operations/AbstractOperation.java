@@ -19,14 +19,14 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  */
 public abstract class AbstractOperation implements Operation {
 
-    private HiddenOperation adaptee;
+    private final HiddenOperation adaptee;
 
     /**
-     * Set the current adaptee.
+     * Constructor by default.
      *
-     * @param adaptee a Hidden Operation
+     * @param adaptee a HiddenOperation to adapt
      */
-    protected void setAdaptee(HiddenOperation adaptee) {
+    protected AbstractOperation(HiddenOperation adaptee) {
         this.adaptee = adaptee;
     }
 
@@ -75,7 +75,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public TypeBinary toTypeBinary() {
-        return adaptee.toWrappedBinary().getAdaptee();
+        return adaptee.toHiddenBinary().getAdaptee();
     }
 
     /**
@@ -85,7 +85,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public TypeBool toTypeBool() {
-        return adaptee.toWrappedBool().getAdaptee();
+        return adaptee.toHiddenBool().getAdaptee();
     }
 
     /**
@@ -95,7 +95,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public TypeFloat toTypeFloat() {
-        return adaptee.toWrappedFloat().getAdaptee();
+        return adaptee.toHiddenFloat().getAdaptee();
     }
 
     /**
@@ -105,7 +105,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public TypeInt toTypeInt() {
-        return adaptee.toWrappedInt().getAdaptee();
+        return adaptee.toHiddenInt().getAdaptee();
     }
 
     /**
@@ -115,6 +115,6 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public TypeString toTypeString() {
-        return adaptee.toWrappedString().getAdaptee();
+        return adaptee.toHiddenString().getAdaptee();
     }
 }

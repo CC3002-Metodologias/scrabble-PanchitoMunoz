@@ -106,8 +106,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenBinary}
      */
     @Override
-    public HiddenBinary toWrappedBinary() {
-        return this.calculate().toWrappedBinary();
+    public HiddenBinary toHiddenBinary() {
+        return this.calculate().toHiddenBinary();
     }
 
     /**
@@ -116,8 +116,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenBool}
      */
     @Override
-    public HiddenBool toWrappedBool() {
-        return this.calculate().toWrappedBool();
+    public HiddenBool toHiddenBool() {
+        return this.calculate().toHiddenBool();
     }
 
     /**
@@ -126,8 +126,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenFloat}
      */
     @Override
-    public HiddenFloat toWrappedFloat() {
-        return this.calculate().toWrappedFloat();
+    public HiddenFloat toHiddenFloat() {
+        return this.calculate().toHiddenFloat();
     }
 
     /**
@@ -136,8 +136,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenInt}
      */
     @Override
-    public HiddenInt toWrappedInt() {
-        return this.calculate().toWrappedInt();
+    public HiddenInt toHiddenInt() {
+        return this.calculate().toHiddenInt();
     }
 
     /**
@@ -146,7 +146,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenString}
      */
     @Override
-    public HiddenString toWrappedString() {
-        return this.calculate().toWrappedString();
+    public HiddenString toHiddenString() {
+        return this.calculate().toHiddenString();
     }
 }

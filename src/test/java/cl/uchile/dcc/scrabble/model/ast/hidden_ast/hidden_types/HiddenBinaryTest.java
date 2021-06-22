@@ -55,45 +55,45 @@ class HiddenBinaryTest extends BaseHTypeTest {
     }
 
     @RepeatedTest(20)
-    void testToWrappedBinary() {
+    void testToHiddenBinary() {
         HiddenBinary expected = new HiddenBinary(aBinary1);
-        assertEquals(expected, wBinary1.toWrappedBinary(),
-            "Method toWrappedBinary does not works." + messageSeed);
-        assertNotEquals(expected, wBinary2.toWrappedBinary(),
-            "Method toWrappedBinary does not works." + messageSeed);
+        assertEquals(expected, wBinary1.toHiddenBinary(),
+            "Method toHiddenBinary does not works." + messageSeed);
+        assertNotEquals(expected, wBinary2.toHiddenBinary(),
+            "Method toHiddenBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedBool() {
-        assertNull(wBinary1.toWrappedBool(),
-            "Method toWrappedBool does not works" + messageSeed);
+    void testToHiddenBool() {
+        assertNull(wBinary1.toHiddenBool(),
+            "Method toHiddenBool does not works" + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedFloat() {
+    void testToHiddenFloat() {
         HiddenFloat expected = new HiddenFloat(typeBinary1.toTypeFloat());
-        assertEquals(expected, wBinary1.toWrappedFloat(),
-            "Method toWrappedFloat does not works." + messageSeed);
-        assertNotEquals(expected, wBinary2.toWrappedFloat(),
-            "Method toWrappedFloat does not works." + messageSeed);
+        assertEquals(expected, wBinary1.toHiddenFloat(),
+            "Method toHiddenFloat does not works." + messageSeed);
+        assertNotEquals(expected, wBinary2.toHiddenFloat(),
+            "Method toHiddenFloat does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedInt() {
+    void testToHiddenInt() {
         HiddenInt expected = new HiddenInt(typeBinary1.toTypeInt());
-        assertEquals(expected, wBinary1.toWrappedInt(),
-            "Method toWrappedInt does not works." + messageSeed);
-        assertNotEquals(expected, wBinary2.toWrappedInt(),
-            "Method toWrappedInt does not works." + messageSeed);
+        assertEquals(expected, wBinary1.toHiddenInt(),
+            "Method toHiddenInt does not works." + messageSeed);
+        assertNotEquals(expected, wBinary2.toHiddenInt(),
+            "Method toHiddenInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testToWrappedString() {
+    void testToHiddenString() {
         HiddenString expected = new HiddenString(typeBinary1.toTypeString());
-        assertEquals(expected, wBinary1.toWrappedString(),
-            "Method toWrappedString does not works." + messageSeed);
-        assertNotEquals(expected, wBinary2.toWrappedString(),
-            "Method toWrappedString does not works." + messageSeed);
+        assertEquals(expected, wBinary1.toHiddenString(),
+            "Method toHiddenString does not works." + messageSeed);
+        assertNotEquals(expected, wBinary2.toHiddenString(),
+            "Method toHiddenString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
