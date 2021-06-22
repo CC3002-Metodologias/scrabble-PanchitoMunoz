@@ -1,8 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenMult;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 
 /**
  * TODO: Documentar
@@ -13,34 +14,32 @@ import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WType;
 public class Mult extends AbstractOperation {
 
     /**
+     * Constructor by default.
+     *
+     * @param adaptee a HiddenOperation to adapt
+     */
+    protected Mult(HiddenOperation adaptee) {
+        super(adaptee);
+    }
+
+    /**
      * Constructor.
      *
-     * @param components multiple components
+     * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
+     * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public Mult(AST... components) {
-        super(components);
+    public Mult(AST leftValue, AST rightValue) {
+        this(new HiddenMult(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code AST}.
+     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
+     * HType} or an {@code HiddenAST}, it does nothing.
      *
-     * @param space number of spaces to ident
-     * @return the current {@code AST} as {@code String}
+     * @return a transformation
      */
     @Override
-    public String asString(int space) {
-        return asString(space, "*", "Mult");
-    }
-
-    /**
-     * Compute the operation between 2 {@code WType} and returns its operation.
-     *
-     * @param value1 the value at the left
-     * @param value2 the value at the right
-     * @return the value computed
-     */
-    @Override
-    protected WType mainOperation(WType value1, WType value2) {
-        return value1.mult(value2);
+    public HiddenMult toHiddenAST() {
+        return new HiddenMult(getLeftChildren(), getRightChildren());
     }
 }

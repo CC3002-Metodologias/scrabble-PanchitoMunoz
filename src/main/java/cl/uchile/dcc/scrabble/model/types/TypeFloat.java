@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
@@ -58,7 +58,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public TypeString toTypeString() {
-        return new TypeString(Double.toString(this.value));
+        return createString(Double.toString(this.value));
     }
 
     /**
@@ -68,7 +68,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public TypeFloat toTypeFloat() {
-        return new TypeFloat(this.value);
+        return createFloat(this.value);
     }
 
     /**
@@ -90,7 +90,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return new TypeString(typeString.getValue() + this.value);
+        return createString(typeString.getValue() + this.value);
     }
 
     /**
@@ -101,7 +101,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber addWithInt(TypeInt typeInt) {
-        return new TypeFloat(typeInt.getValue() + this.value);
+        return createFloat(typeInt.getValue() + this.value);
     }
 
     /**
@@ -112,7 +112,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber addWithFloat(TypeFloat typeFloat) {
-        return new TypeFloat(typeFloat.value + this.value);
+        return createFloat(typeFloat.value + this.value);
     }
 
     /**
@@ -134,7 +134,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber subWithFloat(TypeFloat typeFloat) {
-        return new TypeFloat(typeFloat.value - this.value);
+        return createFloat(typeFloat.value - this.value);
     }
 
     /**
@@ -145,7 +145,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber subWithInt(TypeInt typeInt) {
-        return new TypeFloat(typeInt.getValue() - this.value);
+        return createFloat(typeInt.getValue() - this.value);
     }
 
     /**
@@ -168,7 +168,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber multWithFloat(TypeFloat typeFloat) {
-        return new TypeFloat(typeFloat.value * this.value);
+        return createFloat(typeFloat.value * this.value);
     }
 
     /**
@@ -179,7 +179,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber multWithInt(TypeInt typeInt) {
-        return new TypeFloat(typeInt.getValue() * this.value);
+        return createFloat(typeInt.getValue() * this.value);
     }
 
     /**
@@ -203,8 +203,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
         // Case divide by zero
-        if (this.value == 0.) return new TypeFloat(0.0);
-        return new TypeFloat(typeFloat.value / this.value);
+        if (this.value == 0.) return createFloat(0.0);
+        return createFloat(typeFloat.value / this.value);
     }
 
     /**
@@ -217,19 +217,19 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     public SNumber divWithInt(TypeInt typeInt) {
         // Case divide by zero
         if (this.value == 0.) {
-            return new TypeFloat(0.0);
+            return createFloat(0.0);
         }
-        return new TypeFloat(typeInt.getValue() / this.value);
+        return createFloat(typeInt.getValue() / this.value);
     }
 
     /**
-     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
-     * WType} or an {@code AST}, it does nothing.
+     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
+     * HType} or an {@code HiddenAST}, it does nothing.
      *
      * @return a transformation
      */
     @Override
-    public AST toWrapType() {
-        return new WrappedFloat(this);
+    public HiddenAST toHiddenAST() {
+        return new HiddenFloat(this);
     }
 }

@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -57,9 +58,9 @@ class TypeStringTest extends BaseTypeTest {
     @RepeatedTest(20)
     void add() {
         // Test add with binary
-        expectedTypeString = new TypeString(aString1 + aBinary1);
+        expectedTypeString = new TypeString(aString1 + cleanBinary(aBinary1));
         assertEquals(expectedTypeString, typeString1.add(typeBinary1),
-                "Method add does not works with TypeBinary." + messageSeed);
+            "Method add does not works with TypeBinary." + messageSeed);
         // Test add with boolean
         expectedTypeString = new TypeString(aString1 + trueBoolean);
         assertEquals(expectedTypeString, typeString1.add(trueTypeBool),

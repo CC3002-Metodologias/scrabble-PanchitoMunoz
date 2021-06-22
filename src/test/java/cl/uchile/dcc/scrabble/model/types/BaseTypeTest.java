@@ -1,13 +1,16 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.AbstractRandomValues;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A base class that contains the standard settings for each test class in types.
  *
  * @author Francisco Muñoz Guajardo
  */
-public class BaseTypeTest extends AbstractRandomValues {
+public abstract class BaseTypeTest extends AbstractRandomValues {
 
     // Binaries
     protected TypeBinary typeBinary1;
@@ -27,6 +30,8 @@ public class BaseTypeTest extends AbstractRandomValues {
     // Strings
     protected TypeString typeString1;
     protected TypeString typeString2;
+    // List random SType
+    protected List<SType> listRandSType = new ArrayList<>();
 
     protected void setUp() {
         // Setting random values
@@ -34,14 +39,20 @@ public class BaseTypeTest extends AbstractRandomValues {
         // Generate 2 binaries random
         typeBinary1 = new TypeBinary(aBinary1);
         typeBinary2 = new TypeBinary(aBinary2);
+        listRandSType.add(typeBinary1);
+        listRandSType.add(trueTypeBool);
+        listRandSType.add(falseTypeBool);
         // Generate 2 floats random
         typeFloat1 = new TypeFloat(aFloat1);
         typeFloat2 = new TypeFloat(aFloat2);
+        listRandSType.add(typeFloat1);
         // Generate 2 ints random
         typeInt1 = new TypeInt(anInt1);
         typeInt2 = new TypeInt(anInt2);
+        listRandSType.add(typeInt1);
         // Generate 2 strings random
         typeString1 = new TypeString(aString1);
         typeString2 = new TypeString(aString2);
+        listRandSType.add(typeString1);
     }
 }

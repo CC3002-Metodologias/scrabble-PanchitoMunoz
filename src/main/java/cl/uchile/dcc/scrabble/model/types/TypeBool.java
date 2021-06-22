@@ -3,8 +3,8 @@ package cl.uchile.dcc.scrabble.model.types;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.wrapped_types.WrappedBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import java.util.Objects;
@@ -73,7 +73,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public TypeString toTypeString() {
-        return new TypeString(Boolean.toString(this.value));
+        return createString(Boolean.toString(this.value));
     }
 
     /**
@@ -82,7 +82,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return TypeBool with a value equivalent to the current type.
      */
     public TypeBool toTypeBool() {
-        return new TypeBool(this.value);
+        return createBool(this.value);
     }
 
     /**
@@ -91,7 +91,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical neg() {
-        return new TypeBool(!(this.value));
+        return createBool(!(this.value));
     }
 
     /**
@@ -102,7 +102,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return new TypeString(typeString.getValue() + this.value);
+        return createString(typeString.getValue() + this.value);
     }
 
     /**
@@ -135,7 +135,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical andWithBool(TypeBool typeBool) {
-        return new TypeBool(typeBool.value && this.value);
+        return createBool(typeBool.value && this.value);
     }
 
     /**
@@ -146,7 +146,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical orWithBool(TypeBool typeBool) {
-        return new TypeBool(typeBool.value || this.value);
+        return createBool(typeBool.value || this.value);
     }
 
     /**
@@ -157,7 +157,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical andWithBinary(TypeBinary typeBinary) {
-        return new TypeBinary(boolAndBinary(this.value, typeBinary.getValue()));
+        return createBinary(boolAndBinary(this.value, typeBinary.getValue()));
     }
 
     /**
@@ -168,17 +168,17 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical orWithBinary(TypeBinary typeBinary) {
-        return new TypeBinary(boolOrBinary(this.value, typeBinary.getValue()));
+        return createBinary(boolOrBinary(this.value, typeBinary.getValue()));
     }
 
     /**
-     * Transform a {@code SType} into its equivalent {@code WType}. If the argument is a {@code
-     * WType} or an {@code AST}, it does nothing.
+     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
+     * HType} or an {@code HiddenAST}, it does nothing.
      *
      * @return a transformation
      */
     @Override
-    public AST toWrapType() {
-        return new WrappedBool(this);
+    public HiddenAST toHiddenAST() {
+        return new HiddenBool(this);
     }
 }

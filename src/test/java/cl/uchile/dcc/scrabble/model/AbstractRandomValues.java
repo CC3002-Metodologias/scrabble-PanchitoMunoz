@@ -13,12 +13,13 @@ import org.apache.commons.lang3.RandomStringUtils;
  */
 public abstract class AbstractRandomValues {
 
+    // Zero numbers
+    protected final double aFloatZero = 0.0;
+    protected final int anIntZero = 0;
     protected final String aBinaryZero = "0000";
     // Booleans
     protected final boolean trueBoolean = true;
     protected final boolean falseBoolean = false;
-    protected final double aFloatZero = 0.0;
-    protected final int anIntZero = 0;
     // Random settings
     protected int seed;
     protected Random rng;

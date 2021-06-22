@@ -6,6 +6,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryOrBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
+import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,8 +25,8 @@ class TypeBinaryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void getValue() {
-        assertEquals(aBinary1, typeBinary1.getValue(),
-                "Method getValue does not works." + messageSeed);
+        assertEquals(cleanBinary(aBinary1), typeBinary1.getValue(),
+            "Method getValue does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -64,17 +65,17 @@ class TypeBinaryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testToString() {
-        assertEquals("TypeBinary{value='" + aBinary1 + "'}", typeBinary1.toString(),
-                "Method toString does not works." + messageSeed);
-        assertEquals("TypeBinary{value='" + aBinary2 + "'}", typeBinary2.toString(),
-                "Method toString does not works." + messageSeed);
-        assertNotEquals("TypeBinary{value='" + aBinary2 + "'}", typeBinary1.toString(),
-                "Method toString does not works." + messageSeed);
+        assertEquals("TypeBinary{value='" + cleanBinary(aBinary1) + "'}", typeBinary1.toString(),
+            "Method toString does not works." + messageSeed);
+        assertEquals("TypeBinary{value='" + cleanBinary(aBinary2) + "'}", typeBinary2.toString(),
+            "Method toString does not works." + messageSeed);
+        assertNotEquals("TypeBinary{value='" + cleanBinary(aBinary2) + "'}", typeBinary1.toString(),
+            "Method toString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void toTypeString() {
-        TypeString binaryAsTypeString = new TypeString(aBinary1);
+        TypeString binaryAsTypeString = new TypeString(cleanBinary(aBinary1));
         assertEquals(binaryAsTypeString, typeBinary1.toTypeString(),
                 "Method toTypeString does not works." + messageSeed);
         assertNotEquals(binaryAsTypeString, typeBinary2.toTypeString(),
@@ -131,7 +132,7 @@ class TypeBinaryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void addWithString() {
-        var expectedTypeString = new TypeString(aString1 + aBinary1);
+        var expectedTypeString = new TypeString(aString1 + cleanBinary(aBinary1));
         assertEquals(expectedTypeString, typeBinary1.addWithString(typeString1),
                 "Method addWithString does not works." + messageSeed);
     }
