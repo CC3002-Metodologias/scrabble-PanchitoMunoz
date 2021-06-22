@@ -1,6 +1,10 @@
 package cl.uchile.dcc.scrabble;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOr;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenSub;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
@@ -33,33 +37,43 @@ public class Main {
         System.out.println(wFloat.add(wString));
         System.out.println(typeBinary.toHiddenAST());
         System.out.println(wString.sub(wBinary));
-        AST addAST2 = new Add(new TypeInt(43), new TypeBinary("1001"));
-        Add addAST1 = new Add(new TypeString("42"), addAST2);
+//        HiddenAdd addAST1 = new HiddenAdd(
+//            new HiddenFloat(6.9),
+//            new HiddenOr(
+//                new HiddenBinary("1000"),
+//                new HiddenSub(
+//                    new HiddenInt(25),
+//                    new HiddenBinary("0101")
+//                ).toWrappedBinary()
+//            )
+//        );
+//        System.out.println("Representación: " + addAST1);
+//        System.out.println("Resultado: " + addAST1.calculate());
         Add addAST = new Add(
             new TypeFloat(6.9),
             new Or(
                 new TypeBinary("1000"),
-                new Sub(
+                (new Sub(
                     new TypeInt(25),
                     new TypeBinary("0101")
-                ).toTypeBinary()
+                )).toTypeBinary()
             )
         );
         System.out.println("Representación: " + addAST);
-        System.out.println("Resultado: " + addAST.calculate());
-        AST addAST3 = new Or(
-            new Add(
-                new TypeBinary("10101"),
-                new TypeInt(42)
-            ),
-            new TypeBool(true)
-        );
-        System.out.println(addAST3);
-        System.out.println(addAST3.calculate());
-        TypeBinaryFactory binaryFactory = TypeBinaryFactory.getInstance();
-        TypeBinary typeBinary1 = binaryFactory.create(typeBinary.getValue());
-        System.out.println(typeBinary);
-        TypeBinaryFactory binaryFactory1 = TypeBinaryFactory.getInstance();
+//        System.out.println("Resultado: " + addAST.calculate());
+//        AST addAST3 = new Or(
+//            new Add(
+//                new TypeBinary("10101"),
+//                new TypeInt(42)
+//            ),
+//            new TypeBool(true)
+//        );
+//        System.out.println(addAST3);
+//        System.out.println(addAST3.calculate());
+//        TypeBinaryFactory binaryFactory = TypeBinaryFactory.getInstance();
+//        TypeBinary typeBinary1 = binaryFactory.create(typeBinary.getValue());
+//        System.out.println(typeBinary);
+//        TypeBinaryFactory binaryFactory1 = TypeBinaryFactory.getInstance();
     }
 
 }
