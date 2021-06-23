@@ -1,8 +1,8 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types;
+package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeFactory;
+import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
 import java.util.HashMap;
 
 /**
@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:02
  */
-public class HiddenBinaryFactory implements TypeFactory {
+public class HiddenBinaryFactory implements GeneralTypeFactory {
 
     /**
      * To use singleton pattern

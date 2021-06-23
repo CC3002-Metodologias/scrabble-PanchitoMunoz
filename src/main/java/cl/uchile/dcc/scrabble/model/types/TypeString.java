@@ -1,10 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types.HTypeFactory.createHiddenString;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenString;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.Objects;

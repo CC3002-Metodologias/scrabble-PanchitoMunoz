@@ -1,10 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types.HTypeFactory.createHiddenFloat;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createFloat;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenFloat;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createFloat;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;

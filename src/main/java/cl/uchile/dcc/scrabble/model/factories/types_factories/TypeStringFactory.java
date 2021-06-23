@@ -1,33 +1,34 @@
-package cl.uchile.dcc.scrabble.model.types.factories_types;
+package cl.uchile.dcc.scrabble.model.factories.types_factories;
 
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
+import cl.uchile.dcc.scrabble.model.types.TypeString;
 import java.util.HashMap;
 
 /**
- * Factory of {@code TypeBinary}. In order to save RAM memory, use this factory. Only exists an
+ * Factory of {@code TypeString}. In order to save RAM memory, use this factory. Only exists an
  * unique instance of this factory, to centralize the created instances.
  *
  * @author Francisco Muñoz Guajardo
- * @create 2021/06/20 21:02
- * @see TypeBinary
+ * @create 2021/06/20 21:03
+ * @see TypeString
  */
-public class TypeBinaryFactory implements TypeFactory {
+public class TypeStringFactory implements GeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
-    private static TypeBinaryFactory uniqueInstance;
+    private static TypeStringFactory uniqueInstance;
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Integer, TypeBinary> hashMapCache;
+    private final HashMap<String, TypeString> hashMapCache;
 
     /**
      * Constructor only for tests.
      *
      * @param hashMapCache a hash map
      */
-    private TypeBinaryFactory(HashMap<Integer, TypeBinary> hashMapCache) {
+    private TypeStringFactory(HashMap<String, TypeString> hashMapCache) {
         this.hashMapCache = hashMapCache;
     }
 
@@ -37,9 +38,9 @@ public class TypeBinaryFactory implements TypeFactory {
      * @param hashMapCache a hash map
      * @return the instance of the factory.
      */
-    private static TypeBinaryFactory getInstance(HashMap<Integer, TypeBinary> hashMapCache) {
+    private static TypeStringFactory getInstance(HashMap<String, TypeString> hashMapCache) {
         if (uniqueInstance == null) {
-            uniqueInstance = new TypeBinaryFactory(hashMapCache);
+            uniqueInstance = new TypeStringFactory(hashMapCache);
         }
         return uniqueInstance;
     }
@@ -49,18 +50,18 @@ public class TypeBinaryFactory implements TypeFactory {
      *
      * @return the instance of the factory
      */
-    public static TypeBinaryFactory getInstance() {
+    public static TypeStringFactory getInstance() {
         return getInstance(new HashMap<>());
     }
 
     /**
-     * Returns a {@code TypeBinary} with the same value in {@code instance}.
+     * Returns a {@code TypeString} with the same value in {@code instance}.
      *
      * @param instance an instance.
-     * @return a {@code TypeBinary} instance.
+     * @return a {@code TypeString} instance.
      */
-    public TypeBinary create(TypeBinary instance) {
-        int keyValue = instance.getValueAsInt();
+    public TypeString create(TypeString instance) {
+        String keyValue = instance.getValue();
         if (!hashMapCache.containsKey(keyValue)) {
             hashMapCache.put(keyValue, instance);
         }
@@ -68,13 +69,13 @@ public class TypeBinaryFactory implements TypeFactory {
     }
 
     /**
-     * Returns a {@code TypeBinary} with the {@code value} as value.
+     * Returns a {@code TypeString} with the {@code value} as value.
      *
      * @param value a value to make an instance.
-     * @return a {@code TypeBinary}.
+     * @return a {@code TypeString}.
      */
-    public TypeBinary create(String value) {
-        return create(new TypeBinary(value));
+    public TypeString create(String value) {
+        return create(new TypeString(value));
     }
 
     /**

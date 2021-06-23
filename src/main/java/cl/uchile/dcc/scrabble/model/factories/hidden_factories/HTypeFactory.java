@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types;
+package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;

@@ -1,18 +1,18 @@
-package cl.uchile.dcc.scrabble.model.types.factories_types;
+package cl.uchile.dcc.scrabble.model.factories.types_factories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cl.uchile.dcc.scrabble.model.types.BaseTypeTest;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
+import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class TypeStringFactoryTest extends BaseTypeTest {
+class TypeIntFactoryTest extends BaseTypeTest {
 
-    private final TypeStringFactory factory = TypeStringFactory.getInstance();
+    private final TypeIntFactory factory = TypeIntFactory.getInstance();
 
     @BeforeEach
     public void setUp() {
@@ -26,22 +26,22 @@ class TypeStringFactoryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testGetInstance() {
-        TypeStringFactory otherFactory = TypeStringFactory.getInstance();
-        otherFactory.create(aString1);
+        TypeIntFactory otherFactory = TypeIntFactory.getInstance();
+        otherFactory.create(anInt1);
         assertFalse(factory.isEmpty(),
             "Singleton pattern does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testCreate() {
-        var expected = new TypeString(aString1);
-        assertEquals(expected, factory.create(aString1),
-            "Method getTypeString does not works." + messageSeed);
+        var expected = new TypeInt(anInt1);
+        assertEquals(expected, factory.create(anInt1),
+            "Method getTypeInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testClear() {
-        factory.create(aString1);
+        factory.create(anInt1);
         assertFalse(factory.isEmpty());
         factory.clear();
         assertTrue(factory.isEmpty());

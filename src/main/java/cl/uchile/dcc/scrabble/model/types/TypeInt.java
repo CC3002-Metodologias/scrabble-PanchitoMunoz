@@ -1,14 +1,13 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types.HTypeFactory.createHiddenInt;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createBinary;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createFloat;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createInt;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenInt;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBinary;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createFloat;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createInt;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;

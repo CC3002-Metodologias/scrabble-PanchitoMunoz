@@ -1,22 +1,14 @@
 package cl.uchile.dcc.scrabble;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenAdd;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOr;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenSub;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
-import cl.uchile.dcc.scrabble.model.ast.interfaces.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 import cl.uchile.dcc.scrabble.model.ast.operations.Or;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeBinaryFactory;
 
 /**
  * A main to experiment implementations

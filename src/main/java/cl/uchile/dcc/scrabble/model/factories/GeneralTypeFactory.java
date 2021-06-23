@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.types.factories_types;
+package cl.uchile.dcc.scrabble.model.factories;
 
 /**
  * Interface to describe any factory of SType.
@@ -6,7 +6,7 @@ package cl.uchile.dcc.scrabble.model.types.factories_types;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/20 20:47
  */
-public interface TypeFactory {
+public interface GeneralTypeFactory {
 
     /**
      * Clear the current caché.

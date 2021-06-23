@@ -1,34 +1,34 @@
-package cl.uchile.dcc.scrabble.model.types.factories_types;
+package cl.uchile.dcc.scrabble.model.factories.types_factories;
 
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
+import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import java.util.HashMap;
 
 /**
- * Factory of {@code TypeInt}. In order to save RAM memory, use this factory. Only exists an unique
- * instance of this factory, to centralize the created instances.
+ * Factory of {@code TypeFloat}. In order to save RAM memory, use this factory. Only exists an
+ * unique instance of this factory, to centralize the created instances.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/20 21:03
- * @see TypeInt
+ * @see TypeFloat
  */
-public class TypeIntFactory implements TypeFactory {
+public class TypeFloatFactory implements GeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
-    private static TypeIntFactory uniqueInstance;
+    private static TypeFloatFactory uniqueInstance;
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Integer, TypeInt> hashMapCache;
+    private final HashMap<Double, TypeFloat> hashMapCache;
 
     /**
      * Constructor only for tests.
      *
      * @param hashMapCache a hash map
      */
-    private TypeIntFactory(HashMap<Integer, TypeInt> hashMapCache) {
+    private TypeFloatFactory(HashMap<Double, TypeFloat> hashMapCache) {
         this.hashMapCache = hashMapCache;
     }
 
@@ -38,9 +38,9 @@ public class TypeIntFactory implements TypeFactory {
      * @param hashMapCache a hash map
      * @return the instance of the factory.
      */
-    private static TypeIntFactory getInstance(HashMap<Integer, TypeInt> hashMapCache) {
+    private static TypeFloatFactory getInstance(HashMap<Double, TypeFloat> hashMapCache) {
         if (uniqueInstance == null) {
-            uniqueInstance = new TypeIntFactory(hashMapCache);
+            uniqueInstance = new TypeFloatFactory(hashMapCache);
         }
         return uniqueInstance;
     }
@@ -50,18 +50,18 @@ public class TypeIntFactory implements TypeFactory {
      *
      * @return the instance of the factory
      */
-    public static TypeIntFactory getInstance() {
+    public static TypeFloatFactory getInstance() {
         return getInstance(new HashMap<>());
     }
 
     /**
-     * Returns a {@code TypeInt} with the same value in {@code instance}.
+     * Returns a {@code TypeFloat} with the same value in {@code instance}.
      *
      * @param instance an instance.
-     * @return a {@code TypeInt} instance.
+     * @return a {@code TypeFloat} instance.
      */
-    public TypeInt create(TypeInt instance) {
-        int keyValue = instance.getValue();
+    public TypeFloat create(TypeFloat instance) {
+        double keyValue = instance.getValue();
         if (!hashMapCache.containsKey(keyValue)) {
             hashMapCache.put(keyValue, instance);
         }
@@ -69,13 +69,13 @@ public class TypeIntFactory implements TypeFactory {
     }
 
     /**
-     * Returns a {@code TypeInt} with the {@code value} as value.
+     * Returns a {@code TypeFloat} with the {@code value} as value.
      *
      * @param value a value to make an instance.
-     * @return a {@code TypeInt}.
+     * @return a {@code TypeFloat}.
      */
-    public TypeInt create(int value) {
-        return create(new TypeInt(value));
+    public TypeFloat create(double value) {
+        return create(new TypeFloat(value));
     }
 
     /**

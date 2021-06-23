@@ -1,34 +1,34 @@
-package cl.uchile.dcc.scrabble.model.types.factories_types;
+package cl.uchile.dcc.scrabble.model.factories.types_factories;
 
+import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import java.util.HashMap;
 
 /**
- * Factory of {@code TypeBool}. In order to save RAM memory, use this factory. Only exists an unique
- * instance of this factory, to centralize the created instances.
+ * Factory of {@code TypeBinary}. In order to save RAM memory, use this factory. Only exists an
+ * unique instance of this factory, to centralize the created instances.
  *
  * @author Francisco Muñoz Guajardo
- * @create 2021/06/20 21:03
- * @see TypeBool
+ * @create 2021/06/20 21:02
+ * @see TypeBinary
  */
-public class TypeBoolFactory implements TypeFactory {
+public class TypeBinaryFactory implements GeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
-    private static TypeBoolFactory uniqueInstance;
+    private static TypeBinaryFactory uniqueInstance;
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Boolean, TypeBool> hashMapCache;
+    private final HashMap<Integer, TypeBinary> hashMapCache;
 
     /**
      * Constructor only for tests.
      *
      * @param hashMapCache a hash map
      */
-    private TypeBoolFactory(HashMap<Boolean, TypeBool> hashMapCache) {
+    private TypeBinaryFactory(HashMap<Integer, TypeBinary> hashMapCache) {
         this.hashMapCache = hashMapCache;
     }
 
@@ -38,9 +38,9 @@ public class TypeBoolFactory implements TypeFactory {
      * @param hashMapCache a hash map
      * @return the instance of the factory.
      */
-    private static TypeBoolFactory getInstance(HashMap<Boolean, TypeBool> hashMapCache) {
+    private static TypeBinaryFactory getInstance(HashMap<Integer, TypeBinary> hashMapCache) {
         if (uniqueInstance == null) {
-            uniqueInstance = new TypeBoolFactory(hashMapCache);
+            uniqueInstance = new TypeBinaryFactory(hashMapCache);
         }
         return uniqueInstance;
     }
@@ -50,18 +50,18 @@ public class TypeBoolFactory implements TypeFactory {
      *
      * @return the instance of the factory
      */
-    public static TypeBoolFactory getInstance() {
+    public static TypeBinaryFactory getInstance() {
         return getInstance(new HashMap<>());
     }
 
     /**
-     * Returns a {@code TypeBool} with the same value in {@code instance}.
+     * Returns a {@code TypeBinary} with the same value in {@code instance}.
      *
      * @param instance an instance.
-     * @return a {@code TypeBool} instance.
+     * @return a {@code TypeBinary} instance.
      */
-    public TypeBool create(TypeBool instance) {
-        boolean keyValue = instance.getValue();
+    public TypeBinary create(TypeBinary instance) {
+        int keyValue = instance.getValueAsInt();
         if (!hashMapCache.containsKey(keyValue)) {
             hashMapCache.put(keyValue, instance);
         }
@@ -69,13 +69,13 @@ public class TypeBoolFactory implements TypeFactory {
     }
 
     /**
-     * Returns a {@code TypeBool} with the {@code value} as value.
+     * Returns a {@code TypeBinary} with the {@code value} as value.
      *
      * @param value a value to make an instance.
-     * @return a {@code TypeBool}.
+     * @return a {@code TypeBinary}.
      */
-    public TypeBool create(boolean value) {
-        return create(new TypeBool(value));
+    public TypeBinary create(String value) {
+        return create(new TypeBinary(value));
     }
 
     /**

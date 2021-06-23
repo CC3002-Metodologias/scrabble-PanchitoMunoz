@@ -1,15 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeBinaryFactory;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeBoolFactory;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeFloatFactory;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeIntFactory;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeStringFactory;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**

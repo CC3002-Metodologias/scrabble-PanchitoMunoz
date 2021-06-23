@@ -1,14 +1,12 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types.HTypeFactory.createHiddenBool;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createBinary;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createBool;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBinary;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBool;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;

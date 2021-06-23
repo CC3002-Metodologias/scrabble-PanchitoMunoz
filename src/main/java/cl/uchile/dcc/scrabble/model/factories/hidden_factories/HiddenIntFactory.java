@@ -1,10 +1,8 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types;
+package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeFactory;
+import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
 import java.util.HashMap;
 
 /**
@@ -13,7 +11,7 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:05
  */
-public class HiddenIntFactory implements TypeFactory {
+public class HiddenIntFactory implements GeneralTypeFactory {
 
     /**
      * To use singleton pattern

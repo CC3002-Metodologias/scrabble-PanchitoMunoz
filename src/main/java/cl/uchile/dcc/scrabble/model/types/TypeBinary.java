@@ -1,10 +1,10 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types.HTypeFactory.createHiddenBinary;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createBinary;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createFloat;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createInt;
-import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBinary;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBinary;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createFloat;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createInt;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryOrBinary;

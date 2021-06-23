@@ -1,11 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.AbstractRandomValues;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeBinaryFactory;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeBoolFactory;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeFloatFactory;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeIntFactory;
-import cl.uchile.dcc.scrabble.model.types.factories_types.TypeStringFactory;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.TypeBinaryFactory;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.TypeBoolFactory;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.TypeFloatFactory;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.TypeIntFactory;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.TypeStringFactory;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.ArrayList;
 import java.util.List;
