@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
+import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
  * @create 2021/06/20 21:03
  * @see TypeString
  */
-public class TypeStringFactory implements STypeFactory {
+public class TypeStringFactory implements TypeFactory {
 
     /**
      * To use singleton pattern
@@ -54,16 +55,27 @@ public class TypeStringFactory implements STypeFactory {
     }
 
     /**
+     * Returns a {@code TypeString} with the same value in {@code instance}.
+     *
+     * @param instance an instance.
+     * @return a {@code TypeString} instance.
+     */
+    public TypeString create(TypeString instance) {
+        String keyValue = instance.getValue();
+        if (!hashMapCache.containsKey(keyValue)) {
+            hashMapCache.put(keyValue, instance);
+        }
+        return hashMapCache.get(keyValue);
+    }
+
+    /**
      * Returns a {@code TypeString} with the {@code value} as value.
      *
      * @param value a value to make an instance.
      * @return a {@code TypeString}.
      */
     public TypeString create(String value) {
-        if (!hashMapCache.containsKey(value)) {
-            hashMapCache.put(value, new TypeString(value));
-        }
-        return hashMapCache.get(value);
+        return create(new TypeString(value));
     }
 
     /**

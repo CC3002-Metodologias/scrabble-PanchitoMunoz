@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
+import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
  * @create 2021/06/20 21:03
  * @see TypeBool
  */
-public class TypeBoolFactory implements STypeFactory {
+public class TypeBoolFactory implements TypeFactory {
 
     /**
      * To use singleton pattern
@@ -54,16 +55,27 @@ public class TypeBoolFactory implements STypeFactory {
     }
 
     /**
+     * Returns a {@code TypeBool} with the same value in {@code instance}.
+     *
+     * @param instance an instance.
+     * @return a {@code TypeBool} instance.
+     */
+    public TypeBool create(TypeBool instance) {
+        boolean keyValue = instance.getValue();
+        if (!hashMapCache.containsKey(keyValue)) {
+            hashMapCache.put(keyValue, instance);
+        }
+        return hashMapCache.get(keyValue);
+    }
+
+    /**
      * Returns a {@code TypeBool} with the {@code value} as value.
      *
      * @param value a value to make an instance.
      * @return a {@code TypeBool}.
      */
     public TypeBool create(boolean value) {
-        if (!hashMapCache.containsKey(value)) {
-            hashMapCache.put(value, new TypeBool(value));
-        }
-        return hashMapCache.get(value);
+        return create(new TypeBool(value));
     }
 
     /**

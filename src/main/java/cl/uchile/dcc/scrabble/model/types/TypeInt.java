@@ -1,5 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createBinary;
+import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createFloat;
+import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createInt;
+import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
@@ -303,6 +307,6 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public HiddenAST toHiddenAST() {
-        return new HiddenInt(this);
+        return new HiddenInt(createInt(this));
     }
 }

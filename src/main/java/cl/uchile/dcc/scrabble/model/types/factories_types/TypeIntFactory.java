@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
+import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
  * @create 2021/06/20 21:03
  * @see TypeInt
  */
-public class TypeIntFactory implements STypeFactory {
+public class TypeIntFactory implements TypeFactory {
 
     /**
      * To use singleton pattern
@@ -54,16 +55,27 @@ public class TypeIntFactory implements STypeFactory {
     }
 
     /**
+     * Returns a {@code TypeInt} with the same value in {@code instance}.
+     *
+     * @param instance an instance.
+     * @return a {@code TypeInt} instance.
+     */
+    public TypeInt create(TypeInt instance) {
+        int keyValue = instance.getValue();
+        if (!hashMapCache.containsKey(keyValue)) {
+            hashMapCache.put(keyValue, instance);
+        }
+        return hashMapCache.get(keyValue);
+    }
+
+    /**
      * Returns a {@code TypeInt} with the {@code value} as value.
      *
      * @param value a value to make an instance.
      * @return a {@code TypeInt}.
      */
     public TypeInt create(int value) {
-        if (!hashMapCache.containsKey(value)) {
-            hashMapCache.put(value, new TypeInt(value));
-        }
-        return hashMapCache.get(value);
+        return create(new TypeInt(value));
     }
 
     /**

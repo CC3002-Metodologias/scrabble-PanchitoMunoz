@@ -18,63 +18,6 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  */
 public abstract class AbstractType implements SType {
 
-    /** Cache Factories */
-    private final TypeBinaryFactory binaryFactory = TypeBinaryFactory.getInstance();
-    private final TypeBoolFactory boolFactory = TypeBoolFactory.getInstance();
-    private final TypeFloatFactory floatFactory = TypeFloatFactory.getInstance();
-    private final TypeIntFactory intFactory = TypeIntFactory.getInstance();
-    private final TypeStringFactory stringFactory = TypeStringFactory.getInstance();
-
-    /**
-     * Creates a binary using the factory
-     *
-     * @param value value to create
-     * @return a {@code TypeBinary}
-     */
-    protected TypeBinary createBinary(String value) {
-        return binaryFactory.create(value);
-    }
-
-    /**
-     * Creates a bool using the factory
-     *
-     * @param value value to create
-     * @return a {@code TypeBool}
-     */
-    protected TypeBool createBool(boolean value) {
-        return boolFactory.create(value);
-    }
-
-    /**
-     * Creates a float using the factory
-     *
-     * @param value value to create
-     * @return a {@code TypeFloat}
-     */
-    protected TypeFloat createFloat(double value) {
-        return floatFactory.create(value);
-    }
-
-    /**
-     * Creates a int using the factory
-     *
-     * @param value value to create
-     * @return a {@code TypeInt}
-     */
-    protected TypeInt createInt(int value) {
-        return intFactory.create(value);
-    }
-
-    /**
-     * Creates a string using the factory
-     *
-     * @param value value to create
-     * @return a {@code TypeString}
-     */
-    protected TypeString createString(String value) {
-        return stringFactory.create(value);
-    }
-
     /**
      * Method that determines if the object 'o' is equals to the current instance.
      * @param o Another object that is compared to the current instance.

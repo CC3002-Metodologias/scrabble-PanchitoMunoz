@@ -1,5 +1,8 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createBinary;
+import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createBool;
+import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
@@ -179,6 +182,6 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public HiddenAST toHiddenAST() {
-        return new HiddenBool(this);
+        return new HiddenBool(createBool(this));
     }
 }

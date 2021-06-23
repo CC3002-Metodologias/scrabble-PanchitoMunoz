@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
+
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
@@ -102,6 +104,6 @@ public class TypeString extends AbstractType {
      */
     @Override
     public HiddenAST toHiddenAST() {
-        return new HiddenString(this);
+        return new HiddenString(createString(this));
     }
 }

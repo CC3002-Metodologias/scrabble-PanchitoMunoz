@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
+import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
  * @create 2021/06/20 21:03
  * @see TypeFloat
  */
-public class TypeFloatFactory implements STypeFactory {
+public class TypeFloatFactory implements TypeFactory {
 
     /**
      * To use singleton pattern
@@ -54,16 +55,27 @@ public class TypeFloatFactory implements STypeFactory {
     }
 
     /**
+     * Returns a {@code TypeFloat} with the same value in {@code instance}.
+     *
+     * @param instance an instance.
+     * @return a {@code TypeFloat} instance.
+     */
+    public TypeFloat create(TypeFloat instance) {
+        double keyValue = instance.getValue();
+        if (!hashMapCache.containsKey(keyValue)) {
+            hashMapCache.put(keyValue, instance);
+        }
+        return hashMapCache.get(keyValue);
+    }
+
+    /**
      * Returns a {@code TypeFloat} with the {@code value} as value.
      *
      * @param value a value to make an instance.
      * @return a {@code TypeFloat}.
      */
     public TypeFloat create(double value) {
-        if (!hashMapCache.containsKey(value)) {
-            hashMapCache.put(value, new TypeFloat(value));
-        }
-        return hashMapCache.get(value);
+        return create(new TypeFloat(value));
     }
 
     /**

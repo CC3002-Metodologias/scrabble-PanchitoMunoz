@@ -1,7 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.factories_types;
 
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
-
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import java.util.HashMap;
 
@@ -13,7 +11,7 @@ import java.util.HashMap;
  * @create 2021/06/20 21:02
  * @see TypeBinary
  */
-public class TypeBinaryFactory implements STypeFactory {
+public class TypeBinaryFactory implements TypeFactory {
 
     /**
      * To use singleton pattern
@@ -56,17 +54,27 @@ public class TypeBinaryFactory implements STypeFactory {
     }
 
     /**
+     * Returns a {@code TypeBinary} with the same value in {@code instance}.
+     *
+     * @param instance an instance.
+     * @return a {@code TypeBinary} instance.
+     */
+    public TypeBinary create(TypeBinary instance) {
+        int keyValue = instance.getValueAsInt();
+        if (!hashMapCache.containsKey(keyValue)) {
+            hashMapCache.put(keyValue, instance);
+        }
+        return hashMapCache.get(keyValue);
+    }
+
+    /**
      * Returns a {@code TypeBinary} with the {@code value} as value.
      *
      * @param value a value to make an instance.
      * @return a {@code TypeBinary}.
      */
     public TypeBinary create(String value) {
-        int keyValue = binaryToInt(value);
-        if (!hashMapCache.containsKey(keyValue)) {
-            hashMapCache.put(keyValue, new TypeBinary(value));
-        }
-        return hashMapCache.get(keyValue);
+        return create(new TypeBinary(value));
     }
 
     /**
