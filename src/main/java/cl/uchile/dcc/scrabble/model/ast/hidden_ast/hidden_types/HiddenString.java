@@ -1,5 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenString;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
+
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
@@ -21,7 +24,7 @@ public class HiddenString extends AbstractHiddenType {
      * @param typeString a type string.
      */
     public HiddenString(TypeString typeString) {
-        this.typeString = typeString;
+        this.typeString = createString(typeString);
     }
 
     /**
@@ -30,7 +33,7 @@ public class HiddenString extends AbstractHiddenType {
      * @param value a string
      */
     public HiddenString(String value) {
-        this(new TypeString(value));
+        this(createString(value));
     }
 
     /**
@@ -40,7 +43,7 @@ public class HiddenString extends AbstractHiddenType {
      */
     @Override
     public TypeString toSType() {
-        return new TypeString(this.typeString.getValue());
+        return createString(typeString);
     }
 
     @Override
@@ -58,7 +61,7 @@ public class HiddenString extends AbstractHiddenType {
     @Override
     public HiddenString toHiddenString() {
         TypeString computed = this.typeString.toTypeString();
-        return new HiddenString(computed);
+        return createHiddenString(computed);
     }
 
     /**

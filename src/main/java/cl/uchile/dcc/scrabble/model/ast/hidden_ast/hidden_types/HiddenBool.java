@@ -1,5 +1,10 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBinary;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenString;
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBool;
+
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HType;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
@@ -23,7 +28,7 @@ public class HiddenBool extends AbstractHiddenType {
      * @param typeBool a type bool
      */
     public HiddenBool(TypeBool typeBool) {
-        this.typeBool = typeBool;
+        this.typeBool = createBool(typeBool);
     }
 
     /**
@@ -32,7 +37,7 @@ public class HiddenBool extends AbstractHiddenType {
      * @param value a boolean
      */
     public HiddenBool(boolean value) {
-        this(new TypeBool(value));
+        this(createBool(value));
     }
 
     /**
@@ -42,7 +47,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public TypeBool toSType() {
-        return new TypeBool(this.typeBool.getValue());
+        return createBool(typeBool);
     }
 
     @Override
@@ -60,7 +65,7 @@ public class HiddenBool extends AbstractHiddenType {
     @Override
     public HiddenBool toHiddenBool() {
         TypeBool computed = this.typeBool.toTypeBool();
-        return new HiddenBool(computed);
+        return createHiddenBool(computed);
     }
 
     /**
@@ -71,7 +76,7 @@ public class HiddenBool extends AbstractHiddenType {
     @Override
     public HiddenString toHiddenString() {
         TypeString computed = this.typeBool.toTypeString();
-        return new HiddenString(computed);
+        return createHiddenString(computed);
     }
 
     /**
@@ -147,7 +152,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType neg() {
-        return new HiddenBool((TypeBool) this.typeBool.neg());
+        return createHiddenBool((TypeBool) this.typeBool.neg());
     }
 
     /**
@@ -156,7 +161,7 @@ public class HiddenBool extends AbstractHiddenType {
     @Override
     public HType andWithBool(HiddenBool wBool) {
         TypeBool computed = (TypeBool) this.typeBool.andWithBool(wBool.toSType());
-        return new HiddenBool(computed);
+        return createHiddenBool(computed);
     }
 
     /**
@@ -167,7 +172,7 @@ public class HiddenBool extends AbstractHiddenType {
     @Override
     public HType andWithBinary(HiddenBinary wBinary) {
         TypeBinary computed = (TypeBinary) this.typeBool.andWithBinary(wBinary.toSType());
-        return new HiddenBinary(computed);
+        return createHiddenBinary(computed);
     }
 
     /**
@@ -178,7 +183,7 @@ public class HiddenBool extends AbstractHiddenType {
     @Override
     public HType orWithBool(HiddenBool wBool) {
         TypeBool computed = (TypeBool) this.typeBool.orWithBool(wBool.toSType());
-        return new HiddenBool(computed);
+        return createHiddenBool(computed);
     }
 
     /**
@@ -189,6 +194,6 @@ public class HiddenBool extends AbstractHiddenType {
     @Override
     public HType orWithBinary(HiddenBinary wBinary) {
         TypeBinary computed = (TypeBinary) this.typeBool.orWithBinary(wBinary.toSType());
-        return new HiddenBinary(computed);
+        return createHiddenBinary(computed);
     }
 }
