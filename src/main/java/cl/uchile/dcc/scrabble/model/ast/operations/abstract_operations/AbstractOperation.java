@@ -31,7 +31,7 @@ public abstract class AbstractOperation implements Operation {
     }
 
     /**
-     * TODO: Actualizar doc Transform a {@code SType} into its equivalent {@code HType}. If the
+     * Transform a {@code SType} into its equivalent {@code HType}. If the
      * argument is a {@code HType} or an {@code HiddenAST}, it does nothing.
      *
      * @return a transformation
