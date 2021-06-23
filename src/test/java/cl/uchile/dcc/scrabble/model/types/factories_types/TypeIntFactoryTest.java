@@ -20,7 +20,7 @@ class TypeIntFactoryTest extends BaseTypeTest {
     }
 
     @AfterEach
-    void tearDown() {
+    protected void tearDown() {
         factory.clear();
     }
 

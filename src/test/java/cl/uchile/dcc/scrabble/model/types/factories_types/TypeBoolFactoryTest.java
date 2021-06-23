@@ -19,7 +19,7 @@ class TypeBoolFactoryTest extends BaseTypeTest {
     }
 
     @AfterEach
-    void tearDown() {
+    protected void tearDown() {
         factory.clear();
     }
 

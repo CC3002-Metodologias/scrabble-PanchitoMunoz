@@ -1,6 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.AbstractRandomValues;
+import cl.uchile.dcc.scrabble.model.types.factories_types.TypeBinaryFactory;
+import cl.uchile.dcc.scrabble.model.types.factories_types.TypeBoolFactory;
+import cl.uchile.dcc.scrabble.model.types.factories_types.TypeFloatFactory;
+import cl.uchile.dcc.scrabble.model.types.factories_types.TypeIntFactory;
+import cl.uchile.dcc.scrabble.model.types.factories_types.TypeStringFactory;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,5 +59,14 @@ public abstract class BaseTypeTest extends AbstractRandomValues {
         typeString1 = new TypeString(aString1);
         typeString2 = new TypeString(aString2);
         listRandSType.add(typeString1);
+    }
+
+    protected void tearDown() {
+        // Clears the cache
+        TypeBinaryFactory.getInstance().clear();
+        TypeBoolFactory.getInstance().clear();
+        TypeFloatFactory.getInstance().clear();
+        TypeIntFactory.getInstance().clear();
+        TypeStringFactory.getInstance().clear();
     }
 }
