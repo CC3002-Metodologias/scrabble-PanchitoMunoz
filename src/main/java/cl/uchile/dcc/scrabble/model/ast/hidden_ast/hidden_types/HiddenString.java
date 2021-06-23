@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types.AbstractHiddenType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**

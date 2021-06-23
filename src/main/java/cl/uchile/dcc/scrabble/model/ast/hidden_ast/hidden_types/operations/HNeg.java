@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HType;
 
 /**
  * TODO: DOCUMENTAR
