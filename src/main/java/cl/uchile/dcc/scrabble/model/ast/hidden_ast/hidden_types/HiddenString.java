@@ -39,7 +39,7 @@ public class HiddenString extends AbstractHiddenType {
      * @return the instance in the wrapper
      */
     @Override
-    public TypeString getAdaptee() {
+    public TypeString toSType() {
         return new TypeString(this.typeString.getValue());
     }
 

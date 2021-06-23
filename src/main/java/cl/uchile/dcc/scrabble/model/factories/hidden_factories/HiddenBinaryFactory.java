@@ -60,7 +60,7 @@ public class HiddenBinaryFactory implements GeneralTypeFactory {
      * @return a {@code HiddenBinary} instance.
      */
     public HiddenBinary create(HiddenBinary instance) {
-        int keyValue = instance.getAdaptee().getValueAsInt();
+        int keyValue = instance.toSType().getValueAsInt();
         if (!hashMapCache.containsKey(keyValue)) {
             hashMapCache.put(keyValue, instance);
         }

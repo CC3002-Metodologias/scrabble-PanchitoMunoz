@@ -3,7 +3,6 @@ package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -55,7 +54,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public SType calculate() {
-        return adaptee.calculate().getAdaptee();
+        return adaptee.calculate().toSType();
     }
 
     /**

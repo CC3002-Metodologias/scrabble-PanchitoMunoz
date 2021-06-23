@@ -60,7 +60,7 @@ public class HiddenBoolFactory implements GeneralTypeFactory {
      * @return a {@code HiddenBool} instance.
      */
     public HiddenBool create(HiddenBool instance) {
-        boolean keyValue = instance.getAdaptee().getValue();
+        boolean keyValue = instance.toSType().getValue();
         if (!hashMapCache.containsKey(keyValue)) {
             hashMapCache.put(keyValue, instance);
         }

@@ -80,8 +80,8 @@ class HiddenBoolTest extends BaseHTypeTest {
 
     @Test
     void testGetAdaptee() {
-        assertEquals(trueTypeBool, trueWBool.getAdaptee(), "Method getAdaptee does not works.");
-        assertEquals(falseTypeBool, falseWBool.getAdaptee(), "Method getAdaptee does not works.");
+        assertEquals(trueTypeBool, trueWBool.toSType(), "Method getAdaptee does not works.");
+        assertEquals(falseTypeBool, falseWBool.toSType(), "Method getAdaptee does not works.");
     }
 
     @Test

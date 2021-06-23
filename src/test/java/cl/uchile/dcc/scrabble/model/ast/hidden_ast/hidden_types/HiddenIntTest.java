@@ -74,7 +74,7 @@ class HiddenIntTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testGetAdaptee() {
-        assertEquals(typeInt1, wInt1.getAdaptee(),
+        assertEquals(typeInt1, wInt1.toSType(),
             "Method getAdaptee does not works." + messageSeed);
     }
 

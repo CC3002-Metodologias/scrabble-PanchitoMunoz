@@ -38,7 +38,7 @@ public abstract class AbstractHiddenType implements HType {
     @Override
     public String asString(int space) {
         String tab = " ".repeat(space);
-        return tab + this.getAdaptee().toString();
+        return tab + this.toSType().toString();
     }
 
     /**
@@ -50,7 +50,7 @@ public abstract class AbstractHiddenType implements HType {
      */
     @Override
     public int hashCode() {
-        return this.getAdaptee().hashCode();
+        return this.toSType().hashCode();
     }
 
     /**
@@ -70,7 +70,7 @@ public abstract class AbstractHiddenType implements HType {
             return false;
         }
         HType hType = (HType) obj;
-        return this.getAdaptee().equals(hType.getAdaptee());
+        return this.toSType().equals(hType.toSType());
     }
 
     /**
@@ -128,8 +128,8 @@ public abstract class AbstractHiddenType implements HType {
      */
     @Override
     public HType addWithString(HiddenString wString) {
-        TypeString computed = this.getAdaptee().addWithString(
-            wString.getAdaptee());
+        TypeString computed = this.toSType().addWithString(
+            wString.toSType());
         return new HiddenString(computed);
     }
 

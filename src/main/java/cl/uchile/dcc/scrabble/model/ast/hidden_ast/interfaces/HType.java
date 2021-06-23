@@ -5,7 +5,6 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HAdd;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HAnd;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HDiv;
@@ -42,7 +41,7 @@ public interface HType extends HiddenAST, HAdd, HSub, HMult, HDiv, HAnd, HOr, HN
      *
      * @return the instance in the wrapper
      */
-    SType getAdaptee();
+    SType toSType();
 
     /**
      * Transform the current instance to a {@code HiddenBinary}.

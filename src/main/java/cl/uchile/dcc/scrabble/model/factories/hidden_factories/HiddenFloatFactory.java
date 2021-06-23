@@ -60,7 +60,7 @@ public class HiddenFloatFactory implements GeneralTypeFactory {
      * @return a {@code HiddenFloat} instance.
      */
     public HiddenFloat create(HiddenFloat instance) {
-        double keyValue = instance.getAdaptee().getValue();
+        double keyValue = instance.toSType().getValue();
         if (!hashMapCache.containsKey(keyValue)) {
             hashMapCache.put(keyValue, instance);
         }

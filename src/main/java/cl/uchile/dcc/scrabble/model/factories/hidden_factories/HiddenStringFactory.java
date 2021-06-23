@@ -60,7 +60,7 @@ public class HiddenStringFactory implements GeneralTypeFactory {
      * @return a {@code HiddenString} instance.
      */
     public HiddenString create(HiddenString instance) {
-        String keyValue = instance.getAdaptee().getValue();
+        String keyValue = instance.toSType().getValue();
         if (!hashMapCache.containsKey(keyValue)) {
             hashMapCache.put(keyValue, instance);
         }
