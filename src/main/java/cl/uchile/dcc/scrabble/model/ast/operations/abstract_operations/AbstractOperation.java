@@ -3,6 +3,11 @@ package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
+import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBinary;
+import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
+import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
+import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeInt;
+import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -26,21 +31,14 @@ public abstract class AbstractOperation implements Operation {
     }
 
     /**
-     * Get the left children of the adaptee.
+     * TODO: Actualizar doc Transform a {@code SType} into its equivalent {@code HType}. If the
+     * argument is a {@code HType} or an {@code HiddenAST}, it does nothing.
      *
-     * @return a hidden AST
+     * @return a transformation
      */
-    protected HiddenAST getLeftChildren() {
-        return adaptee.getLeftChildren();
-    }
-
-    /**
-     * Get the right children of the adaptee.
-     *
-     * @return a hidden AST
-     */
-    protected HiddenAST getRightChildren() {
-        return adaptee.getRightChildren();
+    @Override
+    public HiddenAST toHiddenAST() {
+        return adaptee;
     }
 
     /**
@@ -70,8 +68,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public Operation toTypeBinary() {
-        return null;
-//        return adaptee.toHiddenBinary();
+        return new ToTypeBinary(this);
     }
 
     /**
@@ -81,8 +78,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public Operation toTypeBool() {
-        return null;
-//        return adaptee.toHiddenBool().toSType();
+        return new ToTypeBool(this);
     }
 
     /**
@@ -92,8 +88,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public Operation toTypeFloat() {
-        return null;
-//        return adaptee.toHiddenFloat().toSType();
+        return new ToTypeFloat(this);
     }
 
     /**
@@ -103,8 +98,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public Operation toTypeInt() {
-        return null;
-//        return adaptee.toHiddenInt().toSType();
+        return new ToTypeInt(this);
     }
 
     /**
@@ -114,7 +108,6 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public Operation toTypeString() {
-        return null;
-//        return adaptee.toHiddenString().toSType();
+        return new ToTypeString(this);
     }
 }

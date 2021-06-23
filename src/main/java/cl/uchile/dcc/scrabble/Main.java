@@ -41,22 +41,22 @@ public class Main {
                     new HiddenInt(25),
                     new HiddenBinary("0101")
                 ).toHiddenBinary()
-            )
+            ).toHiddenInt().toHiddenFloat()
         );
         System.out.println("Representación: " + addAST1);
         System.out.println("Resultado: " + addAST1.calculate());
-//        Add addAST = new Add(
-//            new TypeFloat(6.9),
-//            new Or(
-//                new TypeBinary("1000"),
-//                (new Sub(
-//                    new TypeInt(25),
-//                    new TypeBinary("0101")
-//                )).toTypeBinary()
-//            )
-//        );
-//        System.out.println("Representación: " + addAST);
-//        System.out.println("Resultado: " + addAST.calculate());
+        Add addAST = new Add(
+            new TypeFloat(6.9),
+            new Or(
+                new TypeBinary("1000"),
+                (new Sub(
+                    new TypeInt(25),
+                    new TypeBinary("0101")
+                )).toTypeBinary()
+            ).toTypeInt().toTypeFloat()
+        );
+        System.out.println("Representación: " + addAST);
+        System.out.println("Resultado: " + addAST.calculate());
 //        AST addAST3 = new Or(
 //            new Add(
 //                new TypeBinary("10101"),

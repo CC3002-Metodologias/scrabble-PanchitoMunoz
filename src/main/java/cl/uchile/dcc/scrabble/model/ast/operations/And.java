@@ -31,15 +31,4 @@ public class And extends AbstractOperation {
     public And(AST leftValue, AST rightValue) {
         this(new HiddenAnd(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
     }
-
-    /**
-     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
-     * HType} or an {@code HiddenAST}, it does nothing.
-     *
-     * @return a transformation
-     */
-    @Override
-    public HiddenAnd toHiddenAST() {
-        return new HiddenAnd(getLeftChildren(), getRightChildren());
-    }
 }

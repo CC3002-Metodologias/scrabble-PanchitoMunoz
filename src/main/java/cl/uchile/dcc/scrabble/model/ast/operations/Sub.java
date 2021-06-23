@@ -32,14 +32,4 @@ public class Sub extends AbstractOperation {
         this(new HiddenSub(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
     }
 
-    /**
-     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
-     * HType} or an {@code HiddenAST}, it does nothing.
-     *
-     * @return a transformation
-     */
-    @Override
-    public HiddenSub toHiddenAST() {
-        return new HiddenSub(getLeftChildren(), getRightChildren());
-    }
 }
