@@ -14,21 +14,12 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
 public class Add extends AbstractOperation {
 
     /**
-     * Constructor by default.
-     *
-     * @param adaptee a HiddenOperation to adapt
-     */
-    protected Add(HiddenOperation adaptee) {
-        super(adaptee);
-    }
-
-    /**
      * Constructor.
      *
      * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Add(AST leftValue, AST rightValue) {
-        this(new HiddenAdd(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+        super(new HiddenAdd(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
     }
 }

@@ -14,22 +14,13 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
 public class Or extends AbstractOperation {
 
     /**
-     * Constructor by default.
-     *
-     * @param adaptee a HiddenOperation to adapt
-     */
-    protected Or(HiddenOperation adaptee) {
-        super(adaptee);
-    }
-
-    /**
      * Constructor.
      *
      * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Or(AST leftValue, AST rightValue) {
-        this(new HiddenOr(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+        super(new HiddenOr(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
     }
 
 }

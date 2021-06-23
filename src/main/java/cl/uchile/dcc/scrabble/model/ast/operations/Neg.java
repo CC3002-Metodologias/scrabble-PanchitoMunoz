@@ -14,21 +14,12 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
 public class Neg extends AbstractOperation {
 
     /**
-     * Constructor by default.
-     *
-     * @param adaptee a HiddenOperation to adapt
-     */
-    protected Neg(HiddenOperation adaptee) {
-        super(adaptee);
-    }
-
-    /**
      * Constructor.
      *
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Neg(AST value) {
-        this(new HiddenNeg(value.toHiddenAST()));
+        super(new HiddenNeg(value.toHiddenAST()));
     }
 
 }

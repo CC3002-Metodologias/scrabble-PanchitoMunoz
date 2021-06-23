@@ -15,20 +15,11 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
 public class ToTypeString extends AbstractOperation {
 
     /**
-     * Constructor by default.
-     *
-     * @param adaptee a HiddenOperation to adapt
-     */
-    protected ToTypeString(HiddenOperation adaptee) {
-        super(adaptee);
-    }
-
-    /**
      * Constructor.
      *
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public ToTypeString(AST value) {
-        this(new ToHiddenString(value.toHiddenAST()));
+        super(new ToHiddenString(value.toHiddenAST()));
     }
 }

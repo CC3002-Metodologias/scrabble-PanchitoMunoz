@@ -16,21 +16,11 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
 public class ToTypeFloat extends AbstractOperation {
 
     /**
-     * Constructor by default.
-     *
-     * @param adaptee a HiddenOperation to adapt
-     */
-    protected ToTypeFloat(
-        HiddenOperation adaptee) {
-        super(adaptee);
-    }
-
-    /**
      * Constructor.
      *
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public ToTypeFloat(AST value) {
-        this(new ToHiddenFloat(value.toHiddenAST()));
+        super(new ToHiddenFloat(value.toHiddenAST()));
     }
 }
