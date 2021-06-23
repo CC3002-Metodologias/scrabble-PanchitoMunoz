@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types.HTypeFactory.createHiddenFloat;
 import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createFloat;
 import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createString;
 
@@ -232,7 +233,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return a transformation
      */
     @Override
-    public HiddenAST toHiddenAST() {
-        return new HiddenFloat(createFloat(this));
+    public HiddenFloat toHiddenAST() {
+        return createHiddenFloat(this);
     }
 }

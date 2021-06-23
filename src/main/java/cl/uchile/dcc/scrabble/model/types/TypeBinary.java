@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.factories_types.HTypeFactory.createHiddenBinary;
 import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createBinary;
 import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createFloat;
 import static cl.uchile.dcc.scrabble.model.types.factories_types.STypeFactory.createInt;
@@ -413,6 +414,6 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public HiddenBinary toHiddenAST() {
-        return new HiddenBinary(createBinary(this));
+        return createHiddenBinary(this);
     }
 }
