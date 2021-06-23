@@ -42,6 +42,6 @@ public class HiddenAdd extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asString(space, "+", "Add");
+        return asStringForOperations(space, "+", "Add");
     }
 }

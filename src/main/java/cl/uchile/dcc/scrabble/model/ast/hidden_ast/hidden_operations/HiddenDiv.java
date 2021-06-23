@@ -42,6 +42,6 @@ public class HiddenDiv extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asString(space, "/", "Div");
+        return asStringForOperations(space, "/", "Div");
     }
 }

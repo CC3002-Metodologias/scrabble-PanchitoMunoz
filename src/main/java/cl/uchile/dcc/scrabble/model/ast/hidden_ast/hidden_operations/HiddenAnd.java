@@ -42,6 +42,6 @@ public class HiddenAnd extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asString(space, "and", "And");
+        return asStringForOperations(space, "and", "And");
     }
 }

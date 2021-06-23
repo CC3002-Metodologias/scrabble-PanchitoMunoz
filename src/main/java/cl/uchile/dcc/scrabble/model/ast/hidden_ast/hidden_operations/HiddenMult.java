@@ -42,6 +42,6 @@ public class HiddenMult extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asString(space, "*", "Mult");
+        return asStringForOperations(space, "*", "Mult");
     }
 }

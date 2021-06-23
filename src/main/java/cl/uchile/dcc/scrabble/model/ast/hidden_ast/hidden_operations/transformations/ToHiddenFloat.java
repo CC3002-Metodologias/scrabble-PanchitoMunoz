@@ -42,6 +42,6 @@ public class ToHiddenFloat extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asStringOneValue(space, ".toTypeFloat()");
+        return asStringForTransformation(space, ".toTypeFloat()");
     }
 }

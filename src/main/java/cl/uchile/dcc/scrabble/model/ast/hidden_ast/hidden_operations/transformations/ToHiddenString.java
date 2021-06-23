@@ -42,6 +42,6 @@ public class ToHiddenString extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asStringOneValue(space, ".toTypeString()");
+        return asStringForTransformation(space, ".toTypeString()");
     }
 }

@@ -93,7 +93,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @param name           the name of the class. E.g.: "Add", "Sub"
      * @return the string representation.
      */
-    protected String asString(int space, String operatorSymbol, String name) {
+    protected String asStringForOperations(int space, String operatorSymbol, String name) {
         String tab = " ".repeat(space);
         return tab + name + "(\n"
             + leftChildren.asString(space + 2) + ' ' + operatorSymbol + '\n'
@@ -107,7 +107,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @param command name of the command
      * @return the string representation
      */
-    protected String asStringOneValue(int space,String command) {
+    protected String asStringForTransformation(int space, String command) {
         return leftChildren.asString(space) + command;
     }
 

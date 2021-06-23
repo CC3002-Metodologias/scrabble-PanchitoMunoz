@@ -42,6 +42,6 @@ public class ToHiddenBool extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asStringOneValue(space, ".toTypeBool()");
+        return asStringForTransformation(space, ".toTypeBool()");
     }
 }

@@ -42,6 +42,6 @@ public class ToHiddenBinary extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asStringOneValue(space, ".toTypeBinary()");
+        return asStringForTransformation(space, ".toTypeBinary()");
     }
 }

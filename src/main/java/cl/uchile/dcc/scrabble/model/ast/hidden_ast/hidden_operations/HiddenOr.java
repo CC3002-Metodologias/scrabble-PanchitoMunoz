@@ -42,6 +42,6 @@ public class HiddenOr extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asString(space, "or", "Or");
+        return asStringForOperations(space, "or", "Or");
     }
 }

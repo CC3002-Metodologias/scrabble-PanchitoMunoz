@@ -42,6 +42,6 @@ public class HiddenSub extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asString(space, "-", "Sub");
+        return asStringForOperations(space, "-", "Sub");
     }
 }
