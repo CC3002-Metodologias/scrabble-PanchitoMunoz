@@ -1,6 +1,10 @@
 package cl.uchile.dcc.scrabble;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOr;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenSub;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.operations.Add;
@@ -29,29 +33,29 @@ public class Main {
         System.out.println(wFloat.add(wString));
         System.out.println(typeBinary.toHiddenAST());
         System.out.println(wString.sub(wBinary));
-//        HiddenAdd addAST1 = new HiddenAdd(
-//            new HiddenFloat(6.9),
-//            new HiddenOr(
-//                new HiddenBinary("1000"),
-//                new HiddenSub(
-//                    new HiddenInt(25),
-//                    new HiddenBinary("0101")
-//                ).toWrappedBinary()
-//            )
-//        );
-//        System.out.println("Representación: " + addAST1);
-//        System.out.println("Resultado: " + addAST1.calculate());
-        Add addAST = new Add(
-            new TypeFloat(6.9),
-            new Or(
-                new TypeBinary("1000"),
-                (new Sub(
-                    new TypeInt(25),
-                    new TypeBinary("0101")
-                )).toTypeBinary()
+        HiddenAdd addAST1 = new HiddenAdd(
+            new HiddenFloat(6.9),
+            new HiddenOr(
+                new HiddenBinary("1000"),
+                new HiddenSub(
+                    new HiddenInt(25),
+                    new HiddenBinary("0101")
+                ).toHiddenBinary()
             )
         );
-        System.out.println("Representación: " + addAST);
+        System.out.println("Representación: " + addAST1);
+        System.out.println("Resultado: " + addAST1.calculate());
+//        Add addAST = new Add(
+//            new TypeFloat(6.9),
+//            new Or(
+//                new TypeBinary("1000"),
+//                (new Sub(
+//                    new TypeInt(25),
+//                    new TypeBinary("0101")
+//                )).toTypeBinary()
+//            )
+//        );
+//        System.out.println("Representación: " + addAST);
 //        System.out.println("Resultado: " + addAST.calculate());
 //        AST addAST3 = new Or(
 //            new Add(

@@ -1,11 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.interfaces;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
  * This interface is to define the different types of operations that exists. This is the composite
@@ -22,33 +17,33 @@ public interface Operation extends AST {
      *
      * @return a {@code TypeBinary}
      */
-    TypeBinary toTypeBinary();
+    Operation toTypeBinary();
 
     /**
      * Transform the current instance into a {@code TypeBool}.
      *
      * @return a {@code TypeBool}
      */
-    TypeBool toTypeBool();
+    Operation toTypeBool();
 
     /**
      * Transform the current instance into a {@code TypeFloat}.
      *
      * @return a {@code TypeFloat}
      */
-    TypeFloat toTypeFloat();
+    Operation toTypeFloat();
 
     /**
      * Transform the current instance into a {@code TypeInt}.
      *
      * @return a {@code TypeInt}
      */
-    TypeInt toTypeInt();
+    Operation toTypeInt();
 
     /**
      * Transform the current instance into a {@code TypeString}.
      *
      * @return a {@code TypeString}
      */
-    TypeString toTypeString();
+    Operation toTypeString();
 }

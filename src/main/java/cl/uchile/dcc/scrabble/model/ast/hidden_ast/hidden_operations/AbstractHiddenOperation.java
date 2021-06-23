@@ -1,13 +1,15 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
+
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenString;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 
 /**
  * todo: documentar
@@ -29,6 +31,15 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     public AbstractHiddenOperation(HiddenAST leftValue, HiddenAST rightValue) {
         leftChildren = leftValue;
         rightChildren = rightValue;
+    }
+
+    /**
+     * Constructor with one parameter. It can receive an {@code HiddenOperation} or a {@code HType}.
+     *
+     * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
+     */
+    public AbstractHiddenOperation(HiddenAST value) {
+        this(value, createHiddenBool(true));
     }
 
     /**
@@ -91,6 +102,16 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     }
 
     /**
+     * To use template pattern in asString
+     * @param space number of spaces to ident
+     * @param command name of the command
+     * @return the string representation
+     */
+    protected String asStringOneValue(int space,String command) {
+        return leftChildren.asString(space) + command;
+    }
+
+    /**
      * A String representation of the current instance.
      *
      * @return a string representation
@@ -106,8 +127,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenBinary}
      */
     @Override
-    public HiddenBinary toHiddenBinary() {
-        return this.calculate().toHiddenBinary();
+    public HiddenOperation toHiddenBinary() {
+        return new ToHiddenBinary(this);
     }
 
     /**
@@ -116,8 +137,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenBool}
      */
     @Override
-    public HiddenBool toHiddenBool() {
-        return this.calculate().toHiddenBool();
+    public HiddenOperation toHiddenBool() {
+        return new ToHiddenBool(this);
     }
 
     /**
@@ -126,8 +147,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenFloat}
      */
     @Override
-    public HiddenFloat toHiddenFloat() {
-        return this.calculate().toHiddenFloat();
+    public HiddenOperation toHiddenFloat() {
+        return new ToHiddenFloat(this);
     }
 
     /**
@@ -136,8 +157,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenInt}
      */
     @Override
-    public HiddenInt toHiddenInt() {
-        return this.calculate().toHiddenInt();
+    public HiddenOperation toHiddenInt() {
+        return new ToHiddenInt(this);
     }
 
     /**
@@ -146,7 +167,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return a {@code HiddenString}
      */
     @Override
-    public HiddenString toHiddenString() {
-        return this.calculate().toHiddenString();
+    public HiddenOperation toHiddenString() {
+        return new ToHiddenString(this);
     }
 }

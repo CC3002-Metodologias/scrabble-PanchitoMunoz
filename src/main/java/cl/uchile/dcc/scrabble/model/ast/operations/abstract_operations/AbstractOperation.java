@@ -3,10 +3,6 @@ package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -73,8 +69,9 @@ public abstract class AbstractOperation implements Operation {
      * @return a {@code TypeBinary}
      */
     @Override
-    public TypeBinary toTypeBinary() {
-        return adaptee.toHiddenBinary().getAdaptee();
+    public Operation toTypeBinary() {
+        return null;
+//        return adaptee.toHiddenBinary();
     }
 
     /**
@@ -83,8 +80,9 @@ public abstract class AbstractOperation implements Operation {
      * @return a {@code TypeBool}
      */
     @Override
-    public TypeBool toTypeBool() {
-        return adaptee.toHiddenBool().getAdaptee();
+    public Operation toTypeBool() {
+        return null;
+//        return adaptee.toHiddenBool().toSType();
     }
 
     /**
@@ -93,8 +91,9 @@ public abstract class AbstractOperation implements Operation {
      * @return a {@code TypeFloat}
      */
     @Override
-    public TypeFloat toTypeFloat() {
-        return adaptee.toHiddenFloat().getAdaptee();
+    public Operation toTypeFloat() {
+        return null;
+//        return adaptee.toHiddenFloat().toSType();
     }
 
     /**
@@ -103,8 +102,9 @@ public abstract class AbstractOperation implements Operation {
      * @return a {@code TypeInt}
      */
     @Override
-    public TypeInt toTypeInt() {
-        return adaptee.toHiddenInt().getAdaptee();
+    public Operation toTypeInt() {
+        return null;
+//        return adaptee.toHiddenInt().toSType();
     }
 
     /**
@@ -113,7 +113,8 @@ public abstract class AbstractOperation implements Operation {
      * @return a {@code TypeString}
      */
     @Override
-    public TypeString toTypeString() {
-        return adaptee.toHiddenString().getAdaptee();
+    public Operation toTypeString() {
+        return null;
+//        return adaptee.toHiddenString().toSType();
     }
 }
