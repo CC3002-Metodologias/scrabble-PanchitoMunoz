@@ -39,7 +39,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
      */
     public AbstractHiddenOperation(HiddenAST value) {
-        this(value, createHiddenBool(true));
+        this(value, createHiddenBool(true)); // Create a dummy variable
     }
 
     /**
@@ -69,19 +69,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      *
      * @return an HiddenAST
      */
-    @Override
-    public HiddenAST getLeftChildren() {
+    protected HiddenAST getLeftChildren() {
         return leftChildren;
-    }
-
-    /**
-     * Get the right children.
-     *
-     * @return an HiddenAST
-     */
-    @Override
-    public HiddenAST getRightChildren() {
-        return rightChildren;
     }
 
     /**

@@ -15,20 +15,6 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformat
 public interface HiddenOperation extends HiddenAST {
 
     /**
-     * Get the left children.
-     *
-     * @return an HiddenAST
-     */
-    HiddenAST getLeftChildren();
-
-    /**
-     * Get the right children.
-     *
-     * @return an HiddenAST
-     */
-    HiddenAST getRightChildren();
-
-    /**
      * Transform the current instance into a {@code HiddenBinary}.
      *
      * @return a {@code HiddenBinary}

@@ -65,7 +65,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public int hashCode() {
-        return Objects.hash(binaryToInt(value));
+        return Objects.hash(this.getValueAsInt());
     }
 
     /**
