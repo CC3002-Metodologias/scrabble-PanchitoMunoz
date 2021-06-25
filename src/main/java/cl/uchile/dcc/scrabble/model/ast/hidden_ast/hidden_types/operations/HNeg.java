@@ -15,5 +15,7 @@ public interface HNeg {
      *
      * @return the negation.
      */
-    HType neg();
+    default HType neg() {
+        return null;
+    }
 }

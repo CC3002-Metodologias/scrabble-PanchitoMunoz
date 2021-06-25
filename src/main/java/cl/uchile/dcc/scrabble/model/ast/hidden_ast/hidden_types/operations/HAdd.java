@@ -21,30 +21,42 @@ public interface HAdd {
      * @param hType other type to sum
      * @return the sum
      */
-    HType add(HType hType);
+    default HType add(HType hType) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code add}
      */
-    HType addWithString(HiddenString wString);
+    default HType addWithString(HiddenString wString) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code add}
      */
-    HType addWithBool(HiddenBool wBool);
+    default HType addWithBool(HiddenBool wBool) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code add}
      */
-    HType addWithBinary(HiddenBinary wBinary);
+    default HType addWithBinary(HiddenBinary wBinary) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code add}
      */
-    HType addWithFloat(HiddenFloat wFloat);
+    default HType addWithFloat(HiddenFloat wFloat) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code add}
      */
-    HType addWithInt(HiddenInt wInt);
+    default HType addWithInt(HiddenInt wInt) {
+        return null;
+    }
 }

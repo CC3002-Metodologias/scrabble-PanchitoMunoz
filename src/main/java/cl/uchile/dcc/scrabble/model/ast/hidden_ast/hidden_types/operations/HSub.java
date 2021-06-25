@@ -21,30 +21,42 @@ public interface HSub {
      * @param hType another number
      * @return the subtraction
      */
-    HType sub(HType hType);
+    default HType sub(HType hType) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code sub}
      */
-    HType subWithString(HiddenString wrappedString);
+    default HType subWithString(HiddenString wrappedString) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code sub}
      */
-    HType subWithBool(HiddenBool wrappedBool);
+    default HType subWithBool(HiddenBool wrappedBool) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code sub}
      */
-    HType subWithBinary(HiddenBinary wBinary);
+    default HType subWithBinary(HiddenBinary wBinary) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code sub}
      */
-    HType subWithFloat(HiddenFloat wFloat);
+    default HType subWithFloat(HiddenFloat wFloat) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code sub}
      */
-    HType subWithInt(HiddenInt wInt);
+    default HType subWithInt(HiddenInt wInt) {
+        return null;
+    }
 }

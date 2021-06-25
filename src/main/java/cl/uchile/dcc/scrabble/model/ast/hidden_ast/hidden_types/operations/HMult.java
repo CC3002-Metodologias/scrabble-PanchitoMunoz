@@ -21,30 +21,42 @@ public interface HMult {
      * @param hType another number
      * @return the multiplication
      */
-    HType mult(HType hType);
+    default HType mult(HType hType) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code mult}
      */
-    HType multWithString(HiddenString wrappedString);
+    default HType multWithString(HiddenString wrappedString) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code mult}
      */
-    HType multWithBool(HiddenBool wrappedBool);
+    default HType multWithBool(HiddenBool wrappedBool) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code mult}
      */
-    HType multWithBinary(HiddenBinary wBinary);
+    default HType multWithBinary(HiddenBinary wBinary) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code mult}
      */
-    HType multWithFloat(HiddenFloat wFloat);
+    default HType multWithFloat(HiddenFloat wFloat) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code mult}
      */
-    HType multWithInt(HiddenInt wInt);
+    default HType multWithInt(HiddenInt wInt) {
+        return null;
+    }
 }

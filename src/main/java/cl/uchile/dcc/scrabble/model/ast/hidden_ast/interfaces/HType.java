@@ -35,7 +35,6 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  */
 public interface HType extends HiddenAST, HAdd, HSub, HMult, HDiv, HAnd, HOr, HNeg {
 
-
     /**
      * Gets the current instance in the wrapper
      *
@@ -48,33 +47,43 @@ public interface HType extends HiddenAST, HAdd, HSub, HMult, HDiv, HAnd, HOr, HN
      *
      * @return a {@code HiddenBinary} equivalent
      */
-    HiddenBinary toHiddenBinary();
+    default HiddenBinary toHiddenBinary() {
+        return null;
+    }
 
     /**
      * Transform the current instance to a {@code HiddenBool}.
      *
      * @return a {@code HiddenBool} equivalent
      */
-    HiddenBool toHiddenBool();
+    default HiddenBool toHiddenBool() {
+        return null;
+    }
 
     /**
      * Transform the current instance to a {@code HiddenFloat}.
      *
      * @return a {@code HiddenFloat} equivalent
      */
-    HiddenFloat toHiddenFloat();
+    default HiddenFloat toHiddenFloat() {
+        return null;
+    }
 
     /**
      * Transform the current instance to a {@code HiddenInt}.
      *
      * @return a {@code HiddenInt} equivalent
      */
-    HiddenInt toHiddenInt();
+    default HiddenInt toHiddenInt() {
+        return null;
+    }
 
     /**
      * Transform the current instance to a {@code HiddenString}.
      *
      * @return a {@code HiddenString} equivalent
      */
-    HiddenString toHiddenString();
+    default HiddenString toHiddenString() {
+        return null;
+    }
 }

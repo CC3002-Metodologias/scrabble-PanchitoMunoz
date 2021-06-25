@@ -58,56 +58,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public String toString() {
-        return adaptee.asString(0);
+        return adaptee.toString();
     }
 
-    /**
-     * Transform the current instance into a {@code TypeBinary}.
-     *
-     * @return a {@code TypeBinary}
-     */
-    @Override
-    public Operation toTypeBinary() {
-        return new ToTypeBinary(this);
-    }
-
-    /**
-     * Transform the current instance into a {@code TypeBool}.
-     *
-     * @return a {@code TypeBool}
-     */
-    @Override
-    public Operation toTypeBool() {
-        return new ToTypeBool(this);
-    }
-
-    /**
-     * Transform the current instance into a {@code TypeFloat}.
-     *
-     * @return a {@code TypeFloat}
-     */
-    @Override
-    public Operation toTypeFloat() {
-        return new ToTypeFloat(this);
-    }
-
-    /**
-     * Transform the current instance into a {@code TypeInt}.
-     *
-     * @return a {@code TypeInt}
-     */
-    @Override
-    public Operation toTypeInt() {
-        return new ToTypeInt(this);
-    }
-
-    /**
-     * Transform the current instance into a {@code TypeString}.
-     *
-     * @return a {@code TypeString}
-     */
-    @Override
-    public Operation toTypeString() {
-        return new ToTypeString(this);
-    }
 }

@@ -21,30 +21,42 @@ public interface HOr {
      * @param hType another logical
      * @return the conjunction
      */
-    HType or(HType hType);
+    default HType or(HType hType) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code or}
      */
-    HType orWithString(HiddenString wrappedString);
+    default HType orWithString(HiddenString wrappedString) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code or}
      */
-    HType orWithBool(HiddenBool wBool);
+    default HType orWithBool(HiddenBool wBool) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code or}
      */
-    HType orWithBinary(HiddenBinary wBinary);
+    default HType orWithBinary(HiddenBinary wBinary) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code or}
      */
-    HType orWithFloat(HiddenFloat wrappedFloat);
+    default HType orWithFloat(HiddenFloat wrappedFloat) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code or}
      */
-    HType orWithInt(HiddenInt wrappedInt);
+    default HType orWithInt(HiddenInt wrappedInt) {
+        return null;
+    }
 }

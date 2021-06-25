@@ -21,30 +21,42 @@ public interface HDiv {
      * @param hType another number
      * @return the division
      */
-    HType div(HType hType);
+    default HType div(HType hType) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code div}
      */
-    HType divWithString(HiddenString wrappedString);
+    default HType divWithString(HiddenString wrappedString) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code div}
      */
-    HType divWithBool(HiddenBool wrappedBool);
+    default HType divWithBool(HiddenBool wrappedBool) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code div}
      */
-    HType divWithBinary(HiddenBinary wBinary);
+    default HType divWithBinary(HiddenBinary wBinary) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code div}
      */
-    HType divWithFloat(HiddenFloat wFloat);
+    default HType divWithFloat(HiddenFloat wFloat) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code div}
      */
-    HType divWithInt(HiddenInt wInt);
+    default HType divWithInt(HiddenInt wInt) {
+        return null;
+    }
 }

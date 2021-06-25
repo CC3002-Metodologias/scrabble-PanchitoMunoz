@@ -21,30 +21,42 @@ public interface HAnd {
      * @param hType another logical
      * @return the disjunction
      */
-    HType and(HType hType);
+    default HType and(HType hType) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code and}
      */
-    HType andWithString(HiddenString wrappedString);
+    default HType andWithString(HiddenString wrappedString) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code and}
      */
-    HType andWithBool(HiddenBool wBool);
+    default HType andWithBool(HiddenBool wBool) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code and}
      */
-    HType andWithBinary(HiddenBinary wBinary);
+    default HType andWithBinary(HiddenBinary wBinary) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code and}
      */
-    HType andWithFloat(HiddenFloat wrappedFloat);
+    default HType andWithFloat(HiddenFloat wrappedFloat) {
+        return null;
+    }
 
     /**
      * To use double dispatch in {@code and}
      */
-    HType andWithInt(HiddenInt wrappedInt);
+    default HType andWithInt(HiddenInt wrappedInt) {
+        return null;
+    }
 }

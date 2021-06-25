@@ -1,5 +1,11 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBinary;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBool;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenString;
+
 /**
  * TODO: DOCUMENTAR
  *
@@ -27,33 +33,43 @@ public interface HiddenOperation extends HiddenAST {
      *
      * @return a {@code HiddenBinary}
      */
-    HiddenOperation toHiddenBinary();
+    default HiddenOperation toHiddenBinary() {
+        return new ToHiddenBinary(this);
+    }
 
     /**
      * Transform the current instance into a {@code HiddenBool}.
      *
      * @return a {@code HiddenBool}
      */
-    HiddenOperation toHiddenBool();
+    default HiddenOperation toHiddenBool() {
+        return new ToHiddenBool(this);
+    }
 
     /**
      * Transform the current instance into a {@code HiddenFloat}.
      *
      * @return a {@code HiddenFloat}
      */
-    HiddenOperation toHiddenFloat();
+    default HiddenOperation toHiddenFloat() {
+        return new ToHiddenFloat(this);
+    }
 
     /**
      * Transform the current instance into a {@code HiddenInt}.
      *
      * @return a {@code HiddenInt}
      */
-    HiddenOperation toHiddenInt();
+    default HiddenOperation toHiddenInt() {
+        return new ToHiddenInt(this);
+    }
 
     /**
      * Transform the current instance into a {@code HiddenString}.
      *
      * @return a {@code HiddenString}
      */
-    HiddenOperation toHiddenString();
+    default HiddenOperation toHiddenString() {
+        return new ToHiddenString(this);
+    }
 }
