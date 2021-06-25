@@ -70,13 +70,13 @@ public class TypeBool extends AbstractType implements SLogical {
     }
 
     /**
-     * Transforms the current type to a TypeString.
+     * Returns the value as {@code String}.
      *
-     * @return TypeString with a value equivalent to the current type.
+     * @return the current value as {@code String}
      */
     @Override
-    public TypeString toTypeString() {
-        return createString(Boolean.toString(this.value));
+    public String getValueAsString() {
+        return Boolean.toString(this.value);
     }
 
     /**

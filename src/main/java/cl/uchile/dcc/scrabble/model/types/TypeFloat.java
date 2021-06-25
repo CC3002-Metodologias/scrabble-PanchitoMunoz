@@ -55,23 +55,23 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     }
 
     /**
-     * Transforms the current type to a TypeString.
+     * Returns the value as {@code String}.
      *
-     * @return TypeString with a value equivalent to the current type.
+     * @return the current value as {@code String}
      */
     @Override
-    public TypeString toTypeString() {
-        return createString(Double.toString(this.value));
+    public String getValueAsString() {
+        return Double.toString(this.value);
     }
 
     /**
-     * Transforms the current type to a TypeFloat.
+     * Returns the value as {@code double}.
      *
-     * @return TypeFloat with a value equivalent to the current type.
+     * @return the current value as {@code double}
      */
     @Override
-    public TypeFloat toTypeFloat() {
-        return createFloat(this.value);
+    protected double getValueAsDouble() {
+        return this.value;
     }
 
     /**

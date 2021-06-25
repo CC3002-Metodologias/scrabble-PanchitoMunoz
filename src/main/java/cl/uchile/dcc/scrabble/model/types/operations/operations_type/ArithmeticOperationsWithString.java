@@ -1,13 +1,14 @@
-package cl.uchile.dcc.scrabble.model.types.operations.add;
+package cl.uchile.dcc.scrabble.model.types.operations.operations_type;
 
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
- * Interface for the addition operation. It is in case a String is sum with any type.
- * Currently this interface is for the other types.
+ * TODO: DOCUMENTAR
+ *
  * @author Francisco Muñoz Guajardo
+ * @create 2021/06/24 21:38
  */
-public interface IAddWithStr {
+public interface ArithmeticOperationsWithString {
     /**
      * Returns the add between the current type and a String Type.
      * @param typeString A string type who will be added to the current type.

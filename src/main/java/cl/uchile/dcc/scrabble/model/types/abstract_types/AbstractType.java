@@ -1,5 +1,8 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
+import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
+
+import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -37,4 +40,22 @@ public abstract class AbstractType implements SType {
     public SType calculate() {
         return this;
     }
+
+    /**
+     * Returns the value as {@code String}.
+     *
+     * @return the current value as {@code String}
+     */
+    abstract public String getValueAsString();
+
+    /**
+     * Transforms the current type to a {@code TypeString}.
+     *
+     * @return {@code TypeString} with a value equivalent to the current type.
+     */
+    @Override
+    public TypeString toTypeString() {
+        return createString(this.getValueAsString());
+    }
+
 }

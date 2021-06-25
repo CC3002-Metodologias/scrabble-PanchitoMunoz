@@ -29,15 +29,13 @@ import java.util.Objects;
  */
 public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticOperationsWithIntegers {
 
-    private final String value;
-
     /**
      * Constructor for the TypeBinary.
      *
      * @param value A String as a value.
      */
     public TypeBinary(String value) {
-        this.value = cleanBinary(value);
+        super(binaryToInt(value), cleanBinary(value));
     }
 
     /**
@@ -46,7 +44,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      * @return The value in the instance
      */
     public String getValue() {
-        return this.value;
+        return super.getValueAsBinary();
     }
 
     /**
@@ -54,8 +52,9 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      *
      * @return The value in the instance
      */
-    public int getValueAsInt() {
-        return binaryToInt(this.value);
+    @Override
+    public int getValueAsInt() {  // Make this method public
+        return super.getValueAsInt();
     }
 
     /**
@@ -76,48 +75,18 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     @Override
     public String toString() {
         return "TypeBinary{" +
-            "value='" + value + '\'' +
+            "value=" + this.getValue() +
             '}';
     }
 
     /**
-     * Transforms the current type to a TypeString.
+     * Returns the value as {@code String}.
      *
-     * @return TypeString with a value equivalent to the current type.
+     * @return the current value as {@code String}
      */
     @Override
-    public TypeString toTypeString() {
-        return createString(this.value);
-    }
-
-    /**
-     * Transforms the current type to a TypeFloat.
-     *
-     * @return TypeFloat with a value equivalent to the current type.
-     */
-    @Override
-    public TypeFloat toTypeFloat() {
-        return createFloat(this.getValueAsInt());
-    }
-
-    /**
-     * Transforms the current type to a TypeInt.
-     *
-     * @return TypeInt with a value equivalent to the current type.
-     */
-    @Override
-    public TypeInt toTypeInt() {
-        return createInt(this.getValueAsInt());
-    }
-
-    /**
-     * Transforms the current type to a TypeBinary.
-     *
-     * @return TypeBinary with a value equivalent to the current type.
-     */
-    @Override
-    public TypeBinary toTypeBinary() {
-        return createBinary(this.value);
+    public String getValueAsString() {
+        return this.getValue();
     }
 
     /**
@@ -127,7 +96,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public TypeBinary neg() {
-        return createBinary(oneComplement(this.value));
+        return createBinary(oneComplement(this.getValue()));
     }
 
     /**
@@ -150,7 +119,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.getValue() + this.value);
+        return createString(typeString.getValue() + this.getValue());
     }
 
     /**
@@ -183,7 +152,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SInteger addWithBinary(TypeBinary typeBinary) {
-        return createBinary(addTwoBinaries(typeBinary.value, this.value));
+        return createBinary(addTwoBinaries(typeBinary.getValue(), this.getValue()));
     }
 
     /**
@@ -370,7 +339,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SLogical andWithBool(TypeBool typeBool) {
-        return createBinary(boolAndBinary(typeBool.getValue(), this.value));
+        return createBinary(boolAndBinary(typeBool.getValue(), this.getValue()));
     }
 
     /**
@@ -381,7 +350,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SLogical orWithBool(TypeBool typeBool) {
-        return createBinary(boolOrBinary(typeBool.getValue(), this.value));
+        return createBinary(boolOrBinary(typeBool.getValue(), this.getValue()));
     }
 
     /**
@@ -392,7 +361,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SLogical andWithBinary(TypeBinary typeBinary) {
-        return createBinary(binaryAndBinary(typeBinary.value, this.value));
+        return createBinary(binaryAndBinary(typeBinary.getValue(), this.getValue()));
     }
 
     /**
@@ -403,7 +372,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SLogical orWithBinary(TypeBinary typeBinary) {
-        return createBinary(binaryOrBinary(typeBinary.value, this.value));
+        return createBinary(binaryOrBinary(typeBinary.getValue(), this.getValue()));
     }
 
     /**

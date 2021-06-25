@@ -26,4 +26,12 @@ public interface LogicalOperations {
      * @return The conjunction between the two types, returning the dominant type.
      */
     SLogical or(SLogical otherType);
+
+
+    /**
+     * Returns the negation of the current instance.
+     *
+     * @return The negation of the current instance.
+     */
+    SLogical neg();
 }

@@ -71,11 +71,11 @@ class TypeBinaryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testToString() {
-        assertEquals("TypeBinary{value='" + cleanBinary(aBinary1) + "'}", typeBinary1.toString(),
+        assertEquals("TypeBinary{value=" + cleanBinary(aBinary1) + "}", typeBinary1.toString(),
             "Method toString does not works." + messageSeed);
-        assertEquals("TypeBinary{value='" + cleanBinary(aBinary2) + "'}", typeBinary2.toString(),
+        assertEquals("TypeBinary{value=" + cleanBinary(aBinary2) + "}", typeBinary2.toString(),
             "Method toString does not works." + messageSeed);
-        assertNotEquals("TypeBinary{value='" + cleanBinary(aBinary2) + "'}", typeBinary1.toString(),
+        assertNotEquals("TypeBinary{value=" + cleanBinary(aBinary2) + "}", typeBinary1.toString(),
             "Method toString does not works." + messageSeed);
     }
 
