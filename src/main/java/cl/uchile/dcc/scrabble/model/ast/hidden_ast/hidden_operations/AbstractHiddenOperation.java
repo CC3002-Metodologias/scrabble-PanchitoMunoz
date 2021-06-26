@@ -3,8 +3,7 @@ package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
 import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
 /**
  * todo: documentar

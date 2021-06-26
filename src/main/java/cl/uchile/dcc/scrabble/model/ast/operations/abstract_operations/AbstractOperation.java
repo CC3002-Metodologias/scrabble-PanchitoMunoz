@@ -1,13 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
-import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBinary;
-import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
-import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
-import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeInt;
-import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**

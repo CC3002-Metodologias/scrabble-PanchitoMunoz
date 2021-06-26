@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.interfaces;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBinary;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;

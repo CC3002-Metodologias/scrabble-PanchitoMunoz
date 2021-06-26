@@ -1,10 +1,5 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HAdd;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HAnd;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HDiv;
@@ -12,6 +7,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HMult
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HNeg;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HOr;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HSub;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 

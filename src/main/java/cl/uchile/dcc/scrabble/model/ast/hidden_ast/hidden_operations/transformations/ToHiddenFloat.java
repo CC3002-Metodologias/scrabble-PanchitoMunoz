@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transforma
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.AbstractHiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
 /**
  * TODO: DOCUMENTAR

@@ -1,10 +1,11 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBinary;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBool;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenInt;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
 /**
  * TODO: DOCUMENTAR

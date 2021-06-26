@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 
