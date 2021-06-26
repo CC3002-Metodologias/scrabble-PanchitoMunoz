@@ -1,11 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;

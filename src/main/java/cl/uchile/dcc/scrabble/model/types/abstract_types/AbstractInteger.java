@@ -1,12 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBinary;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createInt;
-
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
-import java.util.function.ToIntBiFunction;
 
 /**
  * An abstract class for numbers that are like integers (e.g.: TypeInt and TypeBinary).
@@ -63,7 +60,7 @@ public abstract class AbstractInteger extends AbstractNumber implements SInteger
      */
     @Override
     public TypeBinary toTypeBinary() {
-        return createBinary(this.getValueAsBinary());
+        return STypeFactory.createTypeBinary(this.getValueAsBinary());
     }
 
     /**
@@ -73,6 +70,6 @@ public abstract class AbstractInteger extends AbstractNumber implements SInteger
      */
     @Override
     public TypeInt toTypeInt() {
-        return createInt(this.getValueAsInt());
+        return STypeFactory.createTypeInt(this.getValueAsInt());
     }
 }

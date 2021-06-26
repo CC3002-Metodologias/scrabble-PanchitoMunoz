@@ -1,9 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenString;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.Objects;
@@ -93,7 +93,7 @@ public class TypeString extends AbstractType {
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.value + this.value);
+        return STypeFactory.createTypeString(typeString.value + this.value);
     }
 
     /**

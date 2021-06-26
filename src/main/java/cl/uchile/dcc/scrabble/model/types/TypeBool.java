@@ -1,13 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBinary;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBool;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import java.util.Objects;
@@ -85,7 +83,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return TypeBool with a value equivalent to the current type.
      */
     public TypeBool toTypeBool() {
-        return createBool(this.value);
+        return STypeFactory.createTypeBool(this.value);
     }
 
     /**
@@ -94,7 +92,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical neg() {
-        return createBool(!(this.value));
+        return STypeFactory.createTypeBool(!(this.value));
     }
 
     /**
@@ -105,7 +103,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.getValue() + this.value);
+        return STypeFactory.createTypeString(typeString.getValue() + this.value);
     }
 
     /**
@@ -138,7 +136,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical andWithBool(TypeBool typeBool) {
-        return createBool(typeBool.value && this.value);
+        return STypeFactory.createTypeBool(typeBool.value && this.value);
     }
 
     /**
@@ -149,7 +147,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical orWithBool(TypeBool typeBool) {
-        return createBool(typeBool.value || this.value);
+        return STypeFactory.createTypeBool(typeBool.value || this.value);
     }
 
     /**
@@ -160,7 +158,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical andWithBinary(TypeBinary typeBinary) {
-        return createBinary(boolAndBinary(this.value, typeBinary.getValue()));
+        return STypeFactory.createTypeBinary(boolAndBinary(this.value, typeBinary.getValue()));
     }
 
     /**
@@ -171,7 +169,7 @@ public class TypeBool extends AbstractType implements SLogical {
      */
     @Override
     public SLogical orWithBinary(TypeBinary typeBinary) {
-        return createBinary(boolOrBinary(this.value, typeBinary.getValue()));
+        return STypeFactory.createTypeBinary(boolOrBinary(this.value, typeBinary.getValue()));
     }
 
     /**

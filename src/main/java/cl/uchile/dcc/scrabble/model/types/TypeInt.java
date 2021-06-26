@@ -1,14 +1,11 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenInt;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBinary;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createFloat;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createInt;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -87,7 +84,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.getValue() + this.getValue());
+        return STypeFactory.createTypeString(typeString.getValue() + this.getValue());
     }
 
     /**
@@ -98,7 +95,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public SNumber addWithInt(TypeInt typeInt) {
-        return createInt(typeInt.getValue() + this.getValue());
+        return STypeFactory.createTypeInt(typeInt.getValue() + this.getValue());
     }
 
     /**
@@ -109,7 +106,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public SNumber addWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() + this.getValue());
+        return STypeFactory.createTypeFloat(typeFloat.getValue() + this.getValue());
     }
 
     /**
@@ -120,7 +117,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public SInteger addWithBinary(TypeBinary typeBinary) {
-        return createBinary(addTwoBinaries(typeBinary.getValue(), this.getValueAsBinary()));
+        return STypeFactory.createTypeBinary(addTwoBinaries(typeBinary.getValue(), this.getValueAsBinary()));
     }
 
     /**
@@ -142,7 +139,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public SNumber subWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() - this.getValue());
+        return STypeFactory.createTypeFloat(typeFloat.getValue() - this.getValue());
     }
 
     /**
@@ -153,7 +150,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public SNumber subWithInt(TypeInt typeInt) {
-        return createInt(typeInt.getValue() - this.getValue());
+        return STypeFactory.createTypeInt(typeInt.getValue() - this.getValue());
     }
 
     /**
@@ -165,7 +162,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
     @Override
     public SInteger subWithBinary(TypeBinary typeBinary) {
         String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValue());
-        return createBinary(subtraction);
+        return STypeFactory.createTypeBinary(subtraction);
     }
 
     /**
@@ -188,7 +185,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public SNumber multWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() * this.getValue());
+        return STypeFactory.createTypeFloat(typeFloat.getValue() * this.getValue());
     }
 
     /**
@@ -199,7 +196,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public SNumber multWithInt(TypeInt typeInt) {
-        return createInt(typeInt.getValue() * this.getValue());
+        return STypeFactory.createTypeInt(typeInt.getValue() * this.getValue());
     }
 
     /**
@@ -211,7 +208,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
     @Override
     public SInteger multWithBinary(TypeBinary typeBinary) {
         String binaryMultiplied = intToBinary(typeBinary.getValueAsInt() * this.getValue());
-        return createBinary(binaryMultiplied);
+        return STypeFactory.createTypeBinary(binaryMultiplied);
     }
 
     /**
@@ -235,9 +232,9 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
     @Override
     public SInteger divWithBinary(TypeBinary typeBinary) {
         // Case divide by zero
-        if (this.getValue() == 0) return createBinary("0000");
+        if (this.getValue() == 0) return STypeFactory.createTypeBinary("0000");
         String binaryResult = intToBinary((int) Math.round((double) typeBinary.getValueAsInt() / this.getValue()));
-        return createBinary(binaryResult);
+        return STypeFactory.createTypeBinary(binaryResult);
     }
 
     /**
@@ -249,8 +246,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
         // Case divide by zero
-        if (this.getValue() == 0) return createFloat(0.0);
-        return createFloat(typeFloat.getValue() / this.getValue());
+        if (this.getValue() == 0) return STypeFactory.createTypeFloat(0.0);
+        return STypeFactory.createTypeFloat(typeFloat.getValue() / this.getValue());
     }
 
     /**
@@ -263,9 +260,9 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
     public SNumber divWithInt(TypeInt typeInt) {
         // Case divide by zero
         if (this.getValue() == 0) {
-            return createInt(0);
+            return STypeFactory.createTypeInt(0);
         }
-        return createInt((int) Math.round((double) typeInt.getValue() / this.getValue()));
+        return STypeFactory.createTypeInt((int) Math.round((double) typeInt.getValue() / this.getValue()));
     }
 
     /**

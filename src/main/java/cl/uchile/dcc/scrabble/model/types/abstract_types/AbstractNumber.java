@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createFloat;
-
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
@@ -44,6 +43,6 @@ public abstract class AbstractNumber extends AbstractType implements SNumber {
      */
     @Override
     public TypeFloat toTypeFloat() {
-        return createFloat(this.getValueAsDouble());
+        return STypeFactory.createTypeFloat(this.getValueAsDouble());
     }
 }

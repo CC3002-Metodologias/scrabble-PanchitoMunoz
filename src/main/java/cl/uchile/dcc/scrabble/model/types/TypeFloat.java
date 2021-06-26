@@ -1,10 +1,8 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenFloat;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createFloat;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
-
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
@@ -93,7 +91,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.getValue() + this.value);
+        return STypeFactory.createTypeString(typeString.getValue() + this.value);
     }
 
     /**
@@ -104,7 +102,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber addWithInt(TypeInt typeInt) {
-        return createFloat(typeInt.getValue() + this.value);
+        return STypeFactory.createTypeFloat(typeInt.getValue() + this.value);
     }
 
     /**
@@ -115,7 +113,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber addWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.value + this.value);
+        return STypeFactory.createTypeFloat(typeFloat.value + this.value);
     }
 
     /**
@@ -137,7 +135,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber subWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.value - this.value);
+        return STypeFactory.createTypeFloat(typeFloat.value - this.value);
     }
 
     /**
@@ -148,7 +146,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber subWithInt(TypeInt typeInt) {
-        return createFloat(typeInt.getValue() - this.value);
+        return STypeFactory.createTypeFloat(typeInt.getValue() - this.value);
     }
 
     /**
@@ -171,7 +169,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber multWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.value * this.value);
+        return STypeFactory.createTypeFloat(typeFloat.value * this.value);
     }
 
     /**
@@ -182,7 +180,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public SNumber multWithInt(TypeInt typeInt) {
-        return createFloat(typeInt.getValue() * this.value);
+        return STypeFactory.createTypeFloat(typeInt.getValue() * this.value);
     }
 
     /**
@@ -206,8 +204,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     @Override
     public SNumber divWithFloat(TypeFloat typeFloat) {
         // Case divide by zero
-        if (this.value == 0.) return createFloat(0.0);
-        return createFloat(typeFloat.value / this.value);
+        if (this.value == 0.) return STypeFactory.createTypeFloat(0.0);
+        return STypeFactory.createTypeFloat(typeFloat.value / this.value);
     }
 
     /**
@@ -220,9 +218,9 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     public SNumber divWithInt(TypeInt typeInt) {
         // Case divide by zero
         if (this.value == 0.) {
-            return createFloat(0.0);
+            return STypeFactory.createTypeFloat(0.0);
         }
-        return createFloat(typeInt.getValue() / this.value);
+        return STypeFactory.createTypeFloat(typeInt.getValue() / this.value);
     }
 
     /**
@@ -233,6 +231,6 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      */
     @Override
     public HiddenFloat toHiddenAST() {
-        return createHiddenFloat(this);
+        return HTypeFactory.createHiddenFloat(this);
     }
 }

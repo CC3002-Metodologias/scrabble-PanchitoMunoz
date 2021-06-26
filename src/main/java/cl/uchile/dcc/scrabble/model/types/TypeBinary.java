@@ -1,10 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBinary;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createBinary;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createFloat;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createInt;
-import static cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory.createString;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryOrBinary;
@@ -16,6 +12,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
@@ -96,7 +93,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public TypeBinary neg() {
-        return createBinary(oneComplement(this.getValue()));
+        return STypeFactory.createTypeBinary(oneComplement(this.getValue()));
     }
 
     /**
@@ -119,7 +116,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.getValue() + this.getValue());
+        return STypeFactory.createTypeString(typeString.getValue() + this.getValue());
     }
 
     /**
@@ -130,7 +127,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SNumber addWithInt(TypeInt typeInt) {
-        return createInt(typeInt.getValue() + this.getValueAsInt());
+        return STypeFactory.createTypeInt(typeInt.getValue() + this.getValueAsInt());
     }
 
     /**
@@ -141,7 +138,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SNumber addWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() + this.getValueAsInt());
+        return STypeFactory.createTypeFloat(typeFloat.getValue() + this.getValueAsInt());
     }
 
     /**
@@ -152,7 +149,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SInteger addWithBinary(TypeBinary typeBinary) {
-        return createBinary(addTwoBinaries(typeBinary.getValue(), this.getValue()));
+        return STypeFactory.createTypeBinary(addTwoBinaries(typeBinary.getValue(), this.getValue()));
     }
 
     /**
@@ -175,7 +172,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SNumber subWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() - this.getValueAsInt());
+        return STypeFactory.createTypeFloat(typeFloat.getValue() - this.getValueAsInt());
     }
 
     /**
@@ -186,7 +183,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SNumber subWithInt(TypeInt typeInt) {
-        return createInt(typeInt.getValue() - this.getValueAsInt());
+        return STypeFactory.createTypeInt(typeInt.getValue() - this.getValueAsInt());
     }
 
     /**
@@ -198,7 +195,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     @Override
     public SInteger subWithBinary(TypeBinary typeBinary) {
         String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValueAsInt());
-        return createBinary(subtraction);
+        return STypeFactory.createTypeBinary(subtraction);
     }
 
     /**
@@ -221,7 +218,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SNumber multWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() * this.getValueAsInt());
+        return STypeFactory.createTypeFloat(typeFloat.getValue() * this.getValueAsInt());
     }
 
     /**
@@ -232,7 +229,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SNumber multWithInt(TypeInt typeInt) {
-        return createInt(typeInt.getValue() * this.getValueAsInt());
+        return STypeFactory.createTypeInt(typeInt.getValue() * this.getValueAsInt());
     }
 
     /**
@@ -243,7 +240,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SInteger multWithBinary(TypeBinary typeBinary) {
-        return createBinary(intToBinary(typeBinary.getValueAsInt() * this.getValueAsInt()));
+        return STypeFactory.createTypeBinary(intToBinary(typeBinary.getValueAsInt() * this.getValueAsInt()));
     }
 
     /**
@@ -268,12 +265,12 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     public SInteger divWithBinary(TypeBinary typeBinary) {
         // Case divide by zero
         if (this.getValueAsInt() == 0) {
-            return createBinary("0000");
+            return STypeFactory.createTypeBinary("0000");
         }
         String binaryDivision = intToBinary(
             (int) Math.round((double) typeBinary.getValueAsInt() / this.getValueAsInt())
         );
-        return createBinary(binaryDivision);
+        return STypeFactory.createTypeBinary(binaryDivision);
     }
 
     /**
@@ -286,9 +283,9 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     public SNumber divWithFloat(TypeFloat typeFloat) {
         // Case divide by zero
         if (this.getValueAsInt() == 0) {
-            return createFloat(0.0);
+            return STypeFactory.createTypeFloat(0.0);
         }
-        return createFloat(typeFloat.getValue() / this.getValueAsInt());
+        return STypeFactory.createTypeFloat(typeFloat.getValue() / this.getValueAsInt());
     }
 
     /**
@@ -301,10 +298,10 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
     public SNumber divWithInt(TypeInt typeInt) {
         // Case divide by zero
         if (this.getValueAsInt() == 0) {
-            return createInt(0);
+            return STypeFactory.createTypeInt(0);
         }
         int intResult = (int) Math.round((double) typeInt.getValue() / this.getValueAsInt());
-        return createInt(intResult);
+        return STypeFactory.createTypeInt(intResult);
     }
 
     /**
@@ -339,7 +336,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SLogical andWithBool(TypeBool typeBool) {
-        return createBinary(boolAndBinary(typeBool.getValue(), this.getValue()));
+        return STypeFactory.createTypeBinary(boolAndBinary(typeBool.getValue(), this.getValue()));
     }
 
     /**
@@ -350,7 +347,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SLogical orWithBool(TypeBool typeBool) {
-        return createBinary(boolOrBinary(typeBool.getValue(), this.getValue()));
+        return STypeFactory.createTypeBinary(boolOrBinary(typeBool.getValue(), this.getValue()));
     }
 
     /**
@@ -361,7 +358,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SLogical andWithBinary(TypeBinary typeBinary) {
-        return createBinary(binaryAndBinary(typeBinary.getValue(), this.getValue()));
+        return STypeFactory.createTypeBinary(binaryAndBinary(typeBinary.getValue(), this.getValue()));
     }
 
     /**
@@ -372,7 +369,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      */
     @Override
     public SLogical orWithBinary(TypeBinary typeBinary) {
-        return createBinary(binaryOrBinary(typeBinary.getValue(), this.getValue()));
+        return STypeFactory.createTypeBinary(binaryOrBinary(typeBinary.getValue(), this.getValue()));
     }
 
     /**

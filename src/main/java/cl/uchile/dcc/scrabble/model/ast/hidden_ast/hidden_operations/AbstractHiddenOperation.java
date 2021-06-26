@@ -2,14 +2,9 @@ package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
 
 import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBinary;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBool;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenFloat;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenInt;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HType;
 
 /**
  * todo: documentar

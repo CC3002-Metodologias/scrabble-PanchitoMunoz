@@ -31,7 +31,7 @@ public final class STypeFactory {
      * @param instance a {@code TypeBinary} instance.
      * @return a {@code TypeBinary} from the cache.
      */
-    public static TypeBinary createBinary(TypeBinary instance) {
+    public static TypeBinary createTypeBinary(TypeBinary instance) {
         return binaryFactory.create(instance);
     }
 
@@ -41,7 +41,7 @@ public final class STypeFactory {
      * @param value a value.
      * @return a {@code TypeBinary} from the cache.
      */
-    public static TypeBinary createBinary(String value) {
+    public static TypeBinary createTypeBinary(String value) {
         return binaryFactory.create(value);
     }
 
@@ -51,7 +51,7 @@ public final class STypeFactory {
      * @param instance a {@code TypeBool} instance.
      * @return a {@code TypeBool} from the cache.
      */
-    public static TypeBool createBool(TypeBool instance) {
+    public static TypeBool createTypeBool(TypeBool instance) {
         return boolFactory.create(instance);
     }
 
@@ -61,7 +61,7 @@ public final class STypeFactory {
      * @param value a value.
      * @return a {@code TypeBool} from the cache.
      */
-    public static TypeBool createBool(boolean value) {
+    public static TypeBool createTypeBool(boolean value) {
         return boolFactory.create(value);
     }
 
@@ -71,7 +71,7 @@ public final class STypeFactory {
      * @param instance a {@code TypeFloat} instance.
      * @return a {@code TypeFloat} from the cache.
      */
-    public static TypeFloat createFloat(TypeFloat instance) {
+    public static TypeFloat createTypeFloat(TypeFloat instance) {
         return floatFactory.create(instance);
     }
 
@@ -81,7 +81,7 @@ public final class STypeFactory {
      * @param value a value.
      * @return a {@code TypeFloat} from the cache.
      */
-    public static TypeFloat createFloat(double value) {
+    public static TypeFloat createTypeFloat(double value) {
         return floatFactory.create(value);
     }
 
@@ -91,7 +91,7 @@ public final class STypeFactory {
      * @param instance a {@code TypeInt} instance.
      * @return a {@code TypeInt} from the cache.
      */
-    public static TypeInt createInt(TypeInt instance) {
+    public static TypeInt createTypeInt(TypeInt instance) {
         return intFactory.create(instance);
     }
 
@@ -101,7 +101,7 @@ public final class STypeFactory {
      * @param value a value.
      * @return a {@code TypeInt} from the cache.
      */
-    public static TypeInt createInt(int value) {
+    public static TypeInt createTypeInt(int value) {
         return intFactory.create(value);
     }
 
@@ -111,7 +111,7 @@ public final class STypeFactory {
      * @param instance a {@code TypeString} instance.
      * @return a {@code TypeString} from the cache.
      */
-    public static TypeString createString(TypeString instance) {
+    public static TypeString createTypeString(TypeString instance) {
         return stringFactory.create(instance);
     }
 
@@ -121,7 +121,7 @@ public final class STypeFactory {
      * @param value a value.
      * @return a {@code TypeString} from the cache.
      */
-    public static TypeString createString(String value) {
+    public static TypeString createTypeString(String value) {
         return stringFactory.create(value);
     }
 
