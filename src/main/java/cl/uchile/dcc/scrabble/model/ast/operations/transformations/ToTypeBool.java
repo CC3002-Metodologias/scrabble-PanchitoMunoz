@@ -14,21 +14,12 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
 public class ToTypeBool extends AbstractOperation {
 
     /**
-     * Constructor by default.
-     *
-     * @param adaptee a HiddenOperation to adapt
-     */
-    protected ToTypeBool(HiddenOperation adaptee) {
-        super(adaptee);
-    }
-
-    /**
      * Constructor.
      *
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public ToTypeBool(AST value) {
-        this(new ToHiddenBool(value.toHiddenAST()));
+        super(new ToHiddenBool(value.toHiddenAST()));
     }
 
 }

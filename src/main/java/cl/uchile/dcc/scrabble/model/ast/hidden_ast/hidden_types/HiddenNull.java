@@ -43,4 +43,19 @@ public class HiddenNull extends AbstractHiddenType {
     public SType toSType() {
         return null;
     }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof HiddenNull;
+    }
+
+    @Override
+    public HType addWithString(HiddenString wString) {
+        return null;
+    }
 }
