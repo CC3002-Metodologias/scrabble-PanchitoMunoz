@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenOperation;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenUnaryOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
@@ -10,7 +11,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
  */
-public class HiddenNeg extends AbstractHiddenOperation {
+public class HiddenNeg extends AbstractHiddenUnaryOperation {
 
     /**
      * Default constructor. It can receive an {@code HiddenOperation} or a {@code HType}.

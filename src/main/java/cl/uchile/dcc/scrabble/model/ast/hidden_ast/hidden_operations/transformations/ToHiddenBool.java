@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenOperation;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenTransformation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
@@ -10,7 +11,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 23:31
  */
-public class ToHiddenBool extends AbstractHiddenOperation {
+public class ToHiddenBool extends AbstractHiddenTransformation {
 
     /**
      * Constructor with one parameter. It can receive an {@code HiddenOperation} or a {@code HType}.
