@@ -1,5 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
@@ -9,7 +10,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
  */
-public class HiddenDiv extends AbstractHiddenOperation {
+public class HiddenAdd extends AbstractHiddenOperation {
 
     /**
      * Default constructor. It can receive an {@code HiddenOperation} or a {@code HType}.
@@ -17,7 +18,7 @@ public class HiddenDiv extends AbstractHiddenOperation {
      * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
-    public HiddenDiv(HiddenAST leftValue, HiddenAST rightValue) {
+    public HiddenAdd(HiddenAST leftValue, HiddenAST rightValue) {
         super(leftValue, rightValue);
     }
 
@@ -31,7 +32,7 @@ public class HiddenDiv extends AbstractHiddenOperation {
      */
     @Override
     protected HType mainOperation(HType value1, HType value2) {
-        return value1.div(value2);
+        return value1.add(value2);
     }
 
     /**
@@ -42,6 +43,6 @@ public class HiddenDiv extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asStringForOperations(space, "/", "Div");
+        return asStringForOperations(space, "+", "Add");
     }
 }

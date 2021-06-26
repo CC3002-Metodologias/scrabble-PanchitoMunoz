@@ -1,5 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
@@ -9,16 +10,15 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
  */
-public class HiddenAdd extends AbstractHiddenOperation {
+public class HiddenNeg extends AbstractHiddenOperation {
 
     /**
      * Default constructor. It can receive an {@code HiddenOperation} or a {@code HType}.
      *
-     * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
-     * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
+     * @param value left value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
-    public HiddenAdd(HiddenAST leftValue, HiddenAST rightValue) {
-        super(leftValue, rightValue);
+    public HiddenNeg(HiddenAST value) {
+        super(value);
     }
 
     /**
@@ -31,7 +31,7 @@ public class HiddenAdd extends AbstractHiddenOperation {
      */
     @Override
     protected HType mainOperation(HType value1, HType value2) {
-        return value1.add(value2);
+        return value1.neg();
     }
 
     /**
@@ -42,6 +42,9 @@ public class HiddenAdd extends AbstractHiddenOperation {
      */
     @Override
     public String asString(int space) {
-        return asStringForOperations(space, "+", "Add");
+        String tab = " ".repeat(space);
+        return tab + "Neg" + "(\n"
+            + this.getLeftChildren().asString(space + 2) + '\n'
+            + tab + ')';
     }
 }

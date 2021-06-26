@@ -1,5 +1,6 @@
-package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations;
+package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
