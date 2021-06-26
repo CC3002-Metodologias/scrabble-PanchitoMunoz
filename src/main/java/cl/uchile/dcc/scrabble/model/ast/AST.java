@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.interfaces;
+package cl.uchile.dcc.scrabble.model.ast;
 
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 

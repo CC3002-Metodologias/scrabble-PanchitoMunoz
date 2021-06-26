@@ -8,7 +8,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HNeg;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HOr;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HSub;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
+import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
