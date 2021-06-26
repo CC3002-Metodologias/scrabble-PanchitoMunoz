@@ -5,6 +5,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOpera
 import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
+// TODO: Crear métodos equals y hashCode
 /**
  * Abstract class for a general {@code Operation}.
  *
@@ -25,6 +26,7 @@ public abstract class AbstractOperation implements Operation {
         this.adaptee = adaptee;
     }
 
+    // TODO: Actualizar doc
     /**
      * Transform a {@code SType} into its equivalent {@code HType}. If the
      * argument is a {@code HType} or an {@code HiddenAST}, it does nothing.
