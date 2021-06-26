@@ -21,4 +21,12 @@ public abstract class AbstractHiddenBinaryOperation extends AbstractHiddenOperat
         HiddenAST rightValue) {
         super(leftValue, rightValue);
     }
+
+    /**
+     * Operator symbol as {@code String}. To use template pattern in {@code asString}.
+     *
+     * @return Operator symbol as {@code String}
+     */
+    @Override
+    protected abstract String operatorSymbol();
 }

@@ -29,73 +29,6 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     }
 
     /**
-     * Constructor with one parameter. It can receive an {@code HiddenOperation} or a {@code HType}.
-     *
-     * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
-     */
-    public AbstractHiddenOperation(HiddenAST value) {
-        this(value, createHiddenBool(true)); // Create a dummy variable
-    }
-
-    /**
-     * Calculate the {@code SType} result of performing all operations
-     *
-     * @return SType result of operations.
-     */
-    @Override
-    public HType calculate() {
-        HType leftCalculated = leftChildren.calculate();
-        HType rightCalculated = rightChildren.calculate();
-        return mainOperation(leftCalculated, rightCalculated);
-    }
-
-    /**
-     * Compute the operation between 2 {@code HType} and returns its operation. To use template
-     * pattern.
-     *
-     * @param value1 the value at the left
-     * @param value2 the value at the right
-     * @return the value computed
-     */
-    protected abstract HType mainOperation(HType value1, HType value2);
-
-    /**
-     * Get the left children.
-     *
-     * @return an HiddenAST
-     */
-    protected HiddenAST getLeftChildren() {
-        return leftChildren;
-    }
-
-    /**
-     * Generalize the {@code asString} method, in order to only modify the operator symbol and the
-     * class name.
-     *
-     * @param space          number of spaces to ident
-     * @param operatorSymbol an operator symbol. E.g.: "+", "-"...
-     * @param name           the name of the class. E.g.: "Add", "Sub"
-     * @return the string representation.
-     */
-    protected String asStringForOperations(int space, String operatorSymbol, String name) {
-        String tab = " ".repeat(space);
-        return tab + name + "(\n"
-            + leftChildren.asString(space + 2) + ' ' + operatorSymbol + '\n'
-            + rightChildren.asString(space + 2) + '\n'
-            + tab + ')';
-    }
-
-    /**
-     * To use template pattern in asString
-     * @param space number of spaces to ident
-     * @param command name of the command
-     * @return the string representation
-     */
-    protected String asStringForTransformation(int space, String command) {
-        return leftChildren.asString(space) + command;
-    }
-
-    /**
      * A String representation of the current instance.
      *
      * @return a string representation
@@ -104,4 +37,92 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     public String toString() {
         return asString(0);
     }
+
+    /**
+     * Returns the {@code String} representation of the current {@code HiddenAST}.
+     *
+     * @param space number of spaces to ident
+     * @return the current {@code HiddenAST} as {@code String}
+     */
+    @Override
+    public final String asString(int space) {
+        String tab = " ".repeat(space);
+        if (!isTransformation()) {
+            return tab + operatorName() + "(\n"
+                + leftChildren.asString(space + 2)
+                + rightValueAsString(space) + '\n'
+                + tab + ')';
+        } else {
+            return leftChildren.asString(space) + ".toType" + commandName() + "()";
+        }
+    }
+
+    /**
+     * Right value as {@code String}.
+     * To use template pattern in {@code asString}.
+     *
+     * @param space number of space
+     * @return right value as {@code String}
+     */
+    protected String rightValueAsString(int space) {
+        return ' ' + operatorSymbol() + '\n'
+            + rightChildren.asString(space + 2) ;
+    }
+
+    /**
+     * Command name as {@code String}. To use template pattern in {@code asString}.
+     *
+     * @return Command name as String
+     */
+    protected String commandName() {
+        return "";  // Usually don't used
+    }
+
+    /**
+     * Operator symbol as {@code String}. To use template pattern in {@code asString}.
+     *
+     * @return Operator symbol as {@code String}
+     */
+    protected String operatorSymbol() {
+        return "";  // Usually don't used
+    }
+
+    /**
+     * Operator name as {@code String}. To use template pattern in {@code asString}.
+     *
+     * @return Operator name as {@code String}.
+     */
+    protected abstract String operatorName();
+
+    /**
+     * Returns true if the operation is a transformation, false otherwise.
+     * To use template pattern in {@code asString}.
+     *
+     * @return true if the operation is a transformation, false otherwise.
+     */
+    protected boolean isTransformation() {
+        return false;  // Usually is false
+    }
+
+    /**
+     * Calculate the {@code SType} result of performing all operations
+     *
+     * @return SType result of operations.
+     */
+    @Override
+    public final HType calculate() {
+        HType leftCalculated = leftChildren.calculate();
+        HType rightCalculated = rightChildren.calculate();
+        return mainOperation(leftCalculated, rightCalculated);
+    }
+
+    /**
+     * Compute the operation between 2 {@code HType} and returns its operation. To use template
+     * pattern in {@code calculate}.
+     *
+     * @param value1 the value at the left
+     * @param value2 the value at the right
+     * @return the value computed
+     */
+    protected abstract HType mainOperation(HType value1, HType value2);
 }

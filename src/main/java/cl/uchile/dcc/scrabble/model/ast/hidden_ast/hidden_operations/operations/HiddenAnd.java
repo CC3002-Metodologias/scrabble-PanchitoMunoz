@@ -24,6 +24,26 @@ public class HiddenAnd extends AbstractHiddenBinaryOperation {
     }
 
     /**
+     * Operator symbol as {@code String}. To use template pattern in {@code asString}.
+     *
+     * @return Operator symbol as {@code String}
+     */
+    @Override
+    protected String operatorSymbol() {
+        return "and";
+    }
+
+    /**
+     * Operator name as {@code String}. To use template pattern in {@code asString}.
+     *
+     * @return Operator name as {@code String}.
+     */
+    @Override
+    protected String operatorName() {
+        return "And";
+    }
+
+    /**
      * Compute the operation between 2 {@code HType} and returns its operation. To use template
      * pattern.
      *
@@ -34,16 +54,5 @@ public class HiddenAnd extends AbstractHiddenBinaryOperation {
     @Override
     protected HType mainOperation(HType value1, HType value2) {
         return value1.and(value2);
-    }
-
-    /**
-     * Returns the {@code String} representation of the current {@code HiddenAST}.
-     *
-     * @param space number of spaces to ident
-     * @return the current {@code HiddenAST} as {@code String}
-     */
-    @Override
-    public String asString(int space) {
-        return asStringForOperations(space, "and", "And");
     }
 }

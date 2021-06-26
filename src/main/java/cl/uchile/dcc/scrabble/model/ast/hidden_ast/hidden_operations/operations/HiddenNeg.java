@@ -23,29 +23,23 @@ public class HiddenNeg extends AbstractHiddenUnaryOperation {
     }
 
     /**
-     * Compute the operation between 2 {@code HType} and returns its operation. To use template
-     * pattern.
+     * Compute the unary operation. To use template pattern in {@code mainOperation}.
      *
-     * @param value1 the value at the left
-     * @param value2 the value at the right
+     * @param value a value
      * @return the value computed
      */
     @Override
-    protected HType mainOperation(HType value1, HType value2) {
-        return value1.neg();
+    protected HType mainUnaryOperation(HType value) {
+        return value.neg();
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code HiddenAST}.
+     * Operator name as {@code String}. To use template pattern in {@code asString}.
      *
-     * @param space number of spaces to ident
-     * @return the current {@code HiddenAST} as {@code String}
+     * @return Operator name as {@code String}.
      */
     @Override
-    public String asString(int space) {
-        String tab = " ".repeat(space);
-        return tab + "Neg" + "(\n"
-            + this.getLeftChildren().asString(space + 2) + '\n'
-            + tab + ')';
+    protected String operatorName() {
+        return "Neg";
     }
 }

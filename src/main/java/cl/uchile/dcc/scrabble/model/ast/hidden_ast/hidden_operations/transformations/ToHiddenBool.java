@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_cl
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenTransformation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 
 /**
  * TODO: DOCUMENTAR
@@ -23,26 +24,23 @@ public class ToHiddenBool extends AbstractHiddenTransformation {
     }
 
     /**
-     * Compute the operation between 2 {@code HType} and returns its operation. To use template
-     * pattern.
+     * Command name as {@code String}. To use template pattern in {@code asString}.
      *
-     * @param value1 the value at the left
-     * @param value2 the value at the right
-     * @return the value computed
+     * @return Command name as String
      */
     @Override
-    protected HType mainOperation(HType value1, HType value2) {
-        return value1.toHiddenBool();
+    protected String commandName() {
+        return "Bool";
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code HiddenAST}.
+     * Compute the unary operation. To use template pattern in {@code mainOperation}.
      *
-     * @param space number of spaces to ident
-     * @return the current {@code HiddenAST} as {@code String}
+     * @param value a value
+     * @return the value computed
      */
     @Override
-    public String asString(int space) {
-        return asStringForTransformation(space, ".toTypeBool()");
+    protected HiddenBool mainUnaryOperation(HType value) {
+        return value.toHiddenBool();
     }
 }
