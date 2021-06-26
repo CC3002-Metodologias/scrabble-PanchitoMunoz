@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenNull;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
@@ -178,6 +179,15 @@ public final class HTypeFactory {
      */
     public static HiddenString createHiddenString(String value) {
         return stringFactory.create(value);
+    }
+
+    /**
+     * Create a {@code HiddenNull}.
+     *
+     * @return a {@code HiddenNull} from the cache.
+     */
+    public static HiddenNull createHiddenNull() {
+        return HiddenNull.getInstance();
     }
 
 }
