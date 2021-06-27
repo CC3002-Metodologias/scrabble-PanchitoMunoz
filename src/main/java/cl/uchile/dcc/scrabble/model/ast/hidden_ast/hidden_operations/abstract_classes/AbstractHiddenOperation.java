@@ -7,7 +7,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
 /**
- * todo: documentar
+ * Abstract class for a general operation in the hidden types.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:16

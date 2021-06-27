@@ -8,7 +8,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformat
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
 /**
- * TODO: DOCUMENTAR
+ * An interface to represent a general hidden operation in {@code HiddenAST}
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:14

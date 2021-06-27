@@ -4,7 +4,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 
 /**
  * An interface that defines a "type" of Abstract Syntax Tree. This interface is for using the
- * composite pattern.
+ * composite pattern. Only used as a hidden abstract layer, and is not intended for use by the user.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 22:51

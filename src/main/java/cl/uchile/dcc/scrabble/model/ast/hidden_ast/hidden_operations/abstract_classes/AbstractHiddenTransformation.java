@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_c
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
 /**
- * TODO: DOCUMENTAR
+ * Abstract class for the hidden transformations.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/26 13:31

@@ -7,7 +7,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 
 /**
- * TODO: DOCUMENTAR
+ * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code toHiddenBool} method.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 23:31

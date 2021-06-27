@@ -7,7 +7,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
 
 /**
- * TODO: DOCUMENTAR
+ * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code toHiddenBinary} method.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 23:18
