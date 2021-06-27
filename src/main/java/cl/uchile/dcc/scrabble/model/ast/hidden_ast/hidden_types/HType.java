@@ -1,12 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HAdd;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HAnd;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HDiv;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HMult;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HNeg;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HOr;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HSub;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HArithmeticOperations;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
@@ -29,7 +24,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @see HiddenAST
  * @see Operation
  */
-public interface HType extends HiddenAST, HAdd, HSub, HMult, HDiv, HAnd, HOr, HNeg {
+public interface HType extends HiddenAST, HArithmeticOperations, HLogicalOperations {
 
     /**
      * Gets the current instance in the wrapper

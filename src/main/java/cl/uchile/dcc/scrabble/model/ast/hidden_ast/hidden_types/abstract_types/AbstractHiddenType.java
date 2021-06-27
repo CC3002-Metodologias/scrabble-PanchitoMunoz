@@ -6,7 +6,6 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
 
-// TODO: HACER FACTORIES PARA ESTAS CLASES
 /**
  * An abstract class to wrap a generic {@code SType}. To use adapter pattern.
  *
