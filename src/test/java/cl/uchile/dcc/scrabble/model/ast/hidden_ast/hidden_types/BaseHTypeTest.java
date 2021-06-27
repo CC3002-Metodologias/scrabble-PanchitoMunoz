@@ -12,46 +12,47 @@ import java.util.List;
  */
 public abstract class BaseHTypeTest extends BaseTypeTest {
 
-    protected final HiddenBinary wBinaryZero = new HiddenBinary(typeBinaryZero);
+    protected final HiddenBinary hiddenBinaryZero = new HiddenBinary(typeBinaryZero);
     // Booleans
-    protected final HiddenBool trueWBool = new HiddenBool(trueTypeBool);
-    protected final HiddenBool falseWBool = new HiddenBool(falseTypeBool);
-    protected final HiddenFloat wFloatZero = new HiddenFloat(typeFloatZero);
-    protected final HiddenInt wIntZero = new HiddenInt(typeIntZero);
+    protected final HiddenBool trueHiddenBool = new HiddenBool(trueTypeBool);
+    protected final HiddenBool falseHiddenBool = new HiddenBool(falseTypeBool);
+    protected final HiddenFloat hiddenFloatZero = new HiddenFloat(typeFloatZero);
+    protected final HiddenInt hiddenIntZero = new HiddenInt(typeIntZero);
     // Binaries
-    protected HiddenBinary wBinary1;
-    protected HiddenBinary wBinary2;
+    protected HiddenBinary hiddenBinary1;
+    protected HiddenBinary hiddenBinary2;
     // Floats
-    protected HiddenFloat wFloat1;
-    protected HiddenFloat wFloat2;
+    protected HiddenFloat hiddenFloat1;
+    protected HiddenFloat hiddenFloat2;
     // Ints
-    protected HiddenInt wInt1;
-    protected HiddenInt wInt2;
+    protected HiddenInt hiddenInt1;
+    protected HiddenInt hiddenInt2;
     // Strings
-    protected HiddenString wString1;
-    protected HiddenString wString2;
-    protected List<HType> hTypeList = new ArrayList<>();
+    protected HiddenString hiddenString1;
+    protected HiddenString hiddenString2;
+    protected List<HType> hTypeList2 = new ArrayList<>();
 
+    @Override
     protected void setUp() {
         // Setting random values
         super.setUp();
-        hTypeList.add(trueWBool);
-        hTypeList.add(falseWBool);
+        hTypeList2.add(trueHiddenBool);
+        hTypeList2.add(falseHiddenBool);
         // Generate 2 binaries random
-        wBinary1 = new HiddenBinary(typeBinary1);
-        hTypeList.add(wBinary1);
-        wBinary2 = new HiddenBinary(typeBinary2);
+        hiddenBinary1 = new HiddenBinary(typeBinary1);
+        hiddenBinary2 = new HiddenBinary(typeBinary2);
+        hTypeList2.add(hiddenBinary2);
         // Generate 2 floats random
-        wFloat1 = new HiddenFloat(typeFloat1);
-        hTypeList.add(wFloat1);
-        wFloat2 = new HiddenFloat(typeFloat2);
+        hiddenFloat1 = new HiddenFloat(typeFloat1);
+        hiddenFloat2 = new HiddenFloat(typeFloat2);
+        hTypeList2.add(hiddenFloat2);
         // Generate 2 ints random
-        wInt1 = new HiddenInt(typeInt1);
-        hTypeList.add(wInt1);
-        wInt2 = new HiddenInt(typeInt2);
+        hiddenInt1 = new HiddenInt(typeInt1);
+        hiddenInt2 = new HiddenInt(typeInt2);
+        hTypeList2.add(hiddenInt2);
         // Generate 2 strings random
-        wString1 = new HiddenString(typeString1);
-        hTypeList.add(wString1);
-        wString2 = new HiddenString(typeString2);
+        hiddenString1 = new HiddenString(typeString1);
+        hiddenString2 = new HiddenString(typeString2);
+        hTypeList2.add(hiddenString2);
     }
 }

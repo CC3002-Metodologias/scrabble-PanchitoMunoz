@@ -16,202 +16,202 @@ class HiddenStringTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testCalculate() {
-        assertEquals(wString1, wString1.calculate(),
+        assertEquals(hiddenString1, hiddenString1.calculate(),
             "Method calculate does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testAsString() {
-        assertEquals(typeString1.toString(), wString1.asString(0),
+        assertEquals(typeString1.toString(), hiddenString1.asString(0),
             "Method asString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testHashCode() {
-        assertEquals(typeString1.hashCode(), wString1.hashCode(),
+        assertEquals(typeString1.hashCode(), hiddenString1.hashCode(),
             "Method hashCode does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testEquals() {
-        assertEquals(new HiddenString(typeString1), wString1,
+        assertEquals(new HiddenString(typeString1), hiddenString1,
             "Method equals does not works." + messageSeed);
-        assertNotEquals(wString1, wString2,
+        assertNotEquals(hiddenString1, hiddenString2,
             "Method equals does not works." + messageSeed);
-        assertNotEquals(wString2, typeString1,
+        assertNotEquals(hiddenString2, typeString1,
             "Method equals does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToHiddenBinary() {
-        assertNull(wString1.toHiddenBinary(),
+        assertNull(hiddenString1.toHiddenBinary(),
             "Method toHiddenBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToHiddenBool() {
-        assertNull(wString1.toHiddenBool(),
+        assertNull(hiddenString1.toHiddenBool(),
             "Method toHiddenBool does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToHiddenFloat() {
-        assertNull(wString1.toHiddenFloat(),
+        assertNull(hiddenString1.toHiddenFloat(),
             "Method toHiddenFloat does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToHiddenInt() {
-        assertNull(wString1.toHiddenInt(),
+        assertNull(hiddenString1.toHiddenInt(),
             "Method toHiddenInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToHiddenString() {
-        assertEquals(new HiddenString(aString1), wString1.toHiddenString(),
+        assertEquals(new HiddenString(aString1), hiddenString1.toHiddenString(),
             "Method toHiddenString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testGetAdaptee() {
-        assertEquals(typeString1, wString1.toSType(),
+        assertEquals(typeString1, hiddenString1.toSType(),
             "Method getAdaptee does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToString() {
-        assertEquals("HiddenString{value='" + aString1 + "'}", wString1.toString(),
+        assertEquals("HiddenString{value='" + aString1 + "'}", hiddenString1.toString(),
             "Method toString does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testNeg() {
-        assertNull(wString1.neg(), "Method neg does not works." + messageSeed);
+        assertNull(hiddenString1.neg(), "Method neg does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testAdd() {
         HiddenString expected1 = new HiddenString(typeString1.add(typeBinary1));
-        assertEquals(expected1, wString1.add(wBinary1),
+        assertEquals(expected1, hiddenString1.add(hiddenBinary1),
             "Method add does not works with binaries." + messageSeed);
 
         HiddenString expected21 = new HiddenString(typeString1.add(trueTypeBool));
-        assertEquals(expected21, wString1.add(trueWBool),
+        assertEquals(expected21, hiddenString1.add(trueHiddenBool),
             "Method add does not works with booleans." + messageSeed);
         HiddenString expected22 = new HiddenString(typeString1.add(falseTypeBool));
-        assertEquals(expected22, wString1.add(falseWBool),
+        assertEquals(expected22, hiddenString1.add(falseHiddenBool),
             "Method add does not works with booleans." + messageSeed);
 
         HiddenString expected3 = new HiddenString(typeString1.add(typeFloat1));
-        assertEquals(expected3, wString1.add(wFloat1),
+        assertEquals(expected3, hiddenString1.add(hiddenFloat1),
             "Method add does not works with floats." + messageSeed);
 
         HiddenString expected4 = new HiddenString(typeString1.add(typeInt1));
-        assertEquals(expected4, wString1.add(wInt1),
+        assertEquals(expected4, hiddenString1.add(hiddenInt1),
             "Method add does not works with ints." + messageSeed);
 
         HiddenString expected5 = new HiddenString(typeString1.add(typeString2));
-        assertEquals(expected5, wString1.add(wString2),
+        assertEquals(expected5, hiddenString1.add(hiddenString2),
             "Method add does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testSub() {
-        assertNull(wString1.sub(wBinary1),
+        assertNull(hiddenString1.sub(hiddenBinary1),
             "Method sub does not works with binaries." + messageSeed);
 
-        assertNull(wString1.sub(trueWBool),
+        assertNull(hiddenString1.sub(trueHiddenBool),
             "Method sub does not works with booleans." + messageSeed);
-        assertNull(wString1.sub(falseWBool),
+        assertNull(hiddenString1.sub(falseHiddenBool),
             "Method sub does not works with booleans." + messageSeed);
 
-        assertNull(wString1.sub(wFloat1),
+        assertNull(hiddenString1.sub(hiddenFloat1),
             "Method sub does not works with floats." + messageSeed);
 
-        assertNull(wString1.sub(wInt1),
+        assertNull(hiddenString1.sub(hiddenInt1),
             "Method sub does not works with ints." + messageSeed);
 
-        assertNull(wString1.sub(wString2),
+        assertNull(hiddenString1.sub(hiddenString2),
             "Method sub does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testDiv() {
-        assertNull(wString1.div(wBinary1),
+        assertNull(hiddenString1.div(hiddenBinary1),
             "Method div does not works with binaries." + messageSeed);
 
-        assertNull(wString1.div(trueWBool),
+        assertNull(hiddenString1.div(trueHiddenBool),
             "Method div does not works with booleans." + messageSeed);
-        assertNull(wString1.div(falseWBool),
+        assertNull(hiddenString1.div(falseHiddenBool),
             "Method div does not works with booleans." + messageSeed);
 
-        assertNull(wString1.div(wFloat1),
+        assertNull(hiddenString1.div(hiddenFloat1),
             "Method div does not works with floats." + messageSeed);
 
-        assertNull(wString1.div(wInt1),
+        assertNull(hiddenString1.div(hiddenInt1),
             "Method div does not works with ints." + messageSeed);
 
-        assertNull(wString1.div(wString2),
+        assertNull(hiddenString1.div(hiddenString2),
             "Method div does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testMult() {
-        assertNull(wString1.mult(wBinary1),
+        assertNull(hiddenString1.mult(hiddenBinary1),
             "Method mult does not works with binaries." + messageSeed);
 
-        assertNull(wString1.mult(trueWBool),
+        assertNull(hiddenString1.mult(trueHiddenBool),
             "Method mult does not works with booleans." + messageSeed);
-        assertNull(wString1.mult(falseWBool),
+        assertNull(hiddenString1.mult(falseHiddenBool),
             "Method mult does not works with booleans." + messageSeed);
 
-        assertNull(wString1.mult(wFloat1),
+        assertNull(hiddenString1.mult(hiddenFloat1),
             "Method mult does not works with floats." + messageSeed);
 
-        assertNull(wString1.mult(wInt1),
+        assertNull(hiddenString1.mult(hiddenInt1),
             "Method mult does not works with ints." + messageSeed);
 
-        assertNull(wString1.mult(wString2),
+        assertNull(hiddenString1.mult(hiddenString2),
             "Method mult does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testAnd() {
-        assertNull(wString1.and(wBinary1),
+        assertNull(hiddenString1.and(hiddenBinary1),
             "Method and does not works with binaries." + messageSeed);
 
-        assertNull(wString1.and(trueWBool),
+        assertNull(hiddenString1.and(trueHiddenBool),
             "Method and does not works with booleans." + messageSeed);
-        assertNull(wString1.and(falseWBool),
+        assertNull(hiddenString1.and(falseHiddenBool),
             "Method and does not works with booleans." + messageSeed);
 
-        assertNull(wString1.and(wFloat1),
+        assertNull(hiddenString1.and(hiddenFloat1),
             "Method and does not works with floats." + messageSeed);
 
-        assertNull(wString1.and(wInt1),
+        assertNull(hiddenString1.and(hiddenInt1),
             "Method and does not works with ints." + messageSeed);
 
-        assertNull(wString1.and(wString2),
+        assertNull(hiddenString1.and(hiddenString2),
             "Method and does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testOr() {
-        assertNull(wString1.or(wBinary1),
+        assertNull(hiddenString1.or(hiddenBinary1),
             "Method or does not works with binaries." + messageSeed);
 
-        assertNull(wString1.or(trueWBool),
+        assertNull(hiddenString1.or(trueHiddenBool),
             "Method or does not works with booleans." + messageSeed);
-        assertNull(wString1.or(falseWBool),
+        assertNull(hiddenString1.or(falseHiddenBool),
             "Method or does not works with booleans." + messageSeed);
 
-        assertNull(wString1.or(wFloat1),
+        assertNull(hiddenString1.or(hiddenFloat1),
             "Method or does not works with floats." + messageSeed);
 
-        assertNull(wString1.or(wInt1),
+        assertNull(hiddenString1.or(hiddenInt1),
             "Method or does not works with ints." + messageSeed);
 
-        assertNull(wString1.or(wString2),
+        assertNull(hiddenString1.or(hiddenString2),
             "Method or does not works with strings." + messageSeed);
     }
 }

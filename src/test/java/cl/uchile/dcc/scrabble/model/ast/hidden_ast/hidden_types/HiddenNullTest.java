@@ -2,7 +2,6 @@ package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HiddenFloatFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +32,7 @@ class HiddenNullTest extends BaseHTypeTest {
 
     @Test
     void testTestEquals() {
-        assertNotEquals(wFloat1, hiddenNull, "Method equals does not works." + messageSeed);
+        assertNotEquals(hiddenFloat1, hiddenNull, "Method equals does not works." + messageSeed);
         assertEquals(HiddenNull.getInstance(), hiddenNull,
             "Method equals does not works." + messageSeed);
     }
@@ -71,7 +70,7 @@ class HiddenNullTest extends BaseHTypeTest {
     @Test
     void testAdd() {
         for (HType hType :
-            hTypeList) {
+            hTypeList2) {
             assertNull(hiddenNull.add(hType),
                 "Method add does not works." + messageSeed);
         }
@@ -80,7 +79,7 @@ class HiddenNullTest extends BaseHTypeTest {
     @Test
     void testSub() {
         for (HType hType :
-            hTypeList) {
+            hTypeList2) {
             assertNull(hiddenNull.sub(hType),
                 "Method sub does not works." + messageSeed);
         }
@@ -89,7 +88,7 @@ class HiddenNullTest extends BaseHTypeTest {
     @Test
     void testMult() {
         for (HType hType :
-            hTypeList) {
+            hTypeList2) {
             assertNull(hiddenNull.mult(hType),
                 "Method mult does not works." + messageSeed);
         }
@@ -98,7 +97,7 @@ class HiddenNullTest extends BaseHTypeTest {
     @Test
     void testDiv() {
         for (HType hType :
-            hTypeList) {
+            hTypeList2) {
             assertNull(hiddenNull.div(hType),
                 "Method div does not works." + messageSeed);
         }
@@ -107,7 +106,7 @@ class HiddenNullTest extends BaseHTypeTest {
     @Test
     void testAnd() {
         for (HType hType :
-            hTypeList) {
+            hTypeList2) {
             assertNull(hiddenNull.and(hType),
                 "Method and does not works." + messageSeed);
         }
@@ -116,7 +115,7 @@ class HiddenNullTest extends BaseHTypeTest {
     @Test
     void testOr() {
         for (HType hType :
-            hTypeList) {
+            hTypeList2) {
             assertNull(hiddenNull.or(hType),
                 "Method or does not works." + messageSeed);
         }
