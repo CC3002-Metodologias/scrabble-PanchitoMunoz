@@ -75,4 +75,38 @@ class HiddenOrTest extends BaseHiddenOperationTest {
                 "Method or does not works with binary type." + messageSeed);
         }
     }
+
+    @RepeatedTest(20)
+    void testTestEquals() {
+        HiddenOr hiddenOr = new HiddenOr(hiddenBinary1, trueHiddenBool);
+        HiddenOr equalsHiddenOr = new HiddenOr(hiddenBinary1, trueHiddenBool);
+        HiddenOr differentHiddenOr = new HiddenOr(hiddenBinary1, falseHiddenBool);
+        HiddenSub otherNode = new HiddenSub(hiddenFloat1, hiddenFloat2);
+        assertEquals(hiddenOr, hiddenOr,
+            "Method equals does not works." + messageSeed);
+        assertEquals(equalsHiddenOr, hiddenOr,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(differentHiddenOr, hiddenOr,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(otherNode, hiddenOr,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(hiddenOr, hiddenBinary1,
+            "Method equals does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testTestHashCode() {
+        HiddenOr hiddenOr = new HiddenOr(hiddenBinary1, trueHiddenBool);
+        HiddenOr equalsHiddenOr = new HiddenOr(hiddenBinary1, trueHiddenBool);
+        HiddenOr differentHiddenOr = new HiddenOr(hiddenBinary1, falseHiddenBool);
+        HiddenSub otherNode = new HiddenSub(hiddenFloat1, hiddenFloat2);
+        assertEquals(equalsHiddenOr.hashCode(), hiddenOr.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(differentHiddenOr.hashCode(), hiddenOr.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(otherNode.hashCode(), hiddenOr.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(hiddenString1.hashCode(), hiddenOr.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+    }
 }

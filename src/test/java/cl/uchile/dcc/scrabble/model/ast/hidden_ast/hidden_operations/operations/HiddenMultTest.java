@@ -78,4 +78,38 @@ class HiddenMultTest extends BaseHiddenOperationTest {
                 "Method mult does not works with binary type." + messageSeed);
         }
     }
+
+    @RepeatedTest(20)
+    void testEquals() {
+        HiddenMult hiddenMult = new HiddenMult(hiddenInt1, hiddenFloat2);
+        HiddenMult equalsHiddenMult = new HiddenMult(hiddenInt1, hiddenFloat2);
+        HiddenMult differentHiddenMult = new HiddenMult(hiddenInt2, hiddenBinary1);
+        HiddenAdd otherNode = new HiddenAdd(hiddenFloat1, hiddenFloat2);
+        assertEquals(hiddenMult, hiddenMult,
+            "Method equals does not works." + messageSeed);
+        assertEquals(equalsHiddenMult, hiddenMult,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(differentHiddenMult, hiddenMult,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(otherNode, hiddenMult,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(hiddenMult, hiddenInt1,
+            "Method equals does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testTestHashCode() {
+        HiddenMult hiddenMult = new HiddenMult(hiddenInt1, hiddenFloat2);
+        HiddenMult equalsHiddenMult = new HiddenMult(hiddenInt1, hiddenFloat2);
+        HiddenMult differentHiddenMult = new HiddenMult(hiddenInt2, hiddenBinary1);
+        HiddenAdd otherNode = new HiddenAdd(hiddenFloat1, hiddenFloat2);
+        assertEquals(equalsHiddenMult.hashCode(), hiddenMult.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(differentHiddenMult.hashCode(), hiddenMult.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(otherNode.hashCode(), hiddenMult.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(hiddenInt1.hashCode(), hiddenMult.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+    }
 }

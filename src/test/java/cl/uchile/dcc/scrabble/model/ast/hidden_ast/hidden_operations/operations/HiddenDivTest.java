@@ -78,4 +78,39 @@ class HiddenDivTest extends BaseHiddenOperationTest {
                 "Method div does not works with binary type." + messageSeed);
         }
     }
+
+    @RepeatedTest(20)
+    void testEquals() {
+        HiddenDiv hiddenDiv = new HiddenDiv(hiddenInt1, hiddenFloat2);
+        HiddenDiv equalsHiddenDiv = new HiddenDiv(hiddenInt1, hiddenFloat2);
+        HiddenDiv differentHiddenDiv = new HiddenDiv(hiddenInt2, hiddenBinary1);
+        HiddenAdd otherNode = new HiddenAdd(hiddenFloat1, hiddenFloat2);
+        System.out.println(otherNode);
+        assertEquals(hiddenDiv, hiddenDiv,
+            "Method equals does not works with equals instances." + messageSeed);
+        assertEquals(equalsHiddenDiv, hiddenDiv,
+            "Method equals does not works with similar instances." + messageSeed);
+        assertNotEquals(differentHiddenDiv, hiddenDiv,
+            "Method equals does not works with different instances." + messageSeed);
+        assertNotEquals(otherNode, hiddenDiv,
+            "Method equals does not works with different type of node." + messageSeed);
+        assertNotEquals(hiddenDiv, hiddenInt1,
+            "Method equals does not works with different type of data." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testTestHashCode() {
+        HiddenDiv hiddenDiv = new HiddenDiv(hiddenInt1, hiddenFloat2);
+        HiddenDiv equalsHiddenDiv = new HiddenDiv(hiddenInt1, hiddenFloat2);
+        HiddenDiv differentHiddenDiv = new HiddenDiv(hiddenInt2, hiddenBinary1);
+        HiddenAdd otherNode = new HiddenAdd(hiddenFloat1, hiddenFloat2);
+        assertEquals(equalsHiddenDiv.hashCode(), hiddenDiv.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(differentHiddenDiv.hashCode(), hiddenDiv.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(otherNode.hashCode(), hiddenDiv.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(hiddenInt1.hashCode(), hiddenDiv.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+    }
 }

@@ -5,6 +5,8 @@ import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFacto
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Abstract class for a general operation in the hidden types.
@@ -36,6 +38,40 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     @Override
     public String toString() {
         return asString(0);
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof AbstractHiddenOperation)) {
+            return false;
+        }
+        AbstractHiddenOperation that = (AbstractHiddenOperation) o;
+        return Objects.equals(leftChildren, that.leftChildren)
+            && Objects.equals(rightChildren, that.rightChildren)
+            && Objects.equals(this.calculate(), that.calculate());
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(leftChildren, rightChildren, this.calculate());
     }
 
     /**

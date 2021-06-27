@@ -78,4 +78,38 @@ class HiddenSubTest extends BaseHiddenOperationTest {
                 "Method sub does not works with binary type." + messageSeed);
         }
     }
+
+    @RepeatedTest(20)
+    void testEquals() {
+        HiddenSub hiddenSub = new HiddenSub(hiddenInt1, hiddenFloat2);
+        HiddenSub equalsHiddenSub = new HiddenSub(hiddenInt1, hiddenFloat2);
+        HiddenSub differentHiddenSub = new HiddenSub(hiddenInt2, hiddenBinary1);
+        HiddenAdd otherNode = new HiddenAdd(hiddenFloat1, hiddenFloat2);
+        assertEquals(hiddenSub, hiddenSub,
+            "Method equals does not works." + messageSeed);
+        assertEquals(equalsHiddenSub, hiddenSub,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(differentHiddenSub, hiddenSub,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(otherNode, hiddenSub,
+            "Method equals does not works." + messageSeed);
+        assertNotEquals(hiddenSub, hiddenInt1,
+            "Method equals does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testTestHashCode() {
+        HiddenSub hiddenSub = new HiddenSub(hiddenInt1, hiddenFloat2);
+        HiddenSub equalsHiddenSub = new HiddenSub(hiddenInt1, hiddenFloat2);
+        HiddenSub differentHiddenSub = new HiddenSub(hiddenInt2, hiddenBinary1);
+        HiddenAdd otherNode = new HiddenAdd(hiddenFloat1, hiddenFloat2);
+        assertEquals(equalsHiddenSub.hashCode(), hiddenSub.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(differentHiddenSub.hashCode(), hiddenSub.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(otherNode.hashCode(), hiddenSub.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+        assertNotEquals(hiddenInt1.hashCode(), hiddenSub.hashCode(),
+            "Method hashCode does not works." + messageSeed);
+    }
 }
