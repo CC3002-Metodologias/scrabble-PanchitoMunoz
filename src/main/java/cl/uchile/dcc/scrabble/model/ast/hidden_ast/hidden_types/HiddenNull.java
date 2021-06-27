@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
 
 /**
- * todo: documentar
+ * A null type for {@code HType}. To use Null-Object pattern.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/26 14:20

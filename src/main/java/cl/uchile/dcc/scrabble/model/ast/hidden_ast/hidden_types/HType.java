@@ -12,7 +12,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  *
  * <p>
  * The purpose of this adapter is to allow the operations that in other way can not be computed, and
- * thereby make it compatible with {@code Operation}. E.g.: operations between {@code SNumber},
+ * replace with {@code null} if the operation is not defined. E.g.: operations between {@code SNumber},
  * {@code binary.add(float)} can not be computed, but with this adapter, it can, and the result is
  * {@code null}. (note that the user is not expected to do these kinds of operations, but if it
  * does, then the program will not crash abruptly at this point).
