@@ -40,6 +40,8 @@ class HiddenIntTest extends BaseHTypeTest {
             "Method equals does not works." + messageSeed);
         assertNotEquals(wInt2, wInt1,
             "Method equals does not works." + messageSeed);
+        assertNotEquals(wInt1, typeInt1,
+            "Method equals does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -82,6 +84,11 @@ class HiddenIntTest extends BaseHTypeTest {
     void testToString() {
         assertEquals("HiddenInt{value=" + anInt1 + "}", wInt1.toString(),
             "Method toString does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testNeg() {
+        assertNull(wInt1.neg(), "Method neg does not works." + messageSeed);
     }
 
     @RepeatedTest(20)

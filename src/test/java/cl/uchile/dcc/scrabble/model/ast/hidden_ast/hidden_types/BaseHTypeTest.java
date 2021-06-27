@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.types.BaseTypeTest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Base class to wrapped types.
@@ -28,21 +30,28 @@ public abstract class BaseHTypeTest extends BaseTypeTest {
     // Strings
     protected HiddenString wString1;
     protected HiddenString wString2;
+    protected List<HType> hTypeList = new ArrayList<>();
 
     protected void setUp() {
         // Setting random values
         super.setUp();
+        hTypeList.add(trueWBool);
+        hTypeList.add(falseWBool);
         // Generate 2 binaries random
         wBinary1 = new HiddenBinary(typeBinary1);
+        hTypeList.add(wBinary1);
         wBinary2 = new HiddenBinary(typeBinary2);
         // Generate 2 floats random
         wFloat1 = new HiddenFloat(typeFloat1);
+        hTypeList.add(wFloat1);
         wFloat2 = new HiddenFloat(typeFloat2);
         // Generate 2 ints random
         wInt1 = new HiddenInt(typeInt1);
+        hTypeList.add(wInt1);
         wInt2 = new HiddenInt(typeInt2);
         // Generate 2 strings random
         wString1 = new HiddenString(typeString1);
+        hTypeList.add(wString1);
         wString2 = new HiddenString(typeString2);
     }
 }

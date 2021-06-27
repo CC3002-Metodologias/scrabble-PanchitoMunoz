@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
+import java.util.HashMap;
 
 /**
  * todo: documentar
@@ -44,18 +45,39 @@ public class HiddenNull extends AbstractHiddenType {
         return null;
     }
 
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
     @Override
     public int hashCode() {
         return 0;
     }
 
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param obj the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
     @Override
     public boolean equals(Object obj) {
         return obj instanceof HiddenNull;
     }
 
+    /**
+     * Returns the {@code String} representation of the current {@code HiddenAST}.
+     *
+     * @param space number of spaces to ident
+     * @return the current {@code HiddenAST} as {@code String}
+     */
     @Override
-    public HType addWithString(HiddenString wString) {
+    public String asString(int space) {
         return null;
     }
 }

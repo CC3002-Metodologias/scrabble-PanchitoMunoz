@@ -39,6 +39,8 @@ class HiddenFloatTest extends BaseHTypeTest {
             "Method equals does not works." + messageSeed);
         assertNotEquals(wFloat2, wFloat1,
             "Method equals does not works." + messageSeed);
+        assertNotEquals(wFloat1, typeFloat1,
+            "Method equals does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -81,6 +83,11 @@ class HiddenFloatTest extends BaseHTypeTest {
     void testToString() {
         assertEquals("HiddenFloat{value=" + aFloat1 + "}", wFloat1.toString(),
             "Method toString does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testNeg() {
+        assertNull(wFloat1.neg(), "Method neg does not works." + messageSeed);
     }
 
     @RepeatedTest(20)

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -45,6 +46,7 @@ class HiddenBinaryTest extends BaseHTypeTest {
         HiddenBinary expected = new HiddenBinary(typeBinary1);
         assertEquals(expected, wBinary1, "Method equals does not works." + messageSeed);
         assertNotEquals(wBinary2, wBinary1, "Method equals does not works." + messageSeed);
+        assertNotEquals(wBinary1, typeBinary1, "Method equals does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -94,6 +96,13 @@ class HiddenBinaryTest extends BaseHTypeTest {
             "Method toHiddenString does not works." + messageSeed);
         assertNotEquals(expected, wBinary2.toHiddenString(),
             "Method toHiddenString does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testNeg() {
+        HiddenBinary expected1 = new HiddenBinary(BinaryUtilities.oneComplement(aBinary1));
+        assertEquals(expected1, wBinary1.neg(),
+            "Method neg does not works." + messageSeed);
     }
 
     @RepeatedTest(20)

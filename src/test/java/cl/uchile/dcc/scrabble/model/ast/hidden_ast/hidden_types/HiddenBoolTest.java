@@ -43,6 +43,7 @@ class HiddenBoolTest extends BaseHTypeTest {
         assertEquals(new HiddenBool(true), trueWBool, "Method equals does not works.");
         assertEquals(new HiddenBool(false), falseWBool, "Method equals does not works.");
         assertNotEquals(new HiddenBool(false), trueWBool, "Method equals does not works.");
+        assertNotEquals(trueWBool, trueTypeBool, "Method equals does not works.");
     }
 
     @Test
@@ -90,6 +91,14 @@ class HiddenBoolTest extends BaseHTypeTest {
             "Method toString does not works.");
         assertEquals("HiddenBool{value=false}", falseWBool.toString(),
             "Method toString does not works.");
+    }
+
+    @Test
+    void testNeg() {
+        assertEquals(new HiddenBool(true), falseWBool.neg(),
+            "Method neg does not works." + messageSeed);
+        assertEquals(new HiddenBool(false), trueWBool.neg(),
+            "Method neg does not works." + messageSeed);
     }
 
     @Test

@@ -28,9 +28,7 @@ public interface HAdd {
     /**
      * To use double dispatch in {@code add}
      */
-    default HType addWithString(HiddenString wString) {
-        return null;
-    }
+    HType addWithString(HiddenString wString);
 
     /**
      * To use double dispatch in {@code add}
