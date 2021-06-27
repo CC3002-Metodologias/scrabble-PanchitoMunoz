@@ -4,10 +4,12 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_cl
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.operations.Div;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code div} method.
+ * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code div} method. This class will be adapted by the {@code Div} class.
  *
+ * @see Div
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
  */

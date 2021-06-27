@@ -8,7 +8,8 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformat
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 
 /**
- * An interface to represent a general hidden operation in {@code HiddenAST}
+ * An interface to represent a general hidden operation in {@code HiddenAST}.
+ * The classes that implement this interface will be adapted by the {@code Operation} classes.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:14

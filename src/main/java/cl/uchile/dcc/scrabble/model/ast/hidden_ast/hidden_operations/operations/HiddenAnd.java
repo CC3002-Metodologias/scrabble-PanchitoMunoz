@@ -4,10 +4,12 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_cl
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.operations.And;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code and} method.
+ * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code and} method. This class will be adapted by the {@code And} class.
  *
+ * @see And
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
  */

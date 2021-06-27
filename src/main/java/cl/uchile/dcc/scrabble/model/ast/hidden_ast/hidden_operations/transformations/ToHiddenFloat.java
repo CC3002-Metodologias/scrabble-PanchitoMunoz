@@ -5,10 +5,12 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_cl
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code toHiddenFloat} method.
+ * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code toHiddenFloat} method. This class will be adapted by the {@code ToTypeFloat} class.
  *
+ * @see ToTypeFloat
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 23:32
  */

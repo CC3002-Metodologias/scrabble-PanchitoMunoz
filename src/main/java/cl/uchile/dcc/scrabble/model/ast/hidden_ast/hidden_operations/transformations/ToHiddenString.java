@@ -5,10 +5,12 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_cl
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code toHiddenString} method.
+ * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code toHiddenString} method. This class will be adapted by the {@code ToTypeString} class.
  *
+ * @see ToTypeString
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 23:32
  */

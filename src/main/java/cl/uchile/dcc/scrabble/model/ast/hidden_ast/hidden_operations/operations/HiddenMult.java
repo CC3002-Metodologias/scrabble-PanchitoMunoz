@@ -4,10 +4,12 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_cl
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes.AbstractHiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.operations.Mult;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code mult} method.
+ * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code mult} method.  This class will be adapted by the {@code Mult} class.
  *
+ * @see Mult
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
  */
