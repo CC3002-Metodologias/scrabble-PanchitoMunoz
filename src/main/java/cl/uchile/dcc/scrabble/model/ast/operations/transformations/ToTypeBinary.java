@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.ast.operations.transformations;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenBinary;
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractTransformation;
 
 /**
  * TODO: DOCUMENTAR
@@ -10,7 +11,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 23:56
  */
-public class ToTypeBinary extends AbstractOperation {
+public class ToTypeBinary extends AbstractTransformation {
 
     /**
      * Constructor.

@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformat
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractTransformation;
 
 /**
  * TODO: DOCUMENTAR
@@ -11,7 +12,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 23:57
  */
-public class ToTypeBool extends AbstractOperation {
+public class ToTypeBool extends AbstractTransformation {
 
     /**
      * Constructor.

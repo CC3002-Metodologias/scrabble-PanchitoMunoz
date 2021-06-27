@@ -10,6 +10,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenSub;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class HiddenOperationTest extends BaseHiddenOperationTest {
@@ -40,7 +41,7 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
         binaryResult = binaryHiddenAST.calculate();
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToHiddenBinary() {
         assertNull(stringHiddenAST.toHiddenBinary().calculate(),
             "Method toHiddenBinary does not works with string type." + messageSeed);
@@ -54,7 +55,7 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
             "Method toHiddenBinary does not works with binary type." + messageSeed);
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToHiddenBool() {
         assertNull(stringHiddenAST.toHiddenBool().calculate(),
             "Method toHiddenBool does not works with string type." + messageSeed);
@@ -68,7 +69,7 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
             "Method toHiddenBool does not works with binary type." + messageSeed);
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToHiddenFloat() {
         assertNull(stringHiddenAST.toHiddenFloat().calculate(),
             "Method toHiddenFloat does not works with string type." + messageSeed);
@@ -82,7 +83,7 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
             "Method toHiddenFloat does not works with binary type." + messageSeed);
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToHiddenInt() {
         assertNull(stringHiddenAST.toHiddenInt().calculate(),
             "Method toHiddenInt does not works with string type." + messageSeed);
@@ -96,7 +97,7 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
             "Method toHiddenInt does not works with binary type." + messageSeed);
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToHiddenString() {
         assertEquals(stringResult.toHiddenString(), stringHiddenAST.toHiddenString().calculate(),
             "Method toHiddenString does not works with string type." + messageSeed);

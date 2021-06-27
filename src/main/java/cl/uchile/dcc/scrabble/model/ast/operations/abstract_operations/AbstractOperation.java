@@ -26,10 +26,8 @@ public abstract class AbstractOperation implements Operation {
         this.adaptee = adaptee;
     }
 
-    // TODO: Actualizar doc
     /**
-     * Transform a {@code SType} into its equivalent {@code HType}. If the
-     * argument is a {@code HType} or an {@code HiddenAST}, it does nothing.
+     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
      *
      * @return a transformation
      */

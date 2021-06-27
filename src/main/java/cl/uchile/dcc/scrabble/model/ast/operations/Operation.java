@@ -7,6 +7,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeInt;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * This interface is to define the different types of operations that exists. This is the composite
@@ -17,6 +18,13 @@ import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
  * @see HiddenAST
  */
 public interface Operation extends AST {
+
+    /**
+     * Calculate the {@code SType} result of performing all operations
+     *
+     * @return SType result of operations.
+     */
+    SType calculate();
 
     /**
      * Transform the current instance into a {@code TypeBinary}.
