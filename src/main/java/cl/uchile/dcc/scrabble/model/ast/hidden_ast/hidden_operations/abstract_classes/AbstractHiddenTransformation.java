@@ -45,6 +45,6 @@ public abstract class AbstractHiddenTransformation extends AbstractHiddenUnaryOp
      */
     @Override
     protected final String operatorName() {
-        return "";
+        return null;
     }
 }

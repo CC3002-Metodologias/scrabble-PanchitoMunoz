@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.BaseHiddenOperationTest;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class ToHiddenStringTest extends BaseHiddenOperationTest {
@@ -14,7 +15,7 @@ class ToHiddenStringTest extends BaseHiddenOperationTest {
         super.setUp();
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToString() {
         String templateString = "%s.toTypeString()";
         for (HType hType1 : hTypeList2) {
@@ -24,7 +25,7 @@ class ToHiddenStringTest extends BaseHiddenOperationTest {
         }
     }
 
-    @Test
+    @RepeatedTest(20)
     void testCalculate() {
         // String
         assertEquals(hiddenString1.toHiddenString(), new ToHiddenString(hiddenString1).calculate(),

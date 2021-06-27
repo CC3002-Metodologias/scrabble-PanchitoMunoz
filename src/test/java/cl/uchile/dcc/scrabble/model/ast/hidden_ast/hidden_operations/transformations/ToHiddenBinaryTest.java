@@ -7,6 +7,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class ToHiddenBinaryTest extends BaseHiddenOperationTest {
@@ -16,7 +17,7 @@ class ToHiddenBinaryTest extends BaseHiddenOperationTest {
         super.setUp();
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToString() {
         String templateString = "%s.toTypeBinary()";
         for (HType hType1 : hTypeList2) {
@@ -26,7 +27,7 @@ class ToHiddenBinaryTest extends BaseHiddenOperationTest {
         }
     }
 
-    @Test
+    @RepeatedTest(20)
     void testCalculate() {
         // String
         assertNull(new ToHiddenBinary(hiddenString1).calculate(),

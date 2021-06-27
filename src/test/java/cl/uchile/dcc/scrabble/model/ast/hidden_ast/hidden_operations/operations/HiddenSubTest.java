@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class HiddenSubTest extends BaseHiddenOperationTest {
@@ -13,7 +14,7 @@ class HiddenSubTest extends BaseHiddenOperationTest {
         super.setUp();
     }
 
-    @Test
+    @RepeatedTest(20)
     void testToString() {
         String templateString = (
             "Sub(\n"
@@ -31,7 +32,7 @@ class HiddenSubTest extends BaseHiddenOperationTest {
         }
     }
 
-    @Test
+    @RepeatedTest(20)
     void testCalculate() {
         // Sub with String
         for (HType hType : hTypeList2) {

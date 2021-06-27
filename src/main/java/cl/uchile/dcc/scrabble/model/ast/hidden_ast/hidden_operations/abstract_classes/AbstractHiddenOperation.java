@@ -75,7 +75,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return Command name as String
      */
     protected String commandName() {
-        return "";  // Usually don't used
+        return null;  // Usually don't used
     }
 
     /**
@@ -84,7 +84,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return Operator symbol as {@code String}
      */
     protected String operatorSymbol() {
-        return "";  // Usually don't used
+        return null;  // Usually don't used
     }
 
     /**
