@@ -113,9 +113,9 @@ public abstract class AbstractRandomValues {
     protected void setRandomValues() {
         setSettings();
         // Generate 2 binaries random
-        aBinary1 = generateABinaryRandom(rng, 1, 32);
+        aBinary1 = generateABinaryRandom(rng, 2, 32);
         do {
-            aBinary2 = generateABinaryRandom(rng, 2, 31);
+            aBinary2 = generateABinaryRandom(rng, 3, 31);
         } while (binaryEqual(aBinary1, aBinary2));
         // Generate 2 floats random
         aFloat1 = generateAFloatRandom(rng, 10);
