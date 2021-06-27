@@ -47,13 +47,15 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     @Override
     public final String asString(int space) {
         String tab = " ".repeat(space);
+        String caseIsNotTransformation = tab + operatorName() + "(\n"
+            + leftChildren.asString(space + 2)
+            + rightValueAsString(space) + '\n'
+            + tab + ')';
+        String caseIsTransformation = leftChildren.asString(space) + ".toType" + commandName() + "()";
         if (!isTransformation()) {
-            return tab + operatorName() + "(\n"
-                + leftChildren.asString(space + 2)
-                + rightValueAsString(space) + '\n'
-                + tab + ')';
+            return caseIsNotTransformation;
         } else {
-            return leftChildren.asString(space) + ".toType" + commandName() + "()";
+            return caseIsTransformation;
         }
     }
 
