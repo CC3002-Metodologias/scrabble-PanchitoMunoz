@@ -49,10 +49,10 @@ public class Main {
             new TypeFloat(6.9),
             new Or(
                 new TypeBinary("1000"),
-                (new Sub(
+                new Sub(
                     new TypeInt(25),
                     new TypeBinary("0101")
-                )).toTypeBinary()
+                ).toTypeBinary()
             ).toTypeInt().toTypeFloat()
         );
         System.out.println("Representación: " + addAST);

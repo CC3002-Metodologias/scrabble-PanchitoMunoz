@@ -12,7 +12,7 @@ import java.util.List;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/26 23:00
  */
-public class BaseHiddenOperationTest extends BaseHTypeTest {
+public abstract class BaseHiddenOperationTest extends BaseHTypeTest {
 
     protected List<HType> hNumberList = new ArrayList<>();
     protected List<HType> hNumberCList = new ArrayList<>();
