@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
 
 /**
- * TODO: Documentar
+ * An {@code Operation} class that adds a node in the {@code AST}. It is equivalent to applying {@code add} method.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/14 9:54

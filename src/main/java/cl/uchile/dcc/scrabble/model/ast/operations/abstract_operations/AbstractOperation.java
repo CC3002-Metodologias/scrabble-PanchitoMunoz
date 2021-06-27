@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
@@ -10,8 +11,10 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * Abstract class for a general {@code Operation}.
  *
  * @author Francisco Muñoz Guajardo
- * @create 2021/06/14 9:52 TODO: agregar el resto de hijos que podrían verse afectadas por esta
- * clase
+ * @create 2021/06/14 9:52
+ * @see Operation
+ * @see SType
+ * @see AST
  */
 public abstract class AbstractOperation implements Operation {
 

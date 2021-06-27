@@ -6,7 +6,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractTransformation;
 
 /**
- * TODO: DOCUMENTAR
+ * A class that works as a decorator for an {@code Operation}. Allows binary transformation.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 23:56
