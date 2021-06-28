@@ -21,29 +21,12 @@ public class TypeStringFactory implements GeneralTypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<String, TypeString> hashMapCache;
+    private final HashMap<String, TypeString> hashMapCache = new HashMap<>();
 
     /**
-     * Constructor only for tests.
-     *
-     * @param hashMapCache a hash map
+     * Constructor.
      */
-    private TypeStringFactory(HashMap<String, TypeString> hashMapCache) {
-        this.hashMapCache = hashMapCache;
-    }
-
-    /**
-     * Only for tests.
-     *
-     * @param hashMapCache a hash map
-     * @return the instance of the factory.
-     */
-    private static TypeStringFactory getInstance(HashMap<String, TypeString> hashMapCache) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new TypeStringFactory(hashMapCache);
-        }
-        return uniqueInstance;
-    }
+    private TypeStringFactory() { }
 
     /**
      * Returns the unique instance of the factory.
@@ -51,7 +34,10 @@ public class TypeStringFactory implements GeneralTypeFactory {
      * @return the instance of the factory
      */
     public static TypeStringFactory getInstance() {
-        return getInstance(new HashMap<>());
+        if (uniqueInstance == null) {
+            uniqueInstance = new TypeStringFactory();
+        }
+        return uniqueInstance;
     }
 
     /**

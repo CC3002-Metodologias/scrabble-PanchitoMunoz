@@ -20,29 +20,12 @@ public class HiddenFloatFactory implements GeneralTypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Double, HiddenFloat> hashMapCache;
+    private final HashMap<Double, HiddenFloat> hashMapCache = new HashMap<>();
 
     /**
-     * Constructor only for tests.
-     *
-     * @param hashMapCache a hash map
+     * Constructor.
      */
-    private HiddenFloatFactory(HashMap<Double, HiddenFloat> hashMapCache) {
-        this.hashMapCache = hashMapCache;
-    }
-
-    /**
-     * Only for tests.
-     *
-     * @param hashMapCache a hash map
-     * @return the instance of the factory.
-     */
-    private static HiddenFloatFactory getInstance(HashMap<Double, HiddenFloat> hashMapCache) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new HiddenFloatFactory(hashMapCache);
-        }
-        return uniqueInstance;
-    }
+    private HiddenFloatFactory() { }
 
     /**
      * Returns the unique instance of the factory.
@@ -50,7 +33,10 @@ public class HiddenFloatFactory implements GeneralTypeFactory {
      * @return the instance of the factory
      */
     public static HiddenFloatFactory getInstance() {
-        return getInstance(new HashMap<>());
+        if (uniqueInstance == null) {
+            uniqueInstance = new HiddenFloatFactory();
+        }
+        return uniqueInstance;
     }
 
     /**

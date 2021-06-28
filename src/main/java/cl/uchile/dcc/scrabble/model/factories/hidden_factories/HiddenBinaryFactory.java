@@ -20,29 +20,12 @@ public class HiddenBinaryFactory implements GeneralTypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Integer, HiddenBinary> hashMapCache;
+    private final HashMap<Integer, HiddenBinary> hashMapCache = new HashMap<>();
 
     /**
-     * Constructor only for tests.
-     *
-     * @param hashMapCache a hash map
+     * Constructor.
      */
-    private HiddenBinaryFactory(HashMap<Integer, HiddenBinary> hashMapCache) {
-        this.hashMapCache = hashMapCache;
-    }
-
-    /**
-     * Only for tests.
-     *
-     * @param hashMapCache a hash map
-     * @return the instance of the factory.
-     */
-    private static HiddenBinaryFactory getInstance(HashMap<Integer, HiddenBinary> hashMapCache) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new HiddenBinaryFactory(hashMapCache);
-        }
-        return uniqueInstance;
-    }
+    private HiddenBinaryFactory() { }
 
     /**
      * Returns the unique instance of the factory.
@@ -50,7 +33,10 @@ public class HiddenBinaryFactory implements GeneralTypeFactory {
      * @return the instance of the factory
      */
     public static HiddenBinaryFactory getInstance() {
-        return getInstance(new HashMap<>());
+        if (uniqueInstance == null) {
+            uniqueInstance = new HiddenBinaryFactory();
+        }
+        return uniqueInstance;
     }
 
     /**

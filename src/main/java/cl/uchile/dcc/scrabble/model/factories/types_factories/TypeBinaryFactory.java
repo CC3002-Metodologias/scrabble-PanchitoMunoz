@@ -21,29 +21,12 @@ public class TypeBinaryFactory implements GeneralTypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Integer, TypeBinary> hashMapCache;
+    private final HashMap<Integer, TypeBinary> hashMapCache = new HashMap<>();
 
     /**
-     * Constructor only for tests.
-     *
-     * @param hashMapCache a hash map
+     * Constructor.
      */
-    private TypeBinaryFactory(HashMap<Integer, TypeBinary> hashMapCache) {
-        this.hashMapCache = hashMapCache;
-    }
-
-    /**
-     * Only for tests.
-     *
-     * @param hashMapCache a hash map
-     * @return the instance of the factory.
-     */
-    private static TypeBinaryFactory getInstance(HashMap<Integer, TypeBinary> hashMapCache) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new TypeBinaryFactory(hashMapCache);
-        }
-        return uniqueInstance;
-    }
+    private TypeBinaryFactory() { }
 
     /**
      * Returns the unique instance of the factory.
@@ -51,7 +34,10 @@ public class TypeBinaryFactory implements GeneralTypeFactory {
      * @return the instance of the factory
      */
     public static TypeBinaryFactory getInstance() {
-        return getInstance(new HashMap<>());
+        if (uniqueInstance == null) {
+            uniqueInstance = new TypeBinaryFactory();
+        }
+        return uniqueInstance;
     }
 
     /**

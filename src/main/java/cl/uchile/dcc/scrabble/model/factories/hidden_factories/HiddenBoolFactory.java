@@ -20,29 +20,12 @@ public class HiddenBoolFactory implements GeneralTypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Boolean, HiddenBool> hashMapCache;
+    private final HashMap<Boolean, HiddenBool> hashMapCache = new HashMap<>();
 
     /**
-     * Constructor only for tests.
-     *
-     * @param hashMapCache a hash map
+     * Constructor.
      */
-    private HiddenBoolFactory(HashMap<Boolean, HiddenBool> hashMapCache) {
-        this.hashMapCache = hashMapCache;
-    }
-
-    /**
-     * Only for tests.
-     *
-     * @param hashMapCache a hash map
-     * @return the instance of the factory.
-     */
-    private static HiddenBoolFactory getInstance(HashMap<Boolean, HiddenBool> hashMapCache) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new HiddenBoolFactory(hashMapCache);
-        }
-        return uniqueInstance;
-    }
+    private HiddenBoolFactory() { }
 
     /**
      * Returns the unique instance of the factory.
@@ -50,7 +33,10 @@ public class HiddenBoolFactory implements GeneralTypeFactory {
      * @return the instance of the factory
      */
     public static HiddenBoolFactory getInstance() {
-        return getInstance(new HashMap<>());
+        if (uniqueInstance == null) {
+            uniqueInstance = new HiddenBoolFactory();
+        }
+        return uniqueInstance;
     }
 
     /**

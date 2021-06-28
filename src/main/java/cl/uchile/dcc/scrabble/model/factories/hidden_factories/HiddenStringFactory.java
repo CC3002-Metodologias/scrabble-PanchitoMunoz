@@ -20,29 +20,12 @@ public class HiddenStringFactory implements GeneralTypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<String, HiddenString> hashMapCache;
+    private final HashMap<String, HiddenString> hashMapCache = new HashMap<>();
 
     /**
-     * Constructor only for tests.
-     *
-     * @param hashMapCache a hash map
+     * Constructor.
      */
-    private HiddenStringFactory(HashMap<String, HiddenString> hashMapCache) {
-        this.hashMapCache = hashMapCache;
-    }
-
-    /**
-     * Only for tests.
-     *
-     * @param hashMapCache a hash map
-     * @return the instance of the factory.
-     */
-    private static HiddenStringFactory getInstance(HashMap<String, HiddenString> hashMapCache) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new HiddenStringFactory(hashMapCache);
-        }
-        return uniqueInstance;
-    }
+    private HiddenStringFactory() { }
 
     /**
      * Returns the unique instance of the factory.
@@ -50,7 +33,10 @@ public class HiddenStringFactory implements GeneralTypeFactory {
      * @return the instance of the factory
      */
     public static HiddenStringFactory getInstance() {
-        return getInstance(new HashMap<>());
+        if (uniqueInstance == null) {
+            uniqueInstance = new HiddenStringFactory();
+        }
+        return uniqueInstance;
     }
 
     /**

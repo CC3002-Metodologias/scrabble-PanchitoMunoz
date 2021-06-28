@@ -21,29 +21,12 @@ public class TypeFloatFactory implements GeneralTypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Double, TypeFloat> hashMapCache;
+    private final HashMap<Double, TypeFloat> hashMapCache = new HashMap<>();
 
     /**
-     * Constructor only for tests.
-     *
-     * @param hashMapCache a hash map
+     * Constructor.
      */
-    private TypeFloatFactory(HashMap<Double, TypeFloat> hashMapCache) {
-        this.hashMapCache = hashMapCache;
-    }
-
-    /**
-     * Only for tests.
-     *
-     * @param hashMapCache a hash map
-     * @return the instance of the factory.
-     */
-    private static TypeFloatFactory getInstance(HashMap<Double, TypeFloat> hashMapCache) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new TypeFloatFactory(hashMapCache);
-        }
-        return uniqueInstance;
-    }
+    private TypeFloatFactory() { }
 
     /**
      * Returns the unique instance of the factory.
@@ -51,7 +34,10 @@ public class TypeFloatFactory implements GeneralTypeFactory {
      * @return the instance of the factory
      */
     public static TypeFloatFactory getInstance() {
-        return getInstance(new HashMap<>());
+        if (uniqueInstance == null) {
+            uniqueInstance = new TypeFloatFactory();
+        }
+        return uniqueInstance;
     }
 
     /**

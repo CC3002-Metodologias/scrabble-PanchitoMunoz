@@ -21,29 +21,12 @@ public class TypeBoolFactory implements GeneralTypeFactory {
     /**
      * To use Flyweight pattern
      */
-    private final HashMap<Boolean, TypeBool> hashMapCache;
+    private final HashMap<Boolean, TypeBool> hashMapCache = new HashMap<>();
 
     /**
-     * Constructor only for tests.
-     *
-     * @param hashMapCache a hash map
+     * Constructor.
      */
-    private TypeBoolFactory(HashMap<Boolean, TypeBool> hashMapCache) {
-        this.hashMapCache = hashMapCache;
-    }
-
-    /**
-     * Only for tests.
-     *
-     * @param hashMapCache a hash map
-     * @return the instance of the factory.
-     */
-    private static TypeBoolFactory getInstance(HashMap<Boolean, TypeBool> hashMapCache) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new TypeBoolFactory(hashMapCache);
-        }
-        return uniqueInstance;
-    }
+    private TypeBoolFactory() { }
 
     /**
      * Returns the unique instance of the factory.
@@ -51,7 +34,10 @@ public class TypeBoolFactory implements GeneralTypeFactory {
      * @return the instance of the factory
      */
     public static TypeBoolFactory getInstance() {
-        return getInstance(new HashMap<>());
+        if (uniqueInstance == null) {
+            uniqueInstance = new TypeBoolFactory();
+        }
+        return uniqueInstance;
     }
 
     /**
