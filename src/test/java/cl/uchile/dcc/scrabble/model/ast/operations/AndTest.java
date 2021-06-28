@@ -131,7 +131,7 @@ class AndTest extends BaseOperationTest {
     void testToTypeBinary() {
         assertNull(boolResult.toTypeBinary().calculate(),
             "Method toTypeBinary does not works with bool result." + messageSeed);
-        assertEquals(((TypeBinary) typeBinary1.and(typeBinary2)).toTypeBinary(),
+        assertEquals(typeBinary1.and(typeBinary2).toTypeBinary(),
             binaryResult.toTypeBinary().calculate(),
             "Method toTypeBinary does not works with binary result." + messageSeed);
     }
@@ -149,7 +149,7 @@ class AndTest extends BaseOperationTest {
     void testToTypeFloat() {
         assertNull(boolResult.toTypeFloat().calculate(),
             "Method toTypeFloat does not works with bool result." + messageSeed);
-        assertEquals(((TypeBinary) typeBinary1.and(typeBinary2)).toTypeFloat(),
+        assertEquals(typeBinary1.and(typeBinary2).toTypeFloat(),
             binaryResult.toTypeFloat().calculate(),
             "Method toTypeFloat does not works with binary result." + messageSeed);
     }
@@ -158,7 +158,7 @@ class AndTest extends BaseOperationTest {
     void testToTypeInt() {
         assertNull(boolResult.toTypeInt().calculate(),
             "Method toTypeInt does not works with bool result." + messageSeed);
-        assertEquals(((TypeBinary) typeBinary1.and(typeBinary2)).toTypeInt(),
+        assertEquals(typeBinary1.and(typeBinary2).toTypeInt(),
             binaryResult.toTypeInt().calculate(),
             "Method toTypeInt does not works with binary result." + messageSeed);
     }

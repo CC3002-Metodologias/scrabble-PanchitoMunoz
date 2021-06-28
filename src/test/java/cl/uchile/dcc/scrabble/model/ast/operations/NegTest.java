@@ -111,7 +111,7 @@ class NegTest extends BaseOperationTest {
 
     @RepeatedTest(20)
     void testToTypeBool() {
-        assertEquals(((TypeBool) trueTypeBool.neg()).toTypeBool(),
+        assertEquals(trueTypeBool.neg().toTypeBool(),
             boolResult.toTypeBool().calculate(),
             "Method toTypeBool does not works with bool result." + messageSeed);
         assertNull(binaryResult.toTypeBool().calculate(),

@@ -91,7 +91,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return The negation of the current instance.
      */
     @Override
-    public SLogical neg() {
+    public TypeBool neg() {
         return STypeFactory.createTypeBool(!(this.value));
     }
 
@@ -135,7 +135,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return The disjunction between the Bool type and the other type.
      */
     @Override
-    public SLogical andWithBool(TypeBool typeBool) {
+    public TypeBool andWithBool(TypeBool typeBool) {
         return STypeFactory.createTypeBool(typeBool.value && this.value);
     }
 
@@ -146,7 +146,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return The conjunction between the Bool type and the other type.
      */
     @Override
-    public SLogical orWithBool(TypeBool typeBool) {
+    public TypeBool orWithBool(TypeBool typeBool) {
         return STypeFactory.createTypeBool(typeBool.value || this.value);
     }
 
@@ -157,7 +157,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return The disjunction between the Binary type and the other type.
      */
     @Override
-    public SLogical andWithBinary(TypeBinary typeBinary) {
+    public TypeBinary andWithBinary(TypeBinary typeBinary) {
         return STypeFactory.createTypeBinary(boolAndBinary(this.value, typeBinary.getValue()));
     }
 
@@ -168,7 +168,7 @@ public class TypeBool extends AbstractType implements SLogical {
      * @return The conjunction between the Binary type and the other type.
      */
     @Override
-    public SLogical orWithBinary(TypeBinary typeBinary) {
+    public TypeBinary orWithBinary(TypeBinary typeBinary) {
         return STypeFactory.createTypeBinary(boolOrBinary(this.value, typeBinary.getValue()));
     }
 

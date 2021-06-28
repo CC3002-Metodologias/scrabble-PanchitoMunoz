@@ -79,7 +79,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The sum between the two types, returning the dominant type.
      */
     @Override
-    public SNumber add(SNumber otherType) {
+    public TypeFloat add(SNumber otherType) {
         return otherType.addWithFloat(this);
     }
 
@@ -101,7 +101,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The sum between the Int type and the other type.
      */
     @Override
-    public SNumber addWithInt(TypeInt typeInt) {
+    public TypeFloat addWithInt(TypeInt typeInt) {
         return STypeFactory.createTypeFloat(typeInt.getValue() + this.value);
     }
 
@@ -112,7 +112,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The sum between the Float type and the other type.
      */
     @Override
-    public SNumber addWithFloat(TypeFloat typeFloat) {
+    public TypeFloat addWithFloat(TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.value + this.value);
     }
 
@@ -123,7 +123,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The subtraction between the two types, returning the dominant type.
      */
     @Override
-    public SNumber sub(SNumber otherType) {
+    public TypeFloat sub(SNumber otherType) {
         return otherType.subWithFloat(this);
     }
 
@@ -134,7 +134,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The subtraction between the Float type and the other type.
      */
     @Override
-    public SNumber subWithFloat(TypeFloat typeFloat) {
+    public TypeFloat subWithFloat(TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.value - this.value);
     }
 
@@ -145,7 +145,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The subtraction between the Int type and the other type.
      */
     @Override
-    public SNumber subWithInt(TypeInt typeInt) {
+    public TypeFloat subWithInt(TypeInt typeInt) {
         return STypeFactory.createTypeFloat(typeInt.getValue() - this.value);
     }
 
@@ -157,7 +157,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The multiplication between the two types, returning the dominant type.
      */
     @Override
-    public SNumber mult(SNumber otherType) {
+    public TypeFloat mult(SNumber otherType) {
         return otherType.multWithFloat(this);
     }
 
@@ -168,7 +168,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The multiplication between the Float type and the other type.
      */
     @Override
-    public SNumber multWithFloat(TypeFloat typeFloat) {
+    public TypeFloat multWithFloat(TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.value * this.value);
     }
 
@@ -179,7 +179,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The multiplication between the Int type and the other type.
      */
     @Override
-    public SNumber multWithInt(TypeInt typeInt) {
+    public TypeFloat multWithInt(TypeInt typeInt) {
         return STypeFactory.createTypeFloat(typeInt.getValue() * this.value);
     }
 
@@ -191,7 +191,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public SNumber div(SNumber otherType) {
+    public TypeFloat div(SNumber otherType) {
         return otherType.divWithFloat(this);
     }
 
@@ -202,7 +202,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The division between the Float type and the other type.
      */
     @Override
-    public SNumber divWithFloat(TypeFloat typeFloat) {
+    public TypeFloat divWithFloat(TypeFloat typeFloat) {
         // Case divide by zero
         if (this.value == 0.) return STypeFactory.createTypeFloat(0.0);
         return STypeFactory.createTypeFloat(typeFloat.value / this.value);
@@ -215,7 +215,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The division between the Int type and the other type.
      */
     @Override
-    public SNumber divWithInt(TypeInt typeInt) {
+    public TypeFloat divWithInt(TypeInt typeInt) {
         // Case divide by zero
         if (this.value == 0.) {
             return STypeFactory.createTypeFloat(0.0);

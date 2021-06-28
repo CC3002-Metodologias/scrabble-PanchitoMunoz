@@ -179,7 +179,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType addWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.addWithBinary(wBinary.toSType());
+        TypeBinary computed = this.typeBinary.addWithBinary(wBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -188,7 +188,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType addWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeBinary.addWithFloat(wFloat.toSType());
+        TypeFloat computed = this.typeBinary.addWithFloat(wFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -197,7 +197,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType addWithInt(HiddenInt wInt) {
-        TypeInt computed = (TypeInt) this.typeBinary.addWithInt(wInt.toSType());
+        TypeInt computed = this.typeBinary.addWithInt(wInt.toSType());
         return HTypeFactory.createHiddenInt(computed);
     }
 
@@ -206,7 +206,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType subWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.subWithBinary(wBinary.toSType());
+        TypeBinary computed = this.typeBinary.subWithBinary(wBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -215,7 +215,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType subWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeBinary.subWithFloat(wFloat.toSType());
+        TypeFloat computed = this.typeBinary.subWithFloat(wFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -224,7 +224,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType subWithInt(HiddenInt wInt) {
-        TypeInt computed = (TypeInt) this.typeBinary.subWithInt(wInt.toSType());
+        TypeInt computed = this.typeBinary.subWithInt(wInt.toSType());
         return HTypeFactory.createHiddenInt(computed);
     }
 
@@ -233,7 +233,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType multWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.multWithBinary(wBinary.toSType());
+        TypeBinary computed = this.typeBinary.multWithBinary(wBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -242,7 +242,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType multWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeBinary.multWithFloat(wFloat.toSType());
+        TypeFloat computed = this.typeBinary.multWithFloat(wFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -251,7 +251,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType multWithInt(HiddenInt wInt) {
-        TypeInt computed = (TypeInt) this.typeBinary.multWithInt(wInt.toSType());
+        TypeInt computed = this.typeBinary.multWithInt(wInt.toSType());
         return HTypeFactory.createHiddenInt(computed);
     }
 
@@ -260,7 +260,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType divWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.divWithBinary(wBinary.toSType());
+        TypeBinary computed = this.typeBinary.divWithBinary(wBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -269,7 +269,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType divWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeBinary.divWithFloat(wFloat.toSType());
+        TypeFloat computed = this.typeBinary.divWithFloat(wFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -278,7 +278,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType divWithInt(HiddenInt wInt) {
-        TypeInt computed = (TypeInt) this.typeBinary.divWithInt(wInt.toSType());
+        TypeInt computed = this.typeBinary.divWithInt(wInt.toSType());
         return HTypeFactory.createHiddenInt(computed);
     }
 
@@ -287,7 +287,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType andWithBool(HiddenBool wBool) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.andWithBool(wBool.toSType());
+        TypeBinary computed = this.typeBinary.andWithBool(wBool.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -296,7 +296,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType andWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.andWithBinary(wBinary.toSType());
+        TypeBinary computed = this.typeBinary.andWithBinary(wBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -305,7 +305,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType orWithBool(HiddenBool wBool) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.orWithBool(wBool.toSType());
+        TypeBinary computed = this.typeBinary.orWithBool(wBool.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -314,7 +314,7 @@ public class HiddenBinary extends AbstractHiddenType {
      */
     @Override
     public HType orWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBinary.orWithBinary(wBinary.toSType());
+        TypeBinary computed = this.typeBinary.orWithBinary(wBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 }

@@ -145,7 +145,7 @@ public class HiddenFloat extends AbstractHiddenType {
      */
     @Override
     public HType addWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.addWithFloat(wFloat.toSType());
+        TypeFloat computed = this.typeFloat.addWithFloat(wFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -154,7 +154,7 @@ public class HiddenFloat extends AbstractHiddenType {
      */
     @Override
     public HType addWithInt(HiddenInt wInt) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.addWithInt(wInt.toSType());
+        TypeFloat computed = this.typeFloat.addWithInt(wInt.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -163,7 +163,7 @@ public class HiddenFloat extends AbstractHiddenType {
      */
     @Override
     public HType subWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.subWithFloat(wFloat.toSType());
+        TypeFloat computed = this.typeFloat.subWithFloat(wFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -174,7 +174,7 @@ public class HiddenFloat extends AbstractHiddenType {
      */
     @Override
     public HType subWithInt(HiddenInt wInt) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.subWithInt(wInt.toSType());
+        TypeFloat computed = this.typeFloat.subWithInt(wInt.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -185,7 +185,7 @@ public class HiddenFloat extends AbstractHiddenType {
      */
     @Override
     public HType multWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.multWithFloat(wFloat.toSType());
+        TypeFloat computed = this.typeFloat.multWithFloat(wFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -196,7 +196,7 @@ public class HiddenFloat extends AbstractHiddenType {
      */
     @Override
     public HType multWithInt(HiddenInt wInt) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.multWithInt(wInt.toSType());
+        TypeFloat computed = this.typeFloat.multWithInt(wInt.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -207,7 +207,7 @@ public class HiddenFloat extends AbstractHiddenType {
      */
     @Override
     public HType divWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.divWithFloat(wFloat.toSType());
+        TypeFloat computed = this.typeFloat.divWithFloat(wFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -218,7 +218,7 @@ public class HiddenFloat extends AbstractHiddenType {
      */
     @Override
     public HType divWithInt(HiddenInt wInt) {
-        TypeFloat computed = (TypeFloat) this.typeFloat.divWithInt(wInt.toSType());
+        TypeFloat computed = this.typeFloat.divWithInt(wInt.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 }

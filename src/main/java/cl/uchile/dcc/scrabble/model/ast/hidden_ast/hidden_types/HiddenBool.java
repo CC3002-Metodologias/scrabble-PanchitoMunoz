@@ -148,7 +148,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType neg() {
-        return HTypeFactory.createHiddenBool((TypeBool) this.typeBool.neg());
+        return HTypeFactory.createHiddenBool(this.typeBool.neg());
     }
 
     /**
@@ -156,7 +156,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType andWithBool(HiddenBool wBool) {
-        TypeBool computed = (TypeBool) this.typeBool.andWithBool(wBool.toSType());
+        TypeBool computed = this.typeBool.andWithBool(wBool.toSType());
         return HTypeFactory.createHiddenBool(computed);
     }
 
@@ -167,7 +167,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType andWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBool.andWithBinary(wBinary.toSType());
+        TypeBinary computed = this.typeBool.andWithBinary(wBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -178,7 +178,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType orWithBool(HiddenBool wBool) {
-        TypeBool computed = (TypeBool) this.typeBool.orWithBool(wBool.toSType());
+        TypeBool computed = this.typeBool.orWithBool(wBool.toSType());
         return HTypeFactory.createHiddenBool(computed);
     }
 
@@ -189,7 +189,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType orWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = (TypeBinary) this.typeBool.orWithBinary(wBinary.toSType());
+        TypeBinary computed = this.typeBool.orWithBinary(wBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 }
