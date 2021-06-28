@@ -18,8 +18,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
 
     private final HiddenAST leftChildren;
     private final HiddenAST rightChildren;
-    private String operatorName;
-    private String operatorSymbol;
+    private final String operatorName;
+    private final String operatorSymbol;
 
     /**
      * Default constructor. It can receive an {@code HiddenOperation} or a {@code HType}.
@@ -27,26 +27,12 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
-    public AbstractHiddenOperation(HiddenAST leftValue, HiddenAST rightValue) {
-        leftChildren = leftValue;
-        rightChildren = rightValue;
-    }
-
-    /**
-     * Sets the operator name.
-     *
-     * @param operatorName the operator name as {@code String}
-     */
-    protected void setOperatorName(String operatorName) {
+    public AbstractHiddenOperation(
+        HiddenAST leftValue, HiddenAST rightValue,
+        String operatorName, String operatorSymbol) {
+        this.leftChildren = leftValue;
+        this.rightChildren = rightValue;
         this.operatorName = operatorName;
-    }
-
-    /**
-     * Sets the operator symbol.
-     *
-     * @param operatorSymbol the operator symbol as {@code String}
-     */
-    protected void setOperatorSymbol(String operatorSymbol) {
         this.operatorSymbol = operatorSymbol;
     }
 

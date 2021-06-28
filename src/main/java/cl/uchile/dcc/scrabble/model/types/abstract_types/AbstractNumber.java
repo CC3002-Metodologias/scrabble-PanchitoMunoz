@@ -42,7 +42,7 @@ public abstract class AbstractNumber extends AbstractType implements SNumber {
      * @return {@code TypeFloat} with a value equivalent to the current type.
      */
     @Override
-    public TypeFloat toTypeFloat() {
+    public final TypeFloat toTypeFloat() {
         return STypeFactory.createTypeFloat(this.getValueAsDouble());
     }
 }

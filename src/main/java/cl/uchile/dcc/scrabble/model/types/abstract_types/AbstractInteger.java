@@ -59,7 +59,7 @@ public abstract class AbstractInteger extends AbstractNumber implements SInteger
      * @return {@code TypeBinary} with a value equivalent to the current type.
      */
     @Override
-    public TypeBinary toTypeBinary() {
+    public final TypeBinary toTypeBinary() {
         return STypeFactory.createTypeBinary(this.getValueAsBinary());
     }
 
@@ -69,7 +69,7 @@ public abstract class AbstractInteger extends AbstractNumber implements SInteger
      * @return {@code TypeInt} with a value equivalent to the current type.
      */
     @Override
-    public TypeInt toTypeInt() {
+    public final TypeInt toTypeInt() {
         return STypeFactory.createTypeInt(this.getValueAsInt());
     }
 }

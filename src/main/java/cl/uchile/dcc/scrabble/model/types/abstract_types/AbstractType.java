@@ -43,7 +43,7 @@ public abstract class AbstractType implements SType {
      * @return {@code TypeString} with a value equivalent to the current type.
      */
     @Override
-    public TypeString toTypeString() {
+    public final TypeString toTypeString() {
         return STypeFactory.createTypeString(this.getValueAsString());
     }
 

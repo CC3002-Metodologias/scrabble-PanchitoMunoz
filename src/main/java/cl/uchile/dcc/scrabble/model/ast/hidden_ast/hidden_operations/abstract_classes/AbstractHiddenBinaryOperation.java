@@ -19,8 +19,6 @@ public abstract class AbstractHiddenBinaryOperation extends AbstractHiddenOperat
     public AbstractHiddenBinaryOperation(
         HiddenAST leftValue, HiddenAST rightValue,
         String operatorName, String operatorSymbol) {
-        super(leftValue, rightValue);
-        super.setOperatorName(operatorName);
-        super.setOperatorSymbol(operatorSymbol);
+        super(leftValue, rightValue, operatorName, operatorSymbol);
     }
 }
