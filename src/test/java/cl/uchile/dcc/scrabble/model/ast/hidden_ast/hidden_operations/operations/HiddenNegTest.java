@@ -37,7 +37,7 @@ class HiddenNegTest extends BaseHiddenOperationTest {
         }
         for (HType hType :
             hLogicalCList) {
-            assertNull(new HiddenNeg(hType).calculate(),
+            assertEquals(hiddenNull, new HiddenNeg(hType).calculate(),
                 "Method neg does not works." + messageSeed);
         }
     }

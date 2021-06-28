@@ -83,6 +83,7 @@ public class HiddenNull extends AbstractHiddenType {
      */
     @Override
     public String asString(int space) {
-        return null;
+        String tab = " ".repeat(space);
+        return tab + "null";
     }
 }

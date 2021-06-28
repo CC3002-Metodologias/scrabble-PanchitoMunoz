@@ -28,12 +28,12 @@ class ToHiddenFloatTest extends BaseHiddenOperationTest {
     @RepeatedTest(20)
     void testCalculate() {
         // String
-        assertNull(new ToHiddenFloat(hiddenString1).calculate(),
+        assertEquals(hiddenNull, new ToHiddenFloat(hiddenString1).calculate(),
             "Method calculate does not works with string type." + messageSeed);
         // Bool
-        assertNull(new ToHiddenFloat(trueHiddenBool).calculate(),
+        assertEquals(hiddenNull, new ToHiddenFloat(trueHiddenBool).calculate(),
             "Method calculate does not works with bool type." + messageSeed);
-        assertNull(new ToHiddenFloat(falseHiddenBool).calculate(),
+        assertEquals(hiddenNull, new ToHiddenFloat(falseHiddenBool).calculate(),
             "Method calculate does not works with bool type." + messageSeed);
         // float
         assertEquals(hiddenFloat1.toHiddenFloat(), new ToHiddenFloat(hiddenFloat1).calculate(),

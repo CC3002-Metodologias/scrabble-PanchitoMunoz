@@ -43,9 +43,9 @@ class HiddenAddTest extends BaseHiddenOperationTest {
         }
         // Add with bool
         for (HType hType : hTypeList2) {
-            assertNull(new HiddenAdd(trueHiddenBool, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenAdd(trueHiddenBool, hType).calculate(),
                 "Method add does not works with bool type." + messageSeed);
-            assertNull(new HiddenAdd(falseHiddenBool, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenAdd(falseHiddenBool, hType).calculate(),
                 "Method add does not works with bool type." + messageSeed);
         }
         // Add with float
@@ -55,7 +55,7 @@ class HiddenAddTest extends BaseHiddenOperationTest {
                 "Method add does not works with float type." + messageSeed);
         }
         for (HType hType : hNumberCList) {
-            assertNull(new HiddenAdd(hiddenFloat1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenAdd(hiddenFloat1, hType).calculate(),
                 "Method add does not works with float type." + messageSeed);
         }
         // Add with int
@@ -65,7 +65,7 @@ class HiddenAddTest extends BaseHiddenOperationTest {
                 "Method add does not works with int type." + messageSeed);
         }
         for (HType hType : hNumberCList) {
-            assertNull(new HiddenAdd(hiddenInt1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenAdd(hiddenInt1, hType).calculate(),
                 "Method add does not works with int type." + messageSeed);
         }
         // Add with binary
@@ -75,7 +75,7 @@ class HiddenAddTest extends BaseHiddenOperationTest {
                 "Method add does not works with binary type." + messageSeed);
         }
         for (HType hType : hIntegerCList) {
-            assertNull(new HiddenAdd(hiddenBinary1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenAdd(hiddenBinary1, hType).calculate(),
                 "Method add does not works with binary type." + messageSeed);
         }
     }

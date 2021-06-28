@@ -32,7 +32,7 @@ public class ToHiddenString extends AbstractHiddenTransformation {
      * @return the value computed
      */
     @Override
-    protected HiddenString mainUnaryOperation(HType value) {
+    protected HType mainUnaryOperation(HType value) {
         return value.toHiddenString();
     }
 }

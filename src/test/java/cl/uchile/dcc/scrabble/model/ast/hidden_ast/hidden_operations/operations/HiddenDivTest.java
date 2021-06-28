@@ -42,9 +42,9 @@ class HiddenDivTest extends BaseHiddenOperationTest {
         }
         // Div with bool
         for (HType hType : hTypeList2) {
-            assertNull(new HiddenDiv(trueHiddenBool, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenDiv(trueHiddenBool, hType).calculate(),
                 "Method div does not works with bool type." + messageSeed);
-            assertNull(new HiddenDiv(falseHiddenBool, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenDiv(falseHiddenBool, hType).calculate(),
                 "Method div does not works with bool type." + messageSeed);
         }
         // Div with float
@@ -54,7 +54,7 @@ class HiddenDivTest extends BaseHiddenOperationTest {
                 "Method div does not works with float type." + messageSeed);
         }
         for (HType hType : hNumberCList) {
-            assertNull(new HiddenDiv(hiddenFloat1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenDiv(hiddenFloat1, hType).calculate(),
                 "Method div does not works with float type." + messageSeed);
         }
         // Div with int
@@ -64,7 +64,7 @@ class HiddenDivTest extends BaseHiddenOperationTest {
                 "Method div does not works with int type." + messageSeed);
         }
         for (HType hType : hNumberCList) {
-            assertNull(new HiddenDiv(hiddenInt1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenDiv(hiddenInt1, hType).calculate(),
                 "Method div does not works with int type." + messageSeed);
         }
         // Div with binary
@@ -74,7 +74,7 @@ class HiddenDivTest extends BaseHiddenOperationTest {
                 "Method div does not works with binary type." + messageSeed);
         }
         for (HType hType : hIntegerCList) {
-            assertNull(new HiddenDiv(hiddenBinary1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenDiv(hiddenBinary1, hType).calculate(),
                 "Method div does not works with binary type." + messageSeed);
         }
     }

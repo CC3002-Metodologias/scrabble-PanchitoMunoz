@@ -36,7 +36,7 @@ class HiddenOrTest extends BaseHiddenOperationTest {
     void testCalculate() {
         // Or with String
         for (HType hType : hTypeList2) {
-            assertNull(new HiddenOr(hiddenString1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenOr(hiddenString1, hType).calculate(),
                 "Method or does not works with string type." + messageSeed);
         }
         // Or with bool
@@ -49,19 +49,19 @@ class HiddenOrTest extends BaseHiddenOperationTest {
                 "Method or does not works with bool type." + messageSeed);
         }
         for (HType hType : hLogicalCList) {
-            assertNull(new HiddenOr(trueHiddenBool, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenOr(trueHiddenBool, hType).calculate(),
                 "Method or does not works with bool type." + messageSeed);
-            assertNull(new HiddenOr(falseHiddenBool, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenOr(falseHiddenBool, hType).calculate(),
                 "Method or does not works with bool type." + messageSeed);
         }
         // Or with float
         for (HType hType : hTypeList2) {
-            assertNull(new HiddenOr(hiddenFloat1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenOr(hiddenFloat1, hType).calculate(),
                 "Method or does not works with float type." + messageSeed);
         }
         // Or with int
         for (HType hType : hTypeList2) {
-            assertNull(new HiddenOr(hiddenInt1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenOr(hiddenInt1, hType).calculate(),
                 "Method or does not works with int type." + messageSeed);
         }
         // Or with binary
@@ -71,7 +71,7 @@ class HiddenOrTest extends BaseHiddenOperationTest {
                 "Method or does not works with binary type." + messageSeed);
         }
         for (HType hType : hLogicalCList) {
-            assertNull(new HiddenOr(hiddenBinary1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenOr(hiddenBinary1, hType).calculate(),
                 "Method or does not works with binary type." + messageSeed);
         }
     }

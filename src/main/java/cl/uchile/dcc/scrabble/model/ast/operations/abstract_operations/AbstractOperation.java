@@ -48,12 +48,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public SType calculate() {
-        HType hTypeComputed = adaptee.calculate();
-        if (!(hTypeComputed == null)) {
-            return hTypeComputed.toSType();
-        } else {
-            return null;
-        }
+        return adaptee.calculate().toSType();
     }
 
     /**

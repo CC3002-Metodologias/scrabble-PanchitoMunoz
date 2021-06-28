@@ -30,15 +30,15 @@ class ToHiddenBinaryTest extends BaseHiddenOperationTest {
     @RepeatedTest(20)
     void testCalculate() {
         // String
-        assertNull(new ToHiddenBinary(hiddenString1).calculate(),
+        assertEquals(hiddenNull, new ToHiddenBinary(hiddenString1).calculate(),
             "Method calculate does not works with string type." + messageSeed);
         // Bool
-        assertNull(new ToHiddenBinary(trueHiddenBool).calculate(),
+        assertEquals(hiddenNull, new ToHiddenBinary(trueHiddenBool).calculate(),
             "Method calculate does not works with bool type." + messageSeed);
-        assertNull(new ToHiddenBinary(falseHiddenBool).calculate(),
+        assertEquals(hiddenNull, new ToHiddenBinary(falseHiddenBool).calculate(),
             "Method calculate does not works with bool type." + messageSeed);
         // float
-        assertNull(new ToHiddenBinary(hiddenFloat1).calculate(),
+        assertEquals(hiddenNull, new ToHiddenBinary(hiddenFloat1).calculate(),
             "Method calculate does not works with float type." + messageSeed);
         // int
         assertEquals(hiddenInt1.toHiddenBinary(), new ToHiddenBinary(hiddenInt1).calculate(),

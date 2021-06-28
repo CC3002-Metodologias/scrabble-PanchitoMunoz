@@ -58,7 +58,7 @@ public class HiddenFloat extends AbstractHiddenType {
      * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public HiddenFloat toHiddenFloat() {
+    public HType toHiddenFloat() {
         TypeFloat computed = this.typeFloat.toTypeFloat();
         return HTypeFactory.createHiddenFloat(computed);
     }
@@ -69,7 +69,7 @@ public class HiddenFloat extends AbstractHiddenType {
      * @return a {@code HiddenString} equivalent
      */
     @Override
-    public HiddenString toHiddenString() {
+    public HType toHiddenString() {
         TypeString computed = this.typeFloat.toTypeString();
         return HTypeFactory.createHiddenString(computed);
     }

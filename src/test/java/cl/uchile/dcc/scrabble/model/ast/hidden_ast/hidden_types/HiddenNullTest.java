@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class HiddenNullTest extends BaseHTypeTest {
-    private final HiddenNull hiddenNull = HiddenNull.getInstance();
 
     @BeforeEach
     protected void setUp() {
@@ -21,7 +20,7 @@ class HiddenNullTest extends BaseHTypeTest {
 
     @Test
     void testAsString() {
-        assertNull(hiddenNull.asString(0), "Method asString does not works." + messageSeed);
+        assertEquals("null", hiddenNull.asString(0), "Method asString does not works." + messageSeed);
     }
 
     @Test
@@ -39,31 +38,31 @@ class HiddenNullTest extends BaseHTypeTest {
 
     @Test
     void testToHiddenBinary() {
-        assertNull(hiddenNull.toHiddenBinary(),
+        assertEquals(hiddenNull, hiddenNull.toHiddenBinary(),
             "Method toHiddenBinary does not works." + messageSeed);
     }
 
     @Test
     void testToHiddenBool() {
-        assertNull(hiddenNull.toHiddenBool(),
+        assertEquals(hiddenNull, hiddenNull.toHiddenBool(),
             "Method toHiddenBool does not works." + messageSeed);
     }
 
     @Test
     void testToHiddenFloat() {
-        assertNull(hiddenNull.toHiddenFloat(),
+        assertEquals(hiddenNull, hiddenNull.toHiddenFloat(),
             "Method toHiddenFloat does not works." + messageSeed);
     }
 
     @Test
     void testToHiddenInt() {
-        assertNull(hiddenNull.toHiddenInt(),
+        assertEquals(hiddenNull, hiddenNull.toHiddenInt(),
             "Method toHiddenInt does not works." + messageSeed);
     }
 
     @Test
     void testToHiddenString() {
-        assertNull(hiddenNull.toHiddenString(),
+        assertEquals(hiddenNull, hiddenNull.toHiddenString(),
             "Method toHiddenString does not works." + messageSeed);
     }
 
@@ -71,7 +70,7 @@ class HiddenNullTest extends BaseHTypeTest {
     void testAdd() {
         for (HType hType :
             hTypeList2) {
-            assertNull(hiddenNull.add(hType),
+            assertEquals(hiddenNull, hiddenNull.add(hType),
                 "Method add does not works." + messageSeed);
         }
     }
@@ -80,7 +79,7 @@ class HiddenNullTest extends BaseHTypeTest {
     void testSub() {
         for (HType hType :
             hTypeList2) {
-            assertNull(hiddenNull.sub(hType),
+            assertEquals(hiddenNull, hiddenNull.sub(hType),
                 "Method sub does not works." + messageSeed);
         }
     }
@@ -89,7 +88,7 @@ class HiddenNullTest extends BaseHTypeTest {
     void testMult() {
         for (HType hType :
             hTypeList2) {
-            assertNull(hiddenNull.mult(hType),
+            assertEquals(hiddenNull, hiddenNull.mult(hType),
                 "Method mult does not works." + messageSeed);
         }
     }
@@ -98,7 +97,7 @@ class HiddenNullTest extends BaseHTypeTest {
     void testDiv() {
         for (HType hType :
             hTypeList2) {
-            assertNull(hiddenNull.div(hType),
+            assertEquals(hiddenNull, hiddenNull.div(hType),
                 "Method div does not works." + messageSeed);
         }
     }
@@ -107,7 +106,7 @@ class HiddenNullTest extends BaseHTypeTest {
     void testAnd() {
         for (HType hType :
             hTypeList2) {
-            assertNull(hiddenNull.and(hType),
+            assertEquals(hiddenNull, hiddenNull.and(hType),
                 "Method and does not works." + messageSeed);
         }
     }
@@ -116,13 +115,13 @@ class HiddenNullTest extends BaseHTypeTest {
     void testOr() {
         for (HType hType :
             hTypeList2) {
-            assertNull(hiddenNull.or(hType),
+            assertEquals(hiddenNull, hiddenNull.or(hType),
                 "Method or does not works." + messageSeed);
         }
     }
 
     @Test
     void testNeg() {
-        assertNull(hiddenNull.neg(), "Method neg does not works." + messageSeed);
+        assertEquals(hiddenNull, hiddenNull.neg(), "Method neg does not works." + messageSeed);
     }
 }

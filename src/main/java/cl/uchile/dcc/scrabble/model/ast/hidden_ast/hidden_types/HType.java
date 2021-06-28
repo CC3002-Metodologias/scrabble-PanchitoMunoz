@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HArit
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -38,8 +39,8 @@ public interface HType extends HiddenAST, HArithmeticOperations, HLogicalOperati
      *
      * @return a {@code HiddenBinary} equivalent
      */
-    default HiddenBinary toHiddenBinary() {
-        return null;
+    default HType toHiddenBinary() {
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -47,8 +48,8 @@ public interface HType extends HiddenAST, HArithmeticOperations, HLogicalOperati
      *
      * @return a {@code HiddenBool} equivalent
      */
-    default HiddenBool toHiddenBool() {
-        return null;
+    default HType toHiddenBool() {
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -56,8 +57,8 @@ public interface HType extends HiddenAST, HArithmeticOperations, HLogicalOperati
      *
      * @return a {@code HiddenFloat} equivalent
      */
-    default HiddenFloat toHiddenFloat() {
-        return null;
+    default HType toHiddenFloat() {
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -65,8 +66,8 @@ public interface HType extends HiddenAST, HArithmeticOperations, HLogicalOperati
      *
      * @return a {@code HiddenInt} equivalent
      */
-    default HiddenInt toHiddenInt() {
-        return null;
+    default HType toHiddenInt() {
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -74,7 +75,7 @@ public interface HType extends HiddenAST, HArithmeticOperations, HLogicalOperati
      *
      * @return a {@code HiddenString} equivalent
      */
-    default HiddenString toHiddenString() {
-        return null;
+    default HType toHiddenString() {
+        return HTypeFactory.createHiddenNull();
     }
 }

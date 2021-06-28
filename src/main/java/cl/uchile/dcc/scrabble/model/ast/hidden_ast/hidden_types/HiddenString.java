@@ -57,7 +57,7 @@ public class HiddenString extends AbstractHiddenType {
      * @return a {@code HiddenString} equivalent
      */
     @Override
-    public HiddenString toHiddenString() {
+    public HType toHiddenString() {
         TypeString computed = this.typeString.toTypeString();
         return HTypeFactory.createHiddenString(computed);
     }

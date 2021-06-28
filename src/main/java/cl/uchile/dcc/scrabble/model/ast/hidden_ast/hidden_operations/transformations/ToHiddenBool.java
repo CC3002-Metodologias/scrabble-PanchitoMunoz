@@ -32,7 +32,7 @@ public class ToHiddenBool extends AbstractHiddenTransformation {
      * @return the value computed
      */
     @Override
-    protected HiddenBool mainUnaryOperation(HType value) {
+    protected HType mainUnaryOperation(HType value) {
         return value.toHiddenBool();
     }
 }

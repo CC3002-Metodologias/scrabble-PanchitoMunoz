@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.BaseTypeTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 public abstract class BaseHTypeTest extends BaseTypeTest {
 
+    protected final HiddenNull hiddenNull = HTypeFactory.createHiddenNull();
     protected final HiddenBinary hiddenBinaryZero = new HiddenBinary(typeBinaryZero);
     // Booleans
     protected final HiddenBool trueHiddenBool = new HiddenBool(trueTypeBool);

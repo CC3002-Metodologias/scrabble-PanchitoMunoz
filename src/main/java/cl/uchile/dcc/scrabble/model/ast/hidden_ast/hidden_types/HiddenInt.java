@@ -60,7 +60,7 @@ public class HiddenInt extends AbstractHiddenType {
      * @return a {@code HiddenBinary} equivalent
      */
     @Override
-    public HiddenBinary toHiddenBinary() {
+    public HType toHiddenBinary() {
         TypeBinary computed = this.typeInt.toTypeBinary();
         return HTypeFactory.createHiddenBinary(computed);
     }
@@ -71,7 +71,7 @@ public class HiddenInt extends AbstractHiddenType {
      * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public HiddenFloat toHiddenFloat() {
+    public HType toHiddenFloat() {
         TypeFloat computed = this.typeInt.toTypeFloat();
         return HTypeFactory.createHiddenFloat(computed);
     }
@@ -82,7 +82,7 @@ public class HiddenInt extends AbstractHiddenType {
      * @return a {@code HiddenInt} equivalent
      */
     @Override
-    public HiddenInt toHiddenInt() {
+    public HType toHiddenInt() {
         TypeInt computed = this.typeInt.toTypeInt();
         return HTypeFactory.createHiddenInt(computed);
     }
@@ -93,7 +93,7 @@ public class HiddenInt extends AbstractHiddenType {
      * @return a {@code HiddenString} equivalent
      */
     @Override
-    public HiddenString toHiddenString() {
+    public HType toHiddenString() {
         TypeString computed = this.typeInt.toTypeString();
         return HTypeFactory.createHiddenString(computed);
     }

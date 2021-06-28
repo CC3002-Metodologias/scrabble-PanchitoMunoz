@@ -23,7 +23,7 @@ public interface HArithmeticOperations {
      * @return the sum
      */
     default HType add(HType hType) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -38,7 +38,7 @@ public interface HArithmeticOperations {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     default HType addWithBinary(HiddenBinary hiddenBinary) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -46,7 +46,7 @@ public interface HArithmeticOperations {
      * @param hiddenFloat a {@code HiddenFloat}
      */
     default HType addWithFloat(HiddenFloat hiddenFloat) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -54,7 +54,7 @@ public interface HArithmeticOperations {
      * @param hiddenInt a {@code HiddenInt}
      */
     default HType addWithInt(HiddenInt hiddenInt) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -64,7 +64,7 @@ public interface HArithmeticOperations {
      * @return the division
      */
     default HType div(HType hType) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -72,7 +72,7 @@ public interface HArithmeticOperations {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     default HType divWithBinary(HiddenBinary hiddenBinary) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -80,7 +80,7 @@ public interface HArithmeticOperations {
      * @param hiddenFloat a {@code HiddenFloat}
      */
     default HType divWithFloat(HiddenFloat hiddenFloat) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -88,7 +88,7 @@ public interface HArithmeticOperations {
      * @param hiddenInt a {@code HiddenInt}
      */
     default HType divWithInt(HiddenInt hiddenInt) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -98,7 +98,7 @@ public interface HArithmeticOperations {
      * @return the multiplication
      */
     default HType mult(HType hType) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -106,7 +106,7 @@ public interface HArithmeticOperations {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     default HType multWithBinary(HiddenBinary hiddenBinary) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -114,7 +114,7 @@ public interface HArithmeticOperations {
      * @param hiddenFloat a {@code HiddenFloat}
      */
     default HType multWithFloat(HiddenFloat hiddenFloat) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -122,7 +122,7 @@ public interface HArithmeticOperations {
      * @param hiddenInt a {@code HiddenInt}
      */
     default HType multWithInt(HiddenInt hiddenInt) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -132,7 +132,7 @@ public interface HArithmeticOperations {
      * @return the subtraction
      */
     default HType sub(HType hType) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -140,7 +140,7 @@ public interface HArithmeticOperations {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     default HType subWithBinary(HiddenBinary hiddenBinary) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -148,7 +148,7 @@ public interface HArithmeticOperations {
      * @param hiddenFloat a {@code HiddenFloat}
      */
     default HType subWithFloat(HiddenFloat hiddenFloat) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -156,7 +156,7 @@ public interface HArithmeticOperations {
      * @param hiddenInt a {@code HiddenInt}
      */
     default HType subWithInt(HiddenInt hiddenInt) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
 }

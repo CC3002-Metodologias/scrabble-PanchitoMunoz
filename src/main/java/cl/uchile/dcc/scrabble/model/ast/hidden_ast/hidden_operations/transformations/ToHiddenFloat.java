@@ -32,7 +32,7 @@ public class ToHiddenFloat extends AbstractHiddenTransformation {
      * @return the value computed
      */
     @Override
-    protected HiddenFloat mainUnaryOperation(HType value) {
+    protected HType mainUnaryOperation(HType value) {
         return value.toHiddenFloat();
     }
 }

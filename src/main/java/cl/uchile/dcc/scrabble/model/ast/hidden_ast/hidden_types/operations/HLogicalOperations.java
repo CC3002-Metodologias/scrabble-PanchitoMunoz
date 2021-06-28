@@ -23,7 +23,7 @@ public interface HLogicalOperations {
      * @return the disjunction
      */
     default HType and(HType hType) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -31,7 +31,7 @@ public interface HLogicalOperations {
      * @param hiddenBool a {@code HiddenBool}
      */
     default HType andWithBool(HiddenBool hiddenBool) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -39,7 +39,7 @@ public interface HLogicalOperations {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     default HType andWithBinary(HiddenBinary hiddenBinary) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -49,7 +49,7 @@ public interface HLogicalOperations {
      * @return the conjunction
      */
     default HType or(HType hType) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -57,7 +57,7 @@ public interface HLogicalOperations {
      * @param hiddenBool a {@code HiddenBool}
      */
     default HType orWithBool(HiddenBool hiddenBool) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -65,7 +65,7 @@ public interface HLogicalOperations {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     default HType orWithBinary(HiddenBinary hiddenBinary) {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
     /**
@@ -74,7 +74,7 @@ public interface HLogicalOperations {
      * @return the negation.
      */
     default HType neg() {
-        return null;
+        return HTypeFactory.createHiddenNull();
     }
 
 }

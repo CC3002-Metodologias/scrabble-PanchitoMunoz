@@ -52,7 +52,7 @@ class HiddenIntTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testToHiddenBool() {
-        assertNull(hiddenInt1.toHiddenBool(),
+        assertEquals(hiddenNull, hiddenInt1.toHiddenBool(),
             "Method toHiddenBool does not works." + messageSeed);
     }
 
@@ -88,7 +88,7 @@ class HiddenIntTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testNeg() {
-        assertNull(hiddenInt1.neg(), "Method neg does not works." + messageSeed);
+        assertEquals(hiddenNull, hiddenInt1.neg(), "Method neg does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -97,9 +97,9 @@ class HiddenIntTest extends BaseHTypeTest {
         assertEquals(expected1, hiddenInt1.add(hiddenBinary1),
             "Method add does not works with binaries." + messageSeed);
 
-        assertNull(hiddenInt1.add(trueHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.add(trueHiddenBool),
             "Method add does not works with booleans." + messageSeed);
-        assertNull(hiddenInt1.add(falseHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.add(falseHiddenBool),
             "Method add does not works with booleans." + messageSeed);
 
         HiddenFloat expected3 = new HiddenFloat((TypeFloat) typeInt1.add(typeFloat1));
@@ -110,7 +110,7 @@ class HiddenIntTest extends BaseHTypeTest {
         assertEquals(expected4, hiddenInt1.add(hiddenInt2),
             "Method add does not works with int." + messageSeed);
 
-        assertNull(hiddenInt1.add(hiddenString1),
+        assertEquals(hiddenNull, hiddenInt1.add(hiddenString1),
             "Method add does not works with strings." + messageSeed);
     }
 
@@ -120,9 +120,9 @@ class HiddenIntTest extends BaseHTypeTest {
         assertEquals(expected1, hiddenInt1.div(hiddenBinary1),
             "Method div does not works with binaries." + messageSeed);
 
-        assertNull(hiddenInt1.div(trueHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.div(trueHiddenBool),
             "Method div does not works with booleans." + messageSeed);
-        assertNull(hiddenInt1.div(falseHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.div(falseHiddenBool),
             "Method div does not works with booleans." + messageSeed);
 
         HiddenFloat expected3 = new HiddenFloat((TypeFloat) typeInt1.div(typeFloat1));
@@ -133,7 +133,7 @@ class HiddenIntTest extends BaseHTypeTest {
         assertEquals(expected4, hiddenInt1.div(hiddenInt2),
             "Method div does not works with int." + messageSeed);
 
-        assertNull(hiddenInt1.div(hiddenString1),
+        assertEquals(hiddenNull, hiddenInt1.div(hiddenString1),
             "Method div does not works with strings." + messageSeed);
     }
 
@@ -143,9 +143,9 @@ class HiddenIntTest extends BaseHTypeTest {
         assertEquals(expected1, hiddenInt1.mult(hiddenBinary1),
             "Method mult does not works with binaries." + messageSeed);
 
-        assertNull(hiddenInt1.mult(trueHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.mult(trueHiddenBool),
             "Method mult does not works with booleans." + messageSeed);
-        assertNull(hiddenInt1.mult(falseHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.mult(falseHiddenBool),
             "Method mult does not works with booleans." + messageSeed);
 
         HiddenFloat expected3 = new HiddenFloat((TypeFloat) typeInt1.mult(typeFloat1));
@@ -156,7 +156,7 @@ class HiddenIntTest extends BaseHTypeTest {
         assertEquals(expected4, hiddenInt1.mult(hiddenInt2),
             "Method mult does not works with int." + messageSeed);
 
-        assertNull(hiddenInt1.mult(hiddenString1),
+        assertEquals(hiddenNull, hiddenInt1.mult(hiddenString1),
             "Method mult does not works with strings." + messageSeed);
     }
 
@@ -166,9 +166,9 @@ class HiddenIntTest extends BaseHTypeTest {
         assertEquals(expected1, hiddenInt1.sub(hiddenBinary1),
             "Method sub does not works with binaries." + messageSeed);
 
-        assertNull(hiddenInt1.sub(trueHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.sub(trueHiddenBool),
             "Method sub does not works with booleans." + messageSeed);
-        assertNull(hiddenInt1.sub(falseHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.sub(falseHiddenBool),
             "Method sub does not works with booleans." + messageSeed);
 
         HiddenFloat expected3 = new HiddenFloat((TypeFloat) typeInt1.sub(typeFloat1));
@@ -179,47 +179,47 @@ class HiddenIntTest extends BaseHTypeTest {
         assertEquals(expected4, hiddenInt1.sub(hiddenInt2),
             "Method sub does not works with int." + messageSeed);
 
-        assertNull(hiddenInt1.sub(hiddenString1),
+        assertEquals(hiddenNull, hiddenInt1.sub(hiddenString1),
             "Method sub does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testAnd() {
-        assertNull(hiddenInt1.and(hiddenBinary1),
+        assertEquals(hiddenNull, hiddenInt1.and(hiddenBinary1),
             "Method and does not works with binaries." + messageSeed);
 
-        assertNull(hiddenInt1.and(trueHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.and(trueHiddenBool),
             "Method and does not works with booleans." + messageSeed);
-        assertNull(hiddenInt1.and(falseHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.and(falseHiddenBool),
             "Method and does not works with booleans." + messageSeed);
 
-        assertNull(hiddenInt1.and(hiddenFloat1),
+        assertEquals(hiddenNull, hiddenInt1.and(hiddenFloat1),
             "Method and does not works with floats." + messageSeed);
 
-        assertNull(hiddenInt1.and(hiddenInt2),
+        assertEquals(hiddenNull, hiddenInt1.and(hiddenInt2),
             "Method and does not works with int." + messageSeed);
 
-        assertNull(hiddenInt1.and(hiddenString1),
+        assertEquals(hiddenNull, hiddenInt1.and(hiddenString1),
             "Method and does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testOr() {
-        assertNull(hiddenInt1.or(hiddenBinary1),
+        assertEquals(hiddenNull, hiddenInt1.or(hiddenBinary1),
             "Method or does not works with binaries." + messageSeed);
 
-        assertNull(hiddenInt1.or(trueHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.or(trueHiddenBool),
             "Method or does not works with booleans." + messageSeed);
-        assertNull(hiddenInt1.or(falseHiddenBool),
+        assertEquals(hiddenNull, hiddenInt1.or(falseHiddenBool),
             "Method or does not works with booleans." + messageSeed);
 
-        assertNull(hiddenInt1.or(hiddenFloat1),
+        assertEquals(hiddenNull, hiddenInt1.or(hiddenFloat1),
             "Method or does not works with floats." + messageSeed);
 
-        assertNull(hiddenInt1.or(hiddenInt2),
+        assertEquals(hiddenNull, hiddenInt1.or(hiddenInt2),
             "Method or does not works with int." + messageSeed);
 
-        assertNull(hiddenInt1.or(hiddenString1),
+        assertEquals(hiddenNull, hiddenInt1.or(hiddenString1),
             "Method or does not works with strings." + messageSeed);
     }
 }

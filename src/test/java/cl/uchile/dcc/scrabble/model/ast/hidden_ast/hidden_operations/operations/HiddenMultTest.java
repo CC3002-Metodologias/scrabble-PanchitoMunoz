@@ -42,9 +42,9 @@ class HiddenMultTest extends BaseHiddenOperationTest {
         }
         // Mult with bool
         for (HType hType : hTypeList2) {
-            assertNull(new HiddenMult(trueHiddenBool, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenMult(trueHiddenBool, hType).calculate(),
                 "Method mult does not works with bool type." + messageSeed);
-            assertNull(new HiddenMult(falseHiddenBool, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenMult(falseHiddenBool, hType).calculate(),
                 "Method mult does not works with bool type." + messageSeed);
         }
         // Mult with float
@@ -54,7 +54,7 @@ class HiddenMultTest extends BaseHiddenOperationTest {
                 "Method mult does not works with float type." + messageSeed);
         }
         for (HType hType : hNumberCList) {
-            assertNull(new HiddenMult(hiddenFloat1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenMult(hiddenFloat1, hType).calculate(),
                 "Method mult does not works with float type." + messageSeed);
         }
         // Mult with int
@@ -64,7 +64,7 @@ class HiddenMultTest extends BaseHiddenOperationTest {
                 "Method mult does not works with int type." + messageSeed);
         }
         for (HType hType : hNumberCList) {
-            assertNull(new HiddenMult(hiddenInt1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenMult(hiddenInt1, hType).calculate(),
                 "Method mult does not works with int type." + messageSeed);
         }
         // Mult with binary
@@ -74,7 +74,7 @@ class HiddenMultTest extends BaseHiddenOperationTest {
                 "Method mult does not works with binary type." + messageSeed);
         }
         for (HType hType : hIntegerCList) {
-            assertNull(new HiddenMult(hiddenBinary1, hType).calculate(),
+            assertEquals(hiddenNull, new HiddenMult(hiddenBinary1, hType).calculate(),
                 "Method mult does not works with binary type." + messageSeed);
         }
     }

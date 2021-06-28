@@ -32,7 +32,7 @@ public class ToHiddenBinary extends AbstractHiddenTransformation {
      * @return the value computed
      */
     @Override
-    protected HiddenBinary mainUnaryOperation(HType value) {
+    protected HType mainUnaryOperation(HType value) {
         return value.toHiddenBinary();
     }
 }

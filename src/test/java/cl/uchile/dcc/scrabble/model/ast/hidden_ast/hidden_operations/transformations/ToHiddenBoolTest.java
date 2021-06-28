@@ -28,7 +28,7 @@ class ToHiddenBoolTest extends BaseHiddenOperationTest {
     @RepeatedTest(20)
     void testCalculate() {
         // String
-        assertNull(new ToHiddenBool(hiddenString1).calculate(),
+        assertEquals(hiddenNull, new ToHiddenBool(hiddenString1).calculate(),
             "Method calculate does not works with string type." + messageSeed);
         // Bool
         assertEquals(trueHiddenBool, new ToHiddenBool(trueHiddenBool).calculate(),
@@ -36,13 +36,13 @@ class ToHiddenBoolTest extends BaseHiddenOperationTest {
         assertEquals(falseHiddenBool, new ToHiddenBool(falseHiddenBool).calculate(),
             "Method calculate does not works with bool type." + messageSeed);
         // float
-        assertNull(new ToHiddenBool(hiddenFloat1).calculate(),
+        assertEquals(hiddenNull, new ToHiddenBool(hiddenFloat1).calculate(),
             "Method calculate does not works with float type." + messageSeed);
         // int
-        assertNull(new ToHiddenBool(hiddenInt1).calculate(),
+        assertEquals(hiddenNull, new ToHiddenBool(hiddenInt1).calculate(),
             "Method calculate does not works with int type." + messageSeed);
         // int
-        assertNull(new ToHiddenBool(hiddenBinary1).calculate(),
+        assertEquals(hiddenNull, new ToHiddenBool(hiddenBinary1).calculate(),
             "Method calculate does not works with binary type." + messageSeed);
     }
 }

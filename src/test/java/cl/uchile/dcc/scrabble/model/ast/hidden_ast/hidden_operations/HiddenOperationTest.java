@@ -43,11 +43,11 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenBinary() {
-        assertNull(stringHiddenAST.toHiddenBinary().calculate(),
+        assertEquals(hiddenNull, stringHiddenAST.toHiddenBinary().calculate(),
             "Method toHiddenBinary does not works with string type." + messageSeed);
-        assertNull(boolHiddenAST.toHiddenBinary().calculate(),
+        assertEquals(hiddenNull, boolHiddenAST.toHiddenBinary().calculate(),
             "Method toHiddenBinary does not works with bool type." + messageSeed);
-        assertNull(floatHiddenAST.toHiddenBinary().calculate(),
+        assertEquals(hiddenNull, floatHiddenAST.toHiddenBinary().calculate(),
             "Method toHiddenBinary does not works with float type." + messageSeed);
         assertEquals(intResult.toHiddenBinary(), intHiddenAST.toHiddenBinary().calculate(),
             "Method toHiddenBinary does not works with int type." + messageSeed);
@@ -57,23 +57,23 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenBool() {
-        assertNull(stringHiddenAST.toHiddenBool().calculate(),
+        assertEquals(hiddenNull, stringHiddenAST.toHiddenBool().calculate(),
             "Method toHiddenBool does not works with string type." + messageSeed);
         assertEquals(boolResult.toHiddenBool(), boolHiddenAST.toHiddenBool().calculate(),
             "Method toHiddenBool does not works with bool type." + messageSeed);
-        assertNull(floatHiddenAST.toHiddenBool().calculate(),
+        assertEquals(hiddenNull, floatHiddenAST.toHiddenBool().calculate(),
             "Method toHiddenBool does not works with float type." + messageSeed);
-        assertNull(intHiddenAST.toHiddenBool().calculate(),
+        assertEquals(hiddenNull, intHiddenAST.toHiddenBool().calculate(),
             "Method toHiddenBool does not works with int type." + messageSeed);
-        assertNull(binaryHiddenAST.toHiddenBool().calculate(),
+        assertEquals(hiddenNull, binaryHiddenAST.toHiddenBool().calculate(),
             "Method toHiddenBool does not works with binary type." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToHiddenFloat() {
-        assertNull(stringHiddenAST.toHiddenFloat().calculate(),
+        assertEquals(hiddenNull, stringHiddenAST.toHiddenFloat().calculate(),
             "Method toHiddenFloat does not works with string type." + messageSeed);
-        assertNull(boolHiddenAST.toHiddenFloat().calculate(),
+        assertEquals(hiddenNull, boolHiddenAST.toHiddenFloat().calculate(),
             "Method toHiddenFloat does not works with bool type." + messageSeed);
         assertEquals(floatResult.toHiddenFloat(), floatHiddenAST.toHiddenFloat().calculate(),
             "Method toHiddenFloat does not works with float type." + messageSeed);
@@ -85,11 +85,11 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenInt() {
-        assertNull(stringHiddenAST.toHiddenInt().calculate(),
+        assertEquals(hiddenNull, stringHiddenAST.toHiddenInt().calculate(),
             "Method toHiddenInt does not works with string type." + messageSeed);
-        assertNull(boolHiddenAST.toHiddenInt().calculate(),
+        assertEquals(hiddenNull, boolHiddenAST.toHiddenInt().calculate(),
             "Method toHiddenInt does not works with bool type." + messageSeed);
-        assertNull(floatHiddenAST.toHiddenInt().calculate(),
+        assertEquals(hiddenNull, floatHiddenAST.toHiddenInt().calculate(),
             "Method toHiddenInt does not works with float type." + messageSeed);
         assertEquals(intResult.toHiddenInt(), intHiddenAST.toHiddenInt().calculate(),
             "Method toHiddenInt does not works with int type." + messageSeed);
