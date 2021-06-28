@@ -22,7 +22,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @param value An int as a value.
      */
     public TypeInt(int value) {
-        super(value, intToBinary(value));
+        super(value);
     }
 
     /**

@@ -199,7 +199,7 @@ public final class BinaryUtilities {
         if (intNumber < 0) {
             binaryNum = twosComplement(binaryNum);
         }
-        return binaryNum;
+        return cleanBinary(binaryNum);
     }
 
     /**

@@ -13,6 +13,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 
 /**
  * A main to experiment implementations
@@ -23,6 +24,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeInt;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println(BinaryUtilities.intToBinary(-2));
         TypeBinary typeBinary = new TypeBinary("0110");
         HiddenBinary wBinary = new HiddenBinary(typeBinary);
         TypeFloat typeFloat = new TypeFloat(3.1415);

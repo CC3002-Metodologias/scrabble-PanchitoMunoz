@@ -32,7 +32,7 @@ public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticO
      * @param value A String as a value.
      */
     public TypeBinary(String value) {
-        super(binaryToInt(value), cleanBinary(value));
+        super(binaryToInt(value));
     }
 
     /**

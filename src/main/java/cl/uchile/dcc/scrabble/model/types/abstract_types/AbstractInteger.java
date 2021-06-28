@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 
 /**
  * An abstract class for numbers that are like integers (e.g.: TypeInt and TypeBinary).
@@ -18,11 +19,10 @@ public abstract class AbstractInteger extends AbstractNumber implements SInteger
      * Default constructor.
      *
      * @param valueAsInt the current value as int.
-     * @param valueAsBinary the current value as binary.
      */
-    protected AbstractInteger(int valueAsInt, String valueAsBinary) {
+    protected AbstractInteger(int valueAsInt) {
         this.valueAsInt = valueAsInt;
-        this.valueAsBinary = valueAsBinary;
+        this.valueAsBinary = BinaryUtilities.intToBinary(valueAsInt);
     }
 
     /**
