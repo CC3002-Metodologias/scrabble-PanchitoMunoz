@@ -24,13 +24,13 @@ class HiddenNullTest extends BaseHTypeTest {
     }
 
     @Test
-    void testTestHashCode() {
+    void testHashCode() {
         assertEquals(0, hiddenNull.hashCode(),
             "Method hashCode does not works." + messageSeed);
     }
 
     @Test
-    void testTestEquals() {
+    void testEquals() {
         assertNotEquals(hiddenFloat1, hiddenNull, "Method equals does not works." + messageSeed);
         assertEquals(HiddenNull.getInstance(), hiddenNull,
             "Method equals does not works." + messageSeed);
@@ -123,5 +123,17 @@ class HiddenNullTest extends BaseHTypeTest {
     @Test
     void testNeg() {
         assertEquals(hiddenNull, hiddenNull.neg(), "Method neg does not works." + messageSeed);
+    }
+
+    @Test
+    void testToString() {
+        assertEquals("HiddenNull{}", hiddenNull.toString(),
+            "Method toString does not works." + messageSeed);
+    }
+
+    @Test
+    void testToSType() {
+        assertNull(hiddenNull.toSType(),
+            "Method toSType does not works." + messageSeed);
     }
 }

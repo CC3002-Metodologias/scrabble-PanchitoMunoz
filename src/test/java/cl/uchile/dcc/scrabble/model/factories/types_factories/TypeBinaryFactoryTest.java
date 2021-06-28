@@ -16,7 +16,6 @@ class TypeBinaryFactoryTest extends BaseTypeTest {
     @BeforeEach
     public void setUp() {
         super.setUp();
-//        factory = TypeBinaryFactory.getInstance(hashMap);
     }
 
     @AfterEach

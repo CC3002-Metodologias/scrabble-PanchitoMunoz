@@ -36,16 +36,6 @@ public final class STypeFactory {
     }
 
     /**
-     * Create a {@code TypeBinary} from the value given.
-     *
-     * @param value a value.
-     * @return a {@code TypeBinary} from the cache.
-     */
-    public static TypeBinary createTypeBinary(String value) {
-        return binaryFactory.create(value);
-    }
-
-    /**
      * Create a {@code TypeBool} from another instance.
      *
      * @param instance a {@code TypeBool} instance.
@@ -53,16 +43,6 @@ public final class STypeFactory {
      */
     public static TypeBool createTypeBool(TypeBool instance) {
         return boolFactory.create(instance);
-    }
-
-    /**
-     * Create a {@code TypeBool} from the value given.
-     *
-     * @param value a value.
-     * @return a {@code TypeBool} from the cache.
-     */
-    public static TypeBool createTypeBool(boolean value) {
-        return boolFactory.create(value);
     }
 
     /**
@@ -76,16 +56,6 @@ public final class STypeFactory {
     }
 
     /**
-     * Create a {@code TypeFloat} from the value given.
-     *
-     * @param value a value.
-     * @return a {@code TypeFloat} from the cache.
-     */
-    public static TypeFloat createTypeFloat(double value) {
-        return floatFactory.create(value);
-    }
-
-    /**
      * Create a {@code TypeInt} from another instance.
      *
      * @param instance a {@code TypeInt} instance.
@@ -96,16 +66,6 @@ public final class STypeFactory {
     }
 
     /**
-     * Create a {@code TypeInt} from the value given.
-     *
-     * @param value a value.
-     * @return a {@code TypeInt} from the cache.
-     */
-    public static TypeInt createTypeInt(int value) {
-        return intFactory.create(value);
-    }
-
-    /**
      * Create a {@code TypeString} from another instance.
      *
      * @param instance a {@code TypeString} instance.
@@ -113,6 +73,46 @@ public final class STypeFactory {
      */
     public static TypeString createTypeString(TypeString instance) {
         return stringFactory.create(instance);
+    }
+
+    /**
+     * Create a {@code TypeBinary} from the value given.
+     *
+     * @param value a value.
+     * @return a {@code TypeBinary} from the cache.
+     */
+    public static TypeBinary createTypeBinary(String value) {
+        return binaryFactory.create(value);
+    }
+
+    /**
+     * Create a {@code TypeBool} from the value given.
+     *
+     * @param value a value.
+     * @return a {@code TypeBool} from the cache.
+     */
+    public static TypeBool createTypeBool(boolean value) {
+        return boolFactory.create(value);
+    }
+
+    /**
+     * Create a {@code TypeFloat} from the value given.
+     *
+     * @param value a value.
+     * @return a {@code TypeFloat} from the cache.
+     */
+    public static TypeFloat createTypeFloat(double value) {
+        return floatFactory.create(value);
+    }
+
+    /**
+     * Create a {@code TypeInt} from the value given.
+     *
+     * @param value a value.
+     * @return a {@code TypeInt} from the cache.
+     */
+    public static TypeInt createTypeInt(int value) {
+        return intFactory.create(value);
     }
 
     /**
