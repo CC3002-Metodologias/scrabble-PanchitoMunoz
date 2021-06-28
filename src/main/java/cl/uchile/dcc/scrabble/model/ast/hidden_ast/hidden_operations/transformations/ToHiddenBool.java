@@ -22,17 +22,7 @@ public class ToHiddenBool extends AbstractHiddenTransformation {
      * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
      */
     public ToHiddenBool(HiddenAST value) {
-        super(value);
-    }
-
-    /**
-     * Command name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Command name as String
-     */
-    @Override
-    protected String commandName() {
-        return "Bool";
+        super(value, "toTypeBool");
     }
 
     /**

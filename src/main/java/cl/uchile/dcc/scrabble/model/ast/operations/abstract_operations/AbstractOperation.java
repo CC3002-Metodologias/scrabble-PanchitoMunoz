@@ -9,7 +9,6 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
 import java.util.Objects;
 
-// TODO: Crear métodos equals y hashCode
 /**
  * Abstract class for a general {@code Operation}.
  *

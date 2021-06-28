@@ -18,6 +18,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
 
     private final HiddenAST leftChildren;
     private final HiddenAST rightChildren;
+    private String operatorName;
+    private String operatorSymbol;
 
     /**
      * Default constructor. It can receive an {@code HiddenOperation} or a {@code HType}.
@@ -28,6 +30,24 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     public AbstractHiddenOperation(HiddenAST leftValue, HiddenAST rightValue) {
         leftChildren = leftValue;
         rightChildren = rightValue;
+    }
+
+    /**
+     * Sets the operator name.
+     *
+     * @param operatorName the operator name as {@code String}
+     */
+    protected void setOperatorName(String operatorName) {
+        this.operatorName = operatorName;
+    }
+
+    /**
+     * Sets the operator symbol.
+     *
+     * @param operatorSymbol the operator symbol as {@code String}
+     */
+    protected void setOperatorSymbol(String operatorSymbol) {
+        this.operatorSymbol = operatorSymbol;
     }
 
     /**
@@ -83,11 +103,11 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     @Override
     public final String asString(int space) {
         String tab = " ".repeat(space);
-        String caseIsNotTransformation = tab + operatorName() + "(\n"
+        String caseIsNotTransformation = tab + operatorName + "(\n"
             + leftChildren.asString(space + 2)
             + rightValueAsString(space) + '\n'
             + tab + ')';
-        String caseIsTransformation = leftChildren.asString(space) + ".toType" + commandName() + "()";
+        String caseIsTransformation = leftChildren.asString(space) + '.' + operatorName + "()";
         if (!isTransformation()) {
             return caseIsNotTransformation;
         } else {
@@ -103,34 +123,9 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return right value as {@code String}
      */
     protected String rightValueAsString(int space) {
-        return ' ' + operatorSymbol() + '\n'
+        return ' ' + operatorSymbol + '\n'
             + rightChildren.asString(space + 2) ;
     }
-
-    /**
-     * Command name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Command name as String
-     */
-    protected String commandName() {
-        return null;  // Usually don't used
-    }
-
-    /**
-     * Operator symbol as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator symbol as {@code String}
-     */
-    protected String operatorSymbol() {
-        return null;  // Usually don't used
-    }
-
-    /**
-     * Operator name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator name as {@code String}.
-     */
-    protected abstract String operatorName();
 
     /**
      * Returns true if the operation is a transformation, false otherwise.

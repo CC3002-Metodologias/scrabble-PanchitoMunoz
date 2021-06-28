@@ -22,27 +22,7 @@ public class HiddenSub extends AbstractHiddenBinaryOperation {
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public HiddenSub(HiddenAST leftValue, HiddenAST rightValue) {
-        super(leftValue, rightValue);
-    }
-
-    /**
-     * Operator symbol as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator symbol as {@code String}
-     */
-    @Override
-    protected String operatorSymbol() {
-        return "-";
-    }
-
-    /**
-     * Operator name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator name as {@code String}.
-     */
-    @Override
-    protected String operatorName() {
-        return "Sub";
+        super(leftValue, rightValue, "Sub", "-");
     }
 
     /**

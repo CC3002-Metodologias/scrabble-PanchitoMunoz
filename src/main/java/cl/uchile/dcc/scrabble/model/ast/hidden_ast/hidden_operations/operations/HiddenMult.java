@@ -22,27 +22,7 @@ public class HiddenMult extends AbstractHiddenBinaryOperation {
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public HiddenMult(HiddenAST leftValue, HiddenAST rightValue) {
-        super(leftValue, rightValue);
-    }
-
-    /**
-     * Operator symbol as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator symbol as {@code String}
-     */
-    @Override
-    protected String operatorSymbol() {
-        return "*";
-    }
-
-    /**
-     * Operator name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator name as {@code String}.
-     */
-    @Override
-    protected String operatorName() {
-        return "Mult";
+        super(leftValue, rightValue, "Mult", "*");
     }
 
     /**

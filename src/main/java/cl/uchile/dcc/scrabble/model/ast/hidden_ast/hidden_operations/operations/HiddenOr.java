@@ -22,27 +22,7 @@ public class HiddenOr extends AbstractHiddenBinaryOperation {
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public HiddenOr(HiddenAST leftValue, HiddenAST rightValue) {
-        super(leftValue, rightValue);
-    }
-
-    /**
-     * Operator symbol as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator symbol as {@code String}
-     */
-    @Override
-    protected String operatorSymbol() {
-        return "or";
-    }
-
-    /**
-     * Operator name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator name as {@code String}.
-     */
-    @Override
-    protected String operatorName() {
-        return "Or";
+        super(leftValue, rightValue, "Or", "or");
     }
 
     /**

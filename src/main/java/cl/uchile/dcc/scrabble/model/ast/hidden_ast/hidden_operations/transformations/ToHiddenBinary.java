@@ -22,17 +22,7 @@ public class ToHiddenBinary extends AbstractHiddenTransformation {
      * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
      */
     public ToHiddenBinary(HiddenAST value) {
-        super(value);
-    }
-
-    /**
-     * Command name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Command name as String
-     */
-    @Override
-    protected String commandName() {
-        return "Binary";
+        super(value, "toTypeBinary");
     }
 
     /**

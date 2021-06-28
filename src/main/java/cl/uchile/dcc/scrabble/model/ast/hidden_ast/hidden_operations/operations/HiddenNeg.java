@@ -21,7 +21,7 @@ public class HiddenNeg extends AbstractHiddenUnaryOperation {
      * @param value left value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public HiddenNeg(HiddenAST value) {
-        super(value);
+        super(value, "Neg");
     }
 
     /**
@@ -33,15 +33,5 @@ public class HiddenNeg extends AbstractHiddenUnaryOperation {
     @Override
     protected HType mainUnaryOperation(HType value) {
         return value.neg();
-    }
-
-    /**
-     * Operator name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator name as {@code String}.
-     */
-    @Override
-    protected String operatorName() {
-        return "Neg";
     }
 }

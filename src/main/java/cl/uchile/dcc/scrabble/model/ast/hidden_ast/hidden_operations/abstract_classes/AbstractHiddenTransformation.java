@@ -15,17 +15,9 @@ public abstract class AbstractHiddenTransformation extends AbstractHiddenUnaryOp
      *
      * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
      */
-    public AbstractHiddenTransformation(HiddenAST value) {
-        super(value);
+    public AbstractHiddenTransformation(HiddenAST value, String operatorName) {
+        super(value, operatorName);
     }
-
-    /**
-     * Command name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Command name as String
-     */
-    @Override
-    protected abstract String commandName();
 
     /**
      * Returns true if the operation is a transformation, false otherwise. To use template pattern
@@ -36,15 +28,5 @@ public abstract class AbstractHiddenTransformation extends AbstractHiddenUnaryOp
     @Override
     protected boolean isTransformation() {
         return true;
-    }
-
-    /**
-     * Operator name as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator name as {@code String}.
-     */
-    @Override
-    protected final String operatorName() {
-        return null;
     }
 }

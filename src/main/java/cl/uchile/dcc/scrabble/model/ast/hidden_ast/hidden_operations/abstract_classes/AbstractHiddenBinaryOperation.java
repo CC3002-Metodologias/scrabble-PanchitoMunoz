@@ -17,16 +17,10 @@ public abstract class AbstractHiddenBinaryOperation extends AbstractHiddenOperat
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public AbstractHiddenBinaryOperation(
-        HiddenAST leftValue,
-        HiddenAST rightValue) {
+        HiddenAST leftValue, HiddenAST rightValue,
+        String operatorName, String operatorSymbol) {
         super(leftValue, rightValue);
+        super.setOperatorName(operatorName);
+        super.setOperatorSymbol(operatorSymbol);
     }
-
-    /**
-     * Operator symbol as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @return Operator symbol as {@code String}
-     */
-    @Override
-    protected abstract String operatorSymbol();
 }
