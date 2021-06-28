@@ -10,6 +10,6 @@ import cl.uchile.dcc.scrabble.model.types.operations.operations_type.LogicalOper
  * @author Francisco Muñoz Guajardo
  */
 public interface SLogical
-    extends LogicalOperations, LogicalOperationsWithBinary, LogicalOperationsWithBool {
+    extends SType, LogicalOperations, LogicalOperationsWithBinary, LogicalOperationsWithBool {
 
 }

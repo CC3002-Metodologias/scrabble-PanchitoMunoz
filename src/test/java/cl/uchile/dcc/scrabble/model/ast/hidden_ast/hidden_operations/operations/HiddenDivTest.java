@@ -85,7 +85,6 @@ class HiddenDivTest extends BaseHiddenOperationTest {
         HiddenDiv equalsHiddenDiv = new HiddenDiv(hiddenInt1, hiddenFloat2);
         HiddenDiv differentHiddenDiv = new HiddenDiv(hiddenInt2, hiddenBinary1);
         HiddenAdd otherNode = new HiddenAdd(hiddenFloat1, hiddenFloat2);
-        System.out.println(otherNode);
         assertEquals(hiddenDiv, hiddenDiv,
             "Method equals does not works with equals instances." + messageSeed);
         assertEquals(equalsHiddenDiv, hiddenDiv,

@@ -9,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticO
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SInteger extends ArithmeticOperationsWithBinary {
+public interface SInteger extends SNumber, ArithmeticOperationsWithBinary {
 
     /**
      * Transforms the current type to a {@code TypeBinary}.

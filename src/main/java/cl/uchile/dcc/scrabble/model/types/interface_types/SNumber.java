@@ -9,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticO
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SNumber extends ArithmeticOperationsWithInt, ArithmeticOperationsWithFloat {
+public interface SNumber extends SType, ArithmeticOperationsWithInt, ArithmeticOperationsWithFloat {
 
     /**
      * Transforms the current type to a {@code TypeFloat}.
