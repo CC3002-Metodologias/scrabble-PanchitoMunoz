@@ -6,6 +6,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 
 /**
  * Interface for logical operations in {@code HType}.
@@ -27,36 +28,17 @@ public interface HLogicalOperations {
 
     /**
      * To use double dispatch in {@code and}
+     * @param hiddenBool a {@code HiddenBool}
      */
-    default HType andWithString(HiddenString wrappedString) {
+    default HType andWithBool(HiddenBool hiddenBool) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code and}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType andWithBool(HiddenBool wBool) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code and}
-     */
-    default HType andWithBinary(HiddenBinary wBinary) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code and}
-     */
-    default HType andWithFloat(HiddenFloat wrappedFloat) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code and}
-     */
-    default HType andWithInt(HiddenInt wrappedInt) {
+    default HType andWithBinary(HiddenBinary hiddenBinary) {
         return null;
     }
 
@@ -72,36 +54,17 @@ public interface HLogicalOperations {
 
     /**
      * To use double dispatch in {@code or}
+     * @param hiddenBool a {@code HiddenBool}
      */
-    default HType orWithString(HiddenString wrappedString) {
+    default HType orWithBool(HiddenBool hiddenBool) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code or}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType orWithBool(HiddenBool wBool) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code or}
-     */
-    default HType orWithBinary(HiddenBinary wBinary) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code or}
-     */
-    default HType orWithFloat(HiddenFloat wrappedFloat) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code or}
-     */
-    default HType orWithInt(HiddenInt wrappedInt) {
+    default HType orWithBinary(HiddenBinary hiddenBinary) {
         return null;
     }
 

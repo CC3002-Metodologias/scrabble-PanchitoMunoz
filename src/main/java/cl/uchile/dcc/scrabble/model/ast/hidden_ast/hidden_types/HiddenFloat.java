@@ -119,51 +119,32 @@ public class HiddenFloat extends AbstractHiddenType {
     }
 
     /**
-     * Returns the disjunction between logicals
-     *
-     * @param hType another logical
-     * @return the disjunction
-     */
-    @Override
-    public HType and(HType hType) {
-        return hType.andWithFloat(this);
-    }
-
-    /**
-     * Returns the conjunction between logicals
-     *
-     * @param hType another logical
-     * @return the conjunction
-     */
-    @Override
-    public HType or(HType hType) {
-        return hType.orWithFloat(this);
-    }
-
-    /**
      * To use double dispatch in {@code add}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public HType addWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = this.typeFloat.addWithFloat(wFloat.toSType());
+    public HType addWithFloat(HiddenFloat hiddenFloat) {
+        TypeFloat computed = this.typeFloat.addWithFloat(hiddenFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
+     * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType addWithInt(HiddenInt wInt) {
-        TypeFloat computed = this.typeFloat.addWithInt(wInt.toSType());
+    public HType addWithInt(HiddenInt hiddenInt) {
+        TypeFloat computed = this.typeFloat.addWithInt(hiddenInt.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public HType subWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = this.typeFloat.subWithFloat(wFloat.toSType());
+    public HType subWithFloat(HiddenFloat hiddenFloat) {
+        TypeFloat computed = this.typeFloat.subWithFloat(hiddenFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -171,10 +152,11 @@ public class HiddenFloat extends AbstractHiddenType {
      * To use double dispatch in {@code sub}
      *
      *
+     * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType subWithInt(HiddenInt wInt) {
-        TypeFloat computed = this.typeFloat.subWithInt(wInt.toSType());
+    public HType subWithInt(HiddenInt hiddenInt) {
+        TypeFloat computed = this.typeFloat.subWithInt(hiddenInt.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -182,10 +164,11 @@ public class HiddenFloat extends AbstractHiddenType {
      * To use double dispatch in {@code mult}
      *
      *
+     * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public HType multWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = this.typeFloat.multWithFloat(wFloat.toSType());
+    public HType multWithFloat(HiddenFloat hiddenFloat) {
+        TypeFloat computed = this.typeFloat.multWithFloat(hiddenFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -193,10 +176,11 @@ public class HiddenFloat extends AbstractHiddenType {
      * To use double dispatch in {@code mult}
      *
      *
+     * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType multWithInt(HiddenInt wInt) {
-        TypeFloat computed = this.typeFloat.multWithInt(wInt.toSType());
+    public HType multWithInt(HiddenInt hiddenInt) {
+        TypeFloat computed = this.typeFloat.multWithInt(hiddenInt.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -204,10 +188,11 @@ public class HiddenFloat extends AbstractHiddenType {
      * To use double dispatch in {@code div}
      *
      *
+     * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public HType divWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = this.typeFloat.divWithFloat(wFloat.toSType());
+    public HType divWithFloat(HiddenFloat hiddenFloat) {
+        TypeFloat computed = this.typeFloat.divWithFloat(hiddenFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -215,10 +200,11 @@ public class HiddenFloat extends AbstractHiddenType {
      * To use double dispatch in {@code div}
      *
      *
+     * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType divWithInt(HiddenInt wInt) {
-        TypeFloat computed = this.typeFloat.divWithInt(wInt.toSType());
+    public HType divWithInt(HiddenInt hiddenInt) {
+        TypeFloat computed = this.typeFloat.divWithInt(hiddenInt.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 }

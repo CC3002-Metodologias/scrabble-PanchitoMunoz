@@ -6,6 +6,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 
 /**
  * Interface for arithmetical operations in {@code HType}.
@@ -27,34 +28,32 @@ public interface HArithmeticOperations {
 
     /**
      * To use double dispatch in {@code add}
+     * 
+     * @param hiddenString a {@code HiddenString}
      */
-    HType addWithString(HiddenString wString);
+    HType addWithString(HiddenString hiddenString);
 
     /**
      * To use double dispatch in {@code add}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType addWithBool(HiddenBool wBool) {
+    default HType addWithBinary(HiddenBinary hiddenBinary) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code add}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
-    default HType addWithBinary(HiddenBinary wBinary) {
+    default HType addWithFloat(HiddenFloat hiddenFloat) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code add}
+     * @param hiddenInt a {@code HiddenInt}
      */
-    default HType addWithFloat(HiddenFloat wFloat) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     */
-    default HType addWithInt(HiddenInt wInt) {
+    default HType addWithInt(HiddenInt hiddenInt) {
         return null;
     }
 
@@ -70,36 +69,25 @@ public interface HArithmeticOperations {
 
     /**
      * To use double dispatch in {@code div}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType divWithString(HiddenString wrappedString) {
+    default HType divWithBinary(HiddenBinary hiddenBinary) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code div}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
-    default HType divWithBool(HiddenBool wrappedBool) {
+    default HType divWithFloat(HiddenFloat hiddenFloat) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code div}
+     * @param hiddenInt a {@code HiddenInt}
      */
-    default HType divWithBinary(HiddenBinary wBinary) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     */
-    default HType divWithFloat(HiddenFloat wFloat) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     */
-    default HType divWithInt(HiddenInt wInt) {
+    default HType divWithInt(HiddenInt hiddenInt) {
         return null;
     }
 
@@ -115,36 +103,25 @@ public interface HArithmeticOperations {
 
     /**
      * To use double dispatch in {@code mult}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType multWithString(HiddenString wrappedString) {
+    default HType multWithBinary(HiddenBinary hiddenBinary) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code mult}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
-    default HType multWithBool(HiddenBool wrappedBool) {
+    default HType multWithFloat(HiddenFloat hiddenFloat) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code mult}
+     * @param hiddenInt a {@code HiddenInt}
      */
-    default HType multWithBinary(HiddenBinary wBinary) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code mult}
-     */
-    default HType multWithFloat(HiddenFloat wFloat) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code mult}
-     */
-    default HType multWithInt(HiddenInt wInt) {
+    default HType multWithInt(HiddenInt hiddenInt) {
         return null;
     }
 
@@ -160,36 +137,25 @@ public interface HArithmeticOperations {
 
     /**
      * To use double dispatch in {@code sub}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType subWithString(HiddenString wrappedString) {
+    default HType subWithBinary(HiddenBinary hiddenBinary) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code sub}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
-    default HType subWithBool(HiddenBool wrappedBool) {
+    default HType subWithFloat(HiddenFloat hiddenFloat) {
         return null;
     }
 
     /**
      * To use double dispatch in {@code sub}
+     * @param hiddenInt a {@code HiddenInt}
      */
-    default HType subWithBinary(HiddenBinary wBinary) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code sub}
-     */
-    default HType subWithFloat(HiddenFloat wFloat) {
-        return null;
-    }
-
-    /**
-     * To use double dispatch in {@code sub}
-     */
-    default HType subWithInt(HiddenInt wInt) {
+    default HType subWithInt(HiddenInt hiddenInt) {
         return null;
     }
 

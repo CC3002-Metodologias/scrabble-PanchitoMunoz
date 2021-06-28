@@ -22,6 +22,11 @@ public class HiddenNull extends AbstractHiddenType {
      */
     private HiddenNull() {}
 
+    @Override
+    public String toString() {
+        return "HiddenNull{}";
+    }
+
     /**
      * Returns the unique {@code HiddenNull} instance.
      *

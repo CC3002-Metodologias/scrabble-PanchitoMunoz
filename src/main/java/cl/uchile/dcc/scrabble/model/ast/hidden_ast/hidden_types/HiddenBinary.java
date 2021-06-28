@@ -176,145 +176,161 @@ public class HiddenBinary extends AbstractHiddenType {
 
     /**
      * To use double dispatch in {@code add}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType addWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = this.typeBinary.addWithBinary(wBinary.toSType());
+    public HType addWithBinary(HiddenBinary hiddenBinary) {
+        TypeBinary computed = this.typeBinary.addWithBinary(hiddenBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public HType addWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = this.typeBinary.addWithFloat(wFloat.toSType());
+    public HType addWithFloat(HiddenFloat hiddenFloat) {
+        TypeFloat computed = this.typeBinary.addWithFloat(hiddenFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code add}
+     * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType addWithInt(HiddenInt wInt) {
-        TypeInt computed = this.typeBinary.addWithInt(wInt.toSType());
+    public HType addWithInt(HiddenInt hiddenInt) {
+        TypeInt computed = this.typeBinary.addWithInt(hiddenInt.toSType());
         return HTypeFactory.createHiddenInt(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType subWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = this.typeBinary.subWithBinary(wBinary.toSType());
+    public HType subWithBinary(HiddenBinary hiddenBinary) {
+        TypeBinary computed = this.typeBinary.subWithBinary(hiddenBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public HType subWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = this.typeBinary.subWithFloat(wFloat.toSType());
+    public HType subWithFloat(HiddenFloat hiddenFloat) {
+        TypeFloat computed = this.typeBinary.subWithFloat(hiddenFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code sub}
+     * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType subWithInt(HiddenInt wInt) {
-        TypeInt computed = this.typeBinary.subWithInt(wInt.toSType());
+    public HType subWithInt(HiddenInt hiddenInt) {
+        TypeInt computed = this.typeBinary.subWithInt(hiddenInt.toSType());
         return HTypeFactory.createHiddenInt(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType multWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = this.typeBinary.multWithBinary(wBinary.toSType());
+    public HType multWithBinary(HiddenBinary hiddenBinary) {
+        TypeBinary computed = this.typeBinary.multWithBinary(hiddenBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public HType multWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = this.typeBinary.multWithFloat(wFloat.toSType());
+    public HType multWithFloat(HiddenFloat hiddenFloat) {
+        TypeFloat computed = this.typeBinary.multWithFloat(hiddenFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code mult}
+     * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType multWithInt(HiddenInt wInt) {
-        TypeInt computed = this.typeBinary.multWithInt(wInt.toSType());
+    public HType multWithInt(HiddenInt hiddenInt) {
+        TypeInt computed = this.typeBinary.multWithInt(hiddenInt.toSType());
         return HTypeFactory.createHiddenInt(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType divWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = this.typeBinary.divWithBinary(wBinary.toSType());
+    public HType divWithBinary(HiddenBinary hiddenBinary) {
+        TypeBinary computed = this.typeBinary.divWithBinary(hiddenBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
+     * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public HType divWithFloat(HiddenFloat wFloat) {
-        TypeFloat computed = this.typeBinary.divWithFloat(wFloat.toSType());
+    public HType divWithFloat(HiddenFloat hiddenFloat) {
+        TypeFloat computed = this.typeBinary.divWithFloat(hiddenFloat.toSType());
         return HTypeFactory.createHiddenFloat(computed);
     }
 
     /**
      * To use double dispatch in {@code div}
+     * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType divWithInt(HiddenInt wInt) {
-        TypeInt computed = this.typeBinary.divWithInt(wInt.toSType());
+    public HType divWithInt(HiddenInt hiddenInt) {
+        TypeInt computed = this.typeBinary.divWithInt(hiddenInt.toSType());
         return HTypeFactory.createHiddenInt(computed);
     }
 
     /**
      * To use double dispatch in {@code and}
+     * @param hiddenBool a {@code HiddenBool}
      */
     @Override
-    public HType andWithBool(HiddenBool wBool) {
-        TypeBinary computed = this.typeBinary.andWithBool(wBool.toSType());
+    public HType andWithBool(HiddenBool hiddenBool) {
+        TypeBinary computed = this.typeBinary.andWithBool(hiddenBool.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code and}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType andWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = this.typeBinary.andWithBinary(wBinary.toSType());
+    public HType andWithBinary(HiddenBinary hiddenBinary) {
+        TypeBinary computed = this.typeBinary.andWithBinary(hiddenBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code or}
+     * @param hiddenBool a {@code HiddenBool}
      */
     @Override
-    public HType orWithBool(HiddenBool wBool) {
-        TypeBinary computed = this.typeBinary.orWithBool(wBool.toSType());
+    public HType orWithBool(HiddenBool hiddenBool) {
+        TypeBinary computed = this.typeBinary.orWithBool(hiddenBool.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
     /**
      * To use double dispatch in {@code or}
+     * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType orWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = this.typeBinary.orWithBinary(wBinary.toSType());
+    public HType orWithBinary(HiddenBinary hiddenBinary) {
+        TypeBinary computed = this.typeBinary.orWithBinary(hiddenBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 }

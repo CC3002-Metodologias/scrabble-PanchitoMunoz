@@ -76,17 +76,6 @@ public class HiddenBool extends AbstractHiddenType {
     }
 
     /**
-     * Returns the sum
-     *
-     * @param hType other type to sum
-     * @return the sum
-     */
-    @Override
-    public HType add(HType hType) {
-        return hType.addWithBool(this);
-    }
-
-    /**
      * Returns the disjunction between logicals
      *
      * @param hType another logical
@@ -109,39 +98,6 @@ public class HiddenBool extends AbstractHiddenType {
     }
 
     /**
-     * Returns the division between numbers
-     *
-     * @param hType another number
-     * @return the division
-     */
-    @Override
-    public HType div(HType hType) {
-        return hType.divWithBool(this);
-    }
-
-    /**
-     * Returns the multiplication between numbers
-     *
-     * @param hType another number
-     * @return the multiplication
-     */
-    @Override
-    public HType mult(HType hType) {
-        return hType.multWithBool(this);
-    }
-
-    /**
-     * Returns the subtraction between numbers
-     *
-     * @param hType another number
-     * @return the subtraction
-     */
-    @Override
-    public HType sub(HType hType) {
-        return hType.subWithBool(this);
-    }
-
-    /**
      * Returns the negation of the current instance
      *
      * @return the negation.
@@ -153,10 +109,11 @@ public class HiddenBool extends AbstractHiddenType {
 
     /**
      * To use double dispatch in {@code and}
+     * @param hiddenBool a {@code HiddenBool}
      */
     @Override
-    public HType andWithBool(HiddenBool wBool) {
-        TypeBool computed = this.typeBool.andWithBool(wBool.toSType());
+    public HType andWithBool(HiddenBool hiddenBool) {
+        TypeBool computed = this.typeBool.andWithBool(hiddenBool.toSType());
         return HTypeFactory.createHiddenBool(computed);
     }
 
@@ -164,10 +121,11 @@ public class HiddenBool extends AbstractHiddenType {
      * To use double dispatch in {@code and}
      *
      *
+     * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType andWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = this.typeBool.andWithBinary(wBinary.toSType());
+    public HType andWithBinary(HiddenBinary hiddenBinary) {
+        TypeBinary computed = this.typeBool.andWithBinary(hiddenBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -175,10 +133,11 @@ public class HiddenBool extends AbstractHiddenType {
      * To use double dispatch in {@code or}
      *
      *
+     * @param hiddenBool a {@code HiddenBool}
      */
     @Override
-    public HType orWithBool(HiddenBool wBool) {
-        TypeBool computed = this.typeBool.orWithBool(wBool.toSType());
+    public HType orWithBool(HiddenBool hiddenBool) {
+        TypeBool computed = this.typeBool.orWithBool(hiddenBool.toSType());
         return HTypeFactory.createHiddenBool(computed);
     }
 
@@ -186,10 +145,11 @@ public class HiddenBool extends AbstractHiddenType {
      * To use double dispatch in {@code or}
      *
      *
+     * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType orWithBinary(HiddenBinary wBinary) {
-        TypeBinary computed = this.typeBool.orWithBinary(wBinary.toSType());
+    public HType orWithBinary(HiddenBinary hiddenBinary) {
+        TypeBinary computed = this.typeBool.orWithBinary(hiddenBinary.toSType());
         return HTypeFactory.createHiddenBinary(computed);
     }
 }
