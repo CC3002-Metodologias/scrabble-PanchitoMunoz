@@ -4,7 +4,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 
 /**
- * TODO: DOCUMENTAR
+ * Interface that provides the logicals operations of {@code TypeBool}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/24 21:53

@@ -13,7 +13,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
- * TODO: DOCUMENTAR
+ * An Utility Class to creates instances of {@code HType}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:29
@@ -79,6 +79,15 @@ public final class HTypeFactory {
      */
     public static HiddenString createHiddenString(HiddenString instance) {
         return stringFactory.create(instance);
+    }
+
+    /**
+     * Create a {@code HiddenNull}.
+     *
+     * @return a {@code HiddenNull} from the cache.
+     */
+    public static HiddenNull createHiddenNull() {
+        return HiddenNull.getInstance();
     }
 
     /**
@@ -179,15 +188,6 @@ public final class HTypeFactory {
      */
     public static HiddenString createHiddenString(String value) {
         return stringFactory.create(value);
-    }
-
-    /**
-     * Create a {@code HiddenNull}.
-     *
-     * @return a {@code HiddenNull} from the cache.
-     */
-    public static HiddenNull createHiddenNull() {
-        return HiddenNull.getInstance();
     }
 
 }

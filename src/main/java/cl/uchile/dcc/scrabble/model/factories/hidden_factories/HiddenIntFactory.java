@@ -6,8 +6,10 @@ import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
 import java.util.HashMap;
 
 /**
- * TODO: DOCUMENTAR
+ * Factory of {@code HiddenInt}. In order to save RAM memory, use this factory. Only exists an
+ * unique instance of this factory, to centralize the created instances.
  *
+ * @see HiddenInt
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:05
  */

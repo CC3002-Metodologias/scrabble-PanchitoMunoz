@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.types.operations.operations_type;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 
 /**
- * TODO: DOCUMENTAR
+ * Interface that provides the arithmetics operations of {@code TypeFloat}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/24 21:46

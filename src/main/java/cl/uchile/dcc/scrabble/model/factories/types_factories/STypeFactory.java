@@ -7,7 +7,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
- * TODO: DOCUMENTAR
+ * An Utility Class to creates instances of {@code SType}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 21:18
