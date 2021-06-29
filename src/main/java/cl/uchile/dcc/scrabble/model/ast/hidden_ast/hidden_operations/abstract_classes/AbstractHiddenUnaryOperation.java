@@ -20,7 +20,7 @@ public abstract class AbstractHiddenUnaryOperation extends AbstractHiddenOperati
      * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
      */
     public AbstractHiddenUnaryOperation(HiddenAST value, String operatorName) {
-        super(value, HTypeFactory.createHiddenNull(), operatorName, "");
+        super(value, HTypeFactory.createHiddenNull(), operatorName, null);
     }
 
     /**

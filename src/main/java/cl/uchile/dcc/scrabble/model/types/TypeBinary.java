@@ -24,7 +24,8 @@ import java.util.Objects;
  * A class for the binary type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBinary extends AbstractInteger implements SLogical, ArithmeticOperationsWithIntegers {
+public class TypeBinary extends AbstractInteger
+    implements SLogical, ArithmeticOperationsWithIntegers {
 
     /**
      * Constructor for the TypeBinary.
