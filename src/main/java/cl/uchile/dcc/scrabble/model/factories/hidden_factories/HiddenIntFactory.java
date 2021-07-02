@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
 import java.util.HashMap;
 
 /**
@@ -13,21 +13,19 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:05
  */
-public class HiddenIntFactory implements GeneralTypeFactory {
+public class HiddenIntFactory extends AbstractGeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
     private static HiddenIntFactory uniqueInstance;
-    /**
-     * To use Flyweight pattern
-     */
-    private final HashMap<Integer, HiddenInt> hashMapCache = new HashMap<>();
 
     /**
      * Constructor.
      */
-    private HiddenIntFactory() { }
+    private HiddenIntFactory() {
+        super(new HashMap<>());
+    }
 
     /**
      * Returns the unique instance of the factory.
@@ -48,11 +46,7 @@ public class HiddenIntFactory implements GeneralTypeFactory {
      * @return a {@code HiddenInt} instance.
      */
     public HiddenInt create(HiddenInt instance) {
-        int keyValue = instance.toSType().getValue();
-        if (!hashMapCache.containsKey(keyValue)) {
-            hashMapCache.put(keyValue, instance);
-        }
-        return hashMapCache.get(keyValue);
+        return (HiddenInt) super.createWithKey(instance.toSType().getValue(), instance);
     }
 
     /**
@@ -75,21 +69,4 @@ public class HiddenIntFactory implements GeneralTypeFactory {
         return create(new HiddenInt(value));
     }
 
-    /**
-     * Clear the current caché.
-     */
-    @Override
-    public void clear() {
-        hashMapCache.clear();
-    }
-
-    /**
-     * Returns {@code true} if the caché is empty, {@code false} otherwise.
-     *
-     * @return a boolean
-     */
-    @Override
-    public boolean isEmpty() {
-        return hashMapCache.isEmpty();
-    }
 }

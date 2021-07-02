@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.factories.types_factories;
 
-import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
+import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import java.util.HashMap;
 
@@ -12,21 +12,19 @@ import java.util.HashMap;
  * @create 2021/06/20 21:03
  * @see TypeBool
  */
-public class TypeBoolFactory implements GeneralTypeFactory {
+public class TypeBoolFactory extends AbstractGeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
     private static TypeBoolFactory uniqueInstance;
-    /**
-     * To use Flyweight pattern
-     */
-    private final HashMap<Boolean, TypeBool> hashMapCache = new HashMap<>();
 
     /**
      * Constructor.
      */
-    private TypeBoolFactory() { }
+    private TypeBoolFactory() {
+        super(new HashMap<>());
+    }
 
     /**
      * Returns the unique instance of the factory.
@@ -47,11 +45,7 @@ public class TypeBoolFactory implements GeneralTypeFactory {
      * @return a {@code TypeBool} instance.
      */
     public TypeBool create(TypeBool instance) {
-        boolean keyValue = instance.getValue();
-        if (!hashMapCache.containsKey(keyValue)) {
-            hashMapCache.put(keyValue, instance);
-        }
-        return hashMapCache.get(keyValue);
+        return (TypeBool) super.createWithKey(instance.getValue(), instance);
     }
 
     /**
@@ -62,23 +56,5 @@ public class TypeBoolFactory implements GeneralTypeFactory {
      */
     public TypeBool create(boolean value) {
         return create(new TypeBool(value));
-    }
-
-    /**
-     * Clear the current caché.
-     */
-    @Override
-    public void clear() {
-        hashMapCache.clear();
-    }
-
-    /**
-     * Returns {@code true} if the caché is empty, {@code false} otherwise.
-     *
-     * @return a boolean
-     */
-    @Override
-    public boolean isEmpty() {
-        return hashMapCache.isEmpty();
     }
 }

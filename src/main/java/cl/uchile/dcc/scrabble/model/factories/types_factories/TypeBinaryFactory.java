@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.factories.types_factories;
 
-import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
+import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import java.util.HashMap;
 
@@ -12,21 +12,19 @@ import java.util.HashMap;
  * @create 2021/06/20 21:02
  * @see TypeBinary
  */
-public class TypeBinaryFactory implements GeneralTypeFactory {
+public class TypeBinaryFactory extends AbstractGeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
     private static TypeBinaryFactory uniqueInstance;
-    /**
-     * To use Flyweight pattern
-     */
-    private final HashMap<Integer, TypeBinary> hashMapCache = new HashMap<>();
 
     /**
      * Constructor.
      */
-    private TypeBinaryFactory() { }
+    private TypeBinaryFactory() {
+        super(new HashMap<>());
+    }
 
     /**
      * Returns the unique instance of the factory.
@@ -47,11 +45,7 @@ public class TypeBinaryFactory implements GeneralTypeFactory {
      * @return a {@code TypeBinary} instance.
      */
     public TypeBinary create(TypeBinary instance) {
-        int keyValue = instance.getValueAsInt();
-        if (!hashMapCache.containsKey(keyValue)) {
-            hashMapCache.put(keyValue, instance);
-        }
-        return hashMapCache.get(keyValue);
+        return (TypeBinary) super.createWithKey(instance.getValueAsInt(), instance);
     }
 
     /**
@@ -62,23 +56,5 @@ public class TypeBinaryFactory implements GeneralTypeFactory {
      */
     public TypeBinary create(String value) {
         return create(new TypeBinary(value));
-    }
-
-    /**
-     * Clear the current caché.
-     */
-    @Override
-    public void clear() {
-        hashMapCache.clear();
-    }
-
-    /**
-     * Returns {@code true} if the caché is empty, {@code false} otherwise.
-     *
-     * @return a boolean
-     */
-    @Override
-    public boolean isEmpty() {
-        return hashMapCache.isEmpty();
     }
 }

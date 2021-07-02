@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
 import java.util.HashMap;
 
 /**
@@ -13,21 +13,19 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:02
  */
-public class HiddenBinaryFactory implements GeneralTypeFactory {
+public class HiddenBinaryFactory extends AbstractGeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
     private static HiddenBinaryFactory uniqueInstance;
-    /**
-     * To use Flyweight pattern
-     */
-    private final HashMap<Integer, HiddenBinary> hashMapCache = new HashMap<>();
 
     /**
      * Constructor.
      */
-    private HiddenBinaryFactory() { }
+    private HiddenBinaryFactory() {
+        super(new HashMap<>());
+    }
 
     /**
      * Returns the unique instance of the factory.
@@ -48,11 +46,7 @@ public class HiddenBinaryFactory implements GeneralTypeFactory {
      * @return a {@code HiddenBinary} instance.
      */
     public HiddenBinary create(HiddenBinary instance) {
-        int keyValue = instance.toSType().getValueAsInt();
-        if (!hashMapCache.containsKey(keyValue)) {
-            hashMapCache.put(keyValue, instance);
-        }
-        return hashMapCache.get(keyValue);
+        return (HiddenBinary) super.createWithKey(instance.toSType().getValueAsInt(), instance);
     }
 
     /**
@@ -75,21 +69,4 @@ public class HiddenBinaryFactory implements GeneralTypeFactory {
         return create(new HiddenBinary(value));
     }
 
-    /**
-     * Clear the current caché.
-     */
-    @Override
-    public void clear() {
-        hashMapCache.clear();
-    }
-
-    /**
-     * Returns {@code true} if the caché is empty, {@code false} otherwise.
-     *
-     * @return a boolean
-     */
-    @Override
-    public boolean isEmpty() {
-        return hashMapCache.isEmpty();
-    }
 }

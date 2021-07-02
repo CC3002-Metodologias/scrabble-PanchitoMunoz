@@ -63,9 +63,9 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
             return false;
         }
         AbstractHiddenOperation that = (AbstractHiddenOperation) o;
-        return Objects.equals(leftChildren, that.leftChildren)
-            && Objects.equals(rightChildren, that.rightChildren)
-            && Objects.equals(this.calculate(), that.calculate());
+        return Objects.equals(leftChildren, that.leftChildren) && Objects
+            .equals(rightChildren, that.rightChildren) && Objects
+            .equals(operatorName, that.operatorName);
     }
 
     /**
@@ -77,7 +77,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(leftChildren, rightChildren, this.calculate());
+        return Objects.hash(leftChildren, rightChildren, operatorName);
     }
 
     /**

@@ -49,7 +49,7 @@ public abstract class AbstractInteger extends AbstractNumber implements SInteger
      * @return the current value as {@code double}
      */
     @Override
-    protected double getValueAsDouble() {
+    protected final double getValueAsDouble() {
         return this.getValueAsInt();
     }
 

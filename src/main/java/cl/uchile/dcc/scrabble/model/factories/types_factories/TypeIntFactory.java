@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.factories.types_factories;
 
-import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
+import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import java.util.HashMap;
 
@@ -12,21 +12,19 @@ import java.util.HashMap;
  * @create 2021/06/20 21:03
  * @see TypeInt
  */
-public class TypeIntFactory implements GeneralTypeFactory {
+public class TypeIntFactory extends AbstractGeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
     private static TypeIntFactory uniqueInstance;
-    /**
-     * To use Flyweight pattern
-     */
-    private final HashMap<Integer, TypeInt> hashMapCache = new HashMap<>();
 
     /**
      * Constructor.
      */
-    private TypeIntFactory() { }
+    private TypeIntFactory() {
+        super(new HashMap<>());
+    }
 
     /**
      * Returns the unique instance of the factory.
@@ -47,11 +45,7 @@ public class TypeIntFactory implements GeneralTypeFactory {
      * @return a {@code TypeInt} instance.
      */
     public TypeInt create(TypeInt instance) {
-        int keyValue = instance.getValue();
-        if (!hashMapCache.containsKey(keyValue)) {
-            hashMapCache.put(keyValue, instance);
-        }
-        return hashMapCache.get(keyValue);
+        return (TypeInt) super.createWithKey(instance.getValue(), instance);
     }
 
     /**
@@ -64,21 +58,4 @@ public class TypeIntFactory implements GeneralTypeFactory {
         return create(new TypeInt(value));
     }
 
-    /**
-     * Clear the current caché.
-     */
-    @Override
-    public void clear() {
-        hashMapCache.clear();
-    }
-
-    /**
-     * Returns {@code true} if the caché is empty, {@code false} otherwise.
-     *
-     * @return a boolean
-     */
-    @Override
-    public boolean isEmpty() {
-        return hashMapCache.isEmpty();
-    }
 }

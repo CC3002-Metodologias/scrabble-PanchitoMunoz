@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
-import cl.uchile.dcc.scrabble.model.factories.GeneralTypeFactory;
 import java.util.HashMap;
 
 /**
@@ -13,21 +13,19 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:05
  */
-public class HiddenStringFactory implements GeneralTypeFactory {
+public class HiddenStringFactory extends AbstractGeneralTypeFactory {
 
     /**
      * To use singleton pattern
      */
     private static HiddenStringFactory uniqueInstance;
-    /**
-     * To use Flyweight pattern
-     */
-    private final HashMap<String, HiddenString> hashMapCache = new HashMap<>();
 
     /**
      * Constructor.
      */
-    private HiddenStringFactory() { }
+    private HiddenStringFactory() {
+        super(new HashMap<>());
+    }
 
     /**
      * Returns the unique instance of the factory.
@@ -48,11 +46,7 @@ public class HiddenStringFactory implements GeneralTypeFactory {
      * @return a {@code HiddenString} instance.
      */
     public HiddenString create(HiddenString instance) {
-        String keyValue = instance.toSType().getValue();
-        if (!hashMapCache.containsKey(keyValue)) {
-            hashMapCache.put(keyValue, instance);
-        }
-        return hashMapCache.get(keyValue);
+        return (HiddenString) super.createWithKey(instance.toSType().getValue(), instance);
     }
 
     /**
@@ -75,21 +69,4 @@ public class HiddenStringFactory implements GeneralTypeFactory {
         return create(new HiddenString(value));
     }
 
-    /**
-     * Clear the current caché.
-     */
-    @Override
-    public void clear() {
-        hashMapCache.clear();
-    }
-
-    /**
-     * Returns {@code true} if the caché is empty, {@code false} otherwise.
-     *
-     * @return a boolean
-     */
-    @Override
-    public boolean isEmpty() {
-        return hashMapCache.isEmpty();
-    }
 }
