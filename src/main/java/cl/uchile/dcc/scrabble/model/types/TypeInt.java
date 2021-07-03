@@ -4,6 +4,8 @@ import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFacto
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.IntASTBuilder;
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.IntegerASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
@@ -15,7 +17,8 @@ import java.util.Objects;
  * A class for the integer type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeInt extends AbstractInteger implements ArithmeticOperationsWithNumbers {
+public class TypeInt extends AbstractInteger
+    implements ArithmeticOperationsWithNumbers, IntASTBuilder {
 
     /**
      * Constructor for the TypeInt.

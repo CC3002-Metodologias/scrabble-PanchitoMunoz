@@ -11,6 +11,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.BinaryASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
@@ -25,7 +26,7 @@ import java.util.Objects;
  * @author Francisco Muñoz Guajardo
  */
 public class TypeBinary extends AbstractInteger
-    implements SLogical, ArithmeticOperationsWithIntegers {
+    implements SLogical, ArithmeticOperationsWithIntegers, BinaryASTBuilder {
 
     /**
      * Constructor for the TypeBinary.

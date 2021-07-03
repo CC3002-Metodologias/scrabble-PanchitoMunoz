@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenString;
 
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.StringASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
@@ -12,7 +13,7 @@ import java.util.Objects;
  * A class for the string type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeString extends AbstractType {
+public class TypeString extends AbstractType implements StringASTBuilder {
     private final String value;
 
     /**

@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.IntegerASTBuilder;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -10,7 +11,8 @@ import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
  * An abstract class for numbers that are like integers (e.g.: TypeInt and TypeBinary).
  * @author Francisco Muñoz Guajardo
  */
-public abstract class AbstractInteger extends AbstractNumber implements SInteger {
+public abstract class AbstractInteger
+    extends AbstractNumber implements SInteger {
 
     private final int valueAsInt;
     private final String valueAsBinary;

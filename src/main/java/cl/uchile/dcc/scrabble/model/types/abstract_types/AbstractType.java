@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
+import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.TypeASTBuilder;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
@@ -47,4 +49,23 @@ public abstract class AbstractType implements SType {
         return STypeFactory.createTypeString(this.getValueAsString());
     }
 
+    /**
+     * Builds the {@code AST}.
+     *
+     * @return the {@code AST} built.
+     */
+    @Override
+    public SType build() {
+        return this;
+    }
+
+    /**
+     * Calculate the {@code SType} result of performing all operations
+     *
+     * @return SType result of operations.
+     */
+    @Override
+    public SType calculate() {
+        return this;
+    }
 }

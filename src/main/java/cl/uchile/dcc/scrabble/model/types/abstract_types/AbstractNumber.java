@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.NumberASTBuilder;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;

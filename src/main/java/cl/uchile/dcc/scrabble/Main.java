@@ -1,5 +1,9 @@
 package cl.uchile.dcc.scrabble;
 
+import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.builders.ASTBuilder;
+import cl.uchile.dcc.scrabble.model.ast.builders.TypeBinaryASTBuilder;
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.TypeASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenOr;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenSub;
@@ -27,42 +31,55 @@ import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(BinaryUtilities.intToBinary(-2));
-        TypeBinary typeBinary = new TypeBinary("0110");
-        HiddenBinary wBinary = new HiddenBinary(typeBinary);
-        TypeFloat typeFloat = new TypeFloat(3.1415);
-        HiddenFloat wFloat = new HiddenFloat(typeFloat);
-        System.out.println(wFloat.add(wBinary));
-        System.out.println(wFloat);
-        HiddenString wString = new HiddenString("Hola!");
-        System.out.println(wFloat.add(wString));
-        System.out.println(typeBinary.toHiddenAST());
-        System.out.println(wString.sub(wBinary));
-
-        Add addAST = new Add(
+        TypeASTBuilder astBuilder = ASTBuilder.add(
             new TypeFloat(6.9),
-            new Or(
+            ASTBuilder.or(
                 new TypeBinary("1000"),
-                new Sub(
+                ASTBuilder.sub(
                     new TypeInt(25),
                     new TypeBinary("0101")
                 ).toTypeBinary()
             )
         );
-        System.out.println("Representación: " + addAST);
-        System.out.println("Resultado: " + addAST.calculate());
-        Add addAST2 = new Add(
-            new TypeBool(true),
-            new Or(
-                new TypeString("Hola!"),
-                new Sub(
-                    new TypeString("Mundo!"),
-                    new TypeBinary("0101")
-                ).toTypeBinary()
-            ).toTypeInt().toTypeFloat()
-        );
-        System.out.println("Representación: " + addAST2);
-        System.out.println("Resultado: " + addAST2.calculate());
+        AST ast = astBuilder.build();
+        System.out.println("Representación : " + ast);
+        System.out.println("Resultado : " + ast.calculate());
+
+
+
+
+//        System.out.println(BinaryUtilities.intToBinary(-2));
+//        TypeBinary typeBinary = new TypeBinary("0110");
+//        TypeFloat typeFloat = new TypeFloat(3.1415);
+//
+//        Add addAST = new Add(
+//            new TypeFloat(6.9),
+//            new Or(
+//                new TypeBinary("1000"),
+//                new Sub(
+//                    new TypeInt(25),
+//                    new TypeBinary("0101")
+//                ).toTypeBinary()
+//            )
+//        );
+//        System.out.println("Representación: " + addAST);
+//        System.out.println("Resultado: " + addAST.calculate());
+//        Add addAST2 = new Add(
+//            new TypeBool(true),
+//            new Or(
+//                new TypeString("Hola!"),
+//                new Sub(
+//                    new TypeString("Mundo!"),
+//                    new TypeBinary("0101")
+//                ).toTypeBinary()
+//            ).toTypeInt().toTypeFloat()
+//        );
+//        System.out.println("Representación: " + addAST2);
+//        System.out.println("Resultado: " + addAST2.calculate());
+
+
+
+
 //        AST addAST3 = new Or(
 //            new Add(
 //                new TypeBinary("10101"),

@@ -4,6 +4,7 @@ import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFacto
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
+import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.BoolASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
@@ -14,7 +15,7 @@ import java.util.Objects;
  * A class for the boolean type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeBool extends AbstractType implements SLogical {
+public class TypeBool extends AbstractType implements SLogical, BoolASTBuilder {
     private final boolean value;
 
     /**

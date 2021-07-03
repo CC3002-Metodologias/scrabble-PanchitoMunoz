@@ -20,13 +20,6 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 public interface Operation extends AST {
 
     /**
-     * Calculate the {@code SType} result of performing all operations
-     *
-     * @return SType result of operations.
-     */
-    SType calculate();
-
-    /**
      * Transform the current instance into a {@code TypeBinary}.
      *
      * @return a {@code TypeBinary}
