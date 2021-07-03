@@ -31,7 +31,7 @@ import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 public class Main {
 
     public static void main(String[] args) {
-        TypeASTBuilder astBuilder = ASTBuilder.add(
+        AST ast = ASTBuilder.add(
             new TypeFloat(6.9),
             ASTBuilder.or(
                 new TypeBinary("1000"),
@@ -40,8 +40,7 @@ public class Main {
                     new TypeBinary("0101")
                 ).toTypeBinary()
             )
-        );
-        AST ast = astBuilder.build();
+        ).build();
         System.out.println("Representación : " + ast);
         System.out.println("Resultado : " + ast.calculate());
 
