@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable;
 
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
@@ -88,15 +89,5 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     public void setValue(@NotNull HType value) {
         this.value = value;
-    }
-
-    /**
-     * Gets the current instance in the wrapper
-     *
-     * @return the instance in the wrapper
-     */
-    @Override
-    public SType toSType() {
-        return null; // todo: implementar!
     }
 }

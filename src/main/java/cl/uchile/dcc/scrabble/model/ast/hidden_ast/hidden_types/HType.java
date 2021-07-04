@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HArithmeticOperations;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.operations.HLogicalOperations;
@@ -27,6 +28,13 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @see Operation
  */
 public interface HType extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations {
+
+    /**
+     * Gets the current instance in the wrapper
+     *
+     * @return the instance in the wrapper
+     */
+    SType toSType();
 
     /**
      * Transform the current instance to a {@code HiddenBinary}.
