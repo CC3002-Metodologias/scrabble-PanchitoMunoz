@@ -21,6 +21,14 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 public interface Operation extends AST {
 
     /**
+     * Sets the variable in an {@code Operation}.
+     *
+     * @param name  the name of the variable
+     * @param value the current value to set
+     */
+    void setVariable(String name, SType value);
+
+    /**
      * Calculate the {@code SType} result of performing all operations
      *
      * @return SType result of operations.

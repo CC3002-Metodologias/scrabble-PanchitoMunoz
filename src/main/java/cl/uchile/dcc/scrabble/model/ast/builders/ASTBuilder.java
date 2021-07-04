@@ -19,7 +19,9 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 
 /**
  * An utility class to build an {@code AST}. In order to avoid an {@code AST} that will return a
- * {@code null} if ejecutes {@code calculate} method, use this builder.
+ * {@code null} if ejecutes {@code calculate} method, use this builder. Currently, it is impossible
+ * build an {@code AST} with {@code Variable} instances; in futures versions (maybe) it will be
+ * added.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/02 21:34

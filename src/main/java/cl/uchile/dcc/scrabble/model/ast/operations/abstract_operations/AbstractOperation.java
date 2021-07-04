@@ -48,6 +48,7 @@ public abstract class AbstractOperation implements Operation {
      * @param name  the name of the variable
      * @param value the current value to set
      */
+    @Override
     public void setVariable(String name, SType value) {
         this.adaptee.setVariable(name, value.toHiddenAST());
     }

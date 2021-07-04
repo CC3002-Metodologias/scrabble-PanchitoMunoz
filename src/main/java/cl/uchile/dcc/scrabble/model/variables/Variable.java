@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.variables;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable.HiddenVariable;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import org.jetbrains.annotations.NotNull;
@@ -44,23 +43,4 @@ public class Variable implements AST {
     public HiddenVariable toHiddenAST() {
         return this.adaptee;
     }
-
-    /**
-     * Gets the name of the variable.
-     *
-     * @return the name of the variable.
-     */
-    public String getName() {
-        return this.adaptee.getName();
-    }
-
-    /**
-     * Sets the value of the variable.
-     *
-     * @param value a {@code HType} value to set.
-     */
-    public void setValue(@NotNull SType value) {
-        this.adaptee.setValue(value.toHiddenAST());
-    }
-
 }

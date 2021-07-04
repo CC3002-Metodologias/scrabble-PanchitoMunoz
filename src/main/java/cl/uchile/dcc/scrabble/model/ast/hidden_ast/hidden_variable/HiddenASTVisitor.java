@@ -12,17 +12,17 @@ import org.jetbrains.annotations.NotNull;
  */
 public class HiddenASTVisitor {
 
-    private final String variableName;
+    private final String name;
     private final HType value;
 
     /**
      * Constructor.
      *
-     * @param variableName name of the variable to set
+     * @param name name of the variable to set
      * @param value value to set
      */
-    public HiddenASTVisitor(@NotNull String variableName, @NotNull HType value) {
-        this.variableName = variableName;
+    public HiddenASTVisitor(@NotNull String name, @NotNull HType value) {
+        this.name = name;
         this.value = value;
     }
 
@@ -39,7 +39,7 @@ public class HiddenASTVisitor {
      * @param hiddenVariable a {@code HiddenVariable}.
      */
     public void visitVariable(HiddenVariable hiddenVariable) {
-        if (hiddenVariable.getName().equals(variableName)) {
+        if (hiddenVariable.getName().equals(name)) {
             hiddenVariable.setValue(value);
         }
     }
