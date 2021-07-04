@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.ast.operations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenSub;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenSub;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;

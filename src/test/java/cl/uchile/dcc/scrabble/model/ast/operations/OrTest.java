@@ -2,8 +2,7 @@ package cl.uchile.dcc.scrabble.model.ast.operations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenOr;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenOr;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;

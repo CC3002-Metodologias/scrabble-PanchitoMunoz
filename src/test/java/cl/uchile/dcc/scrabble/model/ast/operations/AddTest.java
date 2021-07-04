@@ -2,16 +2,13 @@ package cl.uchile.dcc.scrabble.model.ast.operations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenAdd;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 class AddTest extends BaseOperationTest {
 

@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.BaseHTypeTest;
-import cl.uchile.dcc.scrabble.model.types.BaseTypeTest;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.BaseHTypeTest;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;

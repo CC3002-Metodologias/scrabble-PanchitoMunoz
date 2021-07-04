@@ -2,11 +2,10 @@ package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.BaseHTypeTest;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.BaseHTypeTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 class HiddenBinaryFactoryTest extends BaseHTypeTest {
 

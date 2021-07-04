@@ -1,10 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOperation;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable.HiddenASTVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;

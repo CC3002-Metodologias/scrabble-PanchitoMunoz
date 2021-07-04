@@ -7,17 +7,15 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryOrBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 
 import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.BinaryASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithIntegers;
 import java.util.Objects;
 
