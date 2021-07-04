@@ -14,7 +14,6 @@ import cl.uchile.dcc.scrabble.model.ast.operations.And;
 import cl.uchile.dcc.scrabble.model.ast.operations.Div;
 import cl.uchile.dcc.scrabble.model.ast.operations.Mult;
 import cl.uchile.dcc.scrabble.model.ast.operations.Neg;
-import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Or;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 

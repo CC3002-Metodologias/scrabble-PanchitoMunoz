@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.builders.ASTBuilder;
+import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -15,7 +16,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeInt;
 public class Main {
 
     public static void main(String[] args) {
-        AST ast = ASTBuilder.add(
+        Operation ast = ASTBuilder.add(
             new TypeFloat(6.9),
             ASTBuilder.or(
                 new TypeBinary("1000"),

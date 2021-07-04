@@ -58,14 +58,4 @@ public abstract class AbstractType implements SType {
     public SType build() {
         return this;
     }
-
-    /**
-     * Calculate the {@code SType} result of performing all operations
-     *
-     * @return SType result of operations.
-     */
-    @Override
-    public SType calculate() {
-        return this;
-    }
 }

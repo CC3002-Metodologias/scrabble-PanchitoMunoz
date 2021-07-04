@@ -13,11 +13,4 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  */
 public interface AST extends HiddenASTTransformation {
 
-    /**
-     * Calculate the {@code SType} result of performing all operations
-     *
-     * @return SType result of operations.
-     */
-    SType calculate();
-
 }
