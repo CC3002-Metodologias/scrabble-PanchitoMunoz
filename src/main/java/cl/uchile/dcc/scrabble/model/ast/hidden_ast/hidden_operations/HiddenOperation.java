@@ -6,6 +6,7 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformat
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenInt;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.transformations.ToHiddenString;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 
 /**
  * An interface to represent a general hidden operation in {@code HiddenAST}.
@@ -15,6 +16,28 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
  * @create 2021/06/21 17:14
  */
 public interface HiddenOperation extends HiddenAST {
+
+    /**
+     * Gets the left children.
+     *
+     * @return the left children
+     */
+    HiddenAST getLeftChildren();
+
+    /**
+     * Gets the right children.
+     *
+     * @return the right children
+     */
+    HiddenAST getRightChildren();
+
+    /**
+     * Sets the variable in an {@code HiddenOperation}.
+     *
+     * @param name the name of the variable
+     * @param value the current value to set
+     */
+    void setVariable(String name, HType value);
 
     /**
      * Transform the current instance into a {@code HiddenBinary}.

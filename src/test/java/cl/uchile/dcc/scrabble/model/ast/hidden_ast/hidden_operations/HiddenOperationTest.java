@@ -9,6 +9,9 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenOr;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.operations.HiddenSub;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable.HiddenASTVisitor;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable.HiddenVariable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -39,6 +42,23 @@ class HiddenOperationTest extends BaseHiddenOperationTest {
         floatResult = floatHiddenAST.calculate();
         intResult = intHiddenAST.calculate();
         binaryResult = binaryHiddenAST.calculate();
+    }
+
+    @Test
+    void testSetVariable() {
+        String name = "x";
+        String otherName = "y";
+        HiddenAdd operation = new HiddenAdd(
+            new HiddenVariable(name), new HiddenVariable(otherName)
+        );
+        assertEquals(hiddenNull, operation.calculate(),
+            "HiddenOperation does not works with empty leaf." + messageSeed);
+        operation.setVariable(name, hiddenFloat1);
+        assertEquals(hiddenNull, operation.calculate(),
+            "calculate does not works with other variable." + messageSeed);
+        operation.setVariable(otherName, hiddenFloat2);
+        assertEquals(new HiddenFloat(aFloat1 + aFloat2), operation.calculate(),
+            "calculate does not works with correct variable." + messageSeed);
     }
 
     @RepeatedTest(20)

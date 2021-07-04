@@ -1,10 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.abstract_classes;
 
-import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
-
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable.HiddenASTVisitor;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -81,6 +80,36 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     }
 
     /**
+     * Method that accepts a {@code HiddenASTVisitor}.
+     *
+     * @param visitor a {@code HiddenASTVisitor}.
+     */
+    @Override
+    public void accept(HiddenASTVisitor visitor) {
+        visitor.visitHiddenOperation(this);
+    }
+
+    /**
+     * Gets the left children.
+     *
+     * @return the left children
+     */
+    @Override
+    public HiddenAST getLeftChildren() {
+        return leftChildren;
+    }
+
+    /**
+     * Gets the right children.
+     *
+     * @return the right children
+     */
+    @Override
+    public HiddenAST getRightChildren() {
+        return rightChildren;
+    }
+
+    /**
      * Returns the {@code String} representation of the current {@code HiddenAST}.
      *
      * @param space number of spaces to ident
@@ -141,4 +170,15 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @return the value computed
      */
     protected abstract HType mainOperation(HType value1, HType value2);
+
+    /**
+     * Sets the variable in an {@code HiddenOperation}.
+     *
+     * @param name  the name of the variable
+     * @param value the current value to set
+     */
+    @Override
+    public void setVariable(String name, HType value) {
+        this.accept(new HiddenASTVisitor(name, value));
+    }
 }

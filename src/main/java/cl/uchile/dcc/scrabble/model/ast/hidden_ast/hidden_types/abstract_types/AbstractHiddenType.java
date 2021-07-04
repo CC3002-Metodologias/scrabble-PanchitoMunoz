@@ -1,7 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.abstract_types;
 
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable.HiddenASTVisitor;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
@@ -67,6 +69,16 @@ public abstract class AbstractHiddenType implements HType {
         }
         HType hType = (HType) obj;
         return this.toSType().equals(hType.toSType());
+    }
+
+    /**
+     * Method that accepts a {@code HiddenASTVisitor}.
+     *
+     * @param visitor a {@code HiddenASTVisitor}.
+     */
+    @Override
+    public void accept(HiddenASTVisitor visitor) {
+        visitor.visitHType(this);
     }
 
     /**

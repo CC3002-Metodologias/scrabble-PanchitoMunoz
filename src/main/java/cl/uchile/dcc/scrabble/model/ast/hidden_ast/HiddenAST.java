@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast;
 
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable.HiddenASTVisitor;
 
 /**
  * An interface that defines a "type" of Abstract Syntax Tree. This interface is for using the
@@ -10,6 +11,12 @@ import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
  * @create 2021/06/12 22:51
  */
 public interface HiddenAST {
+
+    /**
+     * Method that accepts a {@code HiddenASTVisitor}.
+     * @param visitor a {@code HiddenASTVisitor}.
+     */
+    void accept(HiddenASTVisitor visitor);
 
     /**
      * Calculate the {@code HType} result of performing all operations.

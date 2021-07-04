@@ -18,7 +18,8 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Or;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 
 /**
- * An utility class to build an {@code AST}
+ * An utility class to build an {@code AST}. In order to avoid an {@code AST} that will return a
+ * {@code null} if ejecutes {@code calculate} method, use this builder.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/02 21:34
