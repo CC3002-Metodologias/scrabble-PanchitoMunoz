@@ -1,15 +1,15 @@
 package cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
+import cl.uchile.dcc.scrabble.model.variables.Variable;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Hidden Variable to use un the hidden layer.
  *
+ * @see Variable
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/04 0:04
  */

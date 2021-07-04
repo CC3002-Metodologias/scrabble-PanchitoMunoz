@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.ast.operations;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBinary;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
@@ -25,6 +26,14 @@ public interface Operation extends AST {
      * @return SType result of operations.
      */
     SType calculate();
+
+    /**
+     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     *
+     * @return a transformation
+     */
+    @Override
+    HiddenOperation toHiddenAST();
 
     /**
      * Transform the current instance into a {@code TypeBinary}.

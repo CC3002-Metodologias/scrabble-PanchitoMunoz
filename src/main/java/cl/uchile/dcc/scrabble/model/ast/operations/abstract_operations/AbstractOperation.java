@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.HiddenAST;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_variable.HiddenASTVisitor;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
@@ -37,8 +38,18 @@ public abstract class AbstractOperation implements Operation {
      * @return a transformation
      */
     @Override
-    public HiddenAST toHiddenAST() {
+    public HiddenOperation toHiddenAST() {
         return adaptee;
+    }
+
+    /**
+     * Sets the variable in an {@code Operation}.
+     *
+     * @param name  the name of the variable
+     * @param value the current value to set
+     */
+    public void setVariable(String name, SType value) {
+        this.adaptee.setVariable(name, value.toHiddenAST());
     }
 
     /**

@@ -2,10 +2,14 @@ package cl.uchile.dcc.scrabble;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.builders.ASTBuilder;
+import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
+import cl.uchile.dcc.scrabble.model.ast.operations.Or;
+import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.variables.Variable;
 
 /**
  * A main to experiment implementations
@@ -36,18 +40,19 @@ public class Main {
 //        TypeBinary typeBinary = new TypeBinary("0110");
 //        TypeFloat typeFloat = new TypeFloat(3.1415);
 //
-//        Add addAST = new Add(
-//            new TypeFloat(6.9),
-//            new Or(
-//                new TypeBinary("1000"),
-//                new Sub(
-//                    new TypeInt(25),
-//                    new TypeBinary("0101")
-//                ).toTypeBinary()
-//            )
-//        );
-//        System.out.println("Representación: " + addAST);
-//        System.out.println("Resultado: " + addAST.calculate());
+        Add addAST = new Add(
+            new Variable("x"),
+            new Or(
+                new TypeBinary("1000"),
+                new Sub(
+                    new TypeInt(25),
+                    new TypeBinary("0101")
+                ).toTypeBinary()
+            )
+        );
+        addAST.setVariable("x", new TypeFloat(6.9));
+        System.out.println("Representación: " + addAST);
+        System.out.println("Resultado: " + addAST.calculate());
 //        Add addAST2 = new Add(
 //            new TypeBool(true),
 //            new Or(
