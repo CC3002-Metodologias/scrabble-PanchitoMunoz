@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.IntegerASTBuilder;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -32,7 +31,8 @@ public abstract class AbstractInteger
      *
      * @return the current value as {@code int}
      */
-    protected int getValueAsInt() {
+    @Override
+    public int getValueAsInt() {
         return this.valueAsInt;
     }
 
@@ -41,7 +41,8 @@ public abstract class AbstractInteger
      *
      * @return the current value as binary
      */
-    protected String getValueAsBinary() {
+    @Override
+    public String getValueAsBinary() {
         return this.valueAsBinary;
     }
 
@@ -51,7 +52,7 @@ public abstract class AbstractInteger
      * @return the current value as {@code double}
      */
     @Override
-    protected final double getValueAsDouble() {
+    public final double getValueAsDouble() {
         return this.getValueAsInt();
     }
 

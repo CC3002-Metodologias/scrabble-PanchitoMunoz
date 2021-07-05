@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @create 2021/06/20 21:03
  * @see TypeFloat
  */
-public class TypeFloatFactory extends AbstractGeneralTypeFactory {
+public class TypeFloatFactory extends AbstractSTypeFactory {
 
     /**
      * To use singleton pattern

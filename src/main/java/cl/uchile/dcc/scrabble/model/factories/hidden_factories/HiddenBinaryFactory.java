@@ -13,7 +13,7 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:02
  */
-public class HiddenBinaryFactory extends AbstractGeneralTypeFactory {
+public class HiddenBinaryFactory extends AbstractHTypeFactory {
 
     /**
      * To use singleton pattern

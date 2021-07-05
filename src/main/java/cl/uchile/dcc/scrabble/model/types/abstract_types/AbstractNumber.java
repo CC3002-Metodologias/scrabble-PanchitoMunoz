@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.NumberASTBuilder;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -25,17 +24,9 @@ public abstract class AbstractNumber extends AbstractType implements SNumber {
         if (!(o instanceof SNumber)) {
             return false;
         }
-        TypeFloat typeFloat = ((SNumber) o).toTypeFloat();
-        TypeFloat thisTypeFloat = this.toTypeFloat();
-        return Double.compare(typeFloat.getValue(), thisTypeFloat.getValue()) == 0;
+        SNumber that = (SNumber) o;
+        return Double.compare(this.getValueAsDouble(), that.getValueAsDouble()) == 0;
     }
-
-    /**
-     * Returns the value as {@code double}.
-     *
-     * @return the current value as {@code double}
-     */
-    abstract protected double getValueAsDouble();
 
     /**
      * Transforms the current type to a {@code TypeFloat}.

@@ -1,14 +1,14 @@
-package cl.uchile.dcc.scrabble.model.ast.builders;
+package cl.uchile.dcc.scrabble.model.builders;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.BinaryASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.BoolASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.FloatASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.IntASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.IntegerASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.LogicalASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.NumberASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.StringASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.TypeASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.BinaryASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.BoolASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.FloatASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.IntASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.IntegerASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.LogicalASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.NumberASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.StringASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.TypeASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 import cl.uchile.dcc.scrabble.model.ast.operations.And;
 import cl.uchile.dcc.scrabble.model.ast.operations.Div;

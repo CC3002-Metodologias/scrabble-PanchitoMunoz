@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.IntegerASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.IntegerASTBuilder;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithBinary;
@@ -11,6 +11,10 @@ import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticO
  * @author Francisco Muñoz Guajardo
  */
 public interface SInteger extends SNumber, ArithmeticOperationsWithBinary, IntegerASTBuilder {
+
+    int getValueAsInt();
+
+    String getValueAsBinary();
 
     /**
      * Transforms the current type to a {@code TypeBinary}.

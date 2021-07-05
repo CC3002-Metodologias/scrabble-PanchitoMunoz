@@ -1,9 +1,9 @@
-package cl.uchile.dcc.scrabble.model.ast.builders;
+package cl.uchile.dcc.scrabble.model.builders;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cl.uchile.dcc.scrabble.model.ast.operations.And;
 import cl.uchile.dcc.scrabble.model.ast.operations.BaseOperationTest;
+import cl.uchile.dcc.scrabble.model.ast.operations.Mult;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBinary;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeInt;
@@ -11,49 +11,49 @@ import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class TypeBinaryASTBuilderTest extends BaseOperationTest {
+class TypeIntASTBuilderTest extends BaseOperationTest {
 
-    private And operation;
-    private TypeBinaryASTBuilder binaryASTBuilder;
+    private Mult operation;
+    private TypeIntASTBuilder intASTBuilder;
 
     @BeforeEach
     public void setUp() {
         super.setUp();
-        operation = new And(typeBinary1, typeBinary2);
-        binaryASTBuilder = new TypeBinaryASTBuilder(operation);
+        operation = new Mult(typeInt1, typeInt2);
+        intASTBuilder = new TypeIntASTBuilder(operation);
     }
 
     @RepeatedTest(20)
     void testBuild() {
-        assertEquals(operation, binaryASTBuilder.build(),
+        assertEquals(operation, intASTBuilder.build(),
             "Method build does not works with Operation values." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToTypeInt() {
         ToTypeInt expected = new ToTypeInt(operation);
-        assertEquals(expected, binaryASTBuilder.toTypeInt().build(),
+        assertEquals(expected, intASTBuilder.toTypeInt().build(),
             "Method toTypeInt does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToTypeBinary() {
         ToTypeBinary expected = new ToTypeBinary(operation);
-        assertEquals(expected, binaryASTBuilder.toTypeBinary().build(),
+        assertEquals(expected, intASTBuilder.toTypeBinary().build(),
             "Method toTypeBinary does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToTypeFloat() {
         ToTypeFloat expected = new ToTypeFloat(operation);
-        assertEquals(expected, binaryASTBuilder.toTypeFloat().build(),
+        assertEquals(expected, intASTBuilder.toTypeFloat().build(),
             "Method toTypeFloat does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testToTypeString() {
         ToTypeString expected = new ToTypeString(operation);
-        assertEquals(expected, binaryASTBuilder.toTypeString().build(),
+        assertEquals(expected, intASTBuilder.toTypeString().build(),
             "Method toTypeString does not works." + messageSeed);
     }
 }

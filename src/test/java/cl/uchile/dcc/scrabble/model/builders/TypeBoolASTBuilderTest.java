@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.builders;
+package cl.uchile.dcc.scrabble.model.builders;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,7 +8,6 @@ import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 class TypeBoolASTBuilderTest extends BaseOperationTest {
 

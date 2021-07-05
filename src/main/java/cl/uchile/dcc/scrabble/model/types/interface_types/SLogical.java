@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.LogicalASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.LogicalASTBuilder;
 import cl.uchile.dcc.scrabble.model.types.operations.LogicalOperations;
 import cl.uchile.dcc.scrabble.model.types.operations.operations_type.LogicalOperationsWithBinary;
 import cl.uchile.dcc.scrabble.model.types.operations.operations_type.LogicalOperationsWithBool;

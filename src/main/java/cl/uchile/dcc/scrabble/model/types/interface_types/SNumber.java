@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.NumberASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.NumberASTBuilder;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithFloat;
 import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithInt;
@@ -12,6 +12,13 @@ import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticO
  */
 public interface SNumber
     extends SType, ArithmeticOperationsWithInt, ArithmeticOperationsWithFloat, NumberASTBuilder {
+
+    /**
+     * Returns the value as {@code double}.
+     *
+     * @return the current value as {@code double}
+     */
+    double getValueAsDouble();
 
     /**
      * Transforms the current type to a {@code TypeFloat}.

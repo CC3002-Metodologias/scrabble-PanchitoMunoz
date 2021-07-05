@@ -13,6 +13,9 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Variable implements AST {
 
+    /**
+     * To use Adapter pattern
+     */
     private final HiddenVariable adaptee;
 
     /**

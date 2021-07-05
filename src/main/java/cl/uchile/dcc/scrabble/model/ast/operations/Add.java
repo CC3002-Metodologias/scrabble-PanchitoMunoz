@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.ASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
 import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;

@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.builders;
+package cl.uchile.dcc.scrabble.model.builders;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,12 +10,8 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Mult;
 import cl.uchile.dcc.scrabble.model.ast.operations.Neg;
 import cl.uchile.dcc.scrabble.model.ast.operations.Or;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 class ASTBuilderTest extends BaseOperationTest {
 

@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @create 2021/06/20 21:03
  * @see TypeString
  */
-public class TypeStringFactory extends AbstractGeneralTypeFactory {
+public class TypeStringFactory extends AbstractSTypeFactory {
 
     /**
      * To use singleton pattern

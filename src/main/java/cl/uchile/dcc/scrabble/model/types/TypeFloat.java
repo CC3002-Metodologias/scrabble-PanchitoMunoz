@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.FloatASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.FloatASTBuilder;
 import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
@@ -8,6 +8,7 @@ import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A class for the float type.
@@ -71,7 +72,7 @@ public class TypeFloat extends AbstractNumber
      * @return the current value as {@code double}
      */
     @Override
-    protected double getValueAsDouble() {
+    public double getValueAsDouble() {
         return this.value;
     }
 
@@ -82,7 +83,7 @@ public class TypeFloat extends AbstractNumber
      * @return The sum between the two types, returning the dominant type.
      */
     @Override
-    public TypeFloat add(SNumber otherType) {
+    public TypeFloat add(@NotNull SNumber otherType) {
         return otherType.addWithFloat(this);
     }
 
@@ -93,7 +94,7 @@ public class TypeFloat extends AbstractNumber
      * @return The sum between the String type and the other type.
      */
     @Override
-    public TypeString addWithString(TypeString typeString) {
+    public TypeString addWithString(@NotNull TypeString typeString) {
         return STypeFactory.createTypeString(typeString.getValue() + this.value);
     }
 
@@ -104,7 +105,7 @@ public class TypeFloat extends AbstractNumber
      * @return The sum between the Int type and the other type.
      */
     @Override
-    public TypeFloat addWithInt(TypeInt typeInt) {
+    public TypeFloat addWithInt(@NotNull TypeInt typeInt) {
         return STypeFactory.createTypeFloat(typeInt.getValue() + this.value);
     }
 
@@ -115,7 +116,7 @@ public class TypeFloat extends AbstractNumber
      * @return The sum between the Float type and the other type.
      */
     @Override
-    public TypeFloat addWithFloat(TypeFloat typeFloat) {
+    public TypeFloat addWithFloat(@NotNull TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.value + this.value);
     }
 
@@ -126,7 +127,7 @@ public class TypeFloat extends AbstractNumber
      * @return The subtraction between the two types, returning the dominant type.
      */
     @Override
-    public TypeFloat sub(SNumber otherType) {
+    public TypeFloat sub(@NotNull SNumber otherType) {
         return otherType.subWithFloat(this);
     }
 
@@ -137,7 +138,7 @@ public class TypeFloat extends AbstractNumber
      * @return The subtraction between the Float type and the other type.
      */
     @Override
-    public TypeFloat subWithFloat(TypeFloat typeFloat) {
+    public TypeFloat subWithFloat(@NotNull TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.value - this.value);
     }
 
@@ -148,7 +149,7 @@ public class TypeFloat extends AbstractNumber
      * @return The subtraction between the Int type and the other type.
      */
     @Override
-    public TypeFloat subWithInt(TypeInt typeInt) {
+    public TypeFloat subWithInt(@NotNull TypeInt typeInt) {
         return STypeFactory.createTypeFloat(typeInt.getValue() - this.value);
     }
 
@@ -160,7 +161,7 @@ public class TypeFloat extends AbstractNumber
      * @return The multiplication between the two types, returning the dominant type.
      */
     @Override
-    public TypeFloat mult(SNumber otherType) {
+    public TypeFloat mult(@NotNull SNumber otherType) {
         return otherType.multWithFloat(this);
     }
 
@@ -171,7 +172,7 @@ public class TypeFloat extends AbstractNumber
      * @return The multiplication between the Float type and the other type.
      */
     @Override
-    public TypeFloat multWithFloat(TypeFloat typeFloat) {
+    public TypeFloat multWithFloat(@NotNull TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.value * this.value);
     }
 
@@ -182,7 +183,7 @@ public class TypeFloat extends AbstractNumber
      * @return The multiplication between the Int type and the other type.
      */
     @Override
-    public TypeFloat multWithInt(TypeInt typeInt) {
+    public TypeFloat multWithInt(@NotNull TypeInt typeInt) {
         return STypeFactory.createTypeFloat(typeInt.getValue() * this.value);
     }
 
@@ -194,7 +195,7 @@ public class TypeFloat extends AbstractNumber
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public TypeFloat div(SNumber otherType) {
+    public TypeFloat div(@NotNull SNumber otherType) {
         return otherType.divWithFloat(this);
     }
 
@@ -205,7 +206,7 @@ public class TypeFloat extends AbstractNumber
      * @return The division between the Float type and the other type.
      */
     @Override
-    public TypeFloat divWithFloat(TypeFloat typeFloat) {
+    public TypeFloat divWithFloat(@NotNull TypeFloat typeFloat) {
         // Case divide by zero
         if (this.value == 0.) return STypeFactory.createTypeFloat(0.0);
         return STypeFactory.createTypeFloat(typeFloat.value / this.value);
@@ -218,7 +219,7 @@ public class TypeFloat extends AbstractNumber
      * @return The division between the Int type and the other type.
      */
     @Override
-    public TypeFloat divWithInt(TypeInt typeInt) {
+    public TypeFloat divWithInt(@NotNull TypeInt typeInt) {
         // Case divide by zero
         if (this.value == 0.) {
             return STypeFactory.createTypeFloat(0.0);

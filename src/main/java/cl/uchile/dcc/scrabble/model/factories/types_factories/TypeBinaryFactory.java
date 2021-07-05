@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @create 2021/06/20 21:02
  * @see TypeBinary
  */
-public class TypeBinaryFactory extends AbstractGeneralTypeFactory {
+public class TypeBinaryFactory extends AbstractSTypeFactory {
 
     /**
      * To use singleton pattern

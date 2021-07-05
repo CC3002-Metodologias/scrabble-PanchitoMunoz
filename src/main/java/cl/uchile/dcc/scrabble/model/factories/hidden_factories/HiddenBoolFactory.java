@@ -13,7 +13,7 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/22 22:03
  */
-public class HiddenBoolFactory extends AbstractGeneralTypeFactory {
+public class HiddenBoolFactory extends AbstractHTypeFactory {
 
     /**
      * To use singleton pattern

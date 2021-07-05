@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.ast.builders.interfaces;
+package cl.uchile.dcc.scrabble.model.builders.interfaces;
 
 /**
  * Generic interface for general types that will return any {@code TypeInt}.

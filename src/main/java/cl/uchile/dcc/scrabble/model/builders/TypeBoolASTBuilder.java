@@ -1,12 +1,10 @@
-package cl.uchile.dcc.scrabble.model.ast.builders;
+package cl.uchile.dcc.scrabble.model.builders;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.builders.abstract_classes.AbstractTypeASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.BoolASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.LogicalASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.abstract_classes.AbstractTypeASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.BoolASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
  * A class to build an {@code AST} that will return an {@code TypeBool}.

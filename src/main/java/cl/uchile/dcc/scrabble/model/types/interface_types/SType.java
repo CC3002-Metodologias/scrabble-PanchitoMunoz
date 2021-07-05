@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.TypeASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.TypeASTBuilder;
 import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithString;
@@ -12,6 +12,13 @@ import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticO
  * @author Francisco Muñoz Guajardo
  */
 public interface SType extends AST, ArithmeticOperationsWithString, TypeASTBuilder {
+
+    /**
+     * Returns the value as {@code String}.
+     *
+     * @return the current value as {@code String}
+     */
+    String getValueAsString();
 
     /**
      * Transforms the current type to a {@code TypeString}.

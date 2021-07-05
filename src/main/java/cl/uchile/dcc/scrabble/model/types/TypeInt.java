@@ -4,13 +4,14 @@ import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFacto
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.IntASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.IntASTBuilder;
 import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A class for the integer type.
@@ -73,7 +74,7 @@ public class TypeInt extends AbstractInteger
      * @return The sum between the two types, returning the dominant type.
      */
     @Override
-    public SNumber add(SNumber otherType) {
+    public SNumber add(@NotNull SNumber otherType) {
         return otherType.addWithInt(this);
     }
 
@@ -84,7 +85,7 @@ public class TypeInt extends AbstractInteger
      * @return The sum between the String type and the other type.
      */
     @Override
-    public TypeString addWithString(TypeString typeString) {
+    public TypeString addWithString(@NotNull TypeString typeString) {
         return STypeFactory.createTypeString(typeString.getValue() + this.getValue());
     }
 
@@ -95,7 +96,7 @@ public class TypeInt extends AbstractInteger
      * @return The sum between the Int type and the other type.
      */
     @Override
-    public TypeInt addWithInt(TypeInt typeInt) {
+    public TypeInt addWithInt(@NotNull TypeInt typeInt) {
         return STypeFactory.createTypeInt(typeInt.getValue() + this.getValue());
     }
 
@@ -106,7 +107,7 @@ public class TypeInt extends AbstractInteger
      * @return The sum between the Float type and the other type.
      */
     @Override
-    public TypeFloat addWithFloat(TypeFloat typeFloat) {
+    public TypeFloat addWithFloat(@NotNull TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.getValue() + this.getValue());
     }
 
@@ -117,7 +118,7 @@ public class TypeInt extends AbstractInteger
      * @return The sum between the Binary type and the other type.
      */
     @Override
-    public TypeBinary addWithBinary(TypeBinary typeBinary) {
+    public TypeBinary addWithBinary(@NotNull TypeBinary typeBinary) {
         return STypeFactory.createTypeBinary(addTwoBinaries(typeBinary.getValue(), this.getValueAsBinary()));
     }
 
@@ -128,7 +129,7 @@ public class TypeInt extends AbstractInteger
      * @return The subtraction between the two types, returning the dominant type.
      */
     @Override
-    public SNumber sub(SNumber otherType) {
+    public SNumber sub(@NotNull SNumber otherType) {
         return otherType.subWithInt(this);
     }
 
@@ -139,7 +140,7 @@ public class TypeInt extends AbstractInteger
      * @return The subtraction between the Float type and the other type.
      */
     @Override
-    public TypeFloat subWithFloat(TypeFloat typeFloat) {
+    public TypeFloat subWithFloat(@NotNull TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.getValue() - this.getValue());
     }
 
@@ -150,7 +151,7 @@ public class TypeInt extends AbstractInteger
      * @return The subtraction between the Int type and the other type.
      */
     @Override
-    public TypeInt subWithInt(TypeInt typeInt) {
+    public TypeInt subWithInt(@NotNull TypeInt typeInt) {
         return STypeFactory.createTypeInt(typeInt.getValue() - this.getValue());
     }
 
@@ -161,7 +162,7 @@ public class TypeInt extends AbstractInteger
      * @return The subtraction between the Binary type and the other type.
      */
     @Override
-    public TypeBinary subWithBinary(TypeBinary typeBinary) {
+    public TypeBinary subWithBinary(@NotNull TypeBinary typeBinary) {
         String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValue());
         return STypeFactory.createTypeBinary(subtraction);
     }
@@ -174,7 +175,7 @@ public class TypeInt extends AbstractInteger
      * @return The multiplication between the two types, returning the dominant type.
      */
     @Override
-    public SNumber mult(SNumber otherType) {
+    public SNumber mult(@NotNull SNumber otherType) {
         return otherType.multWithInt(this);
     }
 
@@ -185,7 +186,7 @@ public class TypeInt extends AbstractInteger
      * @return The multiplication between the Float type and the other type.
      */
     @Override
-    public TypeFloat multWithFloat(TypeFloat typeFloat) {
+    public TypeFloat multWithFloat(@NotNull TypeFloat typeFloat) {
         return STypeFactory.createTypeFloat(typeFloat.getValue() * this.getValue());
     }
 
@@ -196,7 +197,7 @@ public class TypeInt extends AbstractInteger
      * @return The multiplication between the Int type and the other type.
      */
     @Override
-    public TypeInt multWithInt(TypeInt typeInt) {
+    public TypeInt multWithInt(@NotNull TypeInt typeInt) {
         return STypeFactory.createTypeInt(typeInt.getValue() * this.getValue());
     }
 
@@ -207,7 +208,7 @@ public class TypeInt extends AbstractInteger
      * @return The multiplication between the Binary type and the other type.
      */
     @Override
-    public TypeBinary multWithBinary(TypeBinary typeBinary) {
+    public TypeBinary multWithBinary(@NotNull TypeBinary typeBinary) {
         String binaryMultiplied = intToBinary(typeBinary.getValueAsInt() * this.getValue());
         return STypeFactory.createTypeBinary(binaryMultiplied);
     }
@@ -220,7 +221,7 @@ public class TypeInt extends AbstractInteger
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public SNumber div(SNumber otherType){
+    public SNumber div(@NotNull SNumber otherType){
         return otherType.divWithInt(this);
     }
 
@@ -231,7 +232,7 @@ public class TypeInt extends AbstractInteger
      * @return The division between the Binary type and the other type.
      */
     @Override
-    public TypeBinary divWithBinary(TypeBinary typeBinary) {
+    public TypeBinary divWithBinary(@NotNull TypeBinary typeBinary) {
         // Case divide by zero
         if (this.getValue() == 0) return STypeFactory.createTypeBinary("0000");
         String binaryResult = intToBinary((int) Math.round((double) typeBinary.getValueAsInt() / this.getValue()));
@@ -245,7 +246,7 @@ public class TypeInt extends AbstractInteger
      * @return The division between the Float type and the other type.
      */
     @Override
-    public TypeFloat divWithFloat(TypeFloat typeFloat) {
+    public TypeFloat divWithFloat(@NotNull TypeFloat typeFloat) {
         // Case divide by zero
         if (this.getValue() == 0) return STypeFactory.createTypeFloat(0.0);
         return STypeFactory.createTypeFloat(typeFloat.getValue() / this.getValue());
@@ -258,7 +259,7 @@ public class TypeInt extends AbstractInteger
      * @return The division between the Int type and the other type.
      */
     @Override
-    public TypeInt divWithInt(TypeInt typeInt) {
+    public TypeInt divWithInt(@NotNull TypeInt typeInt) {
         // Case divide by zero
         if (this.getValue() == 0) {
             return STypeFactory.createTypeInt(0);

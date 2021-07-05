@@ -1,8 +1,7 @@
-package cl.uchile.dcc.scrabble.model.ast.builders.abstract_classes;
+package cl.uchile.dcc.scrabble.model.builders.abstract_classes;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.builders.TypeFloatASTBuilder;
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.NumberASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.TypeFloatASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.NumberASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 
 /**

@@ -2,12 +2,13 @@ package cl.uchile.dcc.scrabble.model.types;
 
 import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenString;
 
-import cl.uchile.dcc.scrabble.model.ast.builders.interfaces.StringASTBuilder;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.StringASTBuilder;
 import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A class for the string type.
@@ -82,7 +83,7 @@ public class TypeString extends AbstractType implements StringASTBuilder {
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public TypeString add(SType otherType) {
+    public TypeString add(@NotNull SType otherType) {
         return otherType.addWithString(this);
     }
 
@@ -93,7 +94,7 @@ public class TypeString extends AbstractType implements StringASTBuilder {
      * @return The sum between the String type and the other type.
      */
     @Override
-    public TypeString addWithString(TypeString typeString) {
+    public TypeString addWithString(@NotNull TypeString typeString) {
         return STypeFactory.createTypeString(typeString.value + this.value);
     }
 
