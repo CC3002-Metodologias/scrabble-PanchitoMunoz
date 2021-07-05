@@ -1,14 +1,9 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
+import cl.uchile.dcc.scrabble.model.builders.interfaces.NumberASTBuilder;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithFloat;
-import cl.uchile.dcc.scrabble.model.types.operations.add.IAddWithInt;
-import cl.uchile.dcc.scrabble.model.types.operations.division.IDivWithFloat;
-import cl.uchile.dcc.scrabble.model.types.operations.division.IDivWithInt;
-import cl.uchile.dcc.scrabble.model.types.operations.multiplication.IMultWithFloat;
-import cl.uchile.dcc.scrabble.model.types.operations.multiplication.IMultWithInt;
-import cl.uchile.dcc.scrabble.model.types.operations.subtraction.ISubWithFloat;
-import cl.uchile.dcc.scrabble.model.types.operations.subtraction.ISubWithInt;
+import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithFloat;
+import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithInt;
 
 /**
  * An interface for the sole purpose of representing a number.
@@ -16,13 +11,19 @@ import cl.uchile.dcc.scrabble.model.types.operations.subtraction.ISubWithInt;
  * @author Francisco Muñoz Guajardo
  */
 public interface SNumber
-    extends IAddWithFloat, IAddWithInt, ISubWithFloat, ISubWithInt,
-    IMultWithFloat, IMultWithInt, IDivWithFloat, IDivWithInt {
+    extends SType, ArithmeticOperationsWithInt, ArithmeticOperationsWithFloat, NumberASTBuilder {
 
     /**
-     * Transforms the current type to a TypeFloat.
+     * Returns the value as {@code double}.
      *
-     * @return TypeFloat with a value equivalent to the current type.
+     * @return the current value as {@code double}
+     */
+    double getValueAsDouble();
+
+    /**
+     * Transforms the current type to a {@code TypeFloat}.
+     *
+     * @return {@code TypeFloat} with a value equivalent to the current type.
      */
     TypeFloat toTypeFloat();
 }

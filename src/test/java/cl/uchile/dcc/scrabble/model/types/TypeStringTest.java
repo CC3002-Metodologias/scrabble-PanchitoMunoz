@@ -4,6 +4,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -13,6 +14,11 @@ class TypeStringTest extends BaseTypeTest {
     @BeforeEach
     protected void setUp() {
         super.setUp();
+    }
+
+    @AfterEach
+    protected void tearDown() {
+        super.tearDown();
     }
 
     @RepeatedTest(20)

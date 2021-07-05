@@ -1,29 +1,31 @@
 package cl.uchile.dcc.scrabble.model.types;
 
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenInt;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.IntASTBuilder;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A class for the integer type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeInt extends AbstractInteger implements ArithmeticOperationsWithNumbers {
-    private final int value;
+public class TypeInt extends AbstractInteger
+    implements ArithmeticOperationsWithNumbers, IntASTBuilder {
 
     /**
      * Constructor for the TypeInt.
      * @param value An int as a value.
      */
     public TypeInt(int value) {
-        this.value = value;
+        super(value);
     }
 
     /**
@@ -32,7 +34,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The value in the instance
      */
     public int getValue() {
-        return this.value;
+        return super.getValueAsInt();
     }
 
     /**
@@ -41,7 +43,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      */
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(this.getValue());
     }
 
     /**
@@ -51,48 +53,18 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
     @Override
     public String toString() {
         return "TypeInt{" +
-                "value=" + value +
+                "value=" + this.getValue() +
                 '}';
     }
 
     /**
-     * Transforms the current type to a TypeString.
+     * Returns the value as {@code String}.
      *
-     * @return TypeString with a value equivalent to the current type.
+     * @return the current value as {@code String}
      */
     @Override
-    public TypeString toTypeString() {
-        return createString(Integer.toString(this.value));
-    }
-
-    /**
-     * Transforms the current type to a TypeFloat.
-     *
-     * @return TypeFloat with a value equivalent to the current type.
-     */
-    @Override
-    public TypeFloat toTypeFloat() {
-        return createFloat(this.value);
-    }
-
-    /**
-     * Transforms the current type to a TypeInt.
-     *
-     * @return TypeInt with a value equivalent to the current type.
-     */
-    @Override
-    public TypeInt toTypeInt() {
-        return createInt(this.value);
-    }
-
-    /**
-     * Transforms the current type to a TypeBinary.
-     *
-     * @return TypeBinary with a value equivalent to the current type.
-     */
-    @Override
-    public TypeBinary toTypeBinary() {
-        return createBinary(intToBinary(this.value));
+    public String getValueAsString() {
+        return Integer.toString(this.getValue());
     }
 
     /**
@@ -102,7 +74,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The sum between the two types, returning the dominant type.
      */
     @Override
-    public SNumber add(SNumber otherType) {
+    public SNumber add(@NotNull SNumber otherType) {
         return otherType.addWithInt(this);
     }
 
@@ -113,8 +85,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The sum between the String type and the other type.
      */
     @Override
-    public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.getValue() + this.value);
+    public TypeString addWithString(@NotNull TypeString typeString) {
+        return STypeFactory.createTypeString(typeString.getValue() + this.getValue());
     }
 
     /**
@@ -124,8 +96,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The sum between the Int type and the other type.
      */
     @Override
-    public SNumber addWithInt(TypeInt typeInt) {
-        return createInt(typeInt.value + this.value);
+    public TypeInt addWithInt(@NotNull TypeInt typeInt) {
+        return STypeFactory.createTypeInt(typeInt.getValue() + this.getValue());
     }
 
     /**
@@ -135,8 +107,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The sum between the Float type and the other type.
      */
     @Override
-    public SNumber addWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() + this.value);
+    public TypeFloat addWithFloat(@NotNull TypeFloat typeFloat) {
+        return STypeFactory.createTypeFloat(typeFloat.getValue() + this.getValue());
     }
 
     /**
@@ -146,8 +118,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The sum between the Binary type and the other type.
      */
     @Override
-    public SInteger addWithBinary(TypeBinary typeBinary) {
-        return createBinary(addTwoBinaries(typeBinary.getValue(), intToBinary(this.value)));
+    public TypeBinary addWithBinary(@NotNull TypeBinary typeBinary) {
+        return STypeFactory.createTypeBinary(addTwoBinaries(typeBinary.getValue(), this.getValueAsBinary()));
     }
 
     /**
@@ -157,7 +129,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The subtraction between the two types, returning the dominant type.
      */
     @Override
-    public SNumber sub(SNumber otherType) {
+    public SNumber sub(@NotNull SNumber otherType) {
         return otherType.subWithInt(this);
     }
 
@@ -168,8 +140,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The subtraction between the Float type and the other type.
      */
     @Override
-    public SNumber subWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() - this.value);
+    public TypeFloat subWithFloat(@NotNull TypeFloat typeFloat) {
+        return STypeFactory.createTypeFloat(typeFloat.getValue() - this.getValue());
     }
 
     /**
@@ -179,8 +151,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The subtraction between the Int type and the other type.
      */
     @Override
-    public SNumber subWithInt(TypeInt typeInt) {
-        return createInt(typeInt.value - this.value);
+    public TypeInt subWithInt(@NotNull TypeInt typeInt) {
+        return STypeFactory.createTypeInt(typeInt.getValue() - this.getValue());
     }
 
     /**
@@ -190,9 +162,9 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The subtraction between the Binary type and the other type.
      */
     @Override
-    public SInteger subWithBinary(TypeBinary typeBinary) {
-        String subtraction = intToBinary(typeBinary.getValueAsInt() - this.value);
-        return createBinary(subtraction);
+    public TypeBinary subWithBinary(@NotNull TypeBinary typeBinary) {
+        String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValue());
+        return STypeFactory.createTypeBinary(subtraction);
     }
 
     /**
@@ -203,7 +175,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The multiplication between the two types, returning the dominant type.
      */
     @Override
-    public SNumber mult(SNumber otherType) {
+    public SNumber mult(@NotNull SNumber otherType) {
         return otherType.multWithInt(this);
     }
 
@@ -214,8 +186,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The multiplication between the Float type and the other type.
      */
     @Override
-    public SNumber multWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.getValue() * this.value);
+    public TypeFloat multWithFloat(@NotNull TypeFloat typeFloat) {
+        return STypeFactory.createTypeFloat(typeFloat.getValue() * this.getValue());
     }
 
     /**
@@ -225,8 +197,8 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The multiplication between the Int type and the other type.
      */
     @Override
-    public SNumber multWithInt(TypeInt typeInt) {
-        return createInt(typeInt.value * this.value);
+    public TypeInt multWithInt(@NotNull TypeInt typeInt) {
+        return STypeFactory.createTypeInt(typeInt.getValue() * this.getValue());
     }
 
     /**
@@ -236,9 +208,9 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The multiplication between the Binary type and the other type.
      */
     @Override
-    public SInteger multWithBinary(TypeBinary typeBinary) {
-        String binaryMultiplied = intToBinary(typeBinary.getValueAsInt() * this.value);
-        return createBinary(binaryMultiplied);
+    public TypeBinary multWithBinary(@NotNull TypeBinary typeBinary) {
+        String binaryMultiplied = intToBinary(typeBinary.getValueAsInt() * this.getValue());
+        return STypeFactory.createTypeBinary(binaryMultiplied);
     }
 
     /**
@@ -249,7 +221,7 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public SNumber div(SNumber otherType){
+    public SNumber div(@NotNull SNumber otherType){
         return otherType.divWithInt(this);
     }
 
@@ -260,11 +232,11 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The division between the Binary type and the other type.
      */
     @Override
-    public SInteger divWithBinary(TypeBinary typeBinary) {
+    public TypeBinary divWithBinary(@NotNull TypeBinary typeBinary) {
         // Case divide by zero
-        if (this.value == 0) return createBinary("0000");
-        String binaryResult = intToBinary((int) Math.round((double) typeBinary.getValueAsInt() / this.value));
-        return createBinary(binaryResult);
+        if (this.getValue() == 0) return STypeFactory.createTypeBinary("0000");
+        String binaryResult = intToBinary((int) Math.round((double) typeBinary.getValueAsInt() / this.getValue()));
+        return STypeFactory.createTypeBinary(binaryResult);
     }
 
     /**
@@ -274,10 +246,10 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The division between the Float type and the other type.
      */
     @Override
-    public SNumber divWithFloat(TypeFloat typeFloat) {
+    public TypeFloat divWithFloat(@NotNull TypeFloat typeFloat) {
         // Case divide by zero
-        if (this.value == 0) return createFloat(0.0);
-        return createFloat(typeFloat.getValue() / this.value);
+        if (this.getValue() == 0) return STypeFactory.createTypeFloat(0.0);
+        return STypeFactory.createTypeFloat(typeFloat.getValue() / this.getValue());
     }
 
     /**
@@ -287,22 +259,21 @@ public class TypeInt extends AbstractInteger implements ArithmeticOperationsWith
      * @return The division between the Int type and the other type.
      */
     @Override
-    public SNumber divWithInt(TypeInt typeInt) {
+    public TypeInt divWithInt(@NotNull TypeInt typeInt) {
         // Case divide by zero
-        if (this.value == 0) {
-            return createInt(0);
+        if (this.getValue() == 0) {
+            return STypeFactory.createTypeInt(0);
         }
-        return createInt((int) Math.round((double) typeInt.value / this.value));
+        return STypeFactory.createTypeInt((int) Math.round((double) typeInt.getValue() / this.getValue()));
     }
 
     /**
-     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
-     * HType} or an {@code HiddenAST}, it does nothing.
+     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
      *
      * @return a transformation
      */
     @Override
-    public HiddenAST toHiddenAST() {
-        return new HiddenInt(this);
+    public HiddenInt toHiddenAST() {
+        return createHiddenInt(this);
     }
 }

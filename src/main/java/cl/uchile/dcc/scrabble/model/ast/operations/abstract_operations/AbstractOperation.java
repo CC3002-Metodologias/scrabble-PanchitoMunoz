@@ -1,21 +1,20 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenOperation;
-import cl.uchile.dcc.scrabble.model.ast.interfaces.Operation;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
+import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
+import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Abstract class for a general {@code Operation}.
  *
  * @author Francisco Muñoz Guajardo
- * @create 2021/06/14 9:52 TODO: agregar el resto de hijos que podrían verse afectadas por esta
- * clase
+ * @create 2021/06/14 9:52
+ * @see Operation
+ * @see SType
+ * @see AST
  */
 public abstract class AbstractOperation implements Operation {
 
@@ -31,21 +30,24 @@ public abstract class AbstractOperation implements Operation {
     }
 
     /**
-     * Get the left children of the adaptee.
+     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
      *
-     * @return a hidden AST
+     * @return a transformation
      */
-    protected HiddenAST getLeftChildren() {
-        return adaptee.getLeftChildren();
+    @Override
+    public HiddenOperation toHiddenAST() {
+        return adaptee;
     }
 
     /**
-     * Get the right children of the adaptee.
+     * Sets the variable in an {@code Operation}.
      *
-     * @return a hidden AST
+     * @param name  the name of the variable
+     * @param value the current value to set
      */
-    protected HiddenAST getRightChildren() {
-        return adaptee.getRightChildren();
+    @Override
+    public void setVariable(String name, SType value) {
+        this.adaptee.setVariable(name, value.toHiddenAST());
     }
 
     /**
@@ -55,7 +57,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public SType calculate() {
-        return adaptee.calculate().getAdaptee();
+        return adaptee.calculate().toSType();
     }
 
     /**
@@ -65,56 +67,38 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public String toString() {
-        return adaptee.asString(0);
+        return adaptee.toString();
     }
 
     /**
-     * Transform the current instance into a {@code TypeBinary}.
+     * Indicates whether some other object is "equal to" this one.
      *
-     * @return a {@code TypeBinary}
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
      */
     @Override
-    public TypeBinary toTypeBinary() {
-        return adaptee.toHiddenBinary().getAdaptee();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof AbstractOperation)) {
+            return false;
+        }
+        AbstractOperation that = (AbstractOperation) o;
+        return Objects.equals(adaptee, that.adaptee);
     }
 
     /**
-     * Transform the current instance into a {@code TypeBool}.
+     * Returns a hash code value for the object.
      *
-     * @return a {@code TypeBool}
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
      */
     @Override
-    public TypeBool toTypeBool() {
-        return adaptee.toHiddenBool().getAdaptee();
-    }
-
-    /**
-     * Transform the current instance into a {@code TypeFloat}.
-     *
-     * @return a {@code TypeFloat}
-     */
-    @Override
-    public TypeFloat toTypeFloat() {
-        return adaptee.toHiddenFloat().getAdaptee();
-    }
-
-    /**
-     * Transform the current instance into a {@code TypeInt}.
-     *
-     * @return a {@code TypeInt}
-     */
-    @Override
-    public TypeInt toTypeInt() {
-        return adaptee.toHiddenInt().getAdaptee();
-    }
-
-    /**
-     * Transform the current instance into a {@code TypeString}.
-     *
-     * @return a {@code TypeString}
-     */
-    @Override
-    public TypeString toTypeString() {
-        return adaptee.toHiddenString().getAdaptee();
+    public int hashCode() {
+        return Objects.hash(adaptee);
     }
 }

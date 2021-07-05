@@ -7,7 +7,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BinaryUtilitiesTest {
-    String[] binaryArray = {"111100", "101", "110", "111", "0", "01", "00010", "0011", "0100"};
+    String[] binaryArray = {"111100", "101", "110", "111", "00", "01", "00010", "0011", "0100"};
     int[] intArray = {-4, -3, -2, -1, 0, 1, 2, 3, 4};
     int anIntP6 = 6;
     int anIntM6 = -6;
@@ -18,7 +18,7 @@ class BinaryUtilitiesTest {
     String aBinaryP4 = "0100";
     String aBinaryM4 = "1100";
     String aBinaryP10 = "01010";
-    String aBinary0 = "0";
+    String aBinary0 = "00";
     int aStrangerInt1 = -1310239983;
     int aStrangerInt2 = -83937223;
     String aStrangeBinary1 = "10110001111001110101001100010001";
@@ -39,7 +39,7 @@ class BinaryUtilitiesTest {
         assertTrue(binaryEqual("00000110", aBinaryP6));
         assertTrue(binaryEqual("1111010", aBinaryM6));
         assertTrue(binaryEqual("00000", "00"));
-        assertTrue(binaryEqual("00000", "0"));
+        assertTrue(binaryEqual("00000", "00"));
     }
 
     @Test
@@ -153,7 +153,7 @@ class BinaryUtilitiesTest {
 
     @Test
     void testOneComplement() {
-        String expected = "1";
+        String expected = "11";
         assertEquals(expected, oneComplement(aBinary0), "Method oneComplement does not works");
         expected = "1001";
         assertEquals(expected, oneComplement(aBinaryP6), "Method oneComplement does not works");

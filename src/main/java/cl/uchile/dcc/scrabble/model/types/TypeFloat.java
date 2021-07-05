@@ -1,17 +1,22 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.builders.interfaces.FloatASTBuilder;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A class for the float type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWithNumbers {
+public class TypeFloat extends AbstractNumber
+    implements ArithmeticOperationsWithNumbers, FloatASTBuilder {
+
     private final double value;
 
     /**
@@ -52,23 +57,23 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
     }
 
     /**
-     * Transforms the current type to a TypeString.
+     * Returns the value as {@code String}.
      *
-     * @return TypeString with a value equivalent to the current type.
+     * @return the current value as {@code String}
      */
     @Override
-    public TypeString toTypeString() {
-        return createString(Double.toString(this.value));
+    public String getValueAsString() {
+        return Double.toString(this.value);
     }
 
     /**
-     * Transforms the current type to a TypeFloat.
+     * Returns the value as {@code double}.
      *
-     * @return TypeFloat with a value equivalent to the current type.
+     * @return the current value as {@code double}
      */
     @Override
-    public TypeFloat toTypeFloat() {
-        return createFloat(this.value);
+    public double getValueAsDouble() {
+        return this.value;
     }
 
     /**
@@ -78,7 +83,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The sum between the two types, returning the dominant type.
      */
     @Override
-    public SNumber add(SNumber otherType) {
+    public TypeFloat add(@NotNull SNumber otherType) {
         return otherType.addWithFloat(this);
     }
 
@@ -89,8 +94,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The sum between the String type and the other type.
      */
     @Override
-    public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.getValue() + this.value);
+    public TypeString addWithString(@NotNull TypeString typeString) {
+        return STypeFactory.createTypeString(typeString.getValue() + this.value);
     }
 
     /**
@@ -100,8 +105,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The sum between the Int type and the other type.
      */
     @Override
-    public SNumber addWithInt(TypeInt typeInt) {
-        return createFloat(typeInt.getValue() + this.value);
+    public TypeFloat addWithInt(@NotNull TypeInt typeInt) {
+        return STypeFactory.createTypeFloat(typeInt.getValue() + this.value);
     }
 
     /**
@@ -111,8 +116,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The sum between the Float type and the other type.
      */
     @Override
-    public SNumber addWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.value + this.value);
+    public TypeFloat addWithFloat(@NotNull TypeFloat typeFloat) {
+        return STypeFactory.createTypeFloat(typeFloat.value + this.value);
     }
 
     /**
@@ -122,7 +127,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The subtraction between the two types, returning the dominant type.
      */
     @Override
-    public SNumber sub(SNumber otherType) {
+    public TypeFloat sub(@NotNull SNumber otherType) {
         return otherType.subWithFloat(this);
     }
 
@@ -133,8 +138,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The subtraction between the Float type and the other type.
      */
     @Override
-    public SNumber subWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.value - this.value);
+    public TypeFloat subWithFloat(@NotNull TypeFloat typeFloat) {
+        return STypeFactory.createTypeFloat(typeFloat.value - this.value);
     }
 
     /**
@@ -144,8 +149,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The subtraction between the Int type and the other type.
      */
     @Override
-    public SNumber subWithInt(TypeInt typeInt) {
-        return createFloat(typeInt.getValue() - this.value);
+    public TypeFloat subWithInt(@NotNull TypeInt typeInt) {
+        return STypeFactory.createTypeFloat(typeInt.getValue() - this.value);
     }
 
     /**
@@ -156,7 +161,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The multiplication between the two types, returning the dominant type.
      */
     @Override
-    public SNumber mult(SNumber otherType) {
+    public TypeFloat mult(@NotNull SNumber otherType) {
         return otherType.multWithFloat(this);
     }
 
@@ -167,8 +172,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The multiplication between the Float type and the other type.
      */
     @Override
-    public SNumber multWithFloat(TypeFloat typeFloat) {
-        return createFloat(typeFloat.value * this.value);
+    public TypeFloat multWithFloat(@NotNull TypeFloat typeFloat) {
+        return STypeFactory.createTypeFloat(typeFloat.value * this.value);
     }
 
     /**
@@ -178,8 +183,8 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The multiplication between the Int type and the other type.
      */
     @Override
-    public SNumber multWithInt(TypeInt typeInt) {
-        return createFloat(typeInt.getValue() * this.value);
+    public TypeFloat multWithInt(@NotNull TypeInt typeInt) {
+        return STypeFactory.createTypeFloat(typeInt.getValue() * this.value);
     }
 
     /**
@@ -190,7 +195,7 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public SNumber div(SNumber otherType) {
+    public TypeFloat div(@NotNull SNumber otherType) {
         return otherType.divWithFloat(this);
     }
 
@@ -201,10 +206,10 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The division between the Float type and the other type.
      */
     @Override
-    public SNumber divWithFloat(TypeFloat typeFloat) {
+    public TypeFloat divWithFloat(@NotNull TypeFloat typeFloat) {
         // Case divide by zero
-        if (this.value == 0.) return createFloat(0.0);
-        return createFloat(typeFloat.value / this.value);
+        if (this.value == 0.) return STypeFactory.createTypeFloat(0.0);
+        return STypeFactory.createTypeFloat(typeFloat.value / this.value);
     }
 
     /**
@@ -214,22 +219,21 @@ public class TypeFloat extends AbstractNumber implements ArithmeticOperationsWit
      * @return The division between the Int type and the other type.
      */
     @Override
-    public SNumber divWithInt(TypeInt typeInt) {
+    public TypeFloat divWithInt(@NotNull TypeInt typeInt) {
         // Case divide by zero
         if (this.value == 0.) {
-            return createFloat(0.0);
+            return STypeFactory.createTypeFloat(0.0);
         }
-        return createFloat(typeInt.getValue() / this.value);
+        return STypeFactory.createTypeFloat(typeInt.getValue() / this.value);
     }
 
     /**
-     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
-     * HType} or an {@code HiddenAST}, it does nothing.
+     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
      *
      * @return a transformation
      */
     @Override
-    public HiddenAST toHiddenAST() {
-        return new HiddenFloat(this);
+    public HiddenFloat toHiddenAST() {
+        return HTypeFactory.createHiddenFloat(this);
     }
 }

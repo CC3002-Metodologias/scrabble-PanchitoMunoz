@@ -12,6 +12,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,11 @@ class TypeBinaryTest extends BaseTypeTest {
     @BeforeEach
     protected void setUp() {
         super.setUp();
+    }
+
+    @AfterEach
+    protected void tearDown() {
+        super.tearDown();
     }
 
     @RepeatedTest(20)
@@ -65,11 +71,11 @@ class TypeBinaryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testToString() {
-        assertEquals("TypeBinary{value='" + cleanBinary(aBinary1) + "'}", typeBinary1.toString(),
+        assertEquals("TypeBinary{value=" + cleanBinary(aBinary1) + "}", typeBinary1.toString(),
             "Method toString does not works." + messageSeed);
-        assertEquals("TypeBinary{value='" + cleanBinary(aBinary2) + "'}", typeBinary2.toString(),
+        assertEquals("TypeBinary{value=" + cleanBinary(aBinary2) + "}", typeBinary2.toString(),
             "Method toString does not works." + messageSeed);
-        assertNotEquals("TypeBinary{value='" + cleanBinary(aBinary2) + "'}", typeBinary1.toString(),
+        assertNotEquals("TypeBinary{value=" + cleanBinary(aBinary2) + "}", typeBinary1.toString(),
             "Method toString does not works." + messageSeed);
     }
 

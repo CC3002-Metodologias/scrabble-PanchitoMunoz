@@ -19,6 +19,7 @@ public final class BinaryUtilities {
      * @return Binary plus one
      */
     private static String addOne(String binary) {
+        assert binary.length() > 1;
         StringBuilder copyBinary = new StringBuilder(binary);
         int i = binary.length() - 1;
         while (i >= 0) {
@@ -39,6 +40,7 @@ public final class BinaryUtilities {
      * @return Binary minus one
      */
     private static String subOne(String binary) {
+        assert binary.length() > 1;
         StringBuilder copyBinary = new StringBuilder(binary);
         int i = binary.length() - 1;
         while (i >= 0) {
@@ -68,6 +70,7 @@ public final class BinaryUtilities {
      * @return The representation of the binary number as an integer.
      */
     private static int positiveBinaryToInt(String binary) {
+        assert binary.length() > 1;
         int w =  0;
         for (int i = binary.length() - 1, j = 0; i >= 0; i--, j++) {
             w += (int) Math.pow(2, j) * bitToInt(binary.charAt(i));
@@ -81,6 +84,7 @@ public final class BinaryUtilities {
      * @return The representation of the binary number as an integer.
      */
     private static int negativeBinaryToInt(String binary) {
+        assert binary.length() > 1;
         String binaryToReturn = subOne(binary);
         binaryToReturn = oneComplement(binaryToReturn);
         return -positiveBinaryToInt(binaryToReturn);
@@ -92,6 +96,7 @@ public final class BinaryUtilities {
      * @return The one complement of 'binary'.
      */
     public static String oneComplement(String binary) {
+        assert binary.length() > 1;
         StringBuilder oppositeBinary = new StringBuilder();
         for (int i = 0; i < binary.length(); i++) {
             oppositeBinary.append(binary.charAt(i) == '0' ? '1' : '0');
@@ -105,6 +110,7 @@ public final class BinaryUtilities {
      * @return The two complements of 'binary'.
      */
     private static String twosComplement(String binary) {
+        assert binary.length() > 1;
         String binaryToReturn  = oneComplement(binary);
         binaryToReturn = addOne(binaryToReturn);
         return binaryToReturn;
@@ -116,12 +122,13 @@ public final class BinaryUtilities {
      * @return The binary representation of 'intNumber'.
      */
     private static String positiveIntToBinary(int intNumber) {
+        assert intNumber >= 0;
         // If the number is 0, return 0 in binary
         if (intNumber == 0) {
-            return "0000";
+            return "00";
         }
         // Calculate the number of bits necessary
-        int nBitsAtLeast = Math.max((int) Math.floor(Math.log(intNumber) / Math.log(2)) + 1, 4);
+        int nBitsAtLeast = Math.max((int) Math.floor(Math.log(intNumber) / Math.log(2)) + 1, 2);
         int j = 0;
         int nBits;
         do {
@@ -147,13 +154,14 @@ public final class BinaryUtilities {
     /**
      * Cleans the redundant symbols in the binary. E.g.: "00010110" clears to "010110".
      *
-     * @param aBinary a binary to clean
+     * @param binary a binary to clean
      * @return the binary cleaned
      */
-    public static String cleanBinary(String aBinary) {
-        StringBuilder newBinary = new StringBuilder(aBinary);
+    public static String cleanBinary(String binary) {
+        assert binary.length() > 1;
+        StringBuilder newBinary = new StringBuilder(binary);
         char principalChar = newBinary.charAt(0);
-        for (int i = 1; i < aBinary.length() - 4; i++) {
+        for (int i = 1; i < binary.length() - 1; i++) {
             char secondaryChar = newBinary.charAt(1);
             if (principalChar == secondaryChar) {
                 newBinary.deleteCharAt(0);
@@ -173,6 +181,8 @@ public final class BinaryUtilities {
      * @return The sum between 'binary1' and 'binary2'.
      */
     public static String addTwoBinaries(String binary1, String binary2) {
+        assert binary1.length() > 1;
+        assert binary2.length() > 1;
         int binary1AsNumber = binaryToInt(binary1);
         int binary2AsNumber = binaryToInt(binary2);
         return intToBinary(binary1AsNumber + binary2AsNumber);
@@ -189,7 +199,7 @@ public final class BinaryUtilities {
         if (intNumber < 0) {
             binaryNum = twosComplement(binaryNum);
         }
-        return binaryNum;
+        return cleanBinary(binaryNum);
     }
 
     /**
@@ -198,8 +208,7 @@ public final class BinaryUtilities {
      * @return The representation of the binary number as an integer.
      */
     public static int binaryToInt(String binary) {
-        // Pathologic cases
-        if ("1".equals(binary)) return 1;
+        assert binary.length() > 1;
         if (bitToInt(binary.charAt(0)) == 0) {
             return positiveBinaryToInt(binary);
         } else {
@@ -214,6 +223,8 @@ public final class BinaryUtilities {
      * @return true if the binaries are equals, otherwise false.
      */
     public static boolean binaryEqual(String binary1, String binary2) {
+        assert binary1.length() > 1;
+        assert binary2.length() > 1;
         Integer binary1AsInt = binaryToInt(binary1);
         Integer binary2AsInt = binaryToInt(binary2);
         return binary1AsInt.equals(binary2AsInt);
@@ -226,6 +237,7 @@ public final class BinaryUtilities {
      * @return The binary operated by 'bool'.
      */
     public static String boolAndBinary(boolean bool, String binary) {
+        assert binary.length() > 1;
         StringBuilder binaryToReturn = new StringBuilder(binary);
         for (int i = 0; i < binary.length(); i++) {
             binaryToReturn.setCharAt(i, binary.charAt(i) == '1' && bool ? '1' : '0');
@@ -240,6 +252,7 @@ public final class BinaryUtilities {
      * @return The binary operated by 'bool'.
      */
     public static String boolOrBinary(boolean bool, String binary) {
+        assert binary.length() > 1;
         StringBuilder binaryToReturn = new StringBuilder(binary);
         for (int i = 0; i < binary.length(); i++) {
             binaryToReturn.setCharAt(i, binary.charAt(i) == '1' || bool ? '1' : '0');
@@ -254,6 +267,7 @@ public final class BinaryUtilities {
      * @return A binary with an equivalent but larger value.
      */
     private static String fillMaxBits(int maxBits, String binary) {
+        assert binary.length() > 1;
         StringBuilder binaryToReturn = new StringBuilder(binary);
         while (maxBits > binaryToReturn.length()) {
             binaryToReturn.insert(0, binary.charAt(0));
@@ -269,6 +283,8 @@ public final class BinaryUtilities {
      * @return A binary result to operate with 'and'
      */
     public static String binaryAndBinary(String binary1, String binary2) {
+        assert binary1.length() > 1;
+        assert binary2.length() > 1;
         if (binary1.length() > binary2.length()) {
             binary2 = fillMaxBits(binary1.length(), binary2);
         } else {
@@ -290,6 +306,8 @@ public final class BinaryUtilities {
      * @return A binary result to operate with 'or'
      */
     public static String binaryOrBinary(String binary1, String binary2) {
+        assert binary1.length() > 1;
+        assert binary2.length() > 1;
         if (binary1.length() > binary2.length()) {
             binary2 = fillMaxBits(binary1.length(), binary2);
         } else {

@@ -1,16 +1,20 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.hidden_types.HiddenString;
-import cl.uchile.dcc.scrabble.model.ast.hidden_ast.interfaces.HiddenAST;
+import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenString;
+
+import cl.uchile.dcc.scrabble.model.builders.interfaces.StringASTBuilder;
+import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A class for the string type.
  * @author Francisco Muñoz Guajardo
  */
-public class TypeString extends AbstractType {
+public class TypeString extends AbstractType implements StringASTBuilder {
     private final String value;
 
     /**
@@ -64,13 +68,13 @@ public class TypeString extends AbstractType {
     }
 
     /**
-     * Transforms the current type to a TypeString.
+     * Returns the value as {@code String}.
      *
-     * @return TypeString with a value equivalent to the current type.
+     * @return the current value as {@code String}
      */
     @Override
-    public TypeString toTypeString() {
-        return createString(this.value);
+    public String getValueAsString() {
+        return this.value;
     }
 
     /**
@@ -79,7 +83,7 @@ public class TypeString extends AbstractType {
      * @param otherType Another type that will be added to the current type.
      * @return The sum between the two types, returning the dominant type.
      */
-    public TypeString add(SType otherType) {
+    public TypeString add(@NotNull SType otherType) {
         return otherType.addWithString(this);
     }
 
@@ -90,18 +94,17 @@ public class TypeString extends AbstractType {
      * @return The sum between the String type and the other type.
      */
     @Override
-    public TypeString addWithString(TypeString typeString) {
-        return createString(typeString.value + this.value);
+    public TypeString addWithString(@NotNull TypeString typeString) {
+        return STypeFactory.createTypeString(typeString.value + this.value);
     }
 
     /**
-     * Transform a {@code SType} into its equivalent {@code HType}. If the argument is a {@code
-     * HType} or an {@code HiddenAST}, it does nothing.
+     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
      *
      * @return a transformation
      */
     @Override
-    public HiddenAST toHiddenAST() {
-        return new HiddenString(this);
+    public HiddenString toHiddenAST() {
+        return createHiddenString(this);
     }
 }
