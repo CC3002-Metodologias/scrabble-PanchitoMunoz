@@ -7,6 +7,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
+// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
  * A class to wrap a {@code TypeBool}. To use adapter pattern.
  *

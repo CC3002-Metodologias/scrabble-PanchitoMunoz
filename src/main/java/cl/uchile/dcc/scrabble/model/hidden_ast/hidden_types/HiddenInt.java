@@ -8,6 +8,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
+// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
  * A class to wrap a {@code TypeInt}. To use adapter pattern.
  *

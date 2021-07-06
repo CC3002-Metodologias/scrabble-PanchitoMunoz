@@ -8,6 +8,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
+// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
  * A class to wrap a {@code TypeBinary}. To use adapter pattern.
  *
@@ -60,7 +61,7 @@ public class HiddenBinary extends AbstractHiddenType {
      * @return a {@code HiddenBinary} equivalent
      */
     @Override
-    public HType toHiddenBinary() {
+    public HiddenBinary toHiddenBinary() {
         TypeBinary computed = this.typeBinary.toTypeBinary();
         return HTypeFactory.createHiddenBinary(computed);
     }
@@ -71,7 +72,7 @@ public class HiddenBinary extends AbstractHiddenType {
      * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public HType toHiddenFloat() {
+    public HiddenFloat toHiddenFloat() {
         TypeFloat computed = this.typeBinary.toTypeFloat();
         return HTypeFactory.createHiddenFloat(computed);
     }
@@ -82,7 +83,7 @@ public class HiddenBinary extends AbstractHiddenType {
      * @return a {@code HiddenInt} equivalent
      */
     @Override
-    public HType toHiddenInt() {
+    public HiddenInt toHiddenInt() {
         TypeInt computed = this.typeBinary.toTypeInt();
         return HTypeFactory.createHiddenInt(computed);
     }
@@ -93,7 +94,7 @@ public class HiddenBinary extends AbstractHiddenType {
      * @return a {@code HiddenString} equivalent
      */
     @Override
-    public HType toHiddenString() {
+    public HiddenString toHiddenString() {
         TypeString computed = this.typeBinary.toTypeString();
         return HTypeFactory.createHiddenString(computed);
     }

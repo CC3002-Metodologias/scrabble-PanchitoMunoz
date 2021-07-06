@@ -5,6 +5,7 @@ import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
+// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
  * A class to wrap a {@code TypeString}. To use adapter pattern.
  *
