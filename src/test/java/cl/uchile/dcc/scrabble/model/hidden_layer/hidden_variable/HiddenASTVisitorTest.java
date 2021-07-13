@@ -26,7 +26,7 @@ class HiddenASTVisitorTest extends BaseHTypeTest {
     void testCalculate() {
         // It does nothing
         hiddenFloat1.accept(visitor1);
-        assertEquals(hiddenFloat1.toSType(), hiddenFloat1.toSType());
+        assertEquals(hiddenFloat1.asSType(), hiddenFloat1.asSType());
         // Set variable
         HiddenVariable variable = new HiddenVariable(name);
         assertEquals(hiddenNull, variable.calculate());

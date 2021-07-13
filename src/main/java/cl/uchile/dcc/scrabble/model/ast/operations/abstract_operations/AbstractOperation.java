@@ -35,7 +35,7 @@ public abstract class AbstractOperation implements Operation {
      * @return a transformation
      */
     @Override
-    public HiddenOperation toHiddenAST() {
+    public HiddenOperation asHiddenAST() {
         return adaptee;
     }
 
@@ -47,7 +47,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public void setVariable(String name, SType value) {
-        this.adaptee.setVariable(name, value.toHiddenAST());
+        this.adaptee.setVariable(name, value.asHiddenAST());
     }
 
     /**
@@ -57,7 +57,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public SType calculate() {
-        return adaptee.calculate().toSType();
+        return adaptee.calculate().asSType();
     }
 
     /**

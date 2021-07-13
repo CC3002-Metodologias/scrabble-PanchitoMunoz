@@ -233,7 +233,7 @@ public class TypeFloat extends AbstractNumber
      * @return a transformation
      */
     @Override
-    public HiddenFloat toHiddenAST() {
+    public HiddenFloat asHiddenAST() {
         return HTypeFactory.createHiddenFloat(this);
     }
 }

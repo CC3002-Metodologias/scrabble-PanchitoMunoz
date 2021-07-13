@@ -28,9 +28,9 @@ class AddTest extends BaseOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenAST() {
-        assertEquals(new HiddenAdd(hiddenString1, hiddenString2), stringResult.toHiddenAST(),
+        assertEquals(new HiddenAdd(hiddenString1, hiddenString2), stringResult.asHiddenAST(),
             "Method toHiddenAST does not works with equals hidden ast." + messageSeed);
-        assertNotEquals(new HiddenAdd(hiddenString1, hiddenString1), stringResult.toHiddenAST(),
+        assertNotEquals(new HiddenAdd(hiddenString1, hiddenString1), stringResult.asHiddenAST(),
             "Method toHiddenAST does not works with different hidden ast." + messageSeed);
     }
 

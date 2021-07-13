@@ -24,7 +24,7 @@ public class Mult extends AbstractOperation {
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Mult(AST leftValue, AST rightValue) {
-        super(new HiddenMult(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+        super(new HiddenMult(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 
 }

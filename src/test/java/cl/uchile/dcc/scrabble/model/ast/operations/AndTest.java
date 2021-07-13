@@ -23,9 +23,9 @@ class AndTest extends BaseOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenAST() {
-        assertEquals(new HiddenAnd(hiddenBinary1, hiddenBinary2), binaryResult.toHiddenAST(),
+        assertEquals(new HiddenAnd(hiddenBinary1, hiddenBinary2), binaryResult.asHiddenAST(),
             "Method toHiddenAST does not works with equals hidden ast." + messageSeed);
-        assertNotEquals(new HiddenAnd(trueHiddenBool, trueHiddenBool), binaryResult.toHiddenAST(),
+        assertNotEquals(new HiddenAnd(trueHiddenBool, trueHiddenBool), binaryResult.asHiddenAST(),
             "Method toHiddenAST does not works with different hidden ast." + messageSeed);
     }
 

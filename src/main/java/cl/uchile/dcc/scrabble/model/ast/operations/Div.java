@@ -24,6 +24,6 @@ public class Div extends AbstractOperation {
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Div(AST leftValue, AST rightValue) {
-        super(new HiddenDiv(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+        super(new HiddenDiv(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 }

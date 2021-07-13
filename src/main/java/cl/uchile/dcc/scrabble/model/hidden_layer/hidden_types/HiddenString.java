@@ -41,7 +41,7 @@ public class HiddenString extends AbstractHiddenType {
      * @return the instance in the wrapper
      */
     @Override
-    public TypeString toSType() {
+    public TypeString asSType() {
         return STypeFactory.createTypeString(typeString);
     }
 

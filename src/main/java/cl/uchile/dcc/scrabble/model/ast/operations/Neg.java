@@ -23,7 +23,7 @@ public class Neg extends AbstractOperation {
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Neg(AST value) {
-        super(new HiddenNeg(value.toHiddenAST()));
+        super(new HiddenNeg(value.asHiddenAST()));
     }
 
 }

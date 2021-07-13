@@ -18,6 +18,6 @@ public class ToTypeString extends AbstractTransformation {
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public ToTypeString(AST value) {
-        super(new ToHiddenString(value.toHiddenAST()));
+        super(new ToHiddenString(value.asHiddenAST()));
     }
 }

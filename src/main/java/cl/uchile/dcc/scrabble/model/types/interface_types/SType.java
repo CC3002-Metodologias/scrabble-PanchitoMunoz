@@ -33,5 +33,5 @@ public interface SType extends AST, ArithmeticOperationsWithString, TypeASTBuild
      * @return a transformation
      */
     @Override
-    HType toHiddenAST();
+    HType asHiddenAST();
 }

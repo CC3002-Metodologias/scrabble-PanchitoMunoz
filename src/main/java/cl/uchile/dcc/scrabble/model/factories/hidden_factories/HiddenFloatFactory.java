@@ -45,7 +45,7 @@ public class HiddenFloatFactory extends AbstractHTypeFactory {
      * @return a {@code HiddenFloat} instance.
      */
     public HiddenFloat create(HiddenFloat instance) {
-        return (HiddenFloat) super.createWithKey(instance.toSType().getValue(), instance);
+        return (HiddenFloat) super.createWithKey(instance.asSType().getValue(), instance);
     }
 
     /**

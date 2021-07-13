@@ -26,9 +26,9 @@ class DivTest extends BaseOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenAST() {
-        assertEquals(new HiddenDiv(hiddenFloat1, hiddenFloat2), floatResult.toHiddenAST(),
+        assertEquals(new HiddenDiv(hiddenFloat1, hiddenFloat2), floatResult.asHiddenAST(),
             "Method toHiddenAST does not works with equals hidden ast." + messageSeed);
-        assertNotEquals(new HiddenDiv(hiddenFloat1, hiddenFloat1), floatResult.toHiddenAST(),
+        assertNotEquals(new HiddenDiv(hiddenFloat1, hiddenFloat1), floatResult.asHiddenAST(),
             "Method toHiddenAST does not works with different hidden ast." + messageSeed);
     }
 

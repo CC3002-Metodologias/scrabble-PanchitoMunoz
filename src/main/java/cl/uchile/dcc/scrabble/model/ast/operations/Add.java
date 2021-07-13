@@ -23,6 +23,6 @@ public class Add extends AbstractOperation {
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Add(AST leftValue, AST rightValue) {
-        super(new HiddenAdd(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+        super(new HiddenAdd(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 }

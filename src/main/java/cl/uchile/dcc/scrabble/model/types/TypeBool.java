@@ -180,7 +180,7 @@ public class TypeBool extends AbstractType implements SLogical, BoolASTBuilder {
      * @return a transformation
      */
     @Override
-    public HiddenBool toHiddenAST() {
+    public HiddenBool asHiddenAST() {
         return createHiddenBool(this);
     }
 }

@@ -25,5 +25,5 @@ public interface HiddenASTTransformation {
      *
      * @return a transformation
      */
-    HiddenAST toHiddenAST();
+    HiddenAST asHiddenAST();
 }

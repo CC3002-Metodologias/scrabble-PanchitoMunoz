@@ -24,7 +24,7 @@ public class Sub extends AbstractOperation {
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Sub(AST leftValue, AST rightValue) {
-        super(new HiddenSub(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+        super(new HiddenSub(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 
 }

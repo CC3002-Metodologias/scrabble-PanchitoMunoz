@@ -273,7 +273,7 @@ public class TypeInt extends AbstractInteger
      * @return a transformation
      */
     @Override
-    public HiddenInt toHiddenAST() {
+    public HiddenInt asHiddenAST() {
         return createHiddenInt(this);
     }
 }

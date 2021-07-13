@@ -369,7 +369,7 @@ public class TypeBinary extends AbstractInteger
      * @return a transformation
      */
     @Override
-    public HiddenBinary toHiddenAST() {
+    public HiddenBinary asHiddenAST() {
         return createHiddenBinary(this);
     }
 }

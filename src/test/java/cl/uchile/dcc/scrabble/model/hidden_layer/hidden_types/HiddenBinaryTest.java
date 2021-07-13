@@ -18,7 +18,7 @@ class HiddenBinaryTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testGetAdaptee() {
-        TypeBinary expected = hiddenBinary1.toSType();
+        TypeBinary expected = hiddenBinary1.asSType();
         assertEquals(expected, typeBinary1, "Method getAdaptee does not works."
             + messageSeed);
     }
@@ -51,7 +51,7 @@ class HiddenBinaryTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testToString() {
-        String expected = "HiddenBinary{value=" + hiddenBinary1.toSType().getValue() + "}";
+        String expected = "HiddenBinary{value=" + hiddenBinary1.asSType().getValue() + "}";
         assertEquals(expected, hiddenBinary1.toString(), "Method toString does not works."
             + messageSeed);
     }

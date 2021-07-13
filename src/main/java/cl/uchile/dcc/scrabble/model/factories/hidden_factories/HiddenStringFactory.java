@@ -45,7 +45,7 @@ public class HiddenStringFactory extends AbstractHTypeFactory {
      * @return a {@code HiddenString} instance.
      */
     public HiddenString create(HiddenString instance) {
-        return (HiddenString) super.createWithKey(instance.toSType().getValue(), instance);
+        return (HiddenString) super.createWithKey(instance.asSType().getValue(), instance);
     }
 
     /**

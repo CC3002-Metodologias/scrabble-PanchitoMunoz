@@ -18,7 +18,7 @@ public class ToTypeBool extends AbstractTransformation {
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public ToTypeBool(AST value) {
-        super(new ToHiddenBool(value.toHiddenAST()));
+        super(new ToHiddenBool(value.asHiddenAST()));
     }
 
 }

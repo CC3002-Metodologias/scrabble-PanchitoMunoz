@@ -34,7 +34,7 @@ public class Variable implements AST {
      * @param value a {@code HType}.
      */
     public Variable(@NotNull String name, @NotNull SType value) {
-        this.adaptee = new HiddenVariable(name, value.toHiddenAST());
+        this.adaptee = new HiddenVariable(name, value.asHiddenAST());
     }
 
     /**
@@ -43,7 +43,7 @@ public class Variable implements AST {
      * @return a transformation
      */
     @Override
-    public HiddenVariable toHiddenAST() {
+    public HiddenVariable asHiddenAST() {
         return this.adaptee;
     }
 }

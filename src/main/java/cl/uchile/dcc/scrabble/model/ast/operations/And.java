@@ -24,6 +24,6 @@ public class And extends AbstractOperation {
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public And(AST leftValue, AST rightValue) {
-        super(new HiddenAnd(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+        super(new HiddenAnd(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 }

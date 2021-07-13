@@ -104,7 +104,7 @@ public class TypeString extends AbstractType implements StringASTBuilder {
      * @return a transformation
      */
     @Override
-    public HiddenString toHiddenAST() {
+    public HiddenString asHiddenAST() {
         return createHiddenString(this);
     }
 }

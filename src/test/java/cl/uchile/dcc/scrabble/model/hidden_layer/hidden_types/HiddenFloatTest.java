@@ -74,7 +74,7 @@ class HiddenFloatTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testGetAdaptee() {
-        assertEquals(typeFloat1, hiddenFloat1.toSType(),
+        assertEquals(typeFloat1, hiddenFloat1.asSType(),
             "Method getAdaptee does not works." + messageSeed);
     }
 

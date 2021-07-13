@@ -24,7 +24,7 @@ public class Or extends AbstractOperation {
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public Or(AST leftValue, AST rightValue) {
-        super(new HiddenOr(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+        super(new HiddenOr(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 
 }

@@ -33,7 +33,7 @@ public interface HType extends HiddenASTLeaf, HArithmeticOperations, HLogicalOpe
      *
      * @return the instance in the wrapper
      */
-    SType toSType();
+    SType asSType();
 
     /**
      * Transform the current instance to a {@code HiddenBinary}.

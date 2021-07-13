@@ -46,7 +46,7 @@ public class HiddenNull extends AbstractHiddenType {
      * @return the instance in the wrapper
      */
     @Override
-    public SType toSType() {
+    public SType asSType() {
         return null;
     }
 

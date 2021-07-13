@@ -21,9 +21,9 @@ class NegTest extends BaseOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenAST() {
-        assertEquals(new HiddenNeg(hiddenBinary1), binaryResult.toHiddenAST(),
+        assertEquals(new HiddenNeg(hiddenBinary1), binaryResult.asHiddenAST(),
             "Method toHiddenAST does not works with equals hidden ast." + messageSeed);
-        assertNotEquals(new HiddenNeg(trueHiddenBool), binaryResult.toHiddenAST(),
+        assertNotEquals(new HiddenNeg(trueHiddenBool), binaryResult.asHiddenAST(),
             "Method toHiddenAST does not works with different hidden ast." + messageSeed);
     }
 

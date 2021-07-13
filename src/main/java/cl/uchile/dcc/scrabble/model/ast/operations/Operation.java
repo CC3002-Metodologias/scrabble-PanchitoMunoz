@@ -41,7 +41,7 @@ public interface Operation extends AST {
      * @return a transformation
      */
     @Override
-    HiddenOperation toHiddenAST();
+    HiddenOperation asHiddenAST();
 
     /**
      * Transform the current instance into a {@code TypeBinary}.

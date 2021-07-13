@@ -18,6 +18,6 @@ public class ToTypeFloat extends AbstractTransformation {
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public ToTypeFloat(AST value) {
-        super(new ToHiddenFloat(value.toHiddenAST()));
+        super(new ToHiddenFloat(value.asHiddenAST()));
     }
 }

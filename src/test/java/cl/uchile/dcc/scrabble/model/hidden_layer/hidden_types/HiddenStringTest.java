@@ -74,7 +74,7 @@ class HiddenStringTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testGetAdaptee() {
-        assertEquals(typeString1, hiddenString1.toSType(),
+        assertEquals(typeString1, hiddenString1.asSType(),
             "Method getAdaptee does not works." + messageSeed);
     }
 

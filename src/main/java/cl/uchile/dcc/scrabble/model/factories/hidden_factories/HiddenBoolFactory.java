@@ -45,7 +45,7 @@ public class HiddenBoolFactory extends AbstractHTypeFactory {
      * @return a {@code HiddenBool} instance.
      */
     public HiddenBool create(HiddenBool instance) {
-        return (HiddenBool) super.createWithKey(instance.toSType().getValue(), instance);
+        return (HiddenBool) super.createWithKey(instance.asSType().getValue(), instance);
     }
 
     /**

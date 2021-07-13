@@ -45,7 +45,7 @@ public class HiddenIntFactory extends AbstractHTypeFactory {
      * @return a {@code HiddenInt} instance.
      */
     public HiddenInt create(HiddenInt instance) {
-        return (HiddenInt) super.createWithKey(instance.toSType().getValue(), instance);
+        return (HiddenInt) super.createWithKey(instance.asSType().getValue(), instance);
     }
 
     /**

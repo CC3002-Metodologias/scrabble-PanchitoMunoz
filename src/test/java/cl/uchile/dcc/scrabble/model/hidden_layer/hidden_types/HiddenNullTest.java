@@ -133,7 +133,7 @@ class HiddenNullTest extends BaseHTypeTest {
 
     @Test
     void testToSType() {
-        assertNull(hiddenNull.toSType(),
+        assertNull(hiddenNull.asSType(),
             "Method toSType does not works." + messageSeed);
     }
 }

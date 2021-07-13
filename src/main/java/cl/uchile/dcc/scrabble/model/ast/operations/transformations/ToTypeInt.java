@@ -18,6 +18,6 @@ public class ToTypeInt extends AbstractTransformation {
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public ToTypeInt(AST value) {
-        super(new ToHiddenInt(value.toHiddenAST()));
+        super(new ToHiddenInt(value.asHiddenAST()));
     }
 }

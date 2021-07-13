@@ -18,6 +18,6 @@ public class ToTypeBinary extends AbstractTransformation {
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
     public ToTypeBinary(AST value) {
-        super(new ToHiddenBinary(value.toHiddenAST()));
+        super(new ToHiddenBinary(value.asHiddenAST()));
     }
 }
