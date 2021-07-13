@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenOperationVisitor;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operations.HArithmeticOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operations.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
@@ -27,6 +28,13 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @see Operation
  */
 public interface HType extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations {
+
+    /**
+     * Accept method to use visitor pattern.
+     * @param visitor a {@code HiddenOperationVisitor}
+     * @return a {@code HType} operated
+     */
+    HType operateWith(HiddenOperationVisitor visitor);
 
     /**
      * Gets the current instance in the wrapper

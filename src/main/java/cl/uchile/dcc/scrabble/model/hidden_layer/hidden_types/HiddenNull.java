@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenOperationVisitor;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
 
@@ -38,6 +40,17 @@ public class HiddenNull extends AbstractHiddenType {
             return uniqueInstance;
         }
         return uniqueInstance;
+    }
+
+    /**
+     * Accept method to use visitor pattern.
+     *
+     * @param visitor a {@code HiddenOperationVisitor}
+     * @return a {@code HType} operated
+     */
+    @Override
+    public HType operateWith(HiddenOperationVisitor visitor) {
+        return visitor.operateWithNull(this);
     }
 
     /**

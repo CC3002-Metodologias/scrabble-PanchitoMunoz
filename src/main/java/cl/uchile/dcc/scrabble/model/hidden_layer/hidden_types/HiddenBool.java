@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenOperationVisitor;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
@@ -35,6 +36,17 @@ public class HiddenBool extends AbstractHiddenType {
      */
     public HiddenBool(boolean value) {
         this(STypeFactory.createTypeBool(value));
+    }
+
+    /**
+     * Accept method to use visitor pattern.
+     *
+     * @param visitor a {@code HiddenOperationVisitor}
+     * @return a {@code HType} operated
+     */
+    @Override
+    public HType operateWith(HiddenOperationVisitor visitor) {
+        return visitor.operateWithBool(this);
     }
 
     /**
