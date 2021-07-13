@@ -37,6 +37,30 @@ public interface HType extends HiddenASTLeaf, HArithmeticOperations, HLogicalOpe
     HType operateWith(HiddenOperationVisitor visitor);
 
     /**
+     * Value as String
+     *
+     * @return Value as String
+     */
+    default String getValueAsString() {
+        return null;
+    }
+    /**
+     * Value as Int
+     * @return Value as Int
+     */
+    default Integer getValueAsInt() {
+        return null;
+    }
+
+    /**
+     * Value as Binary
+     * @return Value as Binary
+     */
+    default String getValueAsBinary() {
+        return null;
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper

@@ -26,6 +26,7 @@ public class HiddenBool extends AbstractHiddenType {
      * @param typeBool a type bool
      */
     public HiddenBool(TypeBool typeBool) {
+        super(typeBool);
         this.typeBool = STypeFactory.createTypeBool(typeBool);
     }
 

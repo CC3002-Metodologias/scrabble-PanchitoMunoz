@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenNumber;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
@@ -15,7 +16,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/13 0:02
  * @see TypeFloat
  */
-public class HiddenFloat extends AbstractHiddenType {
+public class HiddenFloat extends AbstractHiddenNumber {
 
     private final TypeFloat typeFloat;
 
@@ -25,6 +26,7 @@ public class HiddenFloat extends AbstractHiddenType {
      * @param typeFloat a type float
      */
     public HiddenFloat(TypeFloat typeFloat) {
+        super(typeFloat);
         this.typeFloat = STypeFactory.createTypeFloat(typeFloat);
     }
 

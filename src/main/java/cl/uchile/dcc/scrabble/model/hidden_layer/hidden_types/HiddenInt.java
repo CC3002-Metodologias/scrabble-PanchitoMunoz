@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
@@ -17,7 +18,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/13 0:02
  * @see TypeInt
  */
-public class HiddenInt extends AbstractHiddenType {
+public class HiddenInt extends AbstractHiddenInteger {
 
     private final TypeInt typeInt;
 
@@ -27,6 +28,7 @@ public class HiddenInt extends AbstractHiddenType {
      * @param typeInt a type int
      */
     public HiddenInt(TypeInt typeInt) {
+        super(typeInt);
         this.typeInt = STypeFactory.createTypeInt(typeInt);
     }
 

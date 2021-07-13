@@ -31,7 +31,7 @@ class HiddenBoolTest extends BaseHTypeTest {
     }
 
     @Test
-    void testTestHashCode() {
+    void testHashCode() {
         assertEquals(trueTypeBool.hashCode(), trueHiddenBool.hashCode(),
             "Method asString does not works.");
         assertEquals(falseTypeBool.hashCode(), falseHiddenBool.hashCode(),
@@ -39,7 +39,7 @@ class HiddenBoolTest extends BaseHTypeTest {
     }
 
     @Test
-    void testTestEquals() {
+    void testEquals() {
         assertEquals(new HiddenBool(true), trueHiddenBool, "Method equals does not works.");
         assertEquals(new HiddenBool(false), falseHiddenBool, "Method equals does not works.");
         assertNotEquals(new HiddenBool(false), trueHiddenBool, "Method equals does not works.");

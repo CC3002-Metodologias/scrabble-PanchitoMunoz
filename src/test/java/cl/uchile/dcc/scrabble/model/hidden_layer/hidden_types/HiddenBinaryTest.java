@@ -36,13 +36,13 @@ class HiddenBinaryTest extends BaseHTypeTest {
     }
 
     @RepeatedTest(20)
-    void testTestHashCode() {
+    void testHashCode() {
         assertEquals(typeBinary1.hashCode(), hiddenBinary1.hashCode(),
             "Method hashCode does not works" + messageSeed);
     }
 
     @RepeatedTest(20)
-    void testTestEquals() {
+    void testEquals() {
         HiddenBinary expected = new HiddenBinary(typeBinary1);
         assertEquals(expected, hiddenBinary1, "Method equals does not works." + messageSeed);
         assertNotEquals(hiddenBinary2, hiddenBinary1, "Method equals does not works." + messageSeed);
@@ -116,13 +116,15 @@ class HiddenBinaryTest extends BaseHTypeTest {
         assertEquals(hiddenNull, hiddenBinary1.add(falseHiddenBool),
             "Method add does not works with booleans." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.add(hiddenFloat1), "Method add does not works with floats." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.add(hiddenFloat1),
+            "Method add does not works with floats." + messageSeed);
 
         HiddenBinary expected4 = new HiddenBinary(typeBinary1.add(typeInt1));
         assertEquals(expected4, hiddenBinary1.add(hiddenInt1),
             "Method add does not works with int." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.add(hiddenString1), "Method add does not works with strings." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.add(hiddenString1),
+            "Method add does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -138,11 +140,14 @@ class HiddenBinaryTest extends BaseHTypeTest {
         assertEquals(expected21, hiddenBinary1.and(falseHiddenBool),
             "Method and does not works with booleans." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.and(hiddenFloat1), "Method and does not works with floats." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.and(hiddenFloat1),
+            "Method and does not works with floats." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.and(hiddenInt1), "Method and does not works with ints." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.and(hiddenInt1),
+            "Method and does not works with ints." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.and(hiddenString1), "Method and does not works with string." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.and(hiddenString1),
+            "Method and does not works with string." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -156,13 +161,15 @@ class HiddenBinaryTest extends BaseHTypeTest {
         assertEquals(hiddenNull, hiddenBinary1.div(falseHiddenBool),
             "Method div does not works with booleans." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.div(hiddenFloat1), "Method div does not works with floats." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.div(hiddenFloat1),
+            "Method div does not works with floats." + messageSeed);
 
         HiddenBinary expected4 = new HiddenBinary(typeBinary1.div(typeInt1));
         assertEquals(expected4, hiddenBinary1.div(hiddenInt1),
             "Method div does not works with int." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.div(hiddenString1), "Method div does not works with strings." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.div(hiddenString1),
+            "Method div does not works with strings." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -176,7 +183,8 @@ class HiddenBinaryTest extends BaseHTypeTest {
         assertEquals(hiddenNull, hiddenBinary1.mult(falseHiddenBool),
             "Method mult does not works with booleans." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.mult(hiddenFloat1), "Method mult does not works with floats." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.mult(hiddenFloat1),
+            "Method mult does not works with floats." + messageSeed);
 
         HiddenBinary expected4 = new HiddenBinary(typeBinary1.mult(typeInt1));
         assertEquals(expected4, hiddenBinary1.mult(hiddenInt1),
@@ -199,11 +207,14 @@ class HiddenBinaryTest extends BaseHTypeTest {
         assertEquals(expected21, hiddenBinary1.or(falseHiddenBool),
             "Method or does not works with booleans." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.or(hiddenFloat1), "Method or does not works with floats." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.or(hiddenFloat1),
+            "Method or does not works with floats." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.or(hiddenInt1), "Method or does not works with ints." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.or(hiddenInt1),
+            "Method or does not works with ints." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.or(hiddenString1), "Method or does not works with string." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.or(hiddenString1),
+            "Method or does not works with string." + messageSeed);
     }
 
     @RepeatedTest(20)
@@ -217,12 +228,14 @@ class HiddenBinaryTest extends BaseHTypeTest {
         assertEquals(hiddenNull, hiddenBinary1.sub(falseHiddenBool),
             "Method sub does not works with booleans." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.sub(hiddenFloat1), "Method sub does not works with floats." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.sub(hiddenFloat1),
+            "Method sub does not works with floats." + messageSeed);
 
         HiddenBinary expected4 = new HiddenBinary(typeBinary1.sub(typeInt1));
         assertEquals(expected4, hiddenBinary1.sub(hiddenInt1),
             "Method sub does not works with int." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.sub(hiddenString1), "Method sub does not works with strings." + messageSeed);
+        assertEquals(hiddenNull, hiddenBinary1.sub(hiddenString1),
+            "Method sub does not works with strings." + messageSeed);
     }
 }

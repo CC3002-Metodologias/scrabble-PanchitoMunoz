@@ -16,6 +16,24 @@ import java.util.HashMap;
  */
 public abstract class AbstractHiddenType implements HType {
 
+    private final SType adaptee;
+
+    /**
+     * Constructor
+     * @param adaptee a {@code SType}
+     */
+    protected AbstractHiddenType(SType adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    /**
+     * Value as String
+     * @return Value as String
+     */
+    public String getValueAsString() {
+        return adaptee.getValueAsString();
+    }
+
     /**
      * Calculate the {@code HType} result of performing all operations
      *

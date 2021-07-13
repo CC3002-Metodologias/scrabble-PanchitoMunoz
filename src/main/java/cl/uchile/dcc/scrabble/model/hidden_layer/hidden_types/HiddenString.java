@@ -24,6 +24,7 @@ public class HiddenString extends AbstractHiddenType {
      * @param typeString a type string.
      */
     public HiddenString(TypeString typeString) {
+        super(typeString);
         this.typeString = STypeFactory.createTypeString(typeString);
     }
 

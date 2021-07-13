@@ -22,7 +22,9 @@ public class HiddenNull extends AbstractHiddenType {
     /**
      * Private constructor to avoid multiples instances
      */
-    private HiddenNull() {}
+    private HiddenNull() {
+        super(null);
+    }
 
     @Override
     public String toString() {

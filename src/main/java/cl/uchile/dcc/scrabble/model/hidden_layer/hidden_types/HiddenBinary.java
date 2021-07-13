@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
@@ -17,7 +18,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/13 0:01
  * @see TypeBinary
  */
-public class HiddenBinary extends AbstractHiddenType {
+public class HiddenBinary extends AbstractHiddenInteger {
 
     private final TypeBinary typeBinary;
 
@@ -27,6 +28,7 @@ public class HiddenBinary extends AbstractHiddenType {
      * @param typeBinary a Type Binary
      */
     public HiddenBinary(TypeBinary typeBinary) {
+        super(typeBinary);
         this.typeBinary = STypeFactory.createTypeBinary(typeBinary);
     }
 
