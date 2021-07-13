@@ -3,7 +3,9 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenOperationVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenBinaryVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenBoolVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenTypeVisitor;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
@@ -19,6 +21,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
 public class HiddenBool extends AbstractHiddenType {
 
     private final TypeBool typeBool;
+    private final HiddenBoolVisitor visitor;
 
     /**
      * Constructor.
@@ -28,6 +31,7 @@ public class HiddenBool extends AbstractHiddenType {
     public HiddenBool(TypeBool typeBool) {
         super(typeBool);
         this.typeBool = STypeFactory.createTypeBool(typeBool);
+        this.visitor = new HiddenBoolVisitor(this);
     }
 
     /**
@@ -40,14 +44,13 @@ public class HiddenBool extends AbstractHiddenType {
     }
 
     /**
-     * Accept method to use visitor pattern.
+     * Returns the visitor
      *
-     * @param visitor a {@code HiddenOperationVisitor}
-     * @return a {@code HType} operated
+     * @return a visitor
      */
     @Override
-    public HType operateWith(HiddenOperationVisitor visitor) {
-        return visitor.operateWithBool(this);
+    public HiddenBoolVisitor getVisitor() {
+        return visitor;
     }
 
     /**
@@ -97,7 +100,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType and(HType hType) {
-        return hType.andWithBool(this);
+        return hType.getVisitor().andWithBool(this);
     }
 
     /**
@@ -108,7 +111,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType or(HType hType) {
-        return hType.orWithBool(this);
+        return hType.getVisitor().orWithBool(this);
     }
 
     /**
@@ -119,51 +122,5 @@ public class HiddenBool extends AbstractHiddenType {
     @Override
     public HType neg() {
         return HTypeFactory.createHiddenBool(this.typeBool.neg());
-    }
-
-    /**
-     * To use double dispatch in {@code and}
-     * @param hiddenBool a {@code HiddenBool}
-     */
-    @Override
-    public HType andWithBool(HiddenBool hiddenBool) {
-        TypeBool computed = this.typeBool.andWithBool(hiddenBool.asSType());
-        return HTypeFactory.createHiddenBool(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code and}
-     *
-     *
-     * @param hiddenBinary a {@code HiddenBinary}
-     */
-    @Override
-    public HType andWithBinary(HiddenBinary hiddenBinary) {
-        TypeBinary computed = this.typeBool.andWithBinary(hiddenBinary.asSType());
-        return HTypeFactory.createHiddenBinary(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code or}
-     *
-     *
-     * @param hiddenBool a {@code HiddenBool}
-     */
-    @Override
-    public HType orWithBool(HiddenBool hiddenBool) {
-        TypeBool computed = this.typeBool.orWithBool(hiddenBool.asSType());
-        return HTypeFactory.createHiddenBool(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code or}
-     *
-     *
-     * @param hiddenBinary a {@code HiddenBinary}
-     */
-    @Override
-    public HType orWithBinary(HiddenBinary hiddenBinary) {
-        TypeBinary computed = this.typeBool.orWithBinary(hiddenBinary.asSType());
-        return HTypeFactory.createHiddenBinary(computed);
     }
 }

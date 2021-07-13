@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenOperationVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenTypeVisitor;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operations.HArithmeticOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operations.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
@@ -30,11 +30,10 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 public interface HType extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations {
 
     /**
-     * Accept method to use visitor pattern.
-     * @param visitor a {@code HiddenOperationVisitor}
-     * @return a {@code HType} operated
+     * Returns the visitor
+     * @return a visitor
      */
-    HType operateWith(HiddenOperationVisitor visitor);
+    HiddenTypeVisitor getVisitor();
 
     /**
      * Value as String
@@ -44,6 +43,7 @@ public interface HType extends HiddenASTLeaf, HArithmeticOperations, HLogicalOpe
     default String getValueAsString() {
         return null;
     }
+
     /**
      * Value as Int
      * @return Value as Int

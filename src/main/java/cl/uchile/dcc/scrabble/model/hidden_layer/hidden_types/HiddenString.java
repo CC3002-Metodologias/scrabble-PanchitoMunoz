@@ -3,7 +3,8 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenOperationVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenStringVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenTypeVisitor;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
@@ -17,6 +18,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
 public class HiddenString extends AbstractHiddenType {
 
     private final TypeString typeString;
+    private final HiddenStringVisitor visitor;
 
     /**
      * Constructor.
@@ -26,6 +28,7 @@ public class HiddenString extends AbstractHiddenType {
     public HiddenString(TypeString typeString) {
         super(typeString);
         this.typeString = STypeFactory.createTypeString(typeString);
+        this.visitor = new HiddenStringVisitor(this);
     }
 
     /**
@@ -38,14 +41,13 @@ public class HiddenString extends AbstractHiddenType {
     }
 
     /**
-     * Accept method to use visitor pattern.
+     * Returns the visitor
      *
-     * @param visitor a {@code HiddenOperationVisitor}
-     * @return a {@code HType} operated
+     * @return a visitor
      */
     @Override
-    public HType operateWith(HiddenOperationVisitor visitor) {
-        return visitor.operateWithString(this);
+    public HiddenStringVisitor getVisitor() {
+        return visitor;
     }
 
     /**
@@ -84,6 +86,6 @@ public class HiddenString extends AbstractHiddenType {
      */
     @Override
     public HType add(HType hType) {
-        return hType.addWithString(this);
+        return hType.getVisitor().addWithString(this);
     }
 }

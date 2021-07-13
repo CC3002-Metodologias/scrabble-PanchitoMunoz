@@ -24,44 +24,12 @@ public interface HLogicalOperations {
     }
 
     /**
-     * To use double dispatch in {@code and}
-     * @param hiddenBool a {@code HiddenBool}
-     */
-    default HType andWithBool(HiddenBool hiddenBool) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code and}
-     * @param hiddenBinary a {@code HiddenBinary}
-     */
-    default HType andWithBinary(HiddenBinary hiddenBinary) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
      * Returns the conjunction between logicals
      *
      * @param hType another logical
      * @return the conjunction
      */
     default HType or(HType hType) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code or}
-     * @param hiddenBool a {@code HiddenBool}
-     */
-    default HType orWithBool(HiddenBool hiddenBool) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code or}
-     * @param hiddenBinary a {@code HiddenBinary}
-     */
-    default HType orWithBinary(HiddenBinary hiddenBinary) {
         return HTypeFactory.createHiddenNull();
     }
 

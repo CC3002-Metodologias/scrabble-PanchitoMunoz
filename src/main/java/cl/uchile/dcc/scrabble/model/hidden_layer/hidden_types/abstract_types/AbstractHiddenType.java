@@ -98,15 +98,4 @@ public abstract class AbstractHiddenType implements HType {
         visitor.visitHType(this);
     }
 
-    /**
-     * To use double dispatch in {@code add}
-     * @param hiddenString a {@code HiddenString}
-     */
-    @Override
-    public HType addWithString(HiddenString hiddenString) {
-        TypeString computed = this.asSType().addWithString(
-            hiddenString.asSType());
-        return new HiddenString(computed);
-    }
-
 }

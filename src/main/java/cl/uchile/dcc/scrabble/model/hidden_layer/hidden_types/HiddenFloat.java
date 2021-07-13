@@ -1,10 +1,10 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenNumber;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenOperationVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenFloatVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenTypeVisitor;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
@@ -19,6 +19,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
 public class HiddenFloat extends AbstractHiddenNumber {
 
     private final TypeFloat typeFloat;
+    private final HiddenFloatVisitor visitor;
 
     /**
      * Constructor.
@@ -28,6 +29,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
     public HiddenFloat(TypeFloat typeFloat) {
         super(typeFloat);
         this.typeFloat = STypeFactory.createTypeFloat(typeFloat);
+        this.visitor = new HiddenFloatVisitor(this);
     }
 
     /**
@@ -40,14 +42,13 @@ public class HiddenFloat extends AbstractHiddenNumber {
     }
 
     /**
-     * Accept method to use visitor pattern.
+     * Returns the visitor
      *
-     * @param visitor a {@code HiddenOperationVisitor}
-     * @return a {@code HType} operated
+     * @return a visitor
      */
     @Override
-    public HType operateWith(HiddenOperationVisitor visitor) {
-        return visitor.operateWithFloat(this);
+    public HiddenFloatVisitor getVisitor() {
+        return visitor;
     }
 
     /**
@@ -97,7 +98,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public HType add(HType hType) {
-        return hType.addWithFloat(this);
+        return hType.getVisitor().addWithFloat(this);
     }
 
     /**
@@ -108,7 +109,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public HType div(HType hType) {
-        return hType.divWithFloat(this);
+        return hType.getVisitor().divWithFloat(this);
     }
 
     /**
@@ -119,7 +120,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public HType mult(HType hType) {
-        return hType.multWithFloat(this);
+        return hType.getVisitor().multWithFloat(this);
     }
 
     /**
@@ -130,96 +131,6 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public HType sub(HType hType) {
-        return hType.subWithFloat(this);
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    @Override
-    public HType addWithFloat(HiddenFloat hiddenFloat) {
-        TypeFloat computed = this.typeFloat.addWithFloat(hiddenFloat.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     * @param hiddenInt a {@code HiddenInt}
-     */
-    @Override
-    public HType addWithInt(HiddenInt hiddenInt) {
-        TypeFloat computed = this.typeFloat.addWithInt(hiddenInt.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code sub}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    @Override
-    public HType subWithFloat(HiddenFloat hiddenFloat) {
-        TypeFloat computed = this.typeFloat.subWithFloat(hiddenFloat.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code sub}
-     *
-     *
-     * @param hiddenInt a {@code HiddenInt}
-     */
-    @Override
-    public HType subWithInt(HiddenInt hiddenInt) {
-        TypeFloat computed = this.typeFloat.subWithInt(hiddenInt.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code mult}
-     *
-     *
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    @Override
-    public HType multWithFloat(HiddenFloat hiddenFloat) {
-        TypeFloat computed = this.typeFloat.multWithFloat(hiddenFloat.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code mult}
-     *
-     *
-     * @param hiddenInt a {@code HiddenInt}
-     */
-    @Override
-    public HType multWithInt(HiddenInt hiddenInt) {
-        TypeFloat computed = this.typeFloat.multWithInt(hiddenInt.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     *
-     *
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    @Override
-    public HType divWithFloat(HiddenFloat hiddenFloat) {
-        TypeFloat computed = this.typeFloat.divWithFloat(hiddenFloat.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     *
-     *
-     * @param hiddenInt a {@code HiddenInt}
-     */
-    @Override
-    public HType divWithInt(HiddenInt hiddenInt) {
-        TypeFloat computed = this.typeFloat.divWithInt(hiddenInt.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
+        return hType.getVisitor().subWithFloat(this);
     }
 }

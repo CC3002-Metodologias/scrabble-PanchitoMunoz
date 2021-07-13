@@ -26,67 +26,12 @@ public interface HArithmeticOperations {
     }
 
     /**
-     * To use double dispatch in {@code add}
-     * 
-     * @param hiddenString a {@code HiddenString}
-     */
-    HType addWithString(HiddenString hiddenString);
-
-    /**
-     * To use double dispatch in {@code add}
-     * @param hiddenBinary a {@code HiddenBinary}
-     */
-    default HType addWithBinary(HiddenBinary hiddenBinary) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    default HType addWithFloat(HiddenFloat hiddenFloat) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     * @param hiddenInt a {@code HiddenInt}
-     */
-    default HType addWithInt(HiddenInt hiddenInt) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
      * Returns the division between numbers
      *
      * @param hType another number
      * @return the division
      */
     default HType div(HType hType) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     * @param hiddenBinary a {@code HiddenBinary}
-     */
-    default HType divWithBinary(HiddenBinary hiddenBinary) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    default HType divWithFloat(HiddenFloat hiddenFloat) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     * @param hiddenInt a {@code HiddenInt}
-     */
-    default HType divWithInt(HiddenInt hiddenInt) {
         return HTypeFactory.createHiddenNull();
     }
 
@@ -101,60 +46,12 @@ public interface HArithmeticOperations {
     }
 
     /**
-     * To use double dispatch in {@code mult}
-     * @param hiddenBinary a {@code HiddenBinary}
-     */
-    default HType multWithBinary(HiddenBinary hiddenBinary) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code mult}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    default HType multWithFloat(HiddenFloat hiddenFloat) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code mult}
-     * @param hiddenInt a {@code HiddenInt}
-     */
-    default HType multWithInt(HiddenInt hiddenInt) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
      * Returns the subtraction between numbers
      *
      * @param hType another number
      * @return the subtraction
      */
     default HType sub(HType hType) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code sub}
-     * @param hiddenBinary a {@code HiddenBinary}
-     */
-    default HType subWithBinary(HiddenBinary hiddenBinary) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code sub}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    default HType subWithFloat(HiddenFloat hiddenFloat) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code sub}
-     * @param hiddenInt a {@code HiddenInt}
-     */
-    default HType subWithInt(HiddenInt hiddenInt) {
         return HTypeFactory.createHiddenNull();
     }
 
