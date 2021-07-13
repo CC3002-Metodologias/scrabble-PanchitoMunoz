@@ -5,7 +5,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 
 import cl.uchile.dcc.scrabble.model.builders.interfaces.IntASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;

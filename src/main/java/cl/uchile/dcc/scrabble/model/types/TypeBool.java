@@ -5,7 +5,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
 
 import cl.uchile.dcc.scrabble.model.builders.interfaces.BoolASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenBool;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;

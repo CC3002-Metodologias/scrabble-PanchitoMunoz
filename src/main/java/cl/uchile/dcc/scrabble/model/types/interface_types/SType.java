@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.types.interface_types;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.builders.interfaces.TypeASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithString;
 

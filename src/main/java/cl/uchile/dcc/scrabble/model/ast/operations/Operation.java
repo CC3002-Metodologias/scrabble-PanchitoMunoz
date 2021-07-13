@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.hidden_ast.HiddenAST;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBinary;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;

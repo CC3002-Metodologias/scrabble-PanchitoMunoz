@@ -11,7 +11,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 
 import cl.uchile.dcc.scrabble.model.builders.interfaces.BinaryASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;

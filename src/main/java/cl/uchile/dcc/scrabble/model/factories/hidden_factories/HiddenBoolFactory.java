@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenBool;
-import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import java.util.HashMap;
 

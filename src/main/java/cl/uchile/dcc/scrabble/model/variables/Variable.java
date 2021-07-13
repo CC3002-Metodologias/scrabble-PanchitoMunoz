@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.variables;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_variable.HiddenVariable;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import org.jetbrains.annotations.NotNull;
 
