@@ -55,13 +55,6 @@ class TypeStringTest extends BaseTypeTest {
     }
 
     @RepeatedTest(20)
-    void addWithString() {
-        expectedTypeString = new TypeString(aString1 + aString2);
-        assertEquals(expectedTypeString, typeString2.addWithString(typeString1),
-                "Method addWithString does not works." + messageSeed);
-    }
-
-    @RepeatedTest(20)
     void add() {
         // Test add with binary
         expectedTypeString = new TypeString(aString1 + cleanBinary(aBinary1));
