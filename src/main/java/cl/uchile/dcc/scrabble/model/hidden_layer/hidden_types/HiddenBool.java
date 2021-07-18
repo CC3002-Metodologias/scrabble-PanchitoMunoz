@@ -3,10 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenBinaryVisitor;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenBoolVisitor;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenTypeVisitor;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBoolBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
@@ -21,7 +18,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
 public class HiddenBool extends AbstractHiddenType {
 
     private final TypeBool typeBool;
-    private final HiddenBoolVisitor visitor;
+    private final HiddenBoolBridge bridge;
 
     /**
      * Constructor.
@@ -31,7 +28,7 @@ public class HiddenBool extends AbstractHiddenType {
     public HiddenBool(TypeBool typeBool) {
         super(typeBool);
         this.typeBool = STypeFactory.createTypeBool(typeBool);
-        this.visitor = new HiddenBoolVisitor(this);
+        this.bridge = new HiddenBoolBridge(this);
     }
 
     /**
@@ -49,8 +46,8 @@ public class HiddenBool extends AbstractHiddenType {
      * @return a visitor
      */
     @Override
-    public HiddenBoolVisitor getVisitor() {
-        return visitor;
+    public HiddenBoolBridge getBridge() {
+        return bridge;
     }
 
     /**
@@ -100,7 +97,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType and(HType hType) {
-        return hType.getVisitor().andWithBool(this);
+        return hType.getBridge().andWithBool(this);
     }
 
     /**
@@ -111,7 +108,7 @@ public class HiddenBool extends AbstractHiddenType {
      */
     @Override
     public HType or(HType hType) {
-        return hType.getVisitor().orWithBool(this);
+        return hType.getBridge().orWithBool(this);
     }
 
     /**

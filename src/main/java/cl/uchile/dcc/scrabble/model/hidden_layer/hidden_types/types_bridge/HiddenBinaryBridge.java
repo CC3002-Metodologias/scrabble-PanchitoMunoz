@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor;
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
@@ -16,14 +16,14 @@ import cl.uchile.dcc.scrabble.model.types.TypeInt;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 17:46
  */
-public class HiddenBinaryVisitor extends AbstractHiddenTypeVisitor {
+public class HiddenBinaryBridge extends AbstractHiddenTypeBridge {
 
     /**
      * Constructor.
      *
      * @param value an {@code HType}
      */
-    public HiddenBinaryVisitor(HiddenBinary value) {
+    public HiddenBinaryBridge(HiddenBinary value) {
         super(value);
     }
 

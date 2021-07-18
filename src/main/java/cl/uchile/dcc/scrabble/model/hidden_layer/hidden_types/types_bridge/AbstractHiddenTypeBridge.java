@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor;
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
@@ -10,7 +10,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 17:43
  */
-public abstract class AbstractHiddenTypeVisitor implements HiddenTypeVisitor {
+public abstract class AbstractHiddenTypeBridge implements HiddenTypeBridge {
 
     private final HType value;
 
@@ -18,7 +18,7 @@ public abstract class AbstractHiddenTypeVisitor implements HiddenTypeVisitor {
      * Constructor.
      * @param value an {@code HType}
      */
-    protected AbstractHiddenTypeVisitor(HType value) {
+    protected AbstractHiddenTypeBridge(HType value) {
         this.value = value;
     }
 

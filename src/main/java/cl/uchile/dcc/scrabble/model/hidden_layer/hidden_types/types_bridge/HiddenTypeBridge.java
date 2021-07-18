@@ -1,4 +1,4 @@
-package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor;
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
@@ -14,7 +14,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 15:08
  */
-public interface HiddenTypeVisitor {
+public interface HiddenTypeBridge {
 
     /**
      * Returns the value in the visitor

@@ -3,8 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenBinaryVisitor;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenTypeVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBinaryBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -21,7 +20,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
 public class HiddenBinary extends AbstractHiddenInteger {
 
     private final TypeBinary typeBinary;
-    private final HiddenBinaryVisitor visitor;
+    private final HiddenBinaryBridge bridge;
 
     /**
      * Constructor.
@@ -31,7 +30,7 @@ public class HiddenBinary extends AbstractHiddenInteger {
     public HiddenBinary(TypeBinary typeBinary) {
         super(typeBinary);
         this.typeBinary = STypeFactory.createTypeBinary(typeBinary);
-        this.visitor = new HiddenBinaryVisitor(this);
+        this.bridge = new HiddenBinaryBridge(this);
     }
 
     /**
@@ -49,8 +48,8 @@ public class HiddenBinary extends AbstractHiddenInteger {
      * @return a visitor
      */
     @Override
-    public HiddenBinaryVisitor getVisitor() {
-        return visitor;
+    public HiddenBinaryBridge getBridge() {
+        return bridge;
     }
 
     /**
@@ -122,7 +121,7 @@ public class HiddenBinary extends AbstractHiddenInteger {
      */
     @Override
     public HType add(HType hType) {
-        return hType.getVisitor().addWithBinary(this);
+        return hType.getBridge().addWithBinary(this);
     }
 
     /**
@@ -133,7 +132,7 @@ public class HiddenBinary extends AbstractHiddenInteger {
      */
     @Override
     public HType and(HType hType) {
-        return hType.getVisitor().andWithBinary(this);
+        return hType.getBridge().andWithBinary(this);
     }
 
     /**
@@ -144,7 +143,7 @@ public class HiddenBinary extends AbstractHiddenInteger {
      */
     @Override
     public HType div(HType hType) {
-        return hType.getVisitor().divWithBinary(this);
+        return hType.getBridge().divWithBinary(this);
     }
 
     /**
@@ -155,7 +154,7 @@ public class HiddenBinary extends AbstractHiddenInteger {
      */
     @Override
     public HType mult(HType hType) {
-        return hType.getVisitor().multWithBinary(this);
+        return hType.getBridge().multWithBinary(this);
     }
 
     /**
@@ -166,7 +165,7 @@ public class HiddenBinary extends AbstractHiddenInteger {
      */
     @Override
     public HType or(HType hType) {
-        return hType.getVisitor().orWithBinary(this);
+        return hType.getBridge().orWithBinary(this);
     }
 
     /**
@@ -177,7 +176,7 @@ public class HiddenBinary extends AbstractHiddenInteger {
      */
     @Override
     public HType sub(HType hType) {
-        return hType.getVisitor().subWithBinary(this);
+        return hType.getBridge().subWithBinary(this);
     }
 
     /**

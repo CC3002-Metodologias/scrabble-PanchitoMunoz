@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenTypeVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenTypeBridge;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operations.HArithmeticOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operations.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
@@ -33,7 +33,7 @@ public interface HType extends HiddenASTLeaf, HArithmeticOperations, HLogicalOpe
      * Returns the visitor
      * @return a visitor
      */
-    HiddenTypeVisitor getVisitor();
+    HiddenTypeBridge getBridge();
 
     /**
      * Value as String

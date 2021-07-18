@@ -1,6 +1,5 @@
-package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor;
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenNull;
 
 /**
@@ -9,14 +8,14 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenNull;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 18:19
  */
-public class HiddenNullVisitor extends AbstractHiddenTypeVisitor {
+public class HiddenNullBridge extends AbstractHiddenTypeBridge {
 
     /**
      * Constructor.
      *
      * @param value an {@code HType}
      */
-    public HiddenNullVisitor(
+    public HiddenNullBridge(
         HiddenNull value) {
         super(value);
     }

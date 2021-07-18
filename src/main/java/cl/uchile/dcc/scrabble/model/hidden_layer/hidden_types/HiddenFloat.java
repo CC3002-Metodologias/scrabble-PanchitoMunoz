@@ -3,8 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenNumber;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenFloatVisitor;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operation_visitor.HiddenTypeVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenFloatBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
@@ -19,7 +18,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
 public class HiddenFloat extends AbstractHiddenNumber {
 
     private final TypeFloat typeFloat;
-    private final HiddenFloatVisitor visitor;
+    private final HiddenFloatBridge bridge;
 
     /**
      * Constructor.
@@ -29,7 +28,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
     public HiddenFloat(TypeFloat typeFloat) {
         super(typeFloat);
         this.typeFloat = STypeFactory.createTypeFloat(typeFloat);
-        this.visitor = new HiddenFloatVisitor(this);
+        this.bridge = new HiddenFloatBridge(this);
     }
 
     /**
@@ -47,8 +46,8 @@ public class HiddenFloat extends AbstractHiddenNumber {
      * @return a visitor
      */
     @Override
-    public HiddenFloatVisitor getVisitor() {
-        return visitor;
+    public HiddenFloatBridge getBridge() {
+        return bridge;
     }
 
     /**
@@ -98,7 +97,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public HType add(HType hType) {
-        return hType.getVisitor().addWithFloat(this);
+        return hType.getBridge().addWithFloat(this);
     }
 
     /**
@@ -109,7 +108,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public HType div(HType hType) {
-        return hType.getVisitor().divWithFloat(this);
+        return hType.getBridge().divWithFloat(this);
     }
 
     /**
@@ -120,7 +119,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public HType mult(HType hType) {
-        return hType.getVisitor().multWithFloat(this);
+        return hType.getBridge().multWithFloat(this);
     }
 
     /**
@@ -131,6 +130,6 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public HType sub(HType hType) {
-        return hType.getVisitor().subWithFloat(this);
+        return hType.getBridge().subWithFloat(this);
     }
 }
