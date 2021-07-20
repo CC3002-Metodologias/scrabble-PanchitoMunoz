@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenNumber;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenFloatBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
+import java.util.HashMap;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
@@ -15,7 +16,6 @@ import cl.uchile.dcc.scrabble.model.types.TypeFloat;
  */
 public class HiddenFloat extends AbstractHiddenNumber {
 
-    private final TypeFloat typeFloat;
     private final HiddenFloatBridge bridge;
 
     /**
@@ -24,9 +24,7 @@ public class HiddenFloat extends AbstractHiddenNumber {
      * @param typeFloat a type float
      */
     public HiddenFloat(TypeFloat typeFloat) {
-        super(typeFloat);
-        this.typeFloat = STypeFactory.createTypeFloat(typeFloat);
-        this.bridge = new HiddenFloatBridge(this);
+        this(typeFloat.getValueAsDouble());
     }
 
     /**
@@ -35,7 +33,43 @@ public class HiddenFloat extends AbstractHiddenNumber {
      * @param value a double
      */
     public HiddenFloat(double value) {
-        this(STypeFactory.createTypeFloat(value));
+        super(value);
+        this.bridge = new HiddenFloatBridge(this);
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HiddenFloat)) {
+            return false;
+        }
+
+        HiddenFloat that = (HiddenFloat) o;
+
+        return Double.compare(that.getValue(), getValue()) == 0;
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
+    @Override
+    public int hashCode() {
+        long temp = Double.doubleToLongBits(getValue());
+        return (int) (temp ^ (temp >>> 32));
     }
 
     /**
@@ -55,7 +89,17 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public Double getValue() {
-        return this.asSType().getValue();
+        return this.getValueAsDouble();
+    }
+
+    /**
+     * Value as String
+     *
+     * @return Value as String
+     */
+    @Override
+    public String getValueAsString() {
+        return Double.toString(this.getValueAsDouble());
     }
 
     /**
@@ -65,13 +109,13 @@ public class HiddenFloat extends AbstractHiddenNumber {
      */
     @Override
     public TypeFloat asSType() {
-        return STypeFactory.createTypeFloat(typeFloat);
+        return STypeFactory.createTypeFloat(this.getValueAsDouble());
     }
 
     @Override
     public String toString() {
         return "HiddenFloat{" +
-            "value=" + typeFloat.getValue() +
+            "value=" + this.getValueAsDouble() +
             '}';
     }
 

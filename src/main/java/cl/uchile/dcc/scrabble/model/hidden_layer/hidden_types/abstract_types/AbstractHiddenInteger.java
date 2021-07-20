@@ -4,7 +4,7 @@ import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 
 /**
  * todo: doc
@@ -14,14 +14,18 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
  */
 public abstract class AbstractHiddenInteger extends AbstractHiddenNumber implements HInteger {
 
+    private final int valueAsInt;
+    private final String valueAsBinary;
+
     /**
      * Constructor
      *
-     * @param adaptee a {@code SType}
+     * @param value a value as int
      */
-    protected AbstractHiddenInteger(
-        SNumber adaptee) {
-        super(adaptee);
+    public AbstractHiddenInteger(int value) {
+        super(value);
+        this.valueAsInt = value;
+        this.valueAsBinary = BinaryUtilities.intToBinary(value);
     }
 
     /**
@@ -39,7 +43,7 @@ public abstract class AbstractHiddenInteger extends AbstractHiddenNumber impleme
      */
     @Override
     public int getValueAsInt() {
-        return this.asSType().getValueAsInt();
+        return this.valueAsInt;
     }
 
     /**
@@ -48,7 +52,7 @@ public abstract class AbstractHiddenInteger extends AbstractHiddenNumber impleme
      * @return Value as Binary
      */
     public String getValueAsBinary() {
-        return this.asSType().getValueAsBinary();
+        return this.valueAsBinary;
     }
 
     /**

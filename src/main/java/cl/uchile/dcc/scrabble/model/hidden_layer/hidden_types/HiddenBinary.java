@@ -6,6 +6,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.Abs
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBinaryBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
+import java.util.HashMap;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 
@@ -18,7 +20,6 @@ import cl.uchile.dcc.scrabble.model.types.TypeBinary;
  */
 public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
 
-    private final TypeBinary typeBinary;
     private final HiddenBinaryBridge bridge;
 
     /**
@@ -27,9 +28,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
      * @param typeBinary a Type Binary
      */
     public HiddenBinary(TypeBinary typeBinary) {
-        super(typeBinary);
-        this.typeBinary = STypeFactory.createTypeBinary(typeBinary);
-        this.bridge = new HiddenBinaryBridge(this);
+        this(typeBinary.getValueAsBinary());
     }
 
     /**
@@ -38,7 +37,42 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
      * @param value a string binary
      */
     public HiddenBinary(String value) {
-        this(STypeFactory.createTypeBinary(value));
+        super(BinaryUtilities.binaryToInt(value));
+        this.bridge = new HiddenBinaryBridge(this);
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HiddenBinary)) {
+            return false;
+        }
+
+        HiddenBinary that = (HiddenBinary) o;
+
+        return getValue().equals(that.getValue());
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
+    @Override
+    public int hashCode() {
+        return getValue().hashCode();
     }
 
     /**
@@ -58,7 +92,17 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
      */
     @Override
     public String getValue() {
-        return this.asSType().getValue();
+        return this.getValueAsBinary();
+    }
+
+    /**
+     * Value as String
+     *
+     * @return Value as String
+     */
+    @Override
+    public String getValueAsString() {
+        return this.getValueAsBinary();
     }
 
     /**
@@ -68,13 +112,13 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
      */
     @Override
     public TypeBinary asSType() {
-        return STypeFactory.createTypeBinary(typeBinary);
+        return STypeFactory.createTypeBinary(this.getValueAsBinary());
     }
 
     @Override
     public String toString() {
         return "HiddenBinary{" +
-            "value=" + typeBinary.getValue() +
+            "value=" + this.asSType().getValue() +
             '}';
     }
 
@@ -151,6 +195,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
      */
     @Override
     public HType neg() {
-        return HTypeFactory.createHiddenBinary(this.typeBinary.neg());
+        return HTypeFactory.createHiddenBinary(
+            BinaryUtilities.oneComplement(this.getValueAsBinary()));
     }
 }

@@ -6,6 +6,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.Abs
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBoolBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
+import java.util.HashMap;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 
@@ -18,8 +19,13 @@ import cl.uchile.dcc.scrabble.model.types.TypeBool;
  */
 public class HiddenBool extends AbstractHiddenType implements HLogical {
 
-    private final TypeBool typeBool;
+    private final boolean value;
     private final HiddenBoolBridge bridge;
+
+    public HiddenBool(boolean value) {
+        this.value = value;
+        this.bridge = new HiddenBoolBridge(this);
+    }
 
     /**
      * Constructor.
@@ -27,9 +33,41 @@ public class HiddenBool extends AbstractHiddenType implements HLogical {
      * @param typeBool a type bool
      */
     public HiddenBool(TypeBool typeBool) {
-        super(typeBool);
-        this.typeBool = STypeFactory.createTypeBool(typeBool);
-        this.bridge = new HiddenBoolBridge(this);
+        this(typeBool.getValue());
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HiddenBool)) {
+            return false;
+        }
+
+        HiddenBool that = (HiddenBool) o;
+
+        return getValue() == that.getValue();
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
+    @Override
+    public int hashCode() {
+        return (getValue() ? 1 : 0);
     }
 
     /**
@@ -38,7 +76,17 @@ public class HiddenBool extends AbstractHiddenType implements HLogical {
      * @return Value as Boolean
      */
     public Boolean getValueAsBool() {
-        return this.typeBool.getValue();
+        return this.value;
+    }
+
+    /**
+     * Value as String
+     *
+     * @return Value as String
+     */
+    @Override
+    public String getValueAsString() {
+        return Boolean.toString(this.getValueAsBool());
     }
 
     /**
@@ -48,16 +96,7 @@ public class HiddenBool extends AbstractHiddenType implements HLogical {
      */
     @Override
     public Boolean getValue() {
-        return this.asSType().getValue();
-    }
-
-    /**
-     * Constructor.
-     *
-     * @param value a boolean
-     */
-    public HiddenBool(boolean value) {
-        this(STypeFactory.createTypeBool(value));
+        return this.getValueAsBool();
     }
 
     /**
@@ -77,13 +116,13 @@ public class HiddenBool extends AbstractHiddenType implements HLogical {
      */
     @Override
     public TypeBool asSType() {
-        return STypeFactory.createTypeBool(typeBool);
+        return STypeFactory.createTypeBool(this.getValueAsBool());
     }
 
     @Override
     public String toString() {
         return "HiddenBool{" +
-            "value=" + typeBool.getValue() +
+            "value=" + this.getValueAsBool() +
             '}';
     }
 
@@ -94,20 +133,8 @@ public class HiddenBool extends AbstractHiddenType implements HLogical {
      */
     @Override
     public HType toHiddenBool() {
-        TypeBool computed = this.typeBool.toTypeBool();
-        return HTypeFactory.createHiddenBool(computed);
+        return HTypeFactory.createHiddenBool(this.getValueAsBool());
     }
-//
-//    /**
-//     * Transform the current instance to a {@code HiddenString}.
-//     *
-//     * @return a {@code HiddenString} equivalent
-//     */
-//    @Override
-//    public HType toHiddenString() {
-//        TypeString computed = this.typeBool.toTypeString();
-//        return HTypeFactory.createHiddenString(computed);
-//    }
 
     /**
      * Returns the disjunction between logicals
@@ -138,6 +165,6 @@ public class HiddenBool extends AbstractHiddenType implements HLogical {
      */
     @Override
     public HType neg() {
-        return HTypeFactory.createHiddenBool(this.typeBool.neg());
+        return HTypeFactory.createHiddenBool(!this.getValueAsBool());
     }
 }

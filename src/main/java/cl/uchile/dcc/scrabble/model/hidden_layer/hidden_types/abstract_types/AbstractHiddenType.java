@@ -4,7 +4,6 @@ import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
-import java.util.HashMap;
 
 /**
  * An abstract class to wrap a generic {@code SType}. To use adapter pattern.
@@ -14,24 +13,6 @@ import java.util.HashMap;
  * @see SType
  */
 public abstract class AbstractHiddenType implements HType {
-
-    private final SType adaptee;
-
-    /**
-     * Constructor
-     * @param adaptee a {@code SType}
-     */
-    protected AbstractHiddenType(SType adaptee) {
-        this.adaptee = adaptee;
-    }
-
-    /**
-     * Value as String
-     * @return Value as String
-     */
-    public String getValueAsString() {
-        return adaptee.getValueAsString();
-    }
 
     /**
      * Transform the current instance to a {@code HiddenString}.
@@ -54,38 +35,6 @@ public abstract class AbstractHiddenType implements HType {
     public String asString(int space) {
         String tab = " ".repeat(space);
         return tab + this.asSType().toString();
-    }
-
-    /**
-     * Returns a hash code value for the object.
-     *
-     * @return a hash code value for this object.
-     * @see Object#equals(Object)
-     * @see System#identityHashCode
-     */
-    @Override
-    public int hashCode() {
-        return this.asSType().hashCode();
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param obj the reference object with which to compare.
-     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
-     * @see #hashCode()
-     * @see HashMap
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof HType)) {
-            return false;
-        }
-        HType hType = (HType) obj;
-        return this.asSType().equals(hType.asSType());
     }
 
 }

@@ -2,7 +2,6 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +28,7 @@ class HiddenStringTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testHashCode() {
-        assertEquals(typeString1.hashCode(), hiddenString1.hashCode(),
+        assertEquals(aString1.hashCode(), hiddenString1.hashCode(),
             "Method hashCode does not works." + messageSeed);
     }
 

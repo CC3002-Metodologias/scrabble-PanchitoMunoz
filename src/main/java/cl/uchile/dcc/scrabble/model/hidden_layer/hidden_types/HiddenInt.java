@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenIntBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import java.util.HashMap;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
@@ -15,7 +16,6 @@ import cl.uchile.dcc.scrabble.model.types.TypeInt;
  */
 public class HiddenInt extends AbstractHiddenInteger {
 
-    private final TypeInt typeInt;
     private final HiddenIntBridge bridge;
 
     /**
@@ -24,9 +24,7 @@ public class HiddenInt extends AbstractHiddenInteger {
      * @param typeInt a type int
      */
     public HiddenInt(TypeInt typeInt) {
-        super(typeInt);
-        this.typeInt = STypeFactory.createTypeInt(typeInt);
-        this.bridge = new HiddenIntBridge(this);
+        this(typeInt.getValueAsInt());
     }
 
     /**
@@ -35,7 +33,42 @@ public class HiddenInt extends AbstractHiddenInteger {
      * @param value an int
      */
     public HiddenInt(int value) {
-        this(STypeFactory.createTypeInt(value));
+        super(value);
+        this.bridge = new HiddenIntBridge(this);
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HiddenInt)) {
+            return false;
+        }
+
+        HiddenInt hiddenInt = (HiddenInt) o;
+
+        return getValue().equals(hiddenInt.getValue());
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
+    @Override
+    public int hashCode() {
+        return getValue();
     }
 
     /**
@@ -55,7 +88,17 @@ public class HiddenInt extends AbstractHiddenInteger {
      */
     @Override
     public Integer getValue() {
-        return this.asSType().getValue();
+        return this.getValueAsInt();
+    }
+
+    /**
+     * Value as String
+     *
+     * @return Value as String
+     */
+    @Override
+    public String getValueAsString() {
+        return Integer.toString(this.getValueAsInt());
     }
 
     /**
@@ -65,13 +108,13 @@ public class HiddenInt extends AbstractHiddenInteger {
      */
     @Override
     public TypeInt asSType() {
-        return STypeFactory.createTypeInt(typeInt);
+        return STypeFactory.createTypeInt(this.getValueAsInt());
     }
 
     @Override
     public String toString() {
         return "HiddenInt{" +
-            "value=" + typeInt.getValue() +
+            "value=" + this.getValueAsInt() +
             '}';
     }
 

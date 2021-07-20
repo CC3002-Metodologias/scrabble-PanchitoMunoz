@@ -2,9 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -33,10 +31,10 @@ class HiddenBoolTest extends BaseHTypeTest {
 
     @Test
     void testHashCode() {
-        assertEquals(trueTypeBool.hashCode(), trueHiddenBool.hashCode(),
-            "Method asString does not works.");
-        assertEquals(falseTypeBool.hashCode(), falseHiddenBool.hashCode(),
-            "Method asString does not works.");
+        assertEquals(1, trueHiddenBool.hashCode(),
+            "Method hashCode does not works.");
+        assertEquals(0, falseHiddenBool.hashCode(),
+            "Method hashCode does not works.");
     }
 
     @Test

@@ -13,13 +13,15 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
  */
 public abstract class AbstractHiddenNumber extends AbstractHiddenType implements HNumber {
 
+    private final double valueAsDouble;
+
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param adaptee a {@code SType}
+     * @param valueAsDouble a value as double
      */
-    protected AbstractHiddenNumber(SNumber adaptee) {
-        super(adaptee);
+    protected AbstractHiddenNumber(double valueAsDouble) {
+        this.valueAsDouble = valueAsDouble;
     }
 
     /**
@@ -36,7 +38,7 @@ public abstract class AbstractHiddenNumber extends AbstractHiddenType implements
      * @return Get value as double
      */
     public double getValueAsDouble() {
-        return this.asSType().getValueAsDouble();
+        return this.valueAsDouble;
     }
 
     /**

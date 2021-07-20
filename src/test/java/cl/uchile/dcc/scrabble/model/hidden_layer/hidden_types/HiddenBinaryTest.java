@@ -1,12 +1,10 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
@@ -41,7 +39,7 @@ class HiddenBinaryTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testHashCode() {
-        assertEquals(typeBinary1.hashCode(), hiddenBinary1.hashCode(),
+        assertEquals(BinaryUtilities.cleanBinary(aBinary1).hashCode(), hiddenBinary1.hashCode(),
             "Method hashCode does not works" + messageSeed);
     }
 

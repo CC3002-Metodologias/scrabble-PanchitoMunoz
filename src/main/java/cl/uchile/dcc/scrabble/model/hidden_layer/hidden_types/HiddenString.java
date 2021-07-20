@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenStringBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
+import java.util.HashMap;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
@@ -15,7 +16,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  */
 public class HiddenString extends AbstractHiddenType {
 
-    private final TypeString typeString;
+    private final String value;
     private final HiddenStringBridge bridge;
 
     /**
@@ -24,9 +25,7 @@ public class HiddenString extends AbstractHiddenType {
      * @param typeString a type string.
      */
     public HiddenString(TypeString typeString) {
-        super(typeString);
-        this.typeString = STypeFactory.createTypeString(typeString);
-        this.bridge = new HiddenStringBridge(this);
+        this(typeString.getValueAsString());
     }
 
     /**
@@ -35,7 +34,42 @@ public class HiddenString extends AbstractHiddenType {
      * @param value a string
      */
     public HiddenString(String value) {
-        this(STypeFactory.createTypeString(value));
+        this.value = value;
+        this.bridge = new HiddenStringBridge(this);
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HiddenString)) {
+            return false;
+        }
+
+        HiddenString that = (HiddenString) o;
+
+        return getValue().equals(that.getValue());
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
+    @Override
+    public int hashCode() {
+        return getValue().hashCode();
     }
 
     /**
@@ -55,7 +89,17 @@ public class HiddenString extends AbstractHiddenType {
      */
     @Override
     public String getValue() {
-        return this.asSType().getValue();
+        return this.getValueAsString();
+    }
+
+    /**
+     * Value as String
+     *
+     * @return Value as String
+     */
+    @Override
+    public String getValueAsString() {
+        return this.value;
     }
 
     /**
@@ -65,26 +109,15 @@ public class HiddenString extends AbstractHiddenType {
      */
     @Override
     public TypeString asSType() {
-        return STypeFactory.createTypeString(typeString);
+        return STypeFactory.createTypeString(this.getValueAsString());
     }
 
     @Override
     public String toString() {
         return "HiddenString{" +
-            "value='" + typeString.getValue() + '\'' +
+            "value='" + this.getValueAsString() + '\'' +
             '}';
     }
-//
-//    /**
-//     * Transform the current instance to a {@code HiddenString}.
-//     *
-//     * @return a {@code HiddenString} equivalent
-//     */
-//    @Override
-//    public HType toHiddenString() {
-//        TypeString computed = this.typeString.toTypeString();
-//        return HTypeFactory.createHiddenString(computed);
-//    }
 
     /**
      * Returns the sum
