@@ -1,9 +1,7 @@
-package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operations;
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**
  * Interface for logical operations in {@code HType}.

@@ -1,11 +1,7 @@
-package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.operations;
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**
  * Interface for arithmetical operations in {@code HType}.
