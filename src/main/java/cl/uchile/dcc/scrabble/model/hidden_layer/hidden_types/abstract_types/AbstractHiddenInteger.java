@@ -1,8 +1,10 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * todo: doc
@@ -10,7 +12,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 15:33
  */
-public abstract class AbstractHiddenInteger extends AbstractHiddenNumber {
+public abstract class AbstractHiddenInteger extends AbstractHiddenNumber implements HInteger {
 
     /**
      * Constructor
@@ -32,17 +34,42 @@ public abstract class AbstractHiddenInteger extends AbstractHiddenNumber {
 
     /**
      * Value as Int
+     *
      * @return Value as Int
      */
-    public Integer getValueAsInt() {
+    @Override
+    public int getValueAsInt() {
         return this.asSType().getValueAsInt();
     }
 
     /**
      * Value as Binary
+     *
      * @return Value as Binary
      */
     public String getValueAsBinary() {
         return this.asSType().getValueAsBinary();
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenBinary}.
+     *
+     * @return a {@code HiddenBinary} equivalent
+     */
+    @Override
+    public final HType toHiddenBinary() {
+        String computed = this.getValueAsBinary();
+        return HTypeFactory.createHiddenBinary(computed);
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenInt}.
+     *
+     * @return a {@code HiddenInt} equivalent
+     */
+    @Override
+    public final HType toHiddenInt() {
+        int computed = this.getValueAsInt();
+        return HTypeFactory.createHiddenInt(computed);
     }
 }

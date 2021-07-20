@@ -7,6 +7,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HArithm
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HTypesTransformations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenTypeBridge;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenASTVisitor;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -47,44 +48,10 @@ public interface HType
     }
 
     /**
-     * Value as Boolean
-     *
-     * @return Value as Boolean
-     */
-    default Boolean getValueAsBool() {
-        return null;
-    }
-
-    /**
-     * Value as Double
-     *
-     * @return Value as Double
-     */
-    default Double getValueAsDouble() {
-        return null;
-    }
-
-    /**
-     * Value as Int
-     * @return Value as Int
-     */
-    default Integer getValueAsInt() {
-        return null;
-    }
-
-    /**
      * Returns the value
      * @return the value in the object
      */
     Object getValue();
-
-    /**
-     * Value as Binary
-     * @return Value as Binary
-     */
-    default String getValueAsBinary() {
-        return null;
-    }
 
     /**
      * Gets the current instance in the wrapper
@@ -92,4 +59,24 @@ public interface HType
      * @return the instance in the wrapper
      */
     SType asSType();
+
+    /**
+     * Method that accepts a {@code HiddenASTVisitor}.
+     *
+     * @param visitor a {@code HiddenASTVisitor}.
+     */
+    @Override
+    default void accept(HiddenASTVisitor visitor) {
+        visitor.visitHType(this);
+    }
+
+    /**
+     * Calculate the {@code HType} result of performing all operations.
+     *
+     * @return {@code HType} result of operations
+     */
+    @Override
+    default HType calculate() {
+        return this;
+    }
 }

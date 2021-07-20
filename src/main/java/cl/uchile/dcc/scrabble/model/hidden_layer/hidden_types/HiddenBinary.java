@@ -1,15 +1,14 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBinaryBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
+
 /**
  * A class to wrap a {@code TypeBinary}. To use adapter pattern.
  *
@@ -17,7 +16,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/13 0:01
  * @see TypeBinary
  */
-public class HiddenBinary extends AbstractHiddenInteger {
+public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
 
     private final TypeBinary typeBinary;
     private final HiddenBinaryBridge bridge;
@@ -77,50 +76,6 @@ public class HiddenBinary extends AbstractHiddenInteger {
         return "HiddenBinary{" +
             "value=" + typeBinary.getValue() +
             '}';
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenBinary}.
-     *
-     * @return a {@code HiddenBinary} equivalent
-     */
-    @Override
-    public HiddenBinary toHiddenBinary() {
-        TypeBinary computed = this.typeBinary.toTypeBinary();
-        return HTypeFactory.createHiddenBinary(computed);
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenFloat}.
-     *
-     * @return a {@code HiddenFloat} equivalent
-     */
-    @Override
-    public HiddenFloat toHiddenFloat() {
-        TypeFloat computed = this.typeBinary.toTypeFloat();
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenInt}.
-     *
-     * @return a {@code HiddenInt} equivalent
-     */
-    @Override
-    public HiddenInt toHiddenInt() {
-        TypeInt computed = this.typeBinary.toTypeInt();
-        return HTypeFactory.createHiddenInt(computed);
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenString}.
-     *
-     * @return a {@code HiddenString} equivalent
-     */
-    @Override
-    public HiddenString toHiddenString() {
-        TypeString computed = this.typeBinary.toTypeString();
-        return HTypeFactory.createHiddenString(computed);
     }
 
     /**

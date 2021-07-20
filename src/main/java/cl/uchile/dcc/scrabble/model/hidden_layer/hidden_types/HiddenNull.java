@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenNullBridge;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
@@ -11,7 +10,7 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/26 14:20
  */
-public class HiddenNull extends AbstractHiddenType {
+public class HiddenNull implements HType {
 
     /**
      * To use Singleton pattern
@@ -23,7 +22,6 @@ public class HiddenNull extends AbstractHiddenType {
      * Private constructor to avoid multiples instances
      */
     private HiddenNull() {
-        super(null);
         this.bridge = new HiddenNullBridge(this);
     }
 

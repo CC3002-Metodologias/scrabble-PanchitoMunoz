@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
 
 /**
  * Abstract class for a general Number Bridge.
@@ -18,12 +18,23 @@ public abstract class AbstractHiddenNumberBridge extends AbstractHiddenTypeBridg
      * @param value an {@code HType}
      */
     protected AbstractHiddenNumberBridge(
-        HType value) {
+        HNumber value) {
         super(value);
     }
 
     /**
+     * Returns the value in the bridge
+     *
+     * @return the value in the bridge
+     */
+    @Override
+    public HNumber getValue() {
+        return (HNumber) super.getValue();
+    }
+
+    /**
      * Gets the value as Double
+     *
      * @return the value as Double
      */
     public double getValueAsDouble() {

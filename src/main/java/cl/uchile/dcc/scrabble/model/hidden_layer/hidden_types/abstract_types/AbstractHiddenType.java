@@ -1,9 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenASTVisitor;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
 
@@ -35,13 +34,14 @@ public abstract class AbstractHiddenType implements HType {
     }
 
     /**
-     * Calculate the {@code HType} result of performing all operations
+     * Transform the current instance to a {@code HiddenString}.
      *
-     * @return HType result of operations.
+     * @return a {@code HiddenString} equivalent
      */
     @Override
-    public HType calculate() {
-        return this;
+    public final HiddenString toHiddenString() {
+        String computed = this.getValueAsString();
+        return HTypeFactory.createHiddenString(computed);
     }
 
     /**
@@ -86,16 +86,6 @@ public abstract class AbstractHiddenType implements HType {
         }
         HType hType = (HType) obj;
         return this.asSType().equals(hType.asSType());
-    }
-
-    /**
-     * Method that accepts a {@code HiddenASTVisitor}.
-     *
-     * @param visitor a {@code HiddenASTVisitor}.
-     */
-    @Override
-    public void accept(HiddenASTVisitor visitor) {
-        visitor.visitHType(this);
     }
 
 }

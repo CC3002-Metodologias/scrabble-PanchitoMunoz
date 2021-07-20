@@ -1,13 +1,9 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenIntBridge;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
@@ -77,50 +73,6 @@ public class HiddenInt extends AbstractHiddenInteger {
         return "HiddenInt{" +
             "value=" + typeInt.getValue() +
             '}';
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenBinary}.
-     *
-     * @return a {@code HiddenBinary} equivalent
-     */
-    @Override
-    public HType toHiddenBinary() {
-        TypeBinary computed = this.typeInt.toTypeBinary();
-        return HTypeFactory.createHiddenBinary(computed);
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenFloat}.
-     *
-     * @return a {@code HiddenFloat} equivalent
-     */
-    @Override
-    public HType toHiddenFloat() {
-        TypeFloat computed = this.typeInt.toTypeFloat();
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenInt}.
-     *
-     * @return a {@code HiddenInt} equivalent
-     */
-    @Override
-    public HType toHiddenInt() {
-        TypeInt computed = this.typeInt.toTypeInt();
-        return HTypeFactory.createHiddenInt(computed);
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenString}.
-     *
-     * @return a {@code HiddenString} equivalent
-     */
-    @Override
-    public HType toHiddenString() {
-        TypeString computed = this.typeInt.toTypeString();
-        return HTypeFactory.createHiddenString(computed);
     }
 
     /**

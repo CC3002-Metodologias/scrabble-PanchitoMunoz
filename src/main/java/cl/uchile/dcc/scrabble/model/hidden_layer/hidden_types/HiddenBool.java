@@ -1,13 +1,14 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBoolBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
+
 /**
  * A class to wrap a {@code TypeBool}. To use adapter pattern.
  *
@@ -15,7 +16,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeString;
  * @create 2021/06/13 0:00
  * @see TypeBool
  */
-public class HiddenBool extends AbstractHiddenType {
+public class HiddenBool extends AbstractHiddenType implements HLogical {
 
     private final TypeBool typeBool;
     private final HiddenBoolBridge bridge;
@@ -36,7 +37,6 @@ public class HiddenBool extends AbstractHiddenType {
      *
      * @return Value as Boolean
      */
-    @Override
     public Boolean getValueAsBool() {
         return this.typeBool.getValue();
     }
@@ -97,17 +97,17 @@ public class HiddenBool extends AbstractHiddenType {
         TypeBool computed = this.typeBool.toTypeBool();
         return HTypeFactory.createHiddenBool(computed);
     }
-
-    /**
-     * Transform the current instance to a {@code HiddenString}.
-     *
-     * @return a {@code HiddenString} equivalent
-     */
-    @Override
-    public HType toHiddenString() {
-        TypeString computed = this.typeBool.toTypeString();
-        return HTypeFactory.createHiddenString(computed);
-    }
+//
+//    /**
+//     * Transform the current instance to a {@code HiddenString}.
+//     *
+//     * @return a {@code HiddenString} equivalent
+//     */
+//    @Override
+//    public HType toHiddenString() {
+//        TypeString computed = this.typeBool.toTypeString();
+//        return HTypeFactory.createHiddenString(computed);
+//    }
 
     /**
      * Returns the disjunction between logicals

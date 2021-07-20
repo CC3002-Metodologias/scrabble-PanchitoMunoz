@@ -1,11 +1,9 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenNumber;
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenNumber;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenFloatBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 // TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
@@ -75,28 +73,6 @@ public class HiddenFloat extends AbstractHiddenNumber {
         return "HiddenFloat{" +
             "value=" + typeFloat.getValue() +
             '}';
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenFloat}.
-     *
-     * @return a {@code HiddenFloat} equivalent
-     */
-    @Override
-    public HType toHiddenFloat() {
-        TypeFloat computed = this.typeFloat.toTypeFloat();
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * Transform the current instance to a {@code HiddenString}.
-     *
-     * @return a {@code HiddenString} equivalent
-     */
-    @Override
-    public HType toHiddenString() {
-        TypeString computed = this.typeFloat.toTypeString();
-        return HTypeFactory.createHiddenString(computed);
     }
 
     /**

@@ -1,8 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenStringBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 
@@ -75,17 +74,17 @@ public class HiddenString extends AbstractHiddenType {
             "value='" + typeString.getValue() + '\'' +
             '}';
     }
-
-    /**
-     * Transform the current instance to a {@code HiddenString}.
-     *
-     * @return a {@code HiddenString} equivalent
-     */
-    @Override
-    public HType toHiddenString() {
-        TypeString computed = this.typeString.toTypeString();
-        return HTypeFactory.createHiddenString(computed);
-    }
+//
+//    /**
+//     * Transform the current instance to a {@code HiddenString}.
+//     *
+//     * @return a {@code HiddenString} equivalent
+//     */
+//    @Override
+//    public HType toHiddenString() {
+//        TypeString computed = this.typeString.toTypeString();
+//        return HTypeFactory.createHiddenString(computed);
+//    }
 
     /**
      * Returns the sum

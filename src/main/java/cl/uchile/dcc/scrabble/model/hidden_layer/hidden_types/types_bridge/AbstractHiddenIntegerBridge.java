@@ -1,9 +1,9 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInteger;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 
 /**
@@ -20,12 +20,23 @@ public abstract class AbstractHiddenIntegerBridge extends AbstractHiddenNumberBr
      * @param value an {@code HType}
      */
     protected AbstractHiddenIntegerBridge(
-        HType value) {
+        HInteger value) {
         super(value);
     }
 
     /**
+     * Returns the value in the bridge
+     *
+     * @return the value in the bridge
+     */
+    @Override
+    public HInteger getValue() {
+        return (HInteger) super.getValue();
+    }
+
+    /**
      * Gets the value as binary
+     *
      * @return the value as binary
      */
     public String getValueAsBinary() {

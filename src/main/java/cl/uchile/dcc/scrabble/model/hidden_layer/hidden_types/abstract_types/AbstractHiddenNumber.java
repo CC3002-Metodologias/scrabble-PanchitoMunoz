@@ -1,7 +1,9 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * todo:doc
@@ -9,7 +11,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 15:31
  */
-public abstract class AbstractHiddenNumber extends AbstractHiddenType {
+public abstract class AbstractHiddenNumber extends AbstractHiddenType implements HNumber {
 
     /**
      * Constructor
@@ -30,10 +32,21 @@ public abstract class AbstractHiddenNumber extends AbstractHiddenType {
 
     /**
      * Get value as double
+     *
      * @return Get value as double
      */
-    @Override
-    public Double getValueAsDouble() {
+    public double getValueAsDouble() {
         return this.asSType().getValueAsDouble();
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenFloat}.
+     *
+     * @return a {@code HiddenFloat} equivalent
+     */
+    @Override
+    public final HType toHiddenFloat() {
+        double computed = this.getValueAsDouble();
+        return HTypeFactory.createHiddenFloat(computed);
     }
 }
