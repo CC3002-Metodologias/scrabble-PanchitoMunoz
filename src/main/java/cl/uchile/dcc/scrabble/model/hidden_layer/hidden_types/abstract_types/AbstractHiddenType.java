@@ -6,7 +6,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
- * An abstract class to wrap a generic {@code SType}. To use adapter pattern.
+ * An abstract class to represent a general Type
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 23:54
@@ -32,9 +32,16 @@ public abstract class AbstractHiddenType implements HType {
      * @return the current {@code HiddenAST} as {@code String}
      */
     @Override
-    public String asString(int space) {
+    public final String asString(int space) {
         String tab = " ".repeat(space);
-        return tab + this.asSType().toString();
+        return tab + this.sTypeAsString();
     }
+
+    /**
+     * Returns the {@code SType} as String
+     *
+     * @return the {@code SType} as String
+     */
+    public abstract String sTypeAsString();
 
 }

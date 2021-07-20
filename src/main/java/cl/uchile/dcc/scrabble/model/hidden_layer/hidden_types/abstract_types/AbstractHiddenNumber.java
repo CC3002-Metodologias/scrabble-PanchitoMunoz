@@ -3,10 +3,9 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
 /**
- * todo:doc
+ * An abstract class for a general Number.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 15:31
@@ -25,14 +24,6 @@ public abstract class AbstractHiddenNumber extends AbstractHiddenType implements
     }
 
     /**
-     * Gets the current instance in the wrapper
-     *
-     * @return the instance in the wrapper
-     */
-    @Override
-    public abstract SNumber asSType();
-
-    /**
      * Get value as double
      *
      * @return Get value as double
@@ -48,7 +39,6 @@ public abstract class AbstractHiddenNumber extends AbstractHiddenType implements
      */
     @Override
     public final HType toHiddenFloat() {
-        double computed = this.getValueAsDouble();
-        return HTypeFactory.createHiddenFloat(computed);
+        return HTypeFactory.createHiddenFloat(this.getValueAsDouble());
     }
 }

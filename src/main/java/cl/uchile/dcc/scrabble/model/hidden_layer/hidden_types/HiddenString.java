@@ -6,9 +6,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.Hidde
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import java.util.HashMap;
 
-// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
- * A class to wrap a {@code TypeString}. To use adapter pattern.
+ * A class to represent a String. To be adapted by {@code TypeString}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 23:57
@@ -128,5 +127,15 @@ public class HiddenString extends AbstractHiddenType {
     @Override
     public HType add(HType hType) {
         return hType.getBridge().addWithString(this);
+    }
+
+    /**
+     * Returns the {@code SType} as String
+     *
+     * @return the {@code SType} as String
+     */
+    @Override
+    public String sTypeAsString() {
+        return "TypeString{value='" + this.getValueAsString() + "'}";
     }
 }

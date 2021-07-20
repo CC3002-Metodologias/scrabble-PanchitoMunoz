@@ -8,10 +8,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.Hidde
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import java.util.HashMap;
 
-// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
-
 /**
- * A class to wrap a {@code TypeBool}. To use adapter pattern.
+ * A class to represent a Bool. To be adapted by {@code TypeBool}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/13 0:00
@@ -166,5 +164,15 @@ public class HiddenBool extends AbstractHiddenType implements HLogical {
     @Override
     public HType neg() {
         return HTypeFactory.createHiddenBool(!this.getValueAsBool());
+    }
+
+    /**
+     * Returns the {@code SType} as String
+     *
+     * @return the {@code SType} as String
+     */
+    @Override
+    public String sTypeAsString() {
+        return "TypeBool{value=" + this.getValueAsBool() + "}";
     }
 }

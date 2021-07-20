@@ -6,9 +6,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.Hidde
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import java.util.HashMap;
 
-// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
- * A class to wrap a {@code TypeInt}. To use adapter pattern.
+ * A class to represent an Int. To be adapted by {@code TypeInt}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/13 0:02
@@ -160,5 +159,15 @@ public class HiddenInt extends AbstractHiddenInteger {
     @Override
     public HType sub(HType hType) {
         return hType.getBridge().subWithInt(this);
+    }
+
+    /**
+     * Returns the {@code SType} as String
+     *
+     * @return the {@code SType} as String
+     */
+    @Override
+    public String sTypeAsString() {
+        return "TypeInt{value=" + this.getValueAsInt() + "}";
     }
 }

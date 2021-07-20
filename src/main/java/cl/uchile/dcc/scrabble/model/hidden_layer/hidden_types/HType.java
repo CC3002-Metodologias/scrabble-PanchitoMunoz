@@ -11,8 +11,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenASTVisito
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
- * An interface that defines a wrap of {@code SType}. This is a leaf of {@code HiddenAST}, using the
- * composite pattern. Also, it is used the Adapter pattern.
+ * An interface that defines a general Hidden Type. This is a leaf of {@code HiddenAST}, using the
+ * composite pattern.
  *
  * <p>
  * The purpose of this adapter is to allow the operations that in other way can not be computed, and

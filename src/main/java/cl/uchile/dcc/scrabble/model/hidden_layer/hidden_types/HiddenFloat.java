@@ -6,9 +6,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.Hidde
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import java.util.HashMap;
 
-// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
 /**
- * A class to wrap a {@code TypeFloat}. To use adapter pattern.
+ * A class to represent a Float. To be adapted by {@code TypeFloat}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/13 0:02
@@ -161,5 +160,15 @@ public class HiddenFloat extends AbstractHiddenNumber {
     @Override
     public HType sub(HType hType) {
         return hType.getBridge().subWithFloat(this);
+    }
+
+    /**
+     * Returns the {@code SType} as String
+     *
+     * @return the {@code SType} as String
+     */
+    @Override
+    public String sTypeAsString() {
+        return "TypeFloat{value=" + this.getValueAsDouble() + "}";
     }
 }

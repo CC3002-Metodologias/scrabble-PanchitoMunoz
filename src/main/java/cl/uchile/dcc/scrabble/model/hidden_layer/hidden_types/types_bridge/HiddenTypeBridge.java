@@ -9,7 +9,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 
 /**
- * An interface for a general Type Bridge
+ * An interface for a general Type Bridge. The classes that implements this interface is to store
+ * the logic of the Double Dispatch.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 15:08

@@ -9,10 +9,8 @@ import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import java.util.HashMap;
 
-// TODO: trasladar la lógica de las operaciones aquí y dejar SType como un adaptador
-
 /**
- * A class to wrap a {@code TypeBinary}. To use adapter pattern.
+ * A class to represent a Binary. To be adapted by {@code TypeBinary}.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/13 0:01
@@ -118,7 +116,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
     @Override
     public String toString() {
         return "HiddenBinary{" +
-            "value=" + this.asSType().getValue() +
+            "value=" + this.getValueAsBinary() +
             '}';
     }
 
@@ -197,5 +195,15 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
     public HType neg() {
         return HTypeFactory.createHiddenBinary(
             BinaryUtilities.oneComplement(this.getValueAsBinary()));
+    }
+
+    /**
+     * Returns the {@code SType} as String
+     *
+     * @return the {@code SType} as String
+     */
+    @Override
+    public String sTypeAsString() {
+        return "TypeBinary{value=" + this.getValueAsBinary() + "}";
     }
 }

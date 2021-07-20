@@ -3,11 +3,10 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInteger;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 
 /**
- * todo: doc
+ * An abstract class for a general Integer.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 15:33
@@ -27,14 +26,6 @@ public abstract class AbstractHiddenInteger extends AbstractHiddenNumber impleme
         this.valueAsInt = value;
         this.valueAsBinary = BinaryUtilities.intToBinary(value);
     }
-
-    /**
-     * Gets the current instance in the wrapper
-     *
-     * @return the instance in the wrapper
-     */
-    @Override
-    public abstract SInteger asSType();
 
     /**
      * Value as Int
