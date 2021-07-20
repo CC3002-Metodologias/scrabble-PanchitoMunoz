@@ -2,10 +2,9 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 
 /**
- * An abstract class for the Type Visitors.
+ * Abstract class for a general Type Bridge.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 17:43
@@ -23,12 +22,20 @@ public abstract class AbstractHiddenTypeBridge implements HiddenTypeBridge {
     }
 
     /**
-     * Returns the value in the visitor
-     * @return the value in the visitor
+     * Returns the value in the bridge
+     * @return the value in the bridge
      */
     @Override
     public HType getValue() {
         return value;
+    }
+
+    /**
+     * Gets the value as String
+     * @return the value as String
+     */
+    public final String getValueAsString() {
+        return this.getValue().getValueAsString();
     }
 
     /**
@@ -37,8 +44,7 @@ public abstract class AbstractHiddenTypeBridge implements HiddenTypeBridge {
      */
     @Override
     public HType addWithString(HiddenString hiddenString) {
-        TypeString computed = this.getValue().asSType().addWithString(
-            hiddenString.asSType());
+        String computed = hiddenString.getValueAsString() + this.getValueAsString();
         return new HiddenString(computed);
     }
 }

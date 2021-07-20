@@ -51,6 +51,16 @@ public class HiddenFloat extends AbstractHiddenNumber {
     }
 
     /**
+     * Returns the value
+     *
+     * @return the value in the object
+     */
+    @Override
+    public Double getValue() {
+        return this.asSType().getValue();
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper

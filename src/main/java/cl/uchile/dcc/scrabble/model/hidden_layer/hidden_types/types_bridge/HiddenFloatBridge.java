@@ -1,18 +1,16 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
-import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 
 /**
- * todo: doc
+ * A class to define the auxiliary methods for a Hidden Float to use double dispatch. The purpose of this class is to use Bridge Pattern.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 18:18
  */
-public class HiddenFloatBridge extends AbstractHiddenTypeBridge {
+public class HiddenFloatBridge extends AbstractHiddenNumberBridge {
 
     /**
      * Constructor.
@@ -25,9 +23,9 @@ public class HiddenFloatBridge extends AbstractHiddenTypeBridge {
     }
 
     /**
-     * Returns the value in the visitor
+     * Returns the value in the bridge
      *
-     * @return the value in the visitor
+     * @return the value in the bridge
      */
     @Override
     public HiddenFloat getValue() {
@@ -36,31 +34,11 @@ public class HiddenFloatBridge extends AbstractHiddenTypeBridge {
 
     /**
      * To use double dispatch in {@code add}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    @Override
-    public HType addWithFloat(HiddenFloat hiddenFloat) {
-        TypeFloat computed = this.getValue().asSType().addWithFloat(hiddenFloat.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code add}
      * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType addWithInt(HiddenInt hiddenInt) {
-        TypeFloat computed = this.getValue().asSType().addWithInt(hiddenInt.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code sub}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    @Override
-    public HType subWithFloat(HiddenFloat hiddenFloat) {
-        TypeFloat computed = this.getValue().asSType().subWithFloat(hiddenFloat.asSType());
+    public HiddenFloat addWithInt(HiddenInt hiddenInt) {
+        double computed = hiddenInt.getValueAsDouble() + this.getValueAsDouble();
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -71,20 +49,8 @@ public class HiddenFloatBridge extends AbstractHiddenTypeBridge {
      * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType subWithInt(HiddenInt hiddenInt) {
-        TypeFloat computed = this.getValue().asSType().subWithInt(hiddenInt.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code mult}
-     *
-     *
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    @Override
-    public HType multWithFloat(HiddenFloat hiddenFloat) {
-        TypeFloat computed = this.getValue().asSType().multWithFloat(hiddenFloat.asSType());
+    public HiddenFloat subWithInt(HiddenInt hiddenInt) {
+        double computed = hiddenInt.getValueAsDouble() - this.getValueAsDouble();
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -95,20 +61,8 @@ public class HiddenFloatBridge extends AbstractHiddenTypeBridge {
      * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType multWithInt(HiddenInt hiddenInt) {
-        TypeFloat computed = this.getValue().asSType().multWithInt(hiddenInt.asSType());
-        return HTypeFactory.createHiddenFloat(computed);
-    }
-
-    /**
-     * To use double dispatch in {@code div}
-     *
-     *
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    @Override
-    public HType divWithFloat(HiddenFloat hiddenFloat) {
-        TypeFloat computed = this.getValue().asSType().divWithFloat(hiddenFloat.asSType());
+    public HiddenFloat multWithInt(HiddenInt hiddenInt) {
+        double computed = hiddenInt.getValueAsDouble() * this.getValueAsDouble();
         return HTypeFactory.createHiddenFloat(computed);
     }
 
@@ -119,8 +73,11 @@ public class HiddenFloatBridge extends AbstractHiddenTypeBridge {
      * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public HType divWithInt(HiddenInt hiddenInt) {
-        TypeFloat computed = this.getValue().asSType().divWithInt(hiddenInt.asSType());
+    public HiddenFloat divWithInt(HiddenInt hiddenInt) {
+        if (this.getValueAsDouble() == 0) {
+            return HTypeFactory.createHiddenFloat(0.0);
+        }
+        double computed = hiddenInt.getValueAsDouble() / this.getValueAsDouble();
         return HTypeFactory.createHiddenFloat(computed);
     }
 }

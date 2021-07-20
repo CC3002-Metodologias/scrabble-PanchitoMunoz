@@ -56,6 +56,16 @@ public class HiddenNull extends AbstractHiddenType {
     }
 
     /**
+     * Returns the value
+     *
+     * @return the value in the object
+     */
+    @Override
+    public Object getValue() {
+        return null;
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper

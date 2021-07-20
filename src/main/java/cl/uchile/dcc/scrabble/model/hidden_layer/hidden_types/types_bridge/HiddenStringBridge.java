@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 
 /**
- * todo: doc
+ * A class to define the auxiliary methods for a Hidden String to use double dispatch. The purpose of this class is to use Bridge Pattern.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 18:19
@@ -21,9 +21,9 @@ public class HiddenStringBridge extends AbstractHiddenTypeBridge {
     }
 
     /**
-     * Returns the value in the visitor
+     * Returns the value in the bridge
      *
-     * @return the value in the visitor
+     * @return the value in the bridge
      */
     @Override
     public HiddenString getValue() {

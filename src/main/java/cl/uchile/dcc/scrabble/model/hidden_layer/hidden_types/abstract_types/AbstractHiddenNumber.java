@@ -32,7 +32,8 @@ public abstract class AbstractHiddenNumber extends AbstractHiddenType {
      * Get value as double
      * @return Get value as double
      */
-    public double getValueAsDouble() {
+    @Override
+    public Double getValueAsDouble() {
         return this.asSType().getValueAsDouble();
     }
 }

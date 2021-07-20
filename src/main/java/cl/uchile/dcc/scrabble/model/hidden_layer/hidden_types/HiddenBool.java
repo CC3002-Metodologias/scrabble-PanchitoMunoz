@@ -32,6 +32,26 @@ public class HiddenBool extends AbstractHiddenType {
     }
 
     /**
+     * Value as Boolean
+     *
+     * @return Value as Boolean
+     */
+    @Override
+    public Boolean getValueAsBool() {
+        return this.typeBool.getValue();
+    }
+
+    /**
+     * Returns the value
+     *
+     * @return the value in the object
+     */
+    @Override
+    public Boolean getValue() {
+        return this.asSType().getValue();
+    }
+
+    /**
      * Constructor.
      *
      * @param value a boolean

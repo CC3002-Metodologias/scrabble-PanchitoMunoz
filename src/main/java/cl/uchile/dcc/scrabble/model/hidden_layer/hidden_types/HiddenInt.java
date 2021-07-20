@@ -53,6 +53,16 @@ public class HiddenInt extends AbstractHiddenInteger {
     }
 
     /**
+     * Returns the value
+     *
+     * @return the value in the object
+     */
+    @Override
+    public Integer getValue() {
+        return this.asSType().getValue();
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper

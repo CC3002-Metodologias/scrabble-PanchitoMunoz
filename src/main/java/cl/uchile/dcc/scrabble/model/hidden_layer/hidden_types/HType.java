@@ -45,12 +45,36 @@ public interface HType extends HiddenASTLeaf, HArithmeticOperations, HLogicalOpe
     }
 
     /**
+     * Value as Boolean
+     *
+     * @return Value as Boolean
+     */
+    default Boolean getValueAsBool() {
+        return null;
+    }
+
+    /**
+     * Value as Double
+     *
+     * @return Value as Double
+     */
+    default Double getValueAsDouble() {
+        return null;
+    }
+
+    /**
      * Value as Int
      * @return Value as Int
      */
     default Integer getValueAsInt() {
         return null;
     }
+
+    /**
+     * Returns the value
+     * @return the value in the object
+     */
+    Object getValue();
 
     /**
      * Value as Binary

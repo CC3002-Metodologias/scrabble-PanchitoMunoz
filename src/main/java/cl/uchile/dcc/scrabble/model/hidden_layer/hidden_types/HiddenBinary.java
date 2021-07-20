@@ -53,6 +53,16 @@ public class HiddenBinary extends AbstractHiddenInteger {
     }
 
     /**
+     * Returns the value
+     *
+     * @return the value in the object
+     */
+    @Override
+    public String getValue() {
+        return this.asSType().getValue();
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper

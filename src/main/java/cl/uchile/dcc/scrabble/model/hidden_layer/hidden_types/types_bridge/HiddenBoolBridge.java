@@ -1,14 +1,12 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
-import cl.uchile.dcc.scrabble.model.types.TypeBinary;
-import cl.uchile.dcc.scrabble.model.types.TypeBool;
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 
 /**
- * todo: doc
+ * A class to define the auxiliary methods for a Hidden Bool to use double dispatch. The purpose of this class is to use Bridge Pattern.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 18:11
@@ -26,9 +24,9 @@ public class HiddenBoolBridge extends AbstractHiddenTypeBridge {
     }
 
     /**
-     * Returns the value in the visitor
+     * Returns the value in the bridge
      *
-     * @return the value in the visitor
+     * @return the value in the bridge
      */
     @Override
     public HiddenBool getValue() {
@@ -36,12 +34,20 @@ public class HiddenBoolBridge extends AbstractHiddenTypeBridge {
     }
 
     /**
+     * Gets the value as bool
+     * @return the value as bool
+     */
+    public boolean getValueAsBool() {
+        return this.getValue().getValueAsBool();
+    }
+
+    /**
      * To use double dispatch in {@code and}
      * @param hiddenBool a {@code HiddenBool}
      */
     @Override
-    public HType andWithBool(HiddenBool hiddenBool) {
-        TypeBool computed = this.getValue().asSType().andWithBool(hiddenBool.asSType());
+    public HiddenBool andWithBool(HiddenBool hiddenBool) {
+        boolean computed = hiddenBool.getValueAsBool() && this.getValueAsBool();
         return HTypeFactory.createHiddenBool(computed);
     }
 
@@ -52,8 +58,9 @@ public class HiddenBoolBridge extends AbstractHiddenTypeBridge {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType andWithBinary(HiddenBinary hiddenBinary) {
-        TypeBinary computed = this.getValue().asSType().andWithBinary(hiddenBinary.asSType());
+    public HiddenBinary andWithBinary(HiddenBinary hiddenBinary) {
+        String computed = BinaryUtilities.boolAndBinary(
+            this.getValueAsBool(), hiddenBinary.getValueAsBinary());
         return HTypeFactory.createHiddenBinary(computed);
     }
 
@@ -64,8 +71,8 @@ public class HiddenBoolBridge extends AbstractHiddenTypeBridge {
      * @param hiddenBool a {@code HiddenBool}
      */
     @Override
-    public HType orWithBool(HiddenBool hiddenBool) {
-        TypeBool computed = this.getValue().asSType().orWithBool(hiddenBool.asSType());
+    public HiddenBool orWithBool(HiddenBool hiddenBool) {
+        boolean computed = hiddenBool.getValueAsBool() || this.getValueAsBool();
         return HTypeFactory.createHiddenBool(computed);
     }
 
@@ -76,8 +83,9 @@ public class HiddenBoolBridge extends AbstractHiddenTypeBridge {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public HType orWithBinary(HiddenBinary hiddenBinary) {
-        TypeBinary computed = this.getValue().asSType().orWithBinary(hiddenBinary.asSType());
+    public HiddenBinary orWithBinary(HiddenBinary hiddenBinary) {
+        String computed = BinaryUtilities.boolOrBinary(
+            this.getValueAsBool(), hiddenBinary.getValueAsBinary());
         return HTypeFactory.createHiddenBinary(computed);
     }
 }

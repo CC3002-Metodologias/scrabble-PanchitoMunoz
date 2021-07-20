@@ -1,0 +1,75 @@
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
+
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
+
+/**
+ * Abstract class for a general Number Bridge.
+ *
+ * @author Francisco Muñoz Guajardo
+ * @create 2021/07/20 0:23
+ */
+public abstract class AbstractHiddenNumberBridge extends AbstractHiddenTypeBridge {
+
+    /**
+     * Constructor.
+     *
+     * @param value an {@code HType}
+     */
+    protected AbstractHiddenNumberBridge(
+        HType value) {
+        super(value);
+    }
+
+    /**
+     * Gets the value as Double
+     * @return the value as Double
+     */
+    public double getValueAsDouble() {
+        return this.getValue().getValueAsDouble();
+    }
+
+    /**
+     * To use double dispatch in {@code add}
+     * @param hiddenFloat a {@code HiddenFloat}
+     */
+    @Override
+    public final HiddenFloat addWithFloat(HiddenFloat hiddenFloat) {
+        double computed = hiddenFloat.getValueAsDouble() + this.getValueAsDouble();
+        return HTypeFactory.createHiddenFloat(computed);
+    }
+
+    /**
+     * To use double dispatch in {@code sub}
+     * @param hiddenFloat a {@code HiddenFloat}
+     */
+    @Override
+    public final HiddenFloat subWithFloat(HiddenFloat hiddenFloat) {
+        double computed = hiddenFloat.getValueAsDouble() - this.getValueAsDouble();
+        return HTypeFactory.createHiddenFloat(computed);
+    }
+
+    /**
+     * To use double dispatch in {@code mult}
+     * @param hiddenFloat a {@code HiddenFloat}
+     */
+    @Override
+    public final HiddenFloat multWithFloat(HiddenFloat hiddenFloat) {
+        double computed = hiddenFloat.getValueAsDouble() * this.getValueAsDouble();
+        return HTypeFactory.createHiddenFloat(computed);
+    }
+
+    /**
+     * To use double dispatch in {@code div}
+     * @param hiddenFloat a {@code HiddenFloat}
+     */
+    @Override
+    public final HiddenFloat divWithFloat(HiddenFloat hiddenFloat) {
+        if (this.getValueAsDouble() == 0) {
+            return HTypeFactory.createHiddenFloat(0.0);
+        }
+        double computed = hiddenFloat.getValueAsDouble() / this.getValueAsDouble();
+        return HTypeFactory.createHiddenFloat(computed);
+    }
+}

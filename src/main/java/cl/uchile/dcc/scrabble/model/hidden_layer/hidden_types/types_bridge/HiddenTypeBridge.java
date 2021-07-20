@@ -9,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 
 /**
- * An interface for a general Type Visitor
+ * An interface for a general Type Bridge
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/13 15:08
@@ -17,8 +17,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 public interface HiddenTypeBridge {
 
     /**
-     * Returns the value in the visitor
-     * @return the value in the visitor
+     * Returns the value in the bridge
+     * @return the value in the bridge
      */
     HType getValue();
 
