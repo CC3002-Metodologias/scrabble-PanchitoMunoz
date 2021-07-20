@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -68,7 +69,7 @@ class HiddenFloatTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testToHiddenString() {
-        assertEquals(new HiddenString(typeFloat1.toTypeString()), hiddenFloat1.toHiddenString(),
+        assertEquals(new HiddenString(Double.toString(aFloat1)), hiddenFloat1.toHiddenString(),
             "Method toHiddenString does not works." + messageSeed);
     }
 
@@ -91,7 +92,8 @@ class HiddenFloatTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testAdd() {
-        HiddenFloat expected1 = new HiddenFloat(typeFloat1.add(typeBinary1));
+        HiddenFloat expected1 = new HiddenFloat(
+            aFloat1 + BinaryUtilities.binaryToInt(aBinary1));
         assertEquals(expected1, hiddenFloat1.add(hiddenBinary1),
             "Method add does not works with binaries." + messageSeed);
 
@@ -100,11 +102,11 @@ class HiddenFloatTest extends BaseHTypeTest {
         assertEquals(hiddenNull, hiddenFloat1.add(falseHiddenBool),
             "Method add does not works with booleans." + messageSeed);
 
-        HiddenFloat expected3 = new HiddenFloat(typeFloat1.add(typeFloat2));
+        HiddenFloat expected3 = new HiddenFloat(aFloat1 + aFloat2);
         assertEquals(expected3, hiddenFloat1.add(hiddenFloat2),
             "Method add does not works with floats." + messageSeed);
 
-        HiddenFloat expected4 = new HiddenFloat(typeFloat1.add(typeInt1));
+        HiddenFloat expected4 = new HiddenFloat(aFloat1 + anInt1);
         assertEquals(expected4, hiddenFloat1.add(hiddenInt1),
             "Method add does not works with int." + messageSeed);
 
@@ -114,22 +116,29 @@ class HiddenFloatTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testDiv() {
-        HiddenFloat expected1 = new HiddenFloat(typeFloat1.div(typeBinary1));
-        assertEquals(expected1, hiddenFloat1.div(hiddenBinary1),
-            "Method div does not works with binaries." + messageSeed);
+        if (BinaryUtilities.binaryToInt(aBinary1) != 0) {
+            HiddenFloat expected1 = new HiddenFloat(
+                aFloat1 / BinaryUtilities.binaryToInt(aBinary1));
+            assertEquals(expected1, hiddenFloat1.div(hiddenBinary1),
+                "Method div does not works with binaries." + messageSeed);
+        }
 
         assertEquals(hiddenNull, hiddenFloat1.div(trueHiddenBool),
             "Method div does not works with booleans." + messageSeed);
         assertEquals(hiddenNull, hiddenFloat1.div(falseHiddenBool),
             "Method div does not works with booleans." + messageSeed);
 
-        HiddenFloat expected3 = new HiddenFloat(typeFloat1.div(typeFloat2));
-        assertEquals(expected3, hiddenFloat1.div(hiddenFloat2),
-            "Method div does not works with floats." + messageSeed);
+        if (aFloat2 != 0) {
+            HiddenFloat expected3 = new HiddenFloat(aFloat1 / aFloat2);
+            assertEquals(expected3, hiddenFloat1.div(hiddenFloat2),
+                "Method div does not works with floats." + messageSeed);
+        }
 
-        HiddenFloat expected4 = new HiddenFloat(typeFloat1.div(typeInt1));
-        assertEquals(expected4, hiddenFloat1.div(hiddenInt1),
-            "Method div does not works with int." + messageSeed);
+        if (anInt1 != 0) {
+            HiddenFloat expected4 = new HiddenFloat(aFloat1 / anInt1);
+            assertEquals(expected4, hiddenFloat1.div(hiddenInt1),
+                "Method div does not works with int." + messageSeed);
+        }
 
         assertEquals(hiddenNull, hiddenFloat1.div(hiddenString1),
             "Method div does not works with strings." + messageSeed);
@@ -137,7 +146,8 @@ class HiddenFloatTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testMult() {
-        HiddenFloat expected1 = new HiddenFloat(typeFloat1.mult(typeBinary1));
+        HiddenFloat expected1 = new HiddenFloat(
+            aFloat1 * BinaryUtilities.binaryToInt(aBinary1));
         assertEquals(expected1, hiddenFloat1.mult(hiddenBinary1),
             "Method mult does not works with binaries." + messageSeed);
 
@@ -146,11 +156,11 @@ class HiddenFloatTest extends BaseHTypeTest {
         assertEquals(hiddenNull, hiddenFloat1.mult(falseHiddenBool),
             "Method mult does not works with booleans." + messageSeed);
 
-        HiddenFloat expected3 = new HiddenFloat(typeFloat1.mult(typeFloat2));
+        HiddenFloat expected3 = new HiddenFloat(aFloat1 * aFloat2);
         assertEquals(expected3, hiddenFloat1.mult(hiddenFloat2),
             "Method mult does not works with floats." + messageSeed);
 
-        HiddenFloat expected4 = new HiddenFloat(typeFloat1.mult(typeInt1));
+        HiddenFloat expected4 = new HiddenFloat(aFloat1 * anInt1);
         assertEquals(expected4, hiddenFloat1.mult(hiddenInt1),
             "Method mult does not works with int." + messageSeed);
 
@@ -160,7 +170,8 @@ class HiddenFloatTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testSub() {
-        HiddenFloat expected1 = new HiddenFloat(typeFloat1.sub(typeBinary1));
+        HiddenFloat expected1 = new HiddenFloat(
+            aFloat1 - BinaryUtilities.binaryToInt(aBinary1));
         assertEquals(expected1, hiddenFloat1.sub(hiddenBinary1),
             "Method sub does not works with binaries." + messageSeed);
 
@@ -169,11 +180,11 @@ class HiddenFloatTest extends BaseHTypeTest {
         assertEquals(hiddenNull, hiddenFloat1.sub(falseHiddenBool),
             "Method sub does not works with booleans." + messageSeed);
 
-        HiddenFloat expected3 = new HiddenFloat(typeFloat1.sub(typeFloat2));
+        HiddenFloat expected3 = new HiddenFloat(aFloat1 - aFloat2);
         assertEquals(expected3, hiddenFloat1.sub(hiddenFloat2),
             "Method sub does not works with floats." + messageSeed);
 
-        HiddenFloat expected4 = new HiddenFloat(typeFloat1.sub(typeInt1));
+        HiddenFloat expected4 = new HiddenFloat(aFloat1 - anInt1);
         assertEquals(expected4, hiddenFloat1.sub(hiddenInt1),
             "Method sub does not works with int." + messageSeed);
 

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -91,26 +92,38 @@ class HiddenStringTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testAdd() {
-        HiddenString expected1 = new HiddenString(typeString1.add(typeBinary1));
+        HiddenString expected1 = new HiddenString(
+            aString1 + BinaryUtilities.cleanBinary(aBinary1)
+        );
         assertEquals(expected1, hiddenString1.add(hiddenBinary1),
             "Method add does not works with binaries." + messageSeed);
 
-        HiddenString expected21 = new HiddenString(typeString1.add(trueTypeBool));
+        HiddenString expected21 = new HiddenString(
+            aString1 + trueBoolean
+        );
         assertEquals(expected21, hiddenString1.add(trueHiddenBool),
             "Method add does not works with booleans." + messageSeed);
-        HiddenString expected22 = new HiddenString(typeString1.add(falseTypeBool));
+        HiddenString expected22 = new HiddenString(
+            aString1 + falseBoolean
+        );
         assertEquals(expected22, hiddenString1.add(falseHiddenBool),
             "Method add does not works with booleans." + messageSeed);
 
-        HiddenString expected3 = new HiddenString(typeString1.add(typeFloat1));
+        HiddenString expected3 = new HiddenString(
+            aString1 + aFloat1
+        );
         assertEquals(expected3, hiddenString1.add(hiddenFloat1),
             "Method add does not works with floats." + messageSeed);
 
-        HiddenString expected4 = new HiddenString(typeString1.add(typeInt1));
+        HiddenString expected4 = new HiddenString(
+            aString1 + anInt1
+        );
         assertEquals(expected4, hiddenString1.add(hiddenInt1),
             "Method add does not works with ints." + messageSeed);
 
-        HiddenString expected5 = new HiddenString(typeString1.add(typeString2));
+        HiddenString expected5 = new HiddenString(
+            aString1 + aString2
+        );
         assertEquals(expected5, hiddenString1.add(hiddenString2),
             "Method add does not works with strings." + messageSeed);
     }

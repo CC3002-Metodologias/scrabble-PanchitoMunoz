@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -117,10 +118,10 @@ class HiddenBoolTest extends BaseHTypeTest {
     @RepeatedTest(20)
     void testAnd() {
         HiddenBinary trueWithBinary = new HiddenBinary(
-            (TypeBinary) trueTypeBool.and(typeBinary1));
+            BinaryUtilities.boolAndBinary(trueBoolean, aBinary1));
         assertEquals(trueWithBinary, trueHiddenBool.and(hiddenBinary1), "Method and does not works");
         HiddenBinary falseWithBinary = new HiddenBinary(
-            (TypeBinary) falseTypeBool.and(typeBinary1));
+            BinaryUtilities.boolAndBinary(falseBoolean, aBinary1));
         assertEquals(falseWithBinary, falseHiddenBool.and(hiddenBinary1), "Method and does not works");
 
         assertEquals(new HiddenBool(true), trueHiddenBool.and(trueHiddenBool), "Method and does not works");
@@ -140,10 +141,11 @@ class HiddenBoolTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testOr() {
-        HiddenBinary trueWithBinary = new HiddenBinary((TypeBinary) trueTypeBool.or(typeBinary1));
+        HiddenBinary trueWithBinary = new HiddenBinary(
+            BinaryUtilities.boolOrBinary(trueBoolean, aBinary1));
         assertEquals(trueWithBinary, trueHiddenBool.or(hiddenBinary1), "Method or does not works");
         HiddenBinary falseWithBinary = new HiddenBinary(
-            (TypeBinary) falseTypeBool.or(typeBinary1));
+            BinaryUtilities.boolOrBinary(falseBoolean, aBinary1));
         assertEquals(falseWithBinary, falseHiddenBool.or(hiddenBinary1), "Method or does not works");
 
         assertEquals(new HiddenBool(true), trueHiddenBool.or(trueHiddenBool), "Method or does not works");

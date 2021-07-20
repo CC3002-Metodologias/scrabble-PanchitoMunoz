@@ -16,6 +16,8 @@ class HiddenNullTest extends BaseHTypeTest {
     void testCalculate() {
         assertEquals(HiddenNull.getInstance(), hiddenNull.calculate(),
             "Method calculate does not works." + messageSeed);
+        assertSame(HiddenNull.getInstance(), hiddenNull,
+            "Same instance are not equals.");
     }
 
     @Test
