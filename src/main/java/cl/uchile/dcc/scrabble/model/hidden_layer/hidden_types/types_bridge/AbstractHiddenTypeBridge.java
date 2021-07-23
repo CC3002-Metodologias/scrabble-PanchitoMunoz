@@ -40,10 +40,11 @@ public abstract class AbstractHiddenTypeBridge implements HiddenTypeBridge {
 
     /**
      * To use double dispatch in {@code add}
+     *
      * @param hiddenString a {@code HiddenString}
      */
     @Override
-    public HType addWithString(HiddenString hiddenString) {
+    public HiddenString addWithString(HiddenString hiddenString) {
         String computed = hiddenString.getValueAsString() + this.getValueAsString();
         return new HiddenString(computed);
     }

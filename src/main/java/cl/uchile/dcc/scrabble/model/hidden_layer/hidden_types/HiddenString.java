@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenStringBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.HashMap;
  * @create 2021/06/12 23:57
  * @see TypeString
  */
-public class HiddenString extends AbstractHiddenType {
+public class HiddenString extends AbstractHiddenType implements HString {
 
     private final String value;
     private final HiddenStringBridge bridge;
@@ -137,5 +138,15 @@ public class HiddenString extends AbstractHiddenType {
     @Override
     public String sTypeAsString() {
         return "TypeString{value='" + this.getValueAsString() + "'}";
+    }
+
+    /**
+     * Returns the value as a {@code TypeString}
+     *
+     * @return the value as a {@code TypeString}
+     */
+    @Override
+    public TypeString asTypeString() {
+        return this.asSType();
     }
 }

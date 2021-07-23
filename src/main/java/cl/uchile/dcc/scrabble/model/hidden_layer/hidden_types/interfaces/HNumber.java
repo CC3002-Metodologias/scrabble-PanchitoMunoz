@@ -12,12 +12,11 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 public interface HNumber extends HType {
 
     /**
-     * Gets the current instance in the wrapper
+     * Gets the value as a {@code SNumber}
      *
-     * @return the instance in the wrapper
+     * @return the value as a {@code SNumber}
      */
-    @Override
-    SNumber asSType();
+    SNumber asSNumber();
 
     /**
      * Get value as double

@@ -3,9 +3,11 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBinaryBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import java.util.HashMap;
 
@@ -16,7 +18,7 @@ import java.util.HashMap;
  * @create 2021/06/13 0:01
  * @see TypeBinary
  */
-public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
+public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBinary {
 
     private final HiddenBinaryBridge bridge;
 
@@ -205,5 +207,25 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical {
     @Override
     public String sTypeAsString() {
         return "TypeBinary{value=" + this.getValueAsBinary() + "}";
+    }
+
+    /**
+     * Returns the value as a {@code TypeBinary}
+     *
+     * @return the value as a {@code TypeBinary}
+     */
+    @Override
+    public TypeBinary asTypeBinary() {
+        return this.asSType();
+    }
+
+    /**
+     * Gets the value as a {@code SLogical}
+     *
+     * @return the value as a {@code SLogical}
+     */
+    @Override
+    public SLogical asSLogical() {
+        return this.asSType();
     }
 }

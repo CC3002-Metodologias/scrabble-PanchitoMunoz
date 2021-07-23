@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenNumber;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenFloatBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.HashMap;
  * @create 2021/06/13 0:02
  * @see TypeFloat
  */
-public class HiddenFloat extends AbstractHiddenNumber {
+public class HiddenFloat extends AbstractHiddenNumber implements HFloat {
 
     private final HiddenFloatBridge bridge;
 
@@ -170,5 +171,15 @@ public class HiddenFloat extends AbstractHiddenNumber {
     @Override
     public String sTypeAsString() {
         return "TypeFloat{value=" + this.getValueAsDouble() + "}";
+    }
+
+    /**
+     * Returns the value as a {@code TypeFloat}
+     *
+     * @return the value as a {@code TypeFloat}
+     */
+    @Override
+    public TypeFloat asTypeFloat() {
+        return this.asSType();
     }
 }

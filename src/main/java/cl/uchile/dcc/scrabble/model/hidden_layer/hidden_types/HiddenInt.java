@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenIntBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.HashMap;
  * @create 2021/06/13 0:02
  * @see TypeInt
  */
-public class HiddenInt extends AbstractHiddenInteger {
+public class HiddenInt extends AbstractHiddenInteger implements HInt {
 
     private final HiddenIntBridge bridge;
 
@@ -169,5 +170,15 @@ public class HiddenInt extends AbstractHiddenInteger {
     @Override
     public String sTypeAsString() {
         return "TypeInt{value=" + this.getValueAsInt() + "}";
+    }
+
+    /**
+     * Returns the value as a {@code TypeInt}
+     *
+     * @return the value as a {@code TypeInt}
+     */
+    @Override
+    public TypeInt asTypeInt() {
+        return this.asSType();
     }
 }

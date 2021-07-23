@@ -3,9 +3,11 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBoolBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import java.util.HashMap;
 
 /**
@@ -15,7 +17,7 @@ import java.util.HashMap;
  * @create 2021/06/13 0:00
  * @see TypeBool
  */
-public class HiddenBool extends AbstractHiddenType implements HLogical {
+public class HiddenBool extends AbstractHiddenType implements HLogical, HBool {
 
     private final boolean value;
     private final HiddenBoolBridge bridge;
@@ -174,5 +176,25 @@ public class HiddenBool extends AbstractHiddenType implements HLogical {
     @Override
     public String sTypeAsString() {
         return "TypeBool{value=" + this.getValueAsBool() + "}";
+    }
+
+    /**
+     * Gets the value as a {@code SLogical}
+     *
+     * @return the value as a {@code SLogical}
+     */
+    @Override
+    public SLogical asSLogical() {
+        return this.asSType();
+    }
+
+    /**
+     * Returns the value as a {@code TypeBool}
+     *
+     * @return the value as a {@code TypeBool}
+     */
+    @Override
+    public TypeBool asTypeBool() {
+        return this.asSType();
     }
 }

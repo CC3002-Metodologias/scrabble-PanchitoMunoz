@@ -18,12 +18,11 @@ public interface HInteger extends HNumber {
     String getValueAsBinary();
 
     /**
-     * Gets the current instance in the wrapper
+     * Gets the value as a {@code SInteger}
      *
-     * @return the instance in the wrapper
+     * @return the value as a {@code SInteger}
      */
-    @Override
-    SInteger asSType();
+    SInteger asSInteger();
 
     /**
      * Gets the value as int

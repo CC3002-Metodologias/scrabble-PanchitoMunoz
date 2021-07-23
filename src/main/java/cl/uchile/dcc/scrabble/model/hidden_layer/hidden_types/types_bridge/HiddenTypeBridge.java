@@ -7,6 +7,11 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HFloat;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HString;
 
 /**
  * An interface for a general Type Bridge. The classes that implements this interface is to store
@@ -28,133 +33,149 @@ public interface HiddenTypeBridge {
      *
      * @param hiddenString a {@code HiddenString}
      */
-    HType addWithString(HiddenString hiddenString);
+    HString addWithString(HiddenString hiddenString);
 
     /**
      * To use double dispatch in {@code add}
+     *
      * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType addWithBinary(HiddenBinary hiddenBinary) {
-        return HTypeFactory.createHiddenNull();
-    }
-
-    /**
-     * To use double dispatch in {@code add}
-     * @param hiddenFloat a {@code HiddenFloat}
-     */
-    default HType addWithFloat(HiddenFloat hiddenFloat) {
+    default HBinary addWithBinary(HiddenBinary hiddenBinary) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code add}
+     *
+     * @param hiddenFloat a {@code HiddenFloat}
+     */
+    default HFloat addWithFloat(HiddenFloat hiddenFloat) {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * To use double dispatch in {@code add}
+     *
      * @param hiddenInt a {@code HiddenInt}
      */
-    default HType addWithInt(HiddenInt hiddenInt) {
+    default HNumber addWithInt(HiddenInt hiddenInt) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code div}
+     *
      * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType divWithBinary(HiddenBinary hiddenBinary) {
+    default HBinary divWithBinary(HiddenBinary hiddenBinary) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code div}
+     *
      * @param hiddenFloat a {@code HiddenFloat}
      */
-    default HType divWithFloat(HiddenFloat hiddenFloat) {
+    default HFloat divWithFloat(HiddenFloat hiddenFloat) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code div}
+     *
      * @param hiddenInt a {@code HiddenInt}
      */
-    default HType divWithInt(HiddenInt hiddenInt) {
+    default HNumber divWithInt(HiddenInt hiddenInt) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code mult}
+     *
      * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType multWithBinary(HiddenBinary hiddenBinary) {
+    default HBinary multWithBinary(HiddenBinary hiddenBinary) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code mult}
+     *
      * @param hiddenFloat a {@code HiddenFloat}
      */
-    default HType multWithFloat(HiddenFloat hiddenFloat) {
+    default HFloat multWithFloat(HiddenFloat hiddenFloat) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code mult}
+     *
      * @param hiddenInt a {@code HiddenInt}
      */
-    default HType multWithInt(HiddenInt hiddenInt) {
+    default HNumber multWithInt(HiddenInt hiddenInt) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code sub}
+     *
      * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType subWithBinary(HiddenBinary hiddenBinary) {
+    default HBinary subWithBinary(HiddenBinary hiddenBinary) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code sub}
+     *
      * @param hiddenFloat a {@code HiddenFloat}
      */
-    default HType subWithFloat(HiddenFloat hiddenFloat) {
+    default HFloat subWithFloat(HiddenFloat hiddenFloat) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code sub}
+     *
      * @param hiddenInt a {@code HiddenInt}
      */
-    default HType subWithInt(HiddenInt hiddenInt) {
+    default HNumber subWithInt(HiddenInt hiddenInt) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code and}
+     *
      * @param hiddenBool a {@code HiddenBool}
      */
-    default HType andWithBool(HiddenBool hiddenBool) {
+    default HLogical andWithBool(HiddenBool hiddenBool) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code and}
+     *
      * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType andWithBinary(HiddenBinary hiddenBinary) {
+    default HBinary andWithBinary(HiddenBinary hiddenBinary) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code or}
+     *
      * @param hiddenBool a {@code HiddenBool}
      */
-    default HType orWithBool(HiddenBool hiddenBool) {
+    default HLogical orWithBool(HiddenBool hiddenBool) {
         return HTypeFactory.createHiddenNull();
     }
 
     /**
      * To use double dispatch in {@code or}
+     *
      * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HType orWithBinary(HiddenBinary hiddenBinary) {
+    default HBinary orWithBinary(HiddenBinary hiddenBinary) {
         return HTypeFactory.createHiddenNull();
     }
 
