@@ -45,7 +45,7 @@ public class HiddenBinaryFactory extends AbstractHTypeFactory {
      * @return a {@code HiddenBinary} instance.
      */
     public HiddenBinary create(HiddenBinary instance) {
-        return (HiddenBinary) super.createWithKey(instance.asSType().getValueAsInt(), instance);
+        return (HiddenBinary) super.createWithKey(instance.getValueAsInt(), instance);
     }
 
     /**
