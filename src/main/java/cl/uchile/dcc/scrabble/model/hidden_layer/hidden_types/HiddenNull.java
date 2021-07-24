@@ -87,6 +87,16 @@ public class HiddenNull implements HType, HBinary, HBool, HFloat, HInt, HString 
     }
 
     /**
+     * Returns the {@code SType} as String
+     *
+     * @return the {@code SType} as String
+     */
+    @Override
+    public String sTypeAsString() {
+        return null;
+    }
+
+    /**
      * Returns a hash code value for the object.
      *
      * @return a hash code value for this object.

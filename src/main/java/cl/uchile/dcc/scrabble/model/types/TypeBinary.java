@@ -1,7 +1,5 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
-
 import cl.uchile.dcc.scrabble.model.builders.interfaces.BinaryASTBuilder;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
@@ -9,7 +7,6 @@ import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithIntegers;
-import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -20,16 +17,13 @@ import org.jetbrains.annotations.NotNull;
 public class TypeBinary extends AbstractInteger
     implements SLogical, ArithmeticOperationsWithIntegers, BinaryASTBuilder {
 
-    private final HiddenBinary adaptee;
-
     /**
      * Constructor for the TypeBinary.
      *
      * @param value A String as a value.
      */
     public TypeBinary(String value) {
-        super(binaryToInt(value));
-        this.adaptee = HTypeFactory.createHiddenBinary(value);
+        super(HTypeFactory.createHiddenBinary(value));
     }
 
     /**
@@ -39,36 +33,6 @@ public class TypeBinary extends AbstractInteger
      */
     public String getValue() {
         return this.asHType().getValueAsBinary();
-    }
-
-    /**
-     * Method that returns the hash code of the current instance.
-     *
-     * @return The hash code of the current instance.
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.getValueAsInt());
-    }
-
-    /**
-     * Method that provides a representation of the current instance as a String.
-     *
-     * @return The representation as a String.
-     */
-    @Override
-    public String toString() {
-        return this.asHType().sTypeAsString();
-    }
-
-    /**
-     * Returns the value as {@code String}.
-     *
-     * @return the current value as {@code String}
-     */
-    @Override
-    public String getValueAsString() {
-        return this.asHType().getValueAsString();
     }
 
     /**
@@ -160,6 +124,6 @@ public class TypeBinary extends AbstractInteger
      */
     @Override
     public HiddenBinary asHType() {
-        return adaptee;
+        return (HiddenBinary) super.asHType();
     }
 }

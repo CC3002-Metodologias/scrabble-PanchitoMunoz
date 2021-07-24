@@ -79,4 +79,11 @@ public interface HType
     default HType calculate() {
         return this;
     }
+
+    /**
+     * Returns the {@code SType} as String
+     *
+     * @return the {@code SType} as String
+     */
+    String sTypeAsString();
 }

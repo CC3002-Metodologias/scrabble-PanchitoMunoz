@@ -6,7 +6,6 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
-import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -17,15 +16,12 @@ import org.jetbrains.annotations.NotNull;
 public class TypeInt extends AbstractInteger
     implements ArithmeticOperationsWithNumbers, IntASTBuilder {
 
-    private final HiddenInt adaptee;
-
     /**
      * Constructor for the TypeInt.
      * @param value An int as a value.
      */
     public TypeInt(int value) {
-        super(value);
-        this.adaptee = HTypeFactory.createHiddenInt(value);
+        super(HTypeFactory.createHiddenInt(value));
     }
 
     /**
@@ -35,36 +31,6 @@ public class TypeInt extends AbstractInteger
      */
     public int getValue() {
         return this.asHType().getValueAsInt();
-    }
-
-    /**
-     * Method that returns the hash code of the current instance.
-     * @return The hash code of the current instance.
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.getValue());
-    }
-
-    /**
-     * Method that provides a representation of the current instance as a String.
-     * @return The representation as a String.
-     */
-    @Override
-    public String toString() {
-        return "TypeInt{" +
-                "value=" + this.getValue() +
-                '}';
-    }
-
-    /**
-     * Returns the value as {@code String}.
-     *
-     * @return the current value as {@code String}
-     */
-    @Override
-    public String getValueAsString() {
-        return this.asHType().getValueAsString();
     }
 
     /**
@@ -120,6 +86,6 @@ public class TypeInt extends AbstractInteger
      */
     @Override
     public HiddenInt asHType() {
-        return adaptee;
+        return (HiddenInt) super.asHType();
     }
 }
