@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenIntBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import java.util.HashMap;
@@ -125,7 +126,7 @@ public class HiddenInt extends AbstractHiddenInteger implements HInt {
      * @return the sum
      */
     @Override
-    public HType add(HType hType) {
+    public HNumber add(HType hType) {
         return hType.getBridge().addWithInt(this);
     }
 
@@ -136,7 +137,7 @@ public class HiddenInt extends AbstractHiddenInteger implements HInt {
      * @return the division
      */
     @Override
-    public HType div(HType hType) {
+    public HNumber div(HType hType) {
         return hType.getBridge().divWithInt(this);
     }
 
@@ -147,7 +148,7 @@ public class HiddenInt extends AbstractHiddenInteger implements HInt {
      * @return the multiplication
      */
     @Override
-    public HType mult(HType hType) {
+    public HNumber mult(HType hType) {
         return hType.getBridge().multWithInt(this);
     }
 
@@ -158,7 +159,7 @@ public class HiddenInt extends AbstractHiddenInteger implements HInt {
      * @return the subtraction
      */
     @Override
-    public HType sub(HType hType) {
+    public HNumber sub(HType hType) {
         return hType.getBridge().subWithInt(this);
     }
 

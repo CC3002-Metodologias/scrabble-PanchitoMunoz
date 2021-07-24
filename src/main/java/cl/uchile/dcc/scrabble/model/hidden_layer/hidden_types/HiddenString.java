@@ -126,7 +126,7 @@ public class HiddenString extends AbstractHiddenType implements HString {
      * @return the sum
      */
     @Override
-    public HType add(HType hType) {
+    public HString add(HType hType) {
         return hType.getBridge().addWithString(this);
     }
 

@@ -126,7 +126,7 @@ public class HiddenFloat extends AbstractHiddenNumber implements HFloat {
      * @return the sum
      */
     @Override
-    public HType add(HType hType) {
+    public HFloat add(HType hType) {
         return hType.getBridge().addWithFloat(this);
     }
 
@@ -137,7 +137,7 @@ public class HiddenFloat extends AbstractHiddenNumber implements HFloat {
      * @return the division
      */
     @Override
-    public HType div(HType hType) {
+    public HFloat div(HType hType) {
         return hType.getBridge().divWithFloat(this);
     }
 
@@ -148,7 +148,7 @@ public class HiddenFloat extends AbstractHiddenNumber implements HFloat {
      * @return the multiplication
      */
     @Override
-    public HType mult(HType hType) {
+    public HFloat mult(HType hType) {
         return hType.getBridge().multWithFloat(this);
     }
 
@@ -159,7 +159,7 @@ public class HiddenFloat extends AbstractHiddenNumber implements HFloat {
      * @return the subtraction
      */
     @Override
-    public HType sub(HType hType) {
+    public HFloat sub(HType hType) {
         return hType.getBridge().subWithFloat(this);
     }
 

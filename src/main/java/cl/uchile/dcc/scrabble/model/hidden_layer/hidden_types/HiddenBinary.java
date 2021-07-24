@@ -129,7 +129,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
      * @return the sum
      */
     @Override
-    public HType add(HType hType) {
+    public HBinary add(HType hType) {
         return hType.getBridge().addWithBinary(this);
     }
 
@@ -140,7 +140,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
      * @return the disjunction
      */
     @Override
-    public HType and(HType hType) {
+    public HBinary and(HType hType) {
         return hType.getBridge().andWithBinary(this);
     }
 
@@ -151,7 +151,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
      * @return the division
      */
     @Override
-    public HType div(HType hType) {
+    public HBinary div(HType hType) {
         return hType.getBridge().divWithBinary(this);
     }
 
@@ -162,7 +162,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
      * @return the multiplication
      */
     @Override
-    public HType mult(HType hType) {
+    public HBinary mult(HType hType) {
         return hType.getBridge().multWithBinary(this);
     }
 
@@ -173,7 +173,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
      * @return the conjunction
      */
     @Override
-    public HType or(HType hType) {
+    public HBinary or(HType hType) {
         return hType.getBridge().orWithBinary(this);
     }
 
@@ -184,7 +184,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
      * @return the subtraction
      */
     @Override
-    public HType sub(HType hType) {
+    public HBinary sub(HType hType) {
         return hType.getBridge().subWithBinary(this);
     }
 
@@ -194,7 +194,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
      * @return the negation.
      */
     @Override
-    public HType neg() {
+    public HiddenBinary neg() {
         return HTypeFactory.createHiddenBinary(
             BinaryUtilities.oneComplement(this.getValueAsBinary()));
     }

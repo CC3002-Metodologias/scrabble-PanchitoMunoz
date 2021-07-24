@@ -143,7 +143,7 @@ public class HiddenBool extends AbstractHiddenType implements HLogical, HBool {
      * @return the disjunction
      */
     @Override
-    public HType and(HType hType) {
+    public HLogical and(HType hType) {
         return hType.getBridge().andWithBool(this);
     }
 
@@ -154,7 +154,7 @@ public class HiddenBool extends AbstractHiddenType implements HLogical, HBool {
      * @return the conjunction
      */
     @Override
-    public HType or(HType hType) {
+    public HLogical or(HType hType) {
         return hType.getBridge().orWithBool(this);
     }
 
@@ -164,7 +164,7 @@ public class HiddenBool extends AbstractHiddenType implements HLogical, HBool {
      * @return the negation.
      */
     @Override
-    public HType neg() {
+    public HiddenBool neg() {
         return HTypeFactory.createHiddenBool(!this.getValueAsBool());
     }
 
