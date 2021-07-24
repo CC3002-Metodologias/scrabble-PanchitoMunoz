@@ -6,7 +6,6 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
-import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -16,16 +15,12 @@ import org.jetbrains.annotations.NotNull;
 public class TypeFloat extends AbstractNumber
     implements ArithmeticOperationsWithNumbers, FloatASTBuilder {
 
-    private final double value;
-    private final HiddenFloat adaptee;
-
     /**
      * Constructor for the TypeFloat.
      * @param value A double number as a value.
      */
     public TypeFloat(double value) {
-        this.value = value;
-        this.adaptee = HTypeFactory.createHiddenFloat(value);
+        super(HTypeFactory.createHiddenFloat(value));
     }
 
     /**
@@ -34,44 +29,6 @@ public class TypeFloat extends AbstractNumber
      * @return The value in the instance
      */
     public double getValue() {
-        return this.asHType().getValueAsDouble();
-    }
-
-    /**
-     * Method that returns the hash code of the current instance.
-     * @return The hash code of the current instance.
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
-
-    /**
-     * Method that provides a representation of the current instance as a String.
-     * @return The representation as a String.
-     */
-    @Override
-    public String toString() {
-        return this.asHType().sTypeAsString();
-    }
-
-    /**
-     * Returns the value as {@code String}.
-     *
-     * @return the current value as {@code String}
-     */
-    @Override
-    public String getValueAsString() {
-        return this.asHType().getValueAsString();
-    }
-
-    /**
-     * Returns the value as {@code double}.
-     *
-     * @return the current value as {@code double}
-     */
-    @Override
-    public double getValueAsDouble() {
         return this.asHType().getValueAsDouble();
     }
 
@@ -128,6 +85,6 @@ public class TypeFloat extends AbstractNumber
      */
     @Override
     public HiddenFloat asHType() {
-        return adaptee;
+        return (HiddenFloat) super.asHType();
     }
 }

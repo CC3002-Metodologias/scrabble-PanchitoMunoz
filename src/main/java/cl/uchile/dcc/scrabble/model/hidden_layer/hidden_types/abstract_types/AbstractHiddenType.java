@@ -37,11 +37,4 @@ public abstract class AbstractHiddenType implements HType {
         return tab + this.sTypeAsString();
     }
 
-    /**
-     * Returns the {@code SType} as String
-     *
-     * @return the {@code SType} as String
-     */
-    public abstract String sTypeAsString();
-
 }
