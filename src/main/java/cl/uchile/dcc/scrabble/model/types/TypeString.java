@@ -1,10 +1,8 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenString;
-
 import cl.uchile.dcc.scrabble.model.builders.interfaces.StringASTBuilder;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
-import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.Objects;
@@ -15,7 +13,9 @@ import org.jetbrains.annotations.NotNull;
  * @author Francisco Muñoz Guajardo
  */
 public class TypeString extends AbstractType implements StringASTBuilder {
+
     private final String value;
+    private final HiddenString adaptee;
 
     /**
      * Constructor for the TypeString.
@@ -23,6 +23,7 @@ public class TypeString extends AbstractType implements StringASTBuilder {
      */
     public TypeString(String value) {
         this.value = value;
+        this.adaptee = HTypeFactory.createHiddenString(value);
     }
 
     /**
@@ -31,7 +32,7 @@ public class TypeString extends AbstractType implements StringASTBuilder {
      * @return The value in the instance
      */
     public String getValue() {
-        return this.value;
+        return this.asHType().getValueAsString();
     }
 
     /**
@@ -62,9 +63,7 @@ public class TypeString extends AbstractType implements StringASTBuilder {
      */
     @Override
     public String toString() {
-        return "TypeString{"
-                + "value='" + value + "'"
-                + "}";
+        return this.asHType().sTypeAsString();
     }
 
     /**
@@ -74,7 +73,7 @@ public class TypeString extends AbstractType implements StringASTBuilder {
      */
     @Override
     public String getValueAsString() {
-        return this.value;
+        return this.asHType().getValueAsString();
     }
 
     /**
@@ -84,27 +83,16 @@ public class TypeString extends AbstractType implements StringASTBuilder {
      * @return The sum between the two types, returning the dominant type.
      */
     public TypeString add(@NotNull SType otherType) {
-        return otherType.addWithString(this);
+        return this.asHType().add(otherType.asHType()).asTypeString();
     }
 
     /**
-     * Returns the add between the current type and a String Type.
-     *
-     * @param typeString A string type who will be added to the current type.
-     * @return The sum between the String type and the other type.
-     */
-    @Override
-    public TypeString addWithString(@NotNull TypeString typeString) {
-        return STypeFactory.createTypeString(typeString.value + this.value);
-    }
-
-    /**
-     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     * Transform the current {@code SType} as a {@code HType}.
      *
      * @return a transformation
      */
     @Override
-    public HiddenString asHiddenAST() {
-        return createHiddenString(this);
+    public HiddenString asHType() {
+        return adaptee;
     }
 }
