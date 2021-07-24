@@ -1,10 +1,10 @@
 package cl.uchile.dcc.scrabble;
 
-import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
 import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Or;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
+import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -33,8 +33,6 @@ public class Main {
         System.out.println("Resultado : " + ast.calculate());
 
 
-
-
 //        System.out.println(BinaryUtilities.intToBinary(-2));
 //        TypeBinary typeBinary = new TypeBinary("0110");
 //        TypeFloat typeFloat = new TypeFloat(3.1415);
@@ -52,6 +50,9 @@ public class Main {
         addAST.setVariable("x", new TypeFloat(6.9));
         System.out.println("Representación: " + addAST);
         System.out.println("Resultado: " + addAST.calculate());
+
+        System.out.println(new TypeFloat(3).compareTo(new TypeBinary("011")));
+
 //        Add addAST2 = new Add(
 //            new TypeBool(true),
 //            new Or(

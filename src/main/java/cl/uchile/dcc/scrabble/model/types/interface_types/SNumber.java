@@ -9,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.types.TypeFloat;
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SNumber extends SType, NumberASTBuilder {
+public interface SNumber extends SType, NumberASTBuilder, Comparable<SNumber> {
 
     @Override
     HNumber asHType();
