@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,12 +39,12 @@ public class HiddenVariable implements HiddenASTLeaf {
     }
 
     /**
-     * Method that accepts a {@code HiddenASTVisitor}.
+     * Method that accepts a {@code HiddenSetterVisitor}.
      *
-     * @param visitor a {@code HiddenASTVisitor}.
+     * @param visitor a {@code HiddenSetterVisitor}.
      */
     @Override
-    public void accept(HiddenASTVisitor visitor) {
+    public void accept(HiddenSetterVisitor visitor) {
         visitor.visitVariable(this);
     }
 
@@ -71,6 +71,14 @@ public class HiddenVariable implements HiddenASTLeaf {
             + "name=" + name + ", "
             + "value=" + value.asString(0)
             + '}';
+    }
+
+    @Override
+    public String toString() {
+        return "HiddenVariable{" +
+            "name='" + name + '\'' +
+            ", value=" + value +
+            '}';
     }
 
     /**

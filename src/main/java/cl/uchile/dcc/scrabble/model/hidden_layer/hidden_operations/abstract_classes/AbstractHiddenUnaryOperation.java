@@ -1,10 +1,9 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes;
 
-import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
-
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import java.util.Stack;
 
 /**
  * Abstract class for unary operations in the hidden types.
@@ -54,4 +53,24 @@ public abstract class AbstractHiddenUnaryOperation extends AbstractHiddenOperati
      * @return the value computed
      */
     protected abstract HType mainUnaryOperation(HType value);
+
+    /**
+     * Updates the stack.
+     *
+     * @param stack the current stack.
+     */
+    @Override
+    public final void updateStack(Stack<HiddenAST> stack) {
+        stack.push(this.getLeftChildren());
+    }
+
+    /**
+     * Returns the number of vertices in the current {@code HiddenAST}
+     *
+     * @return the number of vertices
+     */
+    @Override
+    public int size() {
+        return this.getLeftChildren().size() + 1;
+    }
 }

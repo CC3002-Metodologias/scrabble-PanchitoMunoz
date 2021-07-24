@@ -5,6 +5,14 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Or;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators.LeafIterator;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenOr;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenSub;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
@@ -29,9 +37,8 @@ public class Main {
                 ).toTypeBinary()
             )
         ).build();
-        System.out.println("Representación : " + ast);
-        System.out.println("Resultado : " + ast.calculate());
-
+//        System.out.println("Representación : " + ast);
+//        System.out.println("Resultado : " + ast.calculate());
 
 //        System.out.println(BinaryUtilities.intToBinary(-2));
 //        TypeBinary typeBinary = new TypeBinary("0110");
@@ -48,10 +55,33 @@ public class Main {
             )
         );
         addAST.setVariable("x", new TypeFloat(6.9));
-        System.out.println("Representación: " + addAST);
-        System.out.println("Resultado: " + addAST.calculate());
+//        System.out.println("Representación: " + addAST);
+//        System.out.println("Resultado: " + addAST.calculate());
+//
+//        System.out.println(new TypeFloat(3).compareTo(new TypeBinary("011")));
 
-        System.out.println(new TypeFloat(3).compareTo(new TypeBinary("011")));
+        HiddenAST hiddenAST = new HiddenAdd(
+            new HiddenVariable("x"),
+            new HiddenOr(
+                new HiddenBinary("1000"),
+                new HiddenSub(
+                    new HiddenInt(25),
+                    new HiddenBinary("0101")
+                ).toHiddenBinary()
+            )
+        );
+
+        System.out.println(hiddenAST);
+
+        LeafIterator iterator = new LeafIterator(hiddenAST);
+
+        while (iterator.hasNext()) {
+            HiddenAST next = iterator.next();
+            System.out.println("\nPróximo elemento:");
+            System.out.println(next);
+            System.out.println("Tamaño:");
+            System.out.println(next.size());
+        }
 
 //        Add addAST2 = new Add(
 //            new TypeBool(true),

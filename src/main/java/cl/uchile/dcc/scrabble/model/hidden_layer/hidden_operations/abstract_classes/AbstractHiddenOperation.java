@@ -1,9 +1,11 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators.LeafIterable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenASTVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVisitor;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -77,16 +79,6 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     @Override
     public int hashCode() {
         return Objects.hash(leftChildren, rightChildren, operatorName);
-    }
-
-    /**
-     * Method that accepts a {@code HiddenASTVisitor}.
-     *
-     * @param visitor a {@code HiddenASTVisitor}.
-     */
-    @Override
-    public void accept(HiddenASTVisitor visitor) {
-        visitor.visitHiddenOperation(this);
     }
 
     /**
@@ -179,6 +171,18 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      */
     @Override
     public void setVariable(String name, HType value) {
-        this.accept(new HiddenASTVisitor(name, value));
+        HiddenSetterVisitor visitor = new HiddenSetterVisitor(name, value);
+        for (HiddenASTLeaf leaf : this.leafIterable()) {
+            leaf.accept(visitor);
+        }
+    }
+
+    /**
+     * Returns an iterable to iterates for each leaf in the {@code HiddenAST}.
+     *
+     * @return an iterable that iterates by the leaves.
+     */
+    public LeafIterable leafIterable() {
+        return new LeafIterable(this);
     }
 }

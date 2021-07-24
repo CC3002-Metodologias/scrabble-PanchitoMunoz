@@ -7,7 +7,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HArithm
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HTypesTransformations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenTypeBridge;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenASTVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVisitor;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -61,12 +61,12 @@ public interface HType
     SType asSType();
 
     /**
-     * Method that accepts a {@code HiddenASTVisitor}.
+     * Method that accepts a {@code HiddenSetterVisitor}.
      *
-     * @param visitor a {@code HiddenASTVisitor}.
+     * @param visitor a {@code HiddenSetterVisitor}.
      */
     @Override
-    default void accept(HiddenASTVisitor visitor) {
+    default void accept(HiddenSetterVisitor visitor) {
         visitor.visitHType(this);
     }
 

@@ -1,11 +1,11 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenString;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**

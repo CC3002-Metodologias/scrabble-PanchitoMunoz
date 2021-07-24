@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import java.util.Stack;
 
 /**
  * Abstract class for binary operations in the hidden types.
@@ -20,5 +21,26 @@ public abstract class AbstractHiddenBinaryOperation extends AbstractHiddenOperat
         HiddenAST leftValue, HiddenAST rightValue,
         String operatorName, String operatorSymbol) {
         super(leftValue, rightValue, operatorName, operatorSymbol);
+    }
+
+    /**
+     * Updates the stack.
+     *
+     * @param stack the current stack.
+     */
+    @Override
+    public final void updateStack(Stack<HiddenAST> stack) {
+        stack.push(this.getRightChildren());
+        stack.push(this.getLeftChildren());
+    }
+
+    /**
+     * Returns the number of vertices in the current {@code HiddenAST}
+     *
+     * @return the number of vertices
+     */
+    @Override
+    public int size() {
+        return this.getLeftChildren().size() + this.getRightChildren().size() + 1;
     }
 }

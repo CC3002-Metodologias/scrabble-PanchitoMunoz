@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenASTVisitor;
+import java.util.Stack;
 
 /**
  * An interface that defines a "type" of Abstract Syntax Tree. This interface is for using the
@@ -11,12 +11,6 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenASTVisito
  * @create 2021/06/12 22:51
  */
 public interface HiddenAST {
-
-    /**
-     * Method that accepts a {@code HiddenASTVisitor}.
-     * @param visitor a {@code HiddenASTVisitor}.
-     */
-    void accept(HiddenASTVisitor visitor);
 
     /**
      * Calculate the {@code HType} result of performing all operations.
@@ -32,4 +26,18 @@ public interface HiddenAST {
      * @return the current {@code HiddenAST} as {@code String}
      */
     String asString(int space);
+
+    /**
+     * Updates the stack.
+     *
+     * @param stack the current stack.
+     */
+    void updateStack(Stack<HiddenAST> stack);
+
+    /**
+     * Returns the number of vertices in the current {@code HiddenAST}
+     *
+     * @return the number of vertices
+     */
+    int size();
 }

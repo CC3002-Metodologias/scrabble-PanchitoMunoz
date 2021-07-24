@@ -1,0 +1,45 @@
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators;
+
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Stack;
+
+/**
+ * Iterates an {@code AST} in depth-first search (DFS) in pre-order. To use Iterator pattern.
+ *
+ * @author Francisco Muñoz Guajardo
+ * @create 2021/07/24 10:05
+ */
+public class DFSIterator implements Iterator<HiddenAST> {
+
+    private final Stack<HiddenAST> stack = new Stack<>();
+
+    public DFSIterator(HiddenAST iterable) {
+        stack.push(iterable);
+    }
+
+    /**
+     * Returns {@code true} if the iteration has more elements. (In other words, returns {@code
+     * true} if {@link #next} would return an element rather than throwing an exception.)
+     *
+     * @return {@code true} if the iteration has more elements
+     */
+    @Override
+    public boolean hasNext() {
+        return !this.stack.empty();
+    }
+
+    /**
+     * Returns the next element in the iteration.
+     *
+     * @return the next element in the iteration
+     * @throws NoSuchElementException if the iteration has no more elements
+     */
+    @Override
+    public HiddenAST next() {
+        HiddenAST currentElement = stack.pop();
+        currentElement.updateStack(stack);
+        return currentElement;
+    }
+}

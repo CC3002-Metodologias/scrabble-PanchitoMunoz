@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 
 class HiddenVariableTest extends BaseHTypeTest {
 
-    private String name = "x";
-    private String otherName = "y";
+    private final String name = "x";
+    private final String otherName = "y";
     private HiddenVariable variable;
     private HiddenVariable binaryVariable;
     private HiddenVariable boolVariable;
@@ -34,13 +34,13 @@ class HiddenVariableTest extends BaseHTypeTest {
     @Test
     void testAccept() {
         // Case visitor with name that don't match
-        HiddenASTVisitor visitor1 = new HiddenASTVisitor(otherName, hiddenFloat2);
+        HiddenSetterVisitor visitor1 = new HiddenSetterVisitor(otherName, hiddenFloat2);
         assertEquals(hiddenFloat1, floatVariable.calculate());
         floatVariable.accept(visitor1);
         assertEquals(hiddenFloat1, floatVariable.calculate(),
             "Method accept does not works." + messageSeed);
         // Case visitor with name that match
-        HiddenASTVisitor visitor2 = new HiddenASTVisitor(name, hiddenFloat2);
+        HiddenSetterVisitor visitor2 = new HiddenSetterVisitor(name, hiddenFloat2);
         assertEquals(hiddenFloat1, floatVariable.calculate());
         floatVariable.accept(visitor2);
         assertEquals(hiddenFloat2, floatVariable.calculate(),
