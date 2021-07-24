@@ -17,6 +17,7 @@ class TypeFloatFactoryTest extends BaseTypeTest {
     @BeforeEach
     public void setUp() {
         super.setUp();
+        factory.clear();
     }
 
     @AfterEach

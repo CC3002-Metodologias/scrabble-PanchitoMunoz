@@ -11,44 +11,44 @@ import org.junit.jupiter.api.RepeatedTest;
 
 class HiddenBinaryFactoryTest extends BaseHTypeTest {
 
-    private final HiddenBinaryFactory binaryFactory = HiddenBinaryFactory.getInstance();
+    private final HiddenBinaryFactory factory = HiddenBinaryFactory.getInstance();
 
     @BeforeEach
     protected void setUp() {
         super.setUp();
-        binaryFactory.clear();
+        factory.clear();
     }
 
     @AfterEach
     protected void tearDown() {
-        binaryFactory.clear();
+        factory.clear();
     }
 
     @RepeatedTest(20)
     void testCreate() {
-        assertEquals(hiddenBinary1, binaryFactory.create(hiddenBinary1),
+        assertEquals(hiddenBinary1, factory.create(hiddenBinary1),
             "Method create does not works with hidden instance." + messageSeed);
-        assertEquals(hiddenBinary1, binaryFactory.create(typeBinary1),
+        assertEquals(hiddenBinary1, factory.create(typeBinary1),
             "Method create does not works with SType instance." + messageSeed);
-        assertEquals(hiddenBinary1, binaryFactory.create(aBinary1),
+        assertEquals(hiddenBinary1, factory.create(aBinary1),
             "Method create does not works with normal value." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testIsEmpty() {
-        assertTrue(binaryFactory.isEmpty(),
+        assertTrue(factory.isEmpty(),
             "Method isEmpty does not works when is empty." + messageSeed);
-        binaryFactory.create(hiddenBinary1);
-        assertFalse(binaryFactory.isEmpty(),
+        factory.create(hiddenBinary1);
+        assertFalse(factory.isEmpty(),
             "Method isEmpty does not works when is not empty." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testClear() {
-        binaryFactory.create(hiddenBinary1);
-        assertFalse(binaryFactory.isEmpty());
-        binaryFactory.clear();
-        assertTrue(binaryFactory.isEmpty(),
+        factory.create(hiddenBinary1);
+        assertFalse(factory.isEmpty());
+        factory.clear();
+        assertTrue(factory.isEmpty(),
             "Method clear does not works." + messageSeed);
     }
 }

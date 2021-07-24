@@ -17,6 +17,7 @@ class TypeStringFactoryTest extends BaseTypeTest {
     @BeforeEach
     public void setUp() {
         super.setUp();
+        factory.clear();
     }
 
     @AfterEach
