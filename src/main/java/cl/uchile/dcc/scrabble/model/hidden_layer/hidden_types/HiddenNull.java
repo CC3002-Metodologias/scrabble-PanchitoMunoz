@@ -23,7 +23,7 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/26 14:20
  */
-public class HiddenNull implements HType, HBinary, HBool, HFloat, HInt, HString {
+public class HiddenNull implements HBinary, HBool, HFloat, HInt, HString {
 
     /**
      * To use Singleton pattern

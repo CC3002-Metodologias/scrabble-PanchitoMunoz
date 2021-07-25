@@ -1,11 +1,10 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * Abstract class for a general {@code Operation}.
@@ -83,11 +82,13 @@ public abstract class AbstractOperation implements Operation {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof AbstractOperation)) {
+        if (!(o instanceof Operation)) {
             return false;
         }
-        AbstractOperation that = (AbstractOperation) o;
-        return Objects.equals(adaptee, that.adaptee);
+
+        Operation that = (Operation) o;
+
+        return asHiddenAST().equals(that.asHiddenAST());
     }
 
     /**
@@ -99,6 +100,6 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(adaptee);
+        return asHiddenAST().hashCode();
     }
 }

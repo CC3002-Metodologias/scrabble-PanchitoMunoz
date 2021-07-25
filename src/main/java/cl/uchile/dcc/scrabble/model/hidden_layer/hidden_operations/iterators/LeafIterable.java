@@ -6,7 +6,7 @@ import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A HiddenASTLeaf itereable
+ * A HiddenASTLeaf iterable
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/24 11:15
@@ -20,7 +20,7 @@ public class LeafIterable implements Iterable<HiddenASTLeaf> {
     }
 
     /**
-     * Returns an iterator over elements of type {@code T}.
+     * Returns an iterator over elements of type {@code HiddenASTLeaf}.
      *
      * @return an Iterator.
      */

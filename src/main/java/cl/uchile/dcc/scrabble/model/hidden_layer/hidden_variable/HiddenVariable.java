@@ -73,6 +73,11 @@ public class HiddenVariable implements HiddenASTLeaf {
             + '}';
     }
 
+    /**
+     * The hidden representation.
+     *
+     * @return the representation as string
+     */
     @Override
     public String toString() {
         return "HiddenVariable{" +

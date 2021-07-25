@@ -72,7 +72,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
      */
     @Override
     public int hashCode() {
-        return getValue().hashCode();
+        return this.getValueAsInt();
     }
 
     /**
