@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -23,12 +24,12 @@ class HiddenVariableTest extends BaseHTypeTest {
     public void setUp() {
         super.setUp();
         variable = new HiddenVariable(name);
-        binaryVariable = new HiddenVariable(name, hiddenBinary1);
-        boolVariable = new HiddenVariable(name, trueHiddenBool);
-        floatVariable = new HiddenVariable(name, hiddenFloat1);
-        intVariable = new HiddenVariable(name, hiddenInt1);
-        nullVariable = new HiddenVariable(name, hiddenNull);
-        stringVariable = new HiddenVariable(name, hiddenString1);
+        binaryVariable = new HiddenVariable(name).setValue(hiddenBinary1);
+        boolVariable = new HiddenVariable(name).setValue(trueHiddenBool);
+        floatVariable = new HiddenVariable(name).setValue(hiddenFloat1);
+        intVariable = new HiddenVariable(name).setValue(hiddenInt1);
+        nullVariable = new HiddenVariable(name).setValue(hiddenNull);
+        stringVariable = new HiddenVariable(name).setValue(hiddenString1);
     }
 
     @Test
@@ -68,6 +69,11 @@ class HiddenVariableTest extends BaseHTypeTest {
             "Method calculate does not works with null variable." + messageSeed);
         assertEquals(hiddenString1, stringVariable.calculate(),
             "Method calculate does not works with string variable." + messageSeed);
+        HiddenVariable variable = new HiddenVariable(otherName).setValue(
+            new HiddenAdd(hiddenString1, hiddenBinary1)
+        );
+        HiddenVariable variable1 = new HiddenVariable(name).setValue(variable);
+        System.out.println(variable1.asString(0));
     }
 
     @RepeatedTest(20)
@@ -92,5 +98,12 @@ class HiddenVariableTest extends BaseHTypeTest {
         floatVariable.setValue(hiddenFloat2);
         assertEquals(hiddenFloat2, floatVariable.calculate(),
             "Method setValue does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testToString() {
+        String expected = "HiddenVariable{name='" + name + "', value=" + hiddenFloat1 + "}";
+        assertEquals(expected, floatVariable.toString(),
+            "Method toString does not works." + messageSeed);
     }
 }

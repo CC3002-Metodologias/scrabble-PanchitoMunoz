@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
@@ -16,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class HiddenVariable implements HiddenASTLeaf {
 
     private final String name;
-    private HType value = HTypeFactory.createHiddenNull();
+    private HiddenAST value = HTypeFactory.createHiddenNull();
 
     /**
      * Constructor without saying the value.
@@ -25,17 +26,9 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     public HiddenVariable(@NotNull String name) {
         this.name = name;
-    }
-
-    /**
-     * Constructor saying the value.
-     *
-     * @param name a variable name.
-     * @param value a {@code HType}.
-     */
-    public HiddenVariable(@NotNull String name, @NotNull HType value) {
-        this(name);
-        this.value = value;
+        HiddenGlobalVariables.getInstance().updateVariablesInfo(
+            this.name, this.value
+        );
     }
 
     /**
@@ -55,7 +48,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public HType calculate() {
-        return value;
+        return value.calculate();
     }
 
     /**
@@ -99,8 +92,25 @@ public class HiddenVariable implements HiddenASTLeaf {
      * Sets the value of the variable.
      *
      * @param value a {@code HType} value to set.
+     * @return the same variable with the value assigned
      */
-    public void setValue(@NotNull HType value) {
+    public HiddenVariable setValue(@NotNull HiddenAST value) {
+        return this.setValue(value, true);
+    }
+
+    /**
+     * Sets the value of the variable, and updates the global variables if it is needed.
+     *
+     * @param value                 the value to set.
+     * @param updateGlobalVariables a boolean, that decides if the global variables it will be
+     *                              updated or not.
+     * @return the same instance.
+     */
+    protected HiddenVariable setValue(@NotNull HiddenAST value, boolean updateGlobalVariables) {
+        if (updateGlobalVariables) {
+            HiddenGlobalVariables.getInstance().updateVariablesInfo(this.name, value);
+        }
         this.value = value;
+        return this;
     }
 }

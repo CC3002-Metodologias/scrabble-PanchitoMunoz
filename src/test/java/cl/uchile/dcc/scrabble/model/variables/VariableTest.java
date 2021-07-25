@@ -1,16 +1,15 @@
 package cl.uchile.dcc.scrabble.model.variables;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.types.BaseTypeTest;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 class VariableTest extends BaseTypeTest {
 
@@ -22,7 +21,7 @@ class VariableTest extends BaseTypeTest {
     @RepeatedTest(20)
     void testBuildingAST() {
         Operation ast = new Add(
-            new Variable("x", typeFloat1),
+            new Variable("x").setValue(typeFloat1),
             new Sub(
                 new Variable("z"),
                 new Variable("y")

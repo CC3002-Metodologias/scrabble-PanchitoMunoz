@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 public class HiddenSetterVisitor {
 
     private final String name;
-    private final HType value;
+    private final HiddenAST value;
 
     /**
      * Constructor.
@@ -20,7 +21,7 @@ public class HiddenSetterVisitor {
      * @param name  name of the variable to set
      * @param value value to set
      */
-    public HiddenSetterVisitor(@NotNull String name, @NotNull HType value) {
+    public HiddenSetterVisitor(@NotNull String name, @NotNull HiddenAST value) {
         this.name = name;
         this.value = value;
     }

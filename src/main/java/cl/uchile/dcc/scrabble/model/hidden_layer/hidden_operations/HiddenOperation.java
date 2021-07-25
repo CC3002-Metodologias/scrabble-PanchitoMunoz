@@ -1,21 +1,21 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenString;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**
- * An interface to represent a general hidden operation in {@code HiddenAST}.
- * The classes that implement this interface will be adapted by the {@code Operation} classes.
+ * An interface to represent a general hidden operation in {@code HiddenAST}. The classes that
+ * implement this interface will be adapted by the {@code Operation} classes.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:14
  */
-public interface HiddenOperation extends HiddenAST {
+public interface HiddenOperation extends HiddenASTComposite {
 
     /**
      * Gets the left children.
@@ -34,10 +34,10 @@ public interface HiddenOperation extends HiddenAST {
     /**
      * Sets the variable in an {@code HiddenOperation}.
      *
-     * @param name the name of the variable
+     * @param name  the name of the variable
      * @param value the current value to set
      */
-    void setVariable(String name, HType value);
+    void setVariable(String name, HiddenAST value);
 
     /**
      * Transform the current instance into a {@code HiddenBinary}.

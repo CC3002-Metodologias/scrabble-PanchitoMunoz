@@ -170,7 +170,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      * @param value the current value to set
      */
     @Override
-    public void setVariable(String name, HType value) {
+    public void setVariable(String name, HiddenAST value) {
         HiddenSetterVisitor visitor = new HiddenSetterVisitor(name, value);
         for (HiddenASTLeaf leaf : this.leafIterable()) {
             leaf.accept(visitor);

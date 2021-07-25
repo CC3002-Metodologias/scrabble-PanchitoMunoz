@@ -28,16 +28,6 @@ public class Variable implements AST {
     }
 
     /**
-     * Constructor saying the value.
-     *
-     * @param name a variable name.
-     * @param value a {@code HType}.
-     */
-    public Variable(@NotNull String name, @NotNull SType value) {
-        this.adaptee = new HiddenVariable(name, value.asHiddenAST());
-    }
-
-    /**
      * Transform an {@code AST} into its equivalent {@code HiddenAST}.
      *
      * @return a transformation
@@ -45,5 +35,10 @@ public class Variable implements AST {
     @Override
     public HiddenVariable asHiddenAST() {
         return this.adaptee;
+    }
+
+    public Variable setValue(@NotNull SType value) {
+        this.adaptee.setValue(value.asHType());
+        return this;
     }
 }
