@@ -2,10 +2,10 @@ package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -19,18 +19,25 @@ class HiddenBoolFactoryTest extends BaseHTypeTest {
         factory.clear();
     }
 
-    @AfterEach
-    protected void tearDown() {
-        factory.clear();
-    }
-
     @RepeatedTest(20)
     void testCreate() {
-        assertEquals(trueHiddenBool, factory.create(trueHiddenBool),
+        assertSame(trueHiddenBool, factory.create(trueHiddenBool),
             "Method create does not works with hidden instance." + messageSeed);
-        assertEquals(trueHiddenBool, factory.create(trueTypeBool),
+
+        factory.clear();
+        var instance = factory.create(trueTypeBool);
+        assertEquals(trueHiddenBool, instance,
             "Method create does not works with SType instance." + messageSeed);
-        assertEquals(trueHiddenBool, factory.create(true),
+        var otherInstance = factory.create(trueTypeBool);
+        assertEquals(instance, otherInstance,
+            "Method create does not works with SType instance." + messageSeed);
+
+        factory.clear();
+        instance = factory.create(true);
+        assertEquals(trueHiddenBool, instance,
+            "Method create does not works with normal value." + messageSeed);
+        otherInstance = factory.create(true);
+        assertSame(instance, otherInstance,
             "Method create does not works with normal value." + messageSeed);
     }
 

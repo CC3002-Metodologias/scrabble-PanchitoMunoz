@@ -39,7 +39,7 @@ class HiddenBinaryTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testHashCode() {
-        assertEquals(BinaryUtilities.cleanBinary(aBinary1).hashCode(), hiddenBinary1.hashCode(),
+        assertEquals(BinaryUtilities.binaryToInt(aBinary1), hiddenBinary1.hashCode(),
             "Method hashCode does not works" + messageSeed);
     }
 

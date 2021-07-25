@@ -2,11 +2,10 @@ package cl.uchile.dcc.scrabble.model.factories.types_factories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cl.uchile.dcc.scrabble.model.types.BaseTypeTest;
-import cl.uchile.dcc.scrabble.model.types.TypeString;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -20,11 +19,6 @@ class TypeStringFactoryTest extends BaseTypeTest {
         factory.clear();
     }
 
-    @AfterEach
-    protected void tearDown() {
-        factory.clear();
-    }
-
     @RepeatedTest(20)
     void testGetInstance() {
         TypeStringFactory otherFactory = TypeStringFactory.getInstance();
@@ -35,9 +29,16 @@ class TypeStringFactoryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void testCreate() {
-        var expected = new TypeString(aString1);
-        assertEquals(expected, factory.create(aString1),
-            "Method getTypeString does not works." + messageSeed);
+        assertSame(typeString1, factory.create(typeString1),
+            "Method create does not works given an instance" + messageSeed);
+
+        factory.clear();
+        var instance = factory.create(aString1);
+        assertEquals(typeString1, instance,
+            "Method create does not works given a value" + messageSeed);
+        var otherInstance = factory.create(aString1);
+        assertSame(instance, otherInstance,
+            "Method create does not works given a value" + messageSeed);
     }
 
     @RepeatedTest(20)

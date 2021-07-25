@@ -2,10 +2,10 @@ package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -19,18 +19,25 @@ class HiddenBinaryFactoryTest extends BaseHTypeTest {
         factory.clear();
     }
 
-    @AfterEach
-    protected void tearDown() {
-        factory.clear();
-    }
-
     @RepeatedTest(20)
     void testCreate() {
-        assertEquals(hiddenBinary1, factory.create(hiddenBinary1),
+        assertSame(hiddenBinary1, factory.create(hiddenBinary1),
             "Method create does not works with hidden instance." + messageSeed);
-        assertEquals(hiddenBinary1, factory.create(typeBinary1),
+
+        factory.clear();
+        var instance = factory.create(typeBinary1);
+        assertEquals(hiddenBinary1, instance,
             "Method create does not works with SType instance." + messageSeed);
-        assertEquals(hiddenBinary1, factory.create(aBinary1),
+        var otherInstance = factory.create(typeBinary1);
+        assertSame(instance, otherInstance,
+            "Method create does not works with SType instance." + messageSeed);
+
+        factory.clear();
+        instance = factory.create(aBinary1);
+        assertEquals(hiddenBinary1, instance,
+            "Method create does not works with normal value." + messageSeed);
+        otherInstance = factory.create(aBinary1);
+        assertSame(instance, otherInstance,
             "Method create does not works with normal value." + messageSeed);
     }
 
