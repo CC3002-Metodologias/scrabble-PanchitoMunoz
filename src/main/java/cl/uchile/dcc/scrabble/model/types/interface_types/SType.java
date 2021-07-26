@@ -27,7 +27,7 @@ public interface SType extends AST, TypeASTBuilder {
     TypeString toTypeString();
 
     /**
-     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     * Transform an {@code AST} into its equivalent {@code HiddenASTComponent}.
      *
      * @return a transformation
      */

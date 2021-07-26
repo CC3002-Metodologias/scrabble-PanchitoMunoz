@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HArithmeticOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogicalOperations;
@@ -11,21 +11,21 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVis
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
- * An interface that defines a general Hidden Type. This is a leaf of {@code HiddenAST}, using the
- * composite pattern.
+ * An interface that defines a general Hidden Type. This is a leaf of {@code HiddenASTComponent},
+ * using the composite pattern.
  *
  * <p>
  * The purpose of this adapter is to allow the operations that in other way can not be computed, and
- * replace with {@code null} if the operation is not defined. E.g.: operations between {@code SNumber},
- * {@code binary.add(float)} can not be computed, but with this adapter, it can, and the result is
- * {@code null}. (note that the user is not expected to do these kinds of operations, but if it
- * does, then the program will not crash abruptly at this point).
+ * replace with {@code null} if the operation is not defined. E.g.: operations between {@code
+ * SNumber}, {@code binary.add(float)} can not be computed, but with this adapter, it can, and the
+ * result is {@code null}. (note that the user is not expected to do these kinds of operations, but
+ * if it does, then the program will not crash abruptly at this point).
  * </p>
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 23:42
  * @see SType
- * @see HiddenAST
+ * @see HiddenASTComponent
  * @see Operation
  */
 public interface HType

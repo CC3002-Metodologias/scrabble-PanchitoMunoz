@@ -29,7 +29,7 @@ public abstract class AbstractOperation implements Operation {
     }
 
     /**
-     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     * Transform an {@code AST} into its equivalent {@code HiddenASTComponent}.
      *
      * @return a transformation
      */

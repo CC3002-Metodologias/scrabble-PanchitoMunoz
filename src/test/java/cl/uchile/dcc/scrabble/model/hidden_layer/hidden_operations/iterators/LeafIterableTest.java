@@ -13,12 +13,12 @@ class LeafIterableTest extends BaseIteratorTest {
     @BeforeEach
     protected void setUp() {
         super.setUp();
-        iterable = new LeafIterable(hiddenAST);
+        iterable = new LeafIterable(hiddenASTComponent);
     }
 
     @RepeatedTest(20)
     void testIteration() {
-        LeafIterator iterator = new LeafIterator(hiddenAST);
+        LeafIterator iterator = new LeafIterator(hiddenASTComponent);
         for (HiddenASTLeaf elem : iterable) {
             assertSame(elem, iterator.next(),
                 "Iteration in a LeafIterable does not works." + messageSeed);

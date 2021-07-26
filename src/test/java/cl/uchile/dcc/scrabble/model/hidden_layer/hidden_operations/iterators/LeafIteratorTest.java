@@ -16,7 +16,7 @@ class LeafIteratorTest extends BaseIteratorTest {
     @BeforeEach
     protected void setUp() {
         super.setUp();
-        iterator = new LeafIterator(hiddenAST);
+        iterator = new LeafIterator(hiddenASTComponent);
     }
 
     @RepeatedTest(20)

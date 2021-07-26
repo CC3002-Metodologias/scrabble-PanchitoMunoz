@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +15,7 @@ public class LeafIterable implements Iterable<HiddenASTLeaf> {
 
     private final LeafIterator iterator;
 
-    public LeafIterable(HiddenAST iterable) {
+    public LeafIterable(HiddenASTComponent iterable) {
         this.iterator = new LeafIterator(iterable);
     }
 

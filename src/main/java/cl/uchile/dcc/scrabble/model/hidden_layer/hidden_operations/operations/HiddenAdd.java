@@ -1,16 +1,17 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.operations.Add;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes.AbstractHiddenBinaryOperation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code add} method. This class will be adapted by the {@code Add} class.
+ * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
+ * add} method. This class will be adapted by the {@code Add} class.
  *
- * @see Add
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
+ * @see Add
  */
 public class HiddenAdd extends AbstractHiddenBinaryOperation {
 
@@ -20,7 +21,7 @@ public class HiddenAdd extends AbstractHiddenBinaryOperation {
      * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
-    public HiddenAdd(HiddenAST leftValue, HiddenAST rightValue) {
+    public HiddenAdd(HiddenASTComponent leftValue, HiddenASTComponent rightValue) {
         super(leftValue, rightValue, "Add", "+");
     }
 

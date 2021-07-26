@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenMult;
@@ -17,8 +17,8 @@ import java.util.List;
  */
 public abstract class BaseIteratorTest extends BaseHTypeTest {
 
-    protected HiddenAST hiddenAST;
-    protected List<HiddenAST> hiddenASTList = new ArrayList<>();
+    protected HiddenASTComponent hiddenASTComponent;
+    protected List<HiddenASTComponent> hiddenASTComponentList = new ArrayList<>();
     protected List<HiddenASTLeaf> hiddenASTLeaves = new ArrayList<>();
 
     @Override
@@ -26,15 +26,15 @@ public abstract class BaseIteratorTest extends BaseHTypeTest {
         super.setUp();
         HiddenSub leftChildren = new HiddenSub(hiddenFloat1, hiddenBinary1);
         HiddenMult rightChildren = new HiddenMult(hiddenBinary2, hiddenInt1);
-        hiddenAST = new HiddenAdd(leftChildren, rightChildren);
+        hiddenASTComponent = new HiddenAdd(leftChildren, rightChildren);
 
-        hiddenASTList.add(hiddenAST);
-        hiddenASTList.add(leftChildren);
-        hiddenASTList.add(hiddenFloat1);
-        hiddenASTList.add(hiddenBinary1);
-        hiddenASTList.add(rightChildren);
-        hiddenASTList.add(hiddenBinary2);
-        hiddenASTList.add(hiddenInt1);
+        hiddenASTComponentList.add(hiddenASTComponent);
+        hiddenASTComponentList.add(leftChildren);
+        hiddenASTComponentList.add(hiddenFloat1);
+        hiddenASTComponentList.add(hiddenBinary1);
+        hiddenASTComponentList.add(rightChildren);
+        hiddenASTComponentList.add(hiddenBinary2);
+        hiddenASTComponentList.add(hiddenInt1);
 
         hiddenASTLeaves.add(hiddenFloat1);
         hiddenASTLeaves.add(hiddenBinary1);

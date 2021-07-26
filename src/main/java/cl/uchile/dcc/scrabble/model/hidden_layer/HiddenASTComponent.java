@@ -5,12 +5,13 @@ import java.util.Stack;
 
 /**
  * An interface that defines a "type" of Abstract Syntax Tree. This interface is for using the
- * composite pattern. Only used as a hidden abstract layer, and is not intended for use by the user.
+ * composite pattern. Only used as a hidden abstract layer, and is not intended for use by the
+ * user.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 22:51
  */
-public interface HiddenAST {
+public interface HiddenASTComponent {
 
     /**
      * Calculate the {@code HType} result of performing all operations.
@@ -20,10 +21,10 @@ public interface HiddenAST {
     HType calculate();
 
     /**
-     * Returns the {@code String} representation of the current {@code HiddenAST}.
+     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
      *
      * @param space number of spaces to ident
-     * @return the current {@code HiddenAST} as {@code String}
+     * @return the current {@code HiddenASTComponent} as {@code String}
      */
     String asString(int space);
 
@@ -32,10 +33,10 @@ public interface HiddenAST {
      *
      * @param stack the current stack.
      */
-    void updateStack(Stack<HiddenAST> stack);
+    void updateStack(Stack<HiddenASTComponent> stack);
 
     /**
-     * Returns the number of vertices in the current {@code HiddenAST}
+     * Returns the number of vertices in the current {@code HiddenASTComponent}
      *
      * @return the number of vertices
      */

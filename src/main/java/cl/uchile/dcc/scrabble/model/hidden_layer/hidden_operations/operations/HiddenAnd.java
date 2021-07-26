@@ -1,16 +1,17 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.operations.And;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes.AbstractHiddenBinaryOperation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.And;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code and} method. This class will be adapted by the {@code And} class.
+ * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
+ * and} method. This class will be adapted by the {@code And} class.
  *
- * @see And
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
+ * @see And
  */
 public class HiddenAnd extends AbstractHiddenBinaryOperation {
 
@@ -20,7 +21,7 @@ public class HiddenAnd extends AbstractHiddenBinaryOperation {
      * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
-    public HiddenAnd(HiddenAST leftValue, HiddenAST rightValue) {
+    public HiddenAnd(HiddenASTComponent leftValue, HiddenASTComponent rightValue) {
         super(leftValue, rightValue, "And", "and");
     }
 

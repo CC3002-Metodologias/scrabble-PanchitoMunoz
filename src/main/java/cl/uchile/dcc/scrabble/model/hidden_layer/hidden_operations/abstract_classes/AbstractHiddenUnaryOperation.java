@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import java.util.Stack;
 
@@ -14,11 +14,12 @@ import java.util.Stack;
 public abstract class AbstractHiddenUnaryOperation extends AbstractHiddenOperation {
 
     /**
-     * Constructor with one parameter. It can receive an {@code HiddenOperation} or a {@code HType}.
+     * Constructor with one parameter. It can receive an {@code HiddenOperation} or a {@code
+     * HType}.
      *
      * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
      */
-    public AbstractHiddenUnaryOperation(HiddenAST value, String operatorName) {
+    public AbstractHiddenUnaryOperation(HiddenASTComponent value, String operatorName) {
         super(value, HTypeFactory.createHiddenNull(), operatorName, null);
     }
 
@@ -60,12 +61,12 @@ public abstract class AbstractHiddenUnaryOperation extends AbstractHiddenOperati
      * @param stack the current stack.
      */
     @Override
-    public final void updateStack(Stack<HiddenAST> stack) {
+    public final void updateStack(Stack<HiddenASTComponent> stack) {
         stack.push(this.getLeftChildren());
     }
 
     /**
-     * Returns the number of vertices in the current {@code HiddenAST}
+     * Returns the number of vertices in the current {@code HiddenASTComponent}
      *
      * @return the number of vertices
      */

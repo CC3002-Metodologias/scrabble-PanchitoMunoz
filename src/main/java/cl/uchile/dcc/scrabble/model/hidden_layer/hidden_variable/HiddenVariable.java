@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class HiddenVariable implements HiddenASTLeaf {
 
     private final String name;
-    private HiddenAST value = HTypeFactory.createHiddenNull();
+    private HiddenASTComponent value = HTypeFactory.createHiddenNull();
 
     /**
      * Constructor without saying the value.
@@ -52,10 +52,10 @@ public class HiddenVariable implements HiddenASTLeaf {
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code HiddenAST}.
+     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
      *
      * @param space number of spaces to ident
-     * @return the current {@code HiddenAST} as {@code String}
+     * @return the current {@code HiddenASTComponent} as {@code String}
      */
     @Override
     public String asString(int space) {
@@ -94,7 +94,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      * @param value a {@code HType} value to set.
      * @return the same variable with the value assigned
      */
-    public HiddenVariable setValue(@NotNull HiddenAST value) {
+    public HiddenVariable setValue(@NotNull HiddenASTComponent value) {
         return this.setValue(value, true);
     }
 
@@ -106,7 +106,8 @@ public class HiddenVariable implements HiddenASTLeaf {
      *                              updated or not.
      * @return the same instance.
      */
-    protected HiddenVariable setValue(@NotNull HiddenAST value, boolean updateGlobalVariables) {
+    protected HiddenVariable setValue(@NotNull HiddenASTComponent value,
+        boolean updateGlobalVariables) {
         if (updateGlobalVariables) {
             HiddenGlobalVariables.getInstance().updateVariablesInfo(this.name, value);
         }

@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.AbstractHiddenASTComposite;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 
 /**
  * todo: doc
@@ -14,9 +14,9 @@ public abstract class AbstractHiddenControlFlow
     implements HiddenControlFlow {
 
     protected AbstractHiddenControlFlow(
-        HiddenAST firstChildren,
-        HiddenAST secondChildren,
-        HiddenAST thirdChildren,
+        HiddenASTComponent firstChildren,
+        HiddenASTComponent secondChildren,
+        HiddenASTComponent thirdChildren,
         String operatorName) {
         super(firstChildren, secondChildren, thirdChildren, operatorName);
     }

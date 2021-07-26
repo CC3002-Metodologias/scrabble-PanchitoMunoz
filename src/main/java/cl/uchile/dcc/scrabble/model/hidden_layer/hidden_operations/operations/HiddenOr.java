@@ -1,16 +1,17 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.operations.Or;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes.AbstractHiddenBinaryOperation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.Or;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code or} method. This class will be adapted by the {@code Or} class.
+ * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
+ * or} method. This class will be adapted by the {@code Or} class.
  *
- * @see Or
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:34
+ * @see Or
  */
 public class HiddenOr extends AbstractHiddenBinaryOperation {
 
@@ -20,7 +21,7 @@ public class HiddenOr extends AbstractHiddenBinaryOperation {
      * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
-    public HiddenOr(HiddenAST leftValue, HiddenAST rightValue) {
+    public HiddenOr(HiddenASTComponent leftValue, HiddenASTComponent rightValue) {
         super(leftValue, rightValue, "Or", "or");
     }
 

@@ -10,15 +10,15 @@ import java.util.HashMap;
  */
 public abstract class AbstractHiddenASTComposite implements HiddenASTComposite {
 
-    private final HiddenAST firstChildren;
-    private final HiddenAST secondChildren;
-    private final HiddenAST thirdChildren;
+    private final HiddenASTComponent firstChildren;
+    private final HiddenASTComponent secondChildren;
+    private final HiddenASTComponent thirdChildren;
     private final String operatorName;
 
     protected AbstractHiddenASTComposite(
-        HiddenAST firstChildren,
-        HiddenAST secondChildren,
-        HiddenAST thirdChildren,
+        HiddenASTComponent firstChildren,
+        HiddenASTComponent secondChildren,
+        HiddenASTComponent thirdChildren,
         String operatorName) {
         this.firstChildren = firstChildren;
         this.secondChildren = secondChildren;
@@ -89,7 +89,7 @@ public abstract class AbstractHiddenASTComposite implements HiddenASTComposite {
      * @return the first children
      */
     @Override
-    public final HiddenAST getFirstChildren() {
+    public final HiddenASTComponent getFirstChildren() {
         return firstChildren;
     }
 
@@ -99,7 +99,7 @@ public abstract class AbstractHiddenASTComposite implements HiddenASTComposite {
      * @return the second children
      */
     @Override
-    public final HiddenAST getSecondChildren() {
+    public final HiddenASTComponent getSecondChildren() {
         return secondChildren;
     }
 
@@ -109,7 +109,7 @@ public abstract class AbstractHiddenASTComposite implements HiddenASTComposite {
      * @return the third children
      */
     @Override
-    public final HiddenAST getThirdChildren() {
+    public final HiddenASTComponent getThirdChildren() {
         return thirdChildren;
     }
 

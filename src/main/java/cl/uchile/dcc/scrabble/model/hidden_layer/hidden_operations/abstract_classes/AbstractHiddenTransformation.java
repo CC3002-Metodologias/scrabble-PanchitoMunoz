@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 
 /**
  * Abstract class for the hidden transformations.
@@ -11,11 +11,12 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 public abstract class AbstractHiddenTransformation extends AbstractHiddenUnaryOperation {
 
     /**
-     * Constructor with one parameter. It can receive an {@code HiddenOperation} or a {@code HType}.
+     * Constructor with one parameter. It can receive an {@code HiddenOperation} or a {@code
+     * HType}.
      *
      * @param value a value. It can receive an {@code HiddenOperation} or a {@code HType}.
      */
-    public AbstractHiddenTransformation(HiddenAST value, String operatorName) {
+    public AbstractHiddenTransformation(HiddenASTComponent value, String operatorName) {
         super(value, operatorName);
     }
 

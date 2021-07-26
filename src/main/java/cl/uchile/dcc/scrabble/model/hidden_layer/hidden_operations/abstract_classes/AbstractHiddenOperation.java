@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_cla
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.AbstractHiddenASTComposite;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators.LeafIterable;
@@ -28,7 +28,7 @@ public abstract class AbstractHiddenOperation
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
     public AbstractHiddenOperation(
-        HiddenAST leftValue, HiddenAST rightValue,
+        HiddenASTComponent leftValue, HiddenASTComponent rightValue,
         String operatorName, String operatorSymbol) {
         super(leftValue, rightValue, HTypeFactory.createHiddenNull(), operatorName);
         this.operatorSymbol = operatorSymbol;
@@ -40,7 +40,7 @@ public abstract class AbstractHiddenOperation
      * @return the left children
      */
     @Override
-    public HiddenAST getLeftChildren() {
+    public HiddenASTComponent getLeftChildren() {
         return getFirstChildren();
     }
 
@@ -50,15 +50,15 @@ public abstract class AbstractHiddenOperation
      * @return the right children
      */
     @Override
-    public HiddenAST getRightChildren() {
+    public HiddenASTComponent getRightChildren() {
         return getSecondChildren();
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code HiddenAST}.
+     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
      *
      * @param space number of spaces to ident
-     * @return the current {@code HiddenAST} as {@code String}
+     * @return the current {@code HiddenASTComponent} as {@code String}
      */
     @Override
     public final String asString(int space) {
@@ -123,7 +123,7 @@ public abstract class AbstractHiddenOperation
      * @param value the current value to set
      */
     @Override
-    public void setVariable(String name, HiddenAST value) {
+    public void setVariable(String name, HiddenASTComponent value) {
         HiddenSetterVisitor visitor = new HiddenSetterVisitor(name, value);
         for (HiddenASTLeaf leaf : this.leafIterable()) {
             leaf.accept(visitor);
@@ -131,7 +131,7 @@ public abstract class AbstractHiddenOperation
     }
 
     /**
-     * Returns an iterable to iterates for each leaf in the {@code HiddenAST}.
+     * Returns an iterable to iterates for each leaf in the {@code HiddenASTComponent}.
      *
      * @return an iterable that iterates by the leaves.
      */

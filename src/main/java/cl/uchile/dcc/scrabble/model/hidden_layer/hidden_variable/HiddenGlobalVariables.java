@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
@@ -17,7 +17,7 @@ public class HiddenGlobalVariables {
      * To use Singleton pattern
      */
     private static HiddenGlobalVariables instance;
-    private final HashMap<String, HiddenAST> variables = new HashMap<>();
+    private final HashMap<String, HiddenASTComponent> variables = new HashMap<>();
 
     /**
      * Private constructor to avoid instance
@@ -37,12 +37,12 @@ public class HiddenGlobalVariables {
         return instance;
     }
 
-    public void updateVariablesInfo(@NotNull String name, @NotNull HiddenAST value) {
+    public void updateVariablesInfo(@NotNull String name, @NotNull HiddenASTComponent value) {
         variables.put(name, value);
     }
 
     public void updateVariable(@NotNull HiddenVariable variable) {
-        HiddenAST globalValue = variables.get(variable.getName());
+        HiddenASTComponent globalValue = variables.get(variable.getName());
         variable.setValue(globalValue, false);
     }
 

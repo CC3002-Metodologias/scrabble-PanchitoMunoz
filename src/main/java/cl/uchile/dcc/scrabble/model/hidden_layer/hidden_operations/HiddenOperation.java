@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenBool;
@@ -9,8 +9,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformatio
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.transformations.ToHiddenString;
 
 /**
- * An interface to represent a general hidden operation in {@code HiddenAST}. The classes that
- * implement this interface will be adapted by the {@code Operation} classes.
+ * An interface to represent a general hidden operation in {@code HiddenASTComponent}. The classes
+ * that implement this interface will be adapted by the {@code Operation} classes.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:14
@@ -22,14 +22,14 @@ public interface HiddenOperation extends HiddenASTComposite {
      *
      * @return the left children
      */
-    HiddenAST getLeftChildren();
+    HiddenASTComponent getLeftChildren();
 
     /**
      * Gets the right children.
      *
      * @return the right children
      */
-    HiddenAST getRightChildren();
+    HiddenASTComponent getRightChildren();
 
     /**
      * Sets the variable in an {@code HiddenOperation}.
@@ -37,7 +37,7 @@ public interface HiddenOperation extends HiddenASTComposite {
      * @param name  the name of the variable
      * @param value the current value to set
      */
-    void setVariable(String name, HiddenAST value);
+    void setVariable(String name, HiddenASTComponent value);
 
     /**
      * Transform the current instance into a {@code HiddenBinary}.

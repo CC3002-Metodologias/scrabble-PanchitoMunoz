@@ -1,16 +1,17 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.operations.Neg;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes.AbstractHiddenUnaryOperation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.Neg;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code neg} method. This class will be adapted by the {@code Neg} class.
+ * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
+ * neg} method. This class will be adapted by the {@code Neg} class.
  *
- * @see Neg
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
+ * @see Neg
  */
 public class HiddenNeg extends AbstractHiddenUnaryOperation {
 
@@ -19,7 +20,7 @@ public class HiddenNeg extends AbstractHiddenUnaryOperation {
      *
      * @param value left value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
-    public HiddenNeg(HiddenAST value) {
+    public HiddenNeg(HiddenASTComponent value) {
         super(value, "Neg");
     }
 

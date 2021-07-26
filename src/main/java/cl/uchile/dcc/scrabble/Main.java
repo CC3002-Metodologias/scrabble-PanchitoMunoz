@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Or;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators.LeafIterator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenOr;
@@ -60,7 +60,7 @@ public class Main {
 //
 //        System.out.println(new TypeFloat(3).compareTo(new TypeBinary("011")));
 
-        HiddenAST hiddenAST = new HiddenAdd(
+        HiddenASTComponent hiddenASTComponent = new HiddenAdd(
             new HiddenVariable("x"),
             new HiddenOr(
                 new HiddenBinary("1000"),
@@ -71,12 +71,12 @@ public class Main {
             )
         );
 
-        System.out.println(hiddenAST);
+        System.out.println(hiddenASTComponent);
 
-        LeafIterator iterator = new LeafIterator(hiddenAST);
+        LeafIterator iterator = new LeafIterator(hiddenASTComponent);
 
         while (iterator.hasNext()) {
-            HiddenAST next = iterator.next();
+            HiddenASTComponent next = iterator.next();
             System.out.println("\nPróximo elemento:");
             System.out.println(next);
             System.out.println("Tamaño:");

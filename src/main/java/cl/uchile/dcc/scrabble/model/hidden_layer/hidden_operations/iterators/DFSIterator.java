@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
@@ -11,11 +11,11 @@ import java.util.Stack;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/24 10:05
  */
-public class DFSIterator implements Iterator<HiddenAST> {
+public class DFSIterator implements Iterator<HiddenASTComponent> {
 
-    private final Stack<HiddenAST> stack = new Stack<>();
+    private final Stack<HiddenASTComponent> stack = new Stack<>();
 
-    public DFSIterator(HiddenAST iterable) {
+    public DFSIterator(HiddenASTComponent iterable) {
         stack.push(iterable);
     }
 
@@ -37,8 +37,8 @@ public class DFSIterator implements Iterator<HiddenAST> {
      * @throws NoSuchElementException if the iteration has no more elements
      */
     @Override
-    public HiddenAST next() {
-        HiddenAST currentElement = stack.pop();
+    public HiddenASTComponent next() {
+        HiddenASTComponent currentElement = stack.pop();
         currentElement.updateStack(stack);
         return currentElement;
     }

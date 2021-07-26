@@ -122,10 +122,10 @@ public class HiddenNull implements HBinary, HBool, HFloat, HInt, HString {
     }
 
     /**
-     * Returns the {@code String} representation of the current {@code HiddenAST}.
+     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
      *
      * @param space number of spaces to ident
-     * @return the current {@code HiddenAST} as {@code String}
+     * @return the current {@code HiddenASTComponent} as {@code String}
      */
     @Override
     public String asString(int space) {

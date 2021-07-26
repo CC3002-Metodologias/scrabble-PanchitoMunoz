@@ -1,22 +1,22 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBinary;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeInt;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
  * This interface is to define the different types of operations that exists. This is the composite
- * part of {@code HiddenAST}, using the composite pattern
+ * part of {@code HiddenASTComponent}, using the composite pattern
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 23:47
- * @see HiddenAST
+ * @see HiddenASTComponent
  */
 public interface Operation extends AST {
 
@@ -36,7 +36,7 @@ public interface Operation extends AST {
     SType calculate();
 
     /**
-     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     * Transform an {@code AST} into its equivalent {@code HiddenASTComponent}.
      *
      * @return a transformation
      */

@@ -1,16 +1,17 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.operations.Div;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes.AbstractHiddenBinaryOperation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
-import cl.uchile.dcc.scrabble.model.ast.operations.Div;
 
 /**
- * A class to add a node in the {@code HiddenAST}. It is equivalent to compute the {@code div} method. This class will be adapted by the {@code Div} class.
+ * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
+ * div} method. This class will be adapted by the {@code Div} class.
  *
- * @see Div
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:33
+ * @see Div
  */
 public class HiddenDiv extends AbstractHiddenBinaryOperation {
 
@@ -20,7 +21,7 @@ public class HiddenDiv extends AbstractHiddenBinaryOperation {
      * @param leftValue  left value, it can be an {@code HiddenOperation} or a {@code HType}.
      * @param rightValue right value, it can be an {@code HiddenOperation} or a {@code HType}.
      */
-    public HiddenDiv(HiddenAST leftValue, HiddenAST rightValue) {
+    public HiddenDiv(HiddenASTComponent leftValue, HiddenASTComponent rightValue) {
         super(leftValue, rightValue, "Div", "/");
     }
 

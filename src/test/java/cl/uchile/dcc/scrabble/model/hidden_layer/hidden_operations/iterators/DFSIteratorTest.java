@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -15,7 +15,7 @@ class DFSIteratorTest extends BaseIteratorTest {
     @BeforeEach
     public void setUp() {
         super.setUp();
-        iterator = new DFSIterator(hiddenAST);
+        iterator = new DFSIterator(hiddenASTComponent);
     }
 
     @RepeatedTest(20)
@@ -31,7 +31,7 @@ class DFSIteratorTest extends BaseIteratorTest {
 
     @RepeatedTest(20)
     void testNext() {
-        for (HiddenAST elem : hiddenASTList) {
+        for (HiddenASTComponent elem : hiddenASTComponentList) {
             assertSame(elem, iterator.next(),
                 "Method next does not works." + messageSeed);
         }

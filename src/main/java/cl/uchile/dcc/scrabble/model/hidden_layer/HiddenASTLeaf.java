@@ -4,12 +4,12 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVis
 import java.util.Stack;
 
 /**
- * An interface to define a generic leaf in {@code HiddenAST}
+ * An interface to define a generic leaf in {@code HiddenASTComponent}
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/04 0:47
  */
-public interface HiddenASTLeaf extends HiddenAST {
+public interface HiddenASTLeaf extends HiddenASTComponent {
 
     /**
      * Method that accepts a {@code HiddenSetterVisitor}.
@@ -24,12 +24,12 @@ public interface HiddenASTLeaf extends HiddenAST {
      * @param stack the current stack.
      */
     @Override
-    default void updateStack(Stack<HiddenAST> stack) {
+    default void updateStack(Stack<HiddenASTComponent> stack) {
         // It does nothing
     }
 
     /**
-     * Returns the number of vertices in the current {@code HiddenAST}
+     * Returns the number of vertices in the current {@code HiddenASTComponent}
      *
      * @return the number of vertices
      */
