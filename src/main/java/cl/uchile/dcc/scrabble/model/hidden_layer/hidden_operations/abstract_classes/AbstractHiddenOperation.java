@@ -1,13 +1,13 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.abstract_classes;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.AbstractHiddenASTComposite;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.iterators.LeafIterable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVisitor;
-import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * Abstract class for a general operation in the hidden types.
@@ -15,11 +15,10 @@ import java.util.Objects;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/21 17:16
  */
-public abstract class AbstractHiddenOperation implements HiddenOperation {
+public abstract class AbstractHiddenOperation
+    extends AbstractHiddenASTComposite
+    implements HiddenOperation {
 
-    private final HiddenAST leftChildren;
-    private final HiddenAST rightChildren;
-    private final String operatorName;
     private final String operatorSymbol;
 
     /**
@@ -31,54 +30,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     public AbstractHiddenOperation(
         HiddenAST leftValue, HiddenAST rightValue,
         String operatorName, String operatorSymbol) {
-        this.leftChildren = leftValue;
-        this.rightChildren = rightValue;
-        this.operatorName = operatorName;
+        super(leftValue, rightValue, HTypeFactory.createHiddenNull(), operatorName);
         this.operatorSymbol = operatorSymbol;
-    }
-
-    /**
-     * A String representation of the current instance.
-     *
-     * @return a string representation
-     */
-    @Override
-    public String toString() {
-        return asString(0);
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param o the reference object with which to compare.
-     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
-     * @see #hashCode()
-     * @see HashMap
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof AbstractHiddenOperation)) {
-            return false;
-        }
-        AbstractHiddenOperation that = (AbstractHiddenOperation) o;
-        return Objects.equals(leftChildren, that.leftChildren) && Objects
-            .equals(rightChildren, that.rightChildren) && Objects
-            .equals(operatorName, that.operatorName);
-    }
-
-    /**
-     * Returns a hash code value for the object.
-     *
-     * @return a hash code value for this object.
-     * @see Object#equals(Object)
-     * @see System#identityHashCode
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(leftChildren, rightChildren, operatorName);
     }
 
     /**
@@ -88,7 +41,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      */
     @Override
     public HiddenAST getLeftChildren() {
-        return leftChildren;
+        return getFirstChildren();
     }
 
     /**
@@ -98,7 +51,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      */
     @Override
     public HiddenAST getRightChildren() {
-        return rightChildren;
+        return getSecondChildren();
     }
 
     /**
@@ -111,11 +64,11 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
     public final String asString(int space) {
         String tab = " ".repeat(space);
         if (!isTransformation()) {
-            return tab + operatorName + "(\n"
-                + leftChildren.asString(space + 2) + rightValueAsString(space) + '\n'
+            return tab + getOperatorName() + "(\n"
+                + getLeftChildren().asString(space + 2) + rightValueAsString(space) + '\n'
                 + tab + ')';
         } else {
-            return leftChildren.asString(space) + '.' + operatorName + "()";
+            return getLeftChildren().asString(space) + '.' + getOperatorName() + "()";
         }
     }
 
@@ -128,7 +81,7 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      */
     protected String rightValueAsString(int space) {
         return ' ' + operatorSymbol + '\n'
-            + rightChildren.asString(space + 2) ;
+            + getRightChildren().asString(space + 2);
     }
 
     /**
@@ -148,8 +101,8 @@ public abstract class AbstractHiddenOperation implements HiddenOperation {
      */
     @Override
     public final HType calculate() {
-        HType leftCalculated = leftChildren.calculate();
-        HType rightCalculated = rightChildren.calculate();
+        HType leftCalculated = getLeftChildren().calculate();
+        HType rightCalculated = getRightChildren().calculate();
         return mainOperation(leftCalculated, rightCalculated);
     }
 

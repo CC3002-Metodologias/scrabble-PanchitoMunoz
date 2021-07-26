@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import org.junit.jupiter.api.BeforeEach;
@@ -63,15 +64,15 @@ class HiddenNegTest extends BaseHiddenOperationTest {
     void testTestHashCode() {
         HiddenNeg hiddenNeg = new HiddenNeg(hiddenBinary1);
         HiddenNeg equalsHiddenNeg = new HiddenNeg(hiddenBinary1);
-        HiddenNeg differentHiddenNeg = new HiddenNeg(trueHiddenBool);
+        HiddenNeg differentHiddenNeg = new HiddenNeg(hiddenBinary2);
         HiddenSub otherNode = new HiddenSub(hiddenFloat1, hiddenFloat2);
         assertEquals(equalsHiddenNeg.hashCode(), hiddenNeg.hashCode(),
-            "Method hashCode does not works." + messageSeed);
+            "Method hashCode does not works with equals content." + messageSeed);
         assertNotEquals(differentHiddenNeg.hashCode(), hiddenNeg.hashCode(),
-            "Method hashCode does not works." + messageSeed);
+            "Method hashCode does not works with different content." + messageSeed);
         assertNotEquals(otherNode.hashCode(), hiddenNeg.hashCode(),
-            "Method hashCode does not works." + messageSeed);
+            "Method hashCode does not works with a different node." + messageSeed);
         assertNotEquals(hiddenString1.hashCode(), hiddenNeg.hashCode(),
-            "Method hashCode does not works." + messageSeed);
+            "Method hashCode does not works with other value." + messageSeed);
     }
 }
