@@ -11,7 +11,7 @@ import java.util.Stack;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 22:51
  */
-public interface HiddenASTComponent {
+public interface HiddenASTComponent extends HiddenAST {
 
     /**
      * Calculate the {@code HType} result of performing all operations.
@@ -19,14 +19,6 @@ public interface HiddenASTComponent {
      * @return {@code HType} result of operations
      */
     HType calculate();
-
-    /**
-     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
-     *
-     * @param space number of spaces to ident
-     * @return the current {@code HiddenASTComponent} as {@code String}
-     */
-    String asString(int space);
 
     /**
      * Updates the stack.

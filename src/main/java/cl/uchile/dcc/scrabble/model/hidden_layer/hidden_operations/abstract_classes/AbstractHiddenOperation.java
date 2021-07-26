@@ -41,7 +41,7 @@ public abstract class AbstractHiddenOperation
      */
     @Override
     public HiddenASTComponent getLeftChildren() {
-        return getFirstChildren();
+        return (HiddenASTComponent) getFirstChildren();
     }
 
     /**
@@ -51,7 +51,7 @@ public abstract class AbstractHiddenOperation
      */
     @Override
     public HiddenASTComponent getRightChildren() {
-        return getSecondChildren();
+        return (HiddenASTComponent) getSecondChildren();
     }
 
     /**

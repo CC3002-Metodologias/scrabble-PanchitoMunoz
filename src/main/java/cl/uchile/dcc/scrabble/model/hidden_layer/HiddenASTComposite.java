@@ -13,21 +13,21 @@ public interface HiddenASTComposite extends HiddenASTComponent {
      *
      * @return the first children
      */
-    HiddenASTComponent getFirstChildren();
+    HiddenAST getFirstChildren();
 
     /**
      * Get the second children
      *
      * @return the second children
      */
-    HiddenASTComponent getSecondChildren();
+    HiddenAST getSecondChildren();
 
     /**
      * Get the third children
      *
      * @return the third children
      */
-    HiddenASTComponent getThirdChildren();
+    HiddenAST getThirdChildren();
 
     /**
      * Get the operator name
