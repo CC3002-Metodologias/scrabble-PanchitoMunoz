@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -46,9 +46,9 @@ public class HiddenGlobalVariables {
         variable.setValue(globalValue, false);
     }
 
-    public void updateHiddenAST(@NotNull HiddenOperation hiddenOperation) {
+    public void updateHiddenAST(@NotNull HiddenOperator hiddenOperator) {
         for (String key : variables.keySet()) {
-            hiddenOperation.setVariable(key, variables.get(key));
+            hiddenOperator.setVariable(key, variables.get(key));
         }
     }
 }

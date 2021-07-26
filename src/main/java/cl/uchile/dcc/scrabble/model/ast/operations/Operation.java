@@ -7,7 +7,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeInt;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -41,7 +41,7 @@ public interface Operation extends AST {
      * @return a transformation
      */
     @Override
-    HiddenOperation asHiddenAST();
+    HiddenOperator asHiddenAST();
 
     /**
      * Transform the current instance into a {@code TypeBinary}.

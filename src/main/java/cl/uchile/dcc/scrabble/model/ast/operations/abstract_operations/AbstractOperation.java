@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.HiddenOperation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
 
@@ -17,14 +17,14 @@ import java.util.HashMap;
  */
 public abstract class AbstractOperation implements Operation {
 
-    private final HiddenOperation adaptee;
+    private final HiddenOperator adaptee;
 
     /**
      * Constructor by default.
      *
-     * @param adaptee a HiddenOperation to adapt
+     * @param adaptee a HiddenOperator to adapt
      */
-    protected AbstractOperation(HiddenOperation adaptee) {
+    protected AbstractOperation(HiddenOperator adaptee) {
         this.adaptee = adaptee;
     }
 
@@ -34,7 +34,7 @@ public abstract class AbstractOperation implements Operation {
      * @return a transformation
      */
     @Override
-    public HiddenOperation asHiddenAST() {
+    public HiddenOperator asHiddenAST() {
         return adaptee;
     }
 

@@ -1,8 +1,10 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operations.operations.HiddenNeg;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenNeg;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
