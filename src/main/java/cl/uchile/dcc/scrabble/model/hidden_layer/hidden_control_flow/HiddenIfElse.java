@@ -13,6 +13,13 @@ import java.util.Stack;
  */
 public class HiddenIfElse extends AbstractHiddenControlFlow {
 
+    /**
+     * Constructor.
+     *
+     * @param condition A condition. It can be a {@code HiddenASTComponent}.
+     * @param ifBody    the body if the condition is true.
+     * @param elseBody  the body if the condition is false.
+     */
     protected HiddenIfElse(
         HiddenASTComponent condition,
         HiddenAST ifBody,

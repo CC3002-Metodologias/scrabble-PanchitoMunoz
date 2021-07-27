@@ -1,11 +1,12 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.iterators;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -39,7 +40,7 @@ class LeafIteratorTest extends BaseIteratorTest {
         }
         assertFalse(iterator.hasNext(),
             "Iterator says that has next when it is false." + messageSeed);
-        assertNull(iterator.next(),
+        assertThrows(NoSuchElementException.class, () -> iterator.next(),
             "Iterator does not return null when iterations ends." + messageSeed);
     }
 }

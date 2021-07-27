@@ -14,8 +14,10 @@ public abstract class AbstractHiddenBinaryOperator extends AbstractHiddenOperato
     /**
      * Default constructor. It can receive an {@code HiddenOperator} or a {@code HType}.
      *
-     * @param leftValue  left value, it can be an {@code HiddenOperator} or a {@code HType}.
-     * @param rightValue right value, it can be an {@code HiddenOperator} or a {@code HType}.
+     * @param leftValue      left value, it can be an {@code HiddenOperator} or a {@code HType}.
+     * @param rightValue     right value, it can be an {@code HiddenOperator} or a {@code HType}.
+     * @param operatorName   the operator's name
+     * @param operatorSymbol the operator's symbol
      */
     public AbstractHiddenBinaryOperator(
         HiddenASTComponent leftValue, HiddenASTComponent rightValue,

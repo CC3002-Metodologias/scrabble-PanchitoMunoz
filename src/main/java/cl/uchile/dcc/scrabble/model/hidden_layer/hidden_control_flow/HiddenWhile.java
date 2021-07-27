@@ -14,6 +14,12 @@ import java.util.Stack;
  */
 public class HiddenWhile extends AbstractHiddenControlFlow {
 
+    /**
+     * Default constructor.
+     *
+     * @param condition A condition. It can be a {@code HiddenASTComponent}.
+     * @param whileBody The body that it could be executed iff the condition holds.
+     */
     protected HiddenWhile(
         HiddenASTComponent condition,
         HiddenAST whileBody) {

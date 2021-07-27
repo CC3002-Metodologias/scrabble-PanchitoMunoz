@@ -38,6 +38,9 @@ public class DFSIterator implements Iterator<HiddenASTComponent> {
      */
     @Override
     public HiddenASTComponent next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException("The iterator doesn't have any element.");
+        }
         HiddenASTComponent currentElement = stack.pop();
         currentElement.updateStack(stack);
         return currentElement;

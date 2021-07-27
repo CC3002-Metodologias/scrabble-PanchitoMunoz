@@ -44,6 +44,6 @@ public class LeafIterator implements Iterator<HiddenASTLeaf> {
                 return (HiddenASTLeaf) next;
             }
         }
-        return null;
+        throw new NoSuchElementException("The iterator doesn't have any element.");
     }
 }

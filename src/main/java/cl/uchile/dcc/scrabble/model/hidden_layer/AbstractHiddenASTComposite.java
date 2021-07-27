@@ -15,6 +15,14 @@ public abstract class AbstractHiddenASTComposite implements HiddenASTComposite {
     private final HiddenAST thirdChildren;
     private final String operatorName;
 
+    /**
+     * Default constructor.
+     *
+     * @param firstChildren  the first children.
+     * @param secondChildren the second children.
+     * @param thirdChildren  the third children.
+     * @param operatorName   the operator name.
+     */
     protected AbstractHiddenASTComposite(
         HiddenAST firstChildren,
         HiddenAST secondChildren,
