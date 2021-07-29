@@ -16,8 +16,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 public class ToHiddenBool extends AbstractHiddenTransformation {
 
     /**
-     * Constructor with one parameter. It can receive an {@code HiddenOperator} or a {@code
-     * HType}.
+     * Constructor with one parameter. It can receive an {@code HiddenOperator} or a {@code HType}.
      *
      * @param value a value. It can receive an {@code HiddenOperator} or a {@code HType}.
      */
@@ -26,13 +25,14 @@ public class ToHiddenBool extends AbstractHiddenTransformation {
     }
 
     /**
-     * Compute the unary operation. To use template pattern in {@code mainOperation}.
+     * Compute the main operation of the {@code HiddenOperation}. To use template pattern in {@code
+     * calculate}.
      *
-     * @param value a value
+     * @param value1 the value at the left
      * @return the value computed
      */
     @Override
-    protected HType mainUnaryOperation(HType value) {
-        return value.toHiddenBool();
+    protected HType mainOperation(HType value1) {
+        return value1.toHiddenBool();
     }
 }

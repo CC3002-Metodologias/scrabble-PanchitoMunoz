@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.AbstractHiddenASTComposite;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
 
 /**
  * todo: doc
@@ -10,20 +10,36 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
  * @create 2021/07/25 18:31
  */
 public abstract class AbstractHiddenControlFlow
-    extends AbstractHiddenASTComposite
     implements HiddenControlFlow {
+
+    private final HiddenASTComposite condition;
+    private final HiddenAST firstBody;
+    private final String operatorName;
 
     /**
      * Default constructor.
      *
-     * @param firstChildren  the first children.
-     * @param secondChildren the second children.
-     * @param thirdChildren  the third children.
-     * @param operatorName   the operator name.
+     * @param condition    the condition.
+     * @param firstBody    the first body to execute.
+     * @param operatorName the operator name.
      */
     protected AbstractHiddenControlFlow(
-        HiddenAST firstChildren, HiddenAST secondChildren,
-        HiddenAST thirdChildren, String operatorName) {
-        super(firstChildren, secondChildren, thirdChildren, operatorName);
+        HiddenASTComposite condition, HiddenAST firstBody,
+        String operatorName) {
+        this.condition = condition;
+        this.firstBody = firstBody;
+        this.operatorName = operatorName;
+    }
+
+    public HiddenASTComposite getCondition() {
+        return condition;
+    }
+
+    public HiddenAST getFirstBody() {
+        return firstBody;
+    }
+
+    public String getOperatorName() {
+        return operatorName;
     }
 }

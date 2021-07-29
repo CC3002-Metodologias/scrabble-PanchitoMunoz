@@ -21,13 +21,13 @@ public abstract class AbstractHiddenTransformation extends AbstractHiddenUnaryOp
     }
 
     /**
-     * Returns true if the operation is a transformation, false otherwise. To use template pattern
-     * in {@code asString}.
+     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
      *
-     * @return true if the operation is a transformation, false otherwise.
+     * @param space number of spaces to ident
+     * @return the current {@code HiddenASTComponent} as {@code String}
      */
     @Override
-    protected boolean isTransformation() {
-        return true;
+    public final String asString(int space) {
+        return getFirstChildren().asString(space) + '.' + getOperatorName() + "()";
     }
 }

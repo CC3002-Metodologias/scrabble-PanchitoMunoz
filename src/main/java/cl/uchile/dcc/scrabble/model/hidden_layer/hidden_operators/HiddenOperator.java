@@ -18,20 +18,6 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.transformation
 public interface HiddenOperator extends HiddenASTComposite {
 
     /**
-     * Gets the left children.
-     *
-     * @return the left children
-     */
-    HiddenASTComponent getLeftChildren();
-
-    /**
-     * Gets the right children.
-     *
-     * @return the right children
-     */
-    HiddenASTComponent getRightChildren();
-
-    /**
      * Sets the variable in an {@code HiddenOperator}.
      *
      * @param name  the name of the variable

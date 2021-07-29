@@ -26,13 +26,14 @@ public class ToHiddenInt extends AbstractHiddenTransformation {
     }
 
     /**
-     * Compute the unary operation. To use template pattern in {@code mainOperation}.
+     * Compute the main operation of the {@code HiddenOperation}. To use template pattern in {@code
+     * calculate}.
      *
-     * @param value a value
+     * @param value1 the value at the left
      * @return the value computed
      */
     @Override
-    protected HType mainUnaryOperation(HType value) {
-        return value.toHiddenInt();
+    protected HType mainOperation(HType value1) {
+        return value1.toHiddenInt();
     }
 }

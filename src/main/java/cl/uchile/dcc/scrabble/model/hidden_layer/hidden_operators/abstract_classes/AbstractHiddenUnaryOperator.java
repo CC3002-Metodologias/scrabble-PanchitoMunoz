@@ -1,8 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.abstract_classes;
 
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import java.util.Stack;
 
 /**
@@ -14,46 +12,15 @@ import java.util.Stack;
 public abstract class AbstractHiddenUnaryOperator extends AbstractHiddenOperator {
 
     /**
-     * Constructor with one parameter. It can receive an {@code HiddenOperator} or a {@code
-     * HType}.
+     * Default constructor. It can receive any {@code HiddenASTComponent}.
      *
-     * @param value a value. It can receive an {@code HiddenOperator} or a {@code HType}.
+     * @param firstChildren the first value. It can be any {@code HiddenASTComponent}.
+     * @param operatorName  the operator's name.
      */
-    public AbstractHiddenUnaryOperator(HiddenASTComponent value, String operatorName) {
-        super(value, HTypeFactory.createHiddenNull(), operatorName, null);
+    public AbstractHiddenUnaryOperator(
+        HiddenASTComponent firstChildren, String operatorName) {
+        super(firstChildren, operatorName);
     }
-
-    /**
-     * Right value as {@code String}. To use template pattern in {@code asString}.
-     *
-     * @param space number of space
-     * @return right value as {@code String}
-     */
-    @Override
-    protected final String rightValueAsString(int space) {
-        return "";  // Don't used
-    }
-
-    /**
-     * Compute the operation between 2 {@code HType} and returns its operation. To use template
-     * pattern in {@code calculate}.
-     *
-     * @param value1 the value at the left
-     * @param value2 the value at the right
-     * @return the value computed
-     */
-    @Override
-    protected final HType mainOperation(HType value1, HType value2) {
-        return mainUnaryOperation(value1);
-    }
-
-    /**
-     * Compute the unary operation. To use template pattern in {@code mainOperation}.
-     *
-     * @param value a value
-     * @return the value computed
-     */
-    protected abstract HType mainUnaryOperation(HType value);
 
     /**
      * Updates the stack.
@@ -62,16 +29,22 @@ public abstract class AbstractHiddenUnaryOperator extends AbstractHiddenOperator
      */
     @Override
     public final void updateStack(Stack<HiddenASTComponent> stack) {
-        stack.push(this.getLeftChildren());
+        stack.push(this.getFirstChildren());
     }
 
     /**
-     * Returns the number of vertices in the current {@code HiddenASTComponent}
+     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
      *
-     * @return the number of vertices
+     * @param space number of spaces to ident
+     * @return the current {@code HiddenASTComponent} as {@code String}
      */
     @Override
-    public int size() {
-        return this.getLeftChildren().size() + 1;
+    public String asString(int space) {
+        String tab = " ".repeat(space);
+        return tab + getOperatorName() + "(\n"
+            + getFirstChildren().asString(space + 2) + "\n"
+            + tab + ')';
     }
+
+
 }

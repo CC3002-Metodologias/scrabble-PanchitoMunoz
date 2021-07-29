@@ -1,13 +1,13 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.abstract_classes;
 
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.AbstractHiddenASTComposite;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.iterators.LeafIterable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVisitor;
+import java.util.HashMap;
 
 /**
  * Abstract class for a general operation in the hidden types.
@@ -16,84 +16,89 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVis
  * @create 2021/06/21 17:16
  */
 public abstract class AbstractHiddenOperator
-    extends AbstractHiddenASTComposite
     implements HiddenOperator {
 
-    private final String operatorSymbol;
+    private final HiddenASTComponent firstChildren;
+    private final String operatorName;
 
     /**
-     * Default constructor. It can receive an {@code HiddenOperator} or a {@code HType}.
+     * Default constructor. It can receive any {@code HiddenASTComponent}.
      *
-     * @param leftValue      left value, it can be an {@code HiddenOperator} or a {@code HType}.
-     * @param rightValue     right value, it can be an {@code HiddenOperator} or a {@code HType}.
-     * @param operatorName   the operator's name
-     * @param operatorSymbol the operator's symbol
+     * @param firstChildren the first value. It can be any {@code HiddenASTComponent}.
+     * @param operatorName  the operator's name.
      */
-    public AbstractHiddenOperator(
-        HiddenASTComponent leftValue, HiddenASTComponent rightValue,
-        String operatorName, String operatorSymbol) {
-        super(leftValue, rightValue, HTypeFactory.createHiddenNull(), operatorName);
-        this.operatorSymbol = operatorSymbol;
+    public AbstractHiddenOperator(HiddenASTComponent firstChildren, String operatorName) {
+        this.firstChildren = firstChildren;
+        this.operatorName = operatorName;
     }
 
     /**
-     * Gets the left children.
+     * A String representation of the current instance.
      *
-     * @return the left children
+     * @return a string representation
      */
     @Override
-    public HiddenASTComponent getLeftChildren() {
-        return (HiddenASTComponent) getFirstChildren();
+    public final String toString() {
+        return asString(0);
     }
 
     /**
-     * Gets the right children.
+     * Indicates whether some other object is "equal to" this one.
      *
-     * @return the right children
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
      */
     @Override
-    public HiddenASTComponent getRightChildren() {
-        return (HiddenASTComponent) getSecondChildren();
-    }
-
-    /**
-     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
-     *
-     * @param space number of spaces to ident
-     * @return the current {@code HiddenASTComponent} as {@code String}
-     */
-    @Override
-    public final String asString(int space) {
-        String tab = " ".repeat(space);
-        if (!isTransformation()) {
-            return tab + getOperatorName() + "(\n"
-                + getLeftChildren().asString(space + 2) + rightValueAsString(space) + '\n'
-                + tab + ')';
-        } else {
-            return getLeftChildren().asString(space) + '.' + getOperatorName() + "()";
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
+        if (!(o instanceof HiddenASTComposite)) {
+            return false;
+        }
+
+        HiddenASTComposite that = (HiddenASTComposite) o;
+
+        if (!getFirstChildren().equals(that.getFirstChildren())) {
+            return false;
+        }
+        return getOperatorName().equals(that.getOperatorName());
     }
 
     /**
-     * Right value as {@code String}.
-     * To use template pattern in {@code asString}.
+     * Returns a hash code value for the object.
      *
-     * @param space number of space
-     * @return right value as {@code String}
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
      */
-    protected String rightValueAsString(int space) {
-        return ' ' + operatorSymbol + '\n'
-            + getRightChildren().asString(space + 2);
+    @Override
+    public int hashCode() {
+        int result = getFirstChildren().hashCode();
+        result = 31 * result + getOperatorName().hashCode();
+        return result;
     }
 
     /**
-     * Returns true if the operation is a transformation, false otherwise.
-     * To use template pattern in {@code asString}.
+     * Get the first children
      *
-     * @return true if the operation is a transformation, false otherwise.
+     * @return the first children
      */
-    protected boolean isTransformation() {
-        return false;  // Usually is false
+    @Override
+    public final HiddenASTComponent getFirstChildren() {
+        return this.firstChildren;
+    }
+
+    /**
+     * Get the operator name
+     *
+     * @return the operator name
+     */
+    @Override
+    public final String getOperatorName() {
+        return this.operatorName;
     }
 
     /**
@@ -102,21 +107,27 @@ public abstract class AbstractHiddenOperator
      * @return {@code HType} result of operations.
      */
     @Override
-    public final HType calculate() {
-        HType leftCalculated = getLeftChildren().calculate();
-        HType rightCalculated = getRightChildren().calculate();
-        return mainOperation(leftCalculated, rightCalculated);
+    public HType calculate() {
+        return mainOperation(firstChildrenCalculated());
     }
 
     /**
-     * Compute the operation between 2 {@code HType} and returns its operation. To use template
-     * pattern in {@code calculate}.
+     * Calculate the first children.
+     *
+     * @return the first children calculated.
+     */
+    public final HType firstChildrenCalculated() {
+        return getFirstChildren().calculate();
+    }
+
+    /**
+     * Compute the main operation of the {@code HiddenOperation}. To use template pattern in {@code
+     * calculate}.
      *
      * @param value1 the value at the left
-     * @param value2 the value at the right
      * @return the value computed
      */
-    protected abstract HType mainOperation(HType value1, HType value2);
+    protected abstract HType mainOperation(HType value1);
 
     /**
      * Sets the variable in an {@code HiddenOperator}.
@@ -125,7 +136,7 @@ public abstract class AbstractHiddenOperator
      * @param value the current value to set
      */
     @Override
-    public void setVariable(String name, HiddenASTComponent value) {
+    public final void setVariable(String name, HiddenASTComponent value) {
         HiddenSetterVisitor visitor = new HiddenSetterVisitor(name, value);
         for (HiddenASTLeaf leaf : this.leafIterable()) {
             leaf.accept(visitor);
@@ -137,7 +148,17 @@ public abstract class AbstractHiddenOperator
      *
      * @return an iterable that iterates by the leaves.
      */
-    public LeafIterable leafIterable() {
+    public final LeafIterable leafIterable() {
         return new LeafIterable(this);
+    }
+
+    /**
+     * Returns the number of vertices in the current {@code HiddenASTComponent}
+     *
+     * @return the number of vertices
+     */
+    @Override
+    public int size() {
+        return 1 + getFirstChildren().size();
     }
 }
