@@ -6,7 +6,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.iterators.LeafIterable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenSetterVisitor;
 import java.util.HashMap;
 
 /**
@@ -102,16 +102,6 @@ public abstract class AbstractHiddenOperator
     }
 
     /**
-     * Calculate the {@code HType} result of performing all operations
-     *
-     * @return {@code HType} result of operations.
-     */
-    @Override
-    public HType calculate() {
-        return mainOperation(firstChildrenCalculated());
-    }
-
-    /**
      * Calculate the first children.
      *
      * @return the first children calculated.
@@ -119,15 +109,6 @@ public abstract class AbstractHiddenOperator
     public final HType firstChildrenCalculated() {
         return getFirstChildren().calculate();
     }
-
-    /**
-     * Compute the main operation of the {@code HiddenOperation}. To use template pattern in {@code
-     * calculate}.
-     *
-     * @param value1 the value at the left
-     * @return the value computed
-     */
-    protected abstract HType mainOperation(HType value1);
 
     /**
      * Sets the variable in an {@code HiddenOperator}.

@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import java.util.Stack;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 
 /**
  * An interface that defines a "type" of Abstract Syntax Tree. This interface is for using the
@@ -21,16 +21,16 @@ public interface HiddenASTComponent extends HiddenAST {
     HType calculate();
 
     /**
-     * Updates the stack.
-     *
-     * @param stack the current stack.
-     */
-    void updateStack(Stack<HiddenASTComponent> stack);
-
-    /**
      * Returns the number of vertices in the current {@code HiddenASTComponent}
      *
      * @return the number of vertices
      */
     int size();
+
+    /**
+     * Method that accepts a {@code HiddenVisitor}.
+     *
+     * @param visitor a {@code HiddenVisitor}.
+     */
+    void accept(HiddenVisitor visitor);
 }

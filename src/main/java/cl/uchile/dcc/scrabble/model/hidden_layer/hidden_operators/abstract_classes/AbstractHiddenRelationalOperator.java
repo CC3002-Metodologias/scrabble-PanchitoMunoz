@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.abstract_classes;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.hidden_relational_operator.HiddenRelationalOperator;
 
 /**
  * todo: doc
@@ -8,7 +9,9 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/26 0:34
  */
-public abstract class AbstractHiddenRelationalOperator extends AbstractHiddenBinaryOperator {
+public abstract class AbstractHiddenRelationalOperator
+    extends AbstractHiddenBinaryOperator
+    implements HiddenRelationalOperator {
 
     /**
      * Default constructor. It can receive an {@code HiddenOperator} or a {@code HType}.

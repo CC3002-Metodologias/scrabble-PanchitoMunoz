@@ -34,6 +34,6 @@ public class HiddenEquals extends AbstractHiddenRelationalOperator {
      */
     @Override
     protected HType mainOperation(HType value1, HType value2) {
-        return null;
+        return value1.equalsTo(value2);
     }
 }

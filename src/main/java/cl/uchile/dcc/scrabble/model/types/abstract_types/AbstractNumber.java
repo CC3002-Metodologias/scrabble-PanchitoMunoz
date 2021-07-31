@@ -84,6 +84,6 @@ public abstract class AbstractNumber extends AbstractType implements SNumber {
      */
     @Override
     public final int compareTo(@NotNull SNumber o) {
-        return Double.compare(this.getValueAsDouble(), o.getValueAsDouble());
+        return this.asHType().compareTo(o.asHType());
     }
 }

@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,13 +33,13 @@ public class HiddenVariable implements HiddenASTLeaf {
     }
 
     /**
-     * Method that accepts a {@code HiddenSetterVisitor}.
+     * Method that accepts a {@code HiddenVisitor}.
      *
-     * @param visitor a {@code HiddenSetterVisitor}.
+     * @param visitor a {@code HiddenVisitor}.
      */
     @Override
-    public void accept(HiddenSetterVisitor visitor) {
-        visitor.visitVariable(this);
+    public void accept(HiddenVisitor visitor) {
+        visitor.visitHiddenVariable(this);
     }
 
     /**

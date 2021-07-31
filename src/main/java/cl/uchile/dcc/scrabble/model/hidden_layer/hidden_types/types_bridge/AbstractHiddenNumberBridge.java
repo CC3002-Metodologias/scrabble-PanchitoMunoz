@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
 
 /**
@@ -82,5 +83,55 @@ public abstract class AbstractHiddenNumberBridge extends AbstractHiddenTypeBridg
         }
         double computed = hiddenFloat.getValueAsDouble() / this.getValueAsDouble();
         return HTypeFactory.createHiddenFloat(computed);
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    @Override
+    public HBool equalsWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenBool(hNumber.compareTo(getValue()) == 0);
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    @Override
+    public HBool greaterEqualsWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenBool(hNumber.compareTo(getValue()) >= 0);
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    @Override
+    public HBool greaterThanWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenBool(hNumber.compareTo(getValue()) > 0);
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    @Override
+    public HBool lowerEqualsWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenBool(hNumber.compareTo(getValue()) <= 0);
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    @Override
+    public HBool lowerThanWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenBool(hNumber.compareTo(getValue()) < 0);
     }
 }

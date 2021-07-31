@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenSetterVisitor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -73,7 +74,6 @@ class HiddenVariableTest extends BaseHTypeTest {
             new HiddenAdd(hiddenString1, hiddenBinary1)
         );
         HiddenVariable variable1 = new HiddenVariable(name).setValue(variable);
-        System.out.println(variable1.asString(0));
     }
 
     @RepeatedTest(20)

@@ -1,9 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.abstract_classes;
 
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenBinaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
-import java.util.Stack;
 
 /**
  * Abstract class for binary operations in the hidden types.
@@ -11,7 +10,9 @@ import java.util.Stack;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/26 13:31
  */
-public abstract class AbstractHiddenBinaryOperator extends AbstractHiddenOperator {
+public abstract class AbstractHiddenBinaryOperator
+    extends AbstractHiddenOperator
+    implements HiddenBinaryOperator {
 
     private final HiddenASTComponent secondChildren;
     private final String operatorSymbol;
@@ -30,50 +31,6 @@ public abstract class AbstractHiddenBinaryOperator extends AbstractHiddenOperato
         super(firstChildren, operatorName);
         this.secondChildren = secondChildren;
         this.operatorSymbol = operatorSymbol;
-    }
-
-    /**
-     * Updates the stack.
-     *
-     * @param stack the current stack.
-     */
-    @Override
-    public final void updateStack(Stack<HiddenASTComponent> stack) {
-        stack.push(this.getSecondChildren());
-        stack.push(this.getFirstChildren());
-    }
-
-    /**
-     * Returns the number of vertices in the current {@code HiddenASTComponent}
-     *
-     * @return the number of vertices
-     */
-    @Override
-    public final int size() {
-        return super.size() + getSecondChildren().size();
-    }
-
-    public final HiddenASTComponent getSecondChildren() {
-        return secondChildren;
-    }
-
-    public final String getOperatorSymbol() {
-        return operatorSymbol;
-    }
-
-    /**
-     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
-     *
-     * @param space number of spaces to ident
-     * @return the current {@code HiddenASTComponent} as {@code String}
-     */
-    @Override
-    public String asString(int space) {
-        String tab = " ".repeat(space);
-        return tab + getOperatorName() + "(\n"
-            + getFirstChildren().asString(space + 2) + ' ' + getOperatorSymbol() + '\n'
-            + getSecondChildren().asString(space + 2) + '\n'
-            + tab + ')';
     }
 
     @Override
@@ -105,30 +62,52 @@ public abstract class AbstractHiddenBinaryOperator extends AbstractHiddenOperato
     }
 
     /**
-     * Calculate the {@code HType} result of performing all operations
+     * Returns the {@code String} representation of the current {@code HiddenASTComponent}.
      *
-     * @return {@code HType} result of operations.
+     * @param space number of spaces to ident
+     * @return the current {@code HiddenASTComponent} as {@code String}
      */
     @Override
-    public HType calculate() {
-        return mainOperation(firstChildrenCalculated(), secondChildrenCalculated());
+    public String asString(int space) {
+        String tab = " ".repeat(space);
+        return tab + getOperatorName() + "(\n"
+            + getFirstChildren().asString(space + 2) + ' ' + getOperatorSymbol() + '\n'
+            + getSecondChildren().asString(space + 2) + '\n'
+            + tab + ')';
+    }
+
+    /**
+     * Returns the number of vertices in the current {@code HiddenASTComponent}
+     *
+     * @return the number of vertices
+     */
+    @Override
+    public final int size() {
+        return super.size() + getSecondChildren().size();
+    }
+
+    @Override
+    public final HiddenASTComponent getSecondChildren() {
+        return secondChildren;
+    }
+
+    public final String getOperatorSymbol() {
+        return operatorSymbol;
     }
 
     protected final HType secondChildrenCalculated() {
         return getSecondChildren().calculate();
     }
 
+    protected abstract HType mainOperation(HType value1, HType value2);
+
     /**
-     * Compute the main operation of the {@code HiddenOperation}. To use template pattern in {@code
-     * calculate}.
+     * Calculate the {@code HType} result of performing all operations
      *
-     * @param value1 the value at the left
-     * @return the value computed
+     * @return {@code HType} result of operations.
      */
     @Override
-    protected final HType mainOperation(HType value1) {
-        return mainOperation(value1, HTypeFactory.createHiddenNull());
+    public final HType calculate() {
+        return mainOperation(firstChildrenCalculated(), secondChildrenCalculated());
     }
-
-    protected abstract HType mainOperation(HType value1, HType value2);
 }

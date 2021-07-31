@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenMult;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenNeg;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public abstract class BaseIteratorTest extends BaseHTypeTest {
     protected void setUp() {
         super.setUp();
         HiddenSub leftChildren = new HiddenSub(hiddenFloat1, hiddenBinary1);
-        HiddenMult rightChildren = new HiddenMult(hiddenBinary2, hiddenInt1);
+        HiddenNeg binaryNeg = new HiddenNeg(hiddenBinary2);
+        HiddenMult rightChildren = new HiddenMult(binaryNeg, hiddenInt1);
         hiddenASTComponent = new HiddenAdd(leftChildren, rightChildren);
 
         hiddenASTComponentList.add(hiddenASTComponent);
@@ -33,6 +35,7 @@ public abstract class BaseIteratorTest extends BaseHTypeTest {
         hiddenASTComponentList.add(hiddenFloat1);
         hiddenASTComponentList.add(hiddenBinary1);
         hiddenASTComponentList.add(rightChildren);
+        hiddenASTComponentList.add(binaryNeg);
         hiddenASTComponentList.add(hiddenBinary2);
         hiddenASTComponentList.add(hiddenInt1);
 

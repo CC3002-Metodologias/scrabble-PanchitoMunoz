@@ -8,6 +8,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
@@ -176,6 +177,51 @@ public interface HiddenTypeBridge {
      * @param hiddenBinary a {@code HiddenBinary}
      */
     default HBinary orWithBinary(HiddenBinary hiddenBinary) {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    default HBool equalsWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    default HBool greaterEqualsWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    default HBool greaterThanWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    default HBool lowerEqualsWithNumber(HNumber hNumber) {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * To use double dispatch in {@code equals}
+     *
+     * @param hNumber a {@code HNumber}
+     */
+    default HBool lowerThanWithNumber(HNumber hNumber) {
         return HTypeFactory.createHiddenNull();
     }
 

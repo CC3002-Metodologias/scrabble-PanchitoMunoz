@@ -4,10 +4,11 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HArithmeticOperations;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HComparable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HTypesTransformations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenTypeBridge;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenSetterVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -29,7 +30,8 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @see Operation
  */
 public interface HType
-    extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations, HTypesTransformations {
+    extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations, HTypesTransformations,
+    HComparable {
 
     /**
      * Returns the visitor
@@ -61,14 +63,15 @@ public interface HType
     SType asSType();
 
     /**
-     * Method that accepts a {@code HiddenSetterVisitor}.
+     * Method that accepts a {@code HiddenVisitor}.
      *
-     * @param visitor a {@code HiddenSetterVisitor}.
+     * @param visitor a {@code HiddenVisitor}.
      */
     @Override
-    default void accept(HiddenSetterVisitor visitor) {
+    default void accept(HiddenVisitor visitor) {
         visitor.visitHType(this);
     }
+
 
     /**
      * Calculate the {@code HType} result of performing all operations.

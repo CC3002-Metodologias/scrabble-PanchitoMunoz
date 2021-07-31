@@ -1,7 +1,8 @@
-package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
+package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -10,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/04 0:17
  */
-public class HiddenSetterVisitor {
+public class HiddenSetterVisitor implements HiddenVisitor {
 
     private final String name;
     private final HiddenASTComponent value;
@@ -31,6 +32,7 @@ public class HiddenSetterVisitor {
      *
      * @param hType an generic {@code HType}
      */
+    @Override
     public void visitHType(HType hType) { }
 
     /**
@@ -38,7 +40,8 @@ public class HiddenSetterVisitor {
      *
      * @param hiddenVariable a {@code HiddenVariable}.
      */
-    public void visitVariable(HiddenVariable hiddenVariable) {
+    @Override
+    public void visitHiddenVariable(HiddenVariable hiddenVariable) {
         if (hiddenVariable.getName().equals(name)) {
             hiddenVariable.setValue(value);
         }

@@ -9,7 +9,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/20 1:51
  */
-public interface HNumber extends HType {
+public interface HNumber extends HType, Comparable<HNumber> {
 
     /**
      * Gets the value as a {@code SNumber}

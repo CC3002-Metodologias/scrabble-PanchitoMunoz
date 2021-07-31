@@ -1,7 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.abstract_classes;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
-import java.util.Stack;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenUnaryOperator;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**
  * Abstract class for unary operations in the hidden types.
@@ -9,7 +10,9 @@ import java.util.Stack;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/26 13:31
  */
-public abstract class AbstractHiddenUnaryOperator extends AbstractHiddenOperator {
+public abstract class AbstractHiddenUnaryOperator
+    extends AbstractHiddenOperator
+    implements HiddenUnaryOperator {
 
     /**
      * Default constructor. It can receive any {@code HiddenASTComponent}.
@@ -20,16 +23,6 @@ public abstract class AbstractHiddenUnaryOperator extends AbstractHiddenOperator
     public AbstractHiddenUnaryOperator(
         HiddenASTComponent firstChildren, String operatorName) {
         super(firstChildren, operatorName);
-    }
-
-    /**
-     * Updates the stack.
-     *
-     * @param stack the current stack.
-     */
-    @Override
-    public final void updateStack(Stack<HiddenASTComponent> stack) {
-        stack.push(this.getFirstChildren());
     }
 
     /**
@@ -46,5 +39,23 @@ public abstract class AbstractHiddenUnaryOperator extends AbstractHiddenOperator
             + tab + ')';
     }
 
+    /**
+     * Calculate the {@code HType} result of performing all operations
+     *
+     * @return {@code HType} result of operations.
+     */
+    @Override
+    public final HType calculate() {
+        return mainOperation(firstChildrenCalculated());
+    }
+
+    /**
+     * Compute the main operation of the {@code HiddenOperation}. To use template pattern in {@code
+     * calculate}.
+     *
+     * @param value1 the value at the left
+     * @return the value computed
+     */
+    protected abstract HType mainOperation(HType value1);
 
 }
