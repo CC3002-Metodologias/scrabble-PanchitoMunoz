@@ -13,6 +13,9 @@ public abstract class BaseHiddenRelationalOperatorTest extends BaseHiddenOperati
 
     protected HNumber greaterNumber;
     protected HNumber lowerNumber;
+    protected HiddenRelationalOperator greaterCase;
+    protected HiddenRelationalOperator equalsCase;
+    protected HiddenRelationalOperator lowerCase;
 
 
     public HNumber greaterHNumber(HNumber number1, HNumber number2) {

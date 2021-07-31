@@ -9,21 +9,21 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
-class HiddenEqualsTest extends BaseHiddenRelationalOperatorTest {
+class HiddenGreaterEqualsTest extends BaseHiddenRelationalOperatorTest {
 
     @BeforeEach
     protected void setUp() {
         super.setUp();
         greaterNumber = greaterHNumber(hiddenBinary1, hiddenBinary2);
         lowerNumber = lowerHNumber(hiddenBinary1, hiddenBinary2);
-        greaterCase = new HiddenEquals(greaterNumber, lowerNumber);
-        equalsCase = new HiddenEquals(hiddenBinary1, hiddenBinary1.toHiddenFloat());
-        lowerCase = new HiddenEquals(lowerNumber, greaterNumber);
+        greaterCase = new HiddenGreaterEquals(greaterNumber, lowerNumber);
+        equalsCase = new HiddenGreaterEquals(hiddenBinary1, hiddenBinary1.toHiddenFloat());
+        lowerCase = new HiddenGreaterEquals(lowerNumber, greaterNumber);
     }
 
     @RepeatedTest(20)
     void testEquals() {
-        HiddenRelationalOperator other = new HiddenEquals(greaterNumber, lowerNumber);
+        HiddenRelationalOperator other = new HiddenGreaterEquals(greaterNumber, lowerNumber);
         assertEquals(greaterCase, other,
             "Method equals does not works with equals case." + messageSeed);
         assertNotEquals(lowerCase, other,
@@ -34,7 +34,7 @@ class HiddenEqualsTest extends BaseHiddenRelationalOperatorTest {
 
     @RepeatedTest(20)
     void testHashCode() {
-        HiddenRelationalOperator other = new HiddenEquals(greaterNumber, lowerNumber);
+        HiddenRelationalOperator other = new HiddenGreaterEquals(greaterNumber, lowerNumber);
         assertEquals(greaterCase.hashCode(), other.hashCode(),
             "Method equals does not works with equals case." + messageSeed);
         assertNotEquals(lowerCase.hashCode(), other.hashCode(),
@@ -47,8 +47,8 @@ class HiddenEqualsTest extends BaseHiddenRelationalOperatorTest {
     @RepeatedTest(20)
     void testAsString() {
         String templateString = (
-            "Equals(\n"
-                + "  %s ==\n"
+            "GreaterEquals(\n"
+                + "  %s >=\n"
                 + "  %s\n"
                 + ")"
         );
@@ -56,7 +56,7 @@ class HiddenEqualsTest extends BaseHiddenRelationalOperatorTest {
             for (HType hType2 : hTypeList2) {
                 String expected = String.format(templateString,
                     hType1.asString(0), hType2.asString(0));
-                assertEquals(expected, new HiddenEquals(hType1, hType2).asString(0),
+                assertEquals(expected, new HiddenGreaterEquals(hType1, hType2).asString(0),
                     "Method asString does not works." + messageSeed);
             }
         }
@@ -66,14 +66,14 @@ class HiddenEqualsTest extends BaseHiddenRelationalOperatorTest {
     void testSize() {
         assertEquals(3, greaterCase.size(),
             "Method size does not works." + messageSeed);
-        HiddenRelationalOperator operator = new HiddenEquals(hiddenFloat1, greaterCase);
+        HiddenRelationalOperator operator = new HiddenGreaterEquals(hiddenFloat1, greaterCase);
         assertEquals(5, operator.size(),
             "Method size does not works." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testCalculate() {
-        assertEquals(falseHiddenBool, greaterCase.calculate(),
+        assertEquals(trueHiddenBool, greaterCase.calculate(),
             "Method calculate does not works with greater case." + messageSeed);
         assertEquals(trueHiddenBool, equalsCase.calculate(),
             "Method calculate does not works with equals case." + messageSeed);
@@ -89,15 +89,16 @@ class HiddenEqualsTest extends BaseHiddenRelationalOperatorTest {
 
     @RepeatedTest(20)
     void testSetVariable() {
-        HiddenRelationalOperator operator = new HiddenEquals(
+        HiddenRelationalOperator operator = new HiddenGreaterEquals(
             new HiddenVariable("x"), new HiddenVariable("y")
         );
-        operator.setVariable("x", hiddenBinary1);
-        operator.setVariable("y", hiddenBinary2);
-        assertEquals(falseHiddenBool, operator.calculate(),
-            "Method setVariable does not works." + messageSeed);
-        operator.setVariable("y", hiddenBinary1.toHiddenFloat());
+        operator.setVariable("x", greaterNumber);
+        operator.setVariable("y", lowerNumber);
         assertEquals(trueHiddenBool, operator.calculate(),
+            "Method setVariable does not works." + messageSeed);
+        operator.setVariable("x", lowerNumber);
+        operator.setVariable("y", greaterNumber);
+        assertEquals(falseHiddenBool, operator.calculate(),
             "Method setVariable does not works." + messageSeed);
     }
 }
