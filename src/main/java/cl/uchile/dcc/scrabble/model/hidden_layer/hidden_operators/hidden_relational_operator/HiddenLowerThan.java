@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.abstract_class
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**
- * todo: doc
+ * A class to be adapted. It is for the lower than AST.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/27 18:58
@@ -15,16 +15,13 @@ public class HiddenLowerThan extends AbstractHiddenRelationalOperator {
     /**
      * Default constructor. It can receive an {@code HiddenOperator} or a {@code HType}.
      *
-     * @param leftValue      left value, it can be an {@code HiddenOperator} or a {@code HType}.
-     * @param rightValue     right value, it can be an {@code HiddenOperator} or a {@code HType}.
-     * @param operatorName   the operator's name
-     * @param operatorSymbol the operator's symbol
+     * @param leftValue  left value, it can be an {@code HiddenOperator} or a {@code HType}.
+     * @param rightValue right value, it can be an {@code HiddenOperator} or a {@code HType}.
      */
     public HiddenLowerThan(
         HiddenASTComponent leftValue,
-        HiddenASTComponent rightValue,
-        String operatorName, String operatorSymbol) {
-        super(leftValue, rightValue, operatorName, operatorSymbol);
+        HiddenASTComponent rightValue) {
+        super(leftValue, rightValue, "LowerThan", "<");
     }
 
     /**
@@ -37,6 +34,6 @@ public class HiddenLowerThan extends AbstractHiddenRelationalOperator {
      */
     @Override
     protected HType mainOperation(HType value1, HType value2) {
-        return null;
+        return value1.lowerThan(value2);
     }
 }

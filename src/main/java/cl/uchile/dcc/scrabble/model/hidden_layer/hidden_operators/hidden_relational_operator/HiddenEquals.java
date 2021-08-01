@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.abstract_class
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**
- * todo: doc
+ * A class to be adapted. It is for the equals AST.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/26 0:37

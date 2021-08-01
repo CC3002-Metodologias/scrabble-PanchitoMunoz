@@ -31,14 +31,29 @@ public abstract class AbstractHiddenControlFlow
         this.operatorName = operatorName;
     }
 
+    /**
+     * Returns the condition.
+     *
+     * @return gets the condition
+     */
     public HiddenASTComposite getCondition() {
         return condition;
     }
 
+    /**
+     * Gets the first body.
+     *
+     * @return the first body
+     */
     public HiddenAST getFirstBody() {
         return firstBody;
     }
 
+    /**
+     * Gets the operator's name
+     *
+     * @return the operator's name
+     */
     public String getOperatorName() {
         return operatorName;
     }

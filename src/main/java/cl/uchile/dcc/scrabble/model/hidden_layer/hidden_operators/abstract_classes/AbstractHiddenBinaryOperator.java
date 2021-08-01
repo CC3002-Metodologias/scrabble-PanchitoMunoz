@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.abstract_clas
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenBinaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import java.util.HashMap;
 
 /**
  * Abstract class for binary operations in the hidden types.
@@ -33,6 +34,14 @@ public abstract class AbstractHiddenBinaryOperator
         this.operatorSymbol = operatorSymbol;
     }
 
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -53,6 +62,13 @@ public abstract class AbstractHiddenBinaryOperator
         return getOperatorSymbol().equals(that.getOperatorSymbol());
     }
 
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
     @Override
     public int hashCode() {
         int result = super.hashCode();
@@ -86,19 +102,41 @@ public abstract class AbstractHiddenBinaryOperator
         return super.size() + getSecondChildren().size();
     }
 
+    /**
+     * Returns the second children.
+     *
+     * @return the second children
+     */
     @Override
     public final HiddenASTComponent getSecondChildren() {
         return secondChildren;
     }
 
+    /**
+     * Returns the operator's symbol.
+     *
+     * @return the operator's symbol
+     */
     public final String getOperatorSymbol() {
         return operatorSymbol;
     }
 
+    /**
+     * Returns the second children calculated.
+     *
+     * @return the second children calculated.
+     */
     protected final HType secondChildrenCalculated() {
         return getSecondChildren().calculate();
     }
 
+    /**
+     * The main operation to use template pattern in {@code calculate}.
+     *
+     * @param value1 the first value
+     * @param value2 the second value
+     * @return the first value computed with the second value.
+     */
     protected abstract HType mainOperation(HType value1, HType value2);
 
     /**

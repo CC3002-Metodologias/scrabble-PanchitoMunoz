@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.hidden_relati
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenBinaryOperator;
 
 /**
- * todo: doc
+ * This interface is for Relational Operators.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/29 23:29
