@@ -1,7 +1,10 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.transformations;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.BaseHiddenOperationTest;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
@@ -44,5 +47,13 @@ class ToHiddenStringTest extends BaseHiddenOperationTest {
         // binary
         assertEquals(hiddenBinary1.toHiddenString(), new ToHiddenString(hiddenBinary1).calculate(),
             "Method calculate does not works with binary type." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testClone() throws CloneNotSupportedException {
+        ToHiddenString operation = new ToHiddenString(hiddenFloat1);
+        HiddenOperator other = operation.clone();
+        assertNotSame(other, operation);
+        assertSame(other.getFirstChildren(), operation.getFirstChildren());
     }
 }

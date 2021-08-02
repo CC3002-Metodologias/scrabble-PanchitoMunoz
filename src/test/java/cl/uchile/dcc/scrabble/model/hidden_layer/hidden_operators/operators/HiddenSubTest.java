@@ -2,7 +2,10 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenMult;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
@@ -113,5 +116,13 @@ class HiddenSubTest extends BaseHiddenOperationTest {
             "Method hashCode does not works with different hidden ast." + messageSeed);
         assertNotEquals(hiddenInt1.hashCode(), hiddenSub.hashCode(),
             "Method hashCode does not works with other types." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testClone() throws CloneNotSupportedException {
+        HiddenSub operation = new HiddenSub(hiddenFloat1, hiddenFloat2);
+        HiddenOperator other = operation.clone();
+        assertNotSame(other, operation);
+        assertSame(other.getFirstChildren(), operation.getFirstChildren());
     }
 }

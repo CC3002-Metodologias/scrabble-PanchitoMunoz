@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
@@ -105,5 +106,12 @@ class HiddenVariableTest extends BaseHTypeTest {
         String expected = "HiddenVariable{name='" + name + "', value=" + hiddenFloat1 + "}";
         assertEquals(expected, floatVariable.toString(),
             "Method toString does not works." + messageSeed);
+    }
+
+    @Test
+    void testTestClone() {
+        HiddenVariable other = floatVariable.clone();
+        assertNotSame(other, floatVariable,
+            "Method clone does not works." + messageSeed);
     }
 }

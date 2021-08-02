@@ -33,6 +33,7 @@ public interface HType
     extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations, HTypesTransformations,
     HComparable {
 
+
     /**
      * Returns the visitor
      *

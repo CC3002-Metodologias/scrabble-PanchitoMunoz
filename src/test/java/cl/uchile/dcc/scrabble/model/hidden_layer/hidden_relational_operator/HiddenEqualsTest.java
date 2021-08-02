@@ -2,7 +2,10 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
@@ -99,5 +102,13 @@ class HiddenEqualsTest extends BaseHiddenRelationalOperatorTest {
         operator.setVariable("y", hiddenBinary1.toHiddenFloat());
         assertEquals(trueHiddenBool, operator.calculate(),
             "Method setVariable does not works." + messageSeed);
+    }
+
+    @RepeatedTest(20)
+    void testClone() throws CloneNotSupportedException {
+        HiddenEquals operation = new HiddenEquals(hiddenFloat1, hiddenFloat2);
+        HiddenOperator other = operation.clone();
+        assertNotSame(other, operation);
+        assertSame(other.getFirstChildren(), operation.getFirstChildren());
     }
 }
