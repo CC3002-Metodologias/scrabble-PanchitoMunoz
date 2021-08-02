@@ -3,6 +3,8 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenMult;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;

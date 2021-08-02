@@ -4,7 +4,7 @@ import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenIntBridge;
+import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenIntBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import java.util.HashMap;
 

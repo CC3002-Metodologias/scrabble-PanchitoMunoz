@@ -6,7 +6,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HString;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenNullBridge;
+import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenNullBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;

@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenBinaryOperator;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenUnaryOperator;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenUnaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 

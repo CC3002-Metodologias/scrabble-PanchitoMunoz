@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HString;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenStringBridge;
+import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenStringBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import java.util.HashMap;
 

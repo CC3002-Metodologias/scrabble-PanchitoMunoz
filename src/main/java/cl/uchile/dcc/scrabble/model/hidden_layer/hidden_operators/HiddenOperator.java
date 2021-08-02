@@ -2,11 +2,11 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.transformations.ToHiddenBinary;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.transformations.ToHiddenBool;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.transformations.ToHiddenFloat;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.transformations.ToHiddenInt;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.transformations.ToHiddenString;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenBool;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenFloat;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenInt;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenString;
 
 /**
  * An interface to represent a general hidden operation in {@code HiddenASTComponent}. The classes

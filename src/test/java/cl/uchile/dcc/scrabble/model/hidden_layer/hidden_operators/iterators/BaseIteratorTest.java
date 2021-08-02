@@ -2,10 +2,10 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.iterators;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenAdd;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenMult;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenNeg;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenSub;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenMult;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenNeg;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
 import java.util.ArrayList;
 import java.util.List;

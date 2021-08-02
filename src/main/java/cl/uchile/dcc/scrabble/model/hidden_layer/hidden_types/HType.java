@@ -7,8 +7,8 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HArithm
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HComparable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HTypesTransformations;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenTypeBridge;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
+import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenTypeBridge;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**

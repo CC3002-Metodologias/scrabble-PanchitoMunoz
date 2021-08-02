@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBoolBridge;
+import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenBoolBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import java.util.HashMap;

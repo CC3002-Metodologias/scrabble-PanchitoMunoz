@@ -2,7 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenSetterVisitor;
 import org.junit.jupiter.api.BeforeEach;

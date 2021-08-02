@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.types_bridge.HiddenBinaryBridge;
+import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenBinaryBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;

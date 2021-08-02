@@ -2,12 +2,12 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenDiv;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenMult;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenOr;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.BaseHiddenOperationTest;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenAdd;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenDiv;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenMult;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenOr;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;

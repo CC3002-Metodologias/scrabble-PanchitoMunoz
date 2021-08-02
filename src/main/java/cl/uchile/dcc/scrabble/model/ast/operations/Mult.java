@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.ast.operations;
 import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
 import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.HiddenMult;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenMult;
 
 /**
  * An {@code Operation} class that adds a node in the {@code AST}.
