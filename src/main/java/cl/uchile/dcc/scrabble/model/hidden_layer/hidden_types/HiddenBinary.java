@@ -4,7 +4,6 @@ import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBinary;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogical;
 import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenBinaryBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
@@ -18,7 +17,7 @@ import java.util.HashMap;
  * @create 2021/06/13 0:01
  * @see TypeBinary
  */
-public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBinary {
+public class HiddenBinary extends AbstractHiddenInteger implements HBinary {
 
     private final HiddenBinaryBridge bridge;
 

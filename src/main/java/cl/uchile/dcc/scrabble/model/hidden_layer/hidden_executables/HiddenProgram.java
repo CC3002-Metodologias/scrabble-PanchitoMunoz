@@ -5,7 +5,6 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenGlobalVariableVisitor;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,11 +16,10 @@ import java.util.List;
  */
 public class HiddenProgram {
 
-    private final List<HiddenAST> instructionsList = new ArrayList<>();
-    private final List<HiddenAST> instructionsListCopy = new ArrayList<>();
+    private final HiddenListOfInstructions instructionsListOriginal;
     private final HashMap<String, HiddenASTComponent> globalVariables = new HashMap<>();
-    private final HiddenGlobalVariableVisitor visitor = new HiddenGlobalVariableVisitor(
-        globalVariables);
+    private final HiddenGlobalVariableVisitor visitor
+        = new HiddenGlobalVariableVisitor(globalVariables);
 
     /**
      * Constructor.
@@ -29,10 +27,7 @@ public class HiddenProgram {
      * @param instructions The instructions to build the program.
      */
     public HiddenProgram(HiddenAST... instructions) {
-        instructionsList.addAll(Arrays.asList(instructions));
-        for (HiddenAST instruction : instructionsList) {
-            instructionsListCopy.add(instruction.copy());
-        }
+        this.instructionsListOriginal = new HiddenListOfInstructions(instructions);
     }
 
     /**
@@ -41,7 +36,8 @@ public class HiddenProgram {
     public HiddenProgram execute() {
         // First at all: clear the global variables.
         globalVariables.clear();
-        for (HiddenAST instruction : instructionsList) {
+        HiddenListOfInstructions instructionsList = instructionsListOriginal.copy();
+        for (HiddenAST instruction : instructionsList.getInstructionsList()) {
             instruction.accept(visitor);
         }
         return this;
@@ -54,8 +50,7 @@ public class HiddenProgram {
      */
     public List<HiddenVariable> getGlobalVariables() {
         List<HiddenVariable> listToReturn = new ArrayList<>();
-        for (String varName :
-            globalVariables.keySet()) {
+        for (String varName : globalVariables.keySet()) {
             HiddenASTComponent varValue = globalVariables.get(varName).copy();
             listToReturn.add(new HiddenVariable(varName).setValue(varValue));
         }
@@ -68,11 +63,7 @@ public class HiddenProgram {
      * @return a String representation
      */
     public String asString() {
-        StringBuilder stringToReturn = new StringBuilder();
-        for (HiddenAST instruction : instructionsListCopy) {
-            stringToReturn.append(instruction.asString()).append('\n');
-        }
-        return stringToReturn.toString();
+        return instructionsListOriginal.asString();
     }
 
     /**
@@ -81,11 +72,7 @@ public class HiddenProgram {
      * @return a code representation
      */
     public String asCode() {
-        StringBuilder stringToReturn = new StringBuilder();
-        for (HiddenAST instruction : instructionsListCopy) {
-            stringToReturn.append(instruction.asCode()).append('\n');
-        }
-        return stringToReturn.toString();
+        return instructionsListOriginal.asCode();
     }
 
     /**

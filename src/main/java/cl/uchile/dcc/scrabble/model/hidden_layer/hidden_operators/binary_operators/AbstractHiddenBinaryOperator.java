@@ -100,9 +100,10 @@ public abstract class AbstractHiddenBinaryOperator
      */
     @Override
     public String asCode(int space) {
-        return getFirstChildren().asCode(space)
+        String tab = " ".repeat(space);
+        return tab + '(' + getFirstChildren().asCode()
             + ' ' + getOperatorSymbol()
-            + ' ' + getSecondChildren().asCode();
+            + ' ' + getSecondChildren().asCode() + ')';
     }
 
     /**

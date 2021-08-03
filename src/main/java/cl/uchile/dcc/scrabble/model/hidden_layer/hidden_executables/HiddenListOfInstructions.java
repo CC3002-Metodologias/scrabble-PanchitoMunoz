@@ -34,8 +34,7 @@ public class HiddenListOfInstructions implements HiddenAST {
     @Override
     public String asString(int space) {
         StringBuilder stringToReturn = new StringBuilder();
-        for (HiddenAST instruction :
-            instructionsList) {
+        for (HiddenAST instruction : instructionsList) {
             stringToReturn.append(instruction.asString(space)).append('\n');
         }
         return stringToReturn.toString();
@@ -60,9 +59,8 @@ public class HiddenListOfInstructions implements HiddenAST {
     @Override
     public String asCode(int space) {
         StringBuilder stringToReturn = new StringBuilder();
-        for (HiddenAST instruction :
-            getInstructionsList()) {
-            stringToReturn.append(instruction.asCode(space + 2)).append('\n');
+        for (HiddenAST instruction : getInstructionsList()) {
+            stringToReturn.append(instruction.asCode(space)).append('\n');
         }
         return stringToReturn.toString();
     }
@@ -75,8 +73,7 @@ public class HiddenListOfInstructions implements HiddenAST {
     @Override
     public HiddenListOfInstructions copy() {
         List<HiddenAST> newInstructionList = new ArrayList<>();
-        for (HiddenAST instruction :
-            getInstructionsList()) {
+        for (HiddenAST instruction : getInstructionsList()) {
             newInstructionList.add(instruction.copy());
         }
         return new HiddenListOfInstructions(newInstructionList.toArray(new HiddenAST[0]));
@@ -90,4 +87,5 @@ public class HiddenListOfInstructions implements HiddenAST {
     public List<HiddenAST> getInstructionsList() {
         return instructionsList;
     }
+
 }

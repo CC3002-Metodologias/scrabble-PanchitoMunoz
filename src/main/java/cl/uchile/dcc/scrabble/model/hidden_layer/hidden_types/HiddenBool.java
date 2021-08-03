@@ -17,7 +17,7 @@ import java.util.HashMap;
  * @create 2021/06/13 0:00
  * @see TypeBool
  */
-public class HiddenBool extends AbstractHiddenType implements HLogical, HBool {
+public class HiddenBool extends AbstractHiddenType implements HBool {
 
     private final boolean value;
     private final HiddenBoolBridge bridge;
