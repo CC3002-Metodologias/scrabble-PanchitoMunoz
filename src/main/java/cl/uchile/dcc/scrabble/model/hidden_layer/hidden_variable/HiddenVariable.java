@@ -3,6 +3,11 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenBool;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenFloat;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenInt;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
@@ -138,5 +143,60 @@ public class HiddenVariable implements HiddenASTLeaf {
     @Override
     public HiddenVariable copy() {
         return new HiddenVariable(getName()).setValue(getValue());
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenBinary}.
+     *
+     * @return a {@code HiddenBinary} equivalent
+     */
+    @Override
+    public HiddenVariable toHiddenBinary() {
+        this.setValue(new ToHiddenBinary(this.getValue()));
+        return this;
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenBool}.
+     *
+     * @return a {@code HiddenBool} equivalent
+     */
+    @Override
+    public HiddenVariable toHiddenBool() {
+        this.setValue(new ToHiddenBool(this.getValue()));
+        return this;
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenFloat}.
+     *
+     * @return a {@code HiddenFloat} equivalent
+     */
+    @Override
+    public HiddenVariable toHiddenFloat() {
+        this.setValue(new ToHiddenFloat(this.getValue()));
+        return this;
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenInt}.
+     *
+     * @return a {@code HiddenInt} equivalent
+     */
+    @Override
+    public HiddenVariable toHiddenInt() {
+        this.setValue(new ToHiddenInt(this.getValue()));
+        return this;
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenString}.
+     *
+     * @return a {@code HiddenString} equivalent
+     */
+    @Override
+    public HiddenVariable toHiddenString() {
+        this.setValue(new ToHiddenString(this.getValue()));
+        return this;
     }
 }

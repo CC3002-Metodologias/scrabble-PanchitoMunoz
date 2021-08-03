@@ -1,12 +1,17 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HArithmeticOperations;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HComparable;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HFloat;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogicalOperations;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HTypesTransformations;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenTypeBridge;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
@@ -30,8 +35,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @see Operation
  */
 public interface HType
-    extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations, HTypesTransformations,
-    HComparable {
+    extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations, HComparable {
 
 
     /**
@@ -90,4 +94,54 @@ public interface HType
      * @return the {@code SType} as String
      */
     String sTypeAsString();
+
+    /**
+     * Transform the current instance to a {@code HiddenBinary}.
+     *
+     * @return a {@code HiddenBinary} equivalent
+     */
+    @Override
+    default HBinary toHiddenBinary() {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenBool}.
+     *
+     * @return a {@code HiddenBool} equivalent
+     */
+    @Override
+    default HBool toHiddenBool() {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenFloat}.
+     *
+     * @return a {@code HiddenFloat} equivalent
+     */
+    @Override
+    default HFloat toHiddenFloat() {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenInt}.
+     *
+     * @return a {@code HiddenInt} equivalent
+     */
+    @Override
+    default HInt toHiddenInt() {
+        return HTypeFactory.createHiddenNull();
+    }
+
+    /**
+     * Transform the current instance to a {@code HiddenString}.
+     *
+     * @return a {@code HiddenString} equivalent
+     */
+    @Override
+    default HString toHiddenString() {
+        return HTypeFactory.createHiddenNull();
+    }
 }

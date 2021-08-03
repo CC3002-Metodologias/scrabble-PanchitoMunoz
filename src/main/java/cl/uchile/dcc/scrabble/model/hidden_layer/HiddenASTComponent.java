@@ -10,7 +10,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/12 22:51
  */
-public interface HiddenASTComponent extends HiddenAST {
+public interface HiddenASTComponent extends HiddenAST, HTransformation {
 
     /**
      * Calculate the {@code HType} result of performing all operations.

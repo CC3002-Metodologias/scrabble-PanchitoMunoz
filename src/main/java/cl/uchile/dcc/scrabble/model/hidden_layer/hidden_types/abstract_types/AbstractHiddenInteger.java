@@ -1,7 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types;
 
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
@@ -53,7 +54,7 @@ public abstract class AbstractHiddenInteger extends AbstractHiddenNumber impleme
      * @return a {@code HiddenBinary} equivalent
      */
     @Override
-    public final HType toHiddenBinary() {
+    public final HBinary toHiddenBinary() {
         String computed = this.getValueAsBinary();
         return HTypeFactory.createHiddenBinary(computed);
     }
@@ -64,7 +65,7 @@ public abstract class AbstractHiddenInteger extends AbstractHiddenNumber impleme
      * @return a {@code HiddenInt} equivalent
      */
     @Override
-    public final HType toHiddenInt() {
+    public final HInt toHiddenInt() {
         int computed = this.getValueAsInt();
         return HTypeFactory.createHiddenInt(computed);
     }

@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBool;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +42,7 @@ public abstract class AbstractHiddenNumber extends AbstractHiddenType implements
      * @return a {@code HiddenFloat} equivalent
      */
     @Override
-    public final HType toHiddenFloat() {
+    public final HFloat toHiddenFloat() {
         return HTypeFactory.createHiddenFloat(this.getValueAsDouble());
     }
 

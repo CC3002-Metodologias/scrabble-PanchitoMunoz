@@ -38,7 +38,8 @@ public interface HiddenOperator extends HiddenASTComposite {
      *
      * @return a {@code HiddenBinary}
      */
-    default HiddenOperator toHiddenBinary() {
+    @Override
+    default ToHiddenBinary toHiddenBinary() {
         return new ToHiddenBinary(this);
     }
 
@@ -47,7 +48,8 @@ public interface HiddenOperator extends HiddenASTComposite {
      *
      * @return a {@code HiddenBool}
      */
-    default HiddenOperator toHiddenBool() {
+    @Override
+    default ToHiddenBool toHiddenBool() {
         return new ToHiddenBool(this);
     }
 
@@ -56,7 +58,8 @@ public interface HiddenOperator extends HiddenASTComposite {
      *
      * @return a {@code HiddenFloat}
      */
-    default HiddenOperator toHiddenFloat() {
+    @Override
+    default ToHiddenFloat toHiddenFloat() {
         return new ToHiddenFloat(this);
     }
 
@@ -65,7 +68,8 @@ public interface HiddenOperator extends HiddenASTComposite {
      *
      * @return a {@code HiddenInt}
      */
-    default HiddenOperator toHiddenInt() {
+    @Override
+    default ToHiddenInt toHiddenInt() {
         return new ToHiddenInt(this);
     }
 
@@ -74,7 +78,8 @@ public interface HiddenOperator extends HiddenASTComposite {
      *
      * @return a {@code HiddenString}
      */
-    default HiddenOperator toHiddenString() {
+    @Override
+    default ToHiddenString toHiddenString() {
         return new ToHiddenString(this);
     }
 }

@@ -63,17 +63,38 @@ public class HiddenProgram {
     }
 
     /**
+     * String representation
+     *
+     * @return a String representation
+     */
+    public String asString() {
+        StringBuilder stringToReturn = new StringBuilder();
+        for (HiddenAST instruction : instructionsListCopy) {
+            stringToReturn.append(instruction.asString()).append('\n');
+        }
+        return stringToReturn.toString();
+    }
+
+    /**
+     * A code representation
+     *
+     * @return a code representation
+     */
+    public String asCode() {
+        StringBuilder stringToReturn = new StringBuilder();
+        for (HiddenAST instruction : instructionsListCopy) {
+            stringToReturn.append(instruction.asCode()).append('\n');
+        }
+        return stringToReturn.toString();
+    }
+
+    /**
      * The representation.
      *
      * @return the representation as string.
      */
     @Override
     public String toString() {
-        StringBuilder stringToReturn = new StringBuilder();
-        for (HiddenAST instruction :
-            instructionsListCopy) {
-            stringToReturn.append(instruction.asString()).append('\n');
-        }
-        return stringToReturn.toString();
+        return asCode();
     }
 }

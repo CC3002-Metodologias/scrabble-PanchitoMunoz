@@ -125,7 +125,7 @@ public class Main {
 
         HiddenProgram program = new HiddenProgram(
             new HiddenVariable("a").setValue(new HiddenInt(90)),
-            new HiddenVariable("b").setValue(new HiddenInt(30).toHiddenBinary()),
+            new HiddenVariable("b").setValue(new HiddenInt(30)).toHiddenBinary(),
             new HiddenWhile(
                 new HiddenNotEquals(new HiddenVariable("b"), new HiddenInt(0).toHiddenBinary()),
                 new HiddenIfElse(

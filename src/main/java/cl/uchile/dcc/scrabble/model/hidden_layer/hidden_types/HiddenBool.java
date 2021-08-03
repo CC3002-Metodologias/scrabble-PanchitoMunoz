@@ -132,7 +132,7 @@ public class HiddenBool extends AbstractHiddenType implements HLogical, HBool {
      * @return a {@code HiddenBool} equivalent
      */
     @Override
-    public HType toHiddenBool() {
+    public HBool toHiddenBool() {
         return HTypeFactory.createHiddenBool(this.getValueAsBool());
     }
 
