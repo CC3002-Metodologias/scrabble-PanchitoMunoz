@@ -106,9 +106,9 @@ class HiddenLowerThanTest extends BaseHiddenRelationalOperatorTest {
     }
 
     @RepeatedTest(20)
-    void testClone() throws CloneNotSupportedException {
+    void testCopy() {
         HiddenLowerThan operation = new HiddenLowerThan(hiddenFloat1, hiddenFloat2);
-        HiddenOperator other = operation.clone();
+        HiddenOperator other = operation.copy();
         assertNotSame(other, operation);
         assertSame(other.getFirstChildren(), operation.getFirstChildren());
     }

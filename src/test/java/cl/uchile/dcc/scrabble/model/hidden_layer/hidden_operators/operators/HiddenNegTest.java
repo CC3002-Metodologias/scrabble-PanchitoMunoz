@@ -82,9 +82,9 @@ class HiddenNegTest extends BaseHiddenOperationTest {
     }
 
     @RepeatedTest(20)
-    void testClone() throws CloneNotSupportedException {
+    void testCopy() {
         HiddenNeg operation = new HiddenNeg(hiddenFloat1);
-        HiddenOperator other = operation.clone();
+        HiddenOperator other = operation.copy();
         assertNotSame(other, operation);
         assertSame(other.getFirstChildren(), operation.getFirstChildren());
     }

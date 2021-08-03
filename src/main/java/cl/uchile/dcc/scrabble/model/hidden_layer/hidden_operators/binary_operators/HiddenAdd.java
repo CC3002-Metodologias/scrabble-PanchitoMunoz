@@ -36,4 +36,14 @@ public class HiddenAdd extends AbstractHiddenBinaryOperator {
     protected HType mainOperation(HType value1, HType value2) {
         return value1.add(value2);
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenAdd copy() {
+        return new HiddenAdd(getFirstChildren().copy(), getSecondChildren().copy());
+    }
 }

@@ -109,8 +109,8 @@ class HiddenVariableTest extends BaseHTypeTest {
     }
 
     @Test
-    void testTestClone() {
-        HiddenVariable other = floatVariable.clone();
+    void testCopy() {
+        HiddenVariable other = floatVariable.copy();
         assertNotSame(other, floatVariable,
             "Method clone does not works." + messageSeed);
     }

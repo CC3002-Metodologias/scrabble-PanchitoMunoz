@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**
@@ -34,5 +35,15 @@ public class HiddenGreaterEquals extends AbstractHiddenRelationalOperator {
     @Override
     protected HType mainOperation(HType value1, HType value2) {
         return value1.greaterEquals(value2);
+    }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenBinaryOperator copy() {
+        return new HiddenGreaterEquals(getFirstChildren().copy(), getSecondChildren().copy());
     }
 }

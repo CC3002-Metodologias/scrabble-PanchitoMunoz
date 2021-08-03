@@ -34,4 +34,14 @@ public class ToHiddenBool extends AbstractHiddenTransformation {
     protected HType mainOperation(HType value1) {
         return value1.toHiddenBool();
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public ToHiddenBool copy() {
+        return new ToHiddenBool(getFirstChildren().copy());
+    }
 }

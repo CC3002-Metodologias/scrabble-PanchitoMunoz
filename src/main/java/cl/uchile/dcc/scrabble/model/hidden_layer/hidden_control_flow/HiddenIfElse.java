@@ -1,7 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 
 /**
  * todo: doc
@@ -11,7 +12,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
  */
 public class HiddenIfElse extends AbstractHiddenControlFlow {
 
-    private final HiddenAST elseBody;
+    private final HiddenAST secondBody;
 
     /**
      * Constructor.
@@ -20,12 +21,12 @@ public class HiddenIfElse extends AbstractHiddenControlFlow {
      * @param ifBody    the body if the condition is true.
      * @param elseBody  the body if the condition is false.
      */
-    protected HiddenIfElse(
-        HiddenASTComposite condition,
+    public HiddenIfElse(
+        HiddenASTComponent condition,
         HiddenAST ifBody,
         HiddenAST elseBody) {
         super(condition, ifBody, "IfElse");
-        this.elseBody = elseBody;
+        this.secondBody = elseBody;
     }
 
     /**
@@ -36,6 +37,56 @@ public class HiddenIfElse extends AbstractHiddenControlFlow {
      */
     @Override
     public String asString(int space) {
-        return null;
+        String tab = " ".repeat(space);
+        return tab + "If (\n"
+            + getCondition().asString(space + 2) + '\n'
+            + tab + ") {\n"
+            + getFirstBody().asString(space + 2) + '\n'
+            + tab + "} Else {\n"
+            + getSecondBody().asString(space + 2) + '\n'
+            + tab + '}';
+    }
+
+    /**
+     * Method that accepts a {@code HiddenVisitor}.
+     *
+     * @param visitor a {@code HiddenVisitor}.
+     */
+    @Override
+    public void accept(HiddenVisitor visitor) {
+        visitor.visitHiddenIfElse(this);
+    }
+
+    /**
+     * Returns the code representation.
+     *
+     * @param space the number of space of indentation.
+     * @return a code representation
+     */
+    @Override
+    public String asCode(int space) {
+        String tab = " ".repeat(space);
+        return tab + "If ( " + getCondition().asCode() + " ) {\n"
+            + getFirstBody().asCode(space + 2) + '\n'
+            + tab + "} Else {\n"
+            + getSecondBody().asCode(space + 2) + '\n'
+            + tab + '}';
+    }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenIfElse copy() {
+        return new HiddenIfElse(
+            getCondition().copy(),
+            getFirstBody().copy(),
+            getSecondBody().copy());
+    }
+
+    public HiddenAST getSecondBody() {
+        return secondBody;
     }
 }

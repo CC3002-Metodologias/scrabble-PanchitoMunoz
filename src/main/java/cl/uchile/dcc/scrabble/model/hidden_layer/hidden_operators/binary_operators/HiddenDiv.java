@@ -36,4 +36,14 @@ public class HiddenDiv extends AbstractHiddenBinaryOperator {
     protected HType mainOperation(HType value1, HType value2) {
         return value1.div(value2);
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenDiv copy() {
+        return new HiddenDiv(getFirstChildren().copy(), getSecondChildren().copy());
+    }
 }

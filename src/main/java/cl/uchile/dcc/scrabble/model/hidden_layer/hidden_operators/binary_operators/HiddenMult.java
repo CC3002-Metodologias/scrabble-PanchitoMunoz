@@ -36,4 +36,14 @@ public class HiddenMult extends AbstractHiddenBinaryOperator {
     protected HType mainOperation(HType value1, HType value2) {
         return value1.mult(value2);
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenMult copy() {
+        return new HiddenMult(getFirstChildren().copy(), getSecondChildren().copy());
+    }
 }

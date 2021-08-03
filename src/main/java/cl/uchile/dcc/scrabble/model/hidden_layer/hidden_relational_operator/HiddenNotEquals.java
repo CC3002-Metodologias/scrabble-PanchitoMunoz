@@ -5,12 +5,12 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operato
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
 /**
- * A class to be adapted. It is for the equals AST.
+ * todo: doc
  *
  * @author Francisco Muñoz Guajardo
- * @create 2021/07/26 0:37
+ * @create 2021/08/02 21:41
  */
-public class HiddenEquals extends AbstractHiddenRelationalOperator {
+public class HiddenNotEquals extends AbstractHiddenRelationalOperator {
 
     /**
      * Default constructor. It can receive an {@code HiddenOperator} or a {@code HType}.
@@ -18,10 +18,10 @@ public class HiddenEquals extends AbstractHiddenRelationalOperator {
      * @param leftValue  left value, it can be an {@code HiddenOperator} or a {@code HType}.
      * @param rightValue right value, it can be an {@code HiddenOperator} or a {@code HType}.
      */
-    public HiddenEquals(
+    public HiddenNotEquals(
         HiddenASTComponent leftValue,
         HiddenASTComponent rightValue) {
-        super(leftValue, rightValue, "Equals", "==");
+        super(leftValue, rightValue, "NotEquals", "!=");
     }
 
     /**
@@ -34,7 +34,7 @@ public class HiddenEquals extends AbstractHiddenRelationalOperator {
      */
     @Override
     protected HType mainOperation(HType value1, HType value2) {
-        return value1.equalsTo(value2);
+        return value1.equalsTo(value2).neg();
     }
 
     /**
@@ -44,6 +44,6 @@ public class HiddenEquals extends AbstractHiddenRelationalOperator {
      */
     @Override
     public HiddenBinaryOperator copy() {
-        return new HiddenEquals(getFirstChildren().copy(), getSecondChildren().copy());
+        return new HiddenNotEquals(getFirstChildren().copy(), getSecondChildren().copy());
     }
 }

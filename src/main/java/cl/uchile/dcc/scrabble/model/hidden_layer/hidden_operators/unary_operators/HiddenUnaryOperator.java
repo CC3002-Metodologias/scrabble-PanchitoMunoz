@@ -20,4 +20,12 @@ public interface HiddenUnaryOperator extends HiddenOperator {
     default void accept(HiddenVisitor visitor) {
         visitor.visitHiddenUnaryOperator(this);
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    HiddenUnaryOperator copy();
 }

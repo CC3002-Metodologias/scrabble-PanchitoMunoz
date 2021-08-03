@@ -35,4 +35,14 @@ public class ToHiddenFloat extends AbstractHiddenTransformation {
     protected HType mainOperation(HType value1) {
         return value1.toHiddenFloat();
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public ToHiddenFloat copy() {
+        return new ToHiddenFloat(getFirstChildren().copy());
+    }
 }

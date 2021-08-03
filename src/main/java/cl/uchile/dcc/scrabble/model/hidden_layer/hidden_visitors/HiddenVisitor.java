@@ -1,5 +1,9 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIfElse;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenListOfInstructions;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenUnaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
@@ -30,19 +34,52 @@ public interface HiddenVisitor {
     }
 
     /**
+     * Visit a {@code HiddenOperator}.
+     *
+     * @param hiddenOperator an generic {@code HiddenOperator}
+     */
+    default void visitHiddenOperator(HiddenOperator hiddenOperator) {
+    }
+
+    /**
      * Visit a {@code HiddenUnaryOperator}.
      *
      * @param hiddenUnaryOperator an generic {@code HiddenUnaryOperator}
      */
     default void visitHiddenUnaryOperator(HiddenUnaryOperator hiddenUnaryOperator) {
+        this.visitHiddenOperator(hiddenUnaryOperator);
     }
 
     /**
-     * Visit a {@code hiddenBinaryOperator}.
+     * Visit a {@code HiddenBinaryOperator}.
      *
-     * @param hiddenBinaryOperator an generic {@code hiddenBinaryOperator}
+     * @param hiddenBinaryOperator an generic {@code HiddenBinaryOperator}
      */
     default void visitHiddenBinaryOperator(HiddenBinaryOperator hiddenBinaryOperator) {
+        this.visitHiddenOperator(hiddenBinaryOperator);
     }
 
+    /**
+     * Visit a {@code HiddenIfElse}.
+     *
+     * @param hiddenIfElse an generic {@code HiddenIfElse}
+     */
+    default void visitHiddenIfElse(HiddenIfElse hiddenIfElse) {
+    }
+
+    /**
+     * Visit a {@code HiddenWhile}.
+     *
+     * @param hiddenWhile an generic {@code HiddenWhile}
+     */
+    default void visitHiddenWhile(HiddenWhile hiddenWhile) {
+    }
+
+    /**
+     * Visit a {@code HiddenListOfInstructions}.
+     *
+     * @param hiddenListOfInstructions an generic {@code HiddenListOfInstructions}
+     */
+    default void visitHiddenListOfInstructions(HiddenListOfInstructions hiddenListOfInstructions) {
+    }
 }

@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenUnaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import org.jetbrains.annotations.NotNull;
@@ -45,5 +47,26 @@ public class HiddenSetterVisitor implements HiddenVisitor {
         if (hiddenVariable.getName().equals(name)) {
             hiddenVariable.setValue(value);
         }
+    }
+
+    /**
+     * Visit a {@code HiddenUnaryOperator}.
+     *
+     * @param hiddenUnaryOperator an generic {@code HiddenUnaryOperator}
+     */
+    @Override
+    public void visitHiddenUnaryOperator(HiddenUnaryOperator hiddenUnaryOperator) {
+        hiddenUnaryOperator.getFirstChildren().accept(this);
+    }
+
+    /**
+     * Visit a {@code hiddenBinaryOperator}.
+     *
+     * @param hiddenBinaryOperator an generic {@code hiddenBinaryOperator}
+     */
+    @Override
+    public void visitHiddenBinaryOperator(HiddenBinaryOperator hiddenBinaryOperator) {
+        hiddenBinaryOperator.getFirstChildren().accept(this);
+        hiddenBinaryOperator.getSecondChildren().accept(this);
     }
 }

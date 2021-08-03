@@ -34,4 +34,26 @@ public class HiddenNeg extends AbstractHiddenUnaryOperator {
     protected HType mainOperation(HType value1) {
         return value1.neg();
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenNeg copy() {
+        return new HiddenNeg(getFirstChildren().copy());
+    }
+
+    /**
+     * Returns the code representation.
+     *
+     * @param space the number of space of indentation.
+     * @return a code representation
+     */
+    @Override
+    public String asCode(int space) {
+        String tab = " ".repeat(space);
+        return tab + "~ " + getFirstChildren().asCode();
+    }
 }

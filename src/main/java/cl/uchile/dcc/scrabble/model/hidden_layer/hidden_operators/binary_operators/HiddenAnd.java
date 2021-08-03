@@ -36,4 +36,14 @@ public class HiddenAnd extends AbstractHiddenBinaryOperator {
     protected HType mainOperation(HType value1, HType value2) {
         return value1.and(value2);
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenAnd copy() {
+        return new HiddenAnd(getFirstChildren().copy(), getSecondChildren().copy());
+    }
 }

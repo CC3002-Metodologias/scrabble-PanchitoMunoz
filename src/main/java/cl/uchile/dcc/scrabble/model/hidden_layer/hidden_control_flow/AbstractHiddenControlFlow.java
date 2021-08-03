@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
-import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 
 /**
  * todo: doc
@@ -12,7 +12,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComposite;
 public abstract class AbstractHiddenControlFlow
     implements HiddenControlFlow {
 
-    private final HiddenASTComposite condition;
+    private final HiddenASTComponent condition;
     private final HiddenAST firstBody;
     private final String operatorName;
 
@@ -24,7 +24,7 @@ public abstract class AbstractHiddenControlFlow
      * @param operatorName the operator name.
      */
     protected AbstractHiddenControlFlow(
-        HiddenASTComposite condition, HiddenAST firstBody,
+        HiddenASTComponent condition, HiddenAST firstBody,
         String operatorName) {
         this.condition = condition;
         this.firstBody = firstBody;
@@ -36,7 +36,7 @@ public abstract class AbstractHiddenControlFlow
      *
      * @return gets the condition
      */
-    public HiddenASTComposite getCondition() {
+    public HiddenASTComponent getCondition() {
         return condition;
     }
 
@@ -56,5 +56,15 @@ public abstract class AbstractHiddenControlFlow
      */
     public String getOperatorName() {
         return operatorName;
+    }
+
+    /**
+     * A String representation of the current instance.
+     *
+     * @return a string representation
+     */
+    @Override
+    public final String toString() {
+        return asString(0);
     }
 }

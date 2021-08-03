@@ -35,4 +35,14 @@ public class ToHiddenInt extends AbstractHiddenTransformation {
     protected HType mainOperation(HType value1) {
         return value1.toHiddenInt();
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public ToHiddenInt copy() {
+        return new ToHiddenInt(getFirstChildren().copy());
+    }
 }

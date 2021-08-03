@@ -36,4 +36,14 @@ public class HiddenOr extends AbstractHiddenBinaryOperator {
     protected HType mainOperation(HType value1, HType value2) {
         return value1.or(value2);
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenOr copy() {
+        return new HiddenOr(getFirstChildren().copy(), getSecondChildren().copy());
+    }
 }

@@ -36,4 +36,14 @@ public class HiddenSub extends AbstractHiddenBinaryOperator {
     protected HType mainOperation(HType value1, HType value2) {
         return value1.sub(value2);
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public HiddenSub copy() {
+        return new HiddenSub(getFirstChildren().copy(), getSecondChildren().copy());
+    }
 }

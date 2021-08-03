@@ -116,9 +116,9 @@ class HiddenOrTest extends BaseHiddenOperationTest {
     }
 
     @RepeatedTest(20)
-    void testClone() throws CloneNotSupportedException {
+    void testCopy() {
         HiddenOr operation = new HiddenOr(hiddenFloat1, hiddenFloat2);
-        HiddenOperator other = operation.clone();
+        HiddenOperator other = operation.copy();
         assertNotSame(other, operation);
         assertSame(other.getFirstChildren(), operation.getFirstChildren());
     }

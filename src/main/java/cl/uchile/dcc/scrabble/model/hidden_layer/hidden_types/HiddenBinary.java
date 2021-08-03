@@ -106,6 +106,17 @@ public class HiddenBinary extends AbstractHiddenInteger implements HLogical, HBi
     }
 
     /**
+     * Returns the code representation.
+     *
+     * @param space the number of space of indentation.
+     * @return a code representation
+     */
+    @Override
+    public String asCode(int space) {
+        return super.asCode(space) + 'b';
+    }
+
+    /**
      * Gets the current instance in the wrapper
      *
      * @return the instance in the wrapper

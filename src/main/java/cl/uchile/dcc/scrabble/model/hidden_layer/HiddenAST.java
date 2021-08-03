@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
+
 /**
  * todo: doc
  *
@@ -15,4 +17,44 @@ public interface HiddenAST {
      * @return the current {@code HiddenASTComponent} as {@code String}
      */
     String asString(int space);
+
+    /**
+     * Return the current instance as string.
+     *
+     * @return the current instance as string.
+     */
+    default String asString() {
+        return asString(0);
+    }
+
+    /**
+     * Method that accepts a {@code HiddenVisitor}.
+     *
+     * @param visitor a {@code HiddenVisitor}.
+     */
+    void accept(HiddenVisitor visitor);
+
+    /**
+     * Returns the code representation.
+     *
+     * @param space the number of space of indentation.
+     * @return a code representation
+     */
+    String asCode(int space);
+
+    /**
+     * Returns the code representation.
+     *
+     * @return a code representation.
+     */
+    default String asCode() {
+        return asCode(0);
+    }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    HiddenAST copy();
 }

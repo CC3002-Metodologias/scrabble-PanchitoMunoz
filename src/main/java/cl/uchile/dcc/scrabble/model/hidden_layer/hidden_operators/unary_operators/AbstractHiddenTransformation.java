@@ -30,4 +30,15 @@ public abstract class AbstractHiddenTransformation extends AbstractHiddenUnaryOp
     public final String asString(int space) {
         return getFirstChildren().asString(space) + '.' + getOperatorName() + "()";
     }
+
+    /**
+     * Returns the code representation.
+     *
+     * @param space the number of space of indentation.
+     * @return a code representation
+     */
+    @Override
+    public String asCode(int space) {
+        return getFirstChildren().asCode(space) + '.' + getOperatorName() + "()";
+    }
 }

@@ -35,4 +35,14 @@ public class ToHiddenBinary extends AbstractHiddenTransformation {
     protected HType mainOperation(HType value1) {
         return value1.toHiddenBinary();
     }
+
+    /**
+     * Creates and returns a copy of this object.
+     *
+     * @return a clone of this instance.
+     */
+    @Override
+    public ToHiddenBinary copy() {
+        return new ToHiddenBinary(getFirstChildren().copy());
+    }
 }
