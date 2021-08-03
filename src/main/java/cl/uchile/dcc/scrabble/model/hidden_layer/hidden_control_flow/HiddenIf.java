@@ -8,25 +8,33 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
  * todo: doc
  *
  * @author Francisco Muñoz Guajardo
- * @create 2021/07/26 0:21
+ * @create 2021/08/03 8:55
  */
-public class HiddenIfElse extends HiddenIf {
-
-    private final HiddenAST secondBody;
+public class HiddenIf extends AbstractHiddenControlFlow {
 
     /**
-     * Constructor.
+     * Default constructor.
      *
-     * @param condition A condition. It can be a {@code HiddenASTComponent}.
-     * @param ifBody    the body if the condition is true.
-     * @param elseBody  the body if the condition is false.
+     * @param condition    the condition.
+     * @param ifBody       the first body to execute.
+     * @param operatorName the operator's name.
      */
-    public HiddenIfElse(
+    protected HiddenIf(
         HiddenASTComponent condition,
-        HiddenAST ifBody,
-        HiddenAST elseBody) {
-        super(condition, ifBody, "IfElse");
-        this.secondBody = elseBody;
+        HiddenAST ifBody, String operatorName) {
+        super(condition, ifBody, operatorName);
+    }
+
+    /**
+     * Default constructor.
+     *
+     * @param condition the condition.
+     * @param ifBody    the first body to execute.
+     */
+    public HiddenIf(
+        HiddenASTComponent condition,
+        HiddenAST ifBody) {
+        this(condition, ifBody, "If");
     }
 
     /**
@@ -38,9 +46,11 @@ public class HiddenIfElse extends HiddenIf {
     @Override
     public String asString(int space) {
         String tab = " ".repeat(space);
-        return super.asString(space) + " Else {\n"
-            + getSecondBody().asString(space + 2) + '\n'
-            + tab + '}';
+        return tab + "If (\n"
+            + getCondition().asString(space + 2) + '\n'
+            + tab + ") {\n"
+            + getFirstBody().asString(space + 2) + '\n'
+            + tab + "}";
     }
 
     /**
@@ -50,7 +60,7 @@ public class HiddenIfElse extends HiddenIf {
      */
     @Override
     public void accept(HiddenVisitor visitor) {
-        visitor.visitHiddenIfElse(this);
+        visitor.visitHiddenIf(this);
     }
 
     /**
@@ -62,8 +72,8 @@ public class HiddenIfElse extends HiddenIf {
     @Override
     public String asCode(int space) {
         String tab = " ".repeat(space);
-        return super.asCode(space) + " Else {\n"
-            + getSecondBody().asCode(space + 2) + '\n'
+        return tab + "If ( " + getCondition().asCode() + " ) {\n"
+            + getFirstBody().asCode(space + 2) + '\n'
             + tab + '}';
     }
 
@@ -73,14 +83,7 @@ public class HiddenIfElse extends HiddenIf {
      * @return a clone of this instance.
      */
     @Override
-    public HiddenIfElse copy() {
-        return new HiddenIfElse(
-            getCondition().copy(),
-            getFirstBody().copy(),
-            getSecondBody().copy());
-    }
-
-    public HiddenAST getSecondBody() {
-        return secondBody;
+    public HiddenAST copy() {
+        return new HiddenIf(getCondition().copy(), getFirstBody().copy());
     }
 }

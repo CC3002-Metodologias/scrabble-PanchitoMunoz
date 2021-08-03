@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIfElse;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenListOfInstructions;
@@ -108,6 +109,20 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
             condition.accept(this);
             conditionCalculated = (HiddenBool) condition.calculate();
             conditionBoolean = conditionCalculated.getValueAsBool();
+        }
+    }
+
+    /**
+     * Visit a {@code HiddenIf}.
+     *
+     * @param hiddenIf an generic {@code HiddenIf}
+     */
+    @Override
+    public void visitHiddenIf(HiddenIf hiddenIf) {
+        HiddenASTComponent condition = hiddenIf.getCondition().copy();
+        condition.accept(this);
+        if (((HiddenBool) condition.calculate()).getValueAsBool()) {
+            hiddenIf.getFirstBody().accept(this);
         }
     }
 

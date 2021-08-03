@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIfElse;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenListOfInstructions;
@@ -57,6 +58,14 @@ public interface HiddenVisitor {
      */
     default void visitHiddenBinaryOperator(HiddenBinaryOperator hiddenBinaryOperator) {
         this.visitHiddenOperator(hiddenBinaryOperator);
+    }
+
+    /**
+     * Visit a {@code HiddenIf}.
+     *
+     * @param hiddenIf an generic {@code HiddenIf}
+     */
+    default void visitHiddenIf(HiddenIf hiddenIf) {
     }
 
     /**
