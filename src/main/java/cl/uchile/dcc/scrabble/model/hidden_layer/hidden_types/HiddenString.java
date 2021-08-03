@@ -73,6 +73,18 @@ public class HiddenString extends AbstractHiddenType implements HString {
     }
 
     /**
+     * Returns the code representation.
+     *
+     * @param space the number of space of indentation.
+     * @return a code representation
+     */
+    @Override
+    public String asCode(int space) {
+        String tab = " ".repeat(space);
+        return tab + '\"' + super.asCode(0) + '\"';
+    }
+
+    /**
      * Returns the visitor
      *
      * @return a visitor

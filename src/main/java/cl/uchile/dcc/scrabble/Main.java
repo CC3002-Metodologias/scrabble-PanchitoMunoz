@@ -1,12 +1,15 @@
 package cl.uchile.dcc.scrabble;
 
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIfElse;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenProgram;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenGreaterThan;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenNotEquals;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 
 /**
@@ -141,6 +144,9 @@ public class Main {
                         )
                     )
                 )
+            ),
+            new HiddenIf(new HiddenBool(true),
+                new HiddenVariable("x").setValue(new HiddenString("Hola Mundo"))
             )
         ).execute();
         System.out.println(program);
