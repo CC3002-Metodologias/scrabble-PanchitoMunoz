@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operato
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 
 /**
  * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
@@ -34,6 +35,16 @@ public class ToHiddenFloat extends AbstractHiddenTransformation {
     @Override
     protected HType mainOperation(HType value1) {
         return value1.toHiddenFloat();
+    }
+
+    /**
+     * Method that accepts a {@code HiddenVisitor}.
+     *
+     * @param visitor a {@code HiddenVisitor}.
+     */
+    @Override
+    public void accept(HiddenVisitor visitor) {
+        visitor.visitToHiddenFloat(this);
     }
 
     /**

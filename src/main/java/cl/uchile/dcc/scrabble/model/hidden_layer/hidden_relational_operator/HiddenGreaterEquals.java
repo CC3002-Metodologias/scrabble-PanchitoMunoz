@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 
 /**
  * A class to be adapted. It is for the greater equals AST.
@@ -35,6 +36,16 @@ public class HiddenGreaterEquals extends AbstractHiddenRelationalOperator {
     @Override
     protected HType mainOperation(HType value1, HType value2) {
         return value1.greaterEquals(value2);
+    }
+
+    /**
+     * Method that accepts a {@code HiddenVisitor}.
+     *
+     * @param visitor a {@code HiddenVisitor}.
+     */
+    @Override
+    public void accept(HiddenVisitor visitor) {
+        visitor.visitHiddenGreaterEquals(this);
     }
 
     /**

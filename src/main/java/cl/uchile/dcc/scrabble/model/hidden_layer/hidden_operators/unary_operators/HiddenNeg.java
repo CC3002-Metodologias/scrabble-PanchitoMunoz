@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operato
 import cl.uchile.dcc.scrabble.model.ast.operations.Neg;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 
 /**
  * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
@@ -46,6 +47,16 @@ public class HiddenNeg extends AbstractHiddenUnaryOperator {
     }
 
     /**
+     * Method that accepts a {@code HiddenVisitor}.
+     *
+     * @param visitor a {@code HiddenVisitor}.
+     */
+    @Override
+    public void accept(HiddenVisitor visitor) {
+        visitor.visitHiddenNeg(this);
+    }
+
+    /**
      * Returns the code representation.
      *
      * @param space the number of space of indentation.
@@ -54,6 +65,6 @@ public class HiddenNeg extends AbstractHiddenUnaryOperator {
     @Override
     public String asCode(int space) {
         String tab = " ".repeat(space);
-        return tab + "~ " + getFirstChildren().asCode();
+        return tab + "~(" + getFirstChildren().asCode() + ")";
     }
 }

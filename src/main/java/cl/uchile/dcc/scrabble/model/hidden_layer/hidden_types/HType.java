@@ -12,7 +12,6 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogicalOperations;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HString;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenTypeBridge;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
@@ -66,17 +65,6 @@ public interface HType
      * @return the instance in the wrapper
      */
     SType asSType();
-
-    /**
-     * Method that accepts a {@code HiddenVisitor}.
-     *
-     * @param visitor a {@code HiddenVisitor}.
-     */
-    @Override
-    default void accept(HiddenVisitor visitor) {
-        visitor.visitHType(this);
-    }
-
 
     /**
      * Calculate the {@code HType} result of performing all operations.

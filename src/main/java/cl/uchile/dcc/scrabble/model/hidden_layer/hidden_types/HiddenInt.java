@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenIntBridge;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import java.util.HashMap;
@@ -181,5 +182,15 @@ public class HiddenInt extends AbstractHiddenInteger implements HInt {
     @Override
     public TypeInt asTypeInt() {
         return this.asSType();
+    }
+
+    /**
+     * Method that accepts a {@code HiddenVisitor}.
+     *
+     * @param visitor a {@code HiddenVisitor}.
+     */
+    @Override
+    public void accept(HiddenVisitor visitor) {
+        visitor.visitHiddenInt(this);
     }
 }
