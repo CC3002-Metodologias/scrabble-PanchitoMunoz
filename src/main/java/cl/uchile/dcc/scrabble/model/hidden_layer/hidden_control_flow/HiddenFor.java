@@ -14,20 +14,20 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 public class HiddenFor extends AbstractHiddenControlFlow {
 
     private final HiddenVariable initializer;
-    private final HiddenASTComponent increase;
+    private final HiddenVariable increase;
 
     /**
      * Default constructor.
      *
-     * @param condition   the condition.
-     * @param firstBody   the first body to execute.
      * @param initializer the initializer of the loop
+     * @param condition   the condition.
      * @param increase    the condition to increase/decrease
+     * @param firstBody   the first body to execute.
      */
     public HiddenFor(
         HiddenVariable initializer,
         HiddenASTComponent condition,
-        HiddenASTComponent increase,
+        HiddenVariable increase,
         HiddenAST firstBody) {
         super(condition, firstBody, "For");
         this.initializer = initializer;
@@ -93,11 +93,21 @@ public class HiddenFor extends AbstractHiddenControlFlow {
             getFirstBody().copy());
     }
 
+    /**
+     * Gets the initializer
+     *
+     * @return the initializer
+     */
     public HiddenVariable getInitializer() {
         return initializer;
     }
 
-    public HiddenASTComponent getIncrease() {
+    /**
+     * Gets the condition to increase/decrease
+     *
+     * @return the condition to increase/decrease
+     */
+    public HiddenVariable getIncrease() {
         return increase;
     }
 }

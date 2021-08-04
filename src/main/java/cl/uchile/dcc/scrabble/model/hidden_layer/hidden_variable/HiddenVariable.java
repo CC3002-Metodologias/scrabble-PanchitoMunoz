@@ -3,12 +3,15 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTLeaf;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
 import org.jetbrains.annotations.NotNull;
@@ -32,6 +35,19 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     public HiddenVariable(@NotNull String name) {
         this.name = name;
+    }
+
+    /**
+     * The hidden representation.
+     *
+     * @return the representation as string
+     */
+    @Override
+    public String toString() {
+        return "HiddenVariable{" +
+            "name='" + name + '\'' +
+            ", value=" + getValue() +
+            '}';
     }
 
     /**
@@ -84,26 +100,15 @@ public class HiddenVariable implements HiddenASTLeaf {
         return tab + getName() + " = " + getValue().asCode();
     }
 
+    /**
+     * Gets the value as String.
+     */
     private String getValueAsString(int space) {
         if (getValue().equals(HTypeFactory.createHiddenNull())) {
             return "";
         }
         return ", " + "value=\n"
             + getValue().asString(space + 2);
-    }
-
-
-    /**
-     * The hidden representation.
-     *
-     * @return the representation as string
-     */
-    @Override
-    public String toString() {
-        return "HiddenVariable{" +
-            "name='" + name + '\'' +
-            ", value=" + getValue() +
-            '}';
     }
 
     /**
@@ -143,6 +148,48 @@ public class HiddenVariable implements HiddenASTLeaf {
     @Override
     public HiddenVariable copy() {
         return new HiddenVariable(getName()).setValue(getValue());
+    }
+
+    /**
+     * Increase the variable by 1.
+     *
+     * @return the variable increased by 1
+     */
+    public HiddenVariable increase() {
+        return increase(new HiddenInt(1));
+    }
+
+    /**
+     * Increase the variable.
+     *
+     * @param valueToIncrease the value to increase.
+     * @return the variable increased.
+     */
+    public HiddenVariable increase(HiddenInt valueToIncrease) {
+        return this.setValue(
+            new HiddenAdd(new HiddenVariable(getName()), valueToIncrease)
+        );
+    }
+
+    /**
+     * Decrease the variable by 1.
+     *
+     * @return the variable decreased by 1
+     */
+    public HiddenVariable decreased() {
+        return decreased(new HiddenInt(1));
+    }
+
+    /**
+     * Decrease the variable.
+     *
+     * @param valueToDecreased the value to decreased.
+     * @return the variable decreased.
+     */
+    public HiddenVariable decreased(HiddenInt valueToDecreased) {
+        return this.setValue(
+            new HiddenSub(new HiddenVariable(getName()), valueToDecreased)
+        );
     }
 
     /**
