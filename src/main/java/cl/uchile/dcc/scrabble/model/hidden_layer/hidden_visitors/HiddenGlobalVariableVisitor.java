@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenFor;
@@ -9,7 +10,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenListOfInstructions;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenUnaryOperator;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import java.util.HashMap;
 
@@ -41,9 +42,12 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
     public void visitHiddenVariable(HiddenVariable hiddenVariable) {
         String varName = hiddenVariable.getName();
         HiddenASTComponent value = hiddenVariable.getValue().copy();
-        if (!globalVariables.containsKey(varName)) {
+        if (!globalVariables.containsKey(varName)) {  // Case the variable didn't add
             globalVariables.put(varName, value);
-        } else {
+        } else if (value
+            .equals(HTypeFactory.createHiddenNull())) {  // Case variable add, but it is null
+            hiddenVariable.setValue(globalVariables.get(varName));
+        } else {  // Other cases
             HiddenASTComponent valueCopy = value.copy();
             valueCopy.accept(this);
             globalVariables.put(varName, valueCopy.calculate());
@@ -102,7 +106,7 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
      */
     private boolean getConditionAsBoolean(HiddenASTComponent condition) {
         condition.accept(this);
-        HiddenBool conditionCalculated = (HiddenBool) condition.calculate();
+        HType conditionCalculated = condition.calculate();
         return conditionCalculated.getValueAsBool();
     }
 

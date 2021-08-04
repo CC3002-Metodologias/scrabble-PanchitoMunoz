@@ -79,8 +79,9 @@ class HiddenVariableTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testAsString() {
-        String formatAsString = "Variable{name=x, value=%s}";
-        assertEquals(String.format(formatAsString, "null"), variable.asString(0),
+        String formatAsString = "Variable{name=x, value=\n"
+            + "  %s}";
+        assertEquals("Variable{name=x}", variable.asString(0),
             "Method asString does not works." + messageSeed);
         assertEquals(String.format(formatAsString, hiddenFloat1.asString(0)),
             floatVariable.asString(0),

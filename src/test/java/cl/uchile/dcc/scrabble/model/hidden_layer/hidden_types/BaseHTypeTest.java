@@ -41,20 +41,20 @@ public abstract class BaseHTypeTest extends BaseTypeTest {
         hTypeList2.add(trueHiddenBool);
         hTypeList2.add(falseHiddenBool);
         // Generate 2 binaries random
-        hiddenBinary1 = new HiddenBinary(typeBinary1);
-        hiddenBinary2 = new HiddenBinary(typeBinary2);
+        hiddenBinary1 = new HiddenBinary(aBinary1);
+        hiddenBinary2 = new HiddenBinary(aBinary2);
         hTypeList2.add(hiddenBinary2);
         // Generate 2 floats random
-        hiddenFloat1 = new HiddenFloat(typeFloat1);
-        hiddenFloat2 = new HiddenFloat(typeFloat2);
+        hiddenFloat1 = new HiddenFloat(aFloat1);
+        hiddenFloat2 = new HiddenFloat(aFloat2);
         hTypeList2.add(hiddenFloat2);
         // Generate 2 ints random
-        hiddenInt1 = new HiddenInt(typeInt1);
-        hiddenInt2 = new HiddenInt(typeInt2);
+        hiddenInt1 = new HiddenInt(anInt1);
+        hiddenInt2 = new HiddenInt(anInt2);
         hTypeList2.add(hiddenInt2);
         // Generate 2 strings random
-        hiddenString1 = new HiddenString(typeString1);
-        hiddenString2 = new HiddenString(typeString2);
+        hiddenString1 = new HiddenString(aString1);
+        hiddenString2 = new HiddenString(aString2);
         hTypeList2.add(hiddenString2);
     }
 }

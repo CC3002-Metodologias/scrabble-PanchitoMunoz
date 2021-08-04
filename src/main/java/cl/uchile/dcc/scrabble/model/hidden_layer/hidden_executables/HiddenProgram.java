@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class HiddenProgram {
 
-    private final HiddenListOfInstructions instructionsListOriginal;
+    private final HiddenListOfInstructions instructionsList;
     private final HashMap<String, HiddenASTComponent> globalVariables = new HashMap<>();
     private final HiddenGlobalVariableVisitor visitor
         = new HiddenGlobalVariableVisitor(globalVariables);
@@ -27,7 +27,7 @@ public class HiddenProgram {
      * @param instructions The instructions to build the program.
      */
     public HiddenProgram(HiddenAST... instructions) {
-        this.instructionsListOriginal = new HiddenListOfInstructions(instructions);
+        this.instructionsList = new HiddenListOfInstructions(instructions);
     }
 
     /**
@@ -36,8 +36,9 @@ public class HiddenProgram {
     public HiddenProgram execute() {
         // First at all: clear the global variables.
         globalVariables.clear();
-        HiddenListOfInstructions instructionsList = instructionsListOriginal.copy();
-        for (HiddenAST instruction : instructionsList.getInstructionsList()) {
+        HiddenListOfInstructions instructionsListCopy = instructionsList.copy();
+        for (HiddenAST instruction : instructionsListCopy.getInstructionsList()) {
+            // Executes each line updating the global variables.
             instruction.accept(visitor);
         }
         return this;
@@ -57,22 +58,9 @@ public class HiddenProgram {
         return listToReturn;
     }
 
-    /**
-     * String representation
-     *
-     * @return a String representation
-     */
-    public String asString() {
-        return instructionsListOriginal.asString();
-    }
-
-    /**
-     * A code representation
-     *
-     * @return a code representation
-     */
-    public String asCode() {
-        return instructionsListOriginal.asCode();
+    public HiddenVariable getGlobalVariable(String name) {
+        HiddenASTComponent value = globalVariables.get(name);
+        return new HiddenVariable(name).setValue(value);
     }
 
     /**
@@ -82,6 +70,6 @@ public class HiddenProgram {
      */
     @Override
     public String toString() {
-        return asCode();
+        return instructionsList.asCode();
     }
 }

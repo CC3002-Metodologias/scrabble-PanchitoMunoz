@@ -45,6 +45,15 @@ public interface HType
     HiddenTypeBridge getBridge();
 
     /**
+     * Value as Boolean
+     *
+     * @return Value as Boolean
+     */
+    default Boolean getValueAsBool() {
+        return null;
+    }
+
+    /**
      * Value as String
      *
      * @return Value as String

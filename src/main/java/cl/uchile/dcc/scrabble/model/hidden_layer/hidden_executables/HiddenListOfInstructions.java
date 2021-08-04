@@ -37,7 +37,7 @@ public class HiddenListOfInstructions implements HiddenAST {
         for (HiddenAST instruction : instructionsList) {
             stringToReturn.append(instruction.asString(space)).append('\n');
         }
-        return stringToReturn.toString();
+        return stringToReturn.substring(0, stringToReturn.length() - 1);
     }
 
     /**
@@ -62,7 +62,7 @@ public class HiddenListOfInstructions implements HiddenAST {
         for (HiddenAST instruction : getInstructionsList()) {
             stringToReturn.append(instruction.asCode(space)).append('\n');
         }
-        return stringToReturn.toString();
+        return stringToReturn.substring(0, stringToReturn.length() - 1);
     }
 
     /**

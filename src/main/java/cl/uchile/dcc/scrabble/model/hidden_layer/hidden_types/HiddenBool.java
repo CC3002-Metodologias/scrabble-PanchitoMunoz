@@ -76,6 +76,7 @@ public class HiddenBool extends AbstractHiddenType implements HBool {
      *
      * @return Value as Boolean
      */
+    @Override
     public Boolean getValueAsBool() {
         return this.value;
     }

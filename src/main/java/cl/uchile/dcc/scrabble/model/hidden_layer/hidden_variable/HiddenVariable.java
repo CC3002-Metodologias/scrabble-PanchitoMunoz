@@ -50,6 +50,30 @@ public class HiddenVariable implements HiddenASTLeaf {
             '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HiddenVariable)) {
+            return false;
+        }
+
+        HiddenVariable variable = (HiddenVariable) o;
+
+        if (!getName().equals(variable.getName())) {
+            return false;
+        }
+        return getValue().equals(variable.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getValue().hashCode();
+        return result;
+    }
+
     /**
      * Method that accepts a {@code HiddenVisitor}.
      *
@@ -108,7 +132,7 @@ public class HiddenVariable implements HiddenASTLeaf {
             return "";
         }
         return ", " + "value=\n"
-            + getValue().asString(space + 2);
+            + getValue().asString(space);
     }
 
     /**
