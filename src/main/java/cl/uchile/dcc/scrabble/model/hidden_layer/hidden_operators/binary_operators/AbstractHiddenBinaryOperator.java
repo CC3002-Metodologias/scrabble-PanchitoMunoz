@@ -101,9 +101,20 @@ public abstract class AbstractHiddenBinaryOperator
     @Override
     public String asCode(int space) {
         String tab = " ".repeat(space);
-        return tab + '(' + getFirstChildren().asCode()
+        String asCodeWP = this.asCodeWithParenthesis();
+        return tab + asCodeWP.substring(1, asCodeWP.length() - 1);
+    }
+
+    /**
+     * Returns the code representation with parenthesis.
+     *
+     * @return the code representation with parenthesis.
+     */
+    @Override
+    public String asCodeWithParenthesis() {
+        return '(' + getFirstChildren().asCodeWithParenthesis()
             + ' ' + getOperatorSymbol()
-            + ' ' + getSecondChildren().asCode() + ')';
+            + ' ' + getSecondChildren().asCodeWithParenthesis() + ')';
     }
 
     /**

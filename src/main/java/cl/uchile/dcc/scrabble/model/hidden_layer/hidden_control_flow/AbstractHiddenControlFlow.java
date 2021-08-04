@@ -36,6 +36,7 @@ public abstract class AbstractHiddenControlFlow
      *
      * @return gets the condition
      */
+    @Override
     public HiddenASTComponent getCondition() {
         return condition;
     }

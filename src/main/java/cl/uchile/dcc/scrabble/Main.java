@@ -1,10 +1,14 @@
 package cl.uchile.dcc.scrabble;
 
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenFor;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIfElse;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenProgram;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenGreaterThan;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenLowerThan;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenNotEquals;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
@@ -124,8 +128,10 @@ public class Main {
 //        System.out.println(program);
 
         HiddenProgram program = new HiddenProgram(
-            new HiddenVariable("a").setValue(new HiddenInt(5647 * 2)),
-            new HiddenVariable("b").setValue(new HiddenInt(5647 * 456)).toHiddenBinary(),
+//            new HiddenVariable("a").setValue(new HiddenInt(100000001)),
+//            new HiddenVariable("b").setValue(new HiddenInt(17)),
+            new HiddenVariable("a").setValue(new HiddenInt(30)),
+            new HiddenVariable("b").setValue(new HiddenInt(15)),
             new HiddenWhile(
                 new HiddenNotEquals(new HiddenVariable("b"), new HiddenInt(0).toHiddenBinary()),
                 new HiddenIfElse(
@@ -141,6 +147,23 @@ public class Main {
                         )
                     )
                 )
+            )
+        );
+        System.out.println(program);
+//        String listVar = String.valueOf(program.getGlobalVariables());
+//        System.out.println(listVar);
+//        program.execute();
+//        listVar = String.valueOf(program.getGlobalVariables());
+//        System.out.println(listVar);
+
+        program = new HiddenProgram(
+            new HiddenFor(
+                new HiddenVariable("i").setValue(new HiddenInt(0)),
+                new HiddenLowerThan(new HiddenVariable("i"), new HiddenInt(8)),
+                new HiddenVariable("i").setValue(
+                    new HiddenAdd(new HiddenVariable("i"), new HiddenInt(1))
+                ),
+                HTypeFactory.createHiddenNull()
             )
         );
         System.out.println(program);

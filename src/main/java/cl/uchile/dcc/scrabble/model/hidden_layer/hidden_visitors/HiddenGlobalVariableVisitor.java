@@ -2,6 +2,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors;
 
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenFor;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIfElse;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile;
@@ -94,6 +95,18 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
     }
 
     /**
+     * Gets and updates the condition as boolean.
+     *
+     * @param condition a condition in AST format
+     * @return the condition as boolean.
+     */
+    private boolean getConditionAsBoolean(HiddenASTComponent condition) {
+        condition.accept(this);
+        HiddenBool conditionCalculated = (HiddenBool) condition.calculate();
+        return conditionCalculated.getValueAsBool();
+    }
+
+    /**
      * Visit a {@code HiddenWhile}.
      *
      * @param hiddenWhile an generic {@code HiddenWhile}
@@ -101,14 +114,8 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
     @Override
     public void visitHiddenWhile(HiddenWhile hiddenWhile) {
         HiddenASTComponent condition = hiddenWhile.getCondition().copy();
-        condition.accept(this);
-        HiddenBool conditionCalculated = (HiddenBool) condition.calculate();
-        boolean conditionBoolean = conditionCalculated.getValueAsBool();
-        while (conditionBoolean) {
+        while (getConditionAsBoolean(condition)) {
             hiddenWhile.getFirstBody().accept(this);
-            condition.accept(this);
-            conditionCalculated = (HiddenBool) condition.calculate();
-            conditionBoolean = conditionCalculated.getValueAsBool();
         }
     }
 
@@ -120,8 +127,7 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
     @Override
     public void visitHiddenIf(HiddenIf hiddenIf) {
         HiddenASTComponent condition = hiddenIf.getCondition().copy();
-        condition.accept(this);
-        if (((HiddenBool) condition.calculate()).getValueAsBool()) {
+        if (getConditionAsBoolean(condition)) {
             hiddenIf.getFirstBody().accept(this);
         }
     }
@@ -134,11 +140,29 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
     @Override
     public void visitHiddenIfElse(HiddenIfElse hiddenIfElse) {
         HiddenASTComponent condition = hiddenIfElse.getCondition().copy();
-        condition.accept(this);
-        if (((HiddenBool) condition.calculate()).getValueAsBool()) {
+        if (getConditionAsBoolean(condition)) {
             hiddenIfElse.getFirstBody().accept(this);
         } else {
             hiddenIfElse.getSecondBody().accept(this);
+        }
+    }
+
+    /**
+     * Visit a {@code HiddenFor}.
+     *
+     * @param hiddenFor an generic {@code HiddenFor}
+     */
+    @Override
+    public void visitHiddenFor(HiddenFor hiddenFor) {
+        // Initialize variable
+        hiddenFor.getInitializer().copy().accept(this);
+        // Get the condition
+        HiddenASTComponent condition = hiddenFor.getCondition().copy();
+        while (getConditionAsBoolean(condition)) {
+            // execute the body
+            hiddenFor.getFirstBody().accept(this);
+            // updates the variable
+            hiddenFor.getIncrease().accept(this);
         }
     }
 }

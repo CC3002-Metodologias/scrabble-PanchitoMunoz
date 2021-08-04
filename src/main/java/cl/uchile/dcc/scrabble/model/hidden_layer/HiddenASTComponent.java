@@ -33,4 +33,13 @@ public interface HiddenASTComponent extends HiddenAST, HTransformation {
      */
     HiddenASTComponent copy();
 
+    /**
+     * Returns the code representation with parenthesis.
+     *
+     * @return the code representation with parenthesis.
+     */
+    default String asCodeWithParenthesis() {
+        return asCode();
+    }
+
 }
