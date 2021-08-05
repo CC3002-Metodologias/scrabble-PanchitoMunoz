@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractBinaryOperator;
 import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenDiv;
 
@@ -15,7 +15,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operato
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/15 11:47
  */
-public class Div extends AbstractOperation {
+public class Div extends AbstractBinaryOperator {
 
     /**
      * Constructor.
@@ -23,7 +23,7 @@ public class Div extends AbstractOperation {
      * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public Div(AST leftValue, AST rightValue) {
+    public Div(ASTComponent leftValue, ASTComponent rightValue) {
         super(new HiddenDiv(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 }

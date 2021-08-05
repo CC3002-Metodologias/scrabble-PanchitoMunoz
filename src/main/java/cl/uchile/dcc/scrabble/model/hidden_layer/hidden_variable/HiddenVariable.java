@@ -14,6 +14,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
+import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -50,6 +51,14 @@ public class HiddenVariable implements HiddenASTLeaf {
             '}';
     }
 
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -67,6 +76,13 @@ public class HiddenVariable implements HiddenASTLeaf {
         return getValue().equals(variable.getValue());
     }
 
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
     @Override
     public int hashCode() {
         int result = getName().hashCode();

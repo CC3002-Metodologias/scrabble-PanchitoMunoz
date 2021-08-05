@@ -1,15 +1,13 @@
 package cl.uchile.dcc.scrabble;
 
-import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenFor;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIfElse;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenProgram;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenGreaterThan;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenNotEquals;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
+import cl.uchile.dcc.scrabble.model.ast.control_flow.IfElse;
+import cl.uchile.dcc.scrabble.model.ast.control_flow.While;
+import cl.uchile.dcc.scrabble.model.ast.executables.Program;
+import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
+import cl.uchile.dcc.scrabble.model.ast.relational_operators.GreaterThan;
+import cl.uchile.dcc.scrabble.model.ast.relational_operators.NotEquals;
+import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.variables.Variable;
 
 /**
  * A main to experiment implementations
@@ -125,49 +123,70 @@ public class Main {
 //        ));
 //        System.out.println(program);
 
-        HiddenProgram program = new HiddenProgram(
-//            new HiddenVariable("a").setValue(new HiddenInt(100000001)),
-//            new HiddenVariable("b").setValue(new HiddenInt(17)),
-            new HiddenVariable("a").setValue(new HiddenInt(30)),
-            new HiddenVariable("b").setValue(new HiddenInt(15)),
-            new HiddenWhile(
-                new HiddenNotEquals(new HiddenVariable("b"), new HiddenInt(0).toHiddenBinary()),
-                new HiddenIfElse(
-                    new HiddenGreaterThan(new HiddenVariable("a"), new HiddenVariable("b")),
-                    new HiddenVariable("a").setValue(
-                        new HiddenSub(
-                            new HiddenVariable("a"), new HiddenVariable("b")
-                        )
-                    ),
-                    new HiddenVariable("b").setValue(
-                        new HiddenSub(
-                            new HiddenVariable("b"), new HiddenVariable("a")
-                        )
-                    )
-                )
-            )
-        );
-        System.out.println(program);
+//        HiddenProgram program = new HiddenProgram(
+////            new HiddenVariable("a").setValue(new HiddenInt(100000001)),
+////            new HiddenVariable("b").setValue(new HiddenInt(17)),
+//            new HiddenVariable("a").setValue(new HiddenInt(30)),
+//            new HiddenVariable("b").setValue(new HiddenInt(15)),
+//            new HiddenWhile(
+//                new HiddenNotEquals(new HiddenVariable("b"), new HiddenInt(0).toHiddenBinary()),
+//                new HiddenIfElse(
+//                    new HiddenGreaterThan(new HiddenVariable("a"), new HiddenVariable("b")),
+//                    new HiddenVariable("a").setValue(
+//                        new HiddenSub(
+//                            new HiddenVariable("a"), new HiddenVariable("b")
+//                        )
+//                    ),
+//                    new HiddenVariable("b").setValue(
+//                        new HiddenSub(
+//                            new HiddenVariable("b"), new HiddenVariable("a")
+//                        )
+//                    )
+//                )
+//            )
+//        );
+//        System.out.println(program);
+////        String listVar = String.valueOf(program.getGlobalVariables());
+////        System.out.println(listVar);
+////        program.execute();
+////        listVar = String.valueOf(program.getGlobalVariables());
+////        System.out.println(listVar);
+//
+//        program = new HiddenProgram(
+//            new HiddenFor(
+//                new HiddenVariable("i").setValue(new HiddenInt(8)),
+//                new HiddenGreaterThan(new HiddenVariable("i"), new HiddenInt(5)),
+//                new HiddenVariable("i").decreased(),
+//                HTypeFactory.createHiddenNull()
+//            )
+//        );
+//        System.out.println(program);
 //        String listVar = String.valueOf(program.getGlobalVariables());
 //        System.out.println(listVar);
 //        program.execute();
 //        listVar = String.valueOf(program.getGlobalVariables());
 //        System.out.println(listVar);
 
-        program = new HiddenProgram(
-            new HiddenFor(
-                new HiddenVariable("i").setValue(new HiddenInt(8)),
-                new HiddenGreaterThan(new HiddenVariable("i"), new HiddenInt(5)),
-                new HiddenVariable("i").decreased(),
-                HTypeFactory.createHiddenNull()
+        Program program1 = new Program(
+            new Variable("a").setValue(new TypeInt(100000001)),
+            new Variable("b").setValue(new TypeInt(17)),
+            new While(
+                new NotEquals(new Variable("b"), new TypeInt(0)),
+                new IfElse(
+                    new GreaterThan(new Variable("a"), new Variable("b")),
+                    new Variable("a").setValue(
+                        new Sub(new Variable("a"), new Variable("b"))
+                    ),
+                    new Variable("b").setValue(
+                        new Sub(new Variable("b"), new Variable("a"))
+                    )
+                )
             )
         );
-        System.out.println(program);
-        String listVar = String.valueOf(program.getGlobalVariables());
-        System.out.println(listVar);
-        program.execute();
-        listVar = String.valueOf(program.getGlobalVariables());
-        System.out.println(listVar);
+        System.out.println(program1);
+        program1.execute();
+        System.out.println(program1.getGlobalVariables("a"));
+        System.out.println(program1.getGlobalVariables("b"));
 
     }
 

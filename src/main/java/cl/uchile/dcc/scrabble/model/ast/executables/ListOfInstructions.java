@@ -28,6 +28,11 @@ public class ListOfInstructions implements AST {
         this.adaptee = new HiddenListOfInstructions(hiddenASTList.toArray(new HiddenAST[0]));
     }
 
+    @Override
+    public String toString() {
+        return adaptee.asString();
+    }
+
     /**
      * Transform an {@code AST} into its equivalent {@code HiddenASTComponent}.
      *

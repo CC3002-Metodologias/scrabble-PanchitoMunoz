@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.builders.interfaces;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 
 /**
@@ -17,5 +17,5 @@ public interface TypeASTBuilder {
      *
      * @return the {@code AST} built.
      */
-    AST build();
+    ASTComponent build();
 }

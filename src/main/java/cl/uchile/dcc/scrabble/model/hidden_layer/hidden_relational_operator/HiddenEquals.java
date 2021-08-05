@@ -1,9 +1,11 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator;
 
+import cl.uchile.dcc.scrabble.model.ast.relational_operators.Equals;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A class to be adapted. It is for the equals AST.
@@ -56,5 +58,15 @@ public class HiddenEquals extends AbstractHiddenRelationalOperator {
     @Override
     public HiddenBinaryOperator copy() {
         return new HiddenEquals(getFirstChildren().copy(), getSecondChildren().copy());
+    }
+
+    /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @Override
+    public @NotNull Equals asAST() {
+        return new Equals(getFirstChildren().asAST(), getSecondChildren().asAST());
     }
 }

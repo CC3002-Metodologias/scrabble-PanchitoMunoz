@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.transformations;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractTransformation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenString;
 
@@ -17,7 +17,7 @@ public class ToTypeString extends AbstractTransformation {
      *
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public ToTypeString(AST value) {
+    public ToTypeString(ASTComponent value) {
         super(new ToHiddenString(value.asHiddenAST()));
     }
 }

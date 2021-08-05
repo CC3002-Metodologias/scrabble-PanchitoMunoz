@@ -66,4 +66,8 @@ public class Program {
         return adaptee.getGlobalVariables(name).asAST();
     }
 
+    @Override
+    public String toString() {
+        return adaptee.toString();
+    }
 }

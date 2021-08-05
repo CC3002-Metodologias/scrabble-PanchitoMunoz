@@ -3,6 +3,8 @@ package cl.uchile.dcc.scrabble.model.variables;
 import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.ast.ASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
+import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -37,8 +39,141 @@ public class Variable implements ASTLeaf {
         return this.adaptee;
     }
 
+    /**
+     * Set the value.
+     *
+     * @param value a value.
+     * @return      itself.
+     */
     public Variable setValue(@NotNull ASTComponent value) {
         this.adaptee.setValue(value.asHiddenAST());
         return this;
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see HashMap
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Variable)) {
+            return false;
+        }
+
+        Variable variable = (Variable) o;
+
+        return adaptee.equals(variable.adaptee);
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return a hash code value for this object.
+     * @see Object#equals(Object)
+     * @see System#identityHashCode
+     */
+    @Override
+    public int hashCode() {
+        return adaptee.hashCode();
+    }
+
+    /**
+     * The string representation.
+     *
+     * @return a string representation.
+     */
+    @Override
+    public String toString() {
+        return adaptee.asString();
+    }
+
+    /**
+     * Increase the variable by 1.
+     *
+     * @return the variable increased by 1
+     */
+    public Variable increase() {
+        return adaptee.increase().asAST();
+    }
+
+    /**
+     * Increase the variable.
+     *
+     * @param valueToIncrease the value to increase.
+     * @return the variable increased.
+     */
+    public Variable increase(TypeInt valueToIncrease) {
+        return adaptee.increase(valueToIncrease.asHType()).asAST();
+    }
+
+    /**
+     * Decrease the variable by 1.
+     *
+     * @return the variable decreased by 1
+     */
+    public Variable decreased() {
+        return adaptee.decreased().asAST();
+    }
+
+    /**
+     * Decrease the variable.
+     *
+     * @param valueToDecreased the value to decreased.
+     * @return the variable decreased.
+     */
+    public Variable decreased(TypeInt valueToDecreased) {
+        return adaptee.decreased(valueToDecreased.asHType()).asAST();
+    }
+
+    /**
+     * Transform the value in the variable into a binary.
+     *
+     * @return another {@code Variable} instance.
+     */
+    public Variable toTypeBinary() {
+        return this.adaptee.toHiddenBinary().asAST();
+    }
+
+    /**
+     * Transform the value in the variable into a boolean.
+     *
+     * @return another {@code Variable} instance.
+     */
+    public Variable toTypeBool() {
+        return this.adaptee.toHiddenBool().asAST();
+    }
+
+    /**
+     * Transform the value in the variable into a float.
+     *
+     * @return another {@code Variable} instance.
+     */
+    public Variable toTypeFloat() {
+        return this.adaptee.toHiddenFloat().asAST();
+    }
+
+    /**
+     * Transform the value in the variable into an int.
+     *
+     * @return another {@code Variable} instance.
+     */
+    public Variable toTypeInt() {
+        return this.adaptee.toHiddenInt().asAST();
+    }
+
+    /**
+     * Transform the value in the variable into a string.
+     *
+     * @return another {@code Variable} instance.
+     */
+    public Variable toTypeString() {
+        return this.adaptee.toHiddenString().asAST();
     }
 }

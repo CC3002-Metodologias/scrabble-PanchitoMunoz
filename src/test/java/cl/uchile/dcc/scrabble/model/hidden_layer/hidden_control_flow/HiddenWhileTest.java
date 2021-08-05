@@ -66,7 +66,6 @@ class HiddenWhileTest extends BaseHTypeTest {
             hiddenWhile.toString(),
             "Method toString does not works." + messageSeed
         );
-        System.out.println(hiddenWhile);
     }
 
     @Test

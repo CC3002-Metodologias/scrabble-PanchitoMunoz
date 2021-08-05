@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
 import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenOr;
@@ -23,7 +23,7 @@ public class Or extends AbstractOperation {
      * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public Or(AST leftValue, AST rightValue) {
+    public Or(ASTComponent leftValue, ASTComponent rightValue) {
         super(new HiddenOr(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 
