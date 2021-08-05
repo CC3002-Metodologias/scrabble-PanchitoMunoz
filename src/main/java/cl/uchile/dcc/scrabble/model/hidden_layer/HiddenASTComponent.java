@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer;
 
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An interface that defines a "type" of Abstract Syntax Tree. This interface is for using the
@@ -42,4 +44,11 @@ public interface HiddenASTComponent extends HiddenAST, HTransformation {
         return asCode();
     }
 
+    /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @Override
+    @NotNull ASTComponent asAST();
 }

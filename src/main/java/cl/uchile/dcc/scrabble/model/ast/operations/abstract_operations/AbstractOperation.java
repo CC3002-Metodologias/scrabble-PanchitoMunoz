@@ -5,6 +5,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Abstract class for a general {@code Operation}.
@@ -34,7 +35,7 @@ public abstract class AbstractOperation implements Operation {
      * @return a transformation
      */
     @Override
-    public HiddenOperator asHiddenAST() {
+    public @NotNull HiddenOperator asHiddenAST() {
         return adaptee;
     }
 

@@ -1,8 +1,10 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 
+import cl.uchile.dcc.scrabble.model.ast.control_flow.While;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * todo: doc
@@ -72,5 +74,15 @@ public class HiddenWhile extends AbstractHiddenControlFlow {
     @Override
     public HiddenWhile copy() {
         return new HiddenWhile(getCondition().copy(), getFirstBody().copy());
+    }
+
+    /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @Override
+    public @NotNull While asAST() {
+        return new While(getCondition().asAST(), getFirstBody().asAST());
     }
 }

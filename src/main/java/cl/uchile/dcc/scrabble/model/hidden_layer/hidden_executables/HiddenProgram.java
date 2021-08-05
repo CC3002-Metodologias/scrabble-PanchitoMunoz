@@ -58,6 +58,12 @@ public class HiddenProgram {
         return listToReturn;
     }
 
+    /**
+     * Gets the variable of the global variables given a name.
+     *
+     * @param name the name of the variable.
+     * @return the variable.
+     */
     public HiddenVariable getGlobalVariables(String name) {
         HiddenASTComponent value = globalVariables.get(name);
         return new HiddenVariable(name).setValue(value);

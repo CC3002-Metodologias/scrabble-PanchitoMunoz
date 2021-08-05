@@ -14,6 +14,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HLogica
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge.HiddenTypeBridge;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An interface that defines a general Hidden Type. This is a leaf of {@code HiddenASTComponent},
@@ -35,7 +36,6 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  */
 public interface HType
     extends HiddenASTLeaf, HArithmeticOperations, HLogicalOperations, HComparable {
-
 
     /**
      * Returns the visitor
@@ -74,6 +74,16 @@ public interface HType
      * @return the instance in the wrapper
      */
     SType asSType();
+
+    /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @Override
+    default @NotNull SType asAST() {
+        return this.asSType();
+    }
 
     /**
      * Calculate the {@code HType} result of performing all operations.

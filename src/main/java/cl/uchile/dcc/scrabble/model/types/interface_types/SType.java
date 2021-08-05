@@ -1,16 +1,17 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTLeaf;
 import cl.uchile.dcc.scrabble.model.builders.interfaces.TypeASTBuilder;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An interface for the sole purpose of representing any type.
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SType extends AST, TypeASTBuilder {
+public interface SType extends ASTLeaf, TypeASTBuilder {
 
     /**
      * Returns the value as {@code String}.
@@ -32,7 +33,7 @@ public interface SType extends AST, TypeASTBuilder {
      * @return a transformation
      */
     @Override
-    default HType asHiddenAST() {
+    default @NotNull HType asHiddenAST() {
         return this.asHType();
     }
 

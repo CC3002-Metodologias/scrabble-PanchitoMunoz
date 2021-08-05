@@ -175,6 +175,16 @@ public class HiddenVariable implements HiddenASTLeaf {
     }
 
     /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @Override
+    public @NotNull Variable asAST() {
+        return new Variable(getName()).setValue(getValue().asAST());
+    }
+
+    /**
      * Increase the variable by 1.
      *
      * @return the variable increased by 1

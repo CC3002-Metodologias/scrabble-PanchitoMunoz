@@ -1,10 +1,12 @@
 package cl.uchile.dcc.scrabble.model.ast;
 
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Interface that provides the transformation to a Hidden Type. This functionality allows mapping
@@ -26,5 +28,5 @@ public interface HiddenASTTransformation {
      *
      * @return a transformation
      */
-    HiddenASTComponent asHiddenAST();
+    @NotNull HiddenAST asHiddenAST();
 }

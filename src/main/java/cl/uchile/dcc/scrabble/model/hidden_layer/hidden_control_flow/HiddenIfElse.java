@@ -1,8 +1,10 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 
+import cl.uchile.dcc.scrabble.model.ast.control_flow.IfElse;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * todo: doc
@@ -80,7 +82,22 @@ public class HiddenIfElse extends HiddenIf {
             getSecondBody().copy());
     }
 
+    /**
+     * Gets the second body.
+     *
+     * @return the second body.
+     */
     public HiddenAST getSecondBody() {
         return secondBody;
+    }
+
+    /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @Override
+    public @NotNull IfElse asAST() {
+        return new IfElse(getCondition().asAST(), getFirstBody().asAST(), getSecondBody().asAST());
     }
 }

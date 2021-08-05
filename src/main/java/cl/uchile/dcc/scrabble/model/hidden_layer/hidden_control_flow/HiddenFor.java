@@ -1,9 +1,11 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 
+import cl.uchile.dcc.scrabble.model.ast.control_flow.For;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * todo: doc
@@ -109,5 +111,16 @@ public class HiddenFor extends AbstractHiddenControlFlow {
      */
     public HiddenVariable getIncrease() {
         return increase;
+    }
+
+    /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @Override
+    public @NotNull For asAST() {
+        return new For(getInitializer().asAST(), getCondition().asAST(), getIncrease().asAST(),
+            getFirstBody().asAST());
     }
 }

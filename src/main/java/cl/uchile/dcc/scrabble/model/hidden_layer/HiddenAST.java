@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer;
 
+import cl.uchile.dcc.scrabble.model.ast.AST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * todo: doc
@@ -57,4 +59,11 @@ public interface HiddenAST {
      * @return a clone of this instance.
      */
     HiddenAST copy();
+
+    /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @NotNull AST asAST();
 }

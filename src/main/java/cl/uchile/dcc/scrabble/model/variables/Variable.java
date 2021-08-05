@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.variables;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
+import cl.uchile.dcc.scrabble.model.ast.ASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/04 2:08
  */
-public class Variable implements AST {
+public class Variable implements ASTLeaf {
 
     /**
      * To use Adapter pattern
@@ -33,12 +33,12 @@ public class Variable implements AST {
      * @return a transformation
      */
     @Override
-    public HiddenVariable asHiddenAST() {
+    public @NotNull HiddenVariable asHiddenAST() {
         return this.adaptee;
     }
 
-    public Variable setValue(@NotNull SType value) {
-        this.adaptee.setValue(value.asHType());
+    public Variable setValue(@NotNull ASTComponent value) {
+        this.adaptee.setValue(value.asHiddenAST());
         return this;
     }
 }

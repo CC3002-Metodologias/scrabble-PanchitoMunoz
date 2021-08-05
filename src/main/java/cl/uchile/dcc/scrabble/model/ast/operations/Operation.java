@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComposite;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBinary;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeBool;
 import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
@@ -9,6 +9,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeString;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * This interface is to define the different types of operations that exists. This is the composite
@@ -18,7 +19,7 @@ import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
  * @create 2021/06/12 23:47
  * @see HiddenASTComponent
  */
-public interface Operation extends AST {
+public interface Operation extends ASTComposite {
 
     /**
      * Sets the variable in an {@code Operation}.
@@ -41,6 +42,7 @@ public interface Operation extends AST {
      * @return a transformation
      */
     @Override
+    @NotNull
     HiddenOperator asHiddenAST();
 
     /**
