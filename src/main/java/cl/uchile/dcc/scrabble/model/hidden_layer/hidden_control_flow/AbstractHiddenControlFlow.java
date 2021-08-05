@@ -51,15 +51,6 @@ public abstract class AbstractHiddenControlFlow
     }
 
     /**
-     * Gets the operator's name
-     *
-     * @return the operator's name
-     */
-    public String getOperatorName() {
-        return operatorName;
-    }
-
-    /**
      * A String representation of the current instance.
      *
      * @return a string representation

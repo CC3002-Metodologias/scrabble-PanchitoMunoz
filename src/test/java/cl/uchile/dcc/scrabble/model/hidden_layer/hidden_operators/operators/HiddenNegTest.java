@@ -9,8 +9,10 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenNeg;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 class HiddenNegTest extends BaseHiddenOperationTest {
 
@@ -87,5 +89,13 @@ class HiddenNegTest extends BaseHiddenOperationTest {
         HiddenOperator other = operation.copy();
         assertNotSame(other, operation);
         assertSame(other.getFirstChildren(), operation.getFirstChildren());
+    }
+
+    @Test
+    void testAccept() {
+        HiddenOperator operator = new HiddenNeg(new HiddenVariable("x"));
+        operator.setVariable("x", trueHiddenBool);
+        assertEquals(falseHiddenBool, operator.calculate(),
+            "Method accept does not works." + messageSeed);
     }
 }
