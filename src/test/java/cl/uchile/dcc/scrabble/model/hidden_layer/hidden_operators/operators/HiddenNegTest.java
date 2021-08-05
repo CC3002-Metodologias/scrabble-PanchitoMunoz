@@ -98,4 +98,11 @@ class HiddenNegTest extends BaseHiddenOperationTest {
         assertEquals(falseHiddenBool, operator.calculate(),
             "Method accept does not works." + messageSeed);
     }
+
+    @Test
+    void testAsCode() {
+        String expected = "~(true)";
+        assertEquals(expected, new HiddenNeg(trueHiddenBool).asCode(),
+            "Method asCode does not works." + messageSeed);
+    }
 }

@@ -8,8 +8,11 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.operators.BaseHiddenOperationTest;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenBool;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 class ToHiddenBoolTest extends BaseHiddenOperationTest {
 
@@ -55,5 +58,23 @@ class ToHiddenBoolTest extends BaseHiddenOperationTest {
         HiddenOperator other = operation.copy();
         assertNotSame(other, operation);
         assertSame(other.getFirstChildren(), operation.getFirstChildren());
+    }
+
+    @Test
+    void testAsCode() {
+        HiddenOperator operator = new ToHiddenBool(new HiddenString("Hola Mundo"));
+        String expected = "\"Hola Mundo\".toTypeBool()";
+        assertEquals(expected, operator.asCode(),
+            "Method asCode does not works." + messageSeed);
+    }
+
+    @Test
+    void testAccept() {
+        HiddenOperator operator = new ToHiddenBool(
+            new HiddenVariable("x")
+        );
+        operator.setVariable("x", trueHiddenBool);
+        assertEquals(trueHiddenBool, operator.calculate(),
+            "Method accept does not works." + messageSeed);
     }
 }
