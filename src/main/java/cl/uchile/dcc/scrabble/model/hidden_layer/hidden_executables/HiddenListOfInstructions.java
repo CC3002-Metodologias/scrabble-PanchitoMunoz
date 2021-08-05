@@ -34,20 +34,10 @@ public class HiddenListOfInstructions implements HiddenAST {
     @Override
     public String asString(int space) {
         StringBuilder stringToReturn = new StringBuilder();
-        for (HiddenAST instruction : instructionsList) {
+        for (HiddenAST instruction : getInstructionsList()) {
             stringToReturn.append(instruction.asString(space)).append('\n');
         }
         return stringToReturn.substring(0, stringToReturn.length() - 1);
-    }
-
-    /**
-     * Method that accepts a {@code HiddenVisitor}.
-     *
-     * @param visitor a {@code HiddenVisitor}.
-     */
-    @Override
-    public void accept(HiddenVisitor visitor) {
-        visitor.visitHiddenListOfInstructions(this);
     }
 
     /**
@@ -63,6 +53,16 @@ public class HiddenListOfInstructions implements HiddenAST {
             stringToReturn.append(instruction.asCode(space)).append('\n');
         }
         return stringToReturn.substring(0, stringToReturn.length() - 1);
+    }
+
+    /**
+     * Method that accepts a {@code HiddenVisitor}.
+     *
+     * @param visitor a {@code HiddenVisitor}.
+     */
+    @Override
+    public void accept(HiddenVisitor visitor) {
+        visitor.visitHiddenListOfInstructions(this);
     }
 
     /**

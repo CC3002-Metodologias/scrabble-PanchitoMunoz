@@ -58,7 +58,7 @@ public class HiddenProgram {
         return listToReturn;
     }
 
-    public HiddenVariable getGlobalVariable(String name) {
+    public HiddenVariable getGlobalVariables(String name) {
         HiddenASTComponent value = globalVariables.get(name);
         return new HiddenVariable(name).setValue(value);
     }

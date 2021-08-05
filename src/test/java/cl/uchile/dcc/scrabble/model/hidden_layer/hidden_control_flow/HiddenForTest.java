@@ -74,7 +74,7 @@ class HiddenForTest extends BaseHTypeTest {
     void testAccept() {
         program.execute();
         assertEquals(
-            program.getGlobalVariable("j"),
+            program.getGlobalVariables("j"),
             new HiddenVariable("j").setValue(new HiddenInt(9))
         );
     }
