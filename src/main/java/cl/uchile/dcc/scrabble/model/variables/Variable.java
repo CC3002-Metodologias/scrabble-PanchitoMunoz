@@ -100,7 +100,8 @@ public class Variable implements ASTLeaf {
      * @return the variable increased by 1
      */
     public Variable increase() {
-        return adaptee.increase().asAST();
+        adaptee.increase();
+        return this;
     }
 
     /**
@@ -110,7 +111,8 @@ public class Variable implements ASTLeaf {
      * @return the variable increased.
      */
     public Variable increase(TypeInt valueToIncrease) {
-        return adaptee.increase(valueToIncrease.asHType()).asAST();
+        adaptee.increase(valueToIncrease.asHType());
+        return this;
     }
 
     /**
@@ -119,7 +121,8 @@ public class Variable implements ASTLeaf {
      * @return the variable decreased by 1
      */
     public Variable decreased() {
-        return adaptee.decreased().asAST();
+        adaptee.decreased();
+        return this;
     }
 
     /**
@@ -129,7 +132,8 @@ public class Variable implements ASTLeaf {
      * @return the variable decreased.
      */
     public Variable decreased(TypeInt valueToDecreased) {
-        return adaptee.decreased(valueToDecreased.asHType()).asAST();
+        adaptee.decreased(valueToDecreased.asHType());
+        return this;
     }
 
     /**

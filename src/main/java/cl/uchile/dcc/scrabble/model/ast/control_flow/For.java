@@ -26,7 +26,13 @@ public class For extends AbstractControlFlow {
         ASTComponent condition,
         Variable increase,
         AST forFody) {
-        super(new HiddenFor(initializer.asHiddenAST(), condition.asHiddenAST(),
-            increase.asHiddenAST(), forFody.asHiddenAST()));
+        super(
+            new HiddenFor(
+                initializer.asHiddenAST(),
+                condition.asHiddenAST(),
+                increase.asHiddenAST(),
+                forFody.asHiddenAST()
+            )
+        );
     }
 }
