@@ -13,7 +13,6 @@ import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
@@ -165,16 +164,6 @@ public class HiddenNull implements HBinary, HBool, HFloat, HInt, HString {
      */
     @Override
     public String getValueAsBinary() {
-        return null;
-    }
-
-    /**
-     * Gets the value as a {@code SInteger}
-     *
-     * @return the value as a {@code SInteger}
-     */
-    @Override
-    public SInteger asSInteger() {
         return null;
     }
 

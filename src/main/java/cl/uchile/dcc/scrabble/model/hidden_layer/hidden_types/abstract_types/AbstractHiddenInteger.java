@@ -4,7 +4,6 @@ import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInteger;
-import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 
 /**
@@ -68,15 +67,5 @@ public abstract class AbstractHiddenInteger extends AbstractHiddenNumber impleme
     public final HInt toHiddenInt() {
         int computed = this.getValueAsInt();
         return HTypeFactory.createHiddenInt(computed);
-    }
-
-    /**
-     * Gets the value as a {@code SInteger}
-     *
-     * @return the value as a {@code SInteger}
-     */
-    @Override
-    public SInteger asSInteger() {
-        return (SInteger) this.asSNumber();
     }
 }

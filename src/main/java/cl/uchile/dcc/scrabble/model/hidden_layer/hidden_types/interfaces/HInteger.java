@@ -1,7 +1,5 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces;
 
-import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
-
 /**
  * Interface to represents a general Integer
  *
@@ -16,13 +14,6 @@ public interface HInteger extends HNumber {
      * @return the value as binary
      */
     String getValueAsBinary();
-
-    /**
-     * Gets the value as a {@code SInteger}
-     *
-     * @return the value as a {@code SInteger}
-     */
-    SInteger asSInteger();
 
     /**
      * Gets the value as int

@@ -1,13 +1,10 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.executables.ListOfInstructions;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A class for generics list of instructions
@@ -80,17 +77,6 @@ public class HiddenListOfInstructions implements HiddenAST {
             newInstructionList.add(instruction.copy());
         }
         return new HiddenListOfInstructions(newInstructionList.toArray(new HiddenAST[0]));
-    }
-
-    /**
-     * Returns the AST equivalent.
-     *
-     * @return an AST equivalent.
-     */
-    @Override
-    public @NotNull AST asAST() {
-        return new ListOfInstructions(
-            getInstructionsList().stream().map(HiddenAST::asAST).toArray(AST[]::new));
     }
 
     /**

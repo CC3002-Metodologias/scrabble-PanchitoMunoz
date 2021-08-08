@@ -283,4 +283,10 @@ class HiddenBinaryTest extends BaseHTypeTest {
         assertEquals(hiddenNull, hiddenBinary1.sub(hiddenString1),
             "Method sub does not works with strings." + messageSeed);
     }
+
+    @RepeatedTest(20)
+    void testAsCode() {
+        assertEquals(hiddenBinary1.getValueAsString() + 'b', hiddenBinary1.asCode(),
+            "Method asCode does not works." + messageSeed);
+    }
 }

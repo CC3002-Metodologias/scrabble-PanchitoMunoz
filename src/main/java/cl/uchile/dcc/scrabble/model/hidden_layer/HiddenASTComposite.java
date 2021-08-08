@@ -21,5 +21,4 @@ public interface HiddenASTComposite extends HiddenASTComponent {
      * @return the operator name
      */
     String getOperatorName();
-
 }

@@ -4,7 +4,6 @@ import cl.uchile.dcc.scrabble.model.ast.operations.transformations.ToTypeFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
@@ -56,15 +55,5 @@ public class ToHiddenFloat extends AbstractHiddenTransformation {
     @Override
     public ToHiddenFloat copy() {
         return new ToHiddenFloat(getFirstChildren().copy());
-    }
-
-    /**
-     * Returns the AST equivalent.
-     *
-     * @return an AST equivalent.
-     */
-    @Override
-    public @NotNull ToTypeFloat asAST() {
-        return new ToTypeFloat(getFirstChildren().asAST());
     }
 }

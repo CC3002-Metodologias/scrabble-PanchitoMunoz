@@ -1,10 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 
-import cl.uchile.dcc.scrabble.model.ast.control_flow.If;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A class that represents a hidden If.
@@ -87,15 +85,5 @@ public class HiddenIf extends AbstractHiddenControlFlow {
     @Override
     public HiddenAST copy() {
         return new HiddenIf(getCondition().copy(), getFirstBody().copy());
-    }
-
-    /**
-     * Returns the AST equivalent.
-     *
-     * @return an AST equivalent.
-     */
-    @Override
-    public @NotNull If asAST() {
-        return new If(getCondition().asAST(), getFirstBody().asAST());
     }
 }

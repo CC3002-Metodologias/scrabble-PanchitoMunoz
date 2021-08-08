@@ -1,5 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer;
 
+import cl.uchile.dcc.scrabble.model.ast.ASTLeaf;
+import org.jetbrains.annotations.NotNull;
+
 /**
  * An interface to define a generic leaf in {@code HiddenASTComponent}
  *
@@ -18,5 +21,10 @@ public interface HiddenASTLeaf extends HiddenASTComponent {
         return 1;
     }
 
-
+    /**
+     * Returns the AST equivalent.
+     *
+     * @return an AST equivalent.
+     */
+    @NotNull ASTLeaf asAST();
 }

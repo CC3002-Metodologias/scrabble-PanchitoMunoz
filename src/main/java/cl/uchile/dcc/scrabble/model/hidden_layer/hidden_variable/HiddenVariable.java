@@ -197,7 +197,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public @NotNull Variable asAST() {
-        return new Variable(getName()).assign(getValue().asAST());
+        return new Variable(getName()).assign(getValue().calculate().asAST());
     }
 
     /**

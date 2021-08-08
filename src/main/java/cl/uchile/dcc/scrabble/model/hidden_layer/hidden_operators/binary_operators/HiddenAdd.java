@@ -4,7 +4,6 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A class to add a node in the {@code HiddenASTComponent}. It is equivalent to compute the {@code
@@ -57,15 +56,5 @@ public class HiddenAdd extends AbstractHiddenBinaryOperator {
     @Override
     public HiddenAdd copy() {
         return new HiddenAdd(getFirstChildren().copy(), getSecondChildren().copy());
-    }
-
-    /**
-     * Returns the AST equivalent.
-     *
-     * @return an AST equivalent.
-     */
-    @Override
-    public @NotNull Add asAST() {
-        return new Add(getFirstChildren().asAST(), getSecondChildren().asAST());
     }
 }

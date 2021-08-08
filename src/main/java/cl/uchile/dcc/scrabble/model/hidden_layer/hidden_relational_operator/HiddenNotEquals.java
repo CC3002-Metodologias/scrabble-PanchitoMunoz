@@ -1,11 +1,9 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator;
 
-import cl.uchile.dcc.scrabble.model.ast.relational_operators.NotEquals;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * todo: doc
@@ -58,15 +56,5 @@ public class HiddenNotEquals extends AbstractHiddenRelationalOperator {
     @Override
     public HiddenBinaryOperator copy() {
         return new HiddenNotEquals(getFirstChildren().copy(), getSecondChildren().copy());
-    }
-
-    /**
-     * Returns the AST equivalent.
-     *
-     * @return an AST equivalent.
-     */
-    @Override
-    public @NotNull NotEquals asAST() {
-        return new NotEquals(getFirstChildren().asAST(), getSecondChildren().asAST());
     }
 }
