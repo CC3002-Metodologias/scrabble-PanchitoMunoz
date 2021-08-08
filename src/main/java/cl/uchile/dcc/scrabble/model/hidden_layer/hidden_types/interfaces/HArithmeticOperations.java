@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 
@@ -27,7 +28,7 @@ public interface HArithmeticOperations {
      * @param hType another number
      * @return the division
      */
-    default HType div(HType hType) {
+    default HType div(HType hType) throws ZeroDivisionException {
         return HTypeFactory.createHiddenNull();
     }
 

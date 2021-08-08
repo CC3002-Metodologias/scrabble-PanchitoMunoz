@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenDiv;
@@ -44,7 +46,12 @@ class HiddenDivTest extends BaseHiddenOperationTest {
     void testCalculate() {
         // Div with String
         for (HType hType : hTypeList2) {
-            HType expected1 = hiddenString1.div(hType);
+            HType expected1;
+            try {
+                expected1 = hiddenString1.div(hType);
+            } catch (ZeroDivisionException e) {
+                expected1 = HTypeFactory.createHiddenNull();
+            }
             assertEquals(expected1, new HiddenDiv(hiddenString1, hType).calculate(),
                 "Method div does not works with string type." + messageSeed);
         }
@@ -57,7 +64,12 @@ class HiddenDivTest extends BaseHiddenOperationTest {
         }
         // Div with float
         for (HType hType : hNumberList) {
-            HType expected1 = hiddenFloat1.div(hType);
+            HType expected1;
+            try {
+                expected1 = hiddenFloat1.div(hType);
+            } catch (ZeroDivisionException e) {
+                expected1 = HTypeFactory.createHiddenNull();
+            }
             assertEquals(expected1, new HiddenDiv(hiddenFloat1, hType).calculate(),
                 "Method div does not works with float type." + messageSeed);
         }
@@ -67,7 +79,12 @@ class HiddenDivTest extends BaseHiddenOperationTest {
         }
         // Div with int
         for (HType hType : hNumberList) {
-            HType expected1 = hiddenInt1.div(hType);
+            HType expected1;
+            try {
+                expected1 = hiddenInt1.div(hType);
+            } catch (ZeroDivisionException e) {
+                expected1 = HTypeFactory.createHiddenNull();
+            }
             assertEquals(expected1, new HiddenDiv(hiddenInt1, hType).calculate(),
                 "Method div does not works with int type." + messageSeed);
         }
@@ -77,7 +94,12 @@ class HiddenDivTest extends BaseHiddenOperationTest {
         }
         // Div with binary
         for (HType hType : hIntegerList) {
-            HType expected1 = hiddenBinary1.div(hType);
+            HType expected1;
+            try {
+                expected1 = hiddenBinary1.div(hType);
+            } catch (ZeroDivisionException e) {
+                expected1 = HTypeFactory.createHiddenNull();
+            }
             assertEquals(expected1, new HiddenDiv(hiddenBinary1, hType).calculate(),
                 "Method div does not works with binary type." + messageSeed);
         }

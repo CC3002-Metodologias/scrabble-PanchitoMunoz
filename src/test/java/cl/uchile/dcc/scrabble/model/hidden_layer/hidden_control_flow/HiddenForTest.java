@@ -26,14 +26,14 @@ class HiddenForTest extends BaseHTypeTest {
     @BeforeEach
     protected void setUp() {
         super.setUp();
-        initializer = new HiddenVariable("i").setValue(new HiddenInt(0));
+        initializer = new HiddenVariable("i").assign(new HiddenInt(0));
         condition = new HiddenLowerThan(new HiddenVariable("i"), new HiddenInt(10));
         increase = new HiddenVariable("i").increase();
-        firstBody = new HiddenVariable("j").setValue(new HiddenVariable("i"));
+        firstBody = new HiddenVariable("j").assign(new HiddenVariable("i"));
         hiddenFor = new HiddenFor(initializer, condition, increase,
             firstBody);
         program = new HiddenProgram(
-            new HiddenVariable("j").setValue(new HiddenInt(0)),
+            new HiddenVariable("j").assign(new HiddenInt(0)),
             hiddenFor
         );
     }
@@ -75,7 +75,7 @@ class HiddenForTest extends BaseHTypeTest {
         program.execute();
         assertEquals(
             program.getGlobalVariables("j"),
-            new HiddenVariable("j").setValue(new HiddenInt(9))
+            new HiddenVariable("j").assign(new HiddenInt(9))
         );
     }
 

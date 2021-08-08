@@ -2,7 +2,9 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -149,22 +151,26 @@ class HiddenStringTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testDiv() {
-        assertEquals(hiddenNull, hiddenString1.div(hiddenBinary1),
-            "Method div does not works with binaries." + messageSeed);
+        try {
+            assertEquals(hiddenNull, hiddenString1.div(hiddenBinary1),
+                "Method div does not works with binaries." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenString1.div(trueHiddenBool),
-            "Method div does not works with booleans." + messageSeed);
-        assertEquals(hiddenNull, hiddenString1.div(falseHiddenBool),
-            "Method div does not works with booleans." + messageSeed);
+            assertEquals(hiddenNull, hiddenString1.div(trueHiddenBool),
+                "Method div does not works with booleans." + messageSeed);
+            assertEquals(hiddenNull, hiddenString1.div(falseHiddenBool),
+                "Method div does not works with booleans." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenString1.div(hiddenFloat1),
-            "Method div does not works with floats." + messageSeed);
+            assertEquals(hiddenNull, hiddenString1.div(hiddenFloat1),
+                "Method div does not works with floats." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenString1.div(hiddenInt1),
-            "Method div does not works with ints." + messageSeed);
+            assertEquals(hiddenNull, hiddenString1.div(hiddenInt1),
+                "Method div does not works with ints." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenString1.div(hiddenString2),
-            "Method div does not works with strings." + messageSeed);
+            assertEquals(hiddenNull, hiddenString1.div(hiddenString2),
+                "Method div does not works with strings." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            fail("Exception fails.");
+        }
     }
 
     @RepeatedTest(20)

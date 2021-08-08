@@ -175,7 +175,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      * @param value a {@code HType} value to set.
      * @return the same variable with the value assigned
      */
-    public HiddenVariable setValue(@NotNull HiddenASTComponent value) {
+    public HiddenVariable assign(@NotNull HiddenASTComponent value) {
         this.value = value;
         return this;
     }
@@ -187,7 +187,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public HiddenVariable copy() {
-        return new HiddenVariable(getName()).setValue(getValue());
+        return new HiddenVariable(getName()).assign(getValue());
     }
 
     /**
@@ -197,7 +197,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public @NotNull Variable asAST() {
-        return new Variable(getName()).setValue(getValue().asAST());
+        return new Variable(getName()).assign(getValue().asAST());
     }
 
     /**
@@ -216,7 +216,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      * @return the variable increased.
      */
     public HiddenVariable increase(HiddenInt valueToIncrease) {
-        return this.setValue(
+        return this.assign(
             new HiddenAdd(new HiddenVariable(getName()), valueToIncrease)
         );
     }
@@ -237,7 +237,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      * @return the variable decreased.
      */
     public HiddenVariable decreased(HiddenInt valueToDecreased) {
-        return this.setValue(
+        return this.assign(
             new HiddenSub(new HiddenVariable(getName()), valueToDecreased)
         );
     }
@@ -249,7 +249,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public HiddenVariable toHiddenBinary() {
-        this.setValue(new ToHiddenBinary(this.getValue()));
+        this.assign(new ToHiddenBinary(this.getValue()));
         return this;
     }
 
@@ -260,7 +260,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public HiddenVariable toHiddenBool() {
-        this.setValue(new ToHiddenBool(this.getValue()));
+        this.assign(new ToHiddenBool(this.getValue()));
         return this;
     }
 
@@ -271,7 +271,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public HiddenVariable toHiddenFloat() {
-        this.setValue(new ToHiddenFloat(this.getValue()));
+        this.assign(new ToHiddenFloat(this.getValue()));
         return this;
     }
 
@@ -282,7 +282,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public HiddenVariable toHiddenInt() {
-        this.setValue(new ToHiddenInt(this.getValue()));
+        this.assign(new ToHiddenInt(this.getValue()));
         return this;
     }
 
@@ -293,7 +293,7 @@ public class HiddenVariable implements HiddenASTLeaf {
      */
     @Override
     public HiddenVariable toHiddenString() {
-        this.setValue(new ToHiddenString(this.getValue()));
+        this.assign(new ToHiddenString(this.getValue()));
         return this;
     }
 }

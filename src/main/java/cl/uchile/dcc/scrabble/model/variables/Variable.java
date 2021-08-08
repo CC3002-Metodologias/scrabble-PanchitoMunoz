@@ -43,10 +43,10 @@ public class Variable implements ASTLeaf {
      * Set the value.
      *
      * @param value a value.
-     * @return      itself.
+     * @return itself.
      */
-    public Variable setValue(@NotNull ASTComponent value) {
-        this.adaptee.setValue(value.asHiddenAST());
+    public Variable assign(@NotNull ASTComponent value) {
+        this.adaptee.assign(value.asHiddenAST());
         return this;
     }
 

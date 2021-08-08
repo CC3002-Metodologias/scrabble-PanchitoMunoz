@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenNumber;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HFloat;
@@ -138,7 +139,7 @@ public class HiddenFloat extends AbstractHiddenNumber implements HFloat {
      * @return the division
      */
     @Override
-    public HFloat div(HType hType) {
+    public HFloat div(HType hType) throws ZeroDivisionException {
         return hType.getBridge().divWithFloat(this);
     }
 

@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.builders.interfaces.BinaryASTBuilder;
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
@@ -89,7 +90,7 @@ public class TypeBinary extends AbstractInteger
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public TypeBinary div(@NotNull SInteger otherType) {
+    public TypeBinary div(@NotNull SInteger otherType) throws ZeroDivisionException {
         return this.asHType().div(otherType.asHType()).asTypeBinary();
     }
 

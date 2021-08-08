@@ -27,7 +27,7 @@ class HiddenWhileTest extends BaseHTypeTest {
             new HiddenVariable("i"),
             new HiddenInt(10)
         );
-        firstBody = new HiddenVariable("i").setValue(
+        firstBody = new HiddenVariable("i").assign(
             new HiddenAdd(
                 new HiddenVariable("i"),
                 new HiddenInt(1)
@@ -35,7 +35,7 @@ class HiddenWhileTest extends BaseHTypeTest {
         );
         hiddenWhile = new HiddenWhile(condition, firstBody);
         program = new HiddenProgram(
-            new HiddenVariable("i").setValue(new HiddenInt(0)),
+            new HiddenVariable("i").assign(new HiddenInt(0)),
             hiddenWhile
         );
     }
@@ -80,7 +80,7 @@ class HiddenWhileTest extends BaseHTypeTest {
     @Test
     void testAccept() {
         program.execute();
-        assertEquals(new HiddenVariable("i").setValue(new HiddenInt(10)),
+        assertEquals(new HiddenVariable("i").assign(new HiddenInt(10)),
             program.getGlobalVariables("i"),
             "Method does not works." + messageSeed);
     }

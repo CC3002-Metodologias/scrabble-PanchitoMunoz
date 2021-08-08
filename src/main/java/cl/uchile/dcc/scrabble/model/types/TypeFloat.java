@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.model.types;
 
 import cl.uchile.dcc.scrabble.model.builders.interfaces.FloatASTBuilder;
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractNumber;
@@ -67,14 +68,14 @@ public class TypeFloat extends AbstractNumber
     }
 
     /**
-     * Method that returns the division between the current type and the other type.
-     * Returns the dominant type if possible.
+     * Method that returns the division between the current type and the other type. Returns the
+     * dominant type if possible.
      *
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public TypeFloat div(@NotNull SNumber otherType) {
+    public TypeFloat div(@NotNull SNumber otherType) throws ZeroDivisionException {
         return this.asHType().div(otherType.asHType()).asTypeFloat();
     }
 

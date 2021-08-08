@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenDiv;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
@@ -50,9 +51,13 @@ class DivTest extends BaseOperationTest {
         }
         // Div with float
         for (SNumber sType : numberList) {
-            SType expected = typeFloat1.div(sType);
-            assertEquals(expected, new Div(typeFloat1, sType).calculate(),
-                "Method div does not works with float type." + messageSeed);
+            try {
+                SType expected = typeFloat1.div(sType);
+                assertEquals(expected, new Div(typeFloat1, sType).calculate(),
+                    "Method div does not works with float type." + messageSeed);
+            } catch (ZeroDivisionException e) {
+                assertEquals(0, sType.getValueAsDouble(), "Exceptions fails.");
+            }
         }
         for (SType sType : numberCList) {
             assertNull(new Div(typeFloat1, sType).calculate(),
@@ -60,9 +65,14 @@ class DivTest extends BaseOperationTest {
         }
         // Div with int
         for (SNumber sType : numberList) {
-            SType expected = typeInt1.div(sType);
-            assertEquals(expected, new Div(typeInt1, sType).calculate(),
-                "Method div does not works with int type." + messageSeed);
+            try {
+                SType expected = typeInt1.div(sType);
+                assertEquals(expected, new Div(typeInt1, sType).calculate(),
+                    "Method div does not works with int type." + messageSeed);
+            } catch (ZeroDivisionException e) {
+                assertEquals(0, sType.getValueAsDouble(),
+                    "Exception fails.");
+            }
         }
         for (SType sType : numberCList) {
             assertNull(new Div(typeInt1, sType).calculate(),
@@ -70,9 +80,14 @@ class DivTest extends BaseOperationTest {
         }
         // Div with binary
         for (SInteger sType : integerList) {
-            SType expected = typeBinary1.div(sType);
-            assertEquals(expected, new Div(typeBinary1, sType).calculate(),
-                "Method div does not works with binary type." + messageSeed);
+            try {
+                SType expected = typeBinary1.div(sType);
+                assertEquals(expected, new Div(typeBinary1, sType).calculate(),
+                    "Method div does not works with binary type." + messageSeed);
+            } catch (ZeroDivisionException e) {
+                assertEquals(0, sType.getValueAsDouble(),
+                    "Exception fails.");
+            }
         }
         for (SType sType : integerCList) {
             assertNull(new Div(typeBinary1, sType).calculate(),
@@ -135,12 +150,20 @@ class DivTest extends BaseOperationTest {
     void testToTypeBinary() {
         assertNull(floatResult.toTypeBinary().calculate(),
             "Method toTypeBinary does not works with float result." + messageSeed);
-        assertEquals(((TypeInt) typeInt1.div(typeInt2)).toTypeBinary(),
-            intResult.toTypeBinary().calculate(),
-            "Method toTypeBinary does not works with int result." + messageSeed);
-        assertEquals(typeBinary1.div(typeBinary2).toTypeBinary(),
-            binaryResult.toTypeBinary().calculate(),
-            "Method toTypeBinary does not works with binary result." + messageSeed);
+        try {
+            assertEquals(((TypeInt) typeInt1.div(typeInt2)).toTypeBinary(),
+                intResult.toTypeBinary().calculate(),
+                "Method toTypeBinary does not works with int result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(intResult.toTypeBinary().calculate());
+        }
+        try {
+            assertEquals(typeBinary1.div(typeBinary2).toTypeBinary(),
+                binaryResult.toTypeBinary().calculate(),
+                "Method toTypeBinary does not works with binary result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(binaryResult.toTypeBinary().calculate());
+        }
     }
 
     @RepeatedTest(20)
@@ -155,40 +178,72 @@ class DivTest extends BaseOperationTest {
 
     @RepeatedTest(20)
     void testToTypeFloat() {
-        assertEquals(typeFloat1.div(typeFloat2).toTypeFloat(),
-            floatResult.toTypeFloat().calculate(),
-            "Method toTypeFloat does not works with float result." + messageSeed);
-        assertEquals(typeInt1.div(typeInt2).toTypeFloat(),
-            intResult.toTypeFloat().calculate(),
-            "Method toTypeFloat does not works with int result." + messageSeed);
-        assertEquals(typeBinary1.div(typeBinary2).toTypeFloat(),
-            binaryResult.toTypeFloat().calculate(),
-            "Method toTypeFloat does not works with binary result." + messageSeed);
+        try {
+            assertEquals(typeFloat1.div(typeFloat2).toTypeFloat(),
+                floatResult.toTypeFloat().calculate(),
+                "Method toTypeFloat does not works with float result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(floatResult.toTypeBinary().calculate());
+        }
+        try {
+            assertEquals(typeInt1.div(typeInt2).toTypeFloat(),
+                intResult.toTypeFloat().calculate(),
+                "Method toTypeFloat does not works with int result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(intResult.toTypeBinary().calculate());
+        }
+        try {
+            assertEquals(typeBinary1.div(typeBinary2).toTypeFloat(),
+                binaryResult.toTypeFloat().calculate(),
+                "Method toTypeFloat does not works with binary result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(binaryResult.toTypeBinary().calculate());
+        }
     }
 
     @RepeatedTest(20)
     void testToTypeInt() {
         assertNull(floatResult.toTypeInt().calculate(),
             "Method toTypeInt does not works with float result." + messageSeed);
-        assertEquals(((TypeInt) typeInt1.div(typeInt2)).toTypeInt(),
-            intResult.toTypeInt().calculate(),
-            "Method toTypeInt does not works with int result." + messageSeed);
-        assertEquals(typeBinary1.div(typeBinary2).toTypeInt(),
-            binaryResult.toTypeInt().calculate(),
-            "Method toTypeInt does not works with binary result." + messageSeed);
+        try {
+            assertEquals(((TypeInt) typeInt1.div(typeInt2)).toTypeInt(),
+                intResult.toTypeInt().calculate(),
+                "Method toTypeInt does not works with int result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(intResult.toTypeBinary().calculate());
+        }
+        try {
+            assertEquals(typeBinary1.div(typeBinary2).toTypeInt(),
+                binaryResult.toTypeInt().calculate(),
+                "Method toTypeInt does not works with binary result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(binaryResult.toTypeBinary().calculate());
+        }
     }
 
     @RepeatedTest(20)
     void testToTypeString() {
-        assertEquals(typeFloat1.div(typeFloat2).toTypeString(),
-            floatResult.toTypeString().calculate(),
-            "Method toTypeString does not works with float result." + messageSeed);
-        assertEquals(typeInt1.div(typeInt2).toTypeString(),
-            intResult.toTypeString().calculate(),
-            "Method toTypeString does not works with int result." + messageSeed);
-        assertEquals(typeBinary1.div(typeBinary2).toTypeString(),
-            binaryResult.toTypeString().calculate(),
-            "Method toTypeString does not works with binary result." + messageSeed);
+        try {
+            assertEquals(typeFloat1.div(typeFloat2).toTypeString(),
+                floatResult.toTypeString().calculate(),
+                "Method toTypeString does not works with float result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(floatResult.toTypeBinary().calculate());
+        }
+        try {
+            assertEquals(typeInt1.div(typeInt2).toTypeString(),
+                intResult.toTypeString().calculate(),
+                "Method toTypeString does not works with int result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(intResult.toTypeBinary().calculate());
+        }
+        try {
+            assertEquals(typeBinary1.div(typeBinary2).toTypeString(),
+                binaryResult.toTypeString().calculate(),
+                "Method toTypeString does not works with binary result." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertNull(binaryResult.toTypeBinary().calculate());
+        }
     }
 
 }

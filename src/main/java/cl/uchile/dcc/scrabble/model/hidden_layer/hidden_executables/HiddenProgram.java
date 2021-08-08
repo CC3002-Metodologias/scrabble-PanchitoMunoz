@@ -37,10 +37,7 @@ public class HiddenProgram {
         // First at all: clear the global variables.
         globalVariables.clear();
         HiddenListOfInstructions instructionsListCopy = instructionsList.copy();
-        for (HiddenAST instruction : instructionsListCopy.getInstructionsList()) {
-            // Executes each line updating the global variables.
-            instruction.accept(visitor);
-        }
+        instructionsListCopy.accept(visitor);
         return this;
     }
 
@@ -53,7 +50,7 @@ public class HiddenProgram {
         List<HiddenVariable> listToReturn = new ArrayList<>();
         for (String varName : globalVariables.keySet()) {
             HiddenASTComponent varValue = globalVariables.get(varName).copy();
-            listToReturn.add(new HiddenVariable(varName).setValue(varValue));
+            listToReturn.add(new HiddenVariable(varName).assign(varValue));
         }
         return listToReturn;
     }
@@ -65,8 +62,9 @@ public class HiddenProgram {
      * @return the variable.
      */
     public HiddenVariable getGlobalVariables(String name) {
+        // todo: Agregar error cuando la variable no se encuentra
         HiddenASTComponent value = globalVariables.get(name);
-        return new HiddenVariable(name).setValue(value);
+        return new HiddenVariable(name).assign(value);
     }
 
     /**

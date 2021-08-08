@@ -21,12 +21,12 @@ class HiddenListOfInstructionsTest extends BaseHTypeTest {
     protected void setUp() {
         super.setUp();
         listOfInstructions = new HiddenListOfInstructions(
-            new HiddenVariable("x").setValue(hiddenInt1),
-            new HiddenVariable("y").setValue(hiddenInt2)
+            new HiddenVariable("x").assign(hiddenInt1),
+            new HiddenVariable("y").assign(hiddenInt2)
         );
         program = new HiddenProgram(listOfInstructions);
-        hiddenVariableList.add(new HiddenVariable("x").setValue(hiddenInt1));
-        hiddenVariableList.add(new HiddenVariable("y").setValue(hiddenInt2));
+        hiddenVariableList.add(new HiddenVariable("x").assign(hiddenInt1));
+        hiddenVariableList.add(new HiddenVariable("y").assign(hiddenInt2));
     }
 
     @RepeatedTest(20)

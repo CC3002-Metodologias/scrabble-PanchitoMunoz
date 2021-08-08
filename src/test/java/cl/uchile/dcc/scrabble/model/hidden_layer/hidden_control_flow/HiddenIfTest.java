@@ -20,14 +20,14 @@ class HiddenIfTest extends BaseHTypeTest {
     public void setUp() {
         super.setUp();
         hiddenIf1 = new HiddenIf(trueHiddenBool,
-            new HiddenVariable("x").setValue(new HiddenInt(1))
+            new HiddenVariable("x").assign(new HiddenInt(1))
         );
         hiddenIf2 = new HiddenIf(falseHiddenBool,
-            new HiddenVariable("1").setValue(new HiddenInt(1))
+            new HiddenVariable("1").assign(new HiddenInt(1))
         );
         program = new HiddenProgram(
-            new HiddenVariable("x").setValue(new HiddenInt(0)),
-            new HiddenVariable("y").setValue(new HiddenInt(0)),
+            new HiddenVariable("x").assign(new HiddenInt(0)),
+            new HiddenVariable("y").assign(new HiddenInt(0)),
             hiddenIf1,
             hiddenIf2
         );
@@ -41,7 +41,7 @@ class HiddenIfTest extends BaseHTypeTest {
 
     @Test
     void testGetFirstBody() {
-        assertEquals(new HiddenVariable("x").setValue(new HiddenInt(1)),
+        assertEquals(new HiddenVariable("x").assign(new HiddenInt(1)),
             hiddenIf1.getFirstBody(),
             "Method getFirstBody does not works." + messageSeed);
     }
@@ -55,7 +55,7 @@ class HiddenIfTest extends BaseHTypeTest {
             + "}";
         assertEquals(
             String.format(expected, trueHiddenBool.asString(2),
-                new HiddenVariable("x").setValue(new HiddenInt(1)).asString(2)),
+                new HiddenVariable("x").assign(new HiddenInt(1)).asString(2)),
             hiddenIf1.toString(),
             "Method toString does not works." + messageSeed
         );
@@ -73,10 +73,10 @@ class HiddenIfTest extends BaseHTypeTest {
     @Test
     void testAccept() {
         program.execute();
-        assertEquals(new HiddenVariable("x").setValue(new HiddenInt(1)),
+        assertEquals(new HiddenVariable("x").assign(new HiddenInt(1)),
             program.getGlobalVariables("x"),
             "Method execute does not works." + messageSeed);
-        assertEquals(new HiddenVariable("y").setValue(new HiddenInt(0)),
+        assertEquals(new HiddenVariable("y").assign(new HiddenInt(0)),
             program.getGlobalVariables("y"),
             "Method execute does not works." + messageSeed);
     }

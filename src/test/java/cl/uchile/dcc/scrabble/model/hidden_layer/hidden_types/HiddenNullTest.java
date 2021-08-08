@@ -1,7 +1,12 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.fail;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -97,10 +102,14 @@ class HiddenNullTest extends BaseHTypeTest {
 
     @Test
     void testDiv() {
-        for (HType hType :
-            hTypeList2) {
-            assertEquals(hiddenNull, hiddenNull.div(hType),
-                "Method div does not works." + messageSeed);
+        try {
+            for (HType hType :
+                hTypeList2) {
+                assertEquals(hiddenNull, hiddenNull.div(hType),
+                    "Method div does not works." + messageSeed);
+            }
+        } catch (ZeroDivisionException e) {
+            fail("Exception fails.");
         }
     }
 

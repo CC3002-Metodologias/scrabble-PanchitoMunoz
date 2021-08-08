@@ -5,6 +5,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -134,23 +135,33 @@ class TypeIntTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void div() {
-        if (typeBinary1.getValueAsInt() != 0) {
+        try {
             // Test division with binary
-            var expectedTypeInt = new TypeInt((int) Math.round((double) anInt1 / binaryToInt(aBinary1)));
+            var expectedTypeInt = new TypeInt(
+                (int) Math.round((double) anInt1 / binaryToInt(aBinary1)));
             assertEquals(expectedTypeInt, typeInt1.div(typeBinary1),
-                    "Method div does not works with TypeBinary." + messageSeed);
+                "Method div does not works with TypeBinary." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(typeBinary1.getValueAsDouble()),
+                "Exception fails.");
         }
-        if (aFloat1 != 0.0) {
+        try {
             // Test division with float
             var expectedTypeFloat = new TypeFloat(anInt1 / aFloat1);
             assertEquals(expectedTypeFloat, typeInt1.div(typeFloat1),
-                    "Method div does not works with TypeFloat." + messageSeed);
+                "Method div does not works with TypeFloat." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(typeFloat1.getValueAsDouble()),
+                "Exception fails.");
         }
-        if (anInt2 != 0) {
+        try {
             // Test division with int
             var expectedTypeInt = new TypeInt((int) Math.round((double) anInt1 / anInt2));
             assertEquals(expectedTypeInt, typeInt1.div(typeInt2),
-                    "Method div does not works with TypeInt." + messageSeed);
+                "Method div does not works with TypeInt." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(typeInt2.getValueAsDouble()),
+                "Exception fails.");
         }
     }
 }

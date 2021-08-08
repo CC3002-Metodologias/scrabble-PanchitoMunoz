@@ -21,7 +21,7 @@ class VariableTest extends BaseTypeTest {
     @RepeatedTest(20)
     void testBuildingAST() {
         Operation ast = new Add(
-            new Variable("x").setValue(typeFloat1),
+            new Variable("x").assign(typeFloat1),
             new Sub(
                 new Variable("z"),
                 new Variable("y")

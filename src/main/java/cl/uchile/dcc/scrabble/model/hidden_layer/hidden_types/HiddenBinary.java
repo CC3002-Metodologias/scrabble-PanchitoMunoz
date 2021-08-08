@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
@@ -172,7 +173,7 @@ public class HiddenBinary extends AbstractHiddenInteger implements HBinary {
      * @return the division
      */
     @Override
-    public HBinary div(HType hType) {
+    public HBinary div(HType hType) throws ZeroDivisionException {
         return hType.getBridge().divWithBinary(this);
     }
 

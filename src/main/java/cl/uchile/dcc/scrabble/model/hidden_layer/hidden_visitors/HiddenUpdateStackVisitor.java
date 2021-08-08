@@ -39,6 +39,5 @@ public class HiddenUpdateStackVisitor implements HiddenVisitor {
     @Override
     public void visitHiddenUnaryOperator(HiddenUnaryOperator hiddenUnaryOperator) {
         stack.push(hiddenUnaryOperator.getFirstChildren());
-        HiddenVisitor.super.visitHiddenUnaryOperator(hiddenUnaryOperator);
     }
 }

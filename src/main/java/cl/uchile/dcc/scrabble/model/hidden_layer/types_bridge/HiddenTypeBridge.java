@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
@@ -68,7 +69,7 @@ public interface HiddenTypeBridge {
      *
      * @param hiddenBinary a {@code HiddenBinary}
      */
-    default HBinary divWithBinary(HiddenBinary hiddenBinary) {
+    default HBinary divWithBinary(HiddenBinary hiddenBinary) throws ZeroDivisionException {
         return HTypeFactory.createHiddenNull();
     }
 
@@ -77,7 +78,7 @@ public interface HiddenTypeBridge {
      *
      * @param hiddenFloat a {@code HiddenFloat}
      */
-    default HFloat divWithFloat(HiddenFloat hiddenFloat) {
+    default HFloat divWithFloat(HiddenFloat hiddenFloat) throws ZeroDivisionException {
         return HTypeFactory.createHiddenNull();
     }
 
@@ -86,7 +87,7 @@ public interface HiddenTypeBridge {
      *
      * @param hiddenInt a {@code HiddenInt}
      */
-    default HNumber divWithInt(HiddenInt hiddenInt) {
+    default HNumber divWithInt(HiddenInt hiddenInt) throws ZeroDivisionException {
         return HTypeFactory.createHiddenNull();
     }
 

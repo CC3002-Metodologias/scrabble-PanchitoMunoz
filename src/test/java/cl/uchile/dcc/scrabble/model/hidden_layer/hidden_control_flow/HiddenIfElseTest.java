@@ -20,12 +20,12 @@ class HiddenIfElseTest extends BaseHTypeTest {
         super.setUp();
         hiddenIfElse = new HiddenIfElse(
             trueHiddenBool,
-            new HiddenVariable("x").setValue(new HiddenInt(1)),
-            new HiddenVariable("y").setValue(new HiddenInt(1))
+            new HiddenVariable("x").assign(new HiddenInt(1)),
+            new HiddenVariable("y").assign(new HiddenInt(1))
         );
         program = new HiddenProgram(
-            new HiddenVariable("x").setValue(new HiddenInt(0)),
-            new HiddenVariable("y").setValue(new HiddenInt(0)),
+            new HiddenVariable("x").assign(new HiddenInt(0)),
+            new HiddenVariable("y").assign(new HiddenInt(0)),
             hiddenIfElse
         );
     }
@@ -38,14 +38,14 @@ class HiddenIfElseTest extends BaseHTypeTest {
 
     @Test
     void testGetFirstBody() {
-        assertEquals(new HiddenVariable("x").setValue(new HiddenInt(1)),
+        assertEquals(new HiddenVariable("x").assign(new HiddenInt(1)),
             hiddenIfElse.getFirstBody(),
             "Method getFirstBody does not works." + messageSeed);
     }
 
     @Test
     void testGetSecondBody() {
-        assertEquals(new HiddenVariable("y").setValue(new HiddenInt(1)),
+        assertEquals(new HiddenVariable("y").assign(new HiddenInt(1)),
             hiddenIfElse.getSecondBody(),
             "Method getSecondBody does not works." + messageSeed);
     }
@@ -62,8 +62,8 @@ class HiddenIfElseTest extends BaseHTypeTest {
         assertEquals(
             String.format(expected,
                 trueHiddenBool.asString(2),
-                new HiddenVariable("x").setValue(new HiddenInt(1)).asString(2),
-                new HiddenVariable("y").setValue(new HiddenInt(1)).asString(2)
+                new HiddenVariable("x").assign(new HiddenInt(1)).asString(2),
+                new HiddenVariable("y").assign(new HiddenInt(1)).asString(2)
             ),
             hiddenIfElse.toString(),
             "Method toString does not works." + messageSeed
@@ -84,10 +84,10 @@ class HiddenIfElseTest extends BaseHTypeTest {
     @Test
     void testAccept() {
         program.execute();
-        assertEquals(new HiddenVariable("x").setValue(new HiddenInt(1)),
+        assertEquals(new HiddenVariable("x").assign(new HiddenInt(1)),
             program.getGlobalVariables("x"),
             "Method execute does not works." + messageSeed);
-        assertEquals(new HiddenVariable("y").setValue(new HiddenInt(0)),
+        assertEquals(new HiddenVariable("y").assign(new HiddenInt(0)),
             program.getGlobalVariables("y"),
             "Method execute does not works." + messageSeed);
     }

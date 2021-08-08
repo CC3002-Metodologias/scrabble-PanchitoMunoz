@@ -5,7 +5,9 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.cleanBinary;
 import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
@@ -159,36 +161,50 @@ class HiddenBinaryTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testDiv() {
-        if (BinaryUtilities.binaryToInt(aBinary2) != 0) {
+        try {
             String binaryExpected = BinaryUtilities.intToBinary(
                 (int) Math.round(
-                    (double) BinaryUtilities.binaryToInt(aBinary1) / BinaryUtilities.binaryToInt(aBinary2)
+                    (double) BinaryUtilities.binaryToInt(aBinary1) / BinaryUtilities
+                        .binaryToInt(aBinary2)
                 )
             );
             HiddenBinary expected1 = new HiddenBinary(binaryExpected);
             assertEquals(expected1, hiddenBinary1.div(hiddenBinary2),
                 "Method div does not works with binaries." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(hiddenBinary2.getValueAsDouble()), "Exception fails.");
         }
 
-        assertEquals(hiddenNull, hiddenBinary1.div(trueHiddenBool),
-            "Method div does not works with booleans." + messageSeed);
-        assertEquals(hiddenNull, hiddenBinary1.div(falseHiddenBool),
-            "Method div does not works with booleans." + messageSeed);
+        try {
+            assertEquals(hiddenNull, hiddenBinary1.div(trueHiddenBool),
+                "Method div does not works with booleans." + messageSeed);
+            assertEquals(hiddenNull, hiddenBinary1.div(falseHiddenBool),
+                "Method div does not works with booleans." + messageSeed);
 
-        assertEquals(hiddenNull, hiddenBinary1.div(hiddenFloat1),
-            "Method div does not works with floats." + messageSeed);
+            assertEquals(hiddenNull, hiddenBinary1.div(hiddenFloat1),
+                "Method div does not works with floats." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            fail("Exception fails.");
+        }
 
-        if (anInt1 != 0) {
+        try {
             String binaryExpected = BinaryUtilities.intToBinary(
                 (int) Math.round((double) BinaryUtilities.binaryToInt(aBinary1) / anInt1)
             );
             HiddenBinary expected4 = new HiddenBinary(binaryExpected);
             assertEquals(expected4, hiddenBinary1.div(hiddenInt1),
                 "Method div does not works with int." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(hiddenInt1.getValueAsDouble()),
+                "Exceptions fails.");
         }
 
-        assertEquals(hiddenNull, hiddenBinary1.div(hiddenString1),
-            "Method div does not works with strings." + messageSeed);
+        try {
+            assertEquals(hiddenNull, hiddenBinary1.div(hiddenString1),
+                "Method div does not works with strings." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            fail("Exception fails.");
+        }
     }
 
     @RepeatedTest(20)

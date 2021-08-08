@@ -1,6 +1,8 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators;
 
 import cl.uchile.dcc.scrabble.model.ast.operations.Div;
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
@@ -36,7 +38,11 @@ public class HiddenDiv extends AbstractHiddenBinaryOperator {
      */
     @Override
     protected HType mainOperation(HType value1, HType value2) {
-        return value1.div(value2);
+        try {
+            return value1.div(value2);
+        } catch (ZeroDivisionException e) {
+            return HTypeFactory.createHiddenNull();
+        }
     }
 
     /**

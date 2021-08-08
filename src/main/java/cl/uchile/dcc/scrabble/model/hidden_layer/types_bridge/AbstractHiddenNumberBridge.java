@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HBool;
@@ -21,6 +22,15 @@ public abstract class AbstractHiddenNumberBridge extends AbstractHiddenTypeBridg
     protected AbstractHiddenNumberBridge(
         HNumber value) {
         super(value);
+    }
+
+    /**
+     * Method to throw a {@code ZeroDivisionException}.
+     *
+     * @throws ZeroDivisionException when invokes this method.
+     */
+    protected void throwZeroDivisionException() throws ZeroDivisionException {
+        throw new ZeroDivisionException("Attempted to divide by zero.");
     }
 
     /**
@@ -74,12 +84,13 @@ public abstract class AbstractHiddenNumberBridge extends AbstractHiddenTypeBridg
 
     /**
      * To use double dispatch in {@code div}
+     *
      * @param hiddenFloat a {@code HiddenFloat}
      */
     @Override
-    public final HiddenFloat divWithFloat(HiddenFloat hiddenFloat) {
+    public final HiddenFloat divWithFloat(HiddenFloat hiddenFloat) throws ZeroDivisionException {
         if (this.getValueAsDouble() == 0) {
-            return HTypeFactory.createHiddenFloat(0.0);
+            throwZeroDivisionException();
         }
         double computed = hiddenFloat.getValueAsDouble() / this.getValueAsDouble();
         return HTypeFactory.createHiddenFloat(computed);

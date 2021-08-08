@@ -26,12 +26,12 @@ class HiddenVariableTest extends BaseHTypeTest {
     public void setUp() {
         super.setUp();
         variable = new HiddenVariable(name);
-        binaryVariable = new HiddenVariable(name).setValue(hiddenBinary1);
-        boolVariable = new HiddenVariable(name).setValue(trueHiddenBool);
-        floatVariable = new HiddenVariable(name).setValue(hiddenFloat1);
-        intVariable = new HiddenVariable(name).setValue(hiddenInt1);
-        nullVariable = new HiddenVariable(name).setValue(hiddenNull);
-        stringVariable = new HiddenVariable(name).setValue(hiddenString1);
+        binaryVariable = new HiddenVariable(name).assign(hiddenBinary1);
+        boolVariable = new HiddenVariable(name).assign(trueHiddenBool);
+        floatVariable = new HiddenVariable(name).assign(hiddenFloat1);
+        intVariable = new HiddenVariable(name).assign(hiddenInt1);
+        nullVariable = new HiddenVariable(name).assign(hiddenNull);
+        stringVariable = new HiddenVariable(name).assign(hiddenString1);
     }
 
     @Test
@@ -71,10 +71,10 @@ class HiddenVariableTest extends BaseHTypeTest {
             "Method calculate does not works with null variable." + messageSeed);
         assertEquals(hiddenString1, stringVariable.calculate(),
             "Method calculate does not works with string variable." + messageSeed);
-        HiddenVariable variable = new HiddenVariable(otherName).setValue(
+        HiddenVariable variable = new HiddenVariable(otherName).assign(
             new HiddenAdd(hiddenString1, hiddenBinary1)
         );
-        HiddenVariable variable1 = new HiddenVariable(name).setValue(variable);
+        HiddenVariable variable1 = new HiddenVariable(name).assign(variable);
     }
 
     @RepeatedTest(20)
@@ -97,7 +97,7 @@ class HiddenVariableTest extends BaseHTypeTest {
     @RepeatedTest(20)
     void testSetValue() {
         assertEquals(hiddenFloat1, floatVariable.calculate());
-        floatVariable.setValue(hiddenFloat2);
+        floatVariable.assign(hiddenFloat2);
         assertEquals(hiddenFloat2, floatVariable.calculate(),
             "Method setValue does not works." + messageSeed);
     }

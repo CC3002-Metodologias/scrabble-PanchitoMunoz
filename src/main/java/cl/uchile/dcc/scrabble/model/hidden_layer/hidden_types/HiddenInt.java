@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.abstract_types.AbstractHiddenInteger;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInt;
@@ -138,7 +139,7 @@ public class HiddenInt extends AbstractHiddenInteger implements HInt {
      * @return the division
      */
     @Override
-    public HNumber div(HType hType) {
+    public HNumber div(HType hType) throws ZeroDivisionException {
         return hType.getBridge().divWithInt(this);
     }
 

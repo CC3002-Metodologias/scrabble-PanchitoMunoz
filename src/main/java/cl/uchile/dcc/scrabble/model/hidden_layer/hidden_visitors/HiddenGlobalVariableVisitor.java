@@ -46,7 +46,7 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
             globalVariables.put(varName, value);
         } else if (value
             .equals(HTypeFactory.createHiddenNull())) {  // Case variable add, but it is null
-            hiddenVariable.setValue(globalVariables.get(varName));
+            hiddenVariable.assign(globalVariables.get(varName));
         } else {  // Other cases
             HiddenASTComponent valueCopy = value.copy();
             valueCopy.accept(this);

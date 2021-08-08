@@ -2,7 +2,9 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -116,32 +118,49 @@ class HiddenFloatTest extends BaseHTypeTest {
 
     @RepeatedTest(20)
     void testDiv() {
-        if (BinaryUtilities.binaryToInt(aBinary1) != 0) {
+        try {
             HiddenFloat expected1 = new HiddenFloat(
                 aFloat1 / BinaryUtilities.binaryToInt(aBinary1));
             assertEquals(expected1, hiddenFloat1.div(hiddenBinary1),
                 "Method div does not works with binaries." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(hiddenBinary1.getValueAsDouble()),
+                "Exception fails.");
         }
 
-        assertEquals(hiddenNull, hiddenFloat1.div(trueHiddenBool),
-            "Method div does not works with booleans." + messageSeed);
-        assertEquals(hiddenNull, hiddenFloat1.div(falseHiddenBool),
-            "Method div does not works with booleans." + messageSeed);
+        try {
+            assertEquals(hiddenNull, hiddenFloat1.div(trueHiddenBool),
+                "Method div does not works with booleans." + messageSeed);
+            assertEquals(hiddenNull, hiddenFloat1.div(falseHiddenBool),
+                "Method div does not works with booleans." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            fail("Exception fails.");
+        }
 
-        if (aFloat2 != 0) {
+        try {
             HiddenFloat expected3 = new HiddenFloat(aFloat1 / aFloat2);
             assertEquals(expected3, hiddenFloat1.div(hiddenFloat2),
                 "Method div does not works with floats." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(hiddenFloat2.getValueAsDouble()),
+                "Exception fails.");
         }
 
-        if (anInt1 != 0) {
+        try {
             HiddenFloat expected4 = new HiddenFloat(aFloat1 / anInt1);
             assertEquals(expected4, hiddenFloat1.div(hiddenInt1),
                 "Method div does not works with int." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(hiddenInt1.getValueAsDouble()),
+                "Exception fails.");
         }
 
-        assertEquals(hiddenNull, hiddenFloat1.div(hiddenString1),
-            "Method div does not works with strings." + messageSeed);
+        try {
+            assertEquals(hiddenNull, hiddenFloat1.div(hiddenString1),
+                "Method div does not works with strings." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            fail("Exception fails.");
+        }
     }
 
     @RepeatedTest(20)

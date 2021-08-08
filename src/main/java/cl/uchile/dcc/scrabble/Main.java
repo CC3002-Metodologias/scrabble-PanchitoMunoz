@@ -168,16 +168,16 @@ public class Main {
 //        System.out.println(listVar);
 
         Program program1 = new Program(
-            new Variable("a").setValue(new TypeInt(100000001)),
-            new Variable("b").setValue(new TypeInt(17)),
+            new Variable("a").assign(new TypeInt(12)),
+            new Variable("b").assign(new TypeInt(8)),
             new While(
                 new NotEquals(new Variable("b"), new TypeInt(0)),
                 new IfElse(
                     new GreaterThan(new Variable("a"), new Variable("b")),
-                    new Variable("a").setValue(
+                    new Variable("a").assign(
                         new Sub(new Variable("a"), new Variable("b"))
                     ),
-                    new Variable("b").setValue(
+                    new Variable("b").assign(
                         new Sub(new Variable("b"), new Variable("a"))
                     )
                 )

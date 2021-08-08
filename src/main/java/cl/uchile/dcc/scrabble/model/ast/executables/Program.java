@@ -63,6 +63,7 @@ public class Program {
      * @return the variable.
      */
     public Variable getGlobalVariables(String name) {
+        // todo: Agregar error cuando la variable no se encuentra
         return adaptee.getGlobalVariables(name).asAST();
     }
 

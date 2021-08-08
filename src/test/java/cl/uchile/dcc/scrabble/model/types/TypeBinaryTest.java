@@ -12,10 +12,10 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 
 class TypeBinaryTest extends BaseTypeTest {
 
@@ -162,19 +162,26 @@ class TypeBinaryTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void div() {
-        if (typeBinary2.getValueAsInt() != 0) {
+        try {
             // Test division with binary
             var expectedTypeBinary = new TypeBinary(intToBinary(
-                    (int) Math.round((double) binaryToInt(aBinary1) / binaryToInt(aBinary2))
+                (int) Math.round((double) binaryToInt(aBinary1) / binaryToInt(aBinary2))
             ));
             assertEquals(expectedTypeBinary, typeBinary1.div(typeBinary2),
-                    "Method div does not works with TypeBinary." + messageSeed);
+                "Method div does not works with TypeBinary." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(typeBinary2.getValueAsDouble()),
+                "Exception fails.");
         }
-        if (anInt1 != 0) {
+        try {
             // Test division with int
-            var expectedTypeBinary = new TypeBinary(intToBinary((int) Math.round((double) binaryToInt(aBinary1) / anInt1)));
+            var expectedTypeBinary = new TypeBinary(
+                intToBinary((int) Math.round((double) binaryToInt(aBinary1) / anInt1)));
             assertEquals(expectedTypeBinary, typeBinary1.div(typeInt1),
-                    "Method div does not works with TypeInt." + messageSeed);
+                "Method div does not works with TypeInt." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, Math.abs(typeInt1.getValueAsDouble()),
+                "Exception fails.");
         }
     }
 

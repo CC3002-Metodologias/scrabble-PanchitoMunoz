@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.types_bridge;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
@@ -118,12 +119,14 @@ public abstract class AbstractHiddenIntegerBridge extends AbstractHiddenNumberBr
 
     /**
      * To use double dispatch in {@code div}
+     *
      * @param hiddenBinary a {@code HiddenBinary}
      */
     @Override
-    public final HiddenBinary divWithBinary(HiddenBinary hiddenBinary) {
+    public final HiddenBinary divWithBinary(HiddenBinary hiddenBinary)
+        throws ZeroDivisionException {
         if (this.getValueAsInt() == 0) {
-            return HTypeFactory.createHiddenBinary("0000");
+            throwZeroDivisionException();
         }
         String computed = BinaryUtilities.intToBinary(
             (int) Math.round((double) hiddenBinary.getValueAsInt() / this.getValueAsInt())
@@ -133,12 +136,13 @@ public abstract class AbstractHiddenIntegerBridge extends AbstractHiddenNumberBr
 
     /**
      * To use double dispatch in {@code div}
+     *
      * @param hiddenInt a {@code HiddenInt}
      */
     @Override
-    public final HiddenInt divWithInt(HiddenInt hiddenInt) {
+    public final HiddenInt divWithInt(HiddenInt hiddenInt) throws ZeroDivisionException {
         if (this.getValueAsInt() == 0) {
-            return HTypeFactory.createHiddenInt(0);
+            throwZeroDivisionException();
         }
         int computed = (int) Math.round((double) hiddenInt.getValueAsInt() / this.getValueAsInt());
         return HTypeFactory.createHiddenInt(computed);

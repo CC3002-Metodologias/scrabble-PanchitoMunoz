@@ -4,6 +4,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.binaryToInt;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -128,23 +129,32 @@ class TypeFloatTest extends BaseTypeTest {
 
     @RepeatedTest(20)
     void div() {
-        if (typeBinary1.getValueAsInt() != 0) {
+        try {
             // Test division with binary
             var expectedTypeFloat = new TypeFloat(aFloat1 / binaryToInt(aBinary1));
             assertEquals(expectedTypeFloat, typeFloat1.div(typeBinary1),
-                    "Method div does not works with TypeBinary." + messageSeed);
+                "Method div does not works with TypeBinary." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, typeBinary1.getValueAsDouble(),
+                "Exception fails.");
         }
-        if (aFloat2 != 0.0) {
+        try {
             // Test division with float
             var expectedTypeFloat = new TypeFloat(aFloat1 / aFloat2);
             assertEquals(expectedTypeFloat, typeFloat1.div(typeFloat2),
-                    "Method div does not works with TypeFloat." + messageSeed);
+                "Method div does not works with TypeFloat." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, typeFloat2.getValueAsDouble(),
+                "Exception fails.");
         }
-        if (anInt1 != 0) {
+        try {
             // Test division with int
             var expectedTypeFloat = new TypeFloat(aFloat1 / anInt1);
             assertEquals(expectedTypeFloat, typeFloat1.div(typeInt1),
-                    "Method div does not works with TypeInt." + messageSeed);
+                "Method div does not works with TypeInt." + messageSeed);
+        } catch (ZeroDivisionException e) {
+            assertEquals(0, typeInt1.getValueAsDouble(),
+                "Exception fails.");
         }
     }
 }

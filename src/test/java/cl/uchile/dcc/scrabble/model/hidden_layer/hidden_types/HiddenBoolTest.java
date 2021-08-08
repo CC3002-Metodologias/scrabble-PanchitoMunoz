@@ -2,7 +2,9 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -160,15 +162,22 @@ class HiddenBoolTest extends BaseHTypeTest {
 
     @Test
     void testDiv() {
-        assertEquals(hiddenNull, trueHiddenBool.div(hiddenBinary1), "Method div does not works");
+        try {
+            assertEquals(hiddenNull, trueHiddenBool.div(hiddenBinary1),
+                "Method div does not works");
 
-        assertEquals(hiddenNull, trueHiddenBool.div(falseHiddenBool), "Method div does not works");
+            assertEquals(hiddenNull, trueHiddenBool.div(falseHiddenBool),
+                "Method div does not works");
 
-        assertEquals(hiddenNull, trueHiddenBool.div(hiddenFloat1), "Method div does not works");
+            assertEquals(hiddenNull, trueHiddenBool.div(hiddenFloat1), "Method div does not works");
 
-        assertEquals(hiddenNull, trueHiddenBool.div(hiddenInt1), "Method div does not works");
+            assertEquals(hiddenNull, trueHiddenBool.div(hiddenInt1), "Method div does not works");
 
-        assertEquals(hiddenNull, trueHiddenBool.div(hiddenString1), "Method div does not works");
+            assertEquals(hiddenNull, trueHiddenBool.div(hiddenString1),
+                "Method div does not works");
+        } catch (ZeroDivisionException e) {
+            fail("Exception fails.");
+        }
     }
 
     @Test

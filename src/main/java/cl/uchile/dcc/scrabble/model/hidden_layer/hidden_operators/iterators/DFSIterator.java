@@ -17,6 +17,11 @@ public class DFSIterator implements Iterator<HiddenASTComponent> {
     private final Stack<HiddenASTComponent> stack = new Stack<>();
     private final HiddenUpdateStackVisitor visitor = new HiddenUpdateStackVisitor(stack);
 
+    /**
+     * Constructor.
+     *
+     * @param iterable a {@code HiddenASTComponent} to iterate.
+     */
     public DFSIterator(HiddenASTComponent iterable) {
         stack.push(iterable);
     }
