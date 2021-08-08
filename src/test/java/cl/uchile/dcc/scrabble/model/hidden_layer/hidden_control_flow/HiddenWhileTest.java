@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
+import cl.uchile.dcc.scrabble.model.exceptions.VariableNotFoundException;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenProgram;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
@@ -78,7 +79,7 @@ class HiddenWhileTest extends BaseHTypeTest {
     }
 
     @Test
-    void testAccept() {
+    void testAccept() throws VariableNotFoundException {
         program.execute();
         assertEquals(new HiddenVariable("i").assign(new HiddenInt(10)),
             program.getGlobalVariables("i"),

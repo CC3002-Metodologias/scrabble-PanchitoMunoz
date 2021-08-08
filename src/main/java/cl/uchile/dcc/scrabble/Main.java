@@ -6,6 +6,7 @@ import cl.uchile.dcc.scrabble.model.ast.executables.Program;
 import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.ast.relational_operators.GreaterThan;
 import cl.uchile.dcc.scrabble.model.ast.relational_operators.NotEquals;
+import cl.uchile.dcc.scrabble.model.exceptions.VariableNotFoundException;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
 
@@ -17,7 +18,7 @@ import cl.uchile.dcc.scrabble.model.variables.Variable;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws VariableNotFoundException {
 //        Operation ast = ASTBuilder.add(
 //            new TypeFloat(6.9),
 //            ASTBuilder.or(
@@ -185,6 +186,7 @@ public class Main {
         );
         System.out.println(program1);
         program1.execute();
+        System.out.println(program1.getGlobalVariables("d"));
         System.out.println(program1.getGlobalVariables("a"));
         System.out.println(program1.getGlobalVariables("b"));
 

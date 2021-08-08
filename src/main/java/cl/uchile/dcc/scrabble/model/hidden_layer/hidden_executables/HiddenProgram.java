@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables;
 
+import cl.uchile.dcc.scrabble.model.exceptions.VariableNotFoundException;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
@@ -61,8 +62,10 @@ public class HiddenProgram {
      * @param name the name of the variable.
      * @return the variable.
      */
-    public HiddenVariable getGlobalVariables(String name) {
-        // todo: Agregar error cuando la variable no se encuentra
+    public HiddenVariable getGlobalVariables(String name) throws VariableNotFoundException {
+        if (!globalVariables.containsKey(name)) {
+            throw new VariableNotFoundException("Variable not found in the global variables.");
+        }
         HiddenASTComponent value = globalVariables.get(name);
         return new HiddenVariable(name).assign(value);
     }

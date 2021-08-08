@@ -56,7 +56,7 @@ class DivTest extends BaseOperationTest {
                 assertEquals(expected, new Div(typeFloat1, sType).calculate(),
                     "Method div does not works with float type." + messageSeed);
             } catch (ZeroDivisionException e) {
-                assertEquals(0, sType.getValueAsDouble(), "Exceptions fails.");
+                assertEquals(0, Math.abs(sType.getValueAsDouble()), "Exceptions fails.");
             }
         }
         for (SType sType : numberCList) {
@@ -70,7 +70,7 @@ class DivTest extends BaseOperationTest {
                 assertEquals(expected, new Div(typeInt1, sType).calculate(),
                     "Method div does not works with int type." + messageSeed);
             } catch (ZeroDivisionException e) {
-                assertEquals(0, sType.getValueAsDouble(),
+                assertEquals(0, Math.abs(sType.getValueAsDouble()),
                     "Exception fails.");
             }
         }
@@ -85,7 +85,7 @@ class DivTest extends BaseOperationTest {
                 assertEquals(expected, new Div(typeBinary1, sType).calculate(),
                     "Method div does not works with binary type." + messageSeed);
             } catch (ZeroDivisionException e) {
-                assertEquals(0, sType.getValueAsDouble(),
+                assertEquals(0, Math.abs(sType.getValueAsDouble()),
                     "Exception fails.");
             }
         }

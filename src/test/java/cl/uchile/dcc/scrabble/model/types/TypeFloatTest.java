@@ -135,7 +135,7 @@ class TypeFloatTest extends BaseTypeTest {
             assertEquals(expectedTypeFloat, typeFloat1.div(typeBinary1),
                 "Method div does not works with TypeBinary." + messageSeed);
         } catch (ZeroDivisionException e) {
-            assertEquals(0, typeBinary1.getValueAsDouble(),
+            assertEquals(0, Math.abs(typeBinary1.getValueAsDouble()),
                 "Exception fails.");
         }
         try {
@@ -144,7 +144,7 @@ class TypeFloatTest extends BaseTypeTest {
             assertEquals(expectedTypeFloat, typeFloat1.div(typeFloat2),
                 "Method div does not works with TypeFloat." + messageSeed);
         } catch (ZeroDivisionException e) {
-            assertEquals(0, typeFloat2.getValueAsDouble(),
+            assertEquals(0, Math.abs(typeFloat2.getValueAsDouble()),
                 "Exception fails.");
         }
         try {
@@ -153,7 +153,7 @@ class TypeFloatTest extends BaseTypeTest {
             assertEquals(expectedTypeFloat, typeFloat1.div(typeInt1),
                 "Method div does not works with TypeInt." + messageSeed);
         } catch (ZeroDivisionException e) {
-            assertEquals(0, typeInt1.getValueAsDouble(),
+            assertEquals(0, Math.abs(typeInt1.getValueAsDouble()),
                 "Exception fails.");
         }
     }

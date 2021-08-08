@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
+import cl.uchile.dcc.scrabble.model.exceptions.VariableNotFoundException;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenProgram;
@@ -71,7 +72,7 @@ class HiddenForTest extends BaseHTypeTest {
     }
 
     @Test
-    void testAccept() {
+    void testAccept() throws VariableNotFoundException {
         program.execute();
         assertEquals(
             program.getGlobalVariables("j"),
