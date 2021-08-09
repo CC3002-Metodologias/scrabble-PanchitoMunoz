@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenFloat;
-import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
 import java.util.HashMap;
 
@@ -46,7 +45,7 @@ public class HiddenFloatFactory extends AbstractHTypeFactory {
      * @return a {@code HiddenFloat} instance.
      */
     public HiddenFloat create(HiddenFloat instance) {
-        return (HiddenFloat) super.createWithKey(instance.toSType().getValue(), instance);
+        return (HiddenFloat) super.createWithKey(instance.getValueAsDouble(), instance);
     }
 
     /**

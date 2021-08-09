@@ -1,9 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenSub;
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
+import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenSub;
 
 /**
  * An {@code Operation} class that adds a node in the {@code AST}.
@@ -23,8 +23,8 @@ public class Sub extends AbstractOperation {
      * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public Sub(AST leftValue, AST rightValue) {
-        super(new HiddenSub(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+    public Sub(ASTComponent leftValue, ASTComponent rightValue) {
+        super(new HiddenSub(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 
 }

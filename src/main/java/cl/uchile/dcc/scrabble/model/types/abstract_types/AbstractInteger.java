@@ -1,10 +1,10 @@
 package cl.uchile.dcc.scrabble.model.types.abstract_types;
 
 import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInteger;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
-import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 
 /**
  * An abstract class for numbers that are like integers (e.g.: TypeInt and TypeBinary).
@@ -13,17 +13,23 @@ import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 public abstract class AbstractInteger
     extends AbstractNumber implements SInteger {
 
-    private final int valueAsInt;
-    private final String valueAsBinary;
-
     /**
      * Default constructor.
      *
-     * @param valueAsInt the current value as int.
+     * @param adaptee the current value as int.
      */
-    protected AbstractInteger(int valueAsInt) {
-        this.valueAsInt = valueAsInt;
-        this.valueAsBinary = BinaryUtilities.intToBinary(valueAsInt);
+    protected AbstractInteger(HInteger adaptee) {
+        super(adaptee);
+    }
+
+    /**
+     * Transform the current {@code SType} as a {@code HType}.
+     *
+     * @return a transformation
+     */
+    @Override
+    public HInteger asHType() {
+        return (HInteger) super.asHType();
     }
 
     /**
@@ -32,8 +38,8 @@ public abstract class AbstractInteger
      * @return the current value as {@code int}
      */
     @Override
-    public int getValueAsInt() {
-        return this.valueAsInt;
+    public final int getValueAsInt() {
+        return this.asHType().getValueAsInt();
     }
 
     /**
@@ -42,18 +48,8 @@ public abstract class AbstractInteger
      * @return the current value as binary
      */
     @Override
-    public String getValueAsBinary() {
-        return this.valueAsBinary;
-    }
-
-    /**
-     * Returns the value as {@code double}.
-     *
-     * @return the current value as {@code double}
-     */
-    @Override
-    public final double getValueAsDouble() {
-        return this.getValueAsInt();
+    public final String getValueAsBinary() {
+        return this.asHType().getValueAsBinary();
     }
 
     /**

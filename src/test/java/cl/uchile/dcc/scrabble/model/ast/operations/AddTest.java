@@ -1,8 +1,10 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenAdd;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -28,9 +30,9 @@ class AddTest extends BaseOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenAST() {
-        assertEquals(new HiddenAdd(hiddenString1, hiddenString2), stringResult.toHiddenAST(),
+        assertEquals(new HiddenAdd(hiddenString1, hiddenString2), stringResult.asHiddenAST(),
             "Method toHiddenAST does not works with equals hidden ast." + messageSeed);
-        assertNotEquals(new HiddenAdd(hiddenString1, hiddenString1), stringResult.toHiddenAST(),
+        assertNotEquals(new HiddenAdd(hiddenString1, hiddenString1), stringResult.asHiddenAST(),
             "Method toHiddenAST does not works with different hidden ast." + messageSeed);
     }
 

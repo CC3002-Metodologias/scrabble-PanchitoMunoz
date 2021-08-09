@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.transformations;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.transformations.ToHiddenInt;
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractTransformation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenInt;
 
 /**
  * A class that works as a decorator for an {@code Operation}. Allows int transformation.
@@ -17,7 +17,7 @@ public class ToTypeInt extends AbstractTransformation {
      *
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public ToTypeInt(AST value) {
-        super(new ToHiddenInt(value.toHiddenAST()));
+    public ToTypeInt(ASTComponent value) {
+        super(new ToHiddenInt(value.asHiddenAST()));
     }
 }

@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.BaseHTypeTest;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/27 12:45
  */
-public class BaseOperationTest extends BaseHTypeTest {
+public abstract class BaseOperationTest extends BaseHTypeTest {
 
     protected List<SType> sTypeList = new ArrayList<>();
     protected List<SNumber> numberList = new ArrayList<>();

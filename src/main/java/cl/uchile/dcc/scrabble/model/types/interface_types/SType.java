@@ -1,17 +1,17 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTLeaf;
 import cl.uchile.dcc.scrabble.model.builders.interfaces.TypeASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HType;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
-import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithString;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An interface for the sole purpose of representing any type.
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SType extends AST, ArithmeticOperationsWithString, TypeASTBuilder {
+public interface SType extends ASTLeaf, TypeASTBuilder {
 
     /**
      * Returns the value as {@code String}.
@@ -28,10 +28,29 @@ public interface SType extends AST, ArithmeticOperationsWithString, TypeASTBuild
     TypeString toTypeString();
 
     /**
-     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     * Transform an {@code AST} into its equivalent {@code HiddenASTComponent}.
      *
      * @return a transformation
      */
     @Override
-    HType toHiddenAST();
+    default @NotNull HType asHiddenAST() {
+        return this.asHType();
+    }
+
+    /**
+     * Transform the current {@code SType} as a {@code HType}.
+     *
+     * @return a transformation
+     */
+    HType asHType();
+
+    /**
+     * Builds the {@code AST}.
+     *
+     * @return the {@code AST} built.
+     */
+    @Override
+    default SType build() {
+        return this;
+    }
 }

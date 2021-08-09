@@ -1,7 +1,6 @@
 package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenString;
-import cl.uchile.dcc.scrabble.model.factories.AbstractGeneralTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.types.TypeString;
 import java.util.HashMap;
 
@@ -46,7 +45,7 @@ public class HiddenStringFactory extends AbstractHTypeFactory {
      * @return a {@code HiddenString} instance.
      */
     public HiddenString create(HiddenString instance) {
-        return (HiddenString) super.createWithKey(instance.toSType().getValue(), instance);
+        return (HiddenString) super.createWithKey(instance.getValueAsString(), instance);
     }
 
     /**

@@ -1,20 +1,17 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenInt;
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.addTwoBinaries;
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.intToBinary;
-
 import cl.uchile.dcc.scrabble.model.builders.interfaces.IntASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenInt;
-import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractInteger;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 import cl.uchile.dcc.scrabble.model.types.operations.ArithmeticOperationsWithNumbers;
-import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A class for the integer type.
+ *
  * @author Francisco Muñoz Guajardo
  */
 public class TypeInt extends AbstractInteger
@@ -25,7 +22,7 @@ public class TypeInt extends AbstractInteger
      * @param value An int as a value.
      */
     public TypeInt(int value) {
-        super(value);
+        super(HTypeFactory.createHiddenInt(value));
     }
 
     /**
@@ -34,37 +31,7 @@ public class TypeInt extends AbstractInteger
      * @return The value in the instance
      */
     public int getValue() {
-        return super.getValueAsInt();
-    }
-
-    /**
-     * Method that returns the hash code of the current instance.
-     * @return The hash code of the current instance.
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.getValue());
-    }
-
-    /**
-     * Method that provides a representation of the current instance as a String.
-     * @return The representation as a String.
-     */
-    @Override
-    public String toString() {
-        return "TypeInt{" +
-                "value=" + this.getValue() +
-                '}';
-    }
-
-    /**
-     * Returns the value as {@code String}.
-     *
-     * @return the current value as {@code String}
-     */
-    @Override
-    public String getValueAsString() {
-        return Integer.toString(this.getValue());
+        return this.asHType().getValueAsInt();
     }
 
     /**
@@ -75,51 +42,7 @@ public class TypeInt extends AbstractInteger
      */
     @Override
     public SNumber add(@NotNull SNumber otherType) {
-        return otherType.addWithInt(this);
-    }
-
-    /**
-     * Returns the add between the current type and a String Type.
-     *
-     * @param typeString A string type who will be added to the current type.
-     * @return The sum between the String type and the other type.
-     */
-    @Override
-    public TypeString addWithString(@NotNull TypeString typeString) {
-        return STypeFactory.createTypeString(typeString.getValue() + this.getValue());
-    }
-
-    /**
-     * Returns the add between the current type and an Int Type.
-     *
-     * @param typeInt An Int type who will be added to the current type.
-     * @return The sum between the Int type and the other type.
-     */
-    @Override
-    public TypeInt addWithInt(@NotNull TypeInt typeInt) {
-        return STypeFactory.createTypeInt(typeInt.getValue() + this.getValue());
-    }
-
-    /**
-     * Returns the add between the current type and a Float Type.
-     *
-     * @param typeFloat A Float type who will be added to the current type.
-     * @return The sum between the Float type and the other type.
-     */
-    @Override
-    public TypeFloat addWithFloat(@NotNull TypeFloat typeFloat) {
-        return STypeFactory.createTypeFloat(typeFloat.getValue() + this.getValue());
-    }
-
-    /**
-     * Returns the sum between the current type and a Binary Type.
-     *
-     * @param typeBinary A Binary type who will be added to the current type.
-     * @return The sum between the Binary type and the other type.
-     */
-    @Override
-    public TypeBinary addWithBinary(@NotNull TypeBinary typeBinary) {
-        return STypeFactory.createTypeBinary(addTwoBinaries(typeBinary.getValue(), this.getValueAsBinary()));
+        return this.asHType().add(otherType.asHType()).asSNumber();
     }
 
     /**
@@ -130,41 +53,7 @@ public class TypeInt extends AbstractInteger
      */
     @Override
     public SNumber sub(@NotNull SNumber otherType) {
-        return otherType.subWithInt(this);
-    }
-
-    /**
-     * Returns the subtraction between the current type and a Float Type.
-     *
-     * @param typeFloat A Float type who will be subtracted to the current type.
-     * @return The subtraction between the Float type and the other type.
-     */
-    @Override
-    public TypeFloat subWithFloat(@NotNull TypeFloat typeFloat) {
-        return STypeFactory.createTypeFloat(typeFloat.getValue() - this.getValue());
-    }
-
-    /**
-     * Returns the subtraction between the current type and an Int Type.
-     *
-     * @param typeInt An Int type who will be subtracted to the current type.
-     * @return The subtraction between the Int type and the other type.
-     */
-    @Override
-    public TypeInt subWithInt(@NotNull TypeInt typeInt) {
-        return STypeFactory.createTypeInt(typeInt.getValue() - this.getValue());
-    }
-
-    /**
-     * Returns the subtraction between the current type and a Binary Type.
-     *
-     * @param typeBinary A Binary type who will be subtracted to the current type.
-     * @return The subtraction between the Binary type and the other type.
-     */
-    @Override
-    public TypeBinary subWithBinary(@NotNull TypeBinary typeBinary) {
-        String subtraction = intToBinary(typeBinary.getValueAsInt() - this.getValue());
-        return STypeFactory.createTypeBinary(subtraction);
+        return this.asHType().sub(otherType.asHType()).asSNumber();
     }
 
     /**
@@ -176,104 +65,28 @@ public class TypeInt extends AbstractInteger
      */
     @Override
     public SNumber mult(@NotNull SNumber otherType) {
-        return otherType.multWithInt(this);
+        return this.asHType().mult(otherType.asHType()).asSNumber();
     }
 
     /**
-     * Returns the multiplication between the current type and a Float Type.
-     *
-     * @param typeFloat A Float type who will be multiplied to the current type.
-     * @return The multiplication between the Float type and the other type.
-     */
-    @Override
-    public TypeFloat multWithFloat(@NotNull TypeFloat typeFloat) {
-        return STypeFactory.createTypeFloat(typeFloat.getValue() * this.getValue());
-    }
-
-    /**
-     * Returns the multiplication between the current type and an Int Type.
-     *
-     * @param typeInt An Int type who will be multiplied to the current type.
-     * @return The multiplication between the Int type and the other type.
-     */
-    @Override
-    public TypeInt multWithInt(@NotNull TypeInt typeInt) {
-        return STypeFactory.createTypeInt(typeInt.getValue() * this.getValue());
-    }
-
-    /**
-     * Returns the multiplication between the current type and a Binary Type.
-     *
-     * @param typeBinary A Binary type who will be multiplied to the current type.
-     * @return The multiplication between the Binary type and the other type.
-     */
-    @Override
-    public TypeBinary multWithBinary(@NotNull TypeBinary typeBinary) {
-        String binaryMultiplied = intToBinary(typeBinary.getValueAsInt() * this.getValue());
-        return STypeFactory.createTypeBinary(binaryMultiplied);
-    }
-
-    /**
-     * Method that returns the division between the current type and the other type.
-     * Returns the dominant type if possible.
+     * Method that returns the division between the current type and the other type. Returns the
+     * dominant type if possible.
      *
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
      */
     @Override
-    public SNumber div(@NotNull SNumber otherType){
-        return otherType.divWithInt(this);
+    public SNumber div(@NotNull SNumber otherType) throws ZeroDivisionException {
+        return this.asHType().div(otherType.asHType()).asSNumber();
     }
 
     /**
-     * Returns the division between the current type and a Binary Type.
-     *
-     * @param typeBinary A Binary type who will be divided to the current type.
-     * @return The division between the Binary type and the other type.
-     */
-    @Override
-    public TypeBinary divWithBinary(@NotNull TypeBinary typeBinary) {
-        // Case divide by zero
-        if (this.getValue() == 0) return STypeFactory.createTypeBinary("0000");
-        String binaryResult = intToBinary((int) Math.round((double) typeBinary.getValueAsInt() / this.getValue()));
-        return STypeFactory.createTypeBinary(binaryResult);
-    }
-
-    /**
-     * Returns the division between the current type and a Float Type.
-     *
-     * @param typeFloat A Float type who will be divided to the current type.
-     * @return The division between the Float type and the other type.
-     */
-    @Override
-    public TypeFloat divWithFloat(@NotNull TypeFloat typeFloat) {
-        // Case divide by zero
-        if (this.getValue() == 0) return STypeFactory.createTypeFloat(0.0);
-        return STypeFactory.createTypeFloat(typeFloat.getValue() / this.getValue());
-    }
-
-    /**
-     * Returns the division between the current type and an Int Type.
-     *
-     * @param typeInt An Int type who will be divided to the current type.
-     * @return The division between the Int type and the other type.
-     */
-    @Override
-    public TypeInt divWithInt(@NotNull TypeInt typeInt) {
-        // Case divide by zero
-        if (this.getValue() == 0) {
-            return STypeFactory.createTypeInt(0);
-        }
-        return STypeFactory.createTypeInt((int) Math.round((double) typeInt.getValue() / this.getValue()));
-    }
-
-    /**
-     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     * Transform the current {@code SType} as a {@code HType}.
      *
      * @return a transformation
      */
     @Override
-    public HiddenInt toHiddenAST() {
-        return createHiddenInt(this);
+    public HiddenInt asHType() {
+        return (HiddenInt) super.asHType();
     }
 }

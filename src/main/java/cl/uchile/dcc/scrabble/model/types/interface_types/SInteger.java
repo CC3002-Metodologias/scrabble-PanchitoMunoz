@@ -1,16 +1,19 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
 import cl.uchile.dcc.scrabble.model.builders.interfaces.IntegerASTBuilder;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HInteger;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
-import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithBinary;
 
 /**
  * An interface for the sole purpose of representing an integer.
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SInteger extends SNumber, ArithmeticOperationsWithBinary, IntegerASTBuilder {
+public interface SInteger extends SNumber, IntegerASTBuilder {
+
+    @Override
+    HInteger asHType();
 
     int getValueAsInt();
 

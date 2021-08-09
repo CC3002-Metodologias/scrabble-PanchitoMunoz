@@ -8,7 +8,7 @@ import java.util.HashMap;
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/02 12:32
  */
-public class AbstractGeneralTypeFactory implements GeneralTypeFactory {
+public abstract class AbstractGeneralTypeFactory implements GeneralTypeFactory {
 
     /**
      * To use Flyweight pattern
@@ -17,6 +17,7 @@ public class AbstractGeneralTypeFactory implements GeneralTypeFactory {
 
     /**
      * General constructor
+     *
      * @param hashMapCache a {@code HashMap}
      */
     protected AbstractGeneralTypeFactory(

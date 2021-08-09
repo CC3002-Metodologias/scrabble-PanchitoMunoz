@@ -104,16 +104,6 @@ class TypeBoolTest extends BaseTypeTest {
                 "Method neg does not works with false.");
     }
 
-    @Test
-    void addWithString() {
-        var expectedTypeString = new TypeString(aString1 + trueBoolean);
-        assertEquals(expectedTypeString, trueTypeBool.addWithString(typeString1),
-                "Method addWithString does not works.");
-        expectedTypeString = new TypeString(aString1 + falseBoolean);
-        assertEquals(expectedTypeString, falseTypeBool.addWithString(typeString1),
-                "Method addWithString does not works.");
-    }
-
     @RepeatedTest(20)
     void and() {
         // And with booleans
@@ -156,53 +146,5 @@ class TypeBoolTest extends BaseTypeTest {
         expected = new TypeBinary(falseOrBinary);
         assertEquals(expected, falseTypeBool.or(typeBinary1),
                 "Method or does not works with false bool and a binary." + messageSeed);
-    }
-
-    @Test
-    void andWithBool() {
-        assertEquals(trueTypeBool, trueTypeBool.andWithBool(trueTypeBool),
-                "Method andWithBool does not works with true and true booleans.");
-        assertEquals(falseTypeBool, trueTypeBool.andWithBool(falseTypeBool),
-                "Method andWithBool does not works with true and false booleans.");
-        assertEquals(falseTypeBool, falseTypeBool.andWithBool(trueTypeBool),
-                "Method andWithBool does not works with false and true booleans.");
-        assertEquals(falseTypeBool, falseTypeBool.andWithBool(falseTypeBool),
-                "Method andWithBool does not works with false and false booleans.");
-    }
-
-    @Test
-    void orWithBool() {
-        assertEquals(trueTypeBool, trueTypeBool.orWithBool(trueTypeBool),
-                "Method orWithBool does not works with true and true booleans.");
-        assertEquals(trueTypeBool, trueTypeBool.orWithBool(falseTypeBool),
-                "Method orWithBool does not works with true and false booleans.");
-        assertEquals(trueTypeBool, falseTypeBool.orWithBool(trueTypeBool),
-                "Method orWithBool does not works with false and true booleans.");
-        assertEquals(falseTypeBool, falseTypeBool.orWithBool(falseTypeBool),
-                "Method orWithBool does not works with false and false booleans.");
-    }
-
-    @Test
-    void andWithBinary() {
-        var binaryAndTrue = boolAndBinary(trueBoolean, aBinary1);
-        var expected = new TypeBinary(binaryAndTrue);
-        assertEquals(expected, trueTypeBool.andWithBinary(typeBinary1),
-                "Method andWithBinary does not works with true bool and a binary." + messageSeed);
-        var binaryAndFalse = boolAndBinary(falseBoolean, aBinary1);
-        expected = new TypeBinary(binaryAndFalse);
-        assertEquals(expected, falseTypeBool.andWithBinary(typeBinary1),
-                "Method andWithBinary does not works with false bool and a binary." + messageSeed);
-    }
-
-    @Test
-    void orWithBinary() {
-        var binaryOrTrue = boolOrBinary(trueBoolean, aBinary1);
-        var expected = new TypeBinary(binaryOrTrue);
-        assertEquals(expected, trueTypeBool.orWithBinary(typeBinary1),
-                "Method orWithBinary does not works with true bool and a binary." + messageSeed);
-        var binaryOrFalse = boolOrBinary(falseBoolean, aBinary1);
-        expected = new TypeBinary(binaryOrFalse);
-        assertEquals(expected, falseTypeBool.orWithBinary(typeBinary1),
-                "Method orWithBinary does not works with false bool and a binary." + messageSeed);
     }
 }

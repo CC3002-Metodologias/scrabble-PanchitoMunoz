@@ -1,15 +1,10 @@
 package cl.uchile.dcc.scrabble.model.types;
 
-import static cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory.createHiddenBool;
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolAndBinary;
-import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.boolOrBinary;
-
 import cl.uchile.dcc.scrabble.model.builders.interfaces.BoolASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenBool;
-import cl.uchile.dcc.scrabble.model.factories.types_factories.STypeFactory;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
 import cl.uchile.dcc.scrabble.model.types.abstract_types.AbstractType;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SLogical;
-import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -17,14 +12,13 @@ import org.jetbrains.annotations.NotNull;
  * @author Francisco Muñoz Guajardo
  */
 public class TypeBool extends AbstractType implements SLogical, BoolASTBuilder {
-    private final boolean value;
 
     /**
      * Constructor for the BoolType.
      * @param value A boolean as a value.
      */
     public TypeBool(boolean value) {
-        this.value = value;
+        super(HTypeFactory.createHiddenBool(value));
     }
 
     /**
@@ -33,50 +27,7 @@ public class TypeBool extends AbstractType implements SLogical, BoolASTBuilder {
      * @return The value in the instance
      */
     public boolean getValue() {
-        return this.value;
-    }
-
-    /**
-     * Method that determines if the object 'o' is equals to the current instance.
-     * @param o Another object that is compared to the current instance.
-     * @return A boolean that determines whether the current instance are equals with 'o'.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TypeBool)) return false;
-        TypeBool typeBool = (TypeBool) o;
-        return Objects.equals(value, typeBool.value);
-    }
-
-    /**
-     * Method that returns the hash code of the current instance.
-     * @return The hash code of the current instance.
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
-
-    /**
-     * Method that provides a representation of the current instance as a String.
-     * @return The representation as a String.
-     */
-    @Override
-    public String toString() {
-        return "TypeBool{"
-                + "value=" + value
-                + "}";
-    }
-
-    /**
-     * Returns the value as {@code String}.
-     *
-     * @return the current value as {@code String}
-     */
-    @Override
-    public String getValueAsString() {
-        return Boolean.toString(this.value);
+        return this.asHType().getValueAsBool();
     }
 
     /**
@@ -85,7 +36,7 @@ public class TypeBool extends AbstractType implements SLogical, BoolASTBuilder {
      * @return TypeBool with a value equivalent to the current type.
      */
     public TypeBool toTypeBool() {
-        return STypeFactory.createTypeBool(this.value);
+        return this;
     }
 
     /**
@@ -94,18 +45,7 @@ public class TypeBool extends AbstractType implements SLogical, BoolASTBuilder {
      */
     @Override
     public TypeBool neg() {
-        return STypeFactory.createTypeBool(!(this.value));
-    }
-
-    /**
-     * Returns the add between the current type and a String Type.
-     *
-     * @param typeString A string type who will be added to the current type.
-     * @return The sum between the String type and the other type.
-     */
-    @Override
-    public TypeString addWithString(@NotNull TypeString typeString) {
-        return STypeFactory.createTypeString(typeString.getValue() + this.value);
+        return this.asHType().neg().asTypeBool();
     }
 
     /**
@@ -116,7 +56,7 @@ public class TypeBool extends AbstractType implements SLogical, BoolASTBuilder {
      */
     @Override
     public SLogical and(@NotNull SLogical otherType) {
-        return otherType.andWithBool(this);
+        return this.asHType().and(otherType.asHType()).asSLogical();
     }
 
     /**
@@ -127,60 +67,16 @@ public class TypeBool extends AbstractType implements SLogical, BoolASTBuilder {
      */
     @Override
     public SLogical or(@NotNull SLogical otherType) {
-        return otherType.orWithBool(this);
+        return this.asHType().or(otherType.asHType()).asSLogical();
     }
 
     /**
-     * Returns the disjunction between the current type and a Bool Type.
-     *
-     * @param typeBool A Bool type who will be disjunct to the current type.
-     * @return The disjunction between the Bool type and the other type.
-     */
-    @Override
-    public TypeBool andWithBool(@NotNull TypeBool typeBool) {
-        return STypeFactory.createTypeBool(typeBool.value && this.value);
-    }
-
-    /**
-     * Returns the conjunction between the current type and a Bool Type.
-     *
-     * @param typeBool A Bool type who will be conjunct to the current type.
-     * @return The conjunction between the Bool type and the other type.
-     */
-    @Override
-    public TypeBool orWithBool(@NotNull TypeBool typeBool) {
-        return STypeFactory.createTypeBool(typeBool.value || this.value);
-    }
-
-    /**
-     * Returns the disjunction between the current type and a Binary Type.
-     *
-     * @param typeBinary A Binary type who will be disjunct to the current type.
-     * @return The disjunction between the Binary type and the other type.
-     */
-    @Override
-    public TypeBinary andWithBinary(@NotNull TypeBinary typeBinary) {
-        return STypeFactory.createTypeBinary(boolAndBinary(this.value, typeBinary.getValue()));
-    }
-
-    /**
-     * Returns the conjunction between the current type and a Binary Type.
-     *
-     * @param typeBinary A Binary type who will be conjunct to the current type.
-     * @return The conjunction between the Binary type and the other type.
-     */
-    @Override
-    public TypeBinary orWithBinary(@NotNull TypeBinary typeBinary) {
-        return STypeFactory.createTypeBinary(boolOrBinary(this.value, typeBinary.getValue()));
-    }
-
-    /**
-     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     * Transform the current {@code SType} as a {@code HType}.
      *
      * @return a transformation
      */
     @Override
-    public HiddenBool toHiddenAST() {
-        return createHiddenBool(this);
+    public HiddenBool asHType() {
+        return (HiddenBool) super.asHType();
     }
 }

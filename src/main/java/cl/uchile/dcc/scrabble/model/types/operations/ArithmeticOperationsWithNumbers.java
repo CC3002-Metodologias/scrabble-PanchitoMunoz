@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.model.types.operations;
 
+import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SNumber;
 
 /**
@@ -33,11 +34,11 @@ public interface ArithmeticOperationsWithNumbers {
     SNumber mult(SNumber otherType);
 
     /**
-     * Method that returns the division between the current type and the other type.
-     * Returns the dominant type if possible.
+     * Method that returns the division between the current type and the other type. Returns the
+     * dominant type if possible.
      *
      * @param otherType Another type that will be divided to the current type.
      * @return The division between the two types, returning the dominant type.
      */
-    SNumber div(SNumber otherType);
+    SNumber div(SNumber otherType) throws ZeroDivisionException;
 }

@@ -1,11 +1,11 @@
 package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenBinary;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenBool;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenFloat;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenInt;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenNull;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.HiddenString;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBinary;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenBool;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenFloat;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenNull;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenString;
 import cl.uchile.dcc.scrabble.model.types.TypeBinary;
 import cl.uchile.dcc.scrabble.model.types.TypeBool;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;

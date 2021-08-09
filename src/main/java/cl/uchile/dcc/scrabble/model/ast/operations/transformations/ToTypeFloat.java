@@ -1,8 +1,8 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.transformations;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.transformations.ToHiddenFloat;
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractTransformation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.ToHiddenFloat;
 
 /**
  * A class that works as a decorator for an {@code Operation}. Allows float transformation.
@@ -17,7 +17,7 @@ public class ToTypeFloat extends AbstractTransformation {
      *
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public ToTypeFloat(AST value) {
-        super(new ToHiddenFloat(value.toHiddenAST()));
+    public ToTypeFloat(ASTComponent value) {
+        super(new ToHiddenFloat(value.asHiddenAST()));
     }
 }

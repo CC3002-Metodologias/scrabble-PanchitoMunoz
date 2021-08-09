@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 
 /**
  * An abstract class for a general transformation in {@code Operations}.
@@ -15,10 +15,10 @@ public abstract class AbstractTransformation extends AbstractOperation {
     /**
      * Constructor by default.
      *
-     * @param adaptee a HiddenOperation to adapt
+     * @param adaptee a HiddenOperator to adapt
      */
     protected AbstractTransformation(
-        HiddenOperation adaptee) {
+        HiddenOperator adaptee) {
         super(adaptee);
     }
 }

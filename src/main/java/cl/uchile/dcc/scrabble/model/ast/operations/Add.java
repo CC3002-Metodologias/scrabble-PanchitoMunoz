@@ -1,9 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
+import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractBinaryOperator;
 import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenAdd;
-import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenAdd;
 
 /**
  * An {@code Operation} class that adds a node in the {@code AST}. It is equivalent to applying
@@ -14,7 +14,7 @@ import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractO
  * @author Francisco Muñoz Guajardo
  * @create 2021/06/14 9:54
  */
-public class Add extends AbstractOperation {
+public class Add extends AbstractBinaryOperator {
 
     /**
      * Constructor.
@@ -22,7 +22,7 @@ public class Add extends AbstractOperation {
      * @param leftValue  an AST. It can be an {@code Operation} or a {@code SType}.
      * @param rightValue an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public Add(AST leftValue, AST rightValue) {
-        super(new HiddenAdd(leftValue.toHiddenAST(), rightValue.toHiddenAST()));
+    public Add(ASTComponent leftValue, ASTComponent rightValue) {
+        super(new HiddenAdd(leftValue.asHiddenAST(), rightValue.asHiddenAST()));
     }
 }

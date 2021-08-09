@@ -1,11 +1,11 @@
 package cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations;
 
 import cl.uchile.dcc.scrabble.model.ast.AST;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.HiddenOperation;
 import cl.uchile.dcc.scrabble.model.ast.operations.Operation;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
-import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Abstract class for a general {@code Operation}.
@@ -18,24 +18,24 @@ import java.util.Objects;
  */
 public abstract class AbstractOperation implements Operation {
 
-    private final HiddenOperation adaptee;
+    private final HiddenOperator adaptee;
 
     /**
      * Constructor by default.
      *
-     * @param adaptee a HiddenOperation to adapt
+     * @param adaptee a HiddenOperator to adapt
      */
-    protected AbstractOperation(HiddenOperation adaptee) {
+    protected AbstractOperation(HiddenOperator adaptee) {
         this.adaptee = adaptee;
     }
 
     /**
-     * Transform an {@code AST} into its equivalent {@code HiddenAST}.
+     * Transform an {@code AST} into its equivalent {@code HiddenASTComponent}.
      *
      * @return a transformation
      */
     @Override
-    public HiddenOperation toHiddenAST() {
+    public @NotNull HiddenOperator asHiddenAST() {
         return adaptee;
     }
 
@@ -47,7 +47,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public void setVariable(String name, SType value) {
-        this.adaptee.setVariable(name, value.toHiddenAST());
+        this.adaptee.setVariable(name, value.asHiddenAST());
     }
 
     /**
@@ -57,7 +57,7 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public SType calculate() {
-        return adaptee.calculate().toSType();
+        return adaptee.calculate().asSType();
     }
 
     /**
@@ -83,11 +83,13 @@ public abstract class AbstractOperation implements Operation {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof AbstractOperation)) {
+        if (!(o instanceof Operation)) {
             return false;
         }
-        AbstractOperation that = (AbstractOperation) o;
-        return Objects.equals(adaptee, that.adaptee);
+
+        Operation that = (Operation) o;
+
+        return asHiddenAST().equals(that.asHiddenAST());
     }
 
     /**
@@ -99,6 +101,6 @@ public abstract class AbstractOperation implements Operation {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(adaptee);
+        return asHiddenAST().hashCode();
     }
 }

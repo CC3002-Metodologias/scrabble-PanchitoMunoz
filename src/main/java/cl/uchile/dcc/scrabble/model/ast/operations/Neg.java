@@ -1,9 +1,9 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenNeg;
-import cl.uchile.dcc.scrabble.model.ast.AST;
+import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.ast.operations.abstract_operations.AbstractOperation;
+import cl.uchile.dcc.scrabble.model.builders.ASTBuilder;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenNeg;
 
 /**
  * An {@code Operation} class that adds a node in the {@code AST}.
@@ -22,8 +22,8 @@ public class Neg extends AbstractOperation {
      *
      * @param value an AST. It can be an {@code Operation} or a {@code SType}.
      */
-    public Neg(AST value) {
-        super(new HiddenNeg(value.toHiddenAST()));
+    public Neg(ASTComponent value) {
+        super(new HiddenNeg(value.asHiddenAST()));
     }
 
 }

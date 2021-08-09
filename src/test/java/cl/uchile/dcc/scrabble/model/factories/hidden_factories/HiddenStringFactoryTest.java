@@ -1,51 +1,61 @@
 package cl.uchile.dcc.scrabble.model.factories.hidden_factories;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_types.BaseHTypeTest;
-import org.junit.jupiter.api.AfterEach;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
 class HiddenStringFactoryTest extends BaseHTypeTest {
 
-    private final HiddenStringFactory StringFactory = HiddenStringFactory.getInstance();
+    private final HiddenStringFactory factory = HiddenStringFactory.getInstance();
 
     @BeforeEach
     protected void setUp() {
         super.setUp();
-    }
-
-    @AfterEach
-    protected void tearDown() {
-        StringFactory.clear();
+        factory.clear();
     }
 
     @RepeatedTest(20)
     void testCreate() {
-        assertEquals(hiddenString1, StringFactory.create(hiddenString1),
+        assertSame(hiddenString1, factory.create(hiddenString1),
             "Method create does not works with hidden instance." + messageSeed);
-        assertEquals(hiddenString1, StringFactory.create(typeString1),
+
+        factory.clear();
+        var instance = factory.create(typeString1);
+        assertEquals(hiddenString1, instance,
             "Method create does not works with SType instance." + messageSeed);
-        assertEquals(hiddenString1, StringFactory.create(aString1),
+        var otherInstance = factory.create(typeString1);
+        assertSame(instance, otherInstance,
+            "Method create does not works with SType instance." + messageSeed);
+
+        factory.clear();
+        instance = factory.create(aString1);
+        assertEquals(hiddenString1, instance,
+            "Method create does not works with normal value." + messageSeed);
+        otherInstance = factory.create(aString1);
+        assertSame(instance, otherInstance,
             "Method create does not works with normal value." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testIsEmpty() {
-        assertTrue(StringFactory.isEmpty(),
+        assertTrue(factory.isEmpty(),
             "Method isEmpty does not works when is empty." + messageSeed);
-        StringFactory.create(hiddenString1);
-        assertFalse(StringFactory.isEmpty(),
+        factory.create(hiddenString1);
+        assertFalse(factory.isEmpty(),
             "Method isEmpty does not works when is not empty." + messageSeed);
     }
 
     @RepeatedTest(20)
     void testClear() {
-        StringFactory.create(hiddenString1);
-        assertFalse(StringFactory.isEmpty());
-        StringFactory.clear();
-        assertTrue(StringFactory.isEmpty(),
+        factory.create(hiddenString1);
+        assertFalse(factory.isEmpty());
+        factory.clear();
+        assertTrue(factory.isEmpty(),
             "Method clear does not works." + messageSeed);
     }
 

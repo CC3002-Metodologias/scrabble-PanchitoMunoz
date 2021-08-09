@@ -1,17 +1,18 @@
 package cl.uchile.dcc.scrabble.model.types.interface_types;
 
 import cl.uchile.dcc.scrabble.model.builders.interfaces.NumberASTBuilder;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.interfaces.HNumber;
 import cl.uchile.dcc.scrabble.model.types.TypeFloat;
-import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithFloat;
-import cl.uchile.dcc.scrabble.model.types.operations.operations_type.ArithmeticOperationsWithInt;
 
 /**
  * An interface for the sole purpose of representing a number.
  *
  * @author Francisco Muñoz Guajardo
  */
-public interface SNumber
-    extends SType, ArithmeticOperationsWithInt, ArithmeticOperationsWithFloat, NumberASTBuilder {
+public interface SNumber extends SType, NumberASTBuilder, Comparable<SNumber> {
+
+    @Override
+    HNumber asHType();
 
     /**
      * Returns the value as {@code double}.

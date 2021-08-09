@@ -1,8 +1,10 @@
 package cl.uchile.dcc.scrabble.model.ast.operations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import cl.uchile.dcc.scrabble.model.hidden_ast.hidden_operations.operations.HiddenNeg;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenNeg;
 import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -21,9 +23,9 @@ class NegTest extends BaseOperationTest {
 
     @RepeatedTest(20)
     void testToHiddenAST() {
-        assertEquals(new HiddenNeg(hiddenBinary1), binaryResult.toHiddenAST(),
+        assertEquals(new HiddenNeg(hiddenBinary1), binaryResult.asHiddenAST(),
             "Method toHiddenAST does not works with equals hidden ast." + messageSeed);
-        assertNotEquals(new HiddenNeg(trueHiddenBool), binaryResult.toHiddenAST(),
+        assertNotEquals(new HiddenNeg(trueHiddenBool), binaryResult.asHiddenAST(),
             "Method toHiddenAST does not works with different hidden ast." + messageSeed);
     }
 
