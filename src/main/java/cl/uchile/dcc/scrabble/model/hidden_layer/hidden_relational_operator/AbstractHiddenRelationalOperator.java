@@ -4,7 +4,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.AbstractHiddenBinaryOperator;
 
 /**
- * todo: doc
+ * An abstract class to represent a hidden relational operator
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/26 0:34

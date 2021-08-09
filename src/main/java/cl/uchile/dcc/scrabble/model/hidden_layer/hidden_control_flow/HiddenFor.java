@@ -6,7 +6,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 
 /**
- * todo: doc
+ * A class to represent the for control flow.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/08/03 11:11

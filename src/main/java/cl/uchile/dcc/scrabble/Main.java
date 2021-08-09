@@ -186,7 +186,6 @@ public class Main {
         );
         System.out.println(program1);
         program1.execute();
-        System.out.println(program1.getGlobalVariables("d"));
         System.out.println(program1.getGlobalVariables("a"));
         System.out.println(program1.getGlobalVariables("b"));
 

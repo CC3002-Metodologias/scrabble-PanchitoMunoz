@@ -10,18 +10,25 @@ import cl.uchile.dcc.scrabble.model.ast.operations.Sub;
 import cl.uchile.dcc.scrabble.model.ast.relational_operators.GreaterThan;
 import cl.uchile.dcc.scrabble.model.ast.relational_operators.NotEquals;
 import cl.uchile.dcc.scrabble.model.exceptions.VariableNotFoundException;
+import cl.uchile.dcc.scrabble.model.types.BaseTypeTest;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
 import cl.uchile.dcc.scrabble.model.variables.Variable;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ProgramTest {
+class ProgramTest extends BaseTypeTest {
 
     private Program program;
+    private Program program1;
+    private Program program2;
+    private Program program3;
+    private Program program4;
+    private Program program5;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
+        super.setUp();
         program = new Program(
             new Variable("a").assign(new TypeInt(30)),
             new Variable("b").assign(new TypeInt(20)),
@@ -42,6 +49,21 @@ class ProgramTest {
                 )
             )
         );
+        program1 = new Program(
+            new Variable("i").assign(typeBinary1).toTypeBinary()
+        );
+        program2 = new Program(
+            new Variable("i").assign(trueTypeBool).toTypeBool()
+        );
+        program3 = new Program(
+            new Variable("i").assign(typeFloat1).toTypeFloat()
+        );
+        program4 = new Program(
+            new Variable("i").assign(typeInt1).toTypeInt()
+        );
+        program5 = new Program(
+            new Variable("i").assign(typeString1).toTypeString()
+        );
     }
 
     @Test
@@ -55,6 +77,16 @@ class ProgramTest {
             new Variable("b").assign(new TypeInt(0)),
             program.getGlobalVariables("b"),
             "Method execute does not works.");
+        program1.execute();
+        assertEquals(typeBinary1, program1.getGlobalVariables("i").getValue());
+        program2.execute();
+        assertEquals(trueTypeBool, program2.getGlobalVariables("i").getValue());
+        program3.execute();
+        assertEquals(typeFloat1, program3.getGlobalVariables("i").getValue());
+        program4.execute();
+        assertEquals(typeInt1, program4.getGlobalVariables("i").getValue());
+        program5.execute();
+        assertEquals(typeString1, program5.getGlobalVariables("i").getValue());
     }
 
     @Test

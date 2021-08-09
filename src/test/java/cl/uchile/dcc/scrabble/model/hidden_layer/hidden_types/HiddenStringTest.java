@@ -5,9 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenSetterVisitor;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 class HiddenStringTest extends BaseHTypeTest {
 
@@ -231,5 +233,12 @@ class HiddenStringTest extends BaseHTypeTest {
 
         assertEquals(hiddenNull, hiddenString1.or(hiddenString2),
             "Method or does not works with strings." + messageSeed);
+    }
+
+    @Test
+    void testAccept() {
+        HiddenSetterVisitor visitor = new HiddenSetterVisitor("x", new HiddenInt(10));
+        hiddenString1.accept(visitor);
+        assertEquals(new HiddenString(aString1), hiddenString1);
     }
 }

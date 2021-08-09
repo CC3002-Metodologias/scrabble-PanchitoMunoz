@@ -6,7 +6,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 
 /**
- * todo: doc
+ * A class to represent the not equals relational operator
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/08/02 21:41

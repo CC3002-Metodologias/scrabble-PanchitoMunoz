@@ -8,8 +8,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenIfElse;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_control_flow.HiddenWhile;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenListOfInstructions;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.binary_operators.HiddenBinaryOperator;
-import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.unary_operators.HiddenUnaryOperator;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_operators.HiddenOperator;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HType;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import java.util.HashMap;
@@ -55,33 +54,14 @@ public class HiddenGlobalVariableVisitor implements HiddenVisitor {
     }
 
     /**
-     * Visit a {@code HiddenUnaryOperator}.
+     * Visit a {@code HiddenOperator}.
      *
-     * @param hiddenUnaryOperator an generic {@code HiddenUnaryOperator}
+     * @param hiddenOperator an generic {@code HiddenOperator}
      */
     @Override
-    public void visitHiddenUnaryOperator(HiddenUnaryOperator hiddenUnaryOperator) {
+    public void visitHiddenOperator(HiddenOperator hiddenOperator) {
         for (String varName : globalVariables.keySet()) {
-            HiddenSetterVisitor setterVisitor = new HiddenSetterVisitor(
-                varName, globalVariables.get(varName)
-            );
-            hiddenUnaryOperator.getFirstChildren().accept(setterVisitor);
-        }
-    }
-
-    /**
-     * Visit a {@code HiddenBinaryOperator}.
-     *
-     * @param hiddenBinaryOperator an generic {@code HiddenBinaryOperator}
-     */
-    @Override
-    public void visitHiddenBinaryOperator(HiddenBinaryOperator hiddenBinaryOperator) {
-        for (String varName : globalVariables.keySet()) {
-            HiddenSetterVisitor setterVisitor = new HiddenSetterVisitor(
-                varName, globalVariables.get(varName)
-            );
-            hiddenBinaryOperator.getFirstChildren().accept(setterVisitor);
-            hiddenBinaryOperator.getSecondChildren().accept(setterVisitor);
+            hiddenOperator.setVariable(varName, globalVariables.get(varName));
         }
     }
 

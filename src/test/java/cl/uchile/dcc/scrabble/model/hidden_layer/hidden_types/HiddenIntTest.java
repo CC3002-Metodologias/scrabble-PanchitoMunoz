@@ -8,6 +8,7 @@ import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import cl.uchile.dcc.scrabble.model.utils.BinaryUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 class HiddenIntTest extends BaseHTypeTest {
 
@@ -269,5 +270,11 @@ class HiddenIntTest extends BaseHTypeTest {
 
         assertEquals(hiddenNull, hiddenInt1.or(hiddenString1),
             "Method or does not works with strings." + messageSeed);
+    }
+
+    @Test
+    void testAsTypeInt() {
+        assertEquals(typeInt1, hiddenInt1.asTypeInt(),
+            "Method asTypeInt does not works." + messageSeed);
     }
 }

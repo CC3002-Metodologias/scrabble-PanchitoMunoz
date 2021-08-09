@@ -4,6 +4,7 @@ import cl.uchile.dcc.scrabble.model.ast.ASTComponent;
 import cl.uchile.dcc.scrabble.model.ast.ASTLeaf;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_variable.HiddenVariable;
 import cl.uchile.dcc.scrabble.model.types.TypeInt;
+import cl.uchile.dcc.scrabble.model.types.interface_types.SType;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,6 +49,15 @@ public class Variable implements ASTLeaf {
     public Variable assign(@NotNull ASTComponent value) {
         this.adaptee.assign(value.asHiddenAST());
         return this;
+    }
+
+    /**
+     * Gets the value in the variable.
+     *
+     * @return the value in the variable.
+     */
+    public SType getValue() {
+        return adaptee.getValue().calculate().asAST();
     }
 
     /**

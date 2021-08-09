@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.model.hidden_layer;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenVisitor;
 
 /**
- * todo: doc
+ * A class to represent a general AST component
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/25 22:55

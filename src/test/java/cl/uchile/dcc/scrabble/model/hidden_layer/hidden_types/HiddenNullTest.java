@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
+import cl.uchile.dcc.scrabble.model.factories.hidden_factories.HTypeFactory;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_visitors.HiddenSetterVisitor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -146,5 +148,121 @@ class HiddenNullTest extends BaseHTypeTest {
     void testToSType() {
         assertNull(hiddenNull.asSType(),
             "Method toSType does not works." + messageSeed);
+    }
+
+    @Test
+    void testGetInstance() {
+        assertSame(HiddenNull.getInstance(), hiddenNull,
+            "Method getInstance does not works.");
+    }
+
+    @Test
+    void testGetValue() {
+        assertNull(hiddenNull.getValue(),
+            "Method getValue does not works.");
+    }
+
+    @Test
+    void testAsSType() {
+        assertNull(hiddenNull.asSType(),
+            "Method asSType does not works.");
+    }
+
+    @Test
+    void testSTypeAsString() {
+        assertNull(hiddenNull.sTypeAsString(),
+            "Method sTypeAsString does not works.");
+    }
+
+    @Test
+    void testAccept() {
+        HiddenSetterVisitor visitor = new HiddenSetterVisitor("x", new HiddenInt(10));
+        hiddenNull.accept(visitor);
+        assertSame(hiddenNull, HTypeFactory.createHiddenNull());
+    }
+
+    @Test
+    void testAsCode() {
+        assertEquals("null", hiddenNull.asCode(),
+            "Method asCode does not works.");
+    }
+
+    @Test
+    void testGetValueAsBinary() {
+        assertNull(hiddenNull.getValueAsBinary());
+    }
+
+    @Test
+    void testGetValueAsInt() {
+        assertEquals(0, hiddenNull.getValueAsInt());
+    }
+
+    @Test
+    void testAsSNumber() {
+        assertNull(hiddenNull.asSNumber());
+    }
+
+    @Test
+    void testGetValueAsDouble() {
+        assertEquals(0, hiddenNull.getValueAsDouble());
+    }
+
+    @Test
+    void testGetValueAsBool() {
+        assertNull(hiddenNull.getValueAsBool());
+    }
+
+    @Test
+    void testGetValueAsString() {
+        assertNull(hiddenNull.getValueAsString());
+    }
+
+    @Test
+    void testAsTypeBinary() {
+        assertNull(hiddenNull.asTypeBinary());
+    }
+
+    @Test
+    void testAsSLogical() {
+        assertNull(hiddenNull.asSLogical());
+    }
+
+    @Test
+    void testAsTypeBool() {
+        assertNull(hiddenNull.asTypeBool());
+    }
+
+    @Test
+    void testAsTypeFloat() {
+        assertNull(hiddenNull.asTypeFloat());
+    }
+
+    @Test
+    void testAsTypeInt() {
+        assertNull(hiddenNull.asTypeInt());
+    }
+
+    @Test
+    void testAsTypeString() {
+        assertNull(hiddenNull.asTypeString());
+    }
+
+    @Test
+    void testCompareTo() {
+        assertEquals(0, hiddenNull.compareTo(hiddenFloat1));
+    }
+
+    @Test
+    void testCopy() {
+        assertSame(hiddenNull, hiddenNull.copy());
+    }
+
+    @Test
+    void testComparable() {
+        assertEquals(hiddenNull, hiddenNull.equalsTo(hiddenNull));
+        assertEquals(hiddenNull, hiddenNull.greaterEquals(hiddenNull));
+        assertEquals(hiddenNull, hiddenNull.greaterThan(hiddenNull));
+        assertEquals(hiddenNull, hiddenNull.lowerEquals(hiddenNull));
+        assertEquals(hiddenNull, hiddenNull.lowerThan(hiddenNull));
     }
 }

@@ -115,4 +115,50 @@ class HiddenVariableTest extends BaseHTypeTest {
         assertNotSame(other, floatVariable,
             "Method clone does not works." + messageSeed);
     }
+
+    @Test
+    void testEquals() {
+        assertEquals(variable, new HiddenVariable(name));
+    }
+
+    @Test
+    void testHashCode() {
+        assertEquals(variable.hashCode(), new HiddenVariable(name).hashCode());
+    }
+
+    @Test
+    void testAsCode() {
+        assertEquals(name, variable.asCode());
+        assertEquals(name + " = " + hiddenFloat1.asCode(), floatVariable.asCode());
+    }
+
+    @Test
+    void testGetValue() {
+        assertEquals(hiddenFloat1, floatVariable.getValue());
+    }
+
+    @Test
+    void testToHiddenBinary() {
+        assertEquals(hiddenBinary1, binaryVariable.toHiddenBinary().calculate());
+    }
+
+    @Test
+    void testToHiddenBool() {
+        assertEquals(trueHiddenBool, boolVariable.toHiddenBool().calculate());
+    }
+
+    @Test
+    void testToHiddenFloat() {
+        assertEquals(hiddenFloat1, floatVariable.toHiddenFloat().calculate());
+    }
+
+    @Test
+    void testToHiddenInt() {
+        assertEquals(hiddenInt1, intVariable.toHiddenInt().calculate());
+    }
+
+    @Test
+    void testToHiddenString() {
+        assertEquals(hiddenString1, stringVariable.toHiddenString().calculate());
+    }
 }

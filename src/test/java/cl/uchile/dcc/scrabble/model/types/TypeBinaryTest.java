@@ -12,6 +12,7 @@ import static cl.uchile.dcc.scrabble.model.utils.BinaryUtilities.oneComplement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import cl.uchile.dcc.scrabble.model.ast.operations.Add;
 import cl.uchile.dcc.scrabble.model.exceptions.ZeroDivisionException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,14 +46,17 @@ class TypeBinaryTest extends BaseTypeTest {
     void testEquals() {
         TypeBinary otherTypeBinary1 = new TypeBinary(aBinary1);
         assertEquals(otherTypeBinary1, typeBinary1,
-                "Two instances that have the same values are not equals." + messageSeed);
+            "Two instances that have the same values are not equals." + messageSeed);
         assertNotEquals(typeBinary2, typeBinary1,
-                "Two instances that have different values are equals." + messageSeed);
+            "Two instances that have different values are equals." + messageSeed);
         // Case where a binary has redundant leading zeros.
         TypeBinary typeBinary = new TypeBinary("0" + aBinary1);
         TypeBinary aBinaryWithRedundantZeros = new TypeBinary("00000" + aBinary1);
         assertEquals(aBinaryWithRedundantZeros, typeBinary,
-                "Method equals does not works when the binary has redundant leading zeros." + messageSeed);
+            "Method equals does not works when the binary has redundant leading zeros."
+                + messageSeed);
+        assertNotEquals(typeBinary1, new Add(typeFloat1, typeFloat2),
+            "Method equals does not works with different type.");
     }
 
     @RepeatedTest(20)

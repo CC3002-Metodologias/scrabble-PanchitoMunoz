@@ -1,7 +1,7 @@
 package cl.uchile.dcc.scrabble.model.hidden_layer;
 
 /**
- * todo:doc
+ * An interface to represent an AST composite in the hidden layer.
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/25 18:17

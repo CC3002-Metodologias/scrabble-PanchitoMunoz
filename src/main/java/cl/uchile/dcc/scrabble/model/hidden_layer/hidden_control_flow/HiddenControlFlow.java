@@ -4,7 +4,7 @@ import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 
 /**
- * todo: doc
+ * An interface to represent a general hidden control flow
  *
  * @author Francisco Muñoz Guajardo
  * @create 2021/07/25 18:35

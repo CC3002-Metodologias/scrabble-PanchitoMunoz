@@ -8,6 +8,7 @@ import cl.uchile.dcc.scrabble.model.exceptions.VariableNotFoundException;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenAST;
 import cl.uchile.dcc.scrabble.model.hidden_layer.HiddenASTComponent;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_executables.HiddenProgram;
+import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenGreaterThan;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_relational_operator.HiddenLowerThan;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.BaseHTypeTest;
 import cl.uchile.dcc.scrabble.model.hidden_layer.hidden_types.HiddenInt;
@@ -22,7 +23,9 @@ class HiddenForTest extends BaseHTypeTest {
     private HiddenVariable increase;
     private HiddenAST firstBody;
     private HiddenFor hiddenFor;
+    private HiddenFor hiddenFor1;
     private HiddenProgram program;
+    private HiddenProgram program1;
 
     @BeforeEach
     protected void setUp() {
@@ -36,6 +39,16 @@ class HiddenForTest extends BaseHTypeTest {
         program = new HiddenProgram(
             new HiddenVariable("j").assign(new HiddenInt(0)),
             hiddenFor
+        );
+        hiddenFor1 = new HiddenFor(
+            new HiddenVariable("i").assign(new HiddenInt(10)),
+            new HiddenGreaterThan(new HiddenVariable("i"), new HiddenInt(0)),
+            new HiddenVariable("i").decreased(),
+            new HiddenVariable("j").assign(new HiddenVariable("i"))
+        );
+        program1 = new HiddenProgram(
+            new HiddenVariable("j").assign(new HiddenInt(10)),
+            hiddenFor1
         );
     }
 
@@ -77,6 +90,11 @@ class HiddenForTest extends BaseHTypeTest {
         assertEquals(
             program.getGlobalVariables("j"),
             new HiddenVariable("j").assign(new HiddenInt(9))
+        );
+        program1.execute();
+        assertEquals(
+            new HiddenVariable("j").assign(new HiddenInt(1)),
+            program1.getGlobalVariables("j")
         );
     }
 
