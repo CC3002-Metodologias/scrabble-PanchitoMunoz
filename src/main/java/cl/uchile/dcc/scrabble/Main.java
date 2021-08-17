@@ -169,8 +169,8 @@ public class Main {
 //        System.out.println(listVar);
 
         Program program1 = new Program(
-            new Variable("a").assign(new TypeInt(12)),
-            new Variable("b").assign(new TypeInt(8)),
+            new Variable("a").assign(new TypeInt(45)),
+            new Variable("b").assign(new TypeInt(60)),
             new While(
                 new NotEquals(new Variable("b"), new TypeInt(0)),
                 new IfElse(
